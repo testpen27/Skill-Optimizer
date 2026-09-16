@@ -1,0 +1,22 @@
+[PASS] expected=True  got=True  i already have a running list of ~12 papers for my research proposal, 
+[PASS] expected=True  got=True  synthesis matrix pls for my topic 'mobile learning apps and student mo
+[PASS] expected=True  got=True  looking for related studies about telehealth adoption in rural areas p
+[PASS] expected=True  got=True  need an LR matrix for my MSN capstone on nurse burnout and patient saf
+[PASS] expected=True  got=True  need sources for my dissertation on transformational leadership and em
+[PASS] expected=True  got=True  can u help me find like 15-20 papers on gamification in education for 
+[PASS] expected=True  got=True  doing a review of related literature chapter for undergrad thesis on u
+[PASS] expected=True  got=True  my adviser wants a full literature review for my thesis titled 'the ef
+[PASS] expected=True  got=True  hey can you dig up qualitative and quantitative studies on remote work
+[PASS] expected=False got=False i attached a PDF of one paper, can you just summarize the abstract in 
+[PASS] expected=False got=False write a research proposal outline for my thesis on renewable energy po
+[PASS] expected=False got=False quick question - what's the actual difference between a literature rev
+[PASS] expected=True  got=True  my research title is 'effects of intermittent fasting on cognitive per
+[PASS] expected=False got=False i've got 5 papers already summarized in a spreadsheet, can you just re
+[PASS] expected=False got=False find me some recent news articles about the EU's new AI regulation for
+[PASS] expected=False got=False can you help me write the discussion section of chapter 5 based on my 
+[PASS] expected=False got=False just search google scholar real quick for 'transformer models in nlp' 
+[PASS] expected=False got=False can you convert this literature-review.docx file i wrote into a PDF fo
+[PASS] expected=False got=False my classmate finished her synthesis matrix, can you review it and give
+[PASS] expected=False got=False what's a good citation manager for organizing my references, should i 
+
+Accuracy: 20/20 = 100%

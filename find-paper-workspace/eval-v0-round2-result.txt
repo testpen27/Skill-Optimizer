@@ -1,0 +1,12 @@
+[PASS] expected=False got=False search arxiv for recent papers on diffusion models for image generatio
+[PASS] expected=False got=False i need to know which journals in nursing are Q1 vs Q2 so i know where 
+[PASS] expected=True  got=True  i'm writing chapter 2 of my thesis, title is 'blockchain adoption in s
+[PASS] expected=False got=False can you do some deep research on the current state of quantum computin
+[PASS] expected=False got=False can you look into what researchers are currently saying about GLP-1 dr
+[PASS] expected=True  got=True  for my thesis proposal defense next week i need at least 20 related st
+[PASS] expected=True  got=True  help me with my literature review
+[PASS] expected=True  got=True  my capstone group needs an RRL on 'ai chatbots in customer service and
+[PASS] expected=True  got=True  i'm a research assistant and my PI wants a quick lit scan on CRISPR ge
+[PASS] expected=False got=False can you fact-check this claim in my draft: 'gamification increases stu
+
+Accuracy: 10/10 = 100%

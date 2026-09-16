@@ -1,0 +1,12 @@
+[
+  {"query": "help me with my literature review", "should_trigger": true},
+  {"query": "can you do some deep research on the current state of quantum computing and give me a report with citations", "should_trigger": false},
+  {"query": "i'm writing chapter 2 of my thesis, title is 'blockchain adoption in supply chain management among SMEs in kenya' - business college - go ahead and start", "should_trigger": true},
+  {"query": "can you look into what researchers are currently saying about GLP-1 drugs and weight loss, just want a general overview for a blog post, nothing academic-formal", "should_trigger": false},
+  {"query": "i need to know which journals in nursing are Q1 vs Q2 so i know where to submit my own manuscript", "should_trigger": false},
+  {"query": "for my thesis proposal defense next week i need at least 20 related studies on 'online learning and academic self-efficacy among senior high students' organized in a table with methodology and results columns", "should_trigger": true},
+  {"query": "search arxiv for recent papers on diffusion models for image generation, i just want to skim titles, not building anything formal", "should_trigger": false},
+  {"query": "my capstone group needs an RRL on 'ai chatbots in customer service and consumer trust' - marketing program - can you also tell us if the sources are free or paywalled since none of us have library access", "should_trigger": true},
+  {"query": "i'm a research assistant and my PI wants a quick lit scan on CRISPR gene editing ethics for a grant proposal - needs to be organized by study type and year", "should_trigger": true},
+  {"query": "can you fact-check this claim in my draft: 'gamification increases student motivation by 40%' - just verify if that specific stat is accurate", "should_trigger": false}
+]
