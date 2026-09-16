@@ -1,0 +1,22 @@
+[
+  {"query": "my adviser wants a full literature review for my thesis titled 'the effect of gamification on student motivation and academic engagement', i'm in the college of education, can you gather sources and build the matrix", "should_trigger": true},
+  {"query": "need an LR matrix for my MSN capstone on nurse burnout and patient safety outcomes in ICU settings, should have like 15+ sources", "should_trigger": true},
+  {"query": "can u help me find like 15-20 papers on gamification in education for my thesis, need them grouped by quartile too pls", "should_trigger": true},
+  {"query": "i already have a running list of ~12 papers for my research proposal, can you rank them by SJR quartile and split into qual vs quant vs mixed methods", "should_trigger": true},
+  {"query": "looking for related studies about telehealth adoption in rural areas post-covid for my public health dissertation, need free/open access ones prioritized since i don't have journal access", "should_trigger": true},
+  {"query": "need sources for my dissertation on transformational leadership and employee engagement in the retail sector, business college, prof wants at least a few Q1 journals", "should_trigger": true},
+  {"query": "synthesis matrix pls for my topic 'mobile learning apps and student motivation in philippine public high schools' - psych/education field", "should_trigger": true},
+  {"query": "doing a review of related literature chapter for undergrad thesis on urban heat islands and green infrastructure, need it split by intro/methodology/results/discussion like my prof asked", "should_trigger": true},
+  {"query": "my research title is 'effects of intermittent fasting on cognitive performance in older adults' - can you find recent studies (last 5 yrs) and put together the IMRAD table for chapter 2", "should_trigger": true},
+  {"query": "hey can you dig up qualitative and quantitative studies on remote work and burnout published in the last few years, i need to classify them by method type and journal ranking for my synthesis matrix", "should_trigger": true},
+  {"query": "i attached a PDF of one paper, can you just summarize the abstract in plain english for me real quick", "should_trigger": false},
+  {"query": "write a research proposal outline for my thesis on renewable energy policy in southeast asia, just need the chapter structure and headings", "should_trigger": false},
+  {"query": "quick question - what's the actual difference between a literature review and a systematic review? my professor keeps using both terms and i'm confused", "should_trigger": false},
+  {"query": "find me some recent news articles about the EU's new AI regulation for a current events discussion post, doesn't need to be academic", "should_trigger": false},
+  {"query": "i've got 5 papers already summarized in a spreadsheet, can you just reformat the citations into proper APA 7 style for my reference list", "should_trigger": false},
+  {"query": "can you help me write the discussion section of chapter 5 based on my own survey data and findings, not looking for outside sources", "should_trigger": false},
+  {"query": "just search google scholar real quick for 'transformer models in nlp' and give me the top 3 links, don't need anything fancy", "should_trigger": false},
+  {"query": "can you convert this literature-review.docx file i wrote into a PDF for submission on turnitin", "should_trigger": false},
+  {"query": "my classmate finished her synthesis matrix, can you review it and give feedback on the formatting and column headers only, no new sources needed", "should_trigger": false},
+  {"query": "what's a good citation manager for organizing my references, should i use zotero or mendeley for my grad program", "should_trigger": false}
+]
