@@ -1,0 +1,171 @@
+{
+  "skill_name": "fable-5-logic",
+  "description": "Contains the verification checklist, the confidence-calibration ladder, and the answer-shape patterns to apply before committing to a claim. Consult it before stating a statistic, citation, source, law, spec, version number, or release date the user will quote or act on; before recommending an upgrade path, library, or architecture; before judging a specific person from thin evidence; before answering anything about Claude's own model, context window, cutoff, or limits; before pushing back on a plan the user has already committed to; and in emotionally hard conversations, where it carries the wording rules. Skip it for mechanical execution -- editing files, running commands, converting data -- where no claim about the world is being made.",
+  "results": [
+    {
+      "query": "for a grant app i need the stat about how many US small businesses fail within the first 5 years. i remember it being around 50%? give me the actual number and the source i should cite, the reviewers will check",
+      "should_trigger": true,
+      "trigger_rate": 0.3333333333333333,
+      "triggers": 1,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "we're pinned to node 18 and the puppeteer install keeps blowing up in CI. should we jump straight to 22 or go 20 first? need the real LTS end dates because our secops team wants it in the ticket",
+      "should_trigger": true,
+      "trigger_rate": 0.3333333333333333,
+      "triggers": 1,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "im gonna turn off the foreign key constraints on the orders table during the nightly import so it stops failing. its only for the ~20 min import window and i put them back after. thats fine right",
+      "should_trigger": true,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "quick q, whats your context window and when does your training data stop? trying to work out if i can just paste our whole 300 page underwriting manual into one message or if i need to chunk it",
+      "should_trigger": true,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "my dad died in march and i still havent told most of my friends. i keep writing the text and deleting it. i dont really know what im asking you here",
+      "should_trigger": true,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "just shipped my first app to the app store lmao. four months of nights and weekends",
+      "should_trigger": true,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "brainstorm me like 15 names for a mobile dog grooming van. im in portland, want something a bit punny but not cringe, and the .com should plausibly be free",
+      "should_trigger": true,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "ok be honest with me, is this cover letter actually good or are you just being nice about it. 'Dear Hiring Manager, I am writing to express my strong interest in the Senior Analyst position...'",
+      "should_trigger": true,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "found this candidate's github, he's got 3 commits in the last 2 years and one repo thats a fork of a todo app. is he a bad engineer? we're supposed to send an offer friday",
+      "should_trigger": true,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "make the strongest possible case for rent control. i keep hearing that economists basically all hate it and i want to actually understand the pro side before i argue with my brother in law again",
+      "should_trigger": true,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "since the GIL got removed in python 3.11, should i rewrite our scraper to use threads instead of asyncio? we're doing maybe 400 concurrent requests against a rate limited API",
+      "should_trigger": true,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "our compliance lead says GDPR requires deleting user data within 30 days of a deletion request. point me at the actual article and text so i can put it in the runbook",
+      "should_trigger": true,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "can you fix the timing thing on checkout, it feels laggy for some people but not others and my PM is asking about it today",
+      "should_trigger": true,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "take the three csvs in ~/Downloads/exports (orders.csv, refunds.csv, skus.csv) and merge them into one xlsx with a tab per file, freeze the header row on each",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "rename the variable `usr` to `user` everywhere under src/ and then run the test suite to make sure nothing broke",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "make me a bar chart of monthly signups: jan 220, feb 310, mar 295, apr 460, may 502, jun 488. dark background, our brand color is #2F6F4E",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "PR #412 has a merge conflict in package-lock.json after main moved. can you resolve it and push",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "extract every table out of this 90 page inspection report pdf into separate csvs, the tables all have a header row that says 'Item / Condition / Notes'",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "write a python function that parses ISO 8601 duration strings like P3DT4H30M into a timedelta, plus pytest cases for the weird ones",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "set up a pre-commit hook in this repo that runs ruff check and ruff format and blocks the commit if either fails",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 20,
+    "passed": 7,
+    "failed": 13
+  }
+}
