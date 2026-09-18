@@ -1,10 +1,6 @@
+Split: 14 train, 6 test (holdout=0.3)
 
 ============================================================
 Iteration 1/3
 Description: Build and harden Google Apps Script automation for Google Sheets — custom menus, onEdit/time-driven triggers, dialogs, dropdowns, PropertiesService state, batch operations. Use whenever the user wants to automate a Google Sheet, add a menu/trigger/dropdown to a spreadsheet, schedule a Sheets workflow, or asks "how do I script this in Sheets" — even if they never say "Apps Script." Also use this whenever debugging a script that silently isn't running, isn't firing at the expected time, or isn't clearing/updating as expected, and whenever testing Apps Script code without a live Google Sheets environment available. Not for Gmail, Drive, Docs, Forms, or Calendar automation with no spreadsheet involved — those need Workspace-specific quotas and patterns this skill doesn't cover.
 ============================================================
-Warning: query failed: timed out after 90s
-Warning: query failed: timed out after 90s
-Warning: query failed: timed out after 90s
-Warning: query failed: timed out after 90s
-Warning: query failed: timed out after 90s
