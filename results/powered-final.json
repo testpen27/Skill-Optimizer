@@ -1,0 +1,86 @@
+{
+  "ORIGINAL": {
+    "cells": {
+      "POS:grant-stat": {
+        "t": 10,
+        "n": 10,
+        "fail": 0
+      },
+      "POS:foreign-key": {
+        "t": 6,
+        "n": 10,
+        "fail": 0
+      },
+      "POS:grief": {
+        "t": 5,
+        "n": 10,
+        "fail": 0
+      },
+      "NEG:rename-var": {
+        "t": 2,
+        "n": 10,
+        "fail": 0
+      },
+      "NEG:bar-chart": {
+        "t": 7,
+        "n": 10,
+        "fail": 0
+      },
+      "NEG:precommit": {
+        "t": 0,
+        "n": 10,
+        "fail": 0
+      }
+    },
+    "recall": [
+      21,
+      30
+    ],
+    "false_fires": [
+      9,
+      30
+    ]
+  },
+  "REWRITTEN": {
+    "cells": {
+      "POS:grant-stat": {
+        "t": 10,
+        "n": 10,
+        "fail": 0
+      },
+      "POS:foreign-key": {
+        "t": 10,
+        "n": 10,
+        "fail": 0
+      },
+      "POS:grief": {
+        "t": 10,
+        "n": 10,
+        "fail": 0
+      },
+      "NEG:rename-var": {
+        "t": 0,
+        "n": 10,
+        "fail": 0
+      },
+      "NEG:bar-chart": {
+        "t": 0,
+        "n": 0,
+        "fail": 10
+      },
+      "NEG:precommit": {
+        "t": 0,
+        "n": 0,
+        "fail": 10
+      }
+    },
+    "recall": [
+      30,
+      30
+    ],
+    "false_fires": [
+      0,
+      10
+    ]
+  }
+}
