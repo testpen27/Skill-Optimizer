@@ -1,0 +1,22 @@
+[
+  {"query": "our ops sheet needs a menu button that emails the manager whenever a row's status changes to 'urgent', can you set that up in google sheets", "should_trigger": true},
+  {"query": "how do i make a script run automatically every morning at 8am to clear out yesterday's rows in this spreadsheet", "should_trigger": true},
+  {"query": "i want a dropdown in column C that only allows values from another tab, and it should stay in sync as that tab changes", "should_trigger": true},
+  {"query": "my onEdit script silently isn't running anymore, worked fine last month and nothing looks different", "should_trigger": true},
+  {"query": "need a confirm dialog before someone can clear the whole 'inventory' tab from a custom menu in the sheet", "should_trigger": true},
+  {"query": "can you write the apps script for this google sheets automation without me handing you the actual sheet, i just want to paste it in later", "should_trigger": true},
+  {"query": "the checkbox trigger on our sheet never seems to fire when i tick it, but everything else about the sheet works fine", "should_trigger": true},
+  {"query": "want a sidebar in google sheets that lets people submit a request, it should append a row and ping a slack webhook", "should_trigger": true},
+  {"query": "our google sheet's daily reset script quietly stopped working like three weeks ago and nobody can figure out why", "should_trigger": true},
+  {"query": "set up a form-submit trigger on our google form that appends to the destination sheet AND sends a confirmation email", "should_trigger": true},
+  {"query": "clean up this messy csv export and turn it into a properly formatted xlsx with frozen header rows", "should_trigger": false},
+  {"query": "write a script that auto-replies to any gmail with 'urgent' in the subject line", "should_trigger": false},
+  {"query": "set up a script that moves files older than 30 days into an archive folder in google drive", "should_trigger": false},
+  {"query": "i need a google doc that auto-inserts today's date into the header every time someone opens it", "should_trigger": false},
+  {"query": "add a script to google calendar that creates a recurring reminder event for our team standup", "should_trigger": false},
+  {"query": "add validation to a google form so it rejects malformed email addresses on every new response", "should_trigger": false},
+  {"query": "rename the variable `usr` to `user` everywhere under src/ and then run the test suite to make sure nothing broke", "should_trigger": false},
+  {"query": "write a python function that parses ISO 8601 duration strings like P3DT4H30M into a timedelta, plus pytest cases", "should_trigger": false},
+  {"query": "PR #412 has a merge conflict in package-lock.json after main moved, can you resolve it and push", "should_trigger": false},
+  {"query": "what's the formula syntax for a VLOOKUP that falls back to a default value when nothing matches", "should_trigger": false}
+]
