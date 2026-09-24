@@ -1,0 +1,1691 @@
+{
+  "exit_reason": "max_iterations (4)",
+  "original_description": "Build interactive elements for Buletin TV3 articles (quizzes, eligibility checkers, calculators, timelines, slide decks and swipe carousels, reveal polls, mini-games, explorable infographics) as one HTML block that is pasted into the WordPress-style CMS, always with an HTML preview the user can open to see it. Use whenever the user wants something interactive inside or alongside an article, mentions TV3, embed, widget, Custom HTML block, CMS, WordPress, sisip, elemen interaktif, kuiz, kalkulator, infografik interaktif or pratonton, or asks to fix or restyle an existing embed (overflow, clipped text, theme CSS clashing, scripts stripped). Also use whenever an embed request involves pulling skills, snippets, libraries, fonts or CDN links from the web, because this skill holds the approval gate that must run first.",
+  "best_description": "Build interactive elements for Buletin TV3 articles (quizzes, eligibility checkers, calculators, timelines, slide decks and swipe carousels, reveal polls, mini-games, explorable infographics) as one HTML block that is pasted into the WordPress-style CMS, always with an HTML preview the user can open to see it. Use whenever the user wants something interactive inside or alongside an article, mentions TV3, embed, widget, Custom HTML block, CMS, WordPress, sisip, elemen interaktif, kuiz, kalkulator, infografik interaktif or pratonton, or asks to fix or restyle an existing embed (overflow, clipped text, theme CSS clashing, scripts stripped). Also use whenever an embed request involves pulling skills, snippets, libraries, fonts or CDN links from the web, because this skill holds the approval gate that must run first.",
+  "best_score": "12/12",
+  "best_train_score": "17/19",
+  "best_test_score": "12/12",
+  "final_description": "Use this to build a self-contained, paste-ready HTML piece for a news article or WordPress/CMS Custom HTML block: quizzes, calculators (BMI, zakat, subsidy/eligibility yes-no checkers), timelines, slide decks, swipe carousels, reveal polls, mini-games, explorable infographics. Trigger on bare requests that just name the widget plus \"article,\" \"CMS,\" or \"WordPress\" \u2014 e.g. \"add a BMI calculator widget to this article, needs to go into the Custom HTML block,\" \"yes/no eligibility checker for the article,\" \"infografik interaktif untuk artikel ni,\" \"kalkulator zakat untuk artikel\" \u2014 no need for the words TV3 or embed to appear. Also covers Malay phrasing (sisip, elemen interaktif, kuiz, kalkulator, pratonton) and fixing/restyling an existing embed (overflow, clipped text, theme CSS clashes, stripped scripts). Always delivers the HTML plus an openable preview. Required as the approval gate before fetching any outside script, font, library, or CDN link for such a build. Not for general web pages, full websites, PowerPoint decks, or anything unrelated to an article/CMS embed.",
+  "iterations_run": 4,
+  "holdout": 0.4,
+  "train_size": 19,
+  "test_size": 12,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Build interactive elements for Buletin TV3 articles (quizzes, eligibility checkers, calculators, timelines, slide decks and swipe carousels, reveal polls, mini-games, explorable infographics) as one HTML block that is pasted into the WordPress-style CMS, always with an HTML preview the user can open to see it. Use whenever the user wants something interactive inside or alongside an article, mentions TV3, embed, widget, Custom HTML block, CMS, WordPress, sisip, elemen interaktif, kuiz, kalkulator, infografik interaktif or pratonton, or asks to fix or restyle an existing embed (overflow, clipped text, theme CSS clashing, scripts stripped). Also use whenever an embed request involves pulling skills, snippets, libraries, fonts or CDN links from the web, because this skill holds the approval gate that must run first.",
+      "train_passed": 17,
+      "train_failed": 2,
+      "train_total": 19,
+      "train_results": [
+        {
+          "query": "buat kalkulator zakat interaktif untuk artikel ni, formula ada dalam artikel tu",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a swipeable photo slide deck for the article, needs to be embed-friendly HTML I can paste into the CMS",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I need an interactive quiz embed for this news article, paste-ready HTML for our Custom HTML block please",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my embed's script got stripped when I published on WordPress, sisip jadi patah, boleh tolong betulkan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "sisip elemen interaktif dalam artikel pasal banjir ni, something reader boleh scroll dan explore",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our theme CSS is clashing with the calculator embed I built, the buttons look broken on the article page, please restyle it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "nak buat infografik interaktif untuk artikel pasal statistik jenayah, boleh klik setiap bahagian untuk detail",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat mini game ringkas untuk artikel santai ni, letak dalam elemen interaktif dekat bawah artikel",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat kuiz interaktif untuk artikel TV3 pasal cukai baru ni, nak sisip dalam CMS",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add a BMI calculator widget to this health article, it needs to go straight into the WordPress Custom HTML block",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "translate this Malay news article into English for our international readers",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "readers want to check if they qualify for the new government subsidy, build a yes/no eligibility checker embed for the article",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "review my resume and suggest improvements for a software engineering job application",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "fix this bug in my Node.js Express API server, it's returning 500 on the /login route",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "summarize this long news article into three bullet points for our newsletter",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "set up a CI pipeline in GitHub Actions for our mobile app repo",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a PowerPoint slide deck for the client pitch meeting tomorrow",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how WordPress custom post types and taxonomies work under the hood",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "design a full multi-page company website for a local bakery, home/about/contact pages",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 12,
+      "test_failed": 0,
+      "test_total": 12,
+      "test_results": [
+        {
+          "query": "boleh pratonton embed HTML ni sebelum saya paste dalam CMS TV3?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "boleh buat widget interaktif untuk berita pasal harga minyak?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat garis masa interaktif (timeline) untuk artikel berita pasal banjir tahun ni",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "I want to pull a countdown timer library from a CDN and use it inside the article embed I'm building",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "the quiz embed I pasted into the CMS is overflowing on mobile and the text is getting clipped, can you fix it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add a reveal-results poll widget to this article so readers can see the published survey numbers",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "build a decision-tree style checker embedded in the article that walks readers through whether they're affected by the new law",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "help me write the article about the new government subsidy program, need 600 words in Malay",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the best chart library for a React analytics dashboard we're building internally",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "can you help debug this Python script that scrapes news headlines from RSS feeds",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write a quiz question bank in a spreadsheet for our office trivia night",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "build me a React SPA quiz app for my personal trivia blog, not related to any news site or CMS",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 17,
+      "failed": 2,
+      "total": 19,
+      "results": [
+        {
+          "query": "buat kalkulator zakat interaktif untuk artikel ni, formula ada dalam artikel tu",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a swipeable photo slide deck for the article, needs to be embed-friendly HTML I can paste into the CMS",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I need an interactive quiz embed for this news article, paste-ready HTML for our Custom HTML block please",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my embed's script got stripped when I published on WordPress, sisip jadi patah, boleh tolong betulkan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "sisip elemen interaktif dalam artikel pasal banjir ni, something reader boleh scroll dan explore",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our theme CSS is clashing with the calculator embed I built, the buttons look broken on the article page, please restyle it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "nak buat infografik interaktif untuk artikel pasal statistik jenayah, boleh klik setiap bahagian untuk detail",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat mini game ringkas untuk artikel santai ni, letak dalam elemen interaktif dekat bawah artikel",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat kuiz interaktif untuk artikel TV3 pasal cukai baru ni, nak sisip dalam CMS",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add a BMI calculator widget to this health article, it needs to go straight into the WordPress Custom HTML block",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "translate this Malay news article into English for our international readers",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "readers want to check if they qualify for the new government subsidy, build a yes/no eligibility checker embed for the article",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "review my resume and suggest improvements for a software engineering job application",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "fix this bug in my Node.js Express API server, it's returning 500 on the /login route",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "summarize this long news article into three bullet points for our newsletter",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "set up a CI pipeline in GitHub Actions for our mobile app repo",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a PowerPoint slide deck for the client pitch meeting tomorrow",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how WordPress custom post types and taxonomies work under the hood",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "design a full multi-page company website for a local bakery, home/about/contact pages",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "description": "Build a single self-contained HTML embed for a news/article CMS: quizzes, calculators (BMI, zakat, eligibility/yes-no checkers), timelines, slide decks, swipeable carousels, reveal polls, mini-games, explorable infographics. Trigger on any request to build, paste, or drop something interactive into an article, a WordPress Custom HTML block, or a CMS \u2014 including plain requests like \"add a calculator widget to this article\" or \"make a swipeable slide deck, embed-friendly HTML\" even without the words TV3 or embed. Also trigger for Malay equivalents (sisip, elemen interaktif, kuiz, kalkulator, infografik interaktif, pratonton) and for fixing/restyling an existing embed (overflow, clipped text, theme CSS clashing, stripped scripts). Always delivers the HTML plus an openable preview. Required before fetching anything, whenever the build would pull a script, font, library, or CDN link from the web \u2014 this is the approval gate for outside code. Not for general web pages or full websites unrelated to an article embed.",
+      "train_passed": 14,
+      "train_failed": 5,
+      "train_total": 19,
+      "train_results": [
+        {
+          "query": "buat kalkulator zakat interaktif untuk artikel ni, formula ada dalam artikel tu",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I need an interactive quiz embed for this news article, paste-ready HTML for our Custom HTML block please",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a swipeable photo slide deck for the article, needs to be embed-friendly HTML I can paste into the CMS",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my embed's script got stripped when I published on WordPress, sisip jadi patah, boleh tolong betulkan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "sisip elemen interaktif dalam artikel pasal banjir ni, something reader boleh scroll dan explore",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our theme CSS is clashing with the calculator embed I built, the buttons look broken on the article page, please restyle it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat mini game ringkas untuk artikel santai ni, letak dalam elemen interaktif dekat bawah artikel",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "nak buat infografik interaktif untuk artikel pasal statistik jenayah, boleh klik setiap bahagian untuk detail",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "buat kuiz interaktif untuk artikel TV3 pasal cukai baru ni, nak sisip dalam CMS",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add a BMI calculator widget to this health article, it needs to go straight into the WordPress Custom HTML block",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "readers want to check if they qualify for the new government subsidy, build a yes/no eligibility checker embed for the article",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "translate this Malay news article into English for our international readers",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how WordPress custom post types and taxonomies work under the hood",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "review my resume and suggest improvements for a software engineering job application",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "fix this bug in my Node.js Express API server, it's returning 500 on the /login route",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "summarize this long news article into three bullet points for our newsletter",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "set up a CI pipeline in GitHub Actions for our mobile app repo",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a PowerPoint slide deck for the client pitch meeting tomorrow",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "design a full multi-page company website for a local bakery, home/about/contact pages",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 11,
+      "test_failed": 1,
+      "test_total": 12,
+      "test_results": [
+        {
+          "query": "boleh pratonton embed HTML ni sebelum saya paste dalam CMS TV3?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "boleh buat widget interaktif untuk berita pasal harga minyak?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat garis masa interaktif (timeline) untuk artikel berita pasal banjir tahun ni",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "I want to pull a countdown timer library from a CDN and use it inside the article embed I'm building",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "the quiz embed I pasted into the CMS is overflowing on mobile and the text is getting clipped, can you fix it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add a reveal-results poll widget to this article so readers can see the published survey numbers",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "build a decision-tree style checker embedded in the article that walks readers through whether they're affected by the new law",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "help me write the article about the new government subsidy program, need 600 words in Malay",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the best chart library for a React analytics dashboard we're building internally",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "can you help debug this Python script that scrapes news headlines from RSS feeds",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "build me a React SPA quiz app for my personal trivia blog, not related to any news site or CMS",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write a quiz question bank in a spreadsheet for our office trivia night",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 14,
+      "failed": 5,
+      "total": 19,
+      "results": [
+        {
+          "query": "buat kalkulator zakat interaktif untuk artikel ni, formula ada dalam artikel tu",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I need an interactive quiz embed for this news article, paste-ready HTML for our Custom HTML block please",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a swipeable photo slide deck for the article, needs to be embed-friendly HTML I can paste into the CMS",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my embed's script got stripped when I published on WordPress, sisip jadi patah, boleh tolong betulkan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "sisip elemen interaktif dalam artikel pasal banjir ni, something reader boleh scroll dan explore",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our theme CSS is clashing with the calculator embed I built, the buttons look broken on the article page, please restyle it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat mini game ringkas untuk artikel santai ni, letak dalam elemen interaktif dekat bawah artikel",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "nak buat infografik interaktif untuk artikel pasal statistik jenayah, boleh klik setiap bahagian untuk detail",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "buat kuiz interaktif untuk artikel TV3 pasal cukai baru ni, nak sisip dalam CMS",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add a BMI calculator widget to this health article, it needs to go straight into the WordPress Custom HTML block",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "readers want to check if they qualify for the new government subsidy, build a yes/no eligibility checker embed for the article",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "translate this Malay news article into English for our international readers",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how WordPress custom post types and taxonomies work under the hood",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "review my resume and suggest improvements for a software engineering job application",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "fix this bug in my Node.js Express API server, it's returning 500 on the /login route",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "summarize this long news article into three bullet points for our newsletter",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "set up a CI pipeline in GitHub Actions for our mobile app repo",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a PowerPoint slide deck for the client pitch meeting tomorrow",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "design a full multi-page company website for a local bakery, home/about/contact pages",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 3,
+      "description": "Use this to build a self-contained, paste-ready HTML piece for a news article or WordPress/CMS Custom HTML block: quizzes, calculators (BMI, zakat, subsidy/eligibility yes-no checkers), timelines, slide decks, swipe carousels, reveal polls, mini-games, explorable infographics. Trigger on plain requests naming just the widget plus \"this article\" \u2014 e.g. \"add a BMI calculator widget to this article,\" \"build a yes/no eligibility checker for the article,\" \"infografik interaktif untuk artikel ni,\" \"kalkulator zakat untuk artikel,\" \"mini game untuk letak dalam elemen interaktif bawah artikel\" \u2014 even with no mention of TV3, embed, or CMS. Also covers Malay phrasing (sisip, elemen interaktif, kuiz, kalkulator, pratonton) and fixing/restyling an existing embed (overflow, clipped text, theme CSS clashes, stripped scripts). Always delivers the HTML plus an openable preview. Required as the approval gate before fetching any outside script, font, library, or CDN link for such a build. Not for general web pages, full websites, PowerPoint decks, or anything unrelated to an article/CMS embed.",
+      "train_passed": 18,
+      "train_failed": 1,
+      "train_total": 19,
+      "train_results": [
+        {
+          "query": "I need an interactive quiz embed for this news article, paste-ready HTML for our Custom HTML block please",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat kalkulator zakat interaktif untuk artikel ni, formula ada dalam artikel tu",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a swipeable photo slide deck for the article, needs to be embed-friendly HTML I can paste into the CMS",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my embed's script got stripped when I published on WordPress, sisip jadi patah, boleh tolong betulkan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "sisip elemen interaktif dalam artikel pasal banjir ni, something reader boleh scroll dan explore",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our theme CSS is clashing with the calculator embed I built, the buttons look broken on the article page, please restyle it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "nak buat infografik interaktif untuk artikel pasal statistik jenayah, boleh klik setiap bahagian untuk detail",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat mini game ringkas untuk artikel santai ni, letak dalam elemen interaktif dekat bawah artikel",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat kuiz interaktif untuk artikel TV3 pasal cukai baru ni, nak sisip dalam CMS",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "readers want to check if they qualify for the new government subsidy, build a yes/no eligibility checker embed for the article",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "translate this Malay news article into English for our international readers",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add a BMI calculator widget to this health article, it needs to go straight into the WordPress Custom HTML block",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "review my resume and suggest improvements for a software engineering job application",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how WordPress custom post types and taxonomies work under the hood",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "summarize this long news article into three bullet points for our newsletter",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "fix this bug in my Node.js Express API server, it's returning 500 on the /login route",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "set up a CI pipeline in GitHub Actions for our mobile app repo",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a PowerPoint slide deck for the client pitch meeting tomorrow",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "design a full multi-page company website for a local bakery, home/about/contact pages",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 11,
+      "test_failed": 1,
+      "test_total": 12,
+      "test_results": [
+        {
+          "query": "boleh pratonton embed HTML ni sebelum saya paste dalam CMS TV3?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "boleh buat widget interaktif untuk berita pasal harga minyak?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat garis masa interaktif (timeline) untuk artikel berita pasal banjir tahun ni",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "I want to pull a countdown timer library from a CDN and use it inside the article embed I'm building",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "the quiz embed I pasted into the CMS is overflowing on mobile and the text is getting clipped, can you fix it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add a reveal-results poll widget to this article so readers can see the published survey numbers",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "build a decision-tree style checker embedded in the article that walks readers through whether they're affected by the new law",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "help me write the article about the new government subsidy program, need 600 words in Malay",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the best chart library for a React analytics dashboard we're building internally",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "can you help debug this Python script that scrapes news headlines from RSS feeds",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "build me a React SPA quiz app for my personal trivia blog, not related to any news site or CMS",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write a quiz question bank in a spreadsheet for our office trivia night",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 18,
+      "failed": 1,
+      "total": 19,
+      "results": [
+        {
+          "query": "I need an interactive quiz embed for this news article, paste-ready HTML for our Custom HTML block please",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat kalkulator zakat interaktif untuk artikel ni, formula ada dalam artikel tu",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a swipeable photo slide deck for the article, needs to be embed-friendly HTML I can paste into the CMS",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my embed's script got stripped when I published on WordPress, sisip jadi patah, boleh tolong betulkan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "sisip elemen interaktif dalam artikel pasal banjir ni, something reader boleh scroll dan explore",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our theme CSS is clashing with the calculator embed I built, the buttons look broken on the article page, please restyle it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "nak buat infografik interaktif untuk artikel pasal statistik jenayah, boleh klik setiap bahagian untuk detail",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat mini game ringkas untuk artikel santai ni, letak dalam elemen interaktif dekat bawah artikel",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat kuiz interaktif untuk artikel TV3 pasal cukai baru ni, nak sisip dalam CMS",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "readers want to check if they qualify for the new government subsidy, build a yes/no eligibility checker embed for the article",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "translate this Malay news article into English for our international readers",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add a BMI calculator widget to this health article, it needs to go straight into the WordPress Custom HTML block",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "review my resume and suggest improvements for a software engineering job application",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how WordPress custom post types and taxonomies work under the hood",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "summarize this long news article into three bullet points for our newsletter",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "fix this bug in my Node.js Express API server, it's returning 500 on the /login route",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "set up a CI pipeline in GitHub Actions for our mobile app repo",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a PowerPoint slide deck for the client pitch meeting tomorrow",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "design a full multi-page company website for a local bakery, home/about/contact pages",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 4,
+      "description": "Use this to build a self-contained, paste-ready HTML piece for a news article or WordPress/CMS Custom HTML block: quizzes, calculators (BMI, zakat, subsidy/eligibility yes-no checkers), timelines, slide decks, swipe carousels, reveal polls, mini-games, explorable infographics. Trigger on bare requests that just name the widget plus \"article,\" \"CMS,\" or \"WordPress\" \u2014 e.g. \"add a BMI calculator widget to this article, needs to go into the Custom HTML block,\" \"yes/no eligibility checker for the article,\" \"infografik interaktif untuk artikel ni,\" \"kalkulator zakat untuk artikel\" \u2014 no need for the words TV3 or embed to appear. Also covers Malay phrasing (sisip, elemen interaktif, kuiz, kalkulator, pratonton) and fixing/restyling an existing embed (overflow, clipped text, theme CSS clashes, stripped scripts). Always delivers the HTML plus an openable preview. Required as the approval gate before fetching any outside script, font, library, or CDN link for such a build. Not for general web pages, full websites, PowerPoint decks, or anything unrelated to an article/CMS embed.",
+      "train_passed": 17,
+      "train_failed": 2,
+      "train_total": 19,
+      "train_results": [
+        {
+          "query": "buat kalkulator zakat interaktif untuk artikel ni, formula ada dalam artikel tu",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "I need an interactive quiz embed for this news article, paste-ready HTML for our Custom HTML block please",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a swipeable photo slide deck for the article, needs to be embed-friendly HTML I can paste into the CMS",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "my embed's script got stripped when I published on WordPress, sisip jadi patah, boleh tolong betulkan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "sisip elemen interaktif dalam artikel pasal banjir ni, something reader boleh scroll dan explore",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our theme CSS is clashing with the calculator embed I built, the buttons look broken on the article page, please restyle it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "nak buat infografik interaktif untuk artikel pasal statistik jenayah, boleh klik setiap bahagian untuk detail",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat mini game ringkas untuk artikel santai ni, letak dalam elemen interaktif dekat bawah artikel",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat kuiz interaktif untuk artikel TV3 pasal cukai baru ni, nak sisip dalam CMS",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "readers want to check if they qualify for the new government subsidy, build a yes/no eligibility checker embed for the article",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "translate this Malay news article into English for our international readers",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add a BMI calculator widget to this health article, it needs to go straight into the WordPress Custom HTML block",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "review my resume and suggest improvements for a software engineering job application",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "fix this bug in my Node.js Express API server, it's returning 500 on the /login route",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "summarize this long news article into three bullet points for our newsletter",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "set up a CI pipeline in GitHub Actions for our mobile app repo",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how WordPress custom post types and taxonomies work under the hood",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a PowerPoint slide deck for the client pitch meeting tomorrow",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "design a full multi-page company website for a local bakery, home/about/contact pages",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 11,
+      "test_failed": 1,
+      "test_total": 12,
+      "test_results": [
+        {
+          "query": "boleh pratonton embed HTML ni sebelum saya paste dalam CMS TV3?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "boleh buat widget interaktif untuk berita pasal harga minyak?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat garis masa interaktif (timeline) untuk artikel berita pasal banjir tahun ni",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "I want to pull a countdown timer library from a CDN and use it inside the article embed I'm building",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "the quiz embed I pasted into the CMS is overflowing on mobile and the text is getting clipped, can you fix it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add a reveal-results poll widget to this article so readers can see the published survey numbers",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "build a decision-tree style checker embedded in the article that walks readers through whether they're affected by the new law",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "help me write the article about the new government subsidy program, need 600 words in Malay",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the best chart library for a React analytics dashboard we're building internally",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "can you help debug this Python script that scrapes news headlines from RSS feeds",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "build me a React SPA quiz app for my personal trivia blog, not related to any news site or CMS",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write a quiz question bank in a spreadsheet for our office trivia night",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 17,
+      "failed": 2,
+      "total": 19,
+      "results": [
+        {
+          "query": "buat kalkulator zakat interaktif untuk artikel ni, formula ada dalam artikel tu",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "I need an interactive quiz embed for this news article, paste-ready HTML for our Custom HTML block please",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a swipeable photo slide deck for the article, needs to be embed-friendly HTML I can paste into the CMS",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "my embed's script got stripped when I published on WordPress, sisip jadi patah, boleh tolong betulkan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "sisip elemen interaktif dalam artikel pasal banjir ni, something reader boleh scroll dan explore",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our theme CSS is clashing with the calculator embed I built, the buttons look broken on the article page, please restyle it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "nak buat infografik interaktif untuk artikel pasal statistik jenayah, boleh klik setiap bahagian untuk detail",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat mini game ringkas untuk artikel santai ni, letak dalam elemen interaktif dekat bawah artikel",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "buat kuiz interaktif untuk artikel TV3 pasal cukai baru ni, nak sisip dalam CMS",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 3,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "readers want to check if they qualify for the new government subsidy, build a yes/no eligibility checker embed for the article",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "translate this Malay news article into English for our international readers",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add a BMI calculator widget to this health article, it needs to go straight into the WordPress Custom HTML block",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "review my resume and suggest improvements for a software engineering job application",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "fix this bug in my Node.js Express API server, it's returning 500 on the /login route",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "summarize this long news article into three bullet points for our newsletter",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "set up a CI pipeline in GitHub Actions for our mobile app repo",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how WordPress custom post types and taxonomies work under the hood",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "make a PowerPoint slide deck for the client pitch meeting tomorrow",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "design a full multi-page company website for a local bakery, home/about/contact pages",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
