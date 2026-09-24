@@ -1,0 +1,127 @@
+<div id="emb-kalkulator-contoh" lang="ms" role="region" aria-label="Kalkulator ringkas">
+<style>
+#emb-kalkulator-contoh, #emb-kalkulator-contoh * { box-sizing: border-box; }
+#emb-kalkulator-contoh { --ink:#3D3033; --bg:#FFFDF7; --pink:#FF6B8B; --pink-lt:#FFE3E8; --red:#DC2626;
+  width:100%; max-width:1200px; margin:2rem auto; padding:24px 16px; color:var(--ink); background-color:var(--bg);
+  background-image:radial-gradient(#FFC4D0 1.5px, transparent 1.5px); background-size:30px 30px;
+  border:4px solid var(--ink); border-radius:1.5rem; box-shadow:0 10px 25px rgba(61,48,51,.15);
+  font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+#emb-kalkulator-contoh :is(h2,p,fieldset,legend) { margin:0; padding:0; border:0; }
+#emb-kalkulator-contoh .badge { display:inline-block; margin-bottom:12px; padding:4px 14px; background:#fff; color:var(--red);
+  border:2px solid var(--ink); border-radius:999px; box-shadow:0 3px 0 var(--ink); font-size:.875rem; font-weight:700; }
+#emb-kalkulator-contoh .card { max-width:520px; margin:0 auto; padding:20px; background:#fff; border:4px solid var(--ink);
+  border-radius:1.5rem; box-shadow:6px 6px 0 rgba(61,48,51,.15); }
+#emb-kalkulator-contoh h2 { font-size:1.375rem; line-height:1.3; margin-bottom:14px; }
+#emb-kalkulator-contoh .field { margin-bottom:14px; }
+#emb-kalkulator-contoh label { display:block; font-weight:700; margin-bottom:6px; }
+#emb-kalkulator-contoh input[type="number"] { width:100%; min-height:44px; padding:8px 12px; font:inherit;
+  border:2px solid var(--ink); border-radius:10px; }
+#emb-kalkulator-contoh input[type="number"]:focus-visible { outline:3px solid var(--red); outline-offset:2px; }
+#emb-kalkulator-contoh .choices { display:flex; gap:10px; flex-wrap:wrap; }
+#emb-kalkulator-contoh .choices label { display:flex; gap:8px; align-items:center; min-height:44px; padding:8px 12px;
+  margin:0; font-weight:400; border:2px solid var(--ink); border-radius:12px; cursor:pointer; }
+#emb-kalkulator-contoh .choices input { width:18px; height:18px; accent-color:var(--red); }
+#emb-kalkulator-contoh .calc { min-height:44px; padding:10px 22px; font:inherit; font-weight:700; color:#fff;
+  background:var(--red); border:3px solid var(--ink); border-radius:999px; box-shadow:0 4px 0 var(--ink); cursor:pointer; }
+#emb-kalkulator-contoh .calc:active { box-shadow:none; transform:translateY(4px); }
+#emb-kalkulator-contoh .calc:focus-visible { outline:3px solid var(--ink); outline-offset:3px; }
+#emb-kalkulator-contoh .err { margin-top:10px; padding:8px 12px; background:#FEE2E2; border-radius:10px; font-weight:700; }
+#emb-kalkulator-contoh .result { margin-top:14px; padding:12px; background:var(--pink-lt); border-radius:12px; }
+#emb-kalkulator-contoh .result p { display:flex; justify-content:space-between; gap:12px; padding:2px 0; }
+#emb-kalkulator-contoh .src { margin-top:14px; font-size:.875rem; }
+@media (max-width:768px) { #emb-kalkulator-contoh { margin:1rem auto; border-radius:1rem; } #emb-kalkulator-contoh .card { padding:14px; } }
+@media (prefers-reduced-motion:reduce) { #emb-kalkulator-contoh .calc:active { transform:none; } }
+</style>
+<span class="badge">[Nama kalkulator]</span>
+<div class="card">
+<h2>Kalkulator: [tajuk, cth. Anggaran Caruman KWSP]</h2>
+<div class="field">
+<label for="emb-kalkulator-contoh-gaji">Gaji bulanan (RM)</label>
+<input type="number" inputmode="decimal" id="emb-kalkulator-contoh-gaji" min="0" step="0.01" placeholder="cth. 3500">
+</div>
+<fieldset class="field">
+<legend>Kumpulan umur</legend>
+<div class="choices">
+<label><input type="radio" name="emb-kalkulator-contoh-umur" value="below60" checked> Bawah 60</label>
+<label><input type="radio" name="emb-kalkulator-contoh-umur" value="above60"> 60 &amp; ke atas</label>
+</div>
+</fieldset>
+<button type="button" class="calc">Kira</button>
+<p class="err" role="alert" hidden></p>
+<div class="result" hidden aria-live="polite">
+<p><span>Caruman pekerja</span><strong class="out-employee"></strong></p>
+<p><span>Caruman majikan</span><strong class="out-employer"></strong></p>
+<p><span>Gaji bersih (selepas caruman pekerja)</span><strong class="out-net"></strong></p>
+</div>
+<p class="src">Sumber: [nama sumber rasmi], [tarikh semakan]</p>
+</div>
+<script>
+(function () {
+  var root = document.getElementById('emb-kalkulator-contoh');
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = '1';
+
+  // --- 1. formula: replace with the officially sourced table before publishing ---
+  var TIERS = [
+    { upTo: 5000, rateEmployee: 0.11, rateEmployer: 0.12 },
+    { upTo: Infinity, rateEmployee: 0.11, rateEmployer: 0.12 }
+  ];
+
+  function formatRM(n) {
+    var s = n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d)\.)/g, ',');
+    return 'RM ' + s;
+  }
+
+  // --- 2. validate: string in, {ok, value, message} out; no calculation here ---
+  function validate(raw) {
+    if (raw.trim() === '') return { ok: false, message: 'Sila masukkan gaji bulanan.' };
+    var n = Number(raw);
+    if (!isFinite(n)) return { ok: false, message: 'Sila masukkan nombor yang sah.' };
+    if (n < 0) return { ok: false, message: 'Gaji tidak boleh negatif.' };
+    return { ok: true, value: n };
+  }
+
+  // --- 3. calculate: pure function, numbers in, numbers out, no DOM ---
+  function calculate(gaji, umurBand) {
+    if (umurBand === 'above60') {
+      return { employee: 0, employer: gaji * 0.04, net: gaji };
+    }
+    var tier = TIERS.filter(function (t) { return gaji <= t.upTo; })[0];
+    var employee = gaji * tier.rateEmployee;
+    return { employee: employee, employer: gaji * tier.rateEmployer, net: gaji - employee };
+  }
+
+  // --- 4. render: write the result, textContent only ---
+  function render(result) {
+    root.querySelector('.out-employee').textContent = formatRM(result.employee);
+    root.querySelector('.out-employer').textContent = formatRM(result.employer);
+    root.querySelector('.out-net').textContent = formatRM(result.net);
+    root.querySelector('.result').hidden = false;
+  }
+
+  function showError(message) {
+    var err = root.querySelector('.err');
+    err.textContent = message;
+    err.hidden = false;
+    root.querySelector('.result').hidden = true;
+  }
+
+  function onCalc() {
+    var gajiInput = root.querySelector('#emb-kalkulator-contoh-gaji');
+    var umurBand = root.querySelector('input[name="emb-kalkulator-contoh-umur"]:checked').value;
+    var check = validate(gajiInput.value);
+    root.querySelector('.err').hidden = true;
+    if (!check.ok) { showError(check.message); return; }
+    render(calculate(check.value, umurBand));
+  }
+
+  function init() {
+    root.querySelector('.calc').addEventListener('click', onCalc);
+    root.querySelector('#emb-kalkulator-contoh-gaji').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); onCalc(); }
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+</div>
