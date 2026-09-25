@@ -1,6 +1,9 @@
 ---
 name: belanjawan-brain
-description: UI-free "brain" for an interactive citizen-benefits Q&A ("Semak faedah Belanjawan"). It asks a person branching questions (age, region, household, income, work, situation, lifestyle) and returns the Malaysian Budget 2026 benefits, tax reliefs and price changes that apply to them, themed and tiered, with STR/SARA cash estimates and page references to the budget speech. Use this skill whenever the user wants to plug the Belanjawan 2026 Q&A logic into a front end (WordPress, React, vanilla HTML, Claude Code); change, add or re-theme benefits, questions or rules; fix Bahasa Melayu wording in the Q&A; run or extend its verification; or rebuild the same kind of Q&A for a new document such as Belanjawan 2027, a state budget or another policy text. Also use it when the user mentions "belanjawan-brain", "belanjawan brain", "brain.js", "B26Brain", "kalkulator faedah", "soal jawab belanjawan" or "benefits calculator in text", even without naming the skill.
+description: |
+  UI-free "brain" (JS logic engine) for an interactive Malaysian Budget 2026 citizen-benefits Q&A ("Semak faedah Belanjawan", `B26Brain`, `brain.js`). Trigger when the user wants to touch this engine's code: wire its `evaluate()` output into a front end (WordPress, React, vanilla HTML); add, change or re-theme its questions, benefits, tiers or rules; edit or fix its Bahasa Melayu wording; run or extend `test.js`/`verify2.js` verification; inspect its output fields or files; or rebuild the same rule-based Q&A engine for a new source document (Belanjawan 2027, a state budget, another policy text). Also trigger on mentions of "belanjawan-brain", "B26Brain", "kalkulator faedah", or "soal jawab belanjawan", even unnamed.
+
+  Do NOT trigger for someone just asking what's in Budget 2026, wanting a plain-language summary of tax reliefs/benefits/prices, or any question answerable by reading the budget speech itself -- that's a content question, not a tool-building one.
 ---
 
 # Belanjawan Brain — Belanjawan 2026 Q&A

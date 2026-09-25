@@ -4,3 +4,78 @@ Split: 12 train, 8 test (holdout=0.4)
 Iteration 1/5
 Description: UI-free "brain" for an interactive citizen-benefits Q&A ("Semak faedah Belanjawan"). It asks a person branching questions (age, region, household, income, work, situation, lifestyle) and returns the Malaysian Budget 2026 benefits, tax reliefs and price changes that apply to them, themed and tiered, with STR/SARA cash estimates and page references to the budget speech. Use this skill whenever the user wants to plug the Belanjawan 2026 Q&A logic into a front end (WordPress, React, vanilla HTML, Claude Code); change, add or re-theme benefits, questions or rules; fix Bahasa Melayu wording in the Q&A; run or extend its verification; or rebuild the same kind of Q&A for a new document such as Belanjawan 2027, a state budget or another policy text. Also use it when the user mentions "belanjawan-brain", "belanjawan brain", "brain.js", "B26Brain", "kalkulator faedah", "soal jawab belanjawan" or "benefits calculator in text", even without naming the skill.
 ============================================================
+Warning: query failed: timed out after 90s
+Warning: query failed: timed out after 90s
+Warning: query failed: timed out after 90s
+Warning: query failed: timed out after 90s
+Warning: query failed: timed out after 90s
+Warning: query failed: timed out after 90s
+Train: 32/36 correct, precision=82% recall=100% accuracy=89% (189.9s)
+  [PASS] rate=3/3 expected=True: translate the branching questions in this Q&A logic (age, re
+  [PASS] rate=3/3 expected=True: quick one — does B26Brain.evaluate() return page references 
+  [PASS] rate=3/3 expected=True: porting kalkulator faedah belanjawan to a plain React compon
+  [PASS] rate=3/3 expected=True: node scripts/verify2.js is throwing an assertion failure aro
+  [PASS] rate=3/3 expected=True: boss wants us to add a new tier under the 'Kesihatan' theme 
+  [PASS] rate=3/3 expected=True: I'm building a WordPress plugin for Semak Faedah Belanjawan 
+  [PASS] rate=0/3 expected=False: here's a PDF of Malaysia's actual Budget 2026 speech (90 pag
+  [PASS] rate=1/3 expected=False: add a WordPress shortcode that shows our company logo and a 
+  [FAIL] rate=3/3 expected=False: what's actually in Budget 2026 for the average Malaysian hou
+  [PASS] rate=0/3 expected=False: my kid's school project is a quiz app about Malaysian state 
+  [PASS] rate=0/3 expected=False: can you build me a generic eligibility quiz in React — age, 
+  [PASS] rate=0/3 expected=False: we're building a totally separate B2B budgeting app called '
+Test : 20/24 correct, precision=75% recall=100% accuracy=83% (0.0s)
+  [PASS] rate=3/3 expected=True: I inherited this belanjawan-brain thing from a contractor an
+  [PASS] rate=3/3 expected=True: we need to redo this whole thing for Belanjawan 2027 once th
+  [PASS] rate=3/3 expected=True: hey can you check references/bm-style.md and fix the wording
+  [PASS] rate=0/3 expected=False: translate this restaurant menu into Bahasa Melayu for our KL
+  [PASS] rate=3/3 expected=True: our vanilla HTML prototype for soal jawab belanjawan is done
+  [PASS] rate=1/3 expected=False: node scripts/test.js is failing in our checkout repo, someth
+  [PASS] rate=1/3 expected=False: I need a tax calculator for Singapore's Budget 2026 announce
+  [FAIL] rate=2/3 expected=False: can you just explain in plain terms what STR and SARA cash a
+
+Improving description...
+Proposed (14.4s): UI-free "brain" (JS logic engine) for an interactive Malaysian Budget 2026 citizen-benefits Q&A ("Semak faedah Belanjawan", `B26Brain`, `brain.js`). Trigger when the user wants to touch this engine's code: wire its `evaluate()` output into a front end (WordPress, React, vanilla HTML); add, change or re-theme its questions, benefits, tiers or rules; edit or fix its Bahasa Melayu wording; run or extend `test.js`/`verify2.js` verification; inspect its output fields or files; or rebuild the same rule-based Q&A engine for a new source document (Belanjawan 2027, a state budget, another policy text). Also trigger on mentions of "belanjawan-brain", "B26Brain", "kalkulator faedah", or "soal jawab belanjawan", even unnamed.
+
+Do NOT trigger for someone just asking what's in Budget 2026, wanting a plain-language summary of tax reliefs/benefits/prices, or any question answerable by reading the budget speech itself — that's a content question, not a tool-building one.
+
+============================================================
+Iteration 2/5
+Description: UI-free "brain" (JS logic engine) for an interactive Malaysian Budget 2026 citizen-benefits Q&A ("Semak faedah Belanjawan", `B26Brain`, `brain.js`). Trigger when the user wants to touch this engine's code: wire its `evaluate()` output into a front end (WordPress, React, vanilla HTML); add, change or re-theme its questions, benefits, tiers or rules; edit or fix its Bahasa Melayu wording; run or extend `test.js`/`verify2.js` verification; inspect its output fields or files; or rebuild the same rule-based Q&A engine for a new source document (Belanjawan 2027, a state budget, another policy text). Also trigger on mentions of "belanjawan-brain", "B26Brain", "kalkulator faedah", or "soal jawab belanjawan", even unnamed.
+
+Do NOT trigger for someone just asking what's in Budget 2026, wanting a plain-language summary of tax reliefs/benefits/prices, or any question answerable by reading the budget speech itself — that's a content question, not a tool-building one.
+============================================================
+Warning: query failed: timed out after 90s
+Warning: query failed: timed out after 90s
+Warning: query failed: timed out after 90s
+Warning: query failed: timed out after 90s
+Warning: query failed: timed out after 90s
+Warning: query failed: timed out after 90s
+Warning: query failed: timed out after 90s
+Train: 35/36 correct, precision=95% recall=100% accuracy=97% (177.7s)
+  [PASS] rate=3/3 expected=True: translate the branching questions in this Q&A logic (age, re
+  [PASS] rate=3/3 expected=True: porting kalkulator faedah belanjawan to a plain React compon
+  [PASS] rate=3/3 expected=True: quick one — does B26Brain.evaluate() return page references 
+  [PASS] rate=3/3 expected=True: node scripts/verify2.js is throwing an assertion failure aro
+  [PASS] rate=3/3 expected=True: I'm building a WordPress plugin for Semak Faedah Belanjawan 
+  [PASS] rate=3/3 expected=True: boss wants us to add a new tier under the 'Kesihatan' theme 
+  [PASS] rate=0/3 expected=False: here's a PDF of Malaysia's actual Budget 2026 speech (90 pag
+  [PASS] rate=0/3 expected=False: what's actually in Budget 2026 for the average Malaysian hou
+  [PASS] rate=1/3 expected=False: add a WordPress shortcode that shows our company logo and a 
+  [PASS] rate=0/3 expected=False: my kid's school project is a quiz app about Malaysian state 
+  [PASS] rate=0/3 expected=False: can you build me a generic eligibility quiz in React — age, 
+  [PASS] rate=0/3 expected=False: we're building a totally separate B2B budgeting app called '
+Test : 21/24 correct, precision=80% recall=100% accuracy=88% (0.0s)
+  [PASS] rate=3/3 expected=True: I inherited this belanjawan-brain thing from a contractor an
+  [PASS] rate=3/3 expected=True: we need to redo this whole thing for Belanjawan 2027 once th
+  [PASS] rate=3/3 expected=True: hey can you check references/bm-style.md and fix the wording
+  [PASS] rate=0/3 expected=False: translate this restaurant menu into Bahasa Melayu for our KL
+  [PASS] rate=3/3 expected=True: our vanilla HTML prototype for soal jawab belanjawan is done
+  [PASS] rate=0/3 expected=False: node scripts/test.js is failing in our checkout repo, someth
+  [PASS] rate=0/3 expected=False: can you just explain in plain terms what STR and SARA cash a
+  [FAIL] rate=3/3 expected=False: I need a tax calculator for Singapore's Budget 2026 announce
+
+All train queries passed on iteration 2!
+
+Exit reason: all_passed (iteration 2)
+Best score: 7/8 (iteration 1)
+Results saved to: results/belanjawan-run/2026-09-25_063307
