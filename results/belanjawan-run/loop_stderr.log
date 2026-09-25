@@ -1,0 +1,6 @@
+Split: 12 train, 8 test (holdout=0.4)
+
+============================================================
+Iteration 1/5
+Description: UI-free "brain" for an interactive citizen-benefits Q&A ("Semak faedah Belanjawan"). It asks a person branching questions (age, region, household, income, work, situation, lifestyle) and returns the Malaysian Budget 2026 benefits, tax reliefs and price changes that apply to them, themed and tiered, with STR/SARA cash estimates and page references to the budget speech. Use this skill whenever the user wants to plug the Belanjawan 2026 Q&A logic into a front end (WordPress, React, vanilla HTML, Claude Code); change, add or re-theme benefits, questions or rules; fix Bahasa Melayu wording in the Q&A; run or extend its verification; or rebuild the same kind of Q&A for a new document such as Belanjawan 2027, a state budget or another policy text. Also use it when the user mentions "belanjawan-brain", "belanjawan brain", "brain.js", "B26Brain", "kalkulator faedah", "soal jawab belanjawan" or "benefits calculator in text", even without naming the skill.
+============================================================
