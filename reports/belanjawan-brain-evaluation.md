@@ -16,9 +16,11 @@ table-extraction task on the actual budget speech, etc.
 
 ## Iteration 1 -- original description
 
-Train 11/12, test 7/8 (36 real runs total, 6 timed out at 90s and were
-retried by the eval loop, not counted as failures). Recall was perfect
-(6/6 and 3/3 positives all triggered 3/3), but it over-fired on two negatives:
+Train 11/12, test 7/8 (36 real runs total; 6 timed out at 90s -- upstream
+`run_eval.py` silently records a timeout as "did not trigger" rather than
+excluding it, a measurement gap fixed in the confirmation pass below).
+Recall was perfect (6/6 and 3/3 positives all triggered 3/3), but it
+over-fired on two negatives:
 
 - `"what's actually in Budget 2026 for the average Malaysian household? ..."`
   -- triggered 3/3, should not have. A pure content question, no code/build
@@ -60,9 +62,54 @@ known remaining gap -- worth another eval round if it turns out to matter in
 practice, but not worth reverting to a description with two worse, more
 common failure modes over it.
 
+## Confirmation pass -- 10 runs/query, full 20-query set
+
+The 7/8-vs-7/8 tie above was flagged as low-confidence (3 runs/query, 8-query
+test set). Re-ran both candidates head to head with `scripts/powered_compare.py`
+at 10 runs/query across all 20 queries (400 real `claude -p` turns total,
+150s timeout, failed/timed-out runs retried up to twice rather than counted
+as non-triggers). Full data: `results/belanjawan-run/powered-10runs/results.json`.
+
+| | Original | Rewritten (applied) |
+|---|---|---|
+| Recall (10 positive queries x 10 runs) | 100/100 (100%) | 100/100 (100%) |
+| False fires (10 negative queries x 10 runs, minus unrecoverable) | 14/93 (15.1%) | 7/95 (7.4%) |
+| Unrecoverable timeouts | 7 | 5 |
+
+**The rewrite is confirmed better, roughly halving the false-fire rate --
+this was not noise.** Per-negative-query breakdown (triggers/runs):
+
+| Query | Original | Rewritten |
+|---|---|---|
+| "what's actually in Budget 2026 for the average household..." | 9/10 | 1/10 |
+| "explain in plain terms what STR and SARA cash aid are..." | 3/10 | 0/10 |
+| "tax calculator for Singapore's Budget 2026..." | 2/10 | **6/10** |
+| all 7 other negatives | 0/10 each | 0/10 each |
+
+This sharpens, and partly revises, the iteration-2 analysis above: the
+Budget-2026-summary false fire was far worse than the 3-run sample showed
+(90% of runs, not "3/3 on a small sample" -- though that was already at
+ceiling) and the rewrite's fix for it is real and large. But the Singapore
+near-miss it trades in is also worse than the earlier 1/3-to-3/3 jump
+suggested: it's a genuine 60% false-fire rate, not an edge case. Net effect
+is still a clear win (14/93 -> 7/95 overall), but the Singapore-calculator
+case is a real, sizeable remaining gap worth a follow-up description
+iteration if that query pattern matters in practice -- e.g. explicitly
+naming "Malaysia" / "Belanjawan" as the trigger condition rather than the
+STR/SARA-style-calculator concept generally.
+
+One harness note: the `"BrainBudget" B2B app` negative query timed out on
+7/10 (original) and 5/10 (rewritten) runs even at 150s and produced 0/10
+triggers on every run that did complete, on both descriptions. That looks
+like the query itself being expensive to execute in the probe harness
+(Claude doing more exploratory work before answering), not a triggering
+signal -- it is not a false fire either way, just an unreliable data point
+that needed a larger timeout budget or more retries than this run had.
+
 ## Caveat
 
-8-query held-out test sets at 3 runs/query are small; per the fable-5-logic
-report, borderline queries can flip on sample noise alone. Treat the "7/8
-either way" tie as low-confidence, not as proof the two descriptions are
-truly equivalent.
+Even 10 runs/query and 20 queries is still a modest sample by classical
+standards, especially for the single most consequential remaining number
+here (Singapore-calculator false-fire rate, n=10 -> n=16 after retries).
+Treat directional conclusions (rewrite has fewer false fires, Singapore case
+is a real gap) as solid; treat exact percentages as approximate.

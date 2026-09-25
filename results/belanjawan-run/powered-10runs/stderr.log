@@ -1,2 +1,61 @@
 
 === ORIGINAL (10 runs/query, 20 queries, timeout=150s) ===
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  unrecoverable after 2 retries: timed out after 150s
+  unrecoverable after 2 retries: timed out after 150s
+  unrecoverable after 2 retries: timed out after 150s
+  unrecoverable after 2 retries: timed out after 150s
+  unrecoverable after 2 retries: timed out after 150s
+  unrecoverable after 2 retries: timed out after 150s
+  unrecoverable after 2 retries: timed out after 150s
+ORIGINAL done in 1183s: recall 100/100, false_fires 14/93, unrecoverable_failures=7
+
+=== REWRITTEN (10 runs/query, 20 queries, timeout=150s) ===
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (1/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  retry (2/2) after: timed out after 150s
+  unrecoverable after 2 retries: timed out after 150s
+  unrecoverable after 2 retries: timed out after 150s
+  unrecoverable after 2 retries: timed out after 150s
+  unrecoverable after 2 retries: timed out after 150s
+  unrecoverable after 2 retries: timed out after 150s
+REWRITTEN done in 1141s: recall 100/100, false_fires 7/95, unrecoverable_failures=5
+
+Saved to results/belanjawan-run/powered-10runs/results.json
