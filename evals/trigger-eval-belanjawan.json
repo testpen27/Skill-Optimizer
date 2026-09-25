@@ -1,0 +1,22 @@
+[
+  {"query": "I'm building a WordPress plugin for Semak Faedah Belanjawan on our ministry's site — can you wire up the belanjawan-brain SKILL.md's brain.js as the backend logic so the shortcode just calls B26Brain.evaluate(answers)?", "should_trigger": true},
+  {"query": "boss wants us to add a new tier under the 'Kesihatan' theme for Belanjawan 2026 — something about free health screening for B40 households 40 and above. can u find where the eligibility rules live in belanjawan2026-brain.js and add it, then run the verification scripts so nothing else breaks", "should_trigger": true},
+  {"query": "hey can you check references/bm-style.md and fix the wording in the Q&A — one of my colleagues said 'makan gaji' shows up somewhere in the questions and that's apparently not the term we should use anymore", "should_trigger": true},
+  {"query": "we need to redo this whole thing for Belanjawan 2027 once the speech drops in Feb. is there a guide in this repo for rebuilding the brain off a new budget document?", "should_trigger": true},
+  {"query": "node scripts/verify2.js is throwing an assertion failure around eKasih branching after I tweaked the income question — can you dig into it and fix the rule engine so the 30k simulated users pass again", "should_trigger": true},
+  {"query": "porting kalkulator faedah belanjawan to a plain React component for our state government portal (Selangor version) — need the evaluate() output mapped to theme cards with the STR/SARA numbers", "should_trigger": true},
+  {"query": "quick one — does B26Brain.evaluate() return page references into the actual budget speech PDF? I want to show 'ms 42' style citations next to each benefit on the results screen", "should_trigger": true},
+  {"query": "I inherited this belanjawan-brain thing from a contractor and none of the docs make sense to me, where do I even start if I want to add a brand new theme for 'Pendidikan' with 5 more benefit items", "should_trigger": true},
+  {"query": "our vanilla HTML prototype for soal jawab belanjawan is done but the SARA monthly total looks wrong for a single mother with 3 kids — can you trace through the STR/SARA calculator and tell me what's off", "should_trigger": true},
+  {"query": "translate the branching questions in this Q&A logic (age, region, household, income) into proper Bahasa Melayu — apparently the current copy reads like it was machine translated in a few spots, check bm-style.md for the house style first", "should_trigger": true},
+  {"query": "what's actually in Budget 2026 for the average Malaysian household? just want a plain-English summary of the tax reliefs, I'm not building anything", "should_trigger": false},
+  {"query": "can you build me a generic eligibility quiz in React — age, income, household size — for a scholarship program my nonprofit runs, nothing to do with any government budget", "should_trigger": false},
+  {"query": "I need a tax calculator for Singapore's Budget 2026 announcement — similar idea to those benefit calculators but for SG reliefs, not Malaysia", "should_trigger": false},
+  {"query": "translate this restaurant menu into Bahasa Melayu for our KL branch, csv attached with dish names and descriptions", "should_trigger": false},
+  {"query": "node scripts/test.js is failing in our checkout repo, something about a Jest snapshot mismatch on the CartSummary component", "should_trigger": false},
+  {"query": "can you just explain in plain terms what STR and SARA cash aid are and who normally qualifies, for a blog post I'm writing, no need to touch any code", "should_trigger": false},
+  {"query": "we're building a totally separate B2B budgeting app called 'BrainBudget' for SMEs to plan quarterly spend — nothing to do with government benefits, just want a UI wireframe", "should_trigger": false},
+  {"query": "add a WordPress shortcode that shows our company logo and a countdown timer to Budget Day 2026", "should_trigger": false},
+  {"query": "here's a PDF of Malaysia's actual Budget 2026 speech (90 pages) — extract every table into separate CSVs for our data team", "should_trigger": false},
+  {"query": "my kid's school project is a quiz app about Malaysian state capitals — bootstrap a simple branching question flow in vanilla JS", "should_trigger": false}
+]

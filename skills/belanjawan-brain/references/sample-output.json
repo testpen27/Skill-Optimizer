@@ -1,0 +1,459 @@
+{
+  "version": "2026.3",
+  "dataAsOf": "2026-09-25",
+  "strSara": {
+    "eligible": true,
+    "reason": null,
+    "category": "isi_rumah",
+    "label": "Isi Rumah",
+    "str": 1700,
+    "sara": 1200,
+    "saraMonthly": 100,
+    "total": 2900,
+    "penghargaanSara": 100,
+    "ekasihApplied": "unknown",
+    "totalIfEkasih": 4100,
+    "saraMonthlyIfEkasih": 200
+  },
+  "counts": {
+    "total": 28,
+    "layak": 13,
+    "semak": 11,
+    "mungkin": 2,
+    "kesan": 2
+  },
+  "byTheme": [
+    {
+      "id": "cash",
+      "label": "Bantuan Tunai & Kos Sara Hidup",
+      "count": 5,
+      "items": [
+        {
+          "id": "str_sara",
+          "theme": "cash",
+          "kind": "manfaat",
+          "tier": "layak",
+          "tierLabel": "Berkemungkinan layak",
+          "title": "Sumbangan Tunai Rahmah (STR) dan Sumbangan Asas Rahmah (SARA)",
+          "value": "Dianggarkan berdasarkan jawapan anda",
+          "summary": "STR ialah bantuan tunai yang dibayar berperingkat sepanjang tahun. SARA pula ialah kredit bulanan dalam MyKad untuk membeli barangan keperluan asas di kedai yang menyertai program ini.",
+          "who": "Isi rumah berpendapatan RM5,000 dan ke bawah; warga emas tiada pasangan berumur 60 tahun ke atas (RM5,000 dan ke bawah); bujang berumur 21 hingga 59 tahun (RM2,500 dan ke bawah).",
+          "action": "Mohon atau kemas kini maklumat di portal MySTR. SARA dikreditkan secara automatik ke MyKad penerima STR.",
+          "timing": null,
+          "src": "Perenggan 158–161, ms 92–94; Lampiran I Bil. 29, ms 258–259",
+          "web": "https://www.bharian.com.my/amp/berita/nasional/2026/03/1515524/bhplus",
+          "portal": "https://bantuantunai.hasil.gov.my",
+          "reasons": [
+            "Dianggarkan layak menerima STR 2026"
+          ],
+          "needsConfirm": []
+        },
+        {
+          "id": "penghargaan_sara",
+          "theme": "cash",
+          "kind": "manfaat",
+          "tier": "layak",
+          "tierLabel": "Berkemungkinan layak",
+          "title": "Penghargaan SARA",
+          "value": "RM100 (sekali sahaja)",
+          "summary": "Kredit SARA ke dalam MyKad untuk semua rakyat Malaysia berumur 18 tahun ke atas, bagi persiapan Ramadan dan Tahun Baru Cina.",
+          "who": "Semua warganegara pemegang MyKad berumur 18 tahun ke atas.",
+          "action": "Dikreditkan secara automatik ke MyKad.",
+          "timing": "Telah disalurkan pada pertengahan Februari 2026.",
+          "src": "Perenggan 160, ms 93",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Berumur 18 tahun ke atas"
+          ],
+          "needsConfirm": []
+        }
+      ]
+    },
+    {
+      "id": "subsidy",
+      "label": "Subsidi Bahan Api & Tenaga",
+      "count": 2,
+      "items": [
+        {
+          "id": "budi95",
+          "theme": "subsidy",
+          "kind": "manfaat",
+          "tier": "layak",
+          "tierLabel": "Berkemungkinan layak",
+          "title": "BUDI95: petrol RON95 bersubsidi",
+          "value": "RM1.99 seliter",
+          "summary": "Untuk warganegara berumur 16 tahun ke atas yang mempunyai lesen memandu yang sah. Kuota diselaraskan daripada 300 liter kepada 200 liter sebulan mulai 1 April 2026 sebagai langkah sementara.",
+          "who": "Warganegara berumur 16 tahun ke atas dengan lesen memandu yang sah.",
+          "action": "Imbas MyKad di pam atau kaunter stesen minyak yang terlibat.",
+          "timing": "Kuota 200 liter sebulan berkuat kuasa 1 April 2026. Semak kuota terkini.",
+          "src": "Perenggan 40, ms 26–27",
+          "web": "https://says.com/my/seismik/budi95-kerajaan-umum-turunkan-kuota-ron95-ke-200-liter-sebulan-bermula-1-april-ini",
+          "portal": null,
+          "reasons": [
+            "Berumur 16 tahun ke atas",
+            "Mempunyai lesen memandu yang sah"
+          ],
+          "needsConfirm": []
+        },
+        {
+          "id": "rebat_cekap_tenaga",
+          "theme": "subsidy",
+          "kind": "manfaat",
+          "tier": "semak",
+          "tierLabel": "Semak kelayakan",
+          "title": "Rebat pembelian peralatan cekap tenaga (Nur@PETRA)",
+          "value": "Rebat untuk peralatan elektrik cekap tenaga",
+          "summary": "Rebat bagi menggalakkan pengguna domestik membeli peralatan elektrik yang cekap tenaga, sekali gus mengurangkan bil elektrik.",
+          "who": "Pengguna domestik, tertakluk kepada syarat program.",
+          "action": "Pantau pengumuman Kementerian Peralihan Tenaga dan Transformasi Air (PETRA).",
+          "timing": null,
+          "src": "Lampiran I, ms 222",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Berumur 18 tahun ke atas"
+          ],
+          "needsConfirm": []
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "label": "Kesihatan & Insurans",
+      "count": 6,
+      "items": [
+        {
+          "id": "peka_b40",
+          "theme": "health",
+          "kind": "manfaat",
+          "tier": "layak",
+          "tierLabel": "Berkemungkinan layak",
+          "title": "PeKa B40",
+          "value": "Saringan kesihatan percuma dan bantuan alat perubatan sehingga RM20,000",
+          "summary": "Termasuk insentif RM1,000 untuk melengkapkan rawatan kanser dan bantuan tambang pengangkutan ke hospital (sehingga RM500 di Semenanjung; RM1,000 di Sabah, Sarawak dan Labuan).",
+          "who": "Warganegara berumur 40 tahun ke atas yang menerima STR, serta pasangan mereka.",
+          "action": "Diberikan secara automatik kepada penerima STR. Bawa MyKad ke klinik panel PeKa B40.",
+          "timing": null,
+          "src": "Lampiran I Bil. 32, ms 273",
+          "web": "https://www.malaysia.gov.my/my/topics/peka-b40",
+          "portal": "https://www.protecthealth.com.my",
+          "reasons": [
+            "Berumur 40 tahun ke atas",
+            "Dianggarkan layak menerima STR 2026"
+          ],
+          "needsConfirm": []
+        },
+        {
+          "id": "mysalam",
+          "theme": "health",
+          "kind": "manfaat",
+          "tier": "layak",
+          "tierLabel": "Berkemungkinan layak",
+          "title": "mySalam",
+          "value": "RM8,000 jika disahkan menghidap penyakit kritikal, serta RM50 sehari ketika dimasukkan ke wad",
+          "summary": "Perlindungan takaful percuma untuk penyakit kritikal dan elaun harian ketika dimasukkan ke wad hospital Kerajaan (sehingga 14 hari setahun). Diteruskan pada tahun 2026.",
+          "who": "Penerima STR dan pasangan mereka, tertakluk kepada had umur skim.",
+          "action": "Diberikan secara automatik kepada penerima STR. Semak status di portal mySalam.",
+          "timing": null,
+          "src": "Perenggan 181, ms 100–101; Lampiran I Bil. 32, ms 269",
+          "web": "https://bernama.com/bm/news.php?id=2574921",
+          "portal": "https://www.mysalam.com.my",
+          "reasons": [
+            "Berumur 18 tahun ke atas",
+            "Dianggarkan layak menerima STR 2026"
+          ],
+          "needsConfirm": []
+        }
+      ]
+    },
+    {
+      "id": "education",
+      "label": "Pendidikan",
+      "count": 5,
+      "items": [
+        {
+          "id": "bap",
+          "theme": "education",
+          "kind": "manfaat",
+          "tier": "layak",
+          "tierLabel": "Berkemungkinan layak",
+          "title": "Bantuan Awal Persekolahan",
+          "value": "RM150 bagi setiap murid",
+          "summary": "Untuk semua murid sekolah Kerajaan. Mulai 2026, bantuan disalurkan di sekolah melalui guru kepada ibu bapa.",
+          "who": "Semua murid sekolah Kerajaan.",
+          "action": "Diterima di sekolah tanpa perlu memohon.",
+          "timing": null,
+          "src": "Perenggan 192, ms 106",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Ada murid sekolah Kerajaan dalam keluarga"
+          ],
+          "needsConfirm": []
+        },
+        {
+          "id": "bantuan_am",
+          "theme": "education",
+          "kind": "manfaat",
+          "tier": "semak",
+          "tierLabel": "Semak kelayakan",
+          "title": "Bantuan Am Persekolahan",
+          "value": "Kini diberikan sehingga Tingkatan 5",
+          "summary": "Sebelum ini hanya sehingga Tingkatan 3. Kini diperluas kepada murid miskin sehingga Tingkatan 5.",
+          "who": "Murid daripada keluarga miskin.",
+          "action": "Melalui sekolah.",
+          "timing": null,
+          "src": "Perenggan 192, ms 106",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Ada murid sekolah Kerajaan dalam keluarga",
+            "Pendapatan isi rumah RM2,500 dan ke bawah"
+          ],
+          "needsConfirm": []
+        }
+      ]
+    },
+    {
+      "id": "housing",
+      "label": "Perumahan",
+      "count": 1,
+      "items": [
+        {
+          "id": "rumah_daif",
+          "theme": "housing",
+          "kind": "manfaat",
+          "tier": "mungkin",
+          "tierLabel": "Mungkin layak",
+          "title": "Baik pulih atau bina semula rumah daif",
+          "value": "Rumah dibaiki atau dibina semula",
+          "summary": "Termasuk rumah nelayan, melalui Program Perumahan Rakyat Sejahtera, Program Pembasmian Kemiskinan Bandar dan Bantuan Rumah Nelayan Laut B40.",
+          "who": "Isi rumah miskin dalam eKasih dan nelayan B40 yang tinggal di rumah daif.",
+          "action": "Mohon melalui Pejabat Daerah, KPKT atau Jabatan Perikanan.",
+          "timing": null,
+          "src": "Perenggan 216, ms 115; Lampiran I Bil. 35, ms 290",
+          "web": null,
+          "portal": null,
+          "reasons": [],
+          "needsConfirm": [
+            "Berdaftar sebagai Miskin atau Miskin Tegar dalam eKasih"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "protection",
+      "label": "Perlindungan Sosial & Simpanan Persaraan",
+      "count": 2,
+      "items": [
+        {
+          "id": "i_saraan",
+          "theme": "protection",
+          "kind": "manfaat",
+          "tier": "layak",
+          "tierLabel": "Berkemungkinan layak",
+          "title": "i-Saraan KWSP",
+          "value": "Padanan 20% caruman, sehingga RM500 setahun (RM5,000 seumur hidup)",
+          "summary": "Kerajaan memadankan caruman sukarela KWSP bagi mereka yang bekerja sendiri atau berpendapatan tidak tetap.",
+          "who": "Mereka yang bekerja sendiri atau berpendapatan tidak tetap, berumur bawah 60 tahun.",
+          "action": "Daftar melalui KWSP i-Akaun dan mula mencarum.",
+          "timing": null,
+          "src": "Perenggan 165, ms 95; Lampiran I Bil. 30, ms 262",
+          "web": null,
+          "portal": "https://www.kwsp.gov.my",
+          "reasons": [
+            "Bekerja sendiri atau berpendapatan tidak tetap",
+            "Berumur bawah 60 tahun"
+          ],
+          "needsConfirm": []
+        },
+        {
+          "id": "lindung_kendiri",
+          "theme": "protection",
+          "kind": "manfaat",
+          "tier": "semak",
+          "tierLabel": "Semak kelayakan",
+          "title": "PERKESO Lindung Kendiri",
+          "value": "Kerajaan menanggung 70% caruman bagi tahun pertama dan 50% bagi tahun kedua",
+          "summary": "Perlindungan kemalangan dan hilang upaya ketika bekerja untuk pekerja gig dan mereka yang bekerja sendiri dalam sektor yang belum diwajibkan, bagi pendaftaran kali pertama.",
+          "who": "Pekerja gig dan mereka yang bekerja sendiri yang mendaftar buat kali pertama.",
+          "action": "Daftar melalui portal PERKESO.",
+          "timing": null,
+          "src": "Perenggan 166, ms 95; Lampiran I Bil. 30, ms 263",
+          "web": null,
+          "portal": "https://www.perkeso.gov.my",
+          "reasons": [
+            "Bekerja sendiri atau berpendapatan tidak tetap"
+          ],
+          "needsConfirm": []
+        }
+      ]
+    },
+    {
+      "id": "family",
+      "label": "Keluarga & Wanita",
+      "count": 2,
+      "items": [
+        {
+          "id": "kasihnita",
+          "theme": "family",
+          "kind": "manfaat",
+          "tier": "semak",
+          "tierLabel": "Semak kelayakan",
+          "title": "KasihnITA: bantuan guaman untuk ibu tunggal",
+          "value": "Bantuan guaman",
+          "summary": "Membantu ibu tunggal berpendapatan rendah dalam kes mahkamah seperti perceraian dan hak penjagaan anak.",
+          "who": "Ibu tunggal berpendapatan rendah.",
+          "action": "Mohon melalui Jabatan Pembangunan Wanita (KPWKM).",
+          "timing": null,
+          "src": "Perenggan 142, ms 85; Lampiran I Bil. 26, ms 247",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Wanita",
+            "Ibu tunggal",
+            "Pendapatan isi rumah RM5,000 dan ke bawah"
+          ],
+          "needsConfirm": []
+        },
+        {
+          "id": "pembiayaan_wanita",
+          "theme": "family",
+          "kind": "manfaat",
+          "tier": "semak",
+          "tierLabel": "Semak kelayakan",
+          "title": "Pembiayaan untuk usahawan wanita",
+          "value": "Pembiayaan daripada RM30,000 hingga RM3 juta",
+          "summary": "AIM Skim Paduri MADANI (sehingga RM30,000), BSN Mikro MADANI Wanita (sehingga RM100,000 pada kadar 4%), MARA DANANITA (sehingga RM150,000 pada kadar 3.5%, untuk Bumiputera), SME Bank MySMELady 2.0 (sehingga RM3 juta) dan Bank Rakyat BizLady.",
+          "who": "Usahawan wanita, daripada perniagaan mikro hingga PMKS.",
+          "action": "Mohon terus kepada AIM, BSN, MARA, SME Bank atau Bank Rakyat.",
+          "timing": null,
+          "src": "Perenggan 142, ms 84; Lampiran I Bil. 26, ms 247, 251–252",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Wanita",
+            "Berniaga atau bekerja sendiri"
+          ],
+          "needsConfirm": []
+        }
+      ]
+    },
+    {
+      "id": "youth",
+      "label": "Belia, Latihan & Pekerjaan",
+      "count": 1,
+      "items": [
+        {
+          "id": "latihan_tvet",
+          "theme": "youth",
+          "kind": "manfaat",
+          "tier": "semak",
+          "tierLabel": "Semak kelayakan",
+          "title": "Latihan kemahiran dan TVET",
+          "value": "Latihan dan pensijilan kemahiran",
+          "summary": "Melalui HRD Corp, pembiayaan PTPK (terutamanya bidang AI, kenderaan elektrik dan semikonduktor), GiatMARA (termasuk untuk pekerja gig) dan Kolej Komuniti (program pembelajaran sepanjang hayat untuk OKU, warga emas, ibu tunggal dan Orang Asli).",
+          "who": "Pencari kerja, pekerja gig, mereka yang bekerja sendiri dan golongan rentan.",
+          "action": "Mohon melalui HRD Corp, PTPK, GiatMARA atau Kolej Komuniti.",
+          "timing": null,
+          "src": "Perenggan 65, ms 50–51",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Mencari kerja atau bekerja sendiri"
+          ],
+          "needsConfirm": []
+        }
+      ]
+    },
+    {
+      "id": "mobility",
+      "label": "Pengangkutan & Mobiliti",
+      "count": 1,
+      "items": [
+        {
+          "id": "myraillife",
+          "theme": "mobility",
+          "kind": "manfaat",
+          "tier": "layak",
+          "tierLabel": "Berkemungkinan layak",
+          "title": "Pas MyRailLife percuma",
+          "value": "Perjalanan percuma tanpa had dengan KTM Komuter dan Shuttle DMU",
+          "summary": "Untuk komuniti OKU dan semua murid sekolah, kini diperluas kepada kanak-kanak berumur bawah 6 tahun.",
+          "who": "OKU, murid sekolah dan kanak-kanak berumur bawah 6 tahun.",
+          "action": "Mohon pas melalui KTMB.",
+          "timing": null,
+          "src": "Perenggan 208, ms 111; Lampiran I Bil. 34, ms 284",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Ada murid sekolah Kerajaan dalam keluarga"
+          ],
+          "needsConfirm": []
+        }
+      ]
+    },
+    {
+      "id": "special",
+      "label": "Kes Khas: Gaya Hidup, Pelaburan & Perubahan Harga",
+      "count": 3,
+      "items": [
+        {
+          "id": "berhenti_merokok",
+          "theme": "special",
+          "kind": "manfaat",
+          "tier": "layak",
+          "tierLabel": "Berkemungkinan layak",
+          "title": "Produk bantuan berhenti merokok lebih murah",
+          "value": "Dikecualikan duti import dan cukai jualan hingga 31 Disember 2027",
+          "summary": "Gula-gula getah nikotin dan tampalan nikotin kekal dikecualikan, dan kini diperluas kepada semburan nikotin dan lozeng nikotin. Sokongan berhenti merokok percuma juga tersedia melalui program mQuit KKM.",
+          "who": "Sesiapa yang ingin berhenti merokok atau vape.",
+          "action": "Dapatkan nasihat di klinik kesihatan atau farmasi. Sertai program mQuit KKM.",
+          "timing": null,
+          "src": "Perenggan 184, ms 102; Lampiran II — Lampiran 39, ms 359",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Merokok atau menggunakan produk nikotin"
+          ],
+          "needsConfirm": []
+        },
+        {
+          "id": "duti_rokok",
+          "theme": "special",
+          "kind": "kesan",
+          "tier": "kesan",
+          "tierLabel": "Perubahan yang menjejaskan anda",
+          "title": "Harga rokok naik",
+          "value": "Naik 40 sen sepaket (2 sen sebatang)",
+          "summary": "Duti eksais rokok dinaikkan secara berperingkat mulai 1 November 2025. Hasil tambahan disalurkan kepada KKM untuk program kesihatan paru-paru serta rawatan diabetes dan penyakit jantung.",
+          "who": "Perokok.",
+          "action": "Pertimbangkan bantuan berhenti merokok (lihat di bawah).",
+          "timing": null,
+          "src": "Perenggan 184, ms 102; Lampiran II — Lampiran 36, ms 356",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Merokok"
+          ],
+          "needsConfirm": []
+        }
+      ]
+    }
+  ],
+  "advisories": [
+    {
+      "type": "action",
+      "text": "Anda berkemungkinan layak menerima STR tetapi belum menerimanya. Mohon di bantuantunai.hasil.gov.my. Permohonan STR juga membuka akses kepada SARA, mySalam, PeKa B40 dan Skim Perubatan MADANI."
+    },
+    {
+      "type": "info",
+      "text": "Status eKasih anda tidak pasti. Jika isi rumah anda berdaftar, kadar SARA lebih tinggi dan beberapa bantuan lain mungkin terpakai. Semak dengan Pejabat Daerah."
+    },
+    {
+      "type": "disclaimer",
+      "text": "Panduan umum berdasarkan Ucapan Belanjawan 2026 (maklumat setakat 2026-09-25). Ini bukan penentuan kelayakan rasmi. Sila sahkan dengan agensi yang berkaitan."
+    }
+  ]
+}
