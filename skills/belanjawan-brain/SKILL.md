@@ -105,12 +105,35 @@ Rendering rules:
    - **Don't add overly personal questions** unless a rule truly needs them, and every question except age and region must be skippable (appended automatically).
    - **Special cases** (smokers, alcohol, investors and similar) belong in the `special` theme, as `kind: 'kesan'` when they cost the person more.
    - Every item needs a `src` reference to the speech. Web-verified details go in `web`, and date-sensitive facts in `timing`.
+   - **When you're unsure whether an item belongs in the brain, or in which theme, ask the user.** Don't decide silently. Use the Q&A format in step 5 of `references/building-a-new-brain.md`, and always leave room for the user to say something else.
 3. **Run verification twice, every time:** `node scripts/test.js && node scripts/verify2.js`. Both must pass with 0 failures and all items reachable. Add a persona test for any new rule, and add any new wording mistake you fix to the lint's banned list.
 4. Run `node scripts/gen-spec.js` and update the tables in `references/LOGIK-BELANJAWAN-2026.md`. Bump `VERSION` and `DATA_AS_OF`.
 
 ## Rebuilding for a new document (e.g. Belanjawan 2027)
 
-Read `references/building-a-new-brain.md` and follow its eight steps: read the speech and both annexes, keep only citizen end results, web-verify eligibility, theme, design minimal skippable questions, write rules, verify twice, then hand over. Keep the engine and replace the data. Keep 2026 as its own versioned file, not overwritten.
+Read `references/building-a-new-brain.md` and follow its nine steps:
+
+1. Read the speech and both annexes.
+2. Keep only citizen end results.
+3. Web-verify eligibility.
+4. Theme the items.
+5. **Check with the user.**
+6. Design minimal skippable questions.
+7. Write the rules.
+8. Verify twice.
+9. Hand over.
+
+Step 5 isn't optional. Before writing any questions, put the item list to the user as questions and answers in the conversation. Use `AskUserQuestion` where it's available; its "Other" choice lets the user say something else. Cover:
+
+- borderline include/exclude items;
+- how to target area-specific items;
+- theme placement;
+- excluded items worth restoring;
+- any new personal question.
+
+Always raise lifestyle costs (smokers, vape, alcohol) and area-specific tax or duty exemptions (e.g. duty-free islands). Earlier rebuilds dropped both without a word. Record the answers in the spec's **Keputusan pengguna** section.
+
+Keep the engine and replace the data. Keep 2026 as its own versioned file, not overwritten.
 
 ## Known limits (tell the user when relevant)
 
