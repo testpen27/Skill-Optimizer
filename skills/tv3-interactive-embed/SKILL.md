@@ -68,7 +68,7 @@ Each rule exists because of a failure seen in practice.
 
 ## 6. Verify before delivering
 
-1. Run `python scripts/lint_embed.py <file>` from this skill's folder. Fix every ERROR and explain any WARN you keep. Pass `--allow-host` only for hosts the user approved.
+1. Run `python3 scripts/lint_embed.py <file>` from this skill's folder. Fix every ERROR and explain any WARN you keep. Pass `--allow-host` only for hosts the user approved.
 2. If `node` is available, syntax-check the script (`node --check`); if you can, load the file in jsdom and click through the main path once. If a browser is available, screenshot the preview at 360px and 1200px. If you could not render it, say so and list what you did check.
 3. Trace every fact in the embed to a source the user or the article gave.
 
@@ -76,9 +76,9 @@ Each rule exists because of a failure seen in practice.
 
 The user must always be able to see the result in HTML, so every build and every revision ends with two files:
 
-1. Save the paste-ready fragment as `/mnt/user-data/outputs/embed-<slug>.html`.
-2. Run `python scripts/make_preview.py /mnt/user-data/outputs/embed-<slug>.html /mnt/user-data/outputs/preview-<slug>.html`. It puts the embed in a sandboxed frame inside a mock article, always with 360 (phone) and 768 (tablet) buttons plus a copy-code button. Add `--widths 820:"Artikel sekarang" 1200:"Artikel akan datang"` (see `references/house-style.md` for how the current width was measured) whenever there is more than one article width worth comparing — a measured current width and a planned future one, for instance. Never hand over the embed without its preview.
-3. Call `present_files` with the preview first, then the embed. A page for the user's own CMS is a file, not a hosted artifact.
+1. Save the paste-ready fragment as `/mnt/user-data/outputs/embed-<slug>.html`. If that directory does not exist in this environment (plain local Claude Code has no such mount), save to `./outputs/embed-<slug>.html` in the current project instead — same rule either way: never overwrite the previous revision, always a fresh `<slug>` or version suffix.
+2. Run `python3 scripts/make_preview.py <embed-path> <preview-path>` (paths matching wherever step 1 saved to). It puts the embed in a sandboxed frame inside a mock article, always with 360 (phone) and 768 (tablet) buttons plus a copy-code button. Add `--widths 820:"Artikel sekarang" 1200:"Artikel akan datang"` (see `references/house-style.md` for how the current width was measured) whenever there is more than one article width worth comparing — a measured current width and a planned future one, for instance. Never hand over the embed without its preview.
+3. Hand both files to the user: call `present_files` with the preview first, then the embed, if that tool is available in this environment; otherwise state both file paths directly in the reply so the user can open them. A page for the user's own CMS is a file, not a hosted artifact.
 
 Keep the chat message short: how to paste (WordPress: Custom HTML block, or the Text/Code tab of the classic editor, never the Visual tab, which adds `<p>` tags), what the lint said, and any placeholders left.
 
