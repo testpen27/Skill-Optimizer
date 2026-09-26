@@ -13,6 +13,12 @@ Anthropic's `skill-creator` description-optimization loop.
   probe, and retries the per-iteration proposal call, which otherwise aborts
   the whole run on one transient failure.
 
+## Branch layout
+
+`main` holds only the toolkit above. Each skill that gets created or
+optimized with it lives on its own branch, which carries the skill, its
+eval sets, results and reports. See `CLAUDE.md` for the rules.
+
 ## Running
 
 ```bash
