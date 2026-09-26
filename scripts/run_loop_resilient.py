@@ -8,8 +8,8 @@ collected so far, which is expensive -- one iteration is 60 `claude -p`
 invocations. This wrapper retries that one call with backoff so a blip
 costs a minute instead of the run.
 
-Usage is identical to `python -m scripts.run_loop`; set SKILL_CREATOR to the
-skill-creator directory.
+Usage is identical to `python -m scripts.run_loop`. It uses the skill-creator
+vendored at the repo root; set SKILL_CREATOR to point at a different copy.
 """
 
 import os
@@ -17,9 +17,11 @@ import sys
 import time
 from pathlib import Path
 
-SKILL_CREATOR = os.environ.get("SKILL_CREATOR")
-if not SKILL_CREATOR:
-    sys.exit("Set SKILL_CREATOR to the skill-creator skill directory")
+SKILL_CREATOR = os.environ.get("SKILL_CREATOR") or str(
+    Path(__file__).resolve().parent.parent / "skill-creator"
+)
+if not (Path(SKILL_CREATOR) / "scripts" / "run_loop.py").exists():
+    sys.exit(f"No skill-creator found at {SKILL_CREATOR}; set SKILL_CREATOR")
 sys.path.insert(0, SKILL_CREATOR)
 
 import scripts.improve_description as imp  # noqa: E402
