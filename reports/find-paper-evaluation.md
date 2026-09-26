@@ -4,14 +4,14 @@
 
 The `find-paper` skill's current description was tested against 30 realistic
 trigger queries (10 should-trigger / 10 should-not-trigger in
-`trigger-eval.json`, plus 10 harder edge cases in
-`trigger-eval-round2-hard.json`, including direct competition with a generic
+`evals/find-paper-trigger-eval.json`, plus 10 harder edge cases in
+`evals/find-paper-trigger-eval-round2-hard.json`, including direct competition with a generic
 "deep research" skill and near-miss journal/citation questions). It scored
 **30/30 (100%)** — every should-trigger query fired and every near-miss
-correctly did not. See `eval-v0-result.txt` and `eval-v0-round2-result.txt`.
+correctly did not. See `results/find-paper/eval-v0-result.txt` and `results/find-paper/eval-v0-round2-result.txt`.
 
 Given that, no description rewrite was applied — the existing frontmatter in
-`find-paper/SKILL.md` is unchanged.
+`skills/find-paper/SKILL.md` is unchanged.
 
 ## Why the standard skill-creator loop wasn't used as-is
 
@@ -36,7 +36,7 @@ both diagnosed and confirmed via manual reproduction:
    trigger test fundamentally unable to isolate "does *this candidate
    description* trigger" in this account.
 
-`judge_trigger.py` works around this by asking a fresh, tool-less `claude -p`
+`scripts/judge_trigger.py` works around this by asking a fresh, tool-less `claude -p`
 call to directly judge "would Claude Code invoke a skill with this
 description for this query", using the same trigger heuristic Claude Code
 itself follows. No real skill list or tool-use loop is involved, so the
@@ -44,7 +44,7 @@ marketplace collision never comes into play. This is what actually produced
 the 100% scores above.
 
 ## Files
-- `trigger-eval.json`, `trigger-eval-round2-hard.json` — the 30 eval queries
-- `judge_trigger.py` — the isolated judgment-based eval harness
-- `desc-v0-original.txt` — the description tested (unchanged from shipped skill)
-- `eval-v0-result.txt`, `eval-v0-round2-result.txt` — raw per-query results
+- `evals/find-paper-trigger-eval.json`, `evals/find-paper-trigger-eval-round2-hard.json` — the 30 eval queries
+- `scripts/judge_trigger.py` — the isolated judgment-based eval harness
+- `evals/find-paper-orig-desc.txt` — the description tested (unchanged from shipped skill)
+- `results/find-paper/eval-v0-result.txt`, `results/find-paper/eval-v0-round2-result.txt` — raw per-query results
