@@ -2,7 +2,7 @@
 
 Method: skill-creator's description-optimization loop (`scripts/run_loop_resilient.py`,
 which patches in the corrected trigger detector from `scripts/trigger_probe.py` —
-see `reports/fable-5-logic-evaluation.md` for why the stock detector reports a
+see `reports/fable-5-logic-evaluation.md` on the `skill/fable-5-logic` branch for why the stock detector reports a
 healthy skill as 0%). 4 iterations, 3 runs/query, 40% holdout, model
 `claude-sonnet-5`, real `claude -p` turns end to end.
 
