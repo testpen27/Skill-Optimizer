@@ -65,13 +65,13 @@
       },
       "NEG:bar-chart": {
         "t": 0,
-        "n": 0,
-        "fail": 10
+        "n": 10,
+        "fail": 0
       },
       "NEG:precommit": {
-        "t": 0,
-        "n": 0,
-        "fail": 10
+        "t": 3,
+        "n": 10,
+        "fail": 0
       }
     },
     "recall": [
@@ -79,8 +79,8 @@
       30
     ],
     "false_fires": [
-      0,
-      10
+      3,
+      30
     ]
   }
 }
