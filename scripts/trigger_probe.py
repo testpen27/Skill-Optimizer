@@ -21,6 +21,21 @@ was captured in full. Two causes, and the fix for each:
 - the full-message path looked for the skill name under the input key `skill`.
   Reading the raw JSON instead does not depend on the tool's parameter naming.
 
+A fifth, and the nastiest because it inflates rather than zeroes: matching the
+skill name anywhere in the transcript counts the *listing* of available skills
+in the init event as a hit, so any Skill call at all -- to `dataviz`, to
+`artifact-design` -- scored as our skill triggering. The subprocess inherits the
+user-level skills too, so there is always something else for it to pick. The
+name must be matched inside a Skill/Read tool_use input, nowhere else.
+
+A fourth: a run can come back in two seconds having done nothing real, and an
+earlier validity check ("did any assistant message appear?") passed it, so a
+whole 60-run pass returned all-zero in 29s where a genuine one takes ten
+minutes. A real turn ends with a `result` event carrying subtype "success",
+is_error false, and a nonzero cost; anything else is now a ProbeFailure rather
+than a silent zero. Zeros are the failure mode that looks like data, so they
+have to be the hardest outcome to record by accident.
+
 A third bug showed up once those were fixed: every concurrent run wrote its
 skill into the *same* project `.claude/skills/`, so a run with N workers put N
 near-identical skills in front of each model turn. The turn would often invoke
@@ -32,6 +47,7 @@ So: run the turn to completion, capture everything, then decide. Slower per
 run, but a measurement that disagrees with itself is worth nothing.
 """
 
+import json
 import os
 import shutil
 import subprocess
@@ -42,6 +58,71 @@ from pathlib import Path
 
 class ProbeFailure(RuntimeError):
     """The run never produced a model turn, so it says nothing about triggering."""
+
+
+def _invoked_this_skill(text: str, clean_name: str) -> bool:
+    """True only if a Skill/Read tool call names *this* skill.
+
+    Scanning the whole transcript is wrong: the init event lists every
+    available skill, so the name is present whether or not it was used, and any
+    Skill call to something else scored as a hit.
+    """
+    for line in text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if event.get("type") != "assistant":
+            continue
+        for item in event.get("message", {}).get("content", []):
+            if item.get("type") != "tool_use":
+                continue
+            name = item.get("name", "")
+            tool_input = item.get("input", {}) or {}
+            if name == "Skill":
+                # The parameter has been called "skill" and "command"; check the
+                # values rather than betting on the key.
+                if any(clean_name in str(v) for v in tool_input.values()):
+                    return True
+            elif name == "Read":
+                if clean_name in str(tool_input.get("file_path", "")):
+                    return True
+    return False
+
+
+def _require_real_turn(text: str, proc) -> None:
+    """Raise unless the transcript shows a turn that actually ran.
+
+    Checked against captured transcripts of known-good runs: those end with a
+    result event of subtype "success", is_error false, and a real cost. A run
+    that fails any of these tells us nothing about triggering, and must not be
+    recorded as "did not trigger".
+    """
+    result = None
+    for line in text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if event.get("type") == "result":
+            result = event
+
+    if result is None:
+        stderr = proc.stderr.decode("utf-8", errors="replace")[:200]
+        raise ProbeFailure(f"no result event (rc={proc.returncode}): {stderr or text[:200]}")
+    if result.get("subtype") != "success" or result.get("is_error"):
+        raise ProbeFailure(
+            f"result subtype={result.get('subtype')!r} is_error={result.get('is_error')!r}: "
+            f"{str(result.get('result'))[:200]}"
+        )
+    if not result.get("total_cost_usd"):
+        raise ProbeFailure("result reported no cost -- the turn did no work")
 
 
 def run_single_query(
@@ -93,17 +174,9 @@ def run_single_query(
             raise ProbeFailure(f"timed out after {timeout}s")
 
         text = proc.stdout.decode("utf-8", errors="replace")
-        if '"type":"assistant"' not in text:
-            raise ProbeFailure(
-                f"no model turn (rc={proc.returncode}): "
-                f"{proc.stderr.decode('utf-8', errors='replace')[:200] or text[:200]}"
-            )
+        _require_real_turn(text, proc)
 
-        # The skill name appears in the tool input either way; matching on the
-        # raw JSON avoids depending on what the input key is called.
-        return clean_name in text and (
-            '"name":"Skill"' in text or '"name":"Read"' in text
-        )
+        return _invoked_this_skill(text, clean_name)
     finally:
         shutil.rmtree(run_root, ignore_errors=True)
 
