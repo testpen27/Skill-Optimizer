@@ -2,10 +2,12 @@
 
 Use this when the user wants the same Q&A for a new source, such as Belanjawan 2027, a state budget or another policy text. The Belanjawan 2026 brain in `scripts/belanjawan2026-brain.js` is the reference implementation. Copy it and replace the data; keep the engine (DSL, evaluator, prune, tiers) unchanged.
 
+**Work from the text only.** The user wants the brain built from the speech and its annexes, not from the web. Don't search online for criteria, amounts or updates. What the text doesn't say becomes a `semak` item or a question for the user (step 5). `references/text-signals.md` explains the method and what three years of speeches taught.
+
 ## Contents
-1. Read the source properly
+1. Split the source and start the ledger
 2. Keep only end results for people
-3. Verify eligibility on the web
+3. Take eligibility from the text
 4. Theme the items
 5. Check with the user (Q&A)
 6. Design the questions
@@ -13,14 +15,25 @@ Use this when the user wants the same Q&A for a new source, such as Belanjawan 2
 8. Verify twice
 9. Hand over
 
-## 1. Read the source properly
+## 1. Split the source and start the ledger
 
-- Budget PDFs are long (the 2026 speech is 362 pages). Extract text with `pdftotext -layout`, then read three layers:
-  1. The **speech body**, for announcements and wording.
-  2. **Lampiran I** (Ringkasan), for the exact amounts, criteria and tables. The STR/SARA matrix lives here.
-  3. **Lampiran II** (Langkah Cukai), for tax reliefs, duty changes and effective dates.
-- Search the text for items that affect people, including costs as well as benefits: `grep -i "percuma|diskaun|rebat|elaun|bantuan|geran|pengecualian|pelepasan|duti|naik|haji|KWSP"`.
-- Record a source (`perenggan` + `ms`, or `Lampiran X, ms Y`) for every item as you go.
+- Get the text: a Markdown export of the speech, or `pdftotext -layout` on the PDF. It must include the speech, **Lampiran I** (Ringkasan) and **Lampiran II** (Langkah Cukai).
+- Split it into numbered units:
+  ```bash
+  node scripts/split-source.js ub27.md units27.json
+  ```
+  It fails if paragraph or Lampiran I numbering has a gap. Fix the extraction before going on, because a gap is lost text. Each unit gets a reference (`Perenggan 184 (butiran 2)`, `Lampiran I Bil. 29`, `Lampiran II — Lampiran 36`), the signals it contains, and `flagged: true` if it is likely to affect a person.
+- Update what past speeches taught, then see the cross-year view:
+  ```bash
+  node scripts/learn-programmes.js ub25.md ub26.md ub27.md --out references/programmes.json
+  ```
+  It prints programmes in every year, programmes **missing from the new speech** (add each as a `prev:` ledger row and ask the user in step 5 whether it continues), and new programmes.
+- Start `references/ledger-<year>.tsv` with one row per unit (see `references/ledger-2026.tsv` for the format and `scripts/coverage.js` for the decisions). Read flagged units closely: each needs `item:<id>`, `gap`, `ask` or `exclude:<reason>`. Unflagged units may be `bulk`, but still skim them. The score only orders the reading; it doesn't decide anything.
+- Read all three layers as sources:
+  1. The **speech body**. One paragraph often holds several measures. Perenggan 184 (2026) holds five, and its lead-in names none of them.
+  2. **Lampiran I**. It has measures the speech never mentions; in 2026 these include the pensioners' special appreciation payment, APEL.Q and LiKES. It is not only a table of amounts.
+  3. **Lampiran II**. Each entry gives *Kedudukan Semasa* (current rule), *Cadangan* (the change) and *Tarikh Kuat Kuasa* (when it starts). That is enough for a tax item without any other source.
+- Record the unit reference in each item's `src` as you go. A Markdown export has no page numbers, so cite paragraph and Lampiran numbers.
 
 ## 2. Keep only end results for people
 
@@ -36,16 +49,26 @@ The user's rule: **focus on what the citizen gets or pays, not how much the gove
 - **Not the same as excluded:** tax or duty exemptions tied to an area (e.g. duty-free islands) are not "state infrastructure", and tobacco or alcohol duty rises are not "fiscal statistics". Keep them, and put them on the borderline list for step 5 if you're unsure.
 - **Rewrite rule:** "RM3.1 bilion untuk 560,000 penerima JKM" becomes "Bantuan bulanan mengikut kategori". The `value` field says what *one person* receives.
 
-## 3. Verify eligibility on the web
+## 3. Take eligibility from the text
 
-Speeches give amounts but rarely criteria, and implementation often changes after tabling. For each programme, search for the current criteria and any later change. Examples found for 2026:
+Speeches state amounts more often than criteria. Look for the criteria in this order, and stop at the first that answers:
 
-- **BUDI95:** the quota was cut from 300L to 200L a month from 1 Apr 2026.
-- **i-Suri:** requires eKasih registration.
-- **PeKa B40:** requires age 40+ and STR recipient status.
-- **MyLesen B2:** the intake had an end date.
+1. **The same unit and its paragraph.** Read the whole paragraph, not just the bullet, because the condition often sits in the lead-in.
+2. **The matching Lampiran I entry.** It often states who qualifies. In 2026, Lampiran I Bil. 26 says MyLesen B2 covers secondary pupils, students and youth from low-income families.
+3. **Lampiran II's *Kedudukan Semasa*** for tax items, which states the rule being changed.
+4. **Past years' speeches.** A continuing programme's criteria are often stated in the year it started or changed. For example, the 2025 Lampiran I gives i-Suri's 50% government match (up to RM300 a year and RM3,000 lifetime), and the 2026 speech only adds the age limit of 60. Use `references/programmes.json` to find the years a programme appears in.
 
-Put the confirming URL in `web`, and date-sensitive facts in `timing`. Update `DATA_AS_OF`.
+If no text states the criteria:
+
+- Make the item `certainty: 'check'` (tier `semak`).
+- Say in `who` only what the text supports.
+- Add it to the step 5 questions: "The text doesn't say who qualifies for X. Show it as *semak*, or do you want to state the criteria?"
+
+In the three speeches from 2024 to 2026, for example, PeKa B40's rule (age 40 and above, STR recipient) and BUDI95's monthly quota are never stated. Don't fill such gaps from memory or the web.
+
+Watch for **name collisions**: "PEKA" in the 2024–2026 speeches is *Peluang Kedua Anda* (prisons), not PeKa B40. Match programme names with their capitalisation and read the unit.
+
+Put date-sensitive facts from the text in `timing` (e.g. *Tarikh Kuat Kuasa*). Leave `web` empty for new items; the field is kept only for the 2026 data. Update `DATA_AS_OF` to the date of the speech text.
 
 ## 4. Theme the items
 
@@ -96,10 +119,10 @@ Once the text is analysed and the items are themed, stop. Check the item list wi
 | One-offs that have passed or are about to expire | They look stale | `timing` notes |
 | Restricted groups (Bumiputera-only, one state, one occupation) | They look too narrow | Lampiran I |
 
-Sweep the text for them before asking:
+**Where the list comes from:** every `gap` and `ask` row in the ledger, and every `prev:` row (programmes or items from last year that the new text doesn't mention). The ledger covers every unit, so this list is complete in a way a keyword search isn't. As a cross-check, sweep for the categories above and confirm each hit has a ledger decision:
 
 ```bash
-grep -inE "tembakau|rokok|cerut|vape|alkohol|minuman bergula|judi|bebas cukai|bebas duti|pulau|langkawi|labuan|tioman|pangkor|zon |koridor|pedalaman|luar bandar|dikaji|akan diperkenal" speech.txt lampiran*.txt
+grep -inE "tembakau|rokok|cerut|vape|alkohol|minuman bergula|judi|bebas cukai|bebas duti|pengecualian cukai kenderaan|langkawi|labuan|tioman|pangkor|zon |koridor|pedalaman|luar bandar|dikaji|akan diperkenal" ub27.md
 ```
 
 Give each item these options: **Include** (as `layak` or `kesan`), **Include as `semak`** (the person checks with the agency), or **Exclude**. "Other" comes on top of these.
@@ -111,9 +134,9 @@ Example round:
 > - Include as general information for everyone
 > - Exclude
 >
-> **Q2. Duty-free shopping in Langkawi, Labuan and Tioman is extended (Lampiran II, ms …). Include it?**
-> - Include as `semak`, with the islands named in `who` (Recommended: the region question can't identify island residents)
-> - Include, and add a way to identify island residents (see check 2)
+> **Q2. The vehicle tax exemption in Langkawi and Labuan is limited to vehicles worth up to RM300,000 from 1 January 2026 (Perenggan 27). Include it?**
+> - Include as `kesan` for Labuan residents and as `semak` with Langkawi named in `who` (Recommended: the region question has Labuan but can't identify Langkawi residents)
+> - Include, and add a way to identify Langkawi residents (see check 2)
 > - Exclude
 
 **2. Targeting area-specific items.** An included item may apply only in places the current questions can't identify. For example, the 2026 region question offers only Semenanjung, Sabah, Sarawak and Labuan, so a Langkawi resident can't be picked out. Ask how to handle it:
@@ -131,6 +154,7 @@ Remind the user of their own rule against unnecessary questions.
 
 ### Record the answers
 
+- Update the ledger row for each question: `ask`/`gap` becomes `item:<id>` or `exclude:user` with the user's words in the note. `prev:` rows become `carried` or `dropped`.
 - Add a **Keputusan pengguna** (user decisions) section to the new spec, with one row per decision: the item, the decision, the user's own words if they chose "Other", and the date.
 - Give every item the user chose to include a persona test in `test.js`, so a later edit can't drop it silently. Keep every exclusion listed in the spec so it isn't asked again.
 - Don't re-ask a decision recorded in the previous year's spec unless the new source changes it. Tell the user it has been carried over.
@@ -167,6 +191,8 @@ Remind the user of their own rule against unnecessary questions.
   - If an item is "never shown", check the simulator before blaming the brain (in 2026 it was a harness bug).
 - **Manual read:** dump every user-facing string and read it in full against `bm-style.md`. Add every error you fix to the lint's banned list.
 - **Decision check:** every "include" row in **Keputusan pengguna** must have an item in `BENEFITS` and a persona test that shows it. Every "exclude" row must have no item.
+- **Coverage check:** `node scripts/coverage.js ub27.md references/ledger-2027.tsv --brain scripts/belanjawan2027-brain.js --final`. It must pass: every unit decided, no flagged unit bulk-excluded, every brain item traced to a unit, and no `gap`/`ask` left open.
+- **Signal check:** if you found a person-level measure the scorer didn't flag, add the phrase that should have caught it to `scripts/text-signals.js` (see `references/text-signals.md`).
 
 ## 9. Hand over
 

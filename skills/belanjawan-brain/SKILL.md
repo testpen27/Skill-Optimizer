@@ -26,6 +26,13 @@ A self-contained logic engine (no UI, no dependencies) that turns a person's ans
 | `references/sample-output.json` | A real `evaluate()` result (single mother, 45) | Read before building the results screen |
 | `references/bm-style.md` | Bahasa Melayu style guide (incl. user corrections such as no "makan gaji") | Read before writing or editing any user-facing text |
 | `references/building-a-new-brain.md` | Method for rebuilding the brain for a new document (e.g. Belanjawan 2027) | Read when the source document changes |
+| `scripts/split-source.js` | Splits a speech (Markdown or `pdftotext` output) into numbered units (paragraph bullets, Lampiran I items, Lampiran II entries) and flags the ones likely to affect a person | First step of any rebuild or source check: `node scripts/split-source.js ub27.md units27.json` |
+| `scripts/text-signals.js` | The word signals behind the flags, learned from the 2024–2026 speeches | Extend when a rebuild finds a measure it didn't flag |
+| `scripts/learn-programmes.js` | Learns citizen programme names across years; lists programmes missing from the newest speech | Rebuild step 1, with all past speeches |
+| `scripts/coverage.js` | Fails unless every unit has a ledger decision and every brain item traces to a unit | After any edit that touches items: `node scripts/coverage.js ub26.md references/ledger-2026.tsv --brain scripts/belanjawan2026-brain.js` |
+| `references/ledger-2026.tsv` | One decision per unit of Ucapan Belanjawan 2026, built from the text only; open `gap`/`ask` rows are questions for the user | Read before adding items; update it with every item change |
+| `references/programmes.json` | Citizen programmes learned from past speeches, with the years each appears | Used by the scorer; read for the cross-year view |
+| `references/text-signals.md` | How the text-only method works, its measured recall, and what three years of speeches taught | Read before a rebuild or when extending the signals |
 
 ### B. What the brain returns at runtime — `B26Brain.evaluate(answers)`
 
@@ -104,7 +111,8 @@ Rendering rules:
    - Output states **what the person gets or pays**, never government allocation totals or beneficiary counts. The lint fails otherwise.
    - **Don't add overly personal questions** unless a rule truly needs them, and every question except age and region must be skippable (appended automatically).
    - **Special cases** (smokers, alcohol, investors and similar) belong in the `special` theme, as `kind: 'kesan'` when they cost the person more.
-   - Every item needs a `src` reference to the speech. Web-verified details go in `web`, and date-sensitive facts in `timing`.
+   - **Work from the text only.** Every item needs a `src` reference to a unit of the speech or its annexes. Take amounts, criteria and dates from the text, not the web; where the text is silent, use `certainty: 'check'` and ask the user. Put date-sensitive facts in `timing`. Leave `web` empty on new items.
+   - Record every item change in `references/ledger-2026.tsv` (the unit's decision becomes `item:<id>`), then run `scripts/coverage.js`.
    - **When you're unsure whether an item belongs in the brain, or in which theme, ask the user.** Don't decide silently. Use the Q&A format in step 5 of `references/building-a-new-brain.md`, and always leave room for the user to say something else.
 3. **Run verification twice, every time:** `node scripts/test.js && node scripts/verify2.js`. Both must pass with 0 failures and all items reachable. Add a persona test for any new rule, and add any new wording mistake you fix to the lint's banned list.
 4. Run `node scripts/gen-spec.js` and update the tables in `references/LOGIK-BELANJAWAN-2026.md`. Bump `VERSION` and `DATA_AS_OF`.
@@ -113,15 +121,17 @@ Rendering rules:
 
 Read `references/building-a-new-brain.md` and follow its nine steps:
 
-1. Read the speech and both annexes.
+1. Split the source into units and start the ledger.
 2. Keep only citizen end results.
-3. Web-verify eligibility.
+3. Take eligibility from the text (this year's, then past years').
 4. Theme the items.
 5. **Check with the user.**
 6. Design minimal skippable questions.
 7. Write the rules.
-8. Verify twice.
+8. Verify twice, plus the coverage check.
 9. Hand over.
+
+**Text only.** The user wants the brain pulled from the speech, Lampiran I and Lampiran II, not the web. Coverage comes from the ledger, not from keywords: every unit of the text gets a decision, and `coverage.js --final` fails if one is missing or still open. Lampiran I carries measures the speech never mentions, so read it as a source, not only for amounts. `references/text-signals.md` explains the method.
 
 Step 5 isn't optional. Before writing any questions, put the item list to the user as questions and answers in the conversation. Use `AskUserQuestion` where it's available; its "Other" choice lets the user say something else. Cover:
 
@@ -141,4 +151,5 @@ Keep the engine and replace the data. Keep 2026 as its own versioned file, not o
 - **Spouse's age isn't asked**, so a 40+ spouse doesn't trigger PeKa B40.
 - **Bumiputera-only programmes** are folded into broader cards, with the restriction in the text.
 - **Portal links should be verified** before launch.
+- **The 2026 ledger has open questions.** A text-only read of Ucapan Belanjawan 2026 found measures the brain doesn't have yet, such as the Langkawi and Labuan vehicle tax exemption cap, PERKESO dialysis rates and the KEMAS contract-pensioner allowance. These are `gap` rows, and borderline cases are `ask` rows. Resolve them with the user before calling the 2026 data complete.
 - **Budget 2027** (due Oct 2026) will supersede this data.

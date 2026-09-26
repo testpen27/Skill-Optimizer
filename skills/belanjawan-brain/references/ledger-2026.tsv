@@ -1,0 +1,1282 @@
+# Ledger: Ucapan Belanjawan 2026 (ub26.md), 1279 units from scripts/split-source.js
+# Backfilled 2026-09-26 from the text only (no web). gap/ask rows are open questions for the user (step 5).
+# unit	decision	note
+P1	bulk	
+P2	exclude:rhetoric	
+P3	bulk	
+P4	bulk	
+P5	bulk	
+P6	bulk	
+P7	bulk	
+P8	exclude:business	
+P9	bulk	
+P10	bulk	
+P11	exclude:governance	
+P12	exclude:governance	
+P13	bulk	
+P14	bulk	
+P15	bulk	
+P16	bulk	
+P16.1	bulk	
+P16.2	bulk	
+P16.3	bulk	
+P16.4	bulk	
+P16.5	bulk	
+P17	bulk	
+P18	bulk	
+P19	bulk	
+P20	bulk	
+P21	exclude:governance	
+P22	bulk	
+P23	bulk	
+P24	exclude:allocation	
+P25	bulk	
+P26	exclude:governance	
+P27	gap	Pengecualian cukai kenderaan di Langkawi & Labuan dihadkan kepada kenderaan bernilai ≤RM300,000 mulai 1 Jan 2026 (kesan; kawasan)
+P28	ask	Potongan cukai penderma program antirasuah (individu penderma)
+P29	bulk	
+P30	exclude:allocation	
+P31	bulk	
+P32	bulk	
+P33	exclude:allocation	
+P34	bulk	
+P35	bulk	
+P36	bulk	
+P36.1	exclude:allocation	
+P36.2	exclude:allocation	
+P37	bulk	
+P38	bulk	
+P39	ask	Pindaan Akta Perlindungan Pengguna: Lemon Law (hak pengguna, tiada wang)
+P40	exclude:business	
+P40.1	bulk	
+P40.2	bulk	
+P40.3	ask	Tarif elektrik: 85% pengguna tiada kenaikan, pengguna tinggi bayar lebih (kesan?)
+P40.4	item:diesel_rm200	
+P40.5	exclude:allocation	
+P40.6	item:budi95,budi95_ehailing	
+P41	exclude:business	
+P42	exclude:business	
+P42.1	bulk	
+P42.2	exclude:infra	
+P42.3	bulk	
+P42.4	exclude:governance	
+P43	exclude:allocation	reviewed
+P43.1	exclude:governance	
+P43.2	bulk	
+P43.3	bulk	
+P43.4	bulk	
+P43.5	exclude:business	
+P43.6	item:tuisyen_madani	
+P44	bulk	
+P44.1	exclude:governance	
+P44.2	bulk	
+P44.3	exclude:governance	
+P44.4	exclude:governance	
+P45	bulk	
+P45.1	bulk	
+P45.2	bulk	
+P45.3	bulk	
+P45.4	bulk	
+P45.5	bulk	
+P45.6	bulk	
+P45.7	bulk	
+P45.8	bulk	
+P45.9	bulk	
+P45.10	bulk	
+P45.11	bulk	
+P45.12	bulk	
+P45.13	bulk	
+P45.14	bulk	
+P45.15	bulk	
+P45.16	bulk	
+P45.17	bulk	
+P45.18	bulk	
+P45.19	bulk	
+P45.20	bulk	
+P45.21	bulk	
+P45.22	bulk	
+P45.23	bulk	
+P45.24	bulk	
+P45.25	bulk	
+P45.26	bulk	
+P45.27	bulk	
+P45.28	bulk	
+P45.29	bulk	
+P45.30	bulk	
+P45.31	bulk	
+P45.32	bulk	
+P45.33	bulk	
+P45.34	bulk	
+P45.35	bulk	
+P45.36	bulk	
+P45.37	bulk	
+P45.38	bulk	
+P45.39	bulk	
+P45.40	bulk	
+P45.41	bulk	
+P45.42	bulk	
+P45.43	bulk	
+P45.44	exclude:governance	
+P45.45	bulk	
+P45.46	bulk	
+P45.47	bulk	
+P45.48	bulk	
+P45.49	bulk	
+P45.50	bulk	
+P45.51	bulk	
+P45.52	bulk	
+P45.53	bulk	
+P45.54	bulk	
+P45.55	bulk	
+P45.56	bulk	
+P45.57	bulk	
+P46	bulk	
+P46.1	bulk	
+P46.2	exclude:allocation	
+P46.3	ask	Subsidi elektrik Sabah & Labuan (kawasan)
+P46.4	exclude:infra	
+P46.5	bulk	
+P46.6	exclude:infra	
+P46.7	bulk	
+P46.8	ask	Ruang niaga Tamu Desa untuk peniaga kecil Sabah & Sarawak (kawasan)
+P47	bulk	
+P48	bulk	
+P49	bulk	
+P49.1	exclude:business	
+P49.2	exclude:allocation	
+P49.3	bulk	
+P49.4	bulk	
+P49.5	exclude:business	
+P50	bulk	
+P50.1	exclude:business	
+P50.2	bulk	
+P50.3	bulk	
+P50.4	bulk	
+P50.5	bulk	
+P51	bulk	
+P51.1	bulk	
+P51.2	bulk	
+P52	bulk	
+P52.1	bulk	
+P52.2	exclude:business	
+P52.3	exclude:governance	
+P53	bulk	
+P54	bulk	
+P54.1	bulk	
+P55	bulk	
+P56	bulk	
+P57	bulk	
+P58	bulk	
+P59	bulk	
+P60	bulk	
+P60.1	bulk	
+P60.2	bulk	
+P61	bulk	
+P62	bulk	
+P62.1	bulk	
+P62.2	bulk	
+P62.3	bulk	
+P62.4	bulk	
+P63	bulk	
+P64	bulk	
+P65	bulk	
+P65.1	ask	Program IPT@Komuniti: AI & digital untuk 10,000 pelajar tahfiz dan pondok
+P65.2	bulk	
+P65.3	bulk	
+P65.4	bulk	
+P65.5	exclude:business	
+P65.6	item:latihan_tvet	restates
+P65.7	item:latihan_tvet	
+P66	bulk	
+P67	bulk	
+P67.1	bulk	
+P67.2	exclude:infra	
+P67.3	ask	Geran padanan iTEKAD untuk golongan rentan tingkatkan kemahiran
+P68	bulk	
+P68.1	bulk	
+P68.2	exclude:governance	
+P69	bulk	
+P69.1	bulk	
+P69.2	bulk	
+P69.3	bulk	
+P69.4	bulk	
+P70	bulk	
+P71	exclude:business	
+P72	bulk	
+P72.1	bulk	
+P72.2	bulk	
+P72.3	bulk	
+P72.4	bulk	
+P72.5	bulk	
+P72.6	bulk	
+P73	bulk	
+P74	exclude:business	
+P75	item:tax_pelancongan	restates
+P76	exclude:heading	
+P76.1	item:teksi	
+P76.2	item:teksi	restates
+P77	bulk	
+P78	bulk	
+P79	bulk	
+P80	bulk	
+P81	bulk	
+P82	ask	Potongan cukai sumbangan kepada Akaun Amanah Jabatan Muzium
+P83	bulk	
+P83.1	exclude:business	
+P83.2	bulk	
+P83.3	exclude:allocation	
+P84	bulk	
+P85	bulk	
+P85.1	bulk	
+P85.2	bulk	
+P85.3	bulk	
+P86	bulk	
+P86.1	bulk	
+P86.2	exclude:business	
+P87	bulk	
+P87.1	bulk	
+P87.2	bulk	
+P87.3	exclude:business	
+P87.4	bulk	
+P87.5	bulk	
+P87.6	bulk	
+P87.7	bulk	
+P88	bulk	
+P89	bulk	
+P89.1	bulk	
+P89.2	bulk	
+P89.3	bulk	
+P90	exclude:allocation	
+P91	bulk	
+P92	bulk	
+P93	bulk	
+P94	bulk	
+P95	bulk	
+P96	bulk	
+P96.1	bulk	
+P96.2	bulk	
+P96.3	bulk	
+P96.4	bulk	
+P97	exclude:business	
+P97.1	bulk	
+P97.2	exclude:allocation	
+P98	exclude:allocation	
+P98.1	bulk	
+P98.2	ask	SJPP diperluas menjamin usahawan mikro
+P98.3	bulk	
+P99	bulk	
+P100	bulk	
+P100.1	bulk	
+P100.2	bulk	
+P101	exclude:governance	
+P102	bulk	
+P102.1	bulk	
+P102.2	bulk	
+P102.3	bulk	
+P102.4	exclude:business	
+P102.5	bulk	
+P102.6	bulk	
+P102.7	bulk	
+P103	bulk	
+P104	bulk	
+P104.1	bulk	
+P104.2	bulk	
+P104.3	bulk	
+P104.4	bulk	
+P104.5	bulk	
+P104.6	bulk	
+P104.7	gap	Solar ATAP: pengguna domestik boleh pasang solar PV dan mengimbangi bil
+P104.8	bulk	
+P104.9	bulk	
+P105	bulk	
+P105.1	exclude:allocation	
+P105.2	exclude:governance	
+P106	bulk	
+P106.1	bulk	
+P106.2	bulk	
+P106.3	bulk	
+P106.4	item:pesawah	
+P107	bulk	
+P107.1	bulk	
+P108	exclude:heading	reviewed
+P108.1	item:agro	restates
+P108.2	item:agro	
+P108.3	exclude:business	
+P108.4	bulk	
+P109	bulk	
+P110	exclude:heading	
+P110.1	exclude:allocation	
+P110.2	exclude:governance	
+P110.3	exclude:governance	
+P111	exclude:heading	reviewed
+P111.1	item:nelayan_elaun	
+P111.2	item:diesel_nelayan	
+P111.3	bulk	
+P112	ask	Insentif pengusaha buah-buahan tempatan (nanas, durian belanda…)
+P113	bulk	
+P114	bulk	
+P115	bulk	
+P115.1	bulk	
+P115.2	bulk	
+P115.3	bulk	
+P116	bulk	
+P116.1	bulk	
+P116.2	bulk	
+P116.3	bulk	
+P117	bulk	
+P117.1	bulk	
+P117.2	bulk	
+P117.3	bulk	
+P117.4	bulk	
+P117.5	exclude:heading	
+P117.6	bulk	
+P117.7	bulk	
+P117.8	bulk	
+P118	bulk	
+P119	item:veteran	restates
+P120	item:veteran	
+P121	bulk	
+P121.1	bulk	
+P121.2	bulk	
+P122	bulk	
+P122.1	bulk	
+P122.2	bulk	
+P122.3	bulk	
+P123	bulk	
+P124	bulk	
+P125	bulk	
+P126	bulk	
+P127	exclude:allocation	
+P128	bulk	
+P129	bulk	
+P129.1	bulk	
+P129.2	bulk	
+P129.3	bulk	
+P129.4	bulk	
+P129.5	bulk	
+P129.6	bulk	
+P129.7	bulk	
+P129.8	bulk	
+P129.9	bulk	
+P129.10	bulk	
+P129.11	bulk	
+P129.12	bulk	
+P130	bulk	
+P130.1	bulk	
+P130.2	bulk	
+P131	bulk	
+P132	bulk	
+P132.1	bulk	
+P132.2	exclude:allocation	
+P132.3	bulk	
+P133	exclude:governance	
+P134	bulk	
+P134.1	bulk	
+P134.2	bulk	
+P134.3	bulk	
+P134.4	bulk	
+P135	bulk	
+P135.1	exclude:business	
+P135.2	bulk	
+P136	bulk	
+P136.1	bulk	
+P136.2	bulk	
+P136.3	bulk	
+P137	exclude:business	
+P138	bulk	
+P138.1	bulk	
+P138.2	bulk	
+P138.3	bulk	
+P138.4	bulk	
+P138.5	ask	Pembiayaan mikro KWAP untuk pesara
+P139	bulk	
+P140	exclude:heading	
+P140.1	bulk	
+P140.2	exclude:allocation	
+P140.3	bulk	
+P140.4	bulk	
+P140.5	exclude:business	
+P141	bulk	
+P142	bulk	
+P142.1	bulk	
+P142.2	item:tax_taska	restates
+P142.3	bulk	
+P142.4	item:pembiayaan_wanita	
+P142.5	item:kasihnita	
+P143	exclude:governance	
+P143.1	ask	Had umur belia 15–30 tahun mulai Jan 2026 (mengubah kelayakan program belia)
+P143.2	item:plkn	
+P143.3	item:k_youth	restates
+P143.4	item:rakan_muda	
+P143.5	item:pembiayaan_belia	restates
+P144	exclude:allocation	
+P145	item:orang_asli	
+P146	bulk	
+P146.1	bulk	
+P146.2	bulk	
+P147	bulk	
+P147.1	bulk	
+P147.2	bulk	
+P147.3	bulk	
+P147.4	bulk	
+P148	item:orang_asli	restates
+P149	bulk	
+P149.1	item:bantuan_oku	restates
+P149.2	item:autisme	restates
+P149.3	item:van_oku	
+P149.4	item:tax_kurang_upaya	
+P150	exclude:governance	
+P150.1	item:peluang_kedua	
+P150.2	exclude:allocation	
+P150.3	bulk	
+P151	exclude:allocation	
+P152	exclude:governance	
+P153	bulk	
+P154	exclude:governance	
+P155	exclude:business	
+P155.1	exclude:governance	
+P155.2	bulk	
+P156	exclude:allocation	
+P156.1	ask	Geran perniagaan BSN sehingga RM10,000 kepada 1,000 usahawan mikro
+P156.2	bulk	
+P156.3	bulk	
+P156.4	exclude:governance	
+P157	exclude:governance	
+P158	exclude:allocation	
+P158.1	bulk	
+P158.2	bulk	
+P158.3	bulk	
+P159	exclude:governance	
+P159.1	item:str_sara	
+P160	item:penghargaan_sara	restates
+P160.1	item:penghargaan_sara	
+P160.2	exclude:allocation	
+P161	exclude:governance	
+P161.1	exclude:allocation	
+P161.2	exclude:allocation	
+P161.3	bulk	
+P162	exclude:allocation	
+P163	item:payung_rahmah	
+P164	item:harga_sabah_sarawak	restates
+P165	item:i_saraan	
+P166	item:lindung_kendiri	restates
+P167	item:perkeso_pindah	
+P168	item:i_suri	
+P169	bulk	
+P170	gap	PERKESO naikkan kadar maksimum rawatan hemodialisis RM150 → RM170 setiap rawatan
+P171	exclude:governance	
+P172	bulk	
+P173	item:warga_emas	restates
+P174	bulk	
+P174.1	bulk	
+P174.2	item:rumah_warga_emas	restates
+P174.3	exclude:business	
+P175	bulk	
+P176	bulk	
+P177	bulk	
+P178	bulk	
+P179	bulk	
+P180	bulk	
+P180.1	exclude:allocation	
+P180.2	bulk	
+P180.3	bulk	
+P181	bulk	
+P181.1	bulk	
+P181.2	item:duti_insurans_kecil	
+P181.3	exclude:business	
+P181.4	item:mhit_kwsp	
+P181.5	exclude:allocation	
+P181.6	item:mysalam	
+P182	bulk	
+P182.1	bulk	
+P182.2	gap	Lantikan tetap: 4,500 doktor kontrak, 833 jururawat kontrak, 935 graduan Institut Latihan KKM
+P182.3	item:fi_klinik_swasta	restates
+P182.4	gap	Elaun Tugas Atas Panggilan (ETAP) pegawai perubatan/pakar/pergigian naik ~40% mulai 1 Okt 2025
+P183	bulk	
+P184	bulk	
+P184.1	item:duti_cerut,duti_heated_tobacco,duti_rokok	
+P184.2	item:berhenti_merokok	
+P184.3	item:duti_alkohol	
+P184.4	item:duti_rokok	restates
+P184.5	item:tax_vaksin	
+P185	bulk	
+P186	bulk	
+P187	bulk	
+P188	bulk	
+P189	bulk	
+P189.1	bulk	
+P189.2	bulk	
+P189.3	bulk	
+P189.4	bulk	
+P189.5	bulk	
+P189.6	bulk	
+P189.7	bulk	
+P189.8	bulk	
+P189.9	bulk	
+P189.10	bulk	
+P189.11	bulk	
+P189.12	bulk	
+P189.13	bulk	
+P189.14	bulk	
+P189.15	bulk	
+P189.16	bulk	
+P189.17	bulk	
+P189.18	bulk	
+P189.19	bulk	
+P189.20	bulk	
+P189.21	bulk	
+P189.22	bulk	
+P189.23	bulk	
+P189.24	bulk	
+P189.25	bulk	
+P189.26	bulk	
+P189.27	bulk	
+P189.28	bulk	
+P189.29	bulk	
+P189.30	bulk	
+P189.31	bulk	
+P189.32	bulk	
+P189.33	bulk	
+P189.34	bulk	
+P189.35	bulk	
+P189.36	bulk	
+P189.37	bulk	
+P189.38	bulk	
+P190	bulk	
+P191	exclude:infra	
+P191.1	bulk	
+P191.2	bulk	
+P192	bulk	
+P192.1	item:rmt_biasiswa	restates
+P192.2	item:rmt_biasiswa	
+P192.3	item:bantuan_am	
+P192.4	item:bap	
+P193	bulk	
+P193.1	bulk	
+P193.2	bulk	
+P193.3	bulk	
+P194	exclude:governance	
+P194.1	bulk	
+P194.2	bulk	
+P194.3	exclude:governance	
+P194.4	item:elaun_mbk	
+P194.5	bulk	
+P195	bulk	
+P196	bulk	
+P197	bulk	
+P198	bulk	
+P199	exclude:heading	
+P199.1	exclude:business	
+P199.2	exclude:governance	
+P199.3	item:celik_madani	
+P200	exclude:heading	reviewed
+P200.1	item:dapur_madani	
+P200.2	item:dapur_madani	restates
+P200.3	item:job_on_campus	
+P201	bulk	
+P202	exclude:infra	
+P202.1	item:ptptn_percuma	
+P202.2	item:ptptn_kelas_pertama	
+P202.3	bulk	
+P203	bulk	
+P204	exclude:infra	
+P205	ask	Potongan cukai sumbangan kepada tabung endowmen hospital pengajar
+P206	bulk	
+P207	bulk	
+P208	exclude:heading	
+P208.1	bulk	
+P208.2	item:ras	
+P208.3	item:myraillife	
+P209	exclude:infra	
+P210	bulk	
+P210.1	bulk	
+P210.2	bulk	
+P210.3	bulk	
+P211	bulk	
+P212	bulk	
+P212.1	bulk	
+P212.2	bulk	
+P212.3	exclude:allocation	
+P212.4	bulk	
+P212.5	exclude:governance	
+P212.6	item:saringan_pemandu	
+P213	item:lupus_kenderaan	
+P214	ask	Kota MADANI Presint 19: 10,000 rumah, 80% untuk penjawat awam
+P215	bulk	
+P215.1	bulk	
+P215.2	bulk	
+P215.3	bulk	
+P216	item:rumah_mampu_milik	restates
+P216.1	bulk	
+P216.2	bulk	
+P216.3	bulk	
+P216.4	bulk	
+P216.5	exclude:governance	
+P217	item:duti_rumah_pertama	restates
+P218	ask	Duti setem 4% → 8% rumah dibeli bukan warganegara (kesan bukan warganegara; Q&A untuk rakyat)
+P219	bulk	
+P220	exclude:allocation	
+P221	bulk	
+P222	bulk	
+P223	exclude:governance	
+P223.1	exclude:institution	
+P223.2	ask	720 pelajar tahfiz dilatih kemahiran melalui GiatMARA
+P224	bulk	
+P225	exclude:rhetoric	
+P226	bulk	
+P227	bulk	
+P228	item:kwsp_haji,gcr_haji	
+P229	bulk	
+P229.1	bulk	
+P229.2	bulk	
+P229.3	bulk	
+P229.4	exclude:institution	
+P229.5	bulk	
+P229.6	bulk	
+P230	exclude:governance	
+P231	bulk	
+P232	bulk	
+P232.1	bulk	
+P232.2	bulk	
+P232.3	bulk	
+P232.4	bulk	
+P232.5	bulk	
+P233	bulk	
+P234	bulk	
+P234.1	bulk	
+P234.2	exclude:governance	
+P234.3	bulk	
+P234.4	bulk	
+P235	bulk	
+P235.1	bulk	
+P235.2	bulk	
+P235.3	bulk	
+P235.4	bulk	
+P236	exclude:governance	
+P237	bulk	
+P237.1	bulk	
+P237.2	exclude:allocation	
+P237.3	exclude:governance	
+P237.4	item:rumah_kontrak_awam	
+P237.5	item:lppsa	
+P237.6	item:lppsa	restates
+P237.7	item:lppsa	restates
+P238	gap	Bayaran Sara Hidup 4,000 pesara kontrak KEMAS RM300 → RM500 sebulan
+P239	item:pjm	
+P240	item:penjawat_sspa	Bantuan Insentif Berasaskan Prestasi diperluas kepada Kumpulan Pengurusan dan Profesional
+P241	item:penjawat_sspa	syarat peluasan BIBP
+P242	item:penjawat_sspa	restates
+P243	exclude:governance	
+P244	bulk	
+P245	item:penjawat_sspa	
+P246	item:bkk_penjawat,bkk_pesara	
+P247	item:sumbangan_agama	
+P248	bulk	
+P249	bulk	
+P250	bulk	
+P251	exclude:rhetoric	
+L1.1	bulk	
+L1.1.1	bulk	
+L1.1.2	bulk	
+L1.2	bulk	
+L1.2.1	bulk	
+L1.2.2	bulk	
+L1.2.3	bulk	
+L1.2.4	bulk	
+L1.2.5	exclude:business	
+L1.2.6	ask	= P28
+L1.2.7	bulk	
+L1.3	bulk	
+L1.3.1	bulk	
+L1.3.2	bulk	
+L1.3.3	bulk	
+L1.3.4	bulk	
+L1.3.5	exclude:governance	
+L1.3.6	bulk	
+L1.3.7	bulk	
+L1.3.8	bulk	
+L1.3.9	exclude:governance	
+L1.3.10	bulk	
+L1.3.11	bulk	
+L1.3.12	exclude:governance	
+L1.4	bulk	
+L1.4.1	bulk	
+L1.4.2	exclude:institution	
+L1.4.3	exclude:institution	
+L1.5	bulk	
+L1.5.1	bulk	
+L1.5.2	bulk	
+L1.5.3	bulk	
+L1.5.4	ask	= P40.3
+L1.5.5	bulk	
+L1.5.6	item:budi95	reviewed
+L1.6	exclude:heading	reviewed
+L1.6.1	exclude:infra	
+L1.6.2	exclude:institution	reviewed
+L1.6.3	bulk	
+L1.7	bulk	
+L1.7.1	exclude:institution	
+L1.8	bulk	
+L1.8.1	bulk	
+L1.8.2	bulk	
+L1.8.3	bulk	
+L1.8.4	bulk	
+L1.8.5	bulk	
+L1.8.6	bulk	
+L1.8.7	bulk	
+L1.8.8	bulk	
+L1.8.9	bulk	
+L1.8.10	bulk	
+L1.8.11	bulk	
+L1.8.12	bulk	
+L1.8.13	bulk	
+L1.8.14	bulk	
+L1.8.15	bulk	
+L1.8.16	bulk	
+L1.8.17	bulk	
+L1.8.18	bulk	
+L1.8.19	bulk	
+L1.8.20	bulk	
+L1.8.21	bulk	
+L1.8.22	bulk	
+L1.8.23	bulk	
+L1.8.24	bulk	
+L1.8.25	bulk	
+L1.8.26	bulk	
+L1.8.27	bulk	
+L1.8.28	bulk	
+L1.8.29	bulk	
+L1.8.30	bulk	
+L1.8.31	bulk	
+L1.8.32	bulk	
+L1.8.33	bulk	
+L1.8.34	bulk	
+L1.8.35	bulk	
+L1.8.36	bulk	
+L1.8.37	bulk	
+L1.8.38	bulk	
+L1.8.39	bulk	
+L1.8.40	bulk	
+L1.8.41	bulk	
+L1.8.42	bulk	
+L1.8.43	bulk	
+L1.8.44	bulk	
+L1.8.45	exclude:infra	
+L1.8.46	bulk	
+L1.8.47	bulk	
+L1.8.48	bulk	
+L1.8.49	bulk	
+L1.8.50	bulk	
+L1.8.51	bulk	
+L1.8.52	bulk	
+L1.8.53	bulk	
+L1.8.54	bulk	
+L1.8.55	bulk	
+L1.8.56	bulk	
+L1.8.57	bulk	
+L1.8.58	bulk	
+L1.8.59	bulk	
+L1.8.60	bulk	
+L1.8.61	bulk	
+L1.8.62	bulk	
+L1.8.63	bulk	
+L1.8.64	bulk	
+L1.8.65	bulk	
+L1.8.66	bulk	
+L1.8.67	bulk	
+L1.8.68	bulk	
+L1.8.69	bulk	
+L1.8.70	bulk	
+L1.8.71	ask	= P46.3
+L1.8.72	bulk	
+L1.8.73	bulk	
+L1.8.74	bulk	
+L1.8.75	bulk	
+L1.8.76	ask	= P46.8
+L1.8.77	bulk	
+L1.8.78	bulk	
+L1.8.79	bulk	
+L1.8.80	bulk	
+L1.9	bulk	
+L1.9.1	exclude:business	
+L1.9.2	exclude:governance	
+L1.9.3	exclude:business	
+L1.9.4	bulk	
+L1.9.5	bulk	
+L1.9.6	bulk	
+L1.9.7	bulk	
+L1.9.8	bulk	
+L1.9.9	bulk	
+L1.9.10	exclude:business	
+L1.9.11	exclude:business	
+L1.9.12	bulk	
+L1.9.13	bulk	
+L1.9.14	bulk	
+L1.9.15	bulk	
+L1.9.16	bulk	
+L1.9.17	bulk	
+L1.9.18	bulk	
+L1.9.19	exclude:business	
+L1.10	bulk	
+L1.10.1	bulk	
+L1.10.2	bulk	
+L1.10.3	bulk	
+L1.10.4	bulk	
+L1.10.5	bulk	
+L1.10.6	bulk	
+L1.11	bulk	
+L1.11.1	bulk	
+L1.11.2	exclude:allocation	
+L1.11.3	exclude:governance	
+L1.11.4	gap	LiKES (TalentCorp): latihan industri bakat muda dilanjutkan 12 bulan (Lampiran I sahaja)
+L1.12	bulk	
+L1.12.1	bulk	
+L1.12.2	ask	= P67.3
+L1.12.3	bulk	
+L1.12.4	bulk	
+L1.12.5	bulk	
+L1.12.6	bulk	
+L1.12.7	bulk	
+L1.12.8	bulk	
+L1.12.9	bulk	
+L1.12.10	exclude:governance	
+L1.13	bulk	
+L1.13.1	exclude:business	
+L1.13.2	bulk	
+L1.13.3	bulk	
+L1.13.4	item:teksi	restates
+L1.13.5	bulk	
+L1.13.6	bulk	
+L1.13.7	bulk	
+L1.13.8	bulk	
+L1.13.9	bulk	
+L1.13.10	bulk	
+L1.13.11	bulk	
+L1.13.12	bulk	
+L1.13.13	bulk	
+L1.13.14	bulk	
+L1.13.15	bulk	
+L1.13.16	bulk	
+L1.14	bulk	
+L1.14.1	bulk	
+L1.14.2	bulk	
+L1.14.3	exclude:business	
+L1.14.4	bulk	
+L1.14.5	exclude:business	
+L1.14.6	bulk	
+L1.14.7	bulk	
+L1.14.8	bulk	
+L1.14.9	bulk	
+L1.14.10	bulk	
+L1.14.11	bulk	
+L1.15	bulk	
+L1.15.1	bulk	
+L1.15.2	exclude:governance	
+L1.15.3	bulk	
+L1.15.4	bulk	
+L1.15.5	bulk	
+L1.16	bulk	
+L1.16.1	bulk	
+L1.16.2	exclude:business	
+L1.16.3	bulk	
+L1.16.4	bulk	
+L1.16.5	bulk	
+L1.17	bulk	
+L1.17.1	exclude:business	reviewed
+L1.17.2	bulk	
+L1.17.3	bulk	
+L1.17.4	bulk	
+L1.17.5	bulk	
+L1.17.6	bulk	
+L1.17.7	exclude:business	reviewed
+L1.17.8	exclude:institution	
+L1.17.9	exclude:business	
+L1.17.10	exclude:business	
+L1.17.11	bulk	
+L1.17.12	bulk	
+L1.17.13	bulk	
+L1.17.14	bulk	
+L1.17.15	bulk	
+L1.17.16	exclude:governance	
+L1.17.17	bulk	
+L1.17.18	exclude:business	reviewed
+L1.17.19	bulk	
+L1.17.20	bulk	
+L1.18	bulk	
+L1.18.1	bulk	
+L1.18.2	bulk	
+L1.18.3	item:pekebun_kecil	
+L1.18.4	exclude:business	
+L1.18.5	item:pekebun_kecil	restates
+L1.18.6	bulk	
+L1.18.7	exclude:infra	
+L1.18.8	exclude:business	
+L1.19	bulk	
+L1.19.1	bulk	
+L1.19.2	bulk	
+L1.19.3	bulk	
+L1.19.4	exclude:institution	
+L1.19.5	gap	= P104.7
+L1.19.6	bulk	
+L1.19.7	bulk	
+L1.19.8	bulk	
+L1.19.9	item:rebat_cekap_tenaga	
+L1.19.10	bulk	
+L1.19.11	bulk	
+L1.20	bulk	
+L1.20.1	exclude:business	
+L1.20.2	bulk	
+L1.20.3	item:agro	restates
+L1.20.4	bulk	
+L1.20.5	bulk	
+L1.20.6	bulk	
+L1.20.7	item:pesawah	restates
+L1.20.8	item:pesawah	restates
+L1.20.9	item:diesel_nelayan	restates
+L1.20.10	bulk	
+L1.20.11	bulk	
+L1.20.12	ask	Insentif penternak ruminan kecil
+L1.20.13	ask	Insentif penternak lembu pedaging
+L1.20.14	bulk	
+L1.20.15	bulk	
+L1.20.16	ask	= P112
+L1.20.17	bulk	
+L1.20.18	bulk	
+L1.20.19	bulk	
+L1.21	bulk	
+L1.21.1	bulk	
+L1.21.2	bulk	
+L1.21.3	bulk	
+L1.21.4	bulk	
+L1.21.5	bulk	
+L1.21.6	item:veteran	restates
+L1.21.7	item:veteran	restates
+L1.21.8	bulk	
+L1.21.9	bulk	
+L1.21.10	bulk	
+L1.21.11	bulk	
+L1.21.12	bulk	
+L1.21.13	bulk	
+L1.21.14	bulk	
+L1.21.15	exclude:governance	
+L1.21.16	bulk	
+L1.21.17	bulk	
+L1.21.18	bulk	
+L1.21.19	bulk	
+L1.22	bulk	
+L1.22.1	exclude:infra	
+L1.22.2	bulk	
+L1.22.3	bulk	
+L1.22.4	exclude:governance	
+L1.22.5	bulk	
+L1.22.6	bulk	
+L1.22.7	bulk	
+L1.22.8	bulk	
+L1.22.9	bulk	
+L1.22.10	bulk	
+L1.22.11	bulk	
+L1.22.12	bulk	
+L1.22.13	bulk	
+L1.23	bulk	
+L1.23.1	bulk	
+L1.23.2	exclude:governance	
+L1.23.3	bulk	
+L1.23.4	bulk	
+L1.23.5	bulk	
+L1.23.6	bulk	
+L1.23.7	bulk	
+L1.23.8	bulk	
+L1.23.9	item:bkht	
+L1.23.10	bulk	
+L1.23.11	bulk	
+L1.23.12	bulk	
+L1.24	bulk	
+L1.24.1	bulk	
+L1.24.2	exclude:business	
+L1.24.3	bulk	
+L1.24.4	bulk	
+L1.24.5	bulk	
+L1.24.6	exclude:governance	
+L1.24.7	bulk	
+L1.25	bulk	
+L1.25.1	exclude:business	
+L1.25.2	bulk	
+L1.25.3	bulk	
+L1.25.4	exclude:business	reviewed
+L1.25.5	exclude:business	reviewed
+L1.25.6	exclude:governance	
+L1.25.7	bulk	
+L1.25.8	bulk	
+L1.25.9	bulk	
+L1.26	bulk	
+L1.26.1	bulk	
+L1.26.2	bulk	
+L1.26.3	bulk	
+L1.26.4	bulk	
+L1.26.5	bulk	
+L1.26.6	bulk	
+L1.26.7	item:pembiayaan_wanita	restates
+L1.26.8	item:pembiayaan_wanita	restates
+L1.26.9	item:saringan_wanita	
+L1.26.10	ask	= P143.1
+L1.26.11	bulk	
+L1.26.12	bulk	
+L1.26.13	item:k_youth	
+L1.26.14	item:rakan_muda	restates
+L1.26.15	item:pembiayaan_belia	
+L1.26.16	item:mylesen_b2	
+L1.26.17	item:step_up	
+L1.26.18	item:buai	
+L1.26.19	item:tdap_ibu	
+L1.26.20	item:subsidi_taska	
+L1.26.21	bulk	
+L1.27	bulk	
+L1.27.1	item:orang_asli	restates
+L1.27.2	item:orang_asli	restates
+L1.27.3	item:orang_asli	restates
+L1.27.4	item:bantuan_oku	
+L1.27.5	item:autisme	restates
+L1.27.6	item:van_oku	restates
+L1.27.7	exclude:governance	
+L1.27.8	exclude:institution	reviewed
+L1.27.9	exclude:institution	
+L1.27.10	item:peluang_kedua	restates
+L1.27.11	bulk	
+L1.27.12	bulk	
+L1.27.13	exclude:governance	
+L1.27.14	exclude:institution	
+L1.27.15	bulk	
+L1.28	bulk	
+L1.28.1	bulk	
+L1.28.2	bulk	
+L1.28.3	ask	= P156.1
+L1.28.4	bulk	
+L1.29	bulk	
+L1.29.1	bulk	
+L1.29.2	item:str_sara	reviewed
+L1.29.3	item:penghargaan_sara	restates
+L1.29.4	exclude:past	STR Fasa 4 2025 diawalkan (Okt 2025)
+L1.29.5	item:str_sara	reviewed
+L1.29.6	exclude:past	Diskaun tol 50% dua hari sempena Deepavali 2025
+L1.29.7	item:jkm_bantuan	
+L1.29.8	item:autisme	
+L1.29.9	item:payung_rahmah	restates
+L1.29.10	bulk	
+L1.29.11	item:rebat_elektrik	
+L1.29.12	item:harga_sabah_sarawak	
+L1.30	exclude:heading	reviewed
+L1.30.1	item:i_saraan_plus	
+L1.30.2	item:i_suri	restates
+L1.30.3	bulk	
+L1.30.4	item:lindung_kendiri	
+L1.30.5	ask	Kajian pemindahan simpanan KWSP antara generasi (masih dikaji)
+L1.30.6	item:kwsp_auto	
+L1.30.7	item:saringan_pemandu	restates
+L1.30.8	gap	= P170
+L1.30.9	item:perkeso_pindah	restates
+L1.31	bulk	
+L1.31.1	bulk	
+L1.31.2	exclude:governance	reviewed
+L1.31.3	item:warga_emas	
+L1.31.4	item:rumah_warga_emas	
+L1.31.5	bulk	
+L1.32	bulk	
+L1.32.1	bulk	
+L1.32.2	bulk	
+L1.32.3	bulk	
+L1.32.4	bulk	
+L1.32.5	bulk	
+L1.32.6	bulk	
+L1.32.7	bulk	
+L1.32.8	bulk	
+L1.32.9	gap	Inisiatif RESET: produk asas insurans/takaful perubatan untuk rakyat
+L1.32.10	bulk	
+L1.32.11	exclude:governance	
+L1.32.12	gap	= P182.2
+L1.32.13	item:fi_klinik_swasta	
+L1.32.14	gap	= P182.4
+L1.32.15	bulk	
+L1.32.16	item:vape	
+L1.32.17	item:duti_rokok	restates
+L1.32.18	exclude:governance	
+L1.32.19	bulk	
+L1.32.20	bulk	
+L1.32.21	item:skim_perubatan_madani	
+L1.32.22	bulk	
+L1.32.23	bulk	
+L1.32.24	exclude:allocation	
+L1.32.25	bulk	
+L1.32.26	bulk	
+L1.32.27	exclude:governance	
+L1.32.28	item:peka_b40	
+L1.33	bulk	
+L1.33.1	bulk	
+L1.33.2	bulk	
+L1.33.3	bulk	
+L1.33.4	bulk	
+L1.33.5	bulk	
+L1.33.6	bulk	
+L1.33.7	exclude:governance	
+L1.33.8	item:rmt_biasiswa	restates
+L1.33.9	bulk	
+L1.33.10	bulk	
+L1.33.11	bulk	
+L1.33.12	bulk	
+L1.33.13	exclude:infra	reviewed
+L1.33.14	item:elaun_mbk	restates
+L1.33.15	item:autisme	restates
+L1.33.16	bulk	
+L1.33.17	bulk	
+L1.33.18	bulk	
+L1.33.19	bulk	
+L1.33.20	bulk	
+L1.33.21	exclude:business	
+L1.33.22	item:celik_madani	restates
+L1.33.23	item:dapur_madani	restates
+L1.33.24	item:dapur_madani	restates
+L1.33.25	item:job_on_campus	restates
+L1.33.26	exclude:governance	
+L1.33.27	item:ptptn_kelas_pertama	restates
+L1.33.28	item:gapai	
+L1.33.29	bulk	
+L1.33.30	bulk	
+L1.33.31	bulk	
+L1.33.32	bulk	
+L1.33.33	bulk	
+L1.33.34	bulk	
+L1.33.35	bulk	
+L1.33.36	bulk	
+L1.33.37	exclude:infra	
+L1.33.38	bulk	
+L1.33.39	bulk	
+L1.34	bulk	
+L1.34.1	exclude:governance	
+L1.34.2	item:ras	restates
+L1.34.3	item:myraillife	restates
+L1.34.4	bulk	
+L1.34.5	bulk	
+L1.34.6	bulk	
+L1.34.7	bulk	
+L1.34.8	bulk	
+L1.34.9	exclude:governance	
+L1.34.10	bulk	
+L1.34.11	bulk	
+L1.34.12	bulk	
+L1.34.13	item:lupus_kenderaan	restates
+L1.34.14	bulk	
+L1.34.15	bulk	
+L1.34.16	ask	Potongan cukai sumbangan projek komuniti/hentian bas
+L1.35	bulk	
+L1.35.1	bulk	
+L1.35.2	bulk	
+L1.35.3	item:rumah_mampu_milik	
+L1.35.4	item:sjkp_inklusif	restates
+L1.35.5	bulk	
+L1.35.6	item:rumah_daif	
+L1.35.7	bulk	
+L1.35.8	bulk	
+L1.35.9	bulk	
+L1.35.10	bulk	
+L1.35.11	exclude:governance	
+L1.35.12	bulk	
+L1.35.13	bulk	
+L1.35.14	bulk	
+L1.35.15	bulk	
+L1.35.16	ask	Pendaftaran hak milik strata rumah kos rendah untuk B40
+L1.35.17	exclude:business	
+L1.35.18	item:sjkp_akses	restates
+L1.35.19	item:sjkp_inklusif	restates
+L1.35.20	item:step_up	restates
+L1.35.21	item:sjkp_akses	
+L1.35.22	item:sjkp_inklusif	
+L1.36	bulk	
+L1.36.1	bulk	
+L1.36.2	exclude:business	
+L1.36.3	exclude:governance	
+L1.36.4	exclude:institution	
+L1.36.5	bulk	
+L1.36.6	ask	Elaun bulanan imam, guru KAFA dan guru takmir (diteruskan)
+L1.36.7	exclude:institution	reviewed
+L1.36.8	item:kwsp_haji	restates
+L1.36.9	item:gcr_haji	restates
+L1.36.10	item:sumbangan_agama	restates
+L1.37	bulk	
+L1.37.1	bulk	
+L1.37.2	bulk	
+L1.37.3	bulk	
+L1.37.4	exclude:institution	
+L1.37.5	bulk	
+L1.37.6	bulk	
+L1.37.7	exclude:governance	
+L1.37.8	bulk	
+L1.37.9	bulk	
+L1.37.10	bulk	
+L1.38	bulk	
+L1.38.1	bulk	
+L1.38.2	bulk	
+L1.38.3	bulk	
+L1.38.4	bulk	
+L1.39	bulk	
+L1.39.1	exclude:governance	
+L1.39.2	bulk	
+L1.39.3	bulk	
+L1.39.4	bulk	
+L1.39.5	bulk	
+L1.39.6	bulk	
+L1.39.7	bulk	
+L1.40	bulk	
+L1.40.1	exclude:infra	
+L1.40.2	item:rumah_kontrak_awam	restates
+L1.40.3	item:lppsa	restates
+L1.40.4	item:lppsa	restates
+L1.40.5	bulk	
+L1.40.6	bulk	
+L1.40.7	item:penjawat_sspa	restates
+L1.40.8	gap	= P238
+L1.40.9	gap	Kenaikan Bayaran Insentif Pasukan Khas (BIPK) & Pasukan Atur Cara (BIPAC) (Lampiran I sahaja)
+L1.40.10	gap	Pelanjutan bayaran penghargaan khas kepada pesara & penerima pencen terbitan Jan–Dis (Lampiran I sahaja)
+L1.40.11	item:penjawat_sspa	restates
+L1.40.12	item:pjm	restates
+L1.40.13	gap	APEL.Q INTAN: Kerajaan tanggung 50% kos pengajian (maks RM15,000) penjawat awam berkhidmat >15 tahun (Lampiran I sahaja)
+L1.40.14	exclude:business	
+L1.40.15	item:bkk_penjawat	restates
+L2.1	item:tax_vaksin	restates
+L2.2	item:tax_taska	
+L2.3	item:tax_kurang_upaya	restates
+L2.4	item:tax_insurans	
+L2.5	item:tax_lestari	
+L2.6	item:tax_pelancongan	
+L2.7	item:cukai_plt	
+L2.8	exclude:business	
+L2.9	exclude:business	
+L2.10	exclude:institution	
+L2.11	exclude:business	
+L2.12	ask	= P28
+L2.13	ask	= P205
+L2.14	ask	= P218
+L2.15	item:duti_rumah_pertama	
+L2.16	item:duti_insurans_kecil	restates
+L2.17	exclude:business	
+L2.18	item:pelabur_runcit	
+L2.19	exclude:business	
+L2.20	item:duti_kontrak_kerja	
+L2.21	exclude:business	
+L2.22	exclude:business	
+L2.23	exclude:business	
+L2.24	exclude:business	
+L2.25	exclude:business	
+L2.26	exclude:business	
+L2.27	exclude:business	
+L2.28	exclude:business	
+L2.29	exclude:governance	
+L2.30	exclude:business	
+L2.31	exclude:business	
+L2.32	exclude:business	
+L2.33	exclude:governance	
+L2.34	exclude:business	
+L2.35	exclude:infra	
+L2.36	exclude:governance	
+L2.37	item:duti_cerut	restates
+L2.38	item:duti_heated_tobacco	restates
+L2.39	item:berhenti_merokok	restates
+L2.40	exclude:governance	
