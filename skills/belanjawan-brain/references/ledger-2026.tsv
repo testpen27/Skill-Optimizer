@@ -1,5 +1,5 @@
 # Ledger: Ucapan Belanjawan 2026 (ub26.md), 1279 units from scripts/split-source.js
-# Backfilled 2026-09-26 from the text only (no web). gap/ask rows are open questions for the user (step 5).
+# Backfilled 2026-09-26 from the text only (no web). All gap/ask rows resolved with the user on 2026-09-26 (step 5); see "Keputusan pengguna" in LOGIK-BELANJAWAN-2026.md.
 # unit	decision	note
 P1	bulk	
 P2	exclude:rhetoric	
@@ -32,8 +32,8 @@ P23	bulk
 P24	exclude:allocation	
 P25	bulk	
 P26	exclude:governance	
-P27	gap	Pengecualian cukai kenderaan di Langkawi & Labuan dihadkan kepada kenderaan bernilai ≤RM300,000 mulai 1 Jan 2026 (kesan; kawasan)
-P28	ask	Potongan cukai penderma program antirasuah (individu penderma)
+P27	item:cukai_kenderaan_labuan	pengguna 2026-09-26: kesan untuk penduduk Labuan; Langkawi disebut dalam teks
+P28	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
 P29	bulk	
 P30	exclude:allocation	
 P31	bulk	
@@ -46,11 +46,11 @@ P36.1	exclude:allocation
 P36.2	exclude:allocation	
 P37	bulk	
 P38	bulk	
-P39	ask	Pindaan Akta Perlindungan Pengguna: Lemon Law (hak pengguna, tiada wang)
+P39	exclude:user	pengguna 2026-09-26: Lemon Law dikecualikan (tiada wang lagi)
 P40	exclude:business	
 P40.1	bulk	
 P40.2	bulk	
-P40.3	ask	Tarif elektrik: 85% pengguna tiada kenaikan, pengguna tinggi bayar lebih (kesan?)
+P40.3	exclude:user	pengguna 2026-09-26: tarif elektrik tidak dipilih
 P40.4	item:diesel_rm200	
 P40.5	exclude:allocation	
 P40.6	item:budi95,budi95_ehailing	
@@ -133,12 +133,12 @@ P45.57	bulk
 P46	bulk	
 P46.1	bulk	
 P46.2	exclude:allocation	
-P46.3	ask	Subsidi elektrik Sabah & Labuan (kawasan)
+P46.3	exclude:user	pengguna 2026-09-26: subsidi elektrik Sabah/Labuan tidak dipilih
 P46.4	exclude:infra	
 P46.5	bulk	
 P46.6	exclude:infra	
 P46.7	bulk	
-P46.8	ask	Ruang niaga Tamu Desa untuk peniaga kecil Sabah & Sarawak (kawasan)
+P46.8	item:tamu_desa	pengguna 2026-09-26: dimasukkan
 P47	bulk	
 P48	bulk	
 P49	bulk	
@@ -180,7 +180,7 @@ P62.4	bulk
 P63	bulk	
 P64	bulk	
 P65	bulk	
-P65.1	ask	Program IPT@Komuniti: AI & digital untuk 10,000 pelajar tahfiz dan pondok
+P65.1	item:tahfiz_kemahiran	pengguna 2026-09-26: dimasukkan
 P65.2	bulk	
 P65.3	bulk	
 P65.4	bulk	
@@ -191,7 +191,7 @@ P66	bulk
 P67	bulk	
 P67.1	bulk	
 P67.2	exclude:infra	
-P67.3	ask	Geran padanan iTEKAD untuk golongan rentan tingkatkan kemahiran
+P67.3	item:itekad	pengguna 2026-09-26: dimasukkan
 P68	bulk	
 P68.1	bulk	
 P68.2	exclude:governance	
@@ -220,7 +220,7 @@ P78	bulk
 P79	bulk	
 P80	bulk	
 P81	bulk	
-P82	ask	Potongan cukai sumbangan kepada Akaun Amanah Jabatan Muzium
+P82	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
 P83	bulk	
 P83.1	exclude:business	
 P83.2	bulk	
@@ -262,7 +262,7 @@ P97.1	bulk
 P97.2	exclude:allocation	
 P98	exclude:allocation	
 P98.1	bulk	
-P98.2	ask	SJPP diperluas menjamin usahawan mikro
+P98.2	exclude:user	pengguna 2026-09-26: SJPP usahawan mikro tidak dipilih
 P98.3	bulk	
 P99	bulk	
 P100	bulk	
@@ -285,7 +285,7 @@ P104.3	bulk
 P104.4	bulk	
 P104.5	bulk	
 P104.6	bulk	
-P104.7	gap	Solar ATAP: pengguna domestik boleh pasang solar PV dan mengimbangi bil
+P104.7	item:solar_atap	pengguna 2026-09-26: dimasukkan
 P104.8	bulk	
 P104.9	bulk	
 P105	bulk	
@@ -312,7 +312,7 @@ P111	exclude:heading	reviewed
 P111.1	item:nelayan_elaun	
 P111.2	item:diesel_nelayan	
 P111.3	bulk	
-P112	ask	Insentif pengusaha buah-buahan tempatan (nanas, durian belanda…)
+P112	item:buah_buahan	pengguna 2026-09-26: dimasukkan
 P113	bulk	
 P114	bulk	
 P115	bulk	
@@ -388,7 +388,7 @@ P138.1	bulk
 P138.2	bulk	
 P138.3	bulk	
 P138.4	bulk	
-P138.5	ask	Pembiayaan mikro KWAP untuk pesara
+P138.5	item:kwap_mikro	pengguna 2026-09-26: dimasukkan
 P139	bulk	
 P140	exclude:heading	
 P140.1	bulk	
@@ -404,7 +404,7 @@ P142.3	bulk
 P142.4	item:pembiayaan_wanita	
 P142.5	item:kasihnita	
 P143	exclude:governance	
-P143.1	ask	Had umur belia 15–30 tahun mulai Jan 2026 (mengubah kelayakan program belia)
+P143.1	item:rakan_muda,k_youth,pembiayaan_belia	pengguna 2026-09-26: sudah diliputi (had umur 15-30)
 P143.2	item:plkn	
 P143.3	item:k_youth	restates
 P143.4	item:rakan_muda	
@@ -437,7 +437,7 @@ P155	exclude:business
 P155.1	exclude:governance	
 P155.2	bulk	
 P156	exclude:allocation	
-P156.1	ask	Geran perniagaan BSN sehingga RM10,000 kepada 1,000 usahawan mikro
+P156.1	item:geran_bsn	pengguna 2026-09-26: dimasukkan
 P156.2	bulk	
 P156.3	bulk	
 P156.4	exclude:governance	
@@ -463,7 +463,7 @@ P166	item:lindung_kendiri	restates
 P167	item:perkeso_pindah	
 P168	item:i_suri	
 P169	bulk	
-P170	gap	PERKESO naikkan kadar maksimum rawatan hemodialisis RM150 → RM170 setiap rawatan
+P170	item:perkeso_dialisis	pengguna 2026-09-26: semak untuk pekerja yang dilindungi PERKESO
 P171	exclude:governance	
 P172	bulk	
 P173	item:warga_emas	restates
@@ -489,9 +489,9 @@ P181.5	exclude:allocation
 P181.6	item:mysalam	
 P182	bulk	
 P182.1	bulk	
-P182.2	gap	Lantikan tetap: 4,500 doktor kontrak, 833 jururawat kontrak, 935 graduan Institut Latihan KKM
+P182.2	item:lantikan_tetap_kkm	pengguna 2026-09-26: dimasukkan
 P182.3	item:fi_klinik_swasta	restates
-P182.4	gap	Elaun Tugas Atas Panggilan (ETAP) pegawai perubatan/pakar/pergigian naik ~40% mulai 1 Okt 2025
+P182.4	item:etap_perubatan	pengguna 2026-09-26: dimasukkan
 P183	bulk	
 P184	bulk	
 P184.1	item:duti_cerut,duti_heated_tobacco,duti_rokok	
@@ -580,7 +580,7 @@ P202.2	item:ptptn_kelas_pertama
 P202.3	bulk	
 P203	bulk	
 P204	exclude:infra	
-P205	ask	Potongan cukai sumbangan kepada tabung endowmen hospital pengajar
+P205	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
 P206	bulk	
 P207	bulk	
 P208	exclude:heading	
@@ -601,7 +601,7 @@ P212.4	bulk
 P212.5	exclude:governance	
 P212.6	item:saringan_pemandu	
 P213	item:lupus_kenderaan	
-P214	ask	Kota MADANI Presint 19: 10,000 rumah, 80% untuk penjawat awam
+P214	item:kota_madani	pengguna 2026-09-26: dimasukkan
 P215	bulk	
 P215.1	bulk	
 P215.2	bulk	
@@ -613,14 +613,14 @@ P216.3	bulk
 P216.4	bulk	
 P216.5	exclude:governance	
 P217	item:duti_rumah_pertama	restates
-P218	ask	Duti setem 4% → 8% rumah dibeli bukan warganegara (kesan bukan warganegara; Q&A untuk rakyat)
+P218	exclude:non-citizen	pengguna 2026-09-26: duti setem 8% bukan warganegara; dikecualikan
 P219	bulk	
 P220	exclude:allocation	
 P221	bulk	
 P222	bulk	
 P223	exclude:governance	
 P223.1	exclude:institution	
-P223.2	ask	720 pelajar tahfiz dilatih kemahiran melalui GiatMARA
+P223.2	item:tahfiz_kemahiran	pengguna 2026-09-26: dimasukkan
 P224	bulk	
 P225	exclude:rhetoric	
 P226	bulk	
@@ -661,7 +661,7 @@ P237.4	item:rumah_kontrak_awam
 P237.5	item:lppsa	
 P237.6	item:lppsa	restates
 P237.7	item:lppsa	restates
-P238	gap	Bayaran Sara Hidup 4,000 pesara kontrak KEMAS RM300 → RM500 sebulan
+P238	item:bsh_pesara_kemas	pengguna 2026-09-26: dimasukkan
 P239	item:pjm	
 P240	item:penjawat_sspa	Bantuan Insentif Berasaskan Prestasi diperluas kepada Kumpulan Pengurusan dan Profesional
 P241	item:penjawat_sspa	syarat peluasan BIBP
@@ -684,7 +684,7 @@ L1.2.2	bulk
 L1.2.3	bulk	
 L1.2.4	bulk	
 L1.2.5	exclude:business	
-L1.2.6	ask	= P28
+L1.2.6	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
 L1.2.7	bulk	
 L1.3	bulk	
 L1.3.1	bulk	
@@ -707,7 +707,7 @@ L1.5	bulk
 L1.5.1	bulk	
 L1.5.2	bulk	
 L1.5.3	bulk	
-L1.5.4	ask	= P40.3
+L1.5.4	exclude:user	pengguna 2026-09-26: tarif elektrik tidak dipilih
 L1.5.5	bulk	
 L1.5.6	item:budi95	reviewed
 L1.6	exclude:heading	reviewed
@@ -787,12 +787,12 @@ L1.8.67	bulk
 L1.8.68	bulk	
 L1.8.69	bulk	
 L1.8.70	bulk	
-L1.8.71	ask	= P46.3
+L1.8.71	exclude:user	pengguna 2026-09-26: subsidi elektrik Sabah/Labuan tidak dipilih
 L1.8.72	bulk	
 L1.8.73	bulk	
 L1.8.74	bulk	
 L1.8.75	bulk	
-L1.8.76	ask	= P46.8
+L1.8.76	item:tamu_desa	pengguna 2026-09-26: dimasukkan
 L1.8.77	bulk	
 L1.8.78	bulk	
 L1.8.79	bulk	
@@ -828,10 +828,10 @@ L1.11	bulk
 L1.11.1	bulk	
 L1.11.2	exclude:allocation	
 L1.11.3	exclude:governance	
-L1.11.4	gap	LiKES (TalentCorp): latihan industri bakat muda dilanjutkan 12 bulan (Lampiran I sahaja)
+L1.11.4	exclude:user	pengguna 2026-09-26: LiKES tidak dipilih
 L1.12	bulk	
 L1.12.1	bulk	
-L1.12.2	ask	= P67.3
+L1.12.2	item:itekad	pengguna 2026-09-26: dimasukkan
 L1.12.3	bulk	
 L1.12.4	bulk	
 L1.12.5	bulk	
@@ -916,7 +916,7 @@ L1.19.1	bulk
 L1.19.2	bulk	
 L1.19.3	bulk	
 L1.19.4	exclude:institution	
-L1.19.5	gap	= P104.7
+L1.19.5	item:solar_atap	pengguna 2026-09-26: dimasukkan
 L1.19.6	bulk	
 L1.19.7	bulk	
 L1.19.8	bulk	
@@ -935,11 +935,11 @@ L1.20.8	item:pesawah	restates
 L1.20.9	item:diesel_nelayan	restates
 L1.20.10	bulk	
 L1.20.11	bulk	
-L1.20.12	ask	Insentif penternak ruminan kecil
-L1.20.13	ask	Insentif penternak lembu pedaging
+L1.20.12	item:penternak	pengguna 2026-09-26: dimasukkan
+L1.20.13	item:penternak	pengguna 2026-09-26: dimasukkan
 L1.20.14	bulk	
 L1.20.15	bulk	
-L1.20.16	ask	= P112
+L1.20.16	item:buah_buahan	pengguna 2026-09-26: dimasukkan
 L1.20.17	bulk	
 L1.20.18	bulk	
 L1.20.19	bulk	
@@ -1018,7 +1018,7 @@ L1.26.6	bulk
 L1.26.7	item:pembiayaan_wanita	restates
 L1.26.8	item:pembiayaan_wanita	restates
 L1.26.9	item:saringan_wanita	
-L1.26.10	ask	= P143.1
+L1.26.10	item:rakan_muda,k_youth,pembiayaan_belia	pengguna 2026-09-26: sudah diliputi (had umur 15-30)
 L1.26.11	bulk	
 L1.26.12	bulk	
 L1.26.13	item:k_youth	
@@ -1049,7 +1049,7 @@ L1.27.15	bulk
 L1.28	bulk	
 L1.28.1	bulk	
 L1.28.2	bulk	
-L1.28.3	ask	= P156.1
+L1.28.3	item:geran_bsn	pengguna 2026-09-26: dimasukkan
 L1.28.4	bulk	
 L1.29	bulk	
 L1.29.1	bulk	
@@ -1069,10 +1069,10 @@ L1.30.1	item:i_saraan_plus
 L1.30.2	item:i_suri	restates
 L1.30.3	bulk	
 L1.30.4	item:lindung_kendiri	
-L1.30.5	ask	Kajian pemindahan simpanan KWSP antara generasi (masih dikaji)
+L1.30.5	exclude:user	pengguna 2026-09-26: kajian pemindahan KWSP dikecualikan (masih dikaji)
 L1.30.6	item:kwsp_auto	
 L1.30.7	item:saringan_pemandu	restates
-L1.30.8	gap	= P170
+L1.30.8	item:perkeso_dialisis	pengguna 2026-09-26: semak untuk pekerja yang dilindungi PERKESO
 L1.30.9	item:perkeso_pindah	restates
 L1.31	bulk	
 L1.31.1	bulk	
@@ -1089,12 +1089,12 @@ L1.32.5	bulk
 L1.32.6	bulk	
 L1.32.7	bulk	
 L1.32.8	bulk	
-L1.32.9	gap	Inisiatif RESET: produk asas insurans/takaful perubatan untuk rakyat
+L1.32.9	exclude:user	pengguna 2026-09-26: RESET tidak dipilih
 L1.32.10	bulk	
 L1.32.11	exclude:governance	
-L1.32.12	gap	= P182.2
+L1.32.12	item:lantikan_tetap_kkm	pengguna 2026-09-26: dimasukkan
 L1.32.13	item:fi_klinik_swasta	
-L1.32.14	gap	= P182.4
+L1.32.14	item:etap_perubatan	pengguna 2026-09-26: dimasukkan
 L1.32.15	bulk	
 L1.32.16	item:vape	
 L1.32.17	item:duti_rokok	restates
@@ -1165,7 +1165,7 @@ L1.34.12	bulk
 L1.34.13	item:lupus_kenderaan	restates
 L1.34.14	bulk	
 L1.34.15	bulk	
-L1.34.16	ask	Potongan cukai sumbangan projek komuniti/hentian bas
+L1.34.16	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
 L1.35	bulk	
 L1.35.1	bulk	
 L1.35.2	bulk	
@@ -1182,7 +1182,7 @@ L1.35.12	bulk
 L1.35.13	bulk	
 L1.35.14	bulk	
 L1.35.15	bulk	
-L1.35.16	ask	Pendaftaran hak milik strata rumah kos rendah untuk B40
+L1.35.16	exclude:user	pengguna 2026-09-26: hak milik strata tidak dipilih
 L1.35.17	exclude:business	
 L1.35.18	item:sjkp_akses	restates
 L1.35.19	item:sjkp_inklusif	restates
@@ -1195,7 +1195,7 @@ L1.36.2	exclude:business
 L1.36.3	exclude:governance	
 L1.36.4	exclude:institution	
 L1.36.5	bulk	
-L1.36.6	ask	Elaun bulanan imam, guru KAFA dan guru takmir (diteruskan)
+L1.36.6	item:elaun_imam_kafa	pengguna 2026-09-26: dimasukkan
 L1.36.7	exclude:institution	reviewed
 L1.36.8	item:kwsp_haji	restates
 L1.36.9	item:gcr_haji	restates
@@ -1232,12 +1232,12 @@ L1.40.4	item:lppsa	restates
 L1.40.5	bulk	
 L1.40.6	bulk	
 L1.40.7	item:penjawat_sspa	restates
-L1.40.8	gap	= P238
-L1.40.9	gap	Kenaikan Bayaran Insentif Pasukan Khas (BIPK) & Pasukan Atur Cara (BIPAC) (Lampiran I sahaja)
-L1.40.10	gap	Pelanjutan bayaran penghargaan khas kepada pesara & penerima pencen terbitan Jan–Dis (Lampiran I sahaja)
+L1.40.8	item:bsh_pesara_kemas	pengguna 2026-09-26: dimasukkan
+L1.40.9	item:bipk_bipac	pengguna 2026-09-26: dimasukkan
+L1.40.10	item:penghargaan_pesara	pengguna 2026-09-26: dimasukkan
 L1.40.11	item:penjawat_sspa	restates
 L1.40.12	item:pjm	restates
-L1.40.13	gap	APEL.Q INTAN: Kerajaan tanggung 50% kos pengajian (maks RM15,000) penjawat awam berkhidmat >15 tahun (Lampiran I sahaja)
+L1.40.13	item:apel_q	pengguna 2026-09-26: dimasukkan
 L1.40.14	exclude:business	
 L1.40.15	item:bkk_penjawat	restates
 L2.1	item:tax_vaksin	restates
@@ -1251,9 +1251,9 @@ L2.8	exclude:business
 L2.9	exclude:business	
 L2.10	exclude:institution	
 L2.11	exclude:business	
-L2.12	ask	= P28
-L2.13	ask	= P205
-L2.14	ask	= P218
+L2.12	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
+L2.13	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
+L2.14	exclude:non-citizen	pengguna 2026-09-26: duti setem 8% bukan warganegara; dikecualikan
 L2.15	item:duti_rumah_pertama	
 L2.16	item:duti_insurans_kecil	restates
 L2.17	exclude:business	

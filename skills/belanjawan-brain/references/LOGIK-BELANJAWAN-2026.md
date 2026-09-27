@@ -1,9 +1,21 @@
-# Belanjawan 2026 — Citizen Benefits Q&A: Logic Spec (v2026.3)
+# Belanjawan 2026 — Citizen Benefits Q&A: Logic Spec (v2026.4)
 
 **Engine:** `belanjawan2026-brain.js` (UI-free, no dependencies, works in browser and Node)
 **Verification:** `test.js` (round 1) and `verify2.js` (round 2). Both pass; see §8.
-**Source:** Ucapan Belanjawan 2026 (MOF). "Perenggan / ms" refer to that document. Implementation changes after the speech were checked on the web and are marked `web`.
-**Data as of:** 25 Sep 2026
+**Source:** Ucapan Belanjawan 2026 (MOF). "Perenggan / ms" refer to that document. Items added in v2026.4 come from the speech text only and cite paragraph and Lampiran numbers (no page numbers). Items from earlier versions that were checked on the web keep their `web` field.
+**Data as of:** 26 Sep 2026
+
+## What changed in v2026.4
+
+A text-only read of the whole speech (1,279 units, every one given a ledger decision in `ledger-2026.tsv`) found measures the brain lacked. The user decided each one in three question rounds on 26 Sep 2026 (see §9). This version adds **19 items**, taking the brain from 94 to 113:
+
+- **Costs:** the Langkawi and Labuan vehicle tax exemption is capped at vehicles worth up to RM300,000 (`kesan`, Labuan residents with a driving licence).
+- **Health and protection:** PERKESO haemodialysis payment up to RM170; iTEKAD matching grant.
+- **Civil service and pensioners:** pensioners' special appreciation payment extended; KEMAS contract pensioners' allowance RM500 a month; APEL.Q INTAN; ETAP rise; permanent posts for contract doctors, nurses and KKM graduates; BIPK/BIPAC; Kota MADANI homes.
+- **Households:** Solar ATAP.
+- **Small business:** BSN business grant up to RM10,000; KWAP microfinance for pensioners; Tamu Desa stalls in Sabah and Sarawak.
+- **Farming and religious community:** fruit-grower incentives; livestock-breeder incentives; imam/KAFA/takmir monthly allowance; skills and AI training for tahfiz and pondok students.
+- **Tax:** one combined item for donation deductions (anti-corruption programmes, hospital endowment funds, the Muzium trust account, community projects).
 
 ## What changed in v2026.3
 
@@ -59,23 +71,23 @@ answers ──► deriveFacts() ──► facts ──┬──► calcStrSara()
 
 ---
 
-## 2. Theme taxonomy (13 themes, 94 items)
+## 2. Theme taxonomy (13 themes, 113 items)
 
 | Theme | What citizens get or pay | Items |
 |---|---|---|
 | `cash` Bantuan Tunai & Kos Sara Hidup | STR, SARA, one-off payments, JKM aid, Jualan RAHMAH, Sabah/Sarawak price parity | 10 |
-| `subsidy` Subsidi Bahan Api & Tenaga | BUDI95, e-hailing quota, diesel RM200, fishermen's diesel, appliance rebate | 5 |
-| `health` Kesihatan & Insurans | PeKa B40, mySalam, Skim Perubatan MADANI, Tdap, screening, MHIT, small-policy stamp duty | 7 |
-| `education` Pendidikan | BAP RM150, Bantuan Am, RMT, Tuisyen MADANI, Elaun MBK, autism support, PTPTN, GAPAI, campus aid | 12 |
-| `housing` Perumahan | Stamp duty, SJKP ×2, Step-Up, contract-staff loans, LPPSA, affordable homes, home repair | 8 |
+| `subsidy` Subsidi Bahan Api & Tenaga | BUDI95, e-hailing quota, diesel RM200, fishermen's diesel, appliance rebate, Solar ATAP | 6 |
+| `health` Kesihatan & Insurans | PeKa B40, mySalam, Skim Perubatan MADANI, Tdap, screening, MHIT, small-policy stamp duty, PERKESO dialysis | 8 |
+| `education` Pendidikan | BAP RM150, Bantuan Am, RMT, Tuisyen MADANI, Elaun MBK, autism support, PTPTN, GAPAI, campus aid, tahfiz/pondok skills training | 13 |
+| `housing` Perumahan | Stamp duty, SJKP ×2, Step-Up, contract-staff loans, LPPSA, affordable homes, home repair, Kota MADANI | 9 |
 | `protection` Perlindungan Sosial & Simpanan Persaraan | i-Saraan, i-Saraan Plus, i-Suri, Lindung Kendiri, PERKESO, KWSP auto-account, Haji withdrawals | 8 |
 | `family` Keluarga & Wanita | KasihnITA, women's financing, taska subsidy, BuAI | 4 |
 | `youth` Belia, Latihan & Pekerjaan | MyLesen B2, PLKN, K-Youth, TVET, youth financing, Rakan Muda | 6 |
-| `vulnerable` OKU, Warga Emas & Golongan Rentan | OKU aid, elderly welfare, KWAP homes, Second Chance, Orang Asli | 5 |
-| `sector` Mengikut Pekerjaan | Fishermen, padi, smallholders, agro, wildlife damage, civil servants, veterans, taxis, driver screening | 9 |
+| `vulnerable` OKU, Warga Emas & Golongan Rentan | OKU aid, elderly welfare, KWAP homes, Second Chance, Orang Asli, iTEKAD | 6 |
+| `sector` Mengikut Pekerjaan | Fishermen, padi, smallholders, agro, wildlife damage, civil servants, veterans, taxis, driver screening, pensioners' appreciation payment, KEMAS contract pensioners, APEL.Q, ETAP, KKM permanent posts, BIPK/BIPAC, BSN grant, KWAP microfinance, Tamu Desa, fruit growers, livestock breeders, imam/KAFA allowance | 21 |
 | `mobility` Pengangkutan & Mobiliti | MyRailLife, OKU vans, old-car grant, RAS | 4 |
-| `tax` Pelepasan Cukai Individu | Six new or expanded reliefs for YA2026 | 6 |
-| `special` Kes Khas | Tobacco, cigar, heated tobacco, vape, NRT, alcohol, clinic fees, employment-contract duty, ETF/warrants, LLP tax | 10 |
+| `tax` Pelepasan Cukai Individu | Six new or expanded reliefs for YA2026; donation deductions | 7 |
+| `special` Kes Khas | Tobacco, cigar, heated tobacco, vape, NRT, alcohol, clinic fees, employment-contract duty, ETF/warrants, LLP tax, Langkawi/Labuan vehicle exemption cap | 11 |
 
 ---
 
@@ -135,13 +147,13 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | 14 | `status` | multi | Adakah mana-mana keadaan ini berkaitan dengan anda? (pilih semua yang berkaitan) | always | `oku_self` Saya OKU berdaftar<br>`oku_child` Anak saya OKU atau kurang upaya pembelajaran (seperti autisme atau ADHD)<br>`pregnant` Saya atau pasangan sedang hamil<br>`veteran` Veteran Angkatan Tentera Malaysia<br>`pjm` Penerima Pingat Jasa Malaysia<br>`religious_staff` Guru KAFA, guru takmir, imam, bilal, tok siak, noja atau marbut<br>`taxi` Pemandu atau pemilik teksi, termasuk kereta sewa<br>`orang_asli` Orang Asli<br>`bankrupt` Sedang berstatus bankrap<br>`none` Tiada yang berkaitan *(exclusive)*<br>`skip` Tidak mahu menyatakan *(exclusive)* |
 | 15 | `lifestyle` | multi | Soalan pilihan: adakah mana-mana perkara ini berkaitan dengan anda? | `age ≥ 18` | `cigarette` Merokok<br>`cigar` Menghisap cerut atau cerut kecil (cigarillo)<br>`heated_tobacco` Menggunakan produk tembakau yang dipanaskan (heated tobacco)<br>`vape` Menggunakan vape atau rokok elektronik<br>`alcohol` Mengambil minuman beralkohol<br>`none` Tiada yang berkaitan *(exclusive)*<br>`skip` Tidak mahu menyatakan *(exclusive)* |
 
-## Rule matrix (94 items)
+## Rule matrix (113 items)
 
 ### Bantuan Tunai & Kos Sara Hidup (`cash`, 10)
 
 | id | Item | Kind | What the person gets / pays | Rule (`when`) | Certainty | Source | Timing |
 |---|---|---|---|---|---|---|---|
-| `str_sara` | Sumbangan Tunai Rahmah (STR) dan Sumbangan Asas Rahmah (SARA) | manfaat | Estimated from answers — see §3 | `strEligible = true` | high | Perenggan 158–161, ms 92–94; Lampiran I Bil. 29, ms 258–259 · [web](https://www.bharian.com.my/amp/berita/nasional/2026/03/1515524/bhplus) | — |
+| `str_sara` | Sumbangan Tunai Rahmah (STR) dan Sumbangan Asas Rahmah (SARA) | manfaat | Dianggarkan berdasarkan jawapan anda | `strEligible = true` | high | Perenggan 158–161, ms 92–94; Lampiran I Bil. 29, ms 258–259 · [web](https://www.bharian.com.my/amp/berita/nasional/2026/03/1515524/bhplus) | — |
 | `penghargaan_sara` | Penghargaan SARA | manfaat | RM100 (sekali sahaja) | `age ≥ 18` | high | Perenggan 160, ms 93 | Telah disalurkan pada pertengahan Februari 2026. |
 | `bkk_penjawat` | Bantuan Khas Kewangan penjawat awam | manfaat | RM500 (sekali sahaja) | `employment = civil_servant` | check | Perenggan 246, ms 127 | Telah disalurkan pada awal Mac 2026 sempena Aidilfitri. |
 | `bkk_pesara` | Bantuan Khas Kewangan pesara dan veteran | manfaat | RM250 (sekali sahaja) | `employment = retired_gov OR status includes veteran` | high | Perenggan 246, ms 127 | Telah disalurkan pada awal Mac 2026. |
@@ -152,7 +164,7 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `payung_rahmah` | Jualan RAHMAH MADANI | manfaat | Barangan keperluan asas pada harga lebih rendah | `age ≥ 18` | high | Perenggan 163, ms 94; Lampiran I Bil. 29, ms 261 | — |
 | `harga_sabah_sarawak` | Harga barangan asas setara Semenanjung | manfaat | Harga barangan asas sama seperti di Semenanjung | `eastMalaysia = true` | high | Perenggan 164, ms 95; Lampiran I Bil. 29, ms 261 | — |
 
-### Subsidi Bahan Api & Tenaga (`subsidy`, 5)
+### Subsidi Bahan Api & Tenaga (`subsidy`, 6)
 
 | id | Item | Kind | What the person gets / pays | Rule (`when`) | Certainty | Source | Timing |
 |---|---|---|---|---|---|---|---|
@@ -161,8 +173,9 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `diesel_rm200` | Bantuan diesel bersasar (BUDI MADANI) | manfaat | RM200 sebulan | `region = semenanjung AND (assets includes diesel_vehicle OR employment = farmer)` | check | Perenggan 40, ms 26 | — |
 | `diesel_nelayan` | Diesel bersubsidi untuk nelayan | manfaat | RM1.65 seliter | `employment = fisher` | high | Perenggan 111, ms 73 | — |
 | `rebat_cekap_tenaga` | Rebat pembelian peralatan cekap tenaga (Nur@PETRA) | manfaat | Rebat untuk peralatan elektrik cekap tenaga | `age ≥ 18` | check | Lampiran I, ms 222 | — |
+| `solar_atap` | Solar ATAP: jana elektrik sendiri di rumah | manfaat | Lebihan tenaga boleh dijual sebagai pengimbangan (offset) bil elektrik | `age ≥ 18` | check | Perenggan 104; Lampiran I Bil. 19 | — |
 
-### Kesihatan & Insurans (`health`, 7)
+### Kesihatan & Insurans (`health`, 8)
 
 | id | Item | Kind | What the person gets / pays | Rule (`when`) | Certainty | Source | Timing |
 |---|---|---|---|---|---|---|---|
@@ -173,8 +186,9 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `saringan_wanita` | Ujian mamogram dan saringan kanser serviks bersubsidi | manfaat | Ujian saringan pada kos lebih rendah | `gender = female AND age ≥ 20` | check | Lampiran I Bil. 26, ms 247 | — |
 | `mhit_kwsp` | Akaun Sejahtera KWSP boleh digunakan untuk insurans perubatan asas | manfaat | Bayar premium menggunakan simpanan KWSP | `kwspMember = true` | high | Perenggan 181, ms 100; Lampiran I Bil. 32, ms 269 | — |
 | `duti_insurans_kecil` | Tiada duti setem untuk polisi insurans bernilai kecil | manfaat | Dikecualikan duti setem sehingga 2028 | `age ≥ 18` | high | Perenggan 181, ms 100; Lampiran II — Lampiran 16 dan 17, ms 332–333 | — |
+| `perkeso_dialisis` | Kadar bayaran rawatan hemodialisis PERKESO dinaikkan | manfaat | Sehingga RM170 bagi setiap rawatan (sebelum ini RM150) | `employment ∈ [employed_private, gig_ehailing, self_employed]` | check | Perenggan 170; Lampiran I Bil. 30 | — |
 
-### Pendidikan (`education`, 12)
+### Pendidikan (`education`, 13)
 
 | id | Item | Kind | What the person gets / pays | Rule (`when`) | Certainty | Source | Timing |
 |---|---|---|---|---|---|---|---|
@@ -190,8 +204,9 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `dapur_madani` | Ikhtiar Dapur MADANI | manfaat | Bantuan makanan dan peralatan memasak | `employment = student_ipt AND b40 = true` | high | Perenggan 200, ms 108 | — |
 | `job_on_campus` | MySiswa Job on Campus | manfaat | Kerja sambilan di dalam kampus | `employment = student_ipt AND b40m40 = true` | check | Perenggan 200, ms 108 | — |
 | `celik_madani` | Program Celik MADANI (PNB) | manfaat | Pelaburan permulaan RM50 dalam ASB atau ASM | `isSchoolPupil = true OR ipt = true` | check | Perenggan 199, ms 108 | — |
+| `tahfiz_kemahiran` | Latihan kemahiran dan teknologi untuk pelajar tahfiz dan pondok | manfaat | Kursus teknologi digital dan AI serta latihan kemahiran profesional | `age ≥ 15 AND age ≤ 30 AND (employment = student_ipt OR (adult = false AND isSchoolPupil = true))` | check | Perenggan 65, 223; Lampiran I Bil. 11 | — |
 
-### Perumahan (`housing`, 8)
+### Perumahan (`housing`, 9)
 
 | id | Item | Kind | What the person gets / pays | Rule (`when`) | Certainty | Source | Timing |
 |---|---|---|---|---|---|---|---|
@@ -203,6 +218,7 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `lppsa` | Pembiayaan perumahan LPPSA | manfaat | Had pembiayaan dinaikkan kepada RM1 juta | `employment = civil_servant` | check | Perenggan 237, ms 125 | Skim Pembiayaan Perumahan Muda tamat pada 31 Disember 2026. |
 | `rumah_mampu_milik` | Rumah mampu milik Kerajaan (PRR, RMR, Residensi MADANI, PR1MA) | manfaat | Peluang memiliki rumah mampu milik | `assets includes first_home AND b40m40 = true` | check | Perenggan 216, ms 115; Lampiran I Bil. 35, ms 289 | — |
 | `rumah_daif` | Baik pulih atau bina semula rumah daif | manfaat | Rumah dibaiki atau dibina semula | `ekasih = true OR (employment = fisher AND b40 = true)` | check | Perenggan 216, ms 115; Lampiran I Bil. 35, ms 290 | — |
+| `kota_madani` | Rumah di Kota MADANI Presint 19 | manfaat | 80% daripada rumah dikhaskan untuk penjawat awam | `employment = civil_servant` | check | Perenggan 214 | — |
 
 ### Perlindungan Sosial & Simpanan Persaraan (`protection`, 8)
 
@@ -237,7 +253,7 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `pembiayaan_belia` | Pembiayaan untuk usahawan belia | manfaat | Pembiayaan mikro dan bantuan perniagaan | `age ≥ 18 AND age ≤ 30 AND employment ∈ [self_employed, gig_ehailing, jobseeker, student_ipt]` | check | Perenggan 143, ms 86; Lampiran I Bil. 26, ms 249 | — |
 | `rakan_muda` | Rakan Muda | manfaat | Program pembangunan belia | `age ≥ 15 AND age ≤ 30` | high | Perenggan 143, ms 86; Lampiran I Bil. 26, ms 248 | — |
 
-### OKU, Warga Emas & Golongan Rentan (`vulnerable`, 5)
+### OKU, Warga Emas & Golongan Rentan (`vulnerable`, 6)
 
 | id | Item | Kind | What the person gets / pays | Rule (`when`) | Certainty | Source | Timing |
 |---|---|---|---|---|---|---|---|
@@ -246,8 +262,9 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `rumah_warga_emas` | Rumah warga emas mandiri (KWAP) | manfaat | Kediaman khas untuk warga emas | `age ≥ 60 AND b40 = true` | check | Perenggan 174, ms 97; Lampiran I Bil. 31, ms 266 | — |
 | `peluang_kedua` | Dasar Peluang Kedua Fast Track | manfaat | Proses pelepasan bankrap dipercepat | `status includes bankrupt` | check | Perenggan 150, ms 88; Lampiran I Bil. 27, ms 254 | — |
 | `orang_asli` | Program untuk komuniti Orang Asli | manfaat | Jalan kampung, TABIKA dan program pendidikan anak | `status includes orang_asli` | high | Perenggan 144–148, ms 86–87 | — |
+| `itekad` | Geran padanan iTEKAD | manfaat | Geran padanan untuk kemahiran, keusahawanan dan perlindungan | `b40 = true AND employment ∈ [self_employed, jobseeker, gig_ehailing]` | check | Perenggan 67; Lampiran I Bil. 12 | — |
 
-### Mengikut Pekerjaan (Penjawat Awam, Veteran, Nelayan, Petani, Teksi) (`sector`, 9)
+### Mengikut Pekerjaan (Penjawat Awam, Veteran, Nelayan, Petani, Teksi) (`sector`, 21)
 
 | id | Item | Kind | What the person gets / pays | Rule (`when`) | Certainty | Source | Timing |
 |---|---|---|---|---|---|---|---|
@@ -260,6 +277,18 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `veteran` | Peluang pekerjaan untuk veteran | manfaat | Keutamaan dalam pengambilan pekerja | `status includes veteran` | check | Perenggan 119–120, ms 75 | — |
 | `teksi` | Insentif untuk pemandu teksi | manfaat | Tiada duti eksais dan cukai jualan untuk kereta nasional baharu | `status includes taxi` | high | Perenggan 76, ms 56 | — |
 | `saringan_pemandu` | Pemeriksaan kesihatan percuma untuk pemandu | manfaat | Pemeriksaan kesihatan percuma oleh PERKESO | `status includes taxi AND age ≥ 40 AND age ≤ 59` | check | Perenggan 212, ms 114; Lampiran I Bil. 30, ms 264 | — |
+| `penghargaan_pesara` | Bayaran penghargaan khas pesara dilanjutkan | manfaat | Diteruskan dari Januari hingga Disember | `employment = retired_gov` | check | Lampiran I Bil. 40 | — |
+| `bsh_pesara_kemas` | Bayaran Sara Hidup pesara kontrak KEMAS dinaikkan | manfaat | RM500 sebulan (sebelum ini RM300) | `employment ∈ [retired_gov, retired_other]` | check | Perenggan 238; Lampiran I Bil. 40 | — |
+| `apel_q` | Program APEL.Q INTAN untuk penjawat awam | manfaat | Kerajaan menanggung 50% kos pengajian, sehingga RM15,000 | `employment = civil_servant` | check | Lampiran I Bil. 40 | — |
+| `etap_perubatan` | Elaun Tugas Atas Panggilan (ETAP) pegawai perubatan dinaikkan | manfaat | Naik antara 33% hingga 43% mengikut kelayakan | `employment = civil_servant` | check | Perenggan 182; Lampiran I Bil. 32 | Berkuat kuasa 1 Oktober 2025. |
+| `lantikan_tetap_kkm` | Lantikan tetap untuk doktor, jururawat dan graduan kontrak KKM | manfaat | Tawaran lantikan tetap mulai 2026 | `employment = civil_servant` | check | Perenggan 182; Lampiran I Bil. 32 | — |
+| `bipk_bipac` | Bayaran insentif pasukan khas (BIPK dan BIPAC) dinaikkan | manfaat | Kadar bayaran dinaikkan | `employment = civil_servant` | check | Lampiran I Bil. 40 | — |
+| `geran_bsn` | Geran perniagaan BSN untuk usahawan mikro | manfaat | Sehingga RM10,000 untuk membeli peralatan perniagaan | `employment = self_employed` | check | Perenggan 156; Lampiran I Bil. 28 | — |
+| `kwap_mikro` | Pembiayaan mikro KWAP untuk pesara | manfaat | Pembiayaan mikro untuk memulakan perniagaan komuniti | `employment = retired_gov` | check | Perenggan 138 | — |
+| `tamu_desa` | Ruang niaga Tamu Desa di Sabah dan Sarawak | manfaat | Tapak dan ruang niaga baharu dengan kemudahan asas | `region ∈ [sabah, sarawak] AND employment = self_employed` | check | Perenggan 46; Lampiran I Bil. 8 | — |
+| `buah_buahan` | Insentif pengusaha buah-buahan tempatan | manfaat | Insentif tanaman dan prasarana ladang | `employment = farmer AND farmType = other` | check | Perenggan 112; Lampiran I Bil. 20 | — |
+| `penternak` | Insentif penternak ruminan kecil dan lembu pedaging | manfaat | Insentif bagi penternak yang mencapai kadar kelahiran ternakan yang ditetapkan | `employment = farmer AND farmType = other` | check | Lampiran I Bil. 20 | — |
+| `elaun_imam_kafa` | Elaun bulanan imam, guru KAFA dan guru takmir | manfaat | Elaun bulanan diteruskan | `status includes religious_staff` | check | Lampiran I Bil. 36 | — |
 
 ### Pengangkutan & Mobiliti (`mobility`, 4)
 
@@ -270,7 +299,7 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `lupus_kenderaan` | Geran menukar kereta lama | manfaat | Geran RM2,000 dan padanan RM2,000 daripada pengeluar (kira-kira RM4,000) | `assets includes old_car` | check | Perenggan 213, ms 114; Lampiran I Bil. 34, ms 287–288 | — |
 | `ras` | Subsidi penerbangan luar bandar (RAS) | manfaat | Tambang penerbangan bersubsidi | `region ∈ [sabah, sarawak]` | high | Perenggan 208, ms 111 | — |
 
-### Pelepasan Cukai Individu (`tax`, 6)
+### Pelepasan Cukai Individu (`tax`, 7)
 
 | id | Item | Kind | What the person gets / pays | Rule (`when`) | Certainty | Source | Timing |
 |---|---|---|---|---|---|---|---|
@@ -280,8 +309,9 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `tax_kurang_upaya` | Pelepasan cukai intervensi awal anak kurang upaya pembelajaran | manfaat | Dinaikkan daripada RM6,000 kepada RM10,000 | `assets includes taxpayer AND status includes oku_child` | high | Perenggan 149, ms 88; Lampiran II — Lampiran 3, ms 317 | — |
 | `tax_lestari` | Pelepasan cukai peralatan hijau dan keselamatan rumah | manfaat | Sehingga RM2,500 | `assets includes taxpayer` | high | Lampiran II — Lampiran 5, ms 319 | — |
 | `tax_pelancongan` | Pelepasan cukai tiket masuk tempat pelancongan dan program budaya | manfaat | Sehingga RM1,000 (Tahun Taksiran 2026 sahaja) | `assets includes taxpayer` | high | Perenggan 75, ms 56; Lampiran II — Lampiran 6, ms 320 | — |
+| `potongan_derma` | Potongan cukai untuk sumbangan tunai | manfaat | Potongan cukai pendapatan bagi sumbangan yang layak | `assets includes taxpayer` | high | Perenggan 28, 82, 205; Lampiran I Bil. 34; Lampiran II — Lampiran 12 dan 13 | Tabung endowmen hospital pengajar: mulai Tahun Taksiran 2026. Program pencegahan rasuah: bagi program yang dilaksanakan dari 1 Januari 2026 hingga 31 Disember 2028. |
 
-### Kes Khas: Gaya Hidup, Pelaburan & Perubahan Harga (`special`, 10)
+### Kes Khas: Gaya Hidup, Pelaburan & Perubahan Harga (`special`, 11)
 
 | id | Item | Kind | What the person gets / pays | Rule (`when`) | Certainty | Source | Timing |
 |---|---|---|---|---|---|---|---|
@@ -295,7 +325,7 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `duti_kontrak_kerja` | Tiada duti setem untuk kontrak pekerjaan bergaji rendah | manfaat | Dikecualikan jika gaji RM3,000 dan ke bawah sebulan | `employment ∈ [employed_private, jobseeker]` | check | Lampiran II — Lampiran 20, ms 336 | — |
 | `pelabur_runcit` | Tiada duti setem untuk urus niaga ETF dan waran berstruktur | manfaat | Dikecualikan duti setem nota kontrak hingga 31 Disember 2028 | `assets includes invest_bursa` | high | Lampiran II — Lampiran 18 dan 19, ms 334–335 | — |
 | `cukai_plt` | Cukai ke atas agihan keuntungan Perkongsian Liabiliti Terhad (PLT) | kesan | Cukai 2% ke atas agihan keuntungan melebihi RM100,000 setahun | `assets includes llp_partner` | check | Lampiran II — Lampiran 7, ms 321–322 | — |
-
+| `cukai_kenderaan_labuan` | Pengecualian cukai kenderaan di Labuan dan Langkawi dihadkan | kesan | Hanya bagi kenderaan bernilai sehingga RM300,000 | `age ≥ 18 AND region = labuan AND assets includes license` | high | Perenggan 27 | Berkuat kuasa 1 Januari 2026. |
 
 ---
 
@@ -307,6 +337,9 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 - **Bumiputera-only programmes** are folded into broader cards, with the restriction stated in the text, rather than asking about ethnicity.
 - **The clinic-fee change is shown to every adult** because it affects anyone using a private GP.
 - **Portal links** are suggested official sites; verify them before launch.
+- **Langkawi residents can't be targeted.** The region question has no Langkawi option, so the vehicle-exemption cap is shown to Labuan residents and names Langkawi in its text.
+- **Some amounts aren't in the text.** The pensioners' special appreciation payment and the imam/KAFA/takmir monthly allowance have no per-person amount in the speech, so both are `semak`.
+- **KEMAS contract pensioners** aren't a separate answer, so their allowance is shown as `semak` to all retirees, with KEMAS named in the text.
 
 ## 6. Integration
 
@@ -339,7 +372,14 @@ function onAnswer(id, value) { answers = B26Brain.pruneAnswers({ ...answers, [id
 2. Run `node test.js && node verify2.js`.
 3. Run `node gen-spec.js` to regenerate the tables in this document.
 
-## 8. Verification record (25 Sep 2026)
+## 8. Verification record
+
+**26 Sep 2026 (v2026.4):**
+- `test.js`: 14,501 checks, 0 failures, including 42 new checks for the added items (one persona per item, plus guards: Labuan-only vehicle cap, taxpayer-only donation deduction, Sabah/Sarawak-only Tamu Desa, no civil-service or pensioner items for private employees).
+- `verify2.js`: 30,000 users, all 113 items and 13 themes reachable, 0 invariant violations.
+- `coverage.js --final`: all 1,279 units of the speech have a decision, every item traces to a unit, and no question is left open.
+
+**25 Sep 2026 (v2026.3):**
 
 **Round 1 — `test.js`: 12,362 checks, 0 failures**
 
@@ -362,3 +402,29 @@ function onAnswer(id, value) { answers = B26Brain.pruneAnswers({ ...answers, [id
   - Tier sorting is correct and every result has an explanation.
 - **Simulator bug found and fixed:** the first run exposed a bug in the *simulator* (multi-select answers were stored as objects). It was a harness bug, not a brain bug, and was fixed before the final run.
 - **Manual review:** a full read-through of all 745 lines of Malay text found 16 wording issues, all fixed and added to the lint.
+
+## 9. Keputusan pengguna (26 Sep 2026)
+
+Decisions from the step-5 question rounds, recorded in `ledger-2026.tsv`. Don't re-ask these unless the source text changes.
+
+| Measure (source) | Decision |
+|---|---|
+| Langkawi/Labuan vehicle tax exemption capped at RM300,000 (Perenggan 27) | Include as `kesan` for Labuan residents with a driving licence; name Langkawi in the text |
+| PERKESO haemodialysis up to RM170 (Perenggan 170) | Include as `semak` for workers with PERKESO cover; no health question |
+| Pensioners' special appreciation payment (Lampiran I Bil. 40) | Include |
+| KEMAS contract pensioners' allowance RM500 a month (Perenggan 238) | Include |
+| APEL.Q INTAN (Lampiran I Bil. 40) | Include |
+| ETAP rise; permanent posts for contract medical staff (Perenggan 182) | Include |
+| BIPK/BIPAC (Lampiran I Bil. 40) | Include |
+| Solar ATAP (Perenggan 104) | Include |
+| RESET insurance product (Lampiran I Bil. 32) | Exclude |
+| LiKES internships (Lampiran I Bil. 11) | Exclude |
+| Stamp duty 8% on homes bought by non-citizens (Perenggan 218) | Exclude (not for citizens) |
+| Donation tax deductions (Perenggan 28, 82, 205; Lampiran I Bil. 34) | Include as one item for taxpayers |
+| BSN business grant, iTEKAD, KWAP microfinance, Tamu Desa stalls | Include all four |
+| SJPP guarantees for micro-entrepreneurs (Perenggan 98) | Exclude |
+| Youth age limit 15–30 (Perenggan 143) | Already covered by the youth items |
+| Fruit growers, livestock breeders, imam/KAFA allowance, tahfiz skills training | Include all four |
+| Electricity tariff change; Sabah/Labuan power subsidy; strata titles | Exclude |
+| Kota MADANI homes (Perenggan 214) | Include |
+| Lemon Law (Perenggan 39); KWSP transfer study (Lampiran I Bil. 30) | Exclude (no money yet); check again next year |

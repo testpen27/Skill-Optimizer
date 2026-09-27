@@ -1,6 +1,6 @@
 {
-  "version": "2026.3",
-  "dataAsOf": "2026-09-25",
+  "version": "2026.4",
+  "dataAsOf": "2026-09-26",
   "strSara": {
     "eligible": true,
     "reason": null,
@@ -16,9 +16,9 @@
     "saraMonthlyIfEkasih": 200
   },
   "counts": {
-    "total": 28,
+    "total": 32,
     "layak": 13,
-    "semak": 11,
+    "semak": 15,
     "mungkin": 2,
     "kesan": 2
   },
@@ -46,7 +46,8 @@
           "reasons": [
             "Dianggarkan layak menerima STR 2026"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": "strSara"
         },
         {
           "id": "penghargaan_sara",
@@ -66,14 +67,15 @@
           "reasons": [
             "Berumur 18 tahun ke atas"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
         }
       ]
     },
     {
       "id": "subsidy",
       "label": "Subsidi Bahan Api & Tenaga",
-      "count": 2,
+      "count": 3,
       "items": [
         {
           "id": "budi95",
@@ -94,7 +96,8 @@
             "Berumur 16 tahun ke atas",
             "Mempunyai lesen memandu yang sah"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
         },
         {
           "id": "rebat_cekap_tenaga",
@@ -114,14 +117,36 @@
           "reasons": [
             "Berumur 18 tahun ke atas"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
+        },
+        {
+          "id": "solar_atap",
+          "theme": "subsidy",
+          "kind": "manfaat",
+          "tier": "semak",
+          "tierLabel": "Semak kelayakan",
+          "title": "Solar ATAP: jana elektrik sendiri di rumah",
+          "value": "Lebihan tenaga boleh dijual sebagai pengimbangan (offset) bil elektrik",
+          "summary": "Melalui Solar Accelerated Transition Action Programme (Solar ATAP), pengguna elektrik domestik boleh memasang sistem solar PV untuk kegunaan sendiri dan menjual lebihan tenaga kepada syarikat utiliti sebagai pengimbangan dalam bil elektrik.",
+          "who": "Pengguna elektrik domestik yang boleh memasang sistem solar PV.",
+          "action": "Semak syarat penyertaan dengan syarikat utiliti anda.",
+          "timing": null,
+          "src": "Perenggan 104; Lampiran I Bil. 19",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Berumur 18 tahun ke atas"
+          ],
+          "needsConfirm": [],
+          "compute": null
         }
       ]
     },
     {
       "id": "health",
       "label": "Kesihatan & Insurans",
-      "count": 6,
+      "count": 7,
       "items": [
         {
           "id": "peka_b40",
@@ -142,7 +167,8 @@
             "Berumur 40 tahun ke atas",
             "Dianggarkan layak menerima STR 2026"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
         },
         {
           "id": "mysalam",
@@ -163,7 +189,29 @@
             "Berumur 18 tahun ke atas",
             "Dianggarkan layak menerima STR 2026"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
+        },
+        {
+          "id": "perkeso_dialisis",
+          "theme": "health",
+          "kind": "manfaat",
+          "tier": "semak",
+          "tierLabel": "Semak kelayakan",
+          "title": "Kadar bayaran rawatan hemodialisis PERKESO dinaikkan",
+          "value": "Sehingga RM170 bagi setiap rawatan (sebelum ini RM150)",
+          "summary": "PERKESO menaikkan kadar maksimum yang dibayar bagi setiap rawatan hemodialisis.",
+          "who": "Pencarum PERKESO yang menerima rawatan hemodialisis.",
+          "action": "Semak kelayakan dengan PERKESO.",
+          "timing": null,
+          "src": "Perenggan 170; Lampiran I Bil. 30",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Pekerja yang dilindungi PERKESO"
+          ],
+          "needsConfirm": [],
+          "compute": null
         }
       ]
     },
@@ -190,7 +238,8 @@
           "reasons": [
             "Ada murid sekolah Kerajaan dalam keluarga"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
         },
         {
           "id": "bantuan_am",
@@ -211,7 +260,8 @@
             "Ada murid sekolah Kerajaan dalam keluarga",
             "Pendapatan isi rumah RM2,500 dan ke bawah"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
         }
       ]
     },
@@ -238,7 +288,8 @@
           "reasons": [],
           "needsConfirm": [
             "Berdaftar sebagai Miskin atau Miskin Tegar dalam eKasih"
-          ]
+          ],
+          "compute": null
         }
       ]
     },
@@ -266,7 +317,8 @@
             "Bekerja sendiri atau berpendapatan tidak tetap",
             "Berumur bawah 60 tahun"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
         },
         {
           "id": "lindung_kendiri",
@@ -286,7 +338,8 @@
           "reasons": [
             "Bekerja sendiri atau berpendapatan tidak tetap"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
         }
       ]
     },
@@ -315,7 +368,8 @@
             "Ibu tunggal",
             "Pendapatan isi rumah RM5,000 dan ke bawah"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
         },
         {
           "id": "pembiayaan_wanita",
@@ -336,7 +390,8 @@
             "Wanita",
             "Berniaga atau bekerja sendiri"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
         }
       ]
     },
@@ -363,7 +418,65 @@
           "reasons": [
             "Mencari kerja atau bekerja sendiri"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
+        }
+      ]
+    },
+    {
+      "id": "vulnerable",
+      "label": "OKU, Warga Emas & Golongan Rentan",
+      "count": 1,
+      "items": [
+        {
+          "id": "itekad",
+          "theme": "vulnerable",
+          "kind": "manfaat",
+          "tier": "semak",
+          "tierLabel": "Semak kelayakan",
+          "title": "Geran padanan iTEKAD",
+          "value": "Geran padanan untuk kemahiran, keusahawanan dan perlindungan",
+          "summary": "iTEKAD diperluas untuk menyediakan geran padanan kepada penerima yang ingin meningkatkan kemahiran bagi pekerjaan dan pendapatan yang lebih stabil. Dana disumbangkan bersama oleh sektor swasta, termasuk institusi kewangan.",
+          "who": "Golongan rentan, termasuk usahawan kecil dan pencari kerja.",
+          "action": "Semak kelayakan melalui program iTEKAD.",
+          "timing": null,
+          "src": "Perenggan 67; Lampiran I Bil. 12",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Pendapatan isi rumah RM5,000 dan ke bawah",
+            "Bekerja sendiri atau mencari pekerjaan"
+          ],
+          "needsConfirm": [],
+          "compute": null
+        }
+      ]
+    },
+    {
+      "id": "sector",
+      "label": "Mengikut Pekerjaan (Penjawat Awam, Veteran, Nelayan, Petani, Teksi)",
+      "count": 1,
+      "items": [
+        {
+          "id": "geran_bsn",
+          "theme": "sector",
+          "kind": "manfaat",
+          "tier": "semak",
+          "tierLabel": "Semak kelayakan",
+          "title": "Geran perniagaan BSN untuk usahawan mikro",
+          "value": "Sehingga RM10,000 untuk membeli peralatan perniagaan",
+          "summary": "BSN menyediakan geran perniagaan kepada usahawan mikro yang berpotensi, sebagai modal untuk membeli peralatan perniagaan.",
+          "who": "Usahawan mikro.",
+          "action": "Semak dengan cawangan BSN.",
+          "timing": null,
+          "src": "Perenggan 156; Lampiran I Bil. 28",
+          "web": null,
+          "portal": null,
+          "reasons": [
+            "Bekerja sendiri atau peniaga kecil"
+          ],
+          "needsConfirm": [],
+          "compute": null
         }
       ]
     },
@@ -390,7 +503,8 @@
           "reasons": [
             "Ada murid sekolah Kerajaan dalam keluarga"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
         }
       ]
     },
@@ -417,7 +531,8 @@
           "reasons": [
             "Merokok atau menggunakan produk nikotin"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
         },
         {
           "id": "duti_rokok",
@@ -437,7 +552,8 @@
           "reasons": [
             "Merokok"
           ],
-          "needsConfirm": []
+          "needsConfirm": [],
+          "compute": null
         }
       ]
     }
@@ -453,7 +569,7 @@
     },
     {
       "type": "disclaimer",
-      "text": "Panduan umum berdasarkan Ucapan Belanjawan 2026 (maklumat setakat 2026-09-25). Ini bukan penentuan kelayakan rasmi. Sila sahkan dengan agensi yang berkaitan."
+      "text": "Panduan umum berdasarkan Ucapan Belanjawan 2026 (maklumat setakat 2026-09-26). Ini bukan penentuan kelayakan rasmi. Sila sahkan dengan agensi yang berkaitan."
     }
   ]
 }

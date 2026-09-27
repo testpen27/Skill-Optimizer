@@ -18,8 +18,8 @@ A self-contained logic engine (no UI, no dependencies) that turns a person's ans
 
 | File | What it is | When to use it |
 |---|---|---|
-| **`scripts/belanjawan2026-brain.js`** | **The brain.** Questions, 13 themes, 94 items, STR/SARA calculator, rule engine. UMD: `window.B26Brain` in the browser, `require()` in Node. | Load it in the front end. This is the only file the UI needs. |
-| `scripts/test.js` | Verification round 1: 12,362 checks (speech figures, branching, personas, integrity, Bahasa Melayu lint, "no government-spending figures" lint) | After any edit: `node scripts/test.js` |
+| **`scripts/belanjawan2026-brain.js`** | **The brain.** Questions, 13 themes, 113 items, STR/SARA calculator, rule engine. UMD: `window.B26Brain` in the browser, `require()` in Node. | Load it in the front end. This is the only file the UI needs. |
+| `scripts/test.js` | Verification round 1: 14,501 checks (speech figures, branching, personas, integrity, Bahasa Melayu lint, "no government-spending figures" lint) | After any edit: `node scripts/test.js` |
 | `scripts/verify2.js` | Verification round 2: 30,000 simulated users walking the real question flow and checking invariants | After any edit: `node scripts/verify2.js` |
 | `scripts/gen-spec.js` | Regenerates the question and rule tables from the code | After any edit: run it, then paste `_generated.md` into the spec |
 | `references/LOGIK-BELANJAWAN-2026.md` | Full spec: design, tiers, STR table, every question and rule with sources, verification record | Read before changing logic |
@@ -38,7 +38,7 @@ A self-contained logic engine (no UI, no dependencies) that turns a person's ans
 
 ```js
 {
-  version: '2026.3', dataAsOf: '2026-09-25',
+  version: '2026.4', dataAsOf: '2026-09-26',
   strSara: {                       // cash estimate card
     eligible: true | false | null, // null = user skipped something needed
     category, label, str, sara, saraMonthly, total,
@@ -151,5 +151,6 @@ Keep the engine and replace the data. Keep 2026 as its own versioned file, not o
 - **Spouse's age isn't asked**, so a 40+ spouse doesn't trigger PeKa B40.
 - **Bumiputera-only programmes** are folded into broader cards, with the restriction in the text.
 - **Portal links should be verified** before launch.
-- **The 2026 ledger has open questions.** A text-only read of Ucapan Belanjawan 2026 found measures the brain doesn't have yet, such as the Langkawi and Labuan vehicle tax exemption cap, PERKESO dialysis rates and the KEMAS contract-pensioner allowance. These are `gap` rows, and borderline cases are `ask` rows. Resolve them with the user before calling the 2026 data complete.
+- **2026 decisions are recorded.** Every unit of the 2026 speech has a ledger decision, and the user's step-5 choices are in the spec's **Keputusan pengguna** section. The text gives no per-person amount for the pensioners' special appreciation payment or the imam/KAFA/takmir allowance, so those items are `semak`.
+- **Langkawi residents can't be targeted.** The region question has no Langkawi option, so the vehicle-exemption cap is shown to Labuan residents and names Langkawi in its text.
 - **Budget 2027** (due Oct 2026) will supersede this data.

@@ -58,3 +58,9 @@ Four of these appear only in Lampiran I. A read of the speech alone would miss t
 - **Look for area-based tax measures in the governance sections.** The Langkawi cap sits among anti-leakage measures.
 - **Criteria often live in earlier years' texts.** i-Suri's matching rule is in the 2025 Lampiran I. Some are in no speech at all: PeKa B40's age and STR rule and BUDI95's quota. Those become `semak` items plus a question for the user, never a web lookup.
 - **Watch for name collisions.** "PEKA" in the speeches is a prison programme (Peluang Kedua Anda), not PeKa B40.
+
+## Outcome (26 Sep 2026)
+
+The user decided every `gap` and `ask` row in three question rounds. The brain went from 94 to 113 items (v2026.4), with 19 added from the speech text only. The rest were excluded, each with the user's decision recorded in the ledger. The full list of decisions is in `references/LOGIK-BELANJAWAN-2026.md` §9 (Keputusan pengguna).
+
+`coverage.js --final` now passes: all 1,279 units are decided and every item traces to a unit. Round 1 passes 14,501 checks and round 2 reaches all 113 items with no invariant violations.

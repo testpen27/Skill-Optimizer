@@ -77,6 +77,35 @@ r = B.evaluate({ age: 50, region: 'semenanjung', marital: 'married', children: '
 has('C34 pesawah mungkin', r, 'pesawah', 'mungkin'); has('C35 pekebun kecil mungkin', r, 'pekebun_kecil', 'mungkin');
 not('C36 gender skipped: no i-Suri etc. certain', r, 'kasihnita');
 
+/* ---- F. Items added from the user's step-5 decisions (2026-09-26) ---- */
+const adult = { marital: 'married', children: '0', income: '2501_5000', ekasih: 'no', str_status: 'no', gender: 'male', status: ['none'], lifestyle: ['none'] };
+r = B.evaluate({ ...adult, age: 40, region: 'labuan', employment: 'employed_private', assets: ['license'] });
+has('F1 Labuan driver: vehicle exemption cap', r, 'cukai_kenderaan_labuan', 'kesan');
+has('F2 PERKESO dialysis semak', r, 'perkeso_dialisis', 'semak'); has('F3 Solar ATAP', r, 'solar_atap', 'semak');
+not('F4 private employee: no potongan_derma without taxpayer', r, 'potongan_derma');
+['apel_q', 'etap_perubatan', 'lantikan_tetap_kkm', 'bipk_bipac', 'kota_madani', 'penghargaan_pesara', 'bsh_pesara_kemas', 'kwap_mikro', 'geran_bsn', 'tamu_desa', 'elaun_imam_kafa', 'buah_buahan', 'penternak']
+  .forEach(id => not('F5 private employee not shown ' + id, r, id));
+not('F6 Labuan, no licence', B.evaluate({ ...adult, age: 40, region: 'labuan', employment: 'employed_private', assets: ['none'] }), 'cukai_kenderaan_labuan');
+not('F7 Semenanjung driver', B.evaluate({ ...adult, age: 40, region: 'semenanjung', employment: 'employed_private', assets: ['license'] }), 'cukai_kenderaan_labuan');
+r = B.evaluate({ ...adult, age: 45, region: 'semenanjung', employment: 'civil_servant', assets: ['taxpayer'] });
+['apel_q', 'etap_perubatan', 'lantikan_tetap_kkm', 'bipk_bipac', 'kota_madani'].forEach(id => has('F8 civil servant ' + id, r, id, 'semak'));
+has('F9 taxpayer: donation deduction', r, 'potongan_derma', 'layak');
+r = B.evaluate({ ...adult, age: 67, region: 'sabah', employment: 'retired_gov', assets: ['none'] });
+['penghargaan_pesara', 'bsh_pesara_kemas', 'kwap_mikro'].forEach(id => has('F10 government pensioner ' + id, r, id, 'semak'));
+r = B.evaluate({ ...adult, age: 62, region: 'semenanjung', employment: 'retired_other', assets: ['none'] });
+has('F11 other retiree: KEMAS contract BSH', r, 'bsh_pesara_kemas', 'semak'); not('F12 other retiree: no pension payment', r, 'penghargaan_pesara');
+r = B.evaluate({ ...adult, age: 33, region: 'sabah', income: 'lt2500', employment: 'self_employed', assets: ['none'] });
+['tamu_desa', 'geran_bsn', 'itekad'].forEach(id => has('F13 Sabah small trader ' + id, r, id, 'semak'));
+not('F14 Semenanjung trader: no Tamu Desa', B.evaluate({ ...adult, age: 33, region: 'semenanjung', income: 'lt2500', employment: 'self_employed', assets: ['none'] }), 'tamu_desa');
+r = B.evaluate({ ...adult, age: 50, region: 'semenanjung', employment: 'farmer', farm_type: 'other', assets: ['none'] });
+has('F15 fruit grower', r, 'buah_buahan', 'semak'); has('F16 livestock breeder', r, 'penternak', 'semak');
+not('F17 padi farmer: no fruit incentive', B.evaluate({ ...adult, age: 50, region: 'semenanjung', employment: 'farmer', farm_type: 'padi', assets: ['none'] }), 'buah_buahan');
+has('F18 imam/KAFA allowance', B.evaluate({ ...adult, age: 45, region: 'semenanjung', employment: 'self_employed', assets: ['none'], status: ['religious_staff'] }), 'elaun_imam_kafa', 'semak');
+has('F19 IPT student 20: tahfiz skills', B.evaluate({ ...adult, marital: 'single', age: 20, region: 'semenanjung', employment: 'student_ipt', assets: ['none'] }), 'tahfiz_kemahiran', 'semak');
+r = B.evaluate({ age: 16, region: 'semenanjung', self_school: 'yes', assets: ['none'], status: ['none'] });
+has('F20 pupil 16: tahfiz skills', r, 'tahfiz_kemahiran', 'semak'); not('F21 minor: no Solar ATAP', r, 'solar_atap');
+not('F22 aged 31: no tahfiz skills', B.evaluate({ ...adult, age: 31, region: 'semenanjung', employment: 'student_ipt', assets: ['none'] }), 'tahfiz_kemahiran');
+
 /* ---- D. Catalogue integrity ---- */
 const themes = B.THEMES.map(t => t.id);
 const idsAll = B.BENEFITS.map(b => b.id);
