@@ -19,6 +19,7 @@ A self-contained logic engine (no UI, no dependencies) that turns a person's ans
 | File | What it is | When to use it |
 |---|---|---|
 | **`scripts/belanjawan2026-brain.js`** | **The brain.** Questions, 13 themes, 115 items, STR/SARA calculator, rule engine. UMD: `window.B26Brain` in the browser, `require()` in Node. | Load it in the front end. This is the only file the UI needs. |
+| **`references/excluded-2026.md`** | **Not to be built.** Every measure in the speech that reaches people but was deliberately left out (29, mostly by the user's decision), with its text and reason, plus a count of all other exclusions. Generated from the ledger. | Read before developing the calculator. Don't implement anything on it without asking the user. |
 | `scripts/test.js` | Verification round 1: 14,740 checks (speech figures, branching, personas, integrity, Bahasa Melayu lint, "no government-spending figures" lint) | After any edit: `node scripts/test.js` |
 | `scripts/verify2.js` | Verification round 2: 30,000 simulated users walking the real question flow and checking invariants | After any edit: `node scripts/verify2.js` |
 | `scripts/gen-spec.js` | Regenerates the question and rule tables from the code | After any edit: run it, then paste `_generated.md` into the spec |
@@ -34,6 +35,7 @@ A self-contained logic engine (no UI, no dependencies) that turns a person's ans
 | `references/programmes.json` | Citizen programmes learned from past speeches, with the years each appears | Used by the scorer; read for the cross-year view |
 | `references/text-signals.md` | How the text-only method works, its measured recall, and what three years of speeches taught | Read before a rebuild or when extending the signals |
 | `scripts/benchmark.js` | Scores the flagging against a blind answer key, learning programme names only from earlier years; `--draw` samples a key, `--blind` prints pieces without their scores for labelling | After changing `text-signals.js` or `learn-programmes.js`: `node scripts/benchmark.js ub26.md references/ledger-2026.tsv --learn-from ub24.md ub25.md` |
+| `scripts/annotate-source.js` | Builds the hand-over outputs from the ledger: `excluded-<year>.md`, and the speech as HTML/PDF with used units shaded light green and excluded units yellow, each tagged with its item or reason | Hand-over (rebuild step 9). Send the user the PDF. |
 | `references/ledger-2025.tsv` | Blind answer key for all 1,210 units of Ucapan Belanjawan 2025 (labels only; there is no 2025 brain) | Benchmark key, and last year's baseline when rebuilding for 2027 |
 
 ### B. What the brain returns at runtime — `B26Brain.evaluate(answers)`
@@ -77,6 +79,8 @@ A self-contained logic engine (no UI, no dependencies) that turns a person's ans
 ## Integrating into a front end (the usual Claude Code task)
 
 The UI must **only call the API** and never re-implement eligibility logic, because the rules are verified and duplicating them breaks that guarantee.
+
+**Build only what the brain contains.** `references/excluded-2026.md` lists the measures that were read and left out on purpose: the Lemon Law, the electricity tariff change, the non-citizen stamp duty, rare-disease funding, free helmets and others. Don't add cards, questions or calculations for them. If the user wants one, it goes through step 5 and into the brain first.
 
 ```js
 let answers = {};
@@ -131,7 +135,7 @@ Read `references/building-a-new-brain.md` and follow its nine steps:
 6. Design minimal skippable questions.
 7. Write the rules.
 8. Verify twice, plus the coverage check.
-9. Hand over.
+9. Hand over. This includes `excluded-<year>.md`, the "not to be built" list, and the annotated speech PDF for the user: light green for what the brain uses, yellow for what was excluded.
 
 **Text only.** The user wants the brain pulled from the speech, Lampiran I and Lampiran II, not the web. Coverage comes from the ledger, not from keywords: every unit of the text gets a decision, and `coverage.js --final` fails if one is missing or still open. Lampiran I carries measures the speech never mentions, so read it as a source, not only for amounts. `references/text-signals.md` explains the method.
 

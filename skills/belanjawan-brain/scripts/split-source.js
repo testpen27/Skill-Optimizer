@@ -10,6 +10,9 @@
  *   L1.29.3   the 3rd item inside Lampiran I Bil. 29
  *   L2.36     Lampiran II entry 36 (tax measure), whole entry
  *
+ * Each unit carries `line` and `end`: the first and last source lines it was read from
+ * (annotate-source.js uses them to highlight the speech).
+ *
  * Exits non-zero if the speech or Lampiran I numbering has a gap, because a gap means the
  * extraction lost text and the ledger would silently miss it.
  */
@@ -87,16 +90,16 @@ function split(file) {
     if (n && +n[1] === para + 1) {
       if (cur) push(cur);
       para = +n[1]; bullet = 0;
-      cur = { id: 'P' + para, part: 'ucapan', ref: `Perenggan ${para}`, text: line.replace(NUMBERED, ''), line: i + 1 };
+      cur = { id: 'P' + para, part: 'ucapan', ref: `Perenggan ${para}`, text: line.replace(NUMBERED, ''), line: i + 1, end: i + 1 };
       continue;
     }
     if (para && BULLET.test(line)) {
       if (cur) push(cur);
       bullet++;
-      cur = { id: `P${para}.${bullet}`, part: 'ucapan', ref: `Perenggan ${para} (butiran ${bullet})`, text: line.replace(BULLET, ''), line: i + 1 };
+      cur = { id: `P${para}.${bullet}`, part: 'ucapan', ref: `Perenggan ${para} (butiran ${bullet})`, text: line.replace(BULLET, ''), line: i + 1, end: i + 1 };
       continue;
     }
-    if (cur) cur.text += ' ' + line;
+    if (cur) { cur.text += ' ' + line; if (line.trim()) cur.end = i + 1; }
   }
   if (cur) push(cur);
   if (para === 0) problems.push('no numbered speech paragraphs found');
@@ -111,16 +114,16 @@ function split(file) {
     if (n && +n[1] === bil + 1) {   // inner lists restart at 1, so only the next Bil counts
       if (cur) push(cur);
       bil = +n[1]; item = 0;
-      cur = { id: 'L1.' + bil, part: 'lampiran1', ref: `Lampiran I Bil. ${bil}`, text: line.replace(NUMBERED, ''), line: i + 1 };
+      cur = { id: 'L1.' + bil, part: 'lampiran1', ref: `Lampiran I Bil. ${bil}`, text: line.replace(NUMBERED, ''), line: i + 1, end: i + 1 };
       continue;
     }
     if (bil && BULLET.test(line)) {
       if (cur) push(cur);
       item++;
-      cur = { id: `L1.${bil}.${item}`, part: 'lampiran1', ref: `Lampiran I Bil. ${bil} (butiran ${item})`, text: line.replace(BULLET, ''), line: i + 1 };
+      cur = { id: `L1.${bil}.${item}`, part: 'lampiran1', ref: `Lampiran I Bil. ${bil} (butiran ${item})`, text: line.replace(BULLET, ''), line: i + 1, end: i + 1 };
       continue;
     }
-    if (cur) cur.text += ' ' + line;
+    if (cur) { cur.text += ' ' + line; if (line.trim()) cur.end = i + 1; }
   }
   if (cur) push(cur);
 
@@ -132,7 +135,7 @@ function split(file) {
     for (const l of body) { const hh = isHeading(l); if (hh) titleLines.push(hh.text); else if (l.trim()) break; }
     const title = norm(h.title || titleLines.join(' '));
     push({ id: 'L2.' + h.n, part: 'lampiran2', ref: `Lampiran II — Lampiran ${h.n}`, title, section: 'Lampiran II',
-      text: title + ' — ' + body.filter(l => !isHeading(l)).join(' '), line: h.i + 1 });
+      text: title + ' — ' + body.filter(l => !isHeading(l)).join(' '), line: h.i + 1, end });
   });
   const l2nums = l2.map(h => h.n);
   l2nums.forEach((n, k) => { if (n !== k + 1) problems.push(`Lampiran II numbering jumps at ${n} (expected ${k + 1})`); });

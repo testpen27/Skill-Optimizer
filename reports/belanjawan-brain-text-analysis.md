@@ -18,7 +18,7 @@ The signals were tuned on the 2026 brain. Each of its items was matched to the u
 
 - The scorer flags about a third of units.
 - 85 of the 90 source units are flagged. Two of the five unflagged are matching errors; the other three are announcements that name neither an amount nor a group.
-- These are tuning figures. A fair test followed on 27 Sep 2026, with blind answer keys and each year learning only from earlier years. It caught 74% of person-level pieces in 2024 (estimated), 77% in 2025 and 83% in 2026. See `reports/belanjawan-brain-benchmark.md`.
+- These are tuning figures. A fair test followed on 27 Sep 2026, with blind answer keys and each year learning only from earlier years. It caught 74% of person-level pieces in 2024 (estimated), 77% in 2025 and 84% in 2026. See `reports/belanjawan-brain-benchmark.md`.
 
 The score only orders the reading. Completeness comes from the ledger: `references/ledger-2026.tsv` has a decision for all 1,279 units, and `coverage.js` fails if one is missing, bulk-excluded while flagged, or left open at hand-over.
 

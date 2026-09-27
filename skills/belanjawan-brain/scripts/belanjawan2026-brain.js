@@ -16,6 +16,8 @@
  *  - Personal questions are optional: every non-core question offers "Tidak mahu menyatakan" (value 'skip').
  *  - A skipped single-choice answer becomes UNKNOWN (tri-state), so dependent results show as "mungkin".
  *  - A skipped multi-choice answer is treated as "none selected", with an advisory telling the user.
+ *  - Scope: build only the items in BENEFITS. Measures read in the speech and deliberately left
+ *    out are listed in references/excluded-2026.md; don't implement them without asking the user.
  */
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) module.exports = factory();

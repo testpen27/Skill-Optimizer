@@ -12,7 +12,7 @@ Measured fairly, each year learning only from earlier years:
 |---|---|---|---|---|---|---|
 | 2024 | sample: all 165 flagged + 150 random unflagged | nothing (cold start) | 36% | **74%** (95% CI 63–82%), estimated | — | 47% |
 | 2025 | all 1,210 pieces | 2024 | 33% | **77%** (217 of 282) | **79%** (144 of 183) | 55% |
-| 2026 | all 1,279 pieces, after re-reading the 838 | 2024 + 2025 | 33% | **83%** (217 of 260) | **86%** (127 of 147) | 52% |
+| 2026 | all 1,279 pieces, after re-reading the 838 | 2024 + 2025 | 33% | **84%** (218 of 261) | **86%** (127 of 147) | 52% |
 
 A measure counts as caught if any of its pieces is flagged. One brain item often appears in both the speech and Lampiran I.
 
@@ -23,8 +23,8 @@ A measure counts as caught if any of its pieces is flagged. One brain item often
 | Run | Pieces caught | Measures caught |
 |---|---|---|
 | 2026, earlier claim (tuned on 2026, 838 pieces unread) | 96% | 98% |
-| 2026, list learned from all three years (includes 2026) | 84% | 86% |
-| 2026, fair (list learned from 2024 + 2025) | 83% | 86% |
+| 2026, list learned from all three years (includes 2026) | 85% | 87% |
+| 2026, fair (list learned from 2024 + 2025) | 84% | 86% |
 | 2026, cold start (no programme list) | 81% | 84% |
 | 2025, fair (list learned from 2024) | 77% | 79% |
 | 2025, cold start | 76% | 78% |
@@ -38,7 +38,7 @@ A measure counts as caught if any of its pieces is flagged. One brain item often
 | Year | Speech | Lampiran I | Lampiran II (tax) |
 |---|---|---|---|
 | 2025 | 110 of 137 caught (80%) | 91 of 129 (71%) | 16 of 16 (100%) |
-| 2026 | 97 of 116 (84%) | 103 of 127 (81%) | 17 of 17 (100%) |
+| 2026 | 97 of 116 (84%) | 104 of 128 (81%) | 17 of 17 (100%) |
 
 Tax entries are never missed. The misses fall into three groups:
 
@@ -97,3 +97,5 @@ node scripts/benchmark.js ub24.md ../../reports/benchmark/sample-2024.tsv
 node scripts/benchmark.js ub25.md references/ledger-2025.tsv --learn-from ub24.md
 node scripts/benchmark.js ub26.md references/ledger-2026.tsv --learn-from ub24.md ub25.md
 ```
+
+**Correction, 27 Sep 2026:** checking the annotated speech (`reports/annotated/`) showed that Lampiran I Bil. 32 (butiran 11), "Meneruskan inisiatif mySalam pada tahun 2026", had been excluded as governance in the first ledger pass. It is now `item:mysalam`. The 2026 figures above include this fix. The unit was already flagged, so the catch rate went up slightly: 218 of 261 pieces, against 217 of 260 before.

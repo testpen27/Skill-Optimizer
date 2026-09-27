@@ -28,7 +28,7 @@ Use this when the user wants the same Q&A for a new source, such as Belanjawan 2
   node scripts/learn-programmes.js ub25.md ub26.md ub27.md --out references/programmes.json
   ```
   It prints programmes in every year, programmes **missing from the new speech** (add each as a `prev:` ledger row and ask the user in step 5 whether it continues), and new programmes.
-- Start `references/ledger-<year>.tsv` with one row per unit (see `references/ledger-2026.tsv` for the format and `scripts/coverage.js` for the decisions). Read flagged units closely: each needs `item:<id>`, `gap`, `ask` or `exclude:<reason>`. Read unflagged units too, and give each one a real decision. On a fair test the score caught only 77–83% of person-level pieces (`reports/belanjawan-brain-benchmark.md`). When 838 unflagged 2026 units were first bulk-excluded, they hid 10 measures the brain lacked. Use `bulk` only for long runs of project lists or rhetoric, and never in Lampiran I, where one-line programme allocations carry no signal words. The score only orders the reading; it doesn't decide anything.
+- Start `references/ledger-<year>.tsv` with one row per unit (see `references/ledger-2026.tsv` for the format and `scripts/coverage.js` for the decisions). Read flagged units closely: each needs `item:<id>`, `gap`, `ask` or `exclude:<reason>`. Read unflagged units too, and give each one a real decision. On a fair test the score caught only 77–84% of person-level pieces (`reports/belanjawan-brain-benchmark.md`). When 838 unflagged 2026 units were first bulk-excluded, they hid 10 measures the brain lacked. Use `bulk` only for long runs of project lists or rhetoric, and never in Lampiran I, where one-line programme allocations carry no signal words. The score only orders the reading; it doesn't decide anything.
 - Read all three layers as sources:
   1. The **speech body**. One paragraph often holds several measures. Perenggan 184 (2026) holds five, and its lead-in names none of them.
   2. **Lampiran I**. It has measures the speech never mentions; in 2026 these include the pensioners' special appreciation payment, APEL.Q and LiKES. It is not only a table of amounts.
@@ -200,3 +200,9 @@ Remind the user of their own rule against unnecessary questions.
 - Bump `VERSION`.
 - Tell the user the pass counts from both rounds.
 - List the step 5 decisions in a few lines so the user can see their choices were applied.
+- **Write the "not to be built" list** for whoever develops the calculator, and ship it with the brain:
+  `node scripts/annotate-source.js ub27.md references/ledger-2027.tsv --excluded references/excluded-2027.md`.
+  It names every person-level measure that was read and left out (user decision, non-citizen, already over), with the text, and counts everything else excluded by reason. Point to it from `SKILL.md`, so a developer in Claude Code knows what not to implement.
+- **Give the user the annotated speech:**
+  `node scripts/annotate-source.js ub27.md references/ledger-2027.tsv --brain scripts/belanjawan2027-brain.js --out <dir> --pdf`.
+  It writes the speech as HTML and PDF, with every unit the brain uses shaded light green (tagged with the item) and every excluded unit shaded yellow (tagged with the reason). Send the PDF with `SendUserFile`. Look through it yourself first: a wrong decision is easy to spot in context. In 2026, this caught a mySalam line that had been excluded as governance.

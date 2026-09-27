@@ -1092,7 +1092,7 @@ L1.32.7	exclude:infra
 L1.32.8	exclude:governance	
 L1.32.9	exclude:user	pengguna 2026-09-26: RESET tidak dipilih
 L1.32.10	item:mhit_kwsp	re-read 2026-09-27: restates
-L1.32.11	exclude:governance	
+L1.32.11	item:mysalam	restates; corrected 2026-09-27 after review of the annotated speech	
 L1.32.12	item:lantikan_tetap_kkm	pengguna 2026-09-26: dimasukkan
 L1.32.13	item:fi_klinik_swasta	
 L1.32.14	item:etap_perubatan	pengguna 2026-09-26: dimasukkan

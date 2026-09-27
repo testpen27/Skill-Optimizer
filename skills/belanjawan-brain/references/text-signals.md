@@ -31,7 +31,7 @@ That 2026 figure is a tuning score, not a test. The weights were fitted to those
 |---|---|---|
 | 2024 (cold start, sampled key) | about 74% (95% CI 63–82%) | — |
 | 2025 (names from 2024) | 77% | 79% |
-| 2026 (names from 2024 + 2025) | 83% | 86% |
+| 2026 (names from 2024 + 2025) | 84% | 86% |
 
 Lampiran II tax entries are always caught. The misses are mostly one-line Lampiran I allocations for a named programme ("Peruntukan Skim Perubatan MADANI RM100j"), plus words the groups lack (*pelatih*, *peserta*, *percuma*, *sekatan*). Suggested fixes are listed in the report. They weren't applied, so that next year's speech can test them fairly.
 
