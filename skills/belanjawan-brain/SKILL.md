@@ -33,6 +33,8 @@ A self-contained logic engine (no UI, no dependencies) that turns a person's ans
 | `references/ledger-2026.tsv` | One decision per unit of Ucapan Belanjawan 2026, built from the text only; open `gap`/`ask` rows are questions for the user | Read before adding items; update it with every item change |
 | `references/programmes.json` | Citizen programmes learned from past speeches, with the years each appears | Used by the scorer; read for the cross-year view |
 | `references/text-signals.md` | How the text-only method works, its measured recall, and what three years of speeches taught | Read before a rebuild or when extending the signals |
+| `scripts/benchmark.js` | Scores the flagging against a blind answer key, learning programme names only from earlier years; `--draw` samples a key, `--blind` prints pieces without their scores for labelling | After changing `text-signals.js` or `learn-programmes.js`: `node scripts/benchmark.js ub26.md references/ledger-2026.tsv --learn-from ub24.md ub25.md` |
+| `references/ledger-2025.tsv` | Blind answer key for all 1,210 units of Ucapan Belanjawan 2025 (labels only; there is no 2025 brain) | Benchmark key, and last year's baseline when rebuilding for 2027 |
 
 ### B. What the brain returns at runtime — `B26Brain.evaluate(answers)`
 
@@ -151,6 +153,6 @@ Keep the engine and replace the data. Keep 2026 as its own versioned file, not o
 - **Spouse's age isn't asked**, so a 40+ spouse doesn't trigger PeKa B40.
 - **Bumiputera-only programmes** are folded into broader cards, with the restriction in the text.
 - **Portal links should be verified** before launch.
-- **2026 decisions are recorded.** Every unit of the 2026 speech has a ledger decision, and the user's step-5 choices are in the spec's **Keputusan pengguna** section. The text gives no per-person amount for the pensioners' special appreciation payment or the imam/KAFA/takmir allowance, so those items are `semak`.
+- **2026 decisions are recorded.** Every unit of the 2026 speech has a ledger decision, and the user's step-5 choices are in the spec's **Keputusan pengguna** section. A blind re-read of the unflagged units (27 Sep 2026) left 10 `gap` rows open for the user, so `coverage.js --final` fails until they are decided. The text gives no per-person amount for the pensioners' special appreciation payment or the imam/KAFA/takmir allowance, so those items are `semak`.
 - **Langkawi residents can't be targeted.** The region question has no Langkawi option, so the vehicle-exemption cap is shown to Labuan residents and names Langkawi in its text.
 - **Budget 2027** (due Oct 2026) will supersede this data.

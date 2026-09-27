@@ -23,7 +23,20 @@ The 2026 brain's 94 items were matched to the unit each came from (90 source uni
 
 **Result on 2026** (flag threshold `FLAG_AT = 2`): about a third of units are flagged, and 85 of the 90 source units are among them. Of the 5 unflagged, 2 were matching errors. The other 3 are programme announcements with no amount or group named, which is why the ledger, not the score, is the guarantee.
 
-**Checked on 2025 and 2024** (not used for tuning): units that name STR, SARA, mySalam, i-Suri, PTPTN, Rahmah, tobacco, alcohol, Langkawi or Labuan are mostly flagged. The unflagged ones are allocation totals, Labuan infrastructure and rhetoric. One real miss ("mySalam juga diperluas … penyakit jarang jumpa", 2025) is what led to the learned programme list.
+That 2026 figure is a tuning score, not a test. The weights were fitted to those same 90 units, and an earlier spot check of 2025 and 2024 used a programme list learned from all three years, 2026 included.
+
+**Measured fairly** (`scripts/benchmark.js`, blind answer keys, each year learning programme names only from earlier years; full write-up in `reports/belanjawan-brain-benchmark.md`):
+
+| Year | Person-level pieces flagged | Measures with a flagged piece |
+|---|---|---|
+| 2024 (cold start, sampled key) | about 74% (95% CI 63–82%) | — |
+| 2025 (names from 2024) | 77% | 79% |
+| 2026 (names from 2024 + 2025) | 83% | 86% |
+
+Lampiran II tax entries are always caught. The misses are mostly one-line Lampiran I allocations for a named programme ("Peruntukan Skim Perubatan MADANI RM100j"), plus words the groups lack (*pelatih*, *peserta*, *percuma*, *sekatan*). Suggested fixes are listed in the report. They weren't applied, so that next year's speech can test them fairly.
+
+- **The learned programme list adds only 1–2 points.** It keeps only names of two or more words, so PTPK, PRR, PLKN and mySalam are never learned.
+- **About 1 in 5 person-level pieces is unflagged.** That's why every unit needs a ledger decision.
 
 ## What three years of speeches taught
 

@@ -47,13 +47,15 @@ const NEGATIVE = {
 // Programme names learned from past speeches (scripts/learn-programmes.js). A unit that names
 // a known citizen programme is flagged even when it says nothing else ("mySalam diperluas …").
 let PROGRAMMES = null;
+function buildProgrammeRegex(names) {
+  const list = names.filter(n => n.length >= 3).sort((a, b) => b.length - a.length)
+    .map(n => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  return list.length ? new RegExp('\\b(' + list.join('|') + ')\\b') : false;
+}
 function programmeRegex() {
   if (PROGRAMMES !== null) return PROGRAMMES;
   try {
-    const list = require('../references/programmes.json').programmes.map(p => p.name)
-      .filter(n => n.length >= 3).sort((a, b) => b.length - a.length)
-      .map(n => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-    PROGRAMMES = list.length ? new RegExp('\\b(' + list.join('|') + ')\\b') : false;
+    PROGRAMMES = buildProgrammeRegex(require('../references/programmes.json').programmes.map(p => p.name));
   } catch (e) { PROGRAMMES = false; }
   return PROGRAMMES;
 }
@@ -76,7 +78,7 @@ function scoreUnit(text, part) {
     signals.push('-' + k);
     if (personal && k === 'macro') continue;          // "RM13b for STR … RM100 a month each" is still personal
     if (signals.includes('targeted')) continue;       // help aimed at a named group outweighs a "projek"/"dana" mention
-    score -= 1;   // "RM13b for STR … RM100 a month each" is still personal
+    score -= 1;
   }
   if (signals.includes('area') && signals.includes('tax')) score += 2;       // area-based tax/duty exemption
   else if (signals.includes('area') && !signals.includes('-infra') &&
@@ -90,4 +92,7 @@ function scoreUnit(text, part) {
 // its own previous output.
 function disableProgrammes() { PROGRAMMES = false; }
 
-module.exports = { GROUPS, NEGATIVE, WEIGHT, FLAG_AT, scoreUnit, disableProgrammes };
+// benchmark.js uses this to score a year with names learned only from earlier years.
+function setProgrammes(names) { PROGRAMMES = buildProgrammeRegex(names); }
+
+module.exports = { GROUPS, NEGATIVE, WEIGHT, FLAG_AT, scoreUnit, disableProgrammes, setProgrammes };

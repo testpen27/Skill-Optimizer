@@ -1,0 +1,51 @@
+
+ub26.md (2026) — programme names learned from: ub24.md, ub25.md
+  units 1279, labelled 1279, flagged 419 (33%)
+  person-level pieces: 260; caught (flagged): 83%
+  measures: 148; caught (any piece flagged): 86%
+  person-level among flagged: 52%
+  measures with no piece flagged (21): item:mhit_kwsp, exclude:past P40.1, exclude:past P40.2, exclude:user P46.3, exclude:non-citizen P49.3, exclude:non-citizen P49.4, gap P98.1, gap P156.2, gap P174.1, exclude:user P181.1, gap P202.3, exclude:past L1.5.2, exclude:past L1.5.3, exclude:user L1.8.71, gap L1.25.8, exclude:non-citizen L1.27.11, gap L1.28.4, gap L1.32.20, gap L1.34.14, gap L1.35.8, gap L1.40.5
+  missed pieces (43):
+    P40.1     exclude:past                 [-1: -macro] Pengapungan harga ayam jimat 1 bilion ringgit dan harga ayam terkawal.
+    P40.2     exclude:past                 [-1: -macro] Pengapungan harga telur menjimatkan 1 bilion ringgit.
+    P46.3     exclude:user                 [1: benefit area -macro] Kendatipun kawal selia bekalan elektrik diserah sepenuhnya kepada Sabah Januari tahun lalu, Kerajaan Persekutuan tetap m
+    P49.3     exclude:non-citizen          [0: eligibility -corporate] Investor Pass yang diterajui MIDA menyediakan kemudahan Multiple Entry Visa sehingga 12 bulan kepada pelabur asing. MIDA
+    P49.4     exclude:non-citizen          [1: change] Residence Pass–Talent Fast Track diteruskan untuk memastikan bakat-bakat yang dibawa masuk oleh pelabur strategik diurus
+    P65.4     item:latihan_tvet            [1: benefit] PTPK menyediakan pembiayaan 650 juta ringgit untuk manfaat lebih 25 ribu pelatih terutamanya bidang NIMP seperti AI, EV 
+    P98.1     gap                          [0: benefit -macro] Lebih 2.5 bilion ringgit pinjaman mikro disediakan antaranya di bawah BSN dan TEKUN.
+    P102.5    item:pekebun_kecil           [1: recipient benefit -corporate] Kerajaan membela nasib pekebun kecil yang memerah keringat, membanting tulang mencari rezeki di ladang dengan peruntukan
+    P102.7    item:pekebun_kecil           [0: benefit -corporate] Lembaga Getah Malaysia (LGM) akan membangunkan Pusat Kecemerlangan Penyelidikan dengan kos 600 juta ringgit demi kemampa
+    P104.7    item:solar_atap              [0: recipient -corporate] Solar Accelerated Transition Action Programme (Solar ATAP) membolehkan pengguna menjana tenaga untuk kegunaan sendiri se
+    P108.2    item:agro                    [-1: benefit -infra -corporate] Program Agropreneur NextGen KPKM menyediakan geran permulaan dan geran pengembangan projek pertanian dengan dana 20 juta
+    P111.3    item:nelayan_elaun           [1: recipient] 20 juta ringgit disediakan supaya nelayan menaik taraf vesel bagi mengurangkan kebergantungan tekong dan kru asing; dan 
+    P142.3    item:pembiayaan_wanita       [1: recipient eligibility benefit -corporate -macro] Prestasi bayaran balik Amanah Ikhtiar Malaysia amat cemerlang iaitu 99.97 peratus. AIM disediakan 230 juta ringgit untuk
+    P156.2    gap                          [1: recipient area] menyediakan khemah penjaja, peranti sound box dan sistem QR kepada peniaga pasar malam di Pangkor, Perak dan Kuala Tahan
+    P174.1    gap                          [-1: -corporate] Kerajaan akan membangunkan piawaian nasional bagi sektor penjagaan, yang menjadi asas kepada pengiktirafan sektor ini se
+    P181.1    exclude:user                 [-1: -corporate] Sebanyak 60 juta ringgit dana bersama Kerajaan dan industri disediakan bagi memperkenalkan produk insurans asas mampu mi
+    P181.4    item:mhit_kwsp               [1: recipient] Pencarum KWSP boleh menggunakan simpanan dalam Akaun Sejahtera untuk melanggan pelan asas insurans atau takaful perubata
+    P182.1    item:lantikan_tetap_kkm      [1: change] Sejak 2023 hingga 2025, Kerajaan MADANI yang telah meluluskan 1,500 jawatan tetap tambahan bagi menyerap doktor kontrak 
+    P202.3    gap                          [1: eligibility] Kerajaan akan mengenakan sekatan perjalanan ke luar negara kepada peminjam yang mampu bayar dan bekerja di luar negara, 
+    L1.5.2    exclude:past                 [0: ] Penjimatan daripada pengapungan harga RM1b ayam dan memastikan harga ayam terkawal
+    L1.5.3    exclude:past                 [0: ] Penjimatan pengapungan harga telur RM1b
+    L1.5.5    item:diesel_nelayan          [1: recipient benefit -corporate] Penyasaran subsidi diesel untuk RM5b mengekang ketirisan dan penyeludupan, termasuk penerimaan sektor pengangkutan awam,
+    L1.8.71   exclude:user                 [0: benefit area -infra] Meneruskan komitmen kelangsungan RM1.2b bekalan elektrik di Sabah dan Wilayah Persekutuan Labuan, antaranya: a) Subsidi 
+    L1.18.1   item:pekebun_kecil           [0: benefit -corporate] Peruntukan kepada FELDA, FELCRA dan RM2.4b RISDA sebagai tunggak kepada sektor agrokomoditi termasuk Bantuan Musim Tengk
+    L1.18.5   item:pekebun_kecil           [1: benefit] Insentif Pengeluaran Getah RM171j
+    L1.20.4   item:agro                    [0: benefit -infra] Penyediaan geran permulaan dan geran RM20j pengembangan projek pertanian melalui Program Agropreneur NextGen
+    L1.20.10  item:nelayan_elaun           [0: benefit -corporate] Skim Pembiayaan Pemacu Perikanan RM10j Tangkapan oleh Agrobank bagi memperkukuh sektor perikanan tangkapan dan mengurang
+    L1.20.11  item:nelayan_elaun           [1: benefit] Skim Geran Padanan bagi Program RM10j Penggantian Pukat Tunda Zon B dan Pukat Kenka Dua Bot oleh Agrobank bagi pengurang
+    L1.20.17  item:buah_buahan             [0: ] Peruntukan bagi pembangunan produktiviti RM12j tanaman buah-buahan lain seperti durian, pisang dan kelapa Nilai
+    L1.25.8   gap                          [0: ] Yayasan Peneraju membangunkan 12,000 RM139j bakat Bumiputera dalam bidang profesional dan teknologi, merintis laluan pen
+    L1.26.11  item:plkn                    [1: benefit] Pelaksanaan dan operasi Program Latihan RM235j Khidmat Negara (PLKN) 2026 melibatkan 9,200 peserta
+    L1.26.12  item:plkn                    [1: recipient] Program rintis PLKN oleh KPT bagi RM8j menyokong agenda nasional dalam membentuk jati diri, semangat kenegaraan, dan kes
+    L1.27.11  exclude:non-citizen          [1: recipient] Pelaksanaan Program Dokumen RM10j Pendaftaran Pelarian (DPP) serta menaik taraf 3 Depot Tahanan Imigresen dan 3 Baitul M
+    L1.28.4   gap                          [0: ] Program 2 Years Exit Program (2YEP) RM2j
+    L1.29.10  item:harga_sabah_sarawak     [0: area] Peruntukan bagi menanggung kos pengedaran RM250j barangan keperluan asas di pedalaman Semenanjung, Sabah dan Sarawak. An
+    L1.32.10  item:mhit_kwsp               [0: ] Penggunaan simpanan dalam Akaun - Sejahtera KWSP untuk melanggan pelan asas perubatan, insurans kesihatan dan takaful ke
+    L1.32.17  item:duti_rokok              [1: benefit] Sebahagian hasil tambahan akan dimanfaat - untuk Inisiatif Kesihatan Paru-Paru KKM meliputi program pencegahan, saringan
+    L1.32.20  gap                          [1: benefit] Peruntukan untuk rawatan penyakit jarang RM25j jumpa Nilai
+    L1.34.14  gap                          [0: benefit -infra] Meneruskan pengedaran topi keledar secara - percuma bagi tujuan keselamatan jalan raya pada tahun 2026 sebanyak 70,000 u
+    L1.35.3   item:rumah_mampu_milik       [0: recipient -infra] Pembinaan Kediaman Rakyat, antaranya: RM672j a) 49 Program Residensi Rakyat (PRR), dengan 6 projek PRR dijangka siap pen
+    L1.35.8   gap                          [0: ] Program kaum India bagi memperkasa RM100j sosioekonomi komuniti (MITRA) Nilai
+    L1.35.13  item:rumah_mampu_milik       [-1: -infra] Program Residensi MADANI akan dibina di RM100j beberapa lokasi: a) Jalan Selimang/Siakap, Bandar Tun Razak b) Bandar Bar
+    L1.40.5   gap                          [0: recipient -infra] Pembinaan baru 2,586 Program Perumahan RM150j Penjawat Awam Malaysia MADANI yang sebahagiannya dijangka siap pada penghu

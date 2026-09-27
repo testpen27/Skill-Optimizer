@@ -1,0 +1,73 @@
+
+ub25.md (2025) — programme names learned from: ub24.md
+  units 1210, labelled 1210, flagged 398 (33%)
+  person-level pieces: 282; caught (flagged): 77%
+  measures: 183; caught (any piece flagged): 79%
+  person-level among flagged: 55%
+  measures with no piece flagged (39): item:akta_kredit_pengguna, item:agrobank, item:komuniti_india, item:harga_pedalaman, item:gaji_progresif, item:kwsp_pindah_generasi, item:bantuan_makanan_asrama, item:rmt, item:ptpk, item:k_youth, item:penyakit_jarang_jumpa, item:mysalam, item:prr, item:ras, item:perantis, item:pembiayaan_wanita, item:plkn, item:rakan_muda, item:pusat_autisme, item:bantuan_guaman, item:pekebun_kecil_angkat, item:rooftop_solar_baharu, item:pekebun_kecil_hasil_baharu, item:usahawan_isteri_tentera, item:myinsentif_kesuma, item:bantuan_makanan_prasekolah, item:pembelajaran_sepanjang_hayat, item:latihan_pelaut, item:skim_perubatan_madani, item:rmr, item:skim_kesejahteraan_rakyat, item:tajaan_mara_orang_asli, item:insolvensi, item:elaun_imam_kafa, exclude:past P50.2, exclude:past L1.3.3, exclude:past L1.3.4, exclude:non-citizen L1.36.6, exclude:non-citizen L1.48.8
+  missed pieces (65):
+    P46       item:cukai_dividen           [1: eligibility] Pertimbangan akan diberikan bagi mengecualikan pendapatan dividen daripada simpanan Kerajaan seperti KWSP, amanah saham 
+    P50.1     item:tarif_elektrik          [1: recipient benefit -macro] Penyasaran subsidi elektrik tahun 2023 telah menjana penjimatan 4 bilion ringgit. Penyasaran ini hanya melibatkan penggu
+    P50.2     exclude:past                 [0: ] Pelarasan tarif air juga telah dilaksanakan tahun ini sesuai dengan kehendak hampir semua negeri termasuk negeri- negeri
+    P77       item:akta_kredit_pengguna    [0: recipient -corporate] Kerajaan akan membentangkan RUU Kredit Pengguna pada Mesyuarat akan datang. Sebuah Lembaga Pemantauan Kredit Pengguna ak
+    P139.1    item:nem_solar               [1: change] Program Net Energy Metering (NEM) dilanjutkan kepada 30 Jun 2025 agar lebih banyak bumbung premis dimanfaatkan untuk pem
+    P147.3    item:agrobank                [1: benefit] Agrobank menyediakan kemudahan pinjaman 200 juta ringgit kepada pengusaha agromakanan yang menyokong keterjaminan makana
+    P163.6    item:komuniti_india          [1: benefit] Bagi memelihara modal insan, sosial dan kebajikan masyarakat India, 130 juta ringgit disediakan khusus untuk melaksanaka
+    P178      item:jkm_bantuan             [0: benefit -macro] Ini juga akan ditambah melalui peningkatan peruntukan bantuan tunai di bawah Jabatan Kebajikan Masyarakat (JKM) kepada 2
+    P183      item:harga_pedalaman         [0: area] Selain itu, 250 juta ringgit disediakan bagi mengedarkan barangan keperluan asas di kawasan pedalaman dan desa termasuk 
+    P189      item:gaji_progresif          [1: recipient] Selanjutnya, Dasar Gaji Progresif ialah ikhtiar Kerajaan MADANI untuk mereformasi pasaran buruh dengan matlamat meningka
+    P191.5    item:kwsp_pindah_generasi    [1: recipient] Ke arah negara menua, KWSP sedang mengkaji semula skimnya bagi memperkukuh pendekatan pemindahan antara generasi iaitu s
+    P197.1    item:bantuan_makanan_asrama  [0: benefit -macro] Bantuan makanan asrama: 2 bilion ringgit.
+    P197.2    item:rmt                     [1: recipient eligibility -corporate] Rancangan Makanan Tambahan (RMT): 870 juta ringgit meningkat ketimbang 784 juta ringgit. RMT bakal memanfaat lebih 860 r
+    P202.1    item:biasiswa_pinjaman       [0: benefit -macro] Peruntukan keseluruhan 4 bilion ringgit disediakan dalam bentuk biasiswa, pinjaman dan elaun pendidikan.
+    P211.2    item:ptpk                    [1: benefit] PTPK menyediakan pembiayaan sehingga 500 juta ringgit untuk manfaat lebih 20 ribu pelatih termasuk 100 juta ringgit khus
+    P211.4    item:k_youth                 [0: recipient -corporate] Khazanah menyediakan 200 juta ringgit melalui Program Pembangunan Belia Khazanah (K-Youth) bagi membekalkan 11 ribu baka
+    P219.1    item:ubat_sglt2              [1: benefit] Penambahan bekalan ubat SGLT-2 inhibators bagi kegunaan rawatan diabetes.
+    P225.1    item:penyakit_jarang_jumpa   [1: change] Peruntukan bagi menampung kos perubatan penyakit jarang jumpa ditingkatkan kepada 25 juta ringgit.
+    P225.2    item:mysalam                 [1: change] Skim mySalam juga diperluas untuk turut meliputi penyakit jarang jumpa dan Rheumatoid Arthritis.
+    P226.1    item:prr                     [0: recipient -infra] Hampir 900 juta ringgit bagi melaksanakan 48 Program Residensi Rakyat (PRR) dan 14 projek Rumah Mesra Rakyat termasuk du
+    P232.1    item:ras                     [1: change area] Perkhidmatan Udara Luar Bandar Sabah Sarawak diteruskan dengan peruntukan lebih 200 juta ringgit. Ini termasuk membuka l
+    P235.1    item:perantis                [1: recipient] Program Perantisan Kepimpinan Wanita (PERANTIS) diperhebat di bawah Kementerian Wanita sebagai usaha melahirkan lebih ra
+    P235.4    item:pembiayaan_wanita       [1: recipient benefit -corporate] Sejumlah 470 juta ringgit dana pembiayaan disediakan oleh SME Bank, BSN, Bank Rakyat dan MARA dalam menyokong PMKS wanit
+    P237      item:plkn                    [1: benefit] Program Latihan Khidmat Negara 3.0 akan dimulakan secara rintis dengan konsep baharu melibatkan peruntukan 50 juta ringg
+    P238      item:rakan_muda              [0: recipient -infra] Program Rakan Muda diperuntukkan 25 juta ringgit untuk terus menjadi wadah pembinaan potensi dan identiti belia berjati 
+    P245.6    item:pusat_autisme           [0: ] Sebuah Pusat Perkhidmatan Autisme akan dibangunkan bagi memanfaat komuniti autisme dengan peruntukan 5 juta ringgit.
+    P274.4    item:belia_kreatif           [1: recipient] Program Belia Kreatif MADANI akan dianjurkan bagi menarik hampir 16 ribu anak muda menceburi bidang seni dengan peruntuk
+    L1.3.3    exclude:past                 [1: eligibility] Pelarasan tarif air telah dilaksanakan mulai Februari - 2024 bagi mengurangkan beban pengurusan kewangan negeri
+    L1.3.4    exclude:past                 [0: ] Jangkaan penjimatan tahunan melalui pengapungan RM1.2b harga ayam tanpa menjejaskan bekalan ayam di pasaran
+    L1.9.3    item:akta_kredit_pengguna    [0: recipient -corporate] Penubuhan Lembaga Pemantauan Kredit Pengguna bagi - mengawal selia penyedia kredit bukan bank dan penyedia perkhidmatan 
+    L1.9.4    item:akta_kredit_pengguna    [0: recipient -corporate] Akta Kredit Pengguna (CCA) menyediakan rangka kerja untuk mengawal selia industri kredit bagi memastikan amalan kredit y
+    L1.9.6    item:bantuan_guaman          [1: benefit] Menggantikan Akta Bantuan Guaman 1971 dengan suatu - Akta baharu yang lebih terangkum termasuk khidmat bantuan guaman se
+    L1.12.3   item:pekebun_kecil_angkat    [1: recipient benefit -corporate] Syarikat sawit utama seperti KLK, IOI, SD Guthrie, TH - Plantations dan United Plantations akan mengambil pekebun kecil 
+    L1.24.14  item:rooftop_solar_baharu    [-1: -corporate] Merangka program rooftop solar yang lebih holistik - dengan mengambil kira keupayaan sistem dan rangkaian grid untuk men
+    L1.26.15  item:pekebun_kecil_hasil_baharu [1: recipient] Meneruskan Program Pembangunan Semula Hasil RM112.6j Baharu Pekebun Kecil bagi penjanaan pendapatan baharu menerusi tana
+    L1.27.2   item:tanam_semula_sawit      [1: benefit] Program Insentif Tanam Semula Sawit kepada pekebun RM100j kecil bagi menggantikan sawit tua yang tidak lagi produktif de
+    L1.30.1   item:rumah_warga_emas_kwap   [0: recipient -corporate] Dana dari KWAP bagi meningkatkan pembangunan tanah RM300j wakaf untuk membina rumah persaraan mandiri para pesara warga 
+    L1.31.1   item:komuniti_india          [0: ] Program Kaum India - Program memperkasa RM100j sosioekonomi komuniti (MITRA)
+    L1.31.2   item:komuniti_india          [0: ] Skim Pembangunan Untuk Masyarakat India (SPUMI) RM30j di bawah TEKUN Nasional
+    L1.33.6   item:pembiayaan_bumiputera   [0: ] Pemerkasaan program pembangunan keusahawanan RM500j bumiputera di bawah MARA
+    L1.34.5   item:harga_pedalaman         [0: ] Meneruskan peruntukan peluasan Program RM250j Pengedaran Barang Perlu ke beberapa zon termasuk kawasan pengedaran baharu
+    L1.35.3   item:gaji_progresif          [1: recipient] Dasar Gaji Progresif untuk mereformasi pasaran buruh RM200j dengan matlamat meningkatkan pendapatan pekerja telah mula d
+    L1.35.5   item:usahawan_isteri_tentera [0: ] Program Ekonomi MADANI dalam Kem Tentera untuk RM10j memberi peluang keusahawanan dalam kalangan isteri warga tentera di
+    L1.36.5   item:kwsp_pindah_generasi    [1: recipient] KWSP sedang mengkaji semula skimnya bagi - memperkukuh pendekatan pemindahan antara generasi iaitu sebahagian simpanan K
+    L1.36.6   exclude:non-citizen          [1: recipient] Kerajaan bercadang mewajibkan semua pekerja bukan - warganegara untuk mencarum KWSP. Cadangan ini akan dilaksanakan seca
+    L1.36.7   item:myinsentif_kesuma       [1: recipient] Program MYInsentif KESUMA di bawah seliaan HRD Corp RM30j adalah seperti berikut: a) Person With Disabilities (PWD) Deve
+    L1.37.9   item:kwapm                   [1: recipient] Kumpulan Wang Amanah Pelajar Miskin dipertingkatkan RM180j
+    L1.37.15  item:bantuan_makanan_prasekolah [1: benefit] Bantuan Makanan Prasekolah (BMP) RM137j
+    L1.40.7   item:ptpk                    [1: benefit] Pembiayaan oleh PTPK untuk manfaat lebih 20,000 pelatih RM543j termasuk RM100 juta khusus untuk bidang keutamaan NIMP se
+    L1.40.9   item:k_youth                 [0: recipient -corporate] Program Pembangunan Belia Khazanah (K-Youth) di RM200j bawah Khazanah bagi membekalkan 11,000 bakat tempatan kepada sekt
+    L1.40.13  item:pembelajaran_sepanjang_hayat [0: ] Meningkatkan penglibatan komuniti tumpuan yang RM5j mempunyai kemahiran TVET, keusahawanan serta teknologi digital melal
+    L1.40.17  item:latihan_pelaut          [1: eligibility benefit -infra] Tajaan latihan dan kemahiran oleh pihak berkuasa RM1.5j pelabuhan kepada 60 pelaut tempatan untuk memiliki sijil had pel
+    L1.41.9   item:rakan_kkm               [-1: -corporate] Inisiatif Rakan KKM dengan kerjasama GLIC untuk fasa RM25j perintis bagi memperkasa perkhidmatan kesihatan awam di sampi
+    L1.41.17  item:penyakit_jarang_jumpa   [1: benefit] Kos perubatan melibatkan rawatan penyakit jarang jumpa RM25j yang kian meningkat
+    L1.41.18  item:mysalam                 [0: ] Peluasan skim mySalam untuk meliputi antaranya - penyakit jarang jumpa dan Rheumatoid Arthritis
+    L1.41.24  item:skim_perubatan_madani   [0: ] Peruntukan Skim Perubatan MADANI RM100j
+    L1.42.1   item:prr                     [1: recipient change area -infra] 48 Program Residensi Rakyat (PRR) diteruskan termasuk RM405j dua (2) projek baharu melibatkan PRR di Port Dickson, Neger
+    L1.42.2   item:rmr                     [1: recipient change -infra] 14 Projek Rumah Mesra Rakyat (RMR) diteruskan RM452j melibatkan pembinaan 5,410 unit rumah baharu
+    L1.43.3   item:skim_kesejahteraan_rakyat [1: recipient area] Skim Pembangunan Kesejahteraan Rakyat bagi membaik RM464j pulih rumah luar bandar
+    L1.47.1   item:plkn                    [1: benefit] Program Latihan Khidmat Negara 3.0 akan dimulakan RM50j secara rintis dengan konsep yang baharu untuk latihan kadet. PDR
+    L1.47.2   item:rakan_muda              [0: recipient -infra] Pelaksanaan Program Rakan Muda bagi menjadi wadah RM25j pembinaan potensi dan identiti belia berjati diri
+    L1.48.8   exclude:non-citizen          [1: recipient] Pengurusan dan pengoperasian sementara kanak-kanak RM2j yang terkesan akibat proses migrasi di Malaysia di bawah inisiat
+    L1.51.5   item:tajaan_mara_orang_asli  [1: recipient] Tajaan pendidikan Orang Asli di institut pengajian tinggi RM7.5j oleh MARA
+    L1.52.1   item:insolvensi              [0: change -corporate] Penambahbaikan Inisiatif Dasar Peluang Kedua - (Insolvency 2.0) – Kaedah Out of The Box Strategy bagi meningkatkan kecek
+    L1.53.11  item:elaun_imam_kafa         [1: benefit] Elaun bulanan kepada imam, guru KAFA dan guru takmir RM730j

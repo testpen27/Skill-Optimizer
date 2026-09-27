@@ -18,7 +18,7 @@ The signals were tuned on the 2026 brain. Each of its items was matched to the u
 
 - The scorer flags about a third of units.
 - 85 of the 90 source units are flagged. Two of the five unflagged are matching errors; the other three are announcements that name neither an amount nor a group.
-- On 2025 and 2024, which were not used for tuning, units naming known programmes or the always-ask cases (tobacco, alcohol, Langkawi, Labuan) are mostly flagged. The unflagged ones are allocation totals, infrastructure and rhetoric.
+- These are tuning figures. A fair test followed on 27 Sep 2026, with blind answer keys and each year learning only from earlier years. It caught 74% of person-level pieces in 2024 (estimated), 77% in 2025 and 83% in 2026. See `reports/belanjawan-brain-benchmark.md`.
 
 The score only orders the reading. Completeness comes from the ledger: `references/ledger-2026.tsv` has a decision for all 1,279 units, and `coverage.js` fails if one is missing, bulk-excluded while flagged, or left open at hand-over.
 
@@ -64,3 +64,5 @@ Four of these appear only in Lampiran I. A read of the speech alone would miss t
 The user decided every `gap` and `ask` row in three question rounds. The brain went from 94 to 113 items (v2026.4), with 19 added from the speech text only. The rest were excluded, each with the user's decision recorded in the ledger. The full list of decisions is in `references/LOGIK-BELANJAWAN-2026.md` §9 (Keputusan pengguna).
 
 `coverage.js --final` now passes: all 1,279 units are decided and every item traces to a unit. Round 1 passes 14,501 checks and round 2 reaches all 113 items with no invariant violations.
+
+**Update, 27 Sep 2026:** the benchmark's blind re-read of the 838 unflagged 2026 units found 10 more person-level measures the brain lacks. They are now `gap` rows, so `coverage.js --final` fails until the user decides them (`reports/belanjawan-brain-benchmark.md`).
