@@ -1,0 +1,24 @@
+name: Branch rules
+
+# Enforces CLAUDE.md on every branch: main stays the toolkit, each
+# skill/<name> branch holds one skill in the standard layout.
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Check branch against CLAUDE.md
+        env:
+          # On a pull request, check the head branch, not the merge ref.
+          BRANCH: ${{ github.head_ref || github.ref_name }}
+        run: python3 scripts/check_branch.py --branch "$BRANCH" --base origin/main
