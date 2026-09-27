@@ -38,4 +38,13 @@ Two things learned the hard way:
 - **Use 10 runs per query, not 3.** On borderline queries triggering is close
   to a coin flip, and three runs cannot tell signal from noise.
 
+- **Keep older copies of the skill out of the runs.** Skills synced from the
+  account are visible to every run, and an older version of the skill under
+  test takes its triggers. Set `PROBE_SETTING_SOURCES=project` to drop
+  user-level skills, and `PROBE_COMPETITORS=<dir>` to copy a chosen set of
+  competing skill folders into each run instead.
+
+A run that fails (spend limit, crash) is retried, then stops the pass; it is
+never recorded as "did not trigger".
+
 Needs the `claude` CLI on PATH, since each run is a real `claude -p` turn.
