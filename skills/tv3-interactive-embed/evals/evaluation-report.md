@@ -1,12 +1,12 @@
 # Evaluation: `tv3-interactive-embed`
 
-Method: skill-creator's description-optimization loop (`scripts/run_loop_resilient.py`,
+Method: skill-creator's description-optimization loop (repo-root `scripts/run_loop_resilient.py`,
 which patches in the corrected trigger detector from `scripts/trigger_probe.py` —
-see `reports/fable-5-logic-evaluation.md` for why the stock detector reports a
-healthy skill as 0%). 4 iterations, 3 runs/query, 40% holdout, model
+see `reports/fable-5-logic-evaluation.md` at the repo root for why the stock detector
+reports a healthy skill as 0%). 4 iterations, 3 runs/query, 40% holdout, model
 `claude-sonnet-5`, real `claude -p` turns end to end.
 
-Eval set: `evals/tv3-interactive-embed-trigger-eval.json`, 31 queries — 18
+Eval set: `evals/trigger-eval.json` (this folder), 31 queries — 18
 positives spanning every embed shape the skill supports (quiz, calculator,
 eligibility checker, timeline, restyle/fix, stripped scripts, reveal poll,
 mini-game, slide deck/carousel, infographic, CDN-pull gate) in both Malay and
@@ -71,7 +71,7 @@ re-run just those two queries at higher `runs-per-query` (8-10) to confirm
 the change helps before trusting it — same lesson as the fable-5-logic
 session: a number from one pass without holdout validation isn't trustworthy.
 
-Full run artifacts: `results/tv3-interactive-embed/2026-09-24_054024/`
+Full run artifacts: `evals/results/2026-09-24_054024/` (this folder)
 (`results.json` has every query/run, `report.html` is the interactive
 skill-creator report, `logs/improve_iter_*.json` has each rewrite attempt's
-full prompt/response).
+full prompt/response). Packaged distributable: `evals/dist/tv3-interactive-embed.skill`.
