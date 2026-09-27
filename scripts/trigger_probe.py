@@ -52,12 +52,34 @@ import os
 import shutil
 import subprocess
 import tempfile
+import time
 import uuid
 from pathlib import Path
 
 
 class ProbeFailure(RuntimeError):
     """The run never produced a model turn, so it says nothing about triggering."""
+
+
+class ProbeAbort(BaseException):
+    """Probe runs keep failing; stop the whole pass rather than record zeros.
+
+    A BaseException on purpose: upstream run_eval catches Exception from each
+    run and appends False, which turned a spend-limit outage into a pass where
+    every should-trigger query scored 0/10. This one gets past that handler.
+    """
+
+
+PROBE_ATTEMPTS = 3
+
+# Isolating the skill under test from skills the account syncs in.
+# PROBE_SETTING_SOURCES (e.g. "project") is passed to --setting-sources, which
+# stops user-level skills loading; an older copy of the same skill there would
+# otherwise take its triggers. PROBE_COMPETITORS names a directory of skill
+# folders copied into every run's project, so the model still has realistic
+# alternatives to choose between.
+SETTING_SOURCES = os.environ.get("PROBE_SETTING_SOURCES")
+COMPETITORS = os.environ.get("PROBE_COMPETITORS")
 
 
 def _invoked_this_skill(text: str, clean_name: str) -> bool:
@@ -133,6 +155,25 @@ def run_single_query(
     project_root: str,
     model: str | None = None,
 ) -> bool:
+    """Retry a failed probe run; abort the pass if it never succeeds."""
+    for attempt in range(1, PROBE_ATTEMPTS + 1):
+        try:
+            return _run_once(query, skill_name, skill_description, timeout, project_root, model)
+        except ProbeFailure as e:
+            if attempt == PROBE_ATTEMPTS or "spend limit" in str(e):
+                raise ProbeAbort(f"probe failed {attempt}x, aborting pass: {e}") from e
+            time.sleep(10 * attempt)
+    raise AssertionError("unreachable")
+
+
+def _run_once(
+    query: str,
+    skill_name: str,
+    skill_description: str,
+    timeout: int,
+    project_root: str,
+    model: str | None = None,
+) -> bool:
     """Return whether `claude -p` invoked the skill anywhere in the turn.
 
     Raises ProbeFailure when the run produced no assistant turn at all -- a
@@ -147,6 +188,10 @@ def run_single_query(
     skill_dir = run_root / ".claude" / "skills" / clean_name
 
     try:
+        if COMPETITORS:
+            for src in Path(COMPETITORS).iterdir():
+                if (src / "SKILL.md").exists():
+                    shutil.copytree(src, run_root / ".claude" / "skills" / src.name)
         skill_dir.mkdir(parents=True, exist_ok=True)
         indented = "\n  ".join(skill_description.split("\n"))
         (skill_dir / "SKILL.md").write_text(
@@ -157,6 +202,8 @@ def run_single_query(
         cmd = ["claude", "-p", query, "--output-format", "stream-json", "--verbose"]
         if model:
             cmd.extend(["--model", model])
+        if SETTING_SOURCES:
+            cmd.extend(["--setting-sources", SETTING_SOURCES])
 
         # CLAUDECODE guards against interactive nesting; a subprocess is safe.
         env = {k: v for k, v in os.environ.items() if k != "CLAUDECODE"}
