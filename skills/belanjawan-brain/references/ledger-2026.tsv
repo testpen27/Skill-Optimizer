@@ -1,6 +1,6 @@
 # Ledger: Ucapan Belanjawan 2026 (ub26.md), 1279 units from scripts/split-source.js
 # Backfilled 2026-09-26 from the text only (no web). All gap/ask rows resolved with the user on 2026-09-26 (step 5); see "Keputusan pengguna" in LOGIK-BELANJAWAN-2026.md.
-# 2026-09-27: the 838 former bulk rows were re-read blind (id and text only) for the benchmark; each now has its own decision. The 10 new gap rows are open questions for the user.
+# 2026-09-27: the 838 former bulk rows were re-read blind (id and text only) for the benchmark; each now has its own decision. The 10 gaps it found were decided by the user the same day (3 included, 7 excluded).
 # unit	decision	note
 P1	exclude:rhetoric	
 P2	exclude:rhetoric	
@@ -262,7 +262,7 @@ P97	exclude:business
 P97.1	exclude:business	
 P97.2	exclude:allocation	
 P98	exclude:allocation	
-P98.1	gap	re-read 2026-09-27: person-level, not in the brain; for the user (step 5)
+P98.1	item:pinjaman_mikro	pengguna 2026-09-27: dimasukkan
 P98.2	exclude:user	pengguna 2026-09-26: SJPP usahawan mikro tidak dipilih
 P98.3	exclude:business	
 P99	exclude:business	
@@ -439,7 +439,7 @@ P155.1	exclude:governance
 P155.2	exclude:institution	
 P156	exclude:allocation	
 P156.1	item:geran_bsn	pengguna 2026-09-26: dimasukkan
-P156.2	gap	re-read 2026-09-27: person-level, not in the brain; for the user (step 5)
+P156.2	exclude:user	pengguna 2026-09-27: tidak dipilih
 P156.3	exclude:institution	
 P156.4	exclude:governance	
 P157	exclude:governance	
@@ -469,7 +469,7 @@ P171	exclude:governance
 P172	exclude:governance	
 P173	item:warga_emas	restates
 P174	exclude:rhetoric	
-P174.1	gap	re-read 2026-09-27: person-level, not in the brain; for the user (step 5)
+P174.1	item:latihan_tvet	pengguna 2026-09-27: dimasukkan
 P174.2	item:rumah_warga_emas	restates
 P174.3	exclude:business	
 P175	exclude:rhetoric	
@@ -578,7 +578,7 @@ P201	exclude:infra
 P202	exclude:infra	
 P202.1	item:ptptn_percuma	
 P202.2	item:ptptn_kelas_pertama	
-P202.3	gap	re-read 2026-09-27: person-level, not in the brain; for the user (step 5)
+P202.3	item:ptptn_sekatan_perjalanan	pengguna 2026-09-27: dimasukkan
 P203	exclude:governance	
 P204	exclude:infra	
 P205	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
@@ -1007,7 +1007,7 @@ L1.25.4	exclude:business	reviewed
 L1.25.5	exclude:business	reviewed
 L1.25.6	exclude:governance	
 L1.25.7	exclude:business	
-L1.25.8	gap	re-read 2026-09-27: person-level, not in the brain; for the user (step 5)
+L1.25.8	exclude:user	pengguna 2026-09-27: tidak dipilih
 L1.25.9	exclude:business	
 L1.26	exclude:heading	
 L1.26.1	exclude:governance	
@@ -1051,7 +1051,7 @@ L1.28	exclude:heading
 L1.28.1	exclude:rhetoric	
 L1.28.2	exclude:institution	
 L1.28.3	item:geran_bsn	pengguna 2026-09-26: dimasukkan
-L1.28.4	gap	re-read 2026-09-27: person-level, not in the brain; for the user (step 5)
+L1.28.4	exclude:user	pengguna 2026-09-27: tidak dipilih
 L1.29	exclude:heading	
 L1.29.1	exclude:governance	
 L1.29.2	item:str_sara	reviewed
@@ -1101,7 +1101,7 @@ L1.32.16	item:vape
 L1.32.17	item:duti_rokok	restates
 L1.32.18	exclude:governance	
 L1.32.19	exclude:institution	
-L1.32.20	gap	re-read 2026-09-27: person-level, not in the brain; for the user (step 5)
+L1.32.20	exclude:user	pengguna 2026-09-27: tidak dipilih
 L1.32.21	item:skim_perubatan_madani	
 L1.32.22	exclude:allocation	
 L1.32.23	exclude:allocation	
@@ -1164,7 +1164,7 @@ L1.34.10	exclude:infra
 L1.34.11	exclude:infra	
 L1.34.12	exclude:infra	
 L1.34.13	item:lupus_kenderaan	restates
-L1.34.14	gap	re-read 2026-09-27: person-level, not in the brain; for the user (step 5)
+L1.34.14	exclude:user	pengguna 2026-09-27: tidak dipilih
 L1.34.15	exclude:allocation	
 L1.34.16	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
 L1.35	exclude:heading	
@@ -1175,7 +1175,7 @@ L1.35.4	item:sjkp_inklusif	restates
 L1.35.5	exclude:infra	
 L1.35.6	item:rumah_daif	
 L1.35.7	exclude:infra	
-L1.35.8	gap	re-read 2026-09-27: person-level, not in the brain; for the user (step 5)
+L1.35.8	exclude:user	pengguna 2026-09-27: tidak dipilih
 L1.35.9	exclude:infra	
 L1.35.10	exclude:institution	
 L1.35.11	exclude:governance	
@@ -1230,7 +1230,7 @@ L1.40.1	exclude:infra
 L1.40.2	item:rumah_kontrak_awam	restates
 L1.40.3	item:lppsa	restates
 L1.40.4	item:lppsa	restates
-L1.40.5	gap	re-read 2026-09-27: person-level, not in the brain; for the user (step 5)
+L1.40.5	exclude:user	pengguna 2026-09-27: tidak dipilih
 L1.40.6	exclude:governance	
 L1.40.7	item:penjawat_sspa	restates
 L1.40.8	item:bsh_pesara_kemas	pengguna 2026-09-26: dimasukkan

@@ -65,4 +65,4 @@ The user decided every `gap` and `ask` row in three question rounds. The brain w
 
 `coverage.js --final` now passes: all 1,279 units are decided and every item traces to a unit. Round 1 passes 14,501 checks and round 2 reaches all 113 items with no invariant violations.
 
-**Update, 27 Sep 2026:** the benchmark's blind re-read of the 838 unflagged 2026 units found 10 more person-level measures the brain lacks. They are now `gap` rows, so `coverage.js --final` fails until the user decides them (`reports/belanjawan-brain-benchmark.md`).
+**Update, 27 Sep 2026:** the benchmark's blind re-read of the 838 unflagged 2026 units found 10 more person-level measures the brain lacks. The user decided them the same day. Three were added in v2026.5, taking the brain to 115 items, and seven were excluded. `coverage.js --final` passes again (`reports/belanjawan-brain-benchmark.md`).

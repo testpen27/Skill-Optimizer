@@ -105,6 +105,12 @@ has('F19 IPT student 20: tahfiz skills', B.evaluate({ ...adult, marital: 'single
 r = B.evaluate({ age: 16, region: 'semenanjung', self_school: 'yes', assets: ['none'], status: ['none'] });
 has('F20 pupil 16: tahfiz skills', r, 'tahfiz_kemahiran', 'semak'); not('F21 minor: no Solar ATAP', r, 'solar_atap');
 not('F22 aged 31: no tahfiz skills', B.evaluate({ ...adult, age: 31, region: 'semenanjung', employment: 'student_ipt', assets: ['none'] }), 'tahfiz_kemahiran');
+has('F23 trader: micro loans', B.evaluate({ ...adult, age: 33, region: 'semenanjung', employment: 'self_employed', assets: ['none'] }), 'pinjaman_mikro', 'semak');
+not('F24 private employee: no micro loans', B.evaluate({ ...adult, age: 33, region: 'semenanjung', employment: 'employed_private', assets: ['none'] }), 'pinjaman_mikro');
+has('F25 PTPTN borrower: travel ban', B.evaluate({ ...adult, age: 29, region: 'semenanjung', employment: 'employed_private', assets: ['ptptn_loan'] }), 'ptptn_sekatan_perjalanan', 'kesan');
+not('F26 no PTPTN loan: no travel ban', B.evaluate({ ...adult, age: 29, region: 'semenanjung', employment: 'employed_private', assets: ['none'] }), 'ptptn_sekatan_perjalanan');
+not('F27 minor with PTPTN answer: no travel ban', B.evaluate({ age: 17, region: 'semenanjung', self_school: 'yes', assets: ['ptptn_loan'], status: ['none'] }), 'ptptn_sekatan_perjalanan');
+has('F28 job seeker: TVET card (incl. care-worker courses)', B.evaluate({ ...adult, age: 40, region: 'semenanjung', employment: 'jobseeker', assets: ['none'] }), 'latihan_tvet', 'semak');
 
 /* ---- D. Catalogue integrity ---- */
 const themes = B.THEMES.map(t => t.id);

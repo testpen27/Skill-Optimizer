@@ -1,9 +1,17 @@
-# Belanjawan 2026 — Citizen Benefits Q&A: Logic Spec (v2026.4)
+# Belanjawan 2026 — Citizen Benefits Q&A: Logic Spec (v2026.5)
 
 **Engine:** `belanjawan2026-brain.js` (UI-free, no dependencies, works in browser and Node)
 **Verification:** `test.js` (round 1) and `verify2.js` (round 2). Both pass; see §8.
-**Source:** Ucapan Belanjawan 2026 (MOF). "Perenggan / ms" refer to that document. Items added in v2026.4 come from the speech text only and cite paragraph and Lampiran numbers (no page numbers). Items from earlier versions that were checked on the web keep their `web` field.
-**Data as of:** 26 Sep 2026
+**Source:** Ucapan Belanjawan 2026 (MOF). "Perenggan / ms" refer to that document. Items added in v2026.4 and v2026.5 come from the speech text only and cite paragraph and Lampiran numbers (no page numbers). Items from earlier versions that were checked on the web keep their `web` field.
+**Data as of:** 27 Sep 2026
+
+## What changed in v2026.5
+
+A blind re-read of the 838 speech units that had been set aside unread (done for the benchmark in `reports/belanjawan-brain-benchmark.md`) found 10 more person-level measures. The user decided them on 27 Sep 2026 (see §9). This version adds **2 items** and extends one, taking the brain from 113 to 115:
+
+- **New `pinjaman_mikro`:** BSN and TEKUN micro loans for micro-entrepreneurs and small traders (`semak`, self-employed).
+- **New `ptptn_sekatan_perjalanan`:** travel ban on PTPTN borrowers who can pay but default (`kesan`). It is shown only to adults who tick the new option "Mempunyai pinjaman PTPTN" in the existing `assets` question. No new question was added.
+- **Extended `latihan_tvet`:** now also names KPWKM's TVET courses for care workers.
 
 ## What changed in v2026.4
 
@@ -71,7 +79,7 @@ answers ──► deriveFacts() ──► facts ──┬──► calcStrSara()
 
 ---
 
-## 2. Theme taxonomy (13 themes, 113 items)
+## 2. Theme taxonomy (13 themes, 115 items)
 
 | Theme | What citizens get or pay | Items |
 |---|---|---|
@@ -82,12 +90,12 @@ answers ──► deriveFacts() ──► facts ──┬──► calcStrSara()
 | `housing` Perumahan | Stamp duty, SJKP ×2, Step-Up, contract-staff loans, LPPSA, affordable homes, home repair, Kota MADANI | 9 |
 | `protection` Perlindungan Sosial & Simpanan Persaraan | i-Saraan, i-Saraan Plus, i-Suri, Lindung Kendiri, PERKESO, KWSP auto-account, Haji withdrawals | 8 |
 | `family` Keluarga & Wanita | KasihnITA, women's financing, taska subsidy, BuAI | 4 |
-| `youth` Belia, Latihan & Pekerjaan | MyLesen B2, PLKN, K-Youth, TVET, youth financing, Rakan Muda | 6 |
+| `youth` Belia, Latihan & Pekerjaan | MyLesen B2, PLKN, K-Youth, TVET (incl. care-worker courses), youth financing, Rakan Muda | 6 |
 | `vulnerable` OKU, Warga Emas & Golongan Rentan | OKU aid, elderly welfare, KWAP homes, Second Chance, Orang Asli, iTEKAD | 6 |
-| `sector` Mengikut Pekerjaan | Fishermen, padi, smallholders, agro, wildlife damage, civil servants, veterans, taxis, driver screening, pensioners' appreciation payment, KEMAS contract pensioners, APEL.Q, ETAP, KKM permanent posts, BIPK/BIPAC, BSN grant, KWAP microfinance, Tamu Desa, fruit growers, livestock breeders, imam/KAFA allowance | 21 |
+| `sector` Mengikut Pekerjaan | Fishermen, padi, smallholders, agro, wildlife damage, civil servants, veterans, taxis, driver screening, pensioners' appreciation payment, KEMAS contract pensioners, APEL.Q, ETAP, KKM permanent posts, BIPK/BIPAC, BSN grant, BSN/TEKUN micro loans, KWAP microfinance, Tamu Desa, fruit growers, livestock breeders, imam/KAFA allowance | 22 |
 | `mobility` Pengangkutan & Mobiliti | MyRailLife, OKU vans, old-car grant, RAS | 4 |
 | `tax` Pelepasan Cukai Individu | Six new or expanded reliefs for YA2026; donation deductions | 7 |
-| `special` Kes Khas | Tobacco, cigar, heated tobacco, vape, NRT, alcohol, clinic fees, employment-contract duty, ETF/warrants, LLP tax, Langkawi/Labuan vehicle exemption cap | 11 |
+| `special` Kes Khas | Tobacco, cigar, heated tobacco, vape, NRT, alcohol, clinic fees, employment-contract duty, ETF/warrants, LLP tax, Langkawi/Labuan vehicle exemption cap, PTPTN travel ban | 12 |
 
 ---
 
@@ -143,11 +151,11 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | 10 | `employment` | single | Apakah status pekerjaan anda sekarang? | `age ≥ 18` | `employed_private` Pekerja sektor swasta<br>`civil_servant` Penjawat awam<br>`gig_ehailing` Pemandu e-hailing atau penghantar p-hailing<br>`self_employed` Bekerja sendiri, pekerja bebas atau peniaga kecil<br>`fisher` Nelayan<br>`farmer` Pesawah, petani, penternak atau pekebun kecil<br>`housewife` Suri rumah sepenuh masa<br>`student_ipt` Pelajar institusi pengajian tinggi<br>`jobseeker` Graduan baharu atau sedang mencari pekerjaan<br>`retired_gov` Pesara Kerajaan (berpencen)<br>`retired_other` Bersara atau tidak bekerja<br>`skip` Tidak mahu menyatakan *(exclusive)* |
 | 11 | `farm_type` | single | Apakah jenis kegiatan pertanian utama anda? | `employment = farmer` | `padi` Menanam padi<br>`smallholder` Pekebun kecil getah atau sawit<br>`other` Tanaman lain, ternakan atau akuakultur<br>`skip` Tidak mahu menyatakan *(exclusive)* |
 | 12 | `gender` | single | Apakah jantina anda? | `age ≥ 18` | `female` Perempuan<br>`male` Lelaki<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 13 | `assets` | multi | Perkara manakah yang berkaitan dengan anda? (pilih semua yang berkaitan) | always | `license` Mempunyai lesen memandu yang masih sah<br>`diesel_vehicle` Memiliki kenderaan persendirian berenjin diesel<br>`old_car` Memiliki kereta berusia lebih 20 tahun<br>`first_home` Merancang untuk membeli rumah pertama<br>`taxpayer` Membayar cukai pendapatan atau mengisi e-Filing<br>`invest_bursa` Melabur di Bursa Malaysia (saham, ETF atau waran)<br>`llp_partner` Pekongsi dalam Perkongsian Liabiliti Terhad (PLT)<br>`haji_plan` Merancang untuk menunaikan haji<br>`none` Tiada yang berkaitan *(exclusive)*<br>`skip` Tidak mahu menyatakan *(exclusive)* |
+| 13 | `assets` | multi | Perkara manakah yang berkaitan dengan anda? (pilih semua yang berkaitan) | always | `license` Mempunyai lesen memandu yang masih sah<br>`diesel_vehicle` Memiliki kenderaan persendirian berenjin diesel<br>`old_car` Memiliki kereta berusia lebih 20 tahun<br>`first_home` Merancang untuk membeli rumah pertama<br>`taxpayer` Membayar cukai pendapatan atau mengisi e-Filing<br>`invest_bursa` Melabur di Bursa Malaysia (saham, ETF atau waran)<br>`llp_partner` Pekongsi dalam Perkongsian Liabiliti Terhad (PLT)<br>`ptptn_loan` Mempunyai pinjaman PTPTN<br>`haji_plan` Merancang untuk menunaikan haji<br>`none` Tiada yang berkaitan *(exclusive)*<br>`skip` Tidak mahu menyatakan *(exclusive)* |
 | 14 | `status` | multi | Adakah mana-mana keadaan ini berkaitan dengan anda? (pilih semua yang berkaitan) | always | `oku_self` Saya OKU berdaftar<br>`oku_child` Anak saya OKU atau kurang upaya pembelajaran (seperti autisme atau ADHD)<br>`pregnant` Saya atau pasangan sedang hamil<br>`veteran` Veteran Angkatan Tentera Malaysia<br>`pjm` Penerima Pingat Jasa Malaysia<br>`religious_staff` Guru KAFA, guru takmir, imam, bilal, tok siak, noja atau marbut<br>`taxi` Pemandu atau pemilik teksi, termasuk kereta sewa<br>`orang_asli` Orang Asli<br>`bankrupt` Sedang berstatus bankrap<br>`none` Tiada yang berkaitan *(exclusive)*<br>`skip` Tidak mahu menyatakan *(exclusive)* |
 | 15 | `lifestyle` | multi | Soalan pilihan: adakah mana-mana perkara ini berkaitan dengan anda? | `age ≥ 18` | `cigarette` Merokok<br>`cigar` Menghisap cerut atau cerut kecil (cigarillo)<br>`heated_tobacco` Menggunakan produk tembakau yang dipanaskan (heated tobacco)<br>`vape` Menggunakan vape atau rokok elektronik<br>`alcohol` Mengambil minuman beralkohol<br>`none` Tiada yang berkaitan *(exclusive)*<br>`skip` Tidak mahu menyatakan *(exclusive)* |
 
-## Rule matrix (113 items)
+## Rule matrix (115 items)
 
 ### Bantuan Tunai & Kos Sara Hidup (`cash`, 10)
 
@@ -249,7 +257,7 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `mylesen_b2` | MyLesen B2 | manfaat | Lesen motosikal B2 secara percuma atau bersubsidi | `age ≥ 16 AND NOT(assets includes license) AND (b40 = true OR age < 18)` | check | Perenggan 143, ms 86; Lampiran I Bil. 26, ms 249 · [web](https://bernama.com/en/news.php?id=2569073) | Pelaksanaan bagi 2026 disasarkan selesai pada Julai 2026. Semak pengambilan seterusnya. |
 | `plkn` | Program Latihan Khidmat Negara (PLKN) 2026 | manfaat | Latihan jati diri dan kenegaraan | `age ≥ 17 AND age ≤ 20` | check | Perenggan 143, ms 85; Lampiran I Bil. 26, ms 248 | — |
 | `k_youth` | Program K-Youth (Khazanah) | manfaat | Latihan sambil bekerja | `age ≥ 18 AND age ≤ 30 AND employment ∈ [jobseeker, gig_ehailing, self_employed, employed_private, retired_other]` | check | Perenggan 143, ms 85; Lampiran I Bil. 26, ms 248 | — |
-| `latihan_tvet` | Latihan kemahiran dan TVET | manfaat | Latihan dan pensijilan kemahiran | `employment ∈ [jobseeker, gig_ehailing, self_employed, retired_other, housewife] OR status includes oku_self OR marital = single_parent OR status includes orang_asli` | check | Perenggan 65, ms 50–51 | — |
+| `latihan_tvet` | Latihan kemahiran dan TVET | manfaat | Latihan dan pensijilan kemahiran | `employment ∈ [jobseeker, gig_ehailing, self_employed, retired_other, housewife] OR status includes oku_self OR marital = single_parent OR status includes orang_asli` | check | Perenggan 65, ms 50–51; Perenggan 174 | — |
 | `pembiayaan_belia` | Pembiayaan untuk usahawan belia | manfaat | Pembiayaan mikro dan bantuan perniagaan | `age ≥ 18 AND age ≤ 30 AND employment ∈ [self_employed, gig_ehailing, jobseeker, student_ipt]` | check | Perenggan 143, ms 86; Lampiran I Bil. 26, ms 249 | — |
 | `rakan_muda` | Rakan Muda | manfaat | Program pembangunan belia | `age ≥ 15 AND age ≤ 30` | high | Perenggan 143, ms 86; Lampiran I Bil. 26, ms 248 | — |
 
@@ -264,7 +272,7 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `orang_asli` | Program untuk komuniti Orang Asli | manfaat | Jalan kampung, TABIKA dan program pendidikan anak | `status includes orang_asli` | high | Perenggan 144–148, ms 86–87 | — |
 | `itekad` | Geran padanan iTEKAD | manfaat | Geran padanan untuk kemahiran, keusahawanan dan perlindungan | `b40 = true AND employment ∈ [self_employed, jobseeker, gig_ehailing]` | check | Perenggan 67; Lampiran I Bil. 12 | — |
 
-### Mengikut Pekerjaan (Penjawat Awam, Veteran, Nelayan, Petani, Teksi) (`sector`, 21)
+### Mengikut Pekerjaan (Penjawat Awam, Veteran, Nelayan, Petani, Teksi) (`sector`, 22)
 
 | id | Item | Kind | What the person gets / pays | Rule (`when`) | Certainty | Source | Timing |
 |---|---|---|---|---|---|---|---|
@@ -284,6 +292,7 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `lantikan_tetap_kkm` | Lantikan tetap untuk doktor, jururawat dan graduan kontrak KKM | manfaat | Tawaran lantikan tetap mulai 2026 | `employment = civil_servant` | check | Perenggan 182; Lampiran I Bil. 32 | — |
 | `bipk_bipac` | Bayaran insentif pasukan khas (BIPK dan BIPAC) dinaikkan | manfaat | Kadar bayaran dinaikkan | `employment = civil_servant` | check | Lampiran I Bil. 40 | — |
 | `geran_bsn` | Geran perniagaan BSN untuk usahawan mikro | manfaat | Sehingga RM10,000 untuk membeli peralatan perniagaan | `employment = self_employed` | check | Perenggan 156; Lampiran I Bil. 28 | — |
+| `pinjaman_mikro` | Pinjaman mikro BSN dan TEKUN | manfaat | Pinjaman kecil untuk modal perniagaan | `employment = self_employed` | check | Perenggan 98 | — |
 | `kwap_mikro` | Pembiayaan mikro KWAP untuk pesara | manfaat | Pembiayaan mikro untuk memulakan perniagaan komuniti | `employment = retired_gov` | check | Perenggan 138 | — |
 | `tamu_desa` | Ruang niaga Tamu Desa di Sabah dan Sarawak | manfaat | Tapak dan ruang niaga baharu dengan kemudahan asas | `region ∈ [sabah, sarawak] AND employment = self_employed` | check | Perenggan 46; Lampiran I Bil. 8 | — |
 | `buah_buahan` | Insentif pengusaha buah-buahan tempatan | manfaat | Insentif tanaman dan prasarana ladang | `employment = farmer AND farmType = other` | check | Perenggan 112; Lampiran I Bil. 20 | — |
@@ -311,7 +320,7 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `tax_pelancongan` | Pelepasan cukai tiket masuk tempat pelancongan dan program budaya | manfaat | Sehingga RM1,000 (Tahun Taksiran 2026 sahaja) | `assets includes taxpayer` | high | Perenggan 75, ms 56; Lampiran II — Lampiran 6, ms 320 | — |
 | `potongan_derma` | Potongan cukai untuk sumbangan tunai | manfaat | Potongan cukai pendapatan bagi sumbangan yang layak | `assets includes taxpayer` | high | Perenggan 28, 82, 205; Lampiran I Bil. 34; Lampiran II — Lampiran 12 dan 13 | Tabung endowmen hospital pengajar: mulai Tahun Taksiran 2026. Program pencegahan rasuah: bagi program yang dilaksanakan dari 1 Januari 2026 hingga 31 Disember 2028. |
 
-### Kes Khas: Gaya Hidup, Pelaburan & Perubahan Harga (`special`, 11)
+### Kes Khas: Gaya Hidup, Pelaburan & Perubahan Harga (`special`, 12)
 
 | id | Item | Kind | What the person gets / pays | Rule (`when`) | Certainty | Source | Timing |
 |---|---|---|---|---|---|---|---|
@@ -325,6 +334,7 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 | `duti_kontrak_kerja` | Tiada duti setem untuk kontrak pekerjaan bergaji rendah | manfaat | Dikecualikan jika gaji RM3,000 dan ke bawah sebulan | `employment ∈ [employed_private, jobseeker]` | check | Lampiran II — Lampiran 20, ms 336 | — |
 | `pelabur_runcit` | Tiada duti setem untuk urus niaga ETF dan waran berstruktur | manfaat | Dikecualikan duti setem nota kontrak hingga 31 Disember 2028 | `assets includes invest_bursa` | high | Lampiran II — Lampiran 18 dan 19, ms 334–335 | — |
 | `cukai_plt` | Cukai ke atas agihan keuntungan Perkongsian Liabiliti Terhad (PLT) | kesan | Cukai 2% ke atas agihan keuntungan melebihi RM100,000 setahun | `assets includes llp_partner` | check | Lampiran II — Lampiran 7, ms 321–322 | — |
+| `ptptn_sekatan_perjalanan` | Sekatan perjalanan ke luar negara bagi peminjam PTPTN yang culas | kesan | Boleh disekat daripada ke luar negara | `age ≥ 18 AND assets includes ptptn_loan` | check | Perenggan 202, ms 109 | — |
 | `cukai_kenderaan_labuan` | Pengecualian cukai kenderaan di Labuan dan Langkawi dihadkan | kesan | Hanya bagi kenderaan bernilai sehingga RM300,000 | `age ≥ 18 AND region = labuan AND assets includes license` | high | Perenggan 27 | Berkuat kuasa 1 Januari 2026. |
 
 ---
@@ -373,6 +383,11 @@ function onAnswer(id, value) { answers = B26Brain.pruneAnswers({ ...answers, [id
 3. Run `node gen-spec.js` to regenerate the tables in this document.
 
 ## 8. Verification record
+
+**27 Sep 2026 (v2026.5):**
+- `test.js`: 14,740 checks, 0 failures. New persona checks: micro loans for the self-employed only; the PTPTN travel ban only for adults who tick the PTPTN option (not for minors, and not without the option); TVET card for job seekers.
+- `verify2.js`: 30,000 users, all 115 items and 13 themes reachable, 0 invariant violations.
+- `coverage.js --final`: all 1,279 units decided (the 838 former bulk rows re-read blind), every item traces to a unit, and no question is left open.
 
 **26 Sep 2026 (v2026.4):**
 - `test.js`: 14,501 checks, 0 failures, including 42 new checks for the added items (one persona per item, plus guards: Labuan-only vehicle cap, taxpayer-only donation deduction, Sabah/Sarawak-only Tamu Desa, no civil-service or pensioner items for private employees).
@@ -428,3 +443,20 @@ Decisions from the step-5 question rounds, recorded in `ledger-2026.tsv`. Don't 
 | Electricity tariff change; Sabah/Labuan power subsidy; strata titles | Exclude |
 | Kota MADANI homes (Perenggan 214) | Include |
 | Lemon Law (Perenggan 39); KWSP transfer study (Lampiran I Bil. 30) | Exclude (no money yet); check again next year |
+
+### 27 Sep 2026: the benchmark re-read
+
+The blind re-read of the 838 unread units found these 10 measures. Recorded in `ledger-2026.tsv`.
+
+| Measure (source) | Decision |
+|---|---|
+| BSN and TEKUN micro loans (Perenggan 98) | Include (`pinjaman_mikro`, self-employed, `semak`) |
+| KPWKM TVET courses for care workers (Perenggan 174) | Include in the existing TVET card |
+| Travel ban on PTPTN borrowers who can pay but default (Perenggan 202) | Include as `kesan`, targeted by a new "Mempunyai pinjaman PTPTN" option in the `assets` question |
+| Hawker tents, sound boxes and QR for night-market traders in Pangkor and Kuala Tahan (Perenggan 156) | Exclude |
+| Yayasan Peneraju talent and certification programme (Lampiran I Bil. 25) | Exclude |
+| 2 Years Exit Program, 2YEP (Lampiran I Bil. 28) | Exclude |
+| Rare-disease treatment allocation (Lampiran I Bil. 32) | Exclude |
+| Free helmets, 70,000 units (Lampiran I Bil. 34) | Exclude |
+| MITRA Indian community programme (Lampiran I Bil. 35) | Exclude |
+| Program Perumahan Penjawat Awam Malaysia MADANI, 2,586 homes (Lampiran I Bil. 40) | Exclude |

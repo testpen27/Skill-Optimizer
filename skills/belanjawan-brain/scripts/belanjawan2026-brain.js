@@ -23,8 +23,8 @@
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var VERSION = '2026.4';
-  var DATA_AS_OF = '2026-09-26';
+  var VERSION = '2026.5';
+  var DATA_AS_OF = '2026-09-27';
   var SKIP = 'skip';
   var SKIP_LABEL = 'Tidak mahu menyatakan';
 
@@ -147,6 +147,7 @@
         { v: 'taxpayer', l: 'Membayar cukai pendapatan atau mengisi e-Filing' },
         { v: 'invest_bursa', l: 'Melabur di Bursa Malaysia (saham, ETF atau waran)' },
         { v: 'llp_partner', l: 'Pekongsi dalam Perkongsian Liabiliti Terhad (PLT)' },
+        { v: 'ptptn_loan', l: 'Mempunyai pinjaman PTPTN' },
         { v: 'haji_plan', l: 'Merancang untuk menunaikan haji' },
         { v: 'none', l: 'Tiada yang berkaitan', exclusive: true }
       ] },
@@ -959,12 +960,12 @@
 
     { id: 'latihan_tvet', theme: 'youth', kind: 'manfaat',
       title: 'Latihan kemahiran dan TVET', value: 'Latihan dan pensijilan kemahiran',
-      summary: 'Melalui HRD Corp, pembiayaan PTPK (terutamanya bidang AI, kenderaan elektrik dan semikonduktor), GiatMARA (termasuk untuk pekerja gig) dan Kolej Komuniti (program pembelajaran sepanjang hayat untuk OKU, warga emas, ibu tunggal dan Orang Asli).',
+      summary: 'Melalui HRD Corp, pembiayaan PTPK (terutamanya bidang AI, kenderaan elektrik dan semikonduktor), GiatMARA (termasuk untuk pekerja gig), Kolej Komuniti (program pembelajaran sepanjang hayat untuk OKU, warga emas, ibu tunggal dan Orang Asli) serta kursus TVET untuk pekerja penjagaan (care workers) oleh KPWKM.',
       who: 'Pencari kerja, pekerja gig, mereka yang bekerja sendiri dan golongan rentan.',
-      action: 'Mohon melalui HRD Corp, PTPK, GiatMARA atau Kolej Komuniti.',
+      action: 'Mohon melalui HRD Corp, PTPK, GiatMARA, Kolej Komuniti atau KPWKM.',
       when: { any: [{ f: 'employment', in: ['jobseeker', 'gig_ehailing', 'self_employed', 'retired_other', 'housewife'], why: 'Mencari kerja atau bekerja sendiri' },
         C.okuSelf, { f: 'marital', eq: 'single_parent', why: 'Ibu atau bapa tunggal' }, { f: 'status', has: 'orang_asli', why: 'Orang Asli' }] },
-      certainty: 'check', src: 'Perenggan 65, ms 50–51' },
+      certainty: 'check', src: 'Perenggan 65, ms 50–51; Perenggan 174' },
 
     { id: 'pembiayaan_belia', theme: 'youth', kind: 'manfaat',
       title: 'Pembiayaan untuk usahawan belia', value: 'Pembiayaan mikro dan bantuan perniagaan',
@@ -1153,6 +1154,13 @@
       when: { f: 'employment', eq: 'self_employed', why: 'Bekerja sendiri atau peniaga kecil' }, certainty: 'check',
       src: 'Perenggan 156; Lampiran I Bil. 28' },
 
+    { id: 'pinjaman_mikro', theme: 'sector', kind: 'manfaat',
+      title: 'Pinjaman mikro BSN dan TEKUN', value: 'Pinjaman kecil untuk modal perniagaan',
+      summary: 'BSN dan TEKUN Nasional menyediakan pinjaman mikro kepada usahawan mikro dan peniaga kecil untuk modal dan keperluan perniagaan.',
+      who: 'Usahawan mikro dan peniaga kecil.', action: 'Mohon di cawangan BSN atau TEKUN Nasional.',
+      when: { f: 'employment', eq: 'self_employed', why: 'Bekerja sendiri atau peniaga kecil' }, certainty: 'check',
+      src: 'Perenggan 98' },
+
     { id: 'kwap_mikro', theme: 'sector', kind: 'manfaat',
       title: 'Pembiayaan mikro KWAP untuk pesara', value: 'Pembiayaan mikro untuk memulakan perniagaan komuniti',
       summary: 'KWAP menyediakan program pembiayaan mikro bagi pesara untuk memperkasa keusahawanan di peringkat komuniti.',
@@ -1340,6 +1348,13 @@
       who: 'Pekongsi individu dalam PLT.', action: 'Laporkan agihan keuntungan PLT dalam e-Filing.',
       when: { f: 'assets', has: 'llp_partner', why: 'Pekongsi dalam PLT' }, certainty: 'check',
       src: 'Lampiran II — Lampiran 7, ms 321–322' },
+
+    { id: 'ptptn_sekatan_perjalanan', theme: 'special', kind: 'kesan',
+      title: 'Sekatan perjalanan ke luar negara bagi peminjam PTPTN yang culas', value: 'Boleh disekat daripada ke luar negara',
+      summary: 'Kerajaan akan mengenakan sekatan perjalanan ke luar negara kepada peminjam PTPTN yang mampu membayar dan bekerja di luar negara, tetapi culas membuat bayaran balik.',
+      who: 'Peminjam PTPTN yang mampu membayar tetapi tidak membuat bayaran balik.', action: 'Semak baki pinjaman dan jadual bayaran balik melalui PTPTN.',
+      when: { all: [C.adult, { f: 'assets', has: 'ptptn_loan', why: 'Mempunyai pinjaman PTPTN' }] }, certainty: 'check',
+      src: 'Perenggan 202, ms 109', portal: 'https://www.ptptn.gov.my' },
 
     { id: 'cukai_kenderaan_labuan', theme: 'special', kind: 'kesan',
       title: 'Pengecualian cukai kenderaan di Labuan dan Langkawi dihadkan', value: 'Hanya bagi kenderaan bernilai sehingga RM300,000',

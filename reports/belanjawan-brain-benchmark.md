@@ -12,7 +12,7 @@ Measured fairly, each year learning only from earlier years:
 |---|---|---|---|---|---|---|
 | 2024 | sample: all 165 flagged + 150 random unflagged | nothing (cold start) | 36% | **74%** (95% CI 63–82%), estimated | — | 47% |
 | 2025 | all 1,210 pieces | 2024 | 33% | **77%** (217 of 282) | **79%** (144 of 183) | 55% |
-| 2026 | all 1,279 pieces, after re-reading the 838 | 2024 + 2025 | 33% | **83%** (217 of 260) | **86%** (127 of 148) | 52% |
+| 2026 | all 1,279 pieces, after re-reading the 838 | 2024 + 2025 | 33% | **83%** (217 of 260) | **86%** (127 of 147) | 52% |
 
 A measure counts as caught if any of its pieces is flagged. One brain item often appears in both the speech and Lampiran I.
 
@@ -52,7 +52,7 @@ Tax entries are never missed. The misses fall into three groups:
    - *percuma* ("pengedaran topi keledar secara percuma", 2026 L1.34.14);
    - obligations such as *sekatan perjalanan* (PTPTN defaulters' travel ban, 2026 P202.3);
    - rule changes worded as policy ("RUU Kredit Pengguna", 2025 P77; "Dasar Gaji Progresif", 2025 P189).
-3. **Things the key counts as person-level that aren't new measures.** These are chicken and egg price floating reported as savings (`exclude:past`), and non-citizen measures (`exclude:non-citizen`). In 2026 they are 7 of the 21 measures with no piece flagged. If these are left out of the key, 2026's measure catch rate rises to about 90%.
+3. **Things the key counts as person-level that aren't new measures.** These are chicken and egg price floating reported as savings (`exclude:past`), and non-citizen measures (`exclude:non-citizen`). In 2026 they are 7 of the 20 measures with no piece flagged. If these are left out of the key, 2026's measure catch rate rises to about 91%.
 
 Every miss is listed with its text in `reports/benchmark/run-2024.txt`, `run-2025.txt` and `run-2026.txt`.
 
@@ -72,7 +72,7 @@ The blind re-read of the 838 former `bulk` rows in `references/ledger-2026.tsv` 
 - **811 correct exclusions.** They are now recorded by reason: infrastructure 338, business 110, heading 83, governance 82, rhetoric 79, institution 71, allocation 40, past 4, non-citizen 3 and user 1.
 - **17 restatements** of items the brain already has, such as PTPK under `latihan_tvet`, the latex incentive and Bantuan Musim Tengkujuh under `pekebun_kecil`, and fishing-vessel grants under `nelayan_elaun`.
 - **One piece that repeats something the user already excluded.** P181.1, the basic insurance product, is the same measure as RESET.
-- **10 person-level measures the brain doesn't have.** They are recorded as `gap`: P98.1, P156.2, P174.1, P202.3, L1.25.8, L1.28.4, L1.32.20, L1.34.14, L1.35.8 and L1.40.5. They are listed under step 5 in the conversation, and nothing is added to the brain until the user decides.
+- **10 person-level measures the brain doesn't have.** They are recorded as `gap`: P98.1, P156.2, P174.1, P202.3, L1.25.8, L1.28.4, L1.32.20, L1.34.14, L1.35.8 and L1.40.5. The user decided them on 27 Sep 2026. Three were added in brain v2026.5: BSN/TEKUN micro loans (`pinjaman_mikro`), care-worker TVET courses (in `latihan_tvet`) and the PTPTN travel ban (`ptptn_sekatan_perjalanan`, `kesan`). The other seven were excluded. Once care-worker courses joined an existing item, 2026 counts 147 measures instead of 148; the catch rates don't change.
 
 ## Answer keys and their limits
 
