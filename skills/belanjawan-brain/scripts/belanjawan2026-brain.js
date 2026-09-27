@@ -16,6 +16,8 @@
  *  - Personal questions are optional: every non-core question offers "Tidak mahu menyatakan" (value 'skip').
  *  - A skipped single-choice answer becomes UNKNOWN (tri-state), so dependent results show as "mungkin".
  *  - A skipped multi-choice answer is treated as "none selected", with an advisory telling the user.
+ *  - Scope: build only the items in BENEFITS. Measures read in the speech and deliberately left
+ *    out are listed in references/excluded-2026.md; don't implement them without asking the user.
  */
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) module.exports = factory();
@@ -23,8 +25,8 @@
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var VERSION = '2026.3';
-  var DATA_AS_OF = '2026-09-25';
+  var VERSION = '2026.5';
+  var DATA_AS_OF = '2026-09-27';
   var SKIP = 'skip';
   var SKIP_LABEL = 'Tidak mahu menyatakan';
 
@@ -147,6 +149,7 @@
         { v: 'taxpayer', l: 'Membayar cukai pendapatan atau mengisi e-Filing' },
         { v: 'invest_bursa', l: 'Melabur di Bursa Malaysia (saham, ETF atau waran)' },
         { v: 'llp_partner', l: 'Pekongsi dalam Perkongsian Liabiliti Terhad (PLT)' },
+        { v: 'ptptn_loan', l: 'Mempunyai pinjaman PTPTN' },
         { v: 'haji_plan', l: 'Merancang untuk menunaikan haji' },
         { v: 'none', l: 'Tiada yang berkaitan', exclusive: true }
       ] },
@@ -567,6 +570,13 @@
       when: C.adult, certainty: 'check',
       src: 'Lampiran I, ms 222' },
 
+    { id: 'solar_atap', theme: 'subsidy', kind: 'manfaat',
+      title: 'Solar ATAP: jana elektrik sendiri di rumah', value: 'Lebihan tenaga boleh dijual sebagai pengimbangan (offset) bil elektrik',
+      summary: 'Melalui Solar Accelerated Transition Action Programme (Solar ATAP), pengguna elektrik domestik boleh memasang sistem solar PV untuk kegunaan sendiri dan menjual lebihan tenaga kepada syarikat utiliti sebagai pengimbangan dalam bil elektrik.',
+      who: 'Pengguna elektrik domestik yang boleh memasang sistem solar PV.', action: 'Semak syarat penyertaan dengan syarikat utiliti anda.',
+      when: C.adult, certainty: 'check',
+      src: 'Perenggan 104; Lampiran I Bil. 19' },
+
     /* ---------------- KESIHATAN & INSURANS ---------------- */
     { id: 'peka_b40', theme: 'health', kind: 'manfaat',
       title: 'PeKa B40', value: 'Saringan kesihatan percuma dan bantuan alat perubatan sehingga RM20,000',
@@ -626,6 +636,13 @@
       action: 'Diberikan secara automatik semasa membeli polisi.',
       when: C.adult, certainty: 'high',
       src: 'Perenggan 181, ms 100; Lampiran II — Lampiran 16 dan 17, ms 332–333' },
+
+    { id: 'perkeso_dialisis', theme: 'health', kind: 'manfaat',
+      title: 'Kadar bayaran rawatan hemodialisis PERKESO dinaikkan', value: 'Sehingga RM170 bagi setiap rawatan (sebelum ini RM150)',
+      summary: 'PERKESO menaikkan kadar maksimum yang dibayar bagi setiap rawatan hemodialisis.',
+      who: 'Pencarum PERKESO yang menerima rawatan hemodialisis.', action: 'Semak kelayakan dengan PERKESO.',
+      when: { f: 'employment', in: ['employed_private', 'gig_ehailing', 'self_employed'], why: 'Pekerja yang dilindungi PERKESO' }, certainty: 'check',
+      src: 'Perenggan 170; Lampiran I Bil. 30' },
 
     /* ---------------- PENDIDIKAN ---------------- */
     { id: 'bap', theme: 'education', kind: 'manfaat',
@@ -724,6 +741,16 @@
       when: { any: [C.school, C.ipt] }, certainty: 'check',
       src: 'Perenggan 199, ms 108' },
 
+    { id: 'tahfiz_kemahiran', theme: 'education', kind: 'manfaat',
+      title: 'Latihan kemahiran dan teknologi untuk pelajar tahfiz dan pondok', value: 'Kursus teknologi digital dan AI serta latihan kemahiran profesional',
+      summary: 'Pelajar tahfiz dan pondok didedahkan kepada teknologi digital dan AI melalui Program IPT@Komuniti oleh Majlis TVET Negara. Pelajar tahfiz juga dibekalkan latihan kemahiran profesional melalui GiatMARA untuk dimanfaatkan selepas tamat pengajian.',
+      who: 'Pelajar sekolah tahfiz dan pondok.', action: 'Tanya pihak sekolah tahfiz atau pondok, atau pusat GiatMARA berhampiran.',
+      when: { all: [{ f: 'age', gte: 15, why: 'Berumur 15 hingga 30 tahun' }, { f: 'age', lte: 30 },
+        { any: [{ f: 'employment', eq: 'student_ipt', why: 'Pelajar' },
+          { all: [{ f: 'adult', eq: false }, { f: 'isSchoolPupil', eq: true, why: 'Pelajar sekolah' }] }] }] },
+      certainty: 'check',
+      src: 'Perenggan 65, 223; Lampiran I Bil. 11' },
+
     /* ---------------- PERUMAHAN ---------------- */
     { id: 'duti_rumah_pertama', theme: 'housing', kind: 'manfaat',
       title: 'Tiada duti setem untuk rumah pertama', value: 'Pengecualian penuh bagi rumah berharga sehingga RM500,000',
@@ -791,6 +818,13 @@
       action: 'Mohon melalui Pejabat Daerah, KPKT atau Jabatan Perikanan.',
       when: { any: [C.ekasih, { all: [{ f: 'employment', eq: 'fisher', why: 'Nelayan' }, C.b40] }] }, certainty: 'check',
       src: 'Perenggan 216, ms 115; Lampiran I Bil. 35, ms 290' },
+
+    { id: 'kota_madani', theme: 'housing', kind: 'manfaat',
+      title: 'Rumah di Kota MADANI Presint 19', value: '80% daripada rumah dikhaskan untuk penjawat awam',
+      summary: 'Kota MADANI Presint 19 ialah bandar pintar dan hijau yang menyediakan rumah kediaman, kebanyakannya untuk penjawat awam.',
+      who: 'Penjawat awam.', action: 'Pantau pengumuman permohonan.',
+      when: C.civil, certainty: 'check',
+      src: 'Perenggan 214' },
 
     /* ---------------- PERLINDUNGAN SOSIAL & SIMPANAN PERSARAAN ---------------- */
     { id: 'i_saraan', theme: 'protection', kind: 'manfaat',
@@ -928,12 +962,12 @@
 
     { id: 'latihan_tvet', theme: 'youth', kind: 'manfaat',
       title: 'Latihan kemahiran dan TVET', value: 'Latihan dan pensijilan kemahiran',
-      summary: 'Melalui HRD Corp, pembiayaan PTPK (terutamanya bidang AI, kenderaan elektrik dan semikonduktor), GiatMARA (termasuk untuk pekerja gig) dan Kolej Komuniti (program pembelajaran sepanjang hayat untuk OKU, warga emas, ibu tunggal dan Orang Asli).',
+      summary: 'Melalui HRD Corp, pembiayaan PTPK (terutamanya bidang AI, kenderaan elektrik dan semikonduktor), GiatMARA (termasuk untuk pekerja gig), Kolej Komuniti (program pembelajaran sepanjang hayat untuk OKU, warga emas, ibu tunggal dan Orang Asli) serta kursus TVET untuk pekerja penjagaan (care workers) oleh KPWKM.',
       who: 'Pencari kerja, pekerja gig, mereka yang bekerja sendiri dan golongan rentan.',
-      action: 'Mohon melalui HRD Corp, PTPK, GiatMARA atau Kolej Komuniti.',
+      action: 'Mohon melalui HRD Corp, PTPK, GiatMARA, Kolej Komuniti atau KPWKM.',
       when: { any: [{ f: 'employment', in: ['jobseeker', 'gig_ehailing', 'self_employed', 'retired_other', 'housewife'], why: 'Mencari kerja atau bekerja sendiri' },
         C.okuSelf, { f: 'marital', eq: 'single_parent', why: 'Ibu atau bapa tunggal' }, { f: 'status', has: 'orang_asli', why: 'Orang Asli' }] },
-      certainty: 'check', src: 'Perenggan 65, ms 50–51' },
+      certainty: 'check', src: 'Perenggan 65, ms 50–51; Perenggan 174' },
 
     { id: 'pembiayaan_belia', theme: 'youth', kind: 'manfaat',
       title: 'Pembiayaan untuk usahawan belia', value: 'Pembiayaan mikro dan bantuan perniagaan',
@@ -992,6 +1026,13 @@
       action: 'Melalui Jabatan Kemajuan Orang Asli (JAKOA).',
       when: { f: 'status', has: 'orang_asli', why: 'Orang Asli' }, certainty: 'high',
       src: 'Perenggan 144–148, ms 86–87' },
+
+    { id: 'itekad', theme: 'vulnerable', kind: 'manfaat',
+      title: 'Geran padanan iTEKAD', value: 'Geran padanan untuk kemahiran, keusahawanan dan perlindungan',
+      summary: 'iTEKAD diperluas untuk menyediakan geran padanan kepada penerima yang ingin meningkatkan kemahiran bagi pekerjaan dan pendapatan yang lebih stabil. Dana disumbangkan bersama oleh sektor swasta, termasuk institusi kewangan.',
+      who: 'Golongan rentan, termasuk usahawan kecil dan pencari kerja.', action: 'Semak kelayakan melalui program iTEKAD.',
+      when: { all: [C.b40, { f: 'employment', in: ['self_employed', 'jobseeker', 'gig_ehailing'], why: 'Bekerja sendiri atau mencari pekerjaan' }] }, certainty: 'check',
+      src: 'Perenggan 67; Lampiran I Bil. 12' },
 
     /* ---------------- MENGIKUT PEKERJAAN ---------------- */
     { id: 'nelayan_elaun', theme: 'sector', kind: 'manfaat',
@@ -1065,6 +1106,97 @@
       action: 'Melalui PERKESO.',
       when: { all: [{ f: 'status', has: 'taxi', why: 'Pemandu pengangkutan awam' }, { f: 'age', gte: 40, why: 'Berumur 40 hingga 59 tahun' }, { f: 'age', lte: 59 }] },
       certainty: 'check', src: 'Perenggan 212, ms 114; Lampiran I Bil. 30, ms 264' },
+
+    { id: 'penghargaan_pesara', theme: 'sector', kind: 'manfaat',
+      title: 'Bayaran penghargaan khas pesara dilanjutkan', value: 'Diteruskan dari Januari hingga Disember',
+      summary: 'Bayaran penghargaan khas kepada pesara dan penerima pencen terbitan dilanjutkan. Kadar bayaran tidak dinyatakan dalam teks Belanjawan.',
+      who: 'Pesara Kerajaan dan penerima pencen terbitan.', action: 'Semak dengan Jabatan Perkhidmatan Awam (JPA).',
+      when: { f: 'employment', eq: 'retired_gov', why: 'Pesara Kerajaan' }, certainty: 'check',
+      src: 'Lampiran I Bil. 40' },
+
+    { id: 'bsh_pesara_kemas', theme: 'sector', kind: 'manfaat',
+      title: 'Bayaran Sara Hidup pesara kontrak KEMAS dinaikkan', value: 'RM500 sebulan (sebelum ini RM300)',
+      summary: 'Kadar Bayaran Sara Hidup (BSH) bagi pesara kakitangan kontrak KEMAS dinaikkan daripada RM300 kepada RM500 sebulan.',
+      who: 'Pesara kakitangan kontrak KEMAS.', action: 'Semak dengan KEMAS.',
+      when: { f: 'employment', in: ['retired_gov', 'retired_other'], why: 'Pesara' }, certainty: 'check',
+      src: 'Perenggan 238; Lampiran I Bil. 40' },
+
+    { id: 'apel_q', theme: 'sector', kind: 'manfaat',
+      title: 'Program APEL.Q INTAN untuk penjawat awam', value: 'Kerajaan menanggung 50% kos pengajian, sehingga RM15,000',
+      summary: 'Untuk penjawat awam yang telah berkhidmat melebihi 15 tahun dan ingin melanjutkan pengajian ke peringkat yang lebih tinggi.',
+      who: 'Penjawat awam yang telah berkhidmat melebihi 15 tahun.', action: 'Semak dengan INTAN atau bahagian sumber manusia jabatan anda.',
+      when: C.civil, certainty: 'check',
+      src: 'Lampiran I Bil. 40' },
+
+    { id: 'etap_perubatan', theme: 'sector', kind: 'manfaat',
+      title: 'Elaun Tugas Atas Panggilan (ETAP) pegawai perubatan dinaikkan', value: 'Naik antara 33% hingga 43% mengikut kelayakan',
+      summary: 'Kadar ETAP yang tidak dikaji sejak 2011 dinaikkan. Contohnya, pegawai perubatan pakar yang bertugas atas panggilan aktif pada hari cuti menerima RM350 (sebelum ini RM250).',
+      who: 'Pegawai perubatan, pegawai perubatan pakar dan pegawai pergigian.', action: 'Semak dengan jabatan anda.',
+      when: C.civil, certainty: 'check', timing: 'Berkuat kuasa 1 Oktober 2025.',
+      src: 'Perenggan 182; Lampiran I Bil. 32' },
+
+    { id: 'lantikan_tetap_kkm', theme: 'sector', kind: 'manfaat',
+      title: 'Lantikan tetap untuk doktor, jururawat dan graduan kontrak KKM', value: 'Tawaran lantikan tetap mulai 2026',
+      summary: 'Doktor kontrak dan graduan Institut Latihan KKM akan ditawarkan jawatan tetap mulai 2026. Jururawat kontrak turut ditawarkan lantikan tetap.',
+      who: 'Doktor kontrak, jururawat kontrak dan graduan Institut Latihan KKM.', action: 'Semak dengan Kementerian Kesihatan Malaysia (KKM).',
+      when: C.civil, certainty: 'check',
+      src: 'Perenggan 182; Lampiran I Bil. 32' },
+
+    { id: 'bipk_bipac', theme: 'sector', kind: 'manfaat',
+      title: 'Bayaran insentif pasukan khas (BIPK dan BIPAC) dinaikkan', value: 'Kadar bayaran dinaikkan',
+      summary: 'Bayaran Insentif Pasukan Khas (BIPK) dan Bayaran Insentif Pasukan Atur Cara (BIPAC) ditambah baik melalui kenaikan kadar bayaran dan pelarasan syarat tempoh perkhidmatan.',
+      who: 'Pegawai dan anggota pasukan khas.', action: 'Semak dengan pasukan atau jabatan anda.',
+      when: C.civil, certainty: 'check',
+      src: 'Lampiran I Bil. 40' },
+
+    { id: 'geran_bsn', theme: 'sector', kind: 'manfaat',
+      title: 'Geran perniagaan BSN untuk usahawan mikro', value: 'Sehingga RM10,000 untuk membeli peralatan perniagaan',
+      summary: 'BSN menyediakan geran perniagaan kepada usahawan mikro yang berpotensi, sebagai modal untuk membeli peralatan perniagaan.',
+      who: 'Usahawan mikro.', action: 'Semak dengan cawangan BSN.',
+      when: { f: 'employment', eq: 'self_employed', why: 'Bekerja sendiri atau peniaga kecil' }, certainty: 'check',
+      src: 'Perenggan 156; Lampiran I Bil. 28' },
+
+    { id: 'pinjaman_mikro', theme: 'sector', kind: 'manfaat',
+      title: 'Pinjaman mikro BSN dan TEKUN', value: 'Pinjaman kecil untuk modal perniagaan',
+      summary: 'BSN dan TEKUN Nasional menyediakan pinjaman mikro kepada usahawan mikro dan peniaga kecil untuk modal dan keperluan perniagaan.',
+      who: 'Usahawan mikro dan peniaga kecil.', action: 'Mohon di cawangan BSN atau TEKUN Nasional.',
+      when: { f: 'employment', eq: 'self_employed', why: 'Bekerja sendiri atau peniaga kecil' }, certainty: 'check',
+      src: 'Perenggan 98' },
+
+    { id: 'kwap_mikro', theme: 'sector', kind: 'manfaat',
+      title: 'Pembiayaan mikro KWAP untuk pesara', value: 'Pembiayaan mikro untuk memulakan perniagaan komuniti',
+      summary: 'KWAP menyediakan program pembiayaan mikro bagi pesara untuk memperkasa keusahawanan di peringkat komuniti.',
+      who: 'Pesara Kerajaan.', action: 'Semak dengan KWAP.',
+      when: { f: 'employment', eq: 'retired_gov', why: 'Pesara Kerajaan' }, certainty: 'check',
+      src: 'Perenggan 138' },
+
+    { id: 'tamu_desa', theme: 'sector', kind: 'manfaat',
+      title: 'Ruang niaga Tamu Desa di Sabah dan Sarawak', value: 'Tapak dan ruang niaga baharu dengan kemudahan asas',
+      summary: 'Tapak dan ruang niaga yang dilengkapi kemudahan asas ditambah untuk peniaga kecil Tamu Desa di Sabah dan Sarawak.',
+      who: 'Peniaga kecil Tamu Desa di Sabah dan Sarawak.', action: 'Semak dengan pihak berkuasa tempatan.',
+      when: { all: [{ f: 'region', in: ['sabah', 'sarawak'], why: 'Menetap di Sabah atau Sarawak' }, { f: 'employment', eq: 'self_employed', why: 'Bekerja sendiri atau peniaga kecil' }] }, certainty: 'check',
+      src: 'Perenggan 46; Lampiran I Bil. 8' },
+
+    { id: 'buah_buahan', theme: 'sector', kind: 'manfaat',
+      title: 'Insentif pengusaha buah-buahan tempatan', value: 'Insentif tanaman dan prasarana ladang',
+      summary: 'Untuk pengusaha buah-buahan tempatan, antaranya ladang nanas termasuk di Sarawak, serta tanaman durian belanda, jambu air dan limau besar.',
+      who: 'Pengusaha buah-buahan tempatan.', action: 'Semak dengan pejabat pertanian berhampiran.',
+      when: { all: [C.farmer, { f: 'farmType', eq: 'other', why: 'Tanaman lain, ternakan atau akuakultur' }] }, certainty: 'check',
+      src: 'Perenggan 112; Lampiran I Bil. 20' },
+
+    { id: 'penternak', theme: 'sector', kind: 'manfaat',
+      title: 'Insentif penternak ruminan kecil dan lembu pedaging', value: 'Insentif bagi penternak yang mencapai kadar kelahiran ternakan yang ditetapkan',
+      summary: 'Penternak ruminan kecil dengan kadar kelahiran ternakan sedia ada sekurang-kurangnya 100%, dan penternak lembu pedaging dengan kadar sekurang-kurangnya 60%, layak menerima insentif.',
+      who: 'Penternak ruminan kecil dan lembu pedaging.', action: 'Semak dengan pejabat pertanian atau veterinar berhampiran.',
+      when: { all: [C.farmer, { f: 'farmType', eq: 'other', why: 'Tanaman lain, ternakan atau akuakultur' }] }, certainty: 'check',
+      src: 'Lampiran I Bil. 20' },
+
+    { id: 'elaun_imam_kafa', theme: 'sector', kind: 'manfaat',
+      title: 'Elaun bulanan imam, guru KAFA dan guru takmir', value: 'Elaun bulanan diteruskan',
+      summary: 'Elaun bulanan kepada imam, guru KAFA dan guru takmir diteruskan pada tahun 2026. Kadar elaun tidak dinyatakan dalam teks Belanjawan.',
+      who: 'Imam, guru KAFA dan guru takmir.', action: 'Semak dengan majlis agama Islam negeri.',
+      when: { f: 'status', has: 'religious_staff', why: 'Petugas institusi agama Islam' }, certainty: 'check',
+      src: 'Lampiran I Bil. 36' },
 
     /* ---------------- PENGANGKUTAN & MOBILITI ---------------- */
     { id: 'myraillife', theme: 'mobility', kind: 'manfaat',
@@ -1140,6 +1272,14 @@
       who: 'Pembayar cukai pendapatan.', action: 'Simpan resit atau tiket dan tuntut semasa mengisi e-Filing bagi Tahun Taksiran 2026.',
       when: C.taxpayer, certainty: 'high', src: 'Perenggan 75, ms 56; Lampiran II — Lampiran 6, ms 320' },
 
+    { id: 'potongan_derma', theme: 'tax', kind: 'manfaat',
+      title: 'Potongan cukai untuk sumbangan tunai', value: 'Potongan cukai pendapatan bagi sumbangan yang layak',
+      summary: 'Sumbangan tunai kepada program pencegahan rasuah yang diiktiraf SPRM, tabung endowmen hospital pengajar universiti awam, Akaun Amanah Jabatan Muzium Malaysia, serta projek komuniti, amal atau infrastruktur seperti hentian bas layak mendapat potongan cukai pendapatan.',
+      who: 'Pembayar cukai yang membuat sumbangan tunai.', action: 'Simpan resit dan tuntut semasa mengisi e-Filing.',
+      when: C.taxpayer, certainty: 'high',
+      timing: 'Tabung endowmen hospital pengajar: mulai Tahun Taksiran 2026. Program pencegahan rasuah: bagi program yang dilaksanakan dari 1 Januari 2026 hingga 31 Disember 2028.',
+      src: 'Perenggan 28, 82, 205; Lampiran I Bil. 34; Lampiran II — Lampiran 12 dan 13' },
+
     /* ---------------- KES KHAS: GAYA HIDUP, PELABURAN & PERUBAHAN HARGA ---------------- */
     { id: 'duti_rokok', theme: 'special', kind: 'kesan',
       title: 'Harga rokok naik', value: 'Naik 40 sen sepaket (2 sen sebatang)',
@@ -1209,7 +1349,22 @@
       summary: 'Bermula Tahun Taksiran 2026, agihan keuntungan PLT yang diterima oleh pekongsi individu melebihi RM100,000 setahun dikenakan cukai 2% dan perlu dilaporkan dalam borang nyata cukai.',
       who: 'Pekongsi individu dalam PLT.', action: 'Laporkan agihan keuntungan PLT dalam e-Filing.',
       when: { f: 'assets', has: 'llp_partner', why: 'Pekongsi dalam PLT' }, certainty: 'check',
-      src: 'Lampiran II — Lampiran 7, ms 321–322' }
+      src: 'Lampiran II — Lampiran 7, ms 321–322' },
+
+    { id: 'ptptn_sekatan_perjalanan', theme: 'special', kind: 'kesan',
+      title: 'Sekatan perjalanan ke luar negara bagi peminjam PTPTN yang culas', value: 'Boleh disekat daripada ke luar negara',
+      summary: 'Kerajaan akan mengenakan sekatan perjalanan ke luar negara kepada peminjam PTPTN yang mampu membayar dan bekerja di luar negara, tetapi culas membuat bayaran balik.',
+      who: 'Peminjam PTPTN yang mampu membayar tetapi tidak membuat bayaran balik.', action: 'Semak baki pinjaman dan jadual bayaran balik melalui PTPTN.',
+      when: { all: [C.adult, { f: 'assets', has: 'ptptn_loan', why: 'Mempunyai pinjaman PTPTN' }] }, certainty: 'check',
+      src: 'Perenggan 202, ms 109', portal: 'https://www.ptptn.gov.my' },
+
+    { id: 'cukai_kenderaan_labuan', theme: 'special', kind: 'kesan',
+      title: 'Pengecualian cukai kenderaan di Labuan dan Langkawi dihadkan', value: 'Hanya bagi kenderaan bernilai sehingga RM300,000',
+      summary: 'Pengecualian cukai kenderaan di Labuan dan Langkawi dihadkan kepada kenderaan yang bernilai tidak melebihi RM300,000, bagi menangani ketirisan oleh pemilik kenderaan mewah.',
+      who: 'Pemilik kenderaan di Labuan dan Langkawi.', action: 'Semak nilai kenderaan sebelum membeli kenderaan baharu.',
+      when: { all: [C.adult, { f: 'region', eq: 'labuan', why: 'Menetap di Wilayah Persekutuan Labuan' }, { f: 'assets', has: 'license', why: 'Mempunyai lesen memandu' }] },
+      certainty: 'high', timing: 'Berkuat kuasa 1 Januari 2026.',
+      src: 'Perenggan 27' }
   ];
 
   /* ================================================================

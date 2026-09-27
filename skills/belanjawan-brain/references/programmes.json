@@ -1,0 +1,2891 @@
+{
+ "learnedFrom": [
+  "ub24.md",
+  "ub25.md",
+  "ub26.md"
+ ],
+ "years": [
+  2024,
+  2025,
+  2026
+ ],
+ "programmes": [
+  {
+   "name": "STR",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 27,
+   "flaggedShare": 0.85,
+   "refs": [
+    "2024 Perenggan 177 (butiran 2)",
+    "2024 Perenggan 179",
+    "2024 Perenggan 179 (butiran 1)",
+    "2024 Perenggan 179 (butiran 2)"
+   ]
+  },
+  {
+   "name": "SJKP",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 15,
+   "flaggedShare": 0.8,
+   "refs": [
+    "2024 Perenggan 252",
+    "2025 Perenggan 160 (butiran 4)",
+    "2025 Perenggan 226 (butiran 2)",
+    "2025 Perenggan 239"
+   ]
+  },
+  {
+   "name": "RON95",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 10,
+   "flaggedShare": 0.8,
+   "refs": [
+    "2024 Perenggan 24",
+    "2025 Perenggan 51",
+    "2025 Perenggan 52",
+    "2025 Perenggan 53"
+   ]
+  },
+  {
+   "name": "KAFA",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 10,
+   "flaggedShare": 0.6,
+   "refs": [
+    "2024 Perenggan 266 (butiran 4)",
+    "2025 Perenggan 260 (butiran 2)",
+    "2025 Perenggan 263",
+    "2025 Lampiran I Bil. 53 (butiran 3)"
+   ]
+  },
+  {
+   "name": "PTPTN",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 9,
+   "flaggedShare": 0.89,
+   "refs": [
+    "2024 Perenggan 227",
+    "2024 Perenggan 228 (butiran 1)",
+    "2024 Perenggan 228 (butiran 3)",
+    "2025 Perenggan 202 (butiran 4)"
+   ]
+  },
+  {
+   "name": "SSPA",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 8,
+   "flaggedShare": 0.75,
+   "refs": [
+    "2024 Perenggan 284",
+    "2025 Perenggan 293",
+    "2025 Perenggan 294",
+    "2025 Perenggan 296"
+   ]
+  },
+  {
+   "name": "Sumbangan Tunai Rahmah",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 6,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 35",
+    "2024 Perenggan 179",
+    "2025 Perenggan 177",
+    "2025 Lampiran I Bil. 34 (butiran 1)"
+   ]
+  },
+  {
+   "name": "UDA",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 6,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2024 Perenggan 118",
+    "2025 Perenggan 159",
+    "2025 Perenggan 160 (butiran 2)",
+    "2025 Lampiran I Bil. 30 (butiran 2)"
+   ]
+  },
+  {
+   "name": "i-Suri",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 6,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 187",
+    "2025 Perenggan 191 (butiran 2)",
+    "2025 Lampiran I Bil. 36 (butiran 2)",
+    "2026 Perenggan 168"
+   ]
+  },
+  {
+   "name": "mySalam",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 6,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2024 Perenggan 237",
+    "2025 Perenggan 225 (butiran 2)",
+    "2025 Lampiran I Bil. 41 (butiran 18)",
+    "2026 Perenggan 181 (butiran 5)"
+   ]
+  },
+  {
+   "name": "Sumbangan Asas Rahmah",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 5,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 177 (butiran 2)",
+    "2024 Perenggan 179 (butiran 6)",
+    "2025 Perenggan 177",
+    "2025 Lampiran I Bil. 34 (butiran 1)"
+   ]
+  },
+  {
+   "name": "i-Saraan",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 5,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 187",
+    "2025 Perenggan 191 (butiran 1)",
+    "2025 Lampiran I Bil. 36 (butiran 1)",
+    "2026 Perenggan 165"
+   ]
+  },
+  {
+   "name": "PUNB",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 0.75,
+   "refs": [
+    "2024 Perenggan 118",
+    "2024 Perenggan 191 (butiran 2)",
+    "2025 Perenggan 170",
+    "2026 Lampiran I Bil. 17 (butiran 18)"
+   ]
+  },
+  {
+   "name": "IPG",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2024 Perenggan 143",
+    "2025 Lampiran I Bil. 37 (butiran 12)",
+    "2026 Perenggan 124",
+    "2026 Lampiran I Bil. 22 (butiran 1)"
+   ]
+  },
+  {
+   "name": "PGK",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 185",
+    "2024 Perenggan 214",
+    "2025 Perenggan 291 (butiran 1)",
+    "2026 Perenggan 154"
+   ]
+  },
+  {
+   "name": "Skim Keselamatan Sosial Pekerjaan Sendiri",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 187",
+    "2025 Perenggan 191 (butiran 3)",
+    "2025 Lampiran I Bil. 13 (butiran 5)",
+    "2026 Perenggan 166"
+   ]
+  },
+  {
+   "name": "TUBE",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 200",
+    "2025 Perenggan 241",
+    "2025 Lampiran I Bil. 47 (butiran 5)",
+    "2026 Lampiran I Bil. 26 (butiran 15)"
+   ]
+  },
+  {
+   "name": "Program Tunas Usahawan Belia Bumiputera",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 200",
+    "2025 Perenggan 241",
+    "2026 Perenggan 143 (butiran 5)",
+    "2026 Lampiran I Bil. 26 (butiran 15)"
+   ]
+  },
+  {
+   "name": "MEKAR",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2024 Perenggan 64 (butiran 1)",
+    "2025 Lampiran I Bil. 11 (butiran 5)",
+    "2026 Lampiran I Bil. 7 (butiran 1)"
+   ]
+  },
+  {
+   "name": "Skim Subsidi Harga Padi",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2024 Perenggan 170 (butiran 1)",
+    "2025 Lampiran I Bil. 26 (butiran 10)",
+    "2026 Lampiran I Bil. 20 (butiran 7)"
+   ]
+  },
+  {
+   "name": "Insentif Hasil Tangkapan Nelayan",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 170 (butiran 5)",
+    "2025 Lampiran I Bil. 26 (butiran 10)",
+    "2026 Lampiran I Bil. 20 (butiran 9)"
+   ]
+  },
+  {
+   "name": "CCMS",
+   "years": [
+    2024,
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2024 Perenggan 234",
+    "2025 Lampiran I Bil. 41 (butiran 21)",
+    "2026 Lampiran I Bil. 32 (butiran 24)"
+   ]
+  },
+  {
+   "name": "KE",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 35,
+   "flaggedShare": 0.97,
+   "refs": [
+    "2025 Lampiran II — Lampiran 1",
+    "2025 Lampiran II — Lampiran 4",
+    "2025 Lampiran II — Lampiran 5",
+    "2025 Lampiran II — Lampiran 6"
+   ]
+  },
+  {
+   "name": "LPPSA",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 8,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 160 (butiran 3)",
+    "2025 Perenggan 290 (butiran 4)",
+    "2025 Lampiran I Bil. 30 (butiran 3)",
+    "2025 Lampiran I Bil. 59 (butiran 7)"
+   ]
+  },
+  {
+   "name": "TalentCorp",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 8,
+   "flaggedShare": 0.88,
+   "refs": [
+    "2025 Perenggan 211 (butiran 7)",
+    "2025 Perenggan 240",
+    "2025 Lampiran I Bil. 47 (butiran 4)",
+    "2026 Perenggan 87 (butiran 3)"
+   ]
+  },
+  {
+   "name": "SC",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 8,
+   "flaggedShare": 0.75,
+   "refs": [
+    "2025 Perenggan 235 (butiran 2)",
+    "2025 Lampiran I Bil. 17 (butiran 1)",
+    "2025 Lampiran I Bil. 46 (butiran 3)",
+    "2026 Perenggan 49 (butiran 1)"
+   ]
+  },
+  {
+   "name": "Elaun Modal Dipercepatkan",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 6,
+   "flaggedShare": 0.83,
+   "refs": [
+    "2025 Perenggan 151 (butiran 4)",
+    "2025 Lampiran II — Lampiran 19",
+    "2026 Perenggan 212 (butiran 5)",
+    "2026 Lampiran II — Lampiran 21"
+   ]
+  },
+  {
+   "name": "GiatMARA",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 6,
+   "flaggedShare": 0.83,
+   "refs": [
+    "2025 Perenggan 211 (butiran 5)",
+    "2025 Perenggan 211 (butiran 6)",
+    "2025 Lampiran I Bil. 40 (butiran 11)",
+    "2026 Perenggan 65 (butiran 6)"
+   ]
+  },
+  {
+   "name": "UTC",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 5,
+   "flaggedShare": 0.6,
+   "refs": [
+    "2025 Perenggan 89",
+    "2025 Perenggan 91 (butiran 2)",
+    "2025 Lampiran I Bil. 11 (butiran 4)",
+    "2026 Perenggan 33"
+   ]
+  },
+  {
+   "name": "e-Invois",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 5,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 123",
+    "2025 Lampiran II — Lampiran 11",
+    "2026 Perenggan 26",
+    "2026 Lampiran I Bil. 2 (butiran 5)"
+   ]
+  },
+  {
+   "name": "SSPN",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 5,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 203 (butiran 1)",
+    "2025 Perenggan 203 (butiran 2)",
+    "2025 Lampiran I Bil. 38 (butiran 5)",
+    "2025 Lampiran II — Lampiran 6"
+   ]
+  },
+  {
+   "name": "QR",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 5,
+   "flaggedShare": 0.6,
+   "refs": [
+    "2025 Perenggan 288 (butiran 3)",
+    "2025 Lampiran I Bil. 58 (butiran 4)",
+    "2026 Perenggan 156 (butiran 2)",
+    "2026 Lampiran I Bil. 10 (butiran 2)"
+   ]
+  },
+  {
+   "name": "KESUMA",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 5,
+   "flaggedShare": 0.6,
+   "refs": [
+    "2025 Lampiran I Bil. 35 (butiran 2)",
+    "2025 Lampiran I Bil. 36 (butiran 7)",
+    "2026 Perenggan 87 (butiran 3)",
+    "2026 Lampiran I Bil. 9 (butiran 1)"
+   ]
+  },
+  {
+   "name": "PV",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 139 (butiran 1)",
+    "2025 Lampiran I Bil. 24 (butiran 6)",
+    "2025 Lampiran I Bil. 24 (butiran 14)",
+    "2026 Lampiran I Bil. 19 (butiran 5)"
+   ]
+  },
+  {
+   "name": "RAHMAH",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 0.75,
+   "refs": [
+    "2025 Perenggan 182 (butiran 1)",
+    "2025 Lampiran I Bil. 34 (butiran 3)",
+    "2026 Perenggan 163",
+    "2026 Lampiran I Bil. 29 (butiran 9)"
+   ]
+  },
+  {
+   "name": "Bantuan Awal Persekolahan",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 197 (butiran 3)",
+    "2025 Lampiran I Bil. 37 (butiran 8)",
+    "2026 Perenggan 192 (butiran 4)",
+    "2026 Lampiran I Bil. 33 (butiran 8)"
+   ]
+  },
+  {
+   "name": "ASB",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 203 (butiran 3)",
+    "2025 Lampiran I Bil. 38 (butiran 6)",
+    "2026 Perenggan 199 (butiran 3)",
+    "2026 Lampiran I Bil. 33 (butiran 22)"
+   ]
+  },
+  {
+   "name": "Program Celik MADANI",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 203 (butiran 3)",
+    "2025 Lampiran I Bil. 38 (butiran 6)",
+    "2026 Perenggan 199 (butiran 3)",
+    "2026 Lampiran I Bil. 33 (butiran 22)"
+   ]
+  },
+  {
+   "name": "IKMAS",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 260 (butiran 3)",
+    "2025 Lampiran I Bil. 53 (butiran 5)",
+    "2026 Lampiran I Bil. 36 (butiran 2)",
+    "2026 Lampiran I Bil. 36 (butiran 3)"
+   ]
+  },
+  {
+   "name": "Elaun Tugas Atas Panggilan",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 290 (butiran 1)",
+    "2025 Lampiran I Bil. 59 (butiran 1)",
+    "2026 Perenggan 182 (butiran 4)",
+    "2026 Lampiran I Bil. 32 (butiran 14)"
+   ]
+  },
+  {
+   "name": "Bantuan Khas Kewangan",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 295",
+    "2025 Lampiran I Bil. 59 (butiran 14)",
+    "2026 Perenggan 246",
+    "2026 Lampiran I Bil. 40 (butiran 15)"
+   ]
+  },
+  {
+   "name": "MTC",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 17 (butiran 1)",
+    "2026 Lampiran I Bil. 9 (butiran 8)",
+    "2026 Lampiran I Bil. 9 (butiran 11)",
+    "2026 Lampiran I Bil. 9 (butiran 19)"
+   ]
+  },
+  {
+   "name": "PETRA",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 24 (butiran 9)",
+    "2026 Lampiran I Bil. 8 (butiran 71)",
+    "2026 Lampiran I Bil. 19 (butiran 4)",
+    "2026 Lampiran I Bil. 19 (butiran 9)"
+   ]
+  },
+  {
+   "name": "PA",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 46 (butiran 6)",
+    "2026 Lampiran I Bil. 35 (butiran 14)",
+    "2026 Lampiran I Bil. 35 (butiran 15)",
+    "2026 Lampiran I Bil. 36 (butiran 4)"
+   ]
+  },
+  {
+   "name": "Program Latihan MADANI",
+   "years": [
+    2024,
+    2025
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 111",
+    "2025 Perenggan 211 (butiran 3)",
+    "2025 Lampiran I Bil. 40 (butiran 8)"
+   ]
+  },
+  {
+   "name": "MyCreative",
+   "years": [
+    2024,
+    2025
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2024 Perenggan 130 (butiran 3)",
+    "2025 Perenggan 274 (butiran 3)",
+    "2025 Lampiran I Bil. 56 (butiran 4)"
+   ]
+  },
+  {
+   "name": "SRI",
+   "years": [
+    2024,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2024 Perenggan 153",
+    "2026 Lampiran I Bil. 12 (butiran 10)",
+    "2026 Lampiran II — Lampiran 11"
+   ]
+  },
+  {
+   "name": "IPR",
+   "years": [
+    2024,
+    2025
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 180",
+    "2025 Perenggan 190",
+    "2025 Lampiran I Bil. 35 (butiran 4)"
+   ]
+  },
+  {
+   "name": "Inisiatif Pendapatan Rakyat",
+   "years": [
+    2024,
+    2025
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 180",
+    "2025 Perenggan 190",
+    "2025 Lampiran I Bil. 35 (butiran 4)"
+   ]
+  },
+  {
+   "name": "SKSPS",
+   "years": [
+    2024,
+    2025
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 187",
+    "2025 Lampiran I Bil. 13 (butiran 5)",
+    "2025 Lampiran I Bil. 36 (butiran 3)"
+   ]
+  },
+  {
+   "name": "Program Pemulihan Dalam Komuniti",
+   "years": [
+    2024,
+    2025
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2024 Perenggan 204 (butiran 2)",
+    "2025 Perenggan 248 (butiran 3)",
+    "2025 Lampiran I Bil. 50 (butiran 5)"
+   ],
+   "alsoIn": {
+    "year": 2026,
+    "as": "Program Pemulihan Dalam Komuniti"
+   }
+  },
+  {
+   "name": "Skim Ex-Gratia Bencana Kerja",
+   "years": [
+    2024,
+    2025
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 283",
+    "2025 Perenggan 290 (butiran 5)",
+    "2025 Lampiran I Bil. 59 (butiran 8)"
+   ]
+  },
+  {
+   "name": "IC",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2025 Perenggan 111",
+    "2025 Lampiran II — Lampiran 23",
+    "2026 Lampiran I Bil. 9 (butiran 4)"
+   ]
+  },
+  {
+   "name": "Insentif Baharu",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2025 Perenggan 111",
+    "2025 Perenggan 141 (butiran 1)",
+    "2026 Perenggan 49 (butiran 5)"
+   ]
+  },
+  {
+   "name": "Bantuan Warga Emas",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 178 (butiran 1)",
+    "2025 Lampiran I Bil. 34 (butiran 2)",
+    "2026 Lampiran I Bil. 29 (butiran 7)"
+   ]
+  },
+  {
+   "name": "Jualan RAHMAH",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 182 (butiran 1)",
+    "2025 Lampiran I Bil. 34 (butiran 3)",
+    "2026 Perenggan 163"
+   ]
+  },
+  {
+   "name": "Elaun Sara Hidup",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 199",
+    "2026 Perenggan 242",
+    "2026 Lampiran I Bil. 40 (butiran 7)"
+   ]
+  },
+  {
+   "name": "GAPAI",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 203 (butiran 2)",
+    "2025 Lampiran I Bil. 38 (butiran 5)",
+    "2026 Lampiran I Bil. 33 (butiran 28)"
+   ]
+  },
+  {
+   "name": "PERANTIS",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2025 Perenggan 235 (butiran 1)",
+    "2025 Lampiran I Bil. 46 (butiran 2)",
+    "2026 Lampiran I Bil. 26 (butiran 9)"
+   ]
+  },
+  {
+   "name": "Skim Step Up Financing",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 239",
+    "2025 Lampiran I Bil. 47 (butiran 3)",
+    "2026 Lampiran I Bil. 26 (butiran 17)"
+   ]
+  },
+  {
+   "name": "LiKES",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 240",
+    "2025 Lampiran I Bil. 47 (butiran 4)",
+    "2026 Lampiran I Bil. 11 (butiran 4)"
+   ]
+  },
+  {
+   "name": "TADIKA",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 244",
+    "2025 Lampiran II — Lampiran 8",
+    "2026 Lampiran II — Lampiran 2"
+   ]
+  },
+  {
+   "name": "Bantuan Yuran Pembelajaran Anak Autisme",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 245 (butiran 4)",
+    "2025 Lampiran I Bil. 48 (butiran 6)",
+    "2026 Lampiran I Bil. 29 (butiran 8)"
+   ]
+  },
+  {
+   "name": "APEL",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 290 (butiran 2)",
+    "2025 Lampiran I Bil. 59 (butiran 2)",
+    "2026 Lampiran I Bil. 40 (butiran 13)"
+   ]
+  },
+  {
+   "name": "Program APEL",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 290 (butiran 2)",
+    "2025 Lampiran I Bil. 59 (butiran 2)",
+    "2026 Lampiran I Bil. 40 (butiran 13)"
+   ]
+  },
+  {
+   "name": "Skim Pembiayaan Perumahan Muda",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 290 (butiran 4)",
+    "2025 Lampiran I Bil. 59 (butiran 7)",
+    "2026 Perenggan 237 (butiran 5)"
+   ]
+  },
+  {
+   "name": "Bantuan Sara Hidup",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 291 (butiran 1)",
+    "2025 Lampiran I Bil. 59 (butiran 9)",
+    "2026 Perenggan 238"
+   ]
+  },
+  {
+   "name": "MyLesen",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 13 (butiran 4)",
+    "2025 Lampiran I Bil. 13 (butiran 5)",
+    "2026 Lampiran I Bil. 26 (butiran 16)"
+   ]
+  },
+  {
+   "name": "KBS",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2025 Lampiran I Bil. 54 (butiran 3)",
+    "2026 Lampiran I Bil. 7 (butiran 1)",
+    "2026 Lampiran II — Lampiran 29"
+   ]
+  },
+  {
+   "name": "PROT",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 57 (butiran 6)",
+    "2026 Perenggan 119",
+    "2026 Lampiran I Bil. 21 (butiran 6)"
+   ]
+  },
+  {
+   "name": "WBL",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 59 (butiran 4)",
+    "2026 Perenggan 119",
+    "2026 Lampiran I Bil. 21 (butiran 6)"
+   ]
+  },
+  {
+   "name": "Elaun Permulaan",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2025 Lampiran II — Lampiran 11",
+    "2026 Lampiran II — Lampiran 21",
+    "2026 Lampiran II — Lampiran 35"
+   ]
+  },
+  {
+   "name": "Elaun Tahunan",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2025 Lampiran II — Lampiran 11",
+    "2026 Lampiran II — Lampiran 21",
+    "2026 Lampiran II — Lampiran 35"
+   ]
+  },
+  {
+   "name": "DI",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran II — Lampiran 13",
+    "2025 Lampiran II — Lampiran 24",
+    "2026 Lampiran II — Lampiran 9"
+   ]
+  },
+  {
+   "name": "Bantuan Guaman",
+   "years": [
+    2024,
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2024 Perenggan 60",
+    "2025 Lampiran I Bil. 9 (butiran 6)"
+   ],
+   "alsoIn": {
+    "year": 2026,
+    "as": "Bantuan Guaman"
+   }
+  },
+  {
+   "name": "RAS",
+   "years": [
+    2024,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2024 Perenggan 74",
+    "2026 Perenggan 208 (butiran 2)"
+   ]
+  },
+  {
+   "name": "Program Tahfiz TVET",
+   "years": [
+    2024,
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 114",
+    "2025 Lampiran I Bil. 40 (butiran 10)"
+   ]
+  },
+  {
+   "name": "Insentif Pengeluaran Getah",
+   "years": [
+    2024,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2024 Perenggan 143",
+    "2026 Lampiran I Bil. 18 (butiran 5)"
+   ]
+  },
+  {
+   "name": "Skim Galakan Penggunaan Motosikal Elektrik",
+   "years": [
+    2024,
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 150 (butiran 2)",
+    "2025 Lampiran I Bil. 24 (butiran 12)"
+   ]
+  },
+  {
+   "name": "Bantuan Tunai",
+   "years": [
+    2024,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2024 Perenggan 184",
+    "2026 Lampiran I Bil. 3 (butiran 5)"
+   ]
+  },
+  {
+   "name": "e-Kasih",
+   "years": [
+    2024,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2024 Perenggan 187",
+    "2026 Perenggan 159"
+   ]
+  },
+  {
+   "name": "LTAT",
+   "years": [
+    2024,
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2024 Perenggan 191 (butiran 1)",
+    "2025 Lampiran II — Lampiran 10"
+   ]
+  },
+  {
+   "name": "Program PEKA",
+   "years": [
+    2024,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2024 Perenggan 207",
+    "2026 Lampiran I Bil. 27 (butiran 10)"
+   ]
+  },
+  {
+   "name": "Program Transformasi Bas Henti-henti",
+   "years": [
+    2024,
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2024 Perenggan 247 (butiran 2)",
+    "2025 Lampiran I Bil. 45 (butiran 3)"
+   ],
+   "alsoIn": {
+    "year": 2026,
+    "as": "Program Transformasi Bas Henti-henti"
+   }
+  },
+  {
+   "name": "Skim Jaminan Kredit Perumahan",
+   "years": [
+    2024,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2024 Perenggan 252",
+    "2026 Lampiran I Bil. 35 (butiran 17)"
+   ]
+  },
+  {
+   "name": "KRT",
+   "years": [
+    2024,
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2024 Perenggan 280",
+    "2025 Lampiran I Bil. 55 (butiran 4)"
+   ]
+  },
+  {
+   "name": "NACS",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 71",
+    "2026 Lampiran II — Lampiran 12"
+   ]
+  },
+  {
+   "name": "PERODUA",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 142 (butiran 1)",
+    "2026 Perenggan 76 (butiran 1)"
+   ]
+  },
+  {
+   "name": "PROTON",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 210",
+    "2026 Perenggan 76 (butiran 1)"
+   ]
+  },
+  {
+   "name": "Program Peluang Kedua",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 255",
+    "2026 Perenggan 150 (butiran 2)"
+   ]
+  },
+  {
+   "name": "MDG",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 21 (butiran 3)",
+    "2026 Lampiran I Bil. 16 (butiran 2)"
+   ]
+  },
+  {
+   "name": "BP3",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 25 (butiran 2)",
+    "2026 Lampiran I Bil. 23 (butiran 2)"
+   ]
+  },
+  {
+   "name": "Program Pembangunan Industri Bawang",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 26 (butiran 3)",
+    "2026 Lampiran I Bil. 20 (butiran 6)"
+   ]
+  },
+  {
+   "name": "Skim Takaful Tanaman Padi Perlindungan",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 26 (butiran 10)",
+    "2026 Lampiran I Bil. 20 (butiran 7)"
+   ]
+  },
+  {
+   "name": "Elaun Sara Hidup Nelayan",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 26 (butiran 10)",
+    "2026 Lampiran I Bil. 20 (butiran 9)"
+   ]
+  },
+  {
+   "name": "Program Insentif Tanam Semula Sawit",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 27 (butiran 2)",
+    "2026 Lampiran I Bil. 18 (butiran 3)"
+   ]
+  },
+  {
+   "name": "MSPO",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 27 (butiran 4)",
+    "2026 Lampiran I Bil. 18 (butiran 4)"
+   ]
+  },
+  {
+   "name": "SKM",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 31 (butiran 6)",
+    "2026 Lampiran I Bil. 17 (butiran 18)"
+   ]
+  },
+  {
+   "name": "Skim Jaminan Kerajaan",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 31 (butiran 6)",
+    "2026 Lampiran I Bil. 17 (butiran 1)"
+   ]
+  },
+  {
+   "name": "PuTERA35",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 33 (butiran 5)",
+    "2026 Perenggan 137"
+   ]
+  },
+  {
+   "name": "Program Rebat Bil Elektrik",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 34 (butiran 6)",
+    "2026 Lampiran I Bil. 29 (butiran 11)"
+   ]
+  },
+  {
+   "name": "Program Penyeragaman Harga",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 34 (butiran 7)",
+    "2026 Lampiran I Bil. 29 (butiran 12)"
+   ]
+  },
+  {
+   "name": "Bantuan Makanan Asrama",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 37 (butiran 8)",
+    "2026 Lampiran I Bil. 33 (butiran 8)"
+   ]
+  },
+  {
+   "name": "Bantuan Makanan Prasekolah",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 37 (butiran 15)",
+    "2026 Lampiran I Bil. 33 (butiran 8)"
+   ]
+  },
+  {
+   "name": "GIATMARA",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 40 (butiran 10)",
+    "2026 Lampiran I Bil. 11 (butiran 3)"
+   ]
+  },
+  {
+   "name": "KLAS",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 41 (butiran 7)",
+    "2026 Lampiran I Bil. 35 (butiran 11)"
+   ]
+  },
+  {
+   "name": "PeKA",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 41 (butiran 26)",
+    "2026 Lampiran I Bil. 32 (butiran 28)"
+   ]
+  },
+  {
+   "name": "Skim Peduli Kesihatan untuk Kumpulan",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 41 (butiran 26)",
+    "2026 Lampiran I Bil. 32 (butiran 28)"
+   ]
+  },
+  {
+   "name": "SBST",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 45 (butiran 3)",
+    "2026 Lampiran I Bil. 34 (butiran 1)"
+   ]
+  },
+  {
+   "name": "PSSS",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 46 (butiran 5)",
+    "2026 Lampiran I Bil. 27 (butiran 13)"
+   ]
+  },
+  {
+   "name": "Program Latihan Industri Untuk",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 47 (butiran 4)",
+    "2026 Lampiran I Bil. 11 (butiran 4)"
+   ]
+  },
+  {
+   "name": "PAWE",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 49 (butiran 1)",
+    "2026 Lampiran I Bil. 31 (butiran 3)"
+   ]
+  },
+  {
+   "name": "UPWE",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 49 (butiran 1)",
+    "2026 Lampiran I Bil. 31 (butiran 3)"
+   ]
+  },
+  {
+   "name": "Bantuan Sosioekonomi Warga Emas",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 49 (butiran 1)",
+    "2026 Lampiran I Bil. 31 (butiran 3)"
+   ]
+  },
+  {
+   "name": "Bantuan Orang Kurang Upaya",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 50 (butiran 1)",
+    "2026 Lampiran I Bil. 27 (butiran 4)"
+   ]
+  },
+  {
+   "name": "PPDK",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 50 (butiran 5)",
+    "2026 Lampiran I Bil. 7 (butiran 1)"
+   ]
+  },
+  {
+   "name": "MBPK",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 53 (butiran 4)",
+    "2026 Lampiran I Bil. 33 (butiran 13)"
+   ]
+  },
+  {
+   "name": "Geran Padanan Sukan",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 54 (butiran 4)",
+    "2026 Lampiran I Bil. 37 (butiran 4)"
+   ]
+  },
+  {
+   "name": "RIUH",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 56 (butiran 4)",
+    "2026 Lampiran I Bil. 39 (butiran 6)"
+   ]
+  },
+  {
+   "name": "ADHD",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran II — Lampiran 1",
+    "2026 Lampiran II — Lampiran 3"
+   ]
+  },
+  {
+   "name": "GDD",
+   "years": [
+    2025,
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran II — Lampiran 1",
+    "2026 Lampiran II — Lampiran 3"
+   ]
+  },
+  {
+   "name": "SejaTi",
+   "years": [
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 0.75,
+   "refs": [
+    "2026 Perenggan 42",
+    "2026 Perenggan 43 (butiran 1)",
+    "2026 Lampiran I Bil. 6 (butiran 1)",
+    "2026 Lampiran I Bil. 6 (butiran 2)"
+   ]
+  },
+  {
+   "name": "MOTAC",
+   "years": [
+    2026
+   ],
+   "mentions": 4,
+   "flaggedShare": 0.75,
+   "refs": [
+    "2026 Lampiran I Bil. 13 (butiran 1)",
+    "2026 Lampiran II — Lampiran 6",
+    "2026 Lampiran II — Lampiran 28",
+    "2026 Lampiran II — Lampiran 29"
+   ]
+  },
+  {
+   "name": "IoT",
+   "years": [
+    2025
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2025 Perenggan 111",
+    "2025 Lampiran I Bil. 26 (butiran 1)",
+    "2025 Lampiran II — Lampiran 19"
+   ]
+  },
+  {
+   "name": "CKD",
+   "years": [
+    2025
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 142 (butiran 1)",
+    "2025 Perenggan 142 (butiran 2)",
+    "2025 Lampiran I Bil. 24 (butiran 12)"
+   ]
+  },
+  {
+   "name": "SPM",
+   "years": [
+    2025
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran I Bil. 40 (butiran 10)",
+    "2025 Lampiran I Bil. 59 (butiran 4)",
+    "2025 Lampiran II — Lampiran 17"
+   ]
+  },
+  {
+   "name": "MyMahir",
+   "years": [
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 87 (butiran 3)",
+    "2026 Lampiran I Bil. 14 (butiran 3)",
+    "2026 Lampiran II — Lampiran 24"
+   ]
+  },
+  {
+   "name": "NAICI",
+   "years": [
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 87 (butiran 3)",
+    "2026 Lampiran I Bil. 14 (butiran 3)",
+    "2026 Lampiran II — Lampiran 24"
+   ]
+  },
+  {
+   "name": "PPA",
+   "years": [
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 149 (butiran 2)",
+    "2026 Lampiran I Bil. 27 (butiran 5)",
+    "2026 Lampiran I Bil. 36 (butiran 4)"
+   ]
+  },
+  {
+   "name": "ACE",
+   "years": [
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2026 Lampiran I Bil. 17 (butiran 16)",
+    "2026 Lampiran I Bil. 25 (butiran 6)",
+    "2026 Lampiran II — Lampiran 9"
+   ]
+  },
+  {
+   "name": "ACA",
+   "years": [
+    2026
+   ],
+   "mentions": 3,
+   "flaggedShare": 0.67,
+   "refs": [
+    "2026 Lampiran II — Lampiran 21",
+    "2026 Lampiran II — Lampiran 23",
+    "2026 Lampiran II — Lampiran 35"
+   ]
+  },
+  {
+   "name": "SBP",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 56",
+    "2025 Perenggan 58"
+   ]
+  },
+  {
+   "name": "KIGIP",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 64",
+    "2025 Lampiran I Bil. 5"
+   ]
+  },
+  {
+   "name": "AHTV",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 64",
+    "2025 Lampiran I Bil. 5"
+   ]
+  },
+  {
+   "name": "LuMIC",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 64",
+    "2025 Lampiran I Bil. 5"
+   ]
+  },
+  {
+   "name": "MPC",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 85",
+    "2025 Lampiran I Bil. 11 (butiran 3)"
+   ]
+  },
+  {
+   "name": "QMS",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 91 (butiran 2)",
+    "2025 Lampiran I Bil. 11 (butiran 4)"
+   ]
+  },
+  {
+   "name": "KLK",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 95",
+    "2025 Lampiran I Bil. 12 (butiran 3)"
+   ]
+  },
+  {
+   "name": "IOI",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 95",
+    "2025 Lampiran I Bil. 12 (butiran 3)"
+   ]
+  },
+  {
+   "name": "TH",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 95",
+    "2025 Lampiran I Bil. 12 (butiran 3)"
+   ]
+  },
+  {
+   "name": "JPS",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 107 (butiran 3)",
+    "2025 Lampiran I Bil. 15 (butiran 4)"
+   ]
+  },
+  {
+   "name": "MNE",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 111",
+    "2025 Perenggan 111 (butiran 1)"
+   ]
+  },
+  {
+   "name": "GMT",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 112",
+    "2025 Lampiran I Bil. 16 (butiran 3)"
+   ]
+  },
+  {
+   "name": "Kredit Cukai Pelaburan Strategik",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 112",
+    "2025 Lampiran I Bil. 16 (butiran 3)"
+   ]
+  },
+  {
+   "name": "Geran Padanan Digital PMKS",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 125 (butiran 1)",
+    "2025 Lampiran I Bil. 19 (butiran 5)"
+   ]
+  },
+  {
+   "name": "Geran Digital Penjaja",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 125 (butiran 1)",
+    "2025 Lampiran I Bil. 19 (butiran 5)"
+   ]
+  },
+  {
+   "name": "Skim Pejabat Keluarga Tunggal",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 126 (butiran 2)",
+    "2025 Lampiran I Bil. 20 (butiran 2)"
+   ]
+  },
+  {
+   "name": "IR4",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 129 (butiran 1)",
+    "2025 Lampiran II — Lampiran 19"
+   ]
+  },
+  {
+   "name": "Program Net Energy Metering",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 139 (butiran 1)",
+    "2025 Lampiran I Bil. 24 (butiran 6)"
+   ]
+  },
+  {
+   "name": "e-Rebat",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 140 (butiran 1)",
+    "2025 Lampiran I Bil. 24 (butiran 9)"
+   ]
+  },
+  {
+   "name": "Skim Pembiayaan Mikro",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 164",
+    "2025 Lampiran II — Lampiran 17"
+   ],
+   "alsoIn": {
+    "year": 2026,
+    "as": "Skim Pembiayaan Mikro"
+   }
+  },
+  {
+   "name": "IEO",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 165",
+    "2025 Lampiran II — Lampiran 16"
+   ]
+  },
+  {
+   "name": "MyKAD",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 177 (butiran 2)",
+    "2025 Lampiran I Bil. 34 (butiran 1)"
+   ],
+   "alsoIn": {
+    "year": 2026,
+    "as": "MyKAD"
+   }
+  },
+  {
+   "name": "Bantuan SARA",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 177 (butiran 2)",
+    "2025 Lampiran I Bil. 34 (butiran 1)"
+   ],
+   "alsoIn": {
+    "year": 2026,
+    "as": "Bantuan SARA"
+   }
+  },
+  {
+   "name": "Bantuan Kanak-kanak Keluarga Miskin",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 178 (butiran 1)",
+    "2025 Lampiran I Bil. 34 (butiran 2)"
+   ]
+  },
+  {
+   "name": "Bantuan Am",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 178 (butiran 1)",
+    "2025 Lampiran I Bil. 34 (butiran 2)"
+   ],
+   "alsoIn": {
+    "year": 2026,
+    "as": "Bantuan Am"
+   }
+  },
+  {
+   "name": "Skim Perlindungan Tenang",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 191 (butiran 4)",
+    "2025 Lampiran I Bil. 36 (butiran 4)"
+   ]
+  },
+  {
+   "name": "Skim Persaraan Swasta",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 191 (butiran 6)",
+    "2025 Lampiran II — Lampiran 4"
+   ]
+  },
+  {
+   "name": "RMT",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 197 (butiran 2)",
+    "2025 Lampiran I Bil. 37 (butiran 8)"
+   ]
+  },
+  {
+   "name": "PCG",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 198",
+    "2025 Perenggan 198 (butiran 1)"
+   ]
+  },
+  {
+   "name": "Skim Simpanan Pendidikan Nasional",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 203 (butiran 1)",
+    "2025 Lampiran II — Lampiran 6"
+   ],
+   "alsoIn": {
+    "year": 2026,
+    "as": "SSPN"
+   }
+  },
+  {
+   "name": "Geran Padanan Ihsan",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 203 (butiran 2)",
+    "2025 Lampiran I Bil. 38 (butiran 5)"
+   ],
+   "alsoIn": {
+    "year": 2026,
+    "as": "Geran Padanan Ihsan"
+   }
+  },
+  {
+   "name": "Program Malaysia Techlympics",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 208 (butiran 3)",
+    "2025 Lampiran I Bil. 39 (butiran 4)"
+   ]
+  },
+  {
+   "name": "SGLT-2",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 219 (butiran 1)",
+    "2025 Lampiran I Bil. 41 (butiran 4)"
+   ]
+  },
+  {
+   "name": "PPRT",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 226 (butiran 3)",
+    "2025 Lampiran I Bil. 42 (butiran 4)"
+   ]
+  },
+  {
+   "name": "MY",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 232 (butiran 8)",
+    "2025 Lampiran I Bil. 45 (butiran 3)"
+   ]
+  },
+  {
+   "name": "Program Returnship",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 235 (butiran 2)",
+    "2025 Lampiran I Bil. 46 (butiran 3)"
+   ]
+  },
+  {
+   "name": "Elaun Murid Berkeperluan Khas",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 245 (butiran 3)",
+    "2025 Lampiran I Bil. 48 (butiran 5)"
+   ],
+   "alsoIn": {
+    "year": 2026,
+    "as": "Elaun Murid Berkeperluan Khas"
+   }
+  },
+  {
+   "name": "MyGCC",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Perenggan 250",
+    "2025 Lampiran I Bil. 50 (butiran 7)"
+   ]
+  },
+  {
+   "name": "JAKOA",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 252",
+    "2025 Lampiran I Bil. 51 (butiran 2)"
+   ]
+  },
+  {
+   "name": "EPIC",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 252",
+    "2025 Lampiran I Bil. 51 (butiran 2)"
+   ]
+  },
+  {
+   "name": "Program Baitul Mahabbah",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 256",
+    "2025 Lampiran I Bil. 52 (butiran 3)"
+   ]
+  },
+  {
+   "name": "IPDAS",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 260 (butiran 3)",
+    "2025 Lampiran I Bil. 53 (butiran 5)"
+   ]
+  },
+  {
+   "name": "FAM",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 265",
+    "2025 Lampiran I Bil. 54 (butiran 5)"
+   ]
+  },
+  {
+   "name": "Elaun Layanan Sentiasa",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Perenggan 290 (butiran 5)",
+    "2025 Lampiran I Bil. 59 (butiran 8)"
+   ]
+  },
+  {
+   "name": "MW",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 24 (butiran 2)",
+    "2025 Lampiran I Bil. 24 (butiran 6)"
+   ]
+  },
+  {
+   "name": "AES",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 31 (butiran 9)",
+    "2025 Lampiran I Bil. 31 (butiran 11)"
+   ]
+  },
+  {
+   "name": "AF",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 31 (butiran 9)",
+    "2025 Lampiran I Bil. 31 (butiran 12)"
+   ]
+  },
+  {
+   "name": "LCTF",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2025 Lampiran I Bil. 31 (butiran 9)",
+    "2025 Lampiran I Bil. 31 (butiran 13)"
+   ]
+  },
+  {
+   "name": "CPO",
+   "years": [
+    2025
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2025 Lampiran II — Lampiran 26",
+    "2025 Lampiran II — Lampiran 27"
+   ]
+  },
+  {
+   "name": "LTB",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Perenggan 46 (butiran 6)",
+    "2026 Lampiran I Bil. 8 (butiran 74)"
+   ]
+  },
+  {
+   "name": "ABE",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Perenggan 49 (butiran 1)",
+    "2026 Lampiran I Bil. 9 (butiran 1)"
+   ]
+  },
+  {
+   "name": "Skim Insentif Pejabat Keluarga Tunggal",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Perenggan 49 (butiran 2)",
+    "2026 Lampiran I Bil. 9 (butiran 1)"
+   ]
+  },
+  {
+   "name": "Program Pelaburan Ekuiti",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Perenggan 52 (butiran 2)",
+    "2026 Lampiran I Bil. 9 (butiran 10)"
+   ]
+  },
+  {
+   "name": "Program IPT",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 65 (butiran 1)",
+    "2026 Lampiran I Bil. 11 (butiran 2)"
+   ]
+  },
+  {
+   "name": "HPU",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Perenggan 90",
+    "2026 Lampiran I Bil. 15 (butiran 2)"
+   ]
+  },
+  {
+   "name": "Insentif Penuaian Padi",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 110 (butiran 2)",
+    "2026 Lampiran I Bil. 20 (butiran 8)"
+   ]
+  },
+  {
+   "name": "AKPS",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 120",
+    "2026 Lampiran I Bil. 21 (butiran 7)"
+   ]
+  },
+  {
+   "name": "EWS",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Perenggan 127",
+    "2026 Lampiran I Bil. 22 (butiran 4)"
+   ]
+  },
+  {
+   "name": "LRA",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Perenggan 135 (butiran 1)",
+    "2026 Lampiran I Bil. 24 (butiran 2)"
+   ]
+  },
+  {
+   "name": "Program K-Youth",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 143 (butiran 3)",
+    "2026 Lampiran I Bil. 26 (butiran 13)"
+   ]
+  },
+  {
+   "name": "Elaun Pekerja OKU",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 149 (butiran 1)",
+    "2026 Lampiran I Bil. 27 (butiran 4)"
+   ]
+  },
+  {
+   "name": "Payung RAHMAH",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Perenggan 163",
+    "2026 Lampiran I Bil. 29 (butiran 9)"
+   ]
+  },
+  {
+   "name": "DRG",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Perenggan 181 (butiran 1)",
+    "2026 Lampiran I Bil. 32 (butiran 9)"
+   ]
+  },
+  {
+   "name": "ETAP",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 182 (butiran 4)",
+    "2026 Lampiran I Bil. 32 (butiran 14)"
+   ]
+  },
+  {
+   "name": "Inisiatif Kesihatan Paru-Paru KKM",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Perenggan 184 (butiran 4)",
+    "2026 Lampiran I Bil. 32 (butiran 17)"
+   ]
+  },
+  {
+   "name": "Bantuan Am Persekolahan",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 192 (butiran 3)",
+    "2026 Lampiran I Bil. 33 (butiran 8)"
+   ]
+  },
+  {
+   "name": "ASM",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 199 (butiran 3)",
+    "2026 Lampiran I Bil. 33 (butiran 22)"
+   ]
+  },
+  {
+   "name": "MySiswa",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 200 (butiran 3)",
+    "2026 Lampiran I Bil. 33 (butiran 25)"
+   ]
+  },
+  {
+   "name": "MyRailLife",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 208 (butiran 3)",
+    "2026 Lampiran I Bil. 34 (butiran 3)"
+   ]
+  },
+  {
+   "name": "ETS",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Perenggan 209",
+    "2026 Lampiran I Bil. 34 (butiran 4)"
+   ]
+  },
+  {
+   "name": "MYJalan",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Perenggan 212 (butiran 3)",
+    "2026 Lampiran I Bil. 34 (butiran 9)"
+   ]
+  },
+  {
+   "name": "GCR",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 228",
+    "2026 Lampiran I Bil. 36 (butiran 9)"
+   ]
+  },
+  {
+   "name": "ESSCOM",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Perenggan 237 (butiran 3)",
+    "2026 Lampiran I Bil. 40 (butiran 1)"
+   ]
+  },
+  {
+   "name": "HLP",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Perenggan 242",
+    "2026 Lampiran I Bil. 40 (butiran 7)"
+   ]
+  },
+  {
+   "name": "VC",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Lampiran I Bil. 9 (butiran 11)",
+    "2026 Lampiran II — Lampiran 30"
+   ]
+  },
+  {
+   "name": "PPMK",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Lampiran I Bil. 17 (butiran 8)",
+    "2026 Lampiran I Bil. 17 (butiran 18)"
+   ]
+  },
+  {
+   "name": "SE",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Lampiran I Bil. 17 (butiran 8)",
+    "2026 Lampiran I Bil. 17 (butiran 18)"
+   ]
+  },
+  {
+   "name": "MIDF",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Lampiran I Bil. 17 (butiran 9)",
+    "2026 Lampiran I Bil. 17 (butiran 18)"
+   ]
+  },
+  {
+   "name": "Skim Kumpulan Sasar Dana Pembiayaan",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Lampiran I Bil. 17 (butiran 10)",
+    "2026 Lampiran I Bil. 17 (butiran 18)"
+   ]
+  },
+  {
+   "name": "Program Community Feeding",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Lampiran I Bil. 27 (butiran 7)",
+    "2026 Lampiran I Bil. 32 (butiran 27)"
+   ]
+  },
+  {
+   "name": "PLT",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Lampiran II — Lampiran 7",
+    "2026 Lampiran II — Lampiran 8"
+   ]
+  },
+  {
+   "name": "ACP",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 1,
+   "refs": [
+    "2026 Lampiran II — Lampiran 12",
+    "2026 Lampiran II — Lampiran 13"
+   ]
+  },
+  {
+   "name": "Elaun Modal",
+   "years": [
+    2026
+   ],
+   "mentions": 2,
+   "flaggedShare": 0.5,
+   "refs": [
+    "2026 Lampiran II — Lampiran 21",
+    "2026 Lampiran II — Lampiran 35"
+   ]
+  }
+ ]
+}

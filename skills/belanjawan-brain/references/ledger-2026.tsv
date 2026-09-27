@@ -1,0 +1,1283 @@
+# Ledger: Ucapan Belanjawan 2026 (ub26.md), 1279 units from scripts/split-source.js
+# Backfilled 2026-09-26 from the text only (no web). All gap/ask rows resolved with the user on 2026-09-26 (step 5); see "Keputusan pengguna" in LOGIK-BELANJAWAN-2026.md.
+# 2026-09-27: the 838 former bulk rows were re-read blind (id and text only) for the benchmark; each now has its own decision. The 10 gaps it found were decided by the user the same day (3 included, 7 excluded).
+# unit	decision	note
+P1	exclude:rhetoric	
+P2	exclude:rhetoric	
+P3	exclude:rhetoric	
+P4	exclude:rhetoric	
+P5	exclude:rhetoric	
+P6	exclude:rhetoric	
+P7	exclude:rhetoric	
+P8	exclude:business	
+P9	exclude:rhetoric	
+P10	exclude:rhetoric	
+P11	exclude:governance	
+P12	exclude:governance	
+P13	exclude:rhetoric	
+P14	exclude:rhetoric	
+P15	exclude:rhetoric	
+P16	exclude:rhetoric	
+P16.1	exclude:allocation	
+P16.2	exclude:allocation	
+P16.3	exclude:allocation	
+P16.4	exclude:allocation	
+P16.5	exclude:allocation	
+P17	exclude:governance	
+P18	exclude:rhetoric	
+P19	exclude:rhetoric	
+P20	exclude:rhetoric	
+P21	exclude:governance	
+P22	exclude:governance	
+P23	exclude:rhetoric	
+P24	exclude:allocation	
+P25	exclude:governance	
+P26	exclude:governance	
+P27	item:cukai_kenderaan_labuan	pengguna 2026-09-26: kesan untuk penduduk Labuan; Langkawi disebut dalam teks
+P28	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
+P29	exclude:governance	
+P30	exclude:allocation	
+P31	exclude:governance	
+P32	exclude:governance	
+P33	exclude:allocation	
+P34	exclude:infra	
+P35	exclude:rhetoric	
+P36	exclude:heading	
+P36.1	exclude:allocation	
+P36.2	exclude:allocation	
+P37	exclude:governance	
+P38	exclude:governance	
+P39	exclude:user	pengguna 2026-09-26: Lemon Law dikecualikan (tiada wang lagi)
+P40	exclude:business	
+P40.1	exclude:past	
+P40.2	exclude:past	
+P40.3	exclude:user	pengguna 2026-09-26: tarif elektrik tidak dipilih
+P40.4	item:diesel_rm200	
+P40.5	exclude:allocation	
+P40.6	item:budi95,budi95_ehailing	
+P41	exclude:business	
+P42	exclude:business	
+P42.1	exclude:rhetoric	
+P42.2	exclude:infra	
+P42.3	exclude:rhetoric	
+P42.4	exclude:governance	
+P43	exclude:allocation	reviewed
+P43.1	exclude:governance	
+P43.2	exclude:governance	
+P43.3	exclude:infra	
+P43.4	exclude:rhetoric	
+P43.5	exclude:business	
+P43.6	item:tuisyen_madani	
+P44	exclude:governance	
+P44.1	exclude:governance	
+P44.2	exclude:governance	
+P44.3	exclude:governance	
+P44.4	exclude:governance	
+P45	exclude:heading	
+P45.1	exclude:infra	
+P45.2	exclude:infra	
+P45.3	exclude:infra	
+P45.4	exclude:infra	
+P45.5	exclude:infra	
+P45.6	exclude:infra	
+P45.7	exclude:infra	
+P45.8	exclude:infra	
+P45.9	exclude:infra	
+P45.10	exclude:infra	
+P45.11	exclude:infra	
+P45.12	exclude:infra	
+P45.13	exclude:infra	
+P45.14	exclude:infra	
+P45.15	exclude:infra	
+P45.16	exclude:infra	
+P45.17	exclude:infra	
+P45.18	exclude:infra	
+P45.19	exclude:infra	
+P45.20	exclude:infra	
+P45.21	exclude:infra	
+P45.22	exclude:infra	
+P45.23	exclude:infra	
+P45.24	exclude:infra	
+P45.25	exclude:infra	
+P45.26	exclude:infra	
+P45.27	exclude:infra	
+P45.28	exclude:infra	
+P45.29	exclude:infra	
+P45.30	exclude:infra	
+P45.31	exclude:business	
+P45.32	exclude:business	
+P45.33	exclude:infra	
+P45.34	exclude:infra	
+P45.35	exclude:infra	
+P45.36	exclude:infra	
+P45.37	exclude:infra	
+P45.38	exclude:infra	
+P45.39	exclude:infra	
+P45.40	exclude:infra	
+P45.41	exclude:infra	
+P45.42	exclude:infra	
+P45.43	exclude:infra	
+P45.44	exclude:governance	
+P45.45	exclude:infra	
+P45.46	exclude:infra	
+P45.47	exclude:infra	
+P45.48	exclude:infra	
+P45.49	exclude:infra	
+P45.50	exclude:infra	
+P45.51	exclude:infra	
+P45.52	exclude:infra	
+P45.53	exclude:infra	
+P45.54	exclude:infra	
+P45.55	exclude:infra	
+P45.56	exclude:infra	
+P45.57	exclude:infra	
+P46	exclude:rhetoric	
+P46.1	exclude:allocation	
+P46.2	exclude:allocation	
+P46.3	exclude:user	pengguna 2026-09-26: subsidi elektrik Sabah/Labuan tidak dipilih
+P46.4	exclude:infra	
+P46.5	exclude:infra	
+P46.6	exclude:infra	
+P46.7	exclude:infra	
+P46.8	item:tamu_desa	pengguna 2026-09-26: dimasukkan
+P47	exclude:rhetoric	
+P48	exclude:rhetoric	
+P49	exclude:heading	
+P49.1	exclude:business	
+P49.2	exclude:allocation	
+P49.3	exclude:non-citizen	
+P49.4	exclude:non-citizen	
+P49.5	exclude:business	
+P50	exclude:heading	
+P50.1	exclude:business	
+P50.2	exclude:business	
+P50.3	exclude:business	
+P50.4	exclude:business	
+P50.5	exclude:business	
+P51	exclude:heading	
+P51.1	exclude:business	
+P51.2	exclude:business	
+P52	exclude:heading	
+P52.1	exclude:business	
+P52.2	exclude:business	
+P52.3	exclude:governance	
+P53	exclude:business	
+P54	exclude:business	
+P54.1	exclude:infra	
+P55	exclude:business	
+P56	exclude:rhetoric	
+P57	exclude:rhetoric	
+P58	exclude:rhetoric	
+P59	exclude:rhetoric	
+P60	exclude:heading	
+P60.1	exclude:business	
+P60.2	exclude:governance	
+P61	exclude:business	
+P62	exclude:heading	
+P62.1	exclude:infra	
+P62.2	exclude:infra	
+P62.3	exclude:infra	
+P62.4	exclude:infra	
+P63	exclude:governance	
+P64	exclude:allocation	
+P65	exclude:heading	
+P65.1	item:tahfiz_kemahiran	pengguna 2026-09-26: dimasukkan
+P65.2	exclude:allocation	
+P65.3	exclude:allocation	
+P65.4	item:latihan_tvet	re-read 2026-09-27: restates
+P65.5	exclude:business	
+P65.6	item:latihan_tvet	restates
+P65.7	item:latihan_tvet	
+P66	exclude:infra	
+P67	exclude:rhetoric	
+P67.1	exclude:governance	
+P67.2	exclude:infra	
+P67.3	item:itekad	pengguna 2026-09-26: dimasukkan
+P68	exclude:rhetoric	
+P68.1	exclude:infra	
+P68.2	exclude:governance	
+P69	exclude:heading	
+P69.1	exclude:governance	
+P69.2	exclude:business	
+P69.3	exclude:business	
+P69.4	exclude:infra	
+P70	exclude:rhetoric	
+P71	exclude:business	
+P72	exclude:allocation	
+P72.1	exclude:allocation	
+P72.2	exclude:business	
+P72.3	exclude:business	
+P72.4	exclude:business	
+P72.5	exclude:infra	
+P72.6	exclude:business	
+P73	exclude:infra	
+P74	exclude:business	
+P75	item:tax_pelancongan	restates
+P76	exclude:heading	
+P76.1	item:teksi	
+P76.2	item:teksi	restates
+P77	exclude:rhetoric	
+P78	exclude:rhetoric	
+P79	exclude:rhetoric	
+P80	exclude:infra	
+P81	exclude:rhetoric	
+P82	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
+P83	exclude:rhetoric	
+P83.1	exclude:business	
+P83.2	exclude:infra	
+P83.3	exclude:allocation	
+P84	exclude:rhetoric	
+P85	exclude:heading	
+P85.1	exclude:institution	
+P85.2	exclude:institution	
+P85.3	exclude:rhetoric	
+P86	exclude:rhetoric	
+P86.1	exclude:business	
+P86.2	exclude:business	
+P87	exclude:rhetoric	
+P87.1	exclude:allocation	
+P87.2	exclude:institution	
+P87.3	exclude:business	
+P87.4	exclude:infra	
+P87.5	exclude:institution	
+P87.6	exclude:business	
+P87.7	exclude:institution	
+P88	exclude:heading	
+P89	exclude:heading	
+P89.1	exclude:governance	
+P89.2	exclude:business	
+P89.3	exclude:business	
+P90	exclude:allocation	
+P91	exclude:business	
+P92	exclude:business	
+P93	exclude:business	
+P94	exclude:governance	
+P95	exclude:heading	
+P96	exclude:rhetoric	
+P96.1	exclude:business	
+P96.2	exclude:business	
+P96.3	exclude:business	
+P96.4	exclude:governance	
+P97	exclude:business	
+P97.1	exclude:business	
+P97.2	exclude:allocation	
+P98	exclude:allocation	
+P98.1	item:pinjaman_mikro	pengguna 2026-09-27: dimasukkan
+P98.2	exclude:user	pengguna 2026-09-26: SJPP usahawan mikro tidak dipilih
+P98.3	exclude:business	
+P99	exclude:business	
+P100	exclude:heading	
+P100.1	exclude:business	
+P100.2	exclude:institution	
+P101	exclude:governance	
+P102	exclude:rhetoric	
+P102.1	exclude:allocation	
+P102.2	exclude:rhetoric	
+P102.3	exclude:rhetoric	
+P102.4	exclude:business	
+P102.5	item:pekebun_kecil	re-read 2026-09-27: restates
+P102.6	exclude:infra	
+P102.7	item:pekebun_kecil	re-read 2026-09-27: restates
+P103	exclude:rhetoric	
+P104	exclude:rhetoric	
+P104.1	exclude:business	
+P104.2	exclude:business	
+P104.3	exclude:business	
+P104.4	exclude:business	
+P104.5	exclude:business	
+P104.6	exclude:infra	
+P104.7	item:solar_atap	pengguna 2026-09-26: dimasukkan
+P104.8	exclude:business	
+P104.9	exclude:business	
+P105	exclude:heading	
+P105.1	exclude:allocation	
+P105.2	exclude:governance	
+P106	exclude:heading	
+P106.1	exclude:infra	
+P106.2	exclude:infra	
+P106.3	exclude:infra	
+P106.4	item:pesawah	
+P107	exclude:rhetoric	
+P107.1	exclude:allocation	
+P108	exclude:heading	reviewed
+P108.1	item:agro	restates
+P108.2	item:agro	
+P108.3	exclude:business	
+P108.4	exclude:business	
+P109	exclude:rhetoric	
+P110	exclude:heading	
+P110.1	exclude:allocation	
+P110.2	exclude:governance	
+P110.3	exclude:governance	
+P111	exclude:heading	reviewed
+P111.1	item:nelayan_elaun	
+P111.2	item:diesel_nelayan	
+P111.3	item:nelayan_elaun	re-read 2026-09-27: restates
+P112	item:buah_buahan	pengguna 2026-09-26: dimasukkan
+P113	exclude:rhetoric	
+P114	exclude:rhetoric	
+P115	exclude:heading	
+P115.1	exclude:infra	
+P115.2	exclude:infra	
+P115.3	exclude:infra	
+P116	exclude:heading	
+P116.1	exclude:infra	
+P116.2	exclude:infra	
+P116.3	exclude:infra	
+P117	exclude:heading	
+P117.1	exclude:infra	
+P117.2	exclude:infra	
+P117.3	exclude:infra	
+P117.4	exclude:infra	
+P117.5	exclude:heading	
+P117.6	exclude:infra	
+P117.7	exclude:infra	
+P117.8	exclude:infra	
+P118	exclude:infra	
+P119	item:veteran	restates
+P120	item:veteran	
+P121	exclude:governance	
+P121.1	exclude:governance	
+P121.2	exclude:governance	
+P122	exclude:governance	
+P122.1	exclude:governance	
+P122.2	exclude:governance	
+P122.3	exclude:governance	
+P123	exclude:rhetoric	
+P124	exclude:infra	
+P125	exclude:allocation	
+P126	exclude:governance	
+P127	exclude:allocation	
+P128	exclude:institution	
+P129	exclude:heading	
+P129.1	exclude:infra	
+P129.2	exclude:infra	
+P129.3	exclude:infra	
+P129.4	exclude:infra	
+P129.5	exclude:infra	
+P129.6	exclude:infra	
+P129.7	exclude:infra	
+P129.8	exclude:infra	
+P129.9	exclude:infra	
+P129.10	exclude:infra	
+P129.11	exclude:infra	
+P129.12	exclude:infra	
+P130	exclude:rhetoric	
+P130.1	exclude:infra	
+P130.2	exclude:infra	
+P131	exclude:business	
+P132	exclude:rhetoric	
+P132.1	exclude:institution	
+P132.2	exclude:allocation	
+P132.3	exclude:infra	
+P133	exclude:governance	
+P134	exclude:rhetoric	
+P134.1	exclude:infra	
+P134.2	exclude:infra	
+P134.3	exclude:infra	
+P134.4	exclude:infra	
+P135	exclude:heading	
+P135.1	exclude:business	
+P135.2	exclude:infra	
+P136	exclude:heading	
+P136.1	exclude:infra	
+P136.2	exclude:infra	
+P136.3	exclude:governance	
+P137	exclude:business	
+P138	exclude:business	
+P138.1	exclude:business	
+P138.2	exclude:business	
+P138.3	exclude:governance	
+P138.4	exclude:business	
+P138.5	item:kwap_mikro	pengguna 2026-09-26: dimasukkan
+P139	exclude:allocation	
+P140	exclude:heading	
+P140.1	exclude:business	
+P140.2	exclude:allocation	
+P140.3	exclude:business	
+P140.4	exclude:business	
+P140.5	exclude:business	
+P141	exclude:business	
+P142	exclude:rhetoric	
+P142.1	exclude:governance	
+P142.2	item:tax_taska	restates
+P142.3	item:pembiayaan_wanita	re-read 2026-09-27: restates
+P142.4	item:pembiayaan_wanita	
+P142.5	item:kasihnita	
+P143	exclude:governance	
+P143.1	item:rakan_muda,k_youth,pembiayaan_belia	pengguna 2026-09-26: sudah diliputi (had umur 15-30)
+P143.2	item:plkn	
+P143.3	item:k_youth	restates
+P143.4	item:rakan_muda	
+P143.5	item:pembiayaan_belia	restates
+P144	exclude:allocation	
+P145	item:orang_asli	
+P146	exclude:heading	
+P146.1	exclude:infra	
+P146.2	exclude:infra	
+P147	exclude:heading	
+P147.1	exclude:infra	
+P147.2	exclude:infra	
+P147.3	exclude:infra	
+P147.4	exclude:infra	
+P148	item:orang_asli	restates
+P149	exclude:rhetoric	
+P149.1	item:bantuan_oku	restates
+P149.2	item:autisme	restates
+P149.3	item:van_oku	
+P149.4	item:tax_kurang_upaya	
+P150	exclude:governance	
+P150.1	item:peluang_kedua	
+P150.2	exclude:allocation	
+P150.3	exclude:rhetoric	
+P151	exclude:allocation	
+P152	exclude:governance	
+P153	exclude:rhetoric	
+P154	exclude:governance	
+P155	exclude:business	
+P155.1	exclude:governance	
+P155.2	exclude:institution	
+P156	exclude:allocation	
+P156.1	item:geran_bsn	pengguna 2026-09-26: dimasukkan
+P156.2	exclude:user	pengguna 2026-09-27: tidak dipilih
+P156.3	exclude:institution	
+P156.4	exclude:governance	
+P157	exclude:governance	
+P158	exclude:allocation	
+P158.1	exclude:rhetoric	
+P158.2	exclude:rhetoric	
+P158.3	exclude:governance	
+P159	exclude:governance	
+P159.1	item:str_sara	
+P160	item:penghargaan_sara	restates
+P160.1	item:penghargaan_sara	
+P160.2	exclude:allocation	
+P161	exclude:governance	
+P161.1	exclude:allocation	
+P161.2	exclude:allocation	
+P161.3	exclude:rhetoric	
+P162	exclude:allocation	
+P163	item:payung_rahmah	
+P164	item:harga_sabah_sarawak	restates
+P165	item:i_saraan	
+P166	item:lindung_kendiri	restates
+P167	item:perkeso_pindah	
+P168	item:i_suri	
+P169	exclude:infra	
+P170	item:perkeso_dialisis	pengguna 2026-09-26: semak untuk pekerja yang dilindungi PERKESO
+P171	exclude:governance	
+P172	exclude:governance	
+P173	item:warga_emas	restates
+P174	exclude:rhetoric	
+P174.1	item:latihan_tvet	pengguna 2026-09-27: dimasukkan
+P174.2	item:rumah_warga_emas	restates
+P174.3	exclude:business	
+P175	exclude:rhetoric	
+P176	exclude:allocation	
+P177	exclude:heading	
+P178	exclude:infra	
+P179	exclude:infra	
+P180	exclude:heading	
+P180.1	exclude:allocation	
+P180.2	exclude:governance	
+P180.3	exclude:infra	
+P181	exclude:heading	
+P181.1	exclude:user	same measure as L1.32.9 (RESET basic insurance product), which the user excluded on 2026-09-26
+P181.2	item:duti_insurans_kecil	
+P181.3	exclude:business	
+P181.4	item:mhit_kwsp	
+P181.5	exclude:allocation	
+P181.6	item:mysalam	
+P182	exclude:heading	
+P182.1	item:lantikan_tetap_kkm	re-read 2026-09-27: restates
+P182.2	item:lantikan_tetap_kkm	pengguna 2026-09-26: dimasukkan
+P182.3	item:fi_klinik_swasta	restates
+P182.4	item:etap_perubatan	pengguna 2026-09-26: dimasukkan
+P183	exclude:business	
+P184	exclude:heading	
+P184.1	item:duti_cerut,duti_heated_tobacco,duti_rokok	
+P184.2	item:berhenti_merokok	
+P184.3	item:duti_alkohol	
+P184.4	item:duti_rokok	restates
+P184.5	item:tax_vaksin	
+P185	exclude:rhetoric	
+P186	exclude:governance	
+P187	exclude:allocation	
+P188	exclude:infra	
+P189	exclude:heading	
+P189.1	exclude:infra	
+P189.2	exclude:infra	
+P189.3	exclude:infra	
+P189.4	exclude:infra	
+P189.5	exclude:infra	
+P189.6	exclude:infra	
+P189.7	exclude:infra	
+P189.8	exclude:infra	
+P189.9	exclude:infra	
+P189.10	exclude:infra	
+P189.11	exclude:infra	
+P189.12	exclude:infra	
+P189.13	exclude:infra	
+P189.14	exclude:infra	
+P189.15	exclude:infra	
+P189.16	exclude:infra	
+P189.17	exclude:infra	
+P189.18	exclude:infra	
+P189.19	exclude:infra	
+P189.20	exclude:infra	
+P189.21	exclude:infra	
+P189.22	exclude:infra	
+P189.23	exclude:infra	
+P189.24	exclude:infra	
+P189.25	exclude:infra	
+P189.26	exclude:infra	
+P189.27	exclude:infra	
+P189.28	exclude:infra	
+P189.29	exclude:infra	
+P189.30	exclude:infra	
+P189.31	exclude:infra	
+P189.32	exclude:infra	
+P189.33	exclude:infra	
+P189.34	exclude:infra	
+P189.35	exclude:infra	
+P189.36	exclude:infra	
+P189.37	exclude:infra	
+P189.38	exclude:infra	
+P190	exclude:infra	
+P191	exclude:infra	
+P191.1	exclude:infra	
+P191.2	exclude:infra	
+P192	exclude:heading	
+P192.1	item:rmt_biasiswa	restates
+P192.2	item:rmt_biasiswa	
+P192.3	item:bantuan_am	
+P192.4	item:bap	
+P193	exclude:heading	
+P193.1	exclude:infra	
+P193.2	exclude:infra	
+P193.3	exclude:infra	
+P194	exclude:governance	
+P194.1	exclude:infra	
+P194.2	exclude:infra	
+P194.3	exclude:governance	
+P194.4	item:elaun_mbk	
+P194.5	exclude:infra	
+P195	exclude:institution	
+P196	exclude:institution	
+P197	exclude:allocation	
+P198	exclude:rhetoric	
+P199	exclude:heading	
+P199.1	exclude:business	
+P199.2	exclude:governance	
+P199.3	item:celik_madani	
+P200	exclude:heading	reviewed
+P200.1	item:dapur_madani	
+P200.2	item:dapur_madani	restates
+P200.3	item:job_on_campus	
+P201	exclude:infra	
+P202	exclude:infra	
+P202.1	item:ptptn_percuma	
+P202.2	item:ptptn_kelas_pertama	
+P202.3	item:ptptn_sekatan_perjalanan	pengguna 2026-09-27: dimasukkan
+P203	exclude:governance	
+P204	exclude:infra	
+P205	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
+P206	exclude:institution	
+P207	exclude:rhetoric	
+P208	exclude:heading	
+P208.1	exclude:infra	
+P208.2	item:ras	
+P208.3	item:myraillife	
+P209	exclude:infra	
+P210	exclude:rhetoric	
+P210.1	exclude:infra	
+P210.2	exclude:infra	
+P210.3	exclude:infra	
+P211	exclude:rhetoric	
+P212	exclude:governance	
+P212.1	exclude:infra	
+P212.2	exclude:infra	
+P212.3	exclude:allocation	
+P212.4	exclude:infra	
+P212.5	exclude:governance	
+P212.6	item:saringan_pemandu	
+P213	item:lupus_kenderaan	
+P214	item:kota_madani	pengguna 2026-09-26: dimasukkan
+P215	exclude:heading	
+P215.1	exclude:infra	
+P215.2	exclude:infra	
+P215.3	exclude:infra	
+P216	item:rumah_mampu_milik	restates
+P216.1	exclude:infra	
+P216.2	exclude:infra	
+P216.3	exclude:infra	
+P216.4	exclude:infra	
+P216.5	exclude:governance	
+P217	item:duti_rumah_pertama	restates
+P218	exclude:non-citizen	pengguna 2026-09-26: duti setem 8% bukan warganegara; dikecualikan
+P219	exclude:governance	
+P220	exclude:allocation	
+P221	exclude:institution	
+P222	exclude:allocation	
+P223	exclude:governance	
+P223.1	exclude:institution	
+P223.2	item:tahfiz_kemahiran	pengguna 2026-09-26: dimasukkan
+P224	exclude:institution	
+P225	exclude:rhetoric	
+P226	exclude:institution	
+P227	exclude:institution	
+P228	item:kwsp_haji,gcr_haji	
+P229	exclude:rhetoric	
+P229.1	exclude:governance	
+P229.2	exclude:institution	
+P229.3	exclude:infra	
+P229.4	exclude:institution	
+P229.5	exclude:institution	
+P229.6	exclude:institution	
+P230	exclude:governance	
+P231	exclude:rhetoric	
+P232	exclude:allocation	
+P232.1	exclude:institution	
+P232.2	exclude:institution	
+P232.3	exclude:institution	
+P232.4	exclude:infra	
+P232.5	exclude:infra	
+P233	exclude:governance	
+P234	exclude:rhetoric	
+P234.1	exclude:governance	
+P234.2	exclude:governance	
+P234.3	exclude:institution	
+P234.4	exclude:governance	
+P235	exclude:heading	
+P235.1	exclude:business	
+P235.2	exclude:business	
+P235.3	exclude:business	
+P235.4	exclude:business	
+P236	exclude:governance	
+P237	exclude:heading	
+P237.1	exclude:infra	
+P237.2	exclude:allocation	
+P237.3	exclude:governance	
+P237.4	item:rumah_kontrak_awam	
+P237.5	item:lppsa	
+P237.6	item:lppsa	restates
+P237.7	item:lppsa	restates
+P238	item:bsh_pesara_kemas	pengguna 2026-09-26: dimasukkan
+P239	item:pjm	
+P240	item:penjawat_sspa	Bantuan Insentif Berasaskan Prestasi diperluas kepada Kumpulan Pengurusan dan Profesional
+P241	item:penjawat_sspa	syarat peluasan BIBP
+P242	item:penjawat_sspa	restates
+P243	exclude:governance	
+P244	exclude:governance	
+P245	item:penjawat_sspa	
+P246	item:bkk_penjawat,bkk_pesara	
+P247	item:sumbangan_agama	
+P248	exclude:rhetoric	
+P249	exclude:rhetoric	
+P250	exclude:rhetoric	
+P251	exclude:rhetoric	
+L1.1	exclude:heading	
+L1.1.1	exclude:rhetoric	
+L1.1.2	exclude:rhetoric	
+L1.2	exclude:heading	
+L1.2.1	exclude:rhetoric	
+L1.2.2	exclude:rhetoric	
+L1.2.3	exclude:governance	
+L1.2.4	exclude:governance	
+L1.2.5	exclude:business	
+L1.2.6	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
+L1.2.7	exclude:governance	
+L1.3	exclude:heading	
+L1.3.1	exclude:governance	
+L1.3.2	exclude:governance	
+L1.3.3	exclude:governance	
+L1.3.4	exclude:governance	
+L1.3.5	exclude:governance	
+L1.3.6	exclude:infra	
+L1.3.7	exclude:institution	
+L1.3.8	exclude:governance	
+L1.3.9	exclude:governance	
+L1.3.10	exclude:governance	
+L1.3.11	exclude:governance	
+L1.3.12	exclude:governance	
+L1.4	exclude:heading	
+L1.4.1	exclude:allocation	
+L1.4.2	exclude:institution	
+L1.4.3	exclude:institution	
+L1.5	exclude:heading	
+L1.5.1	exclude:allocation	
+L1.5.2	exclude:past	
+L1.5.3	exclude:past	
+L1.5.4	exclude:user	pengguna 2026-09-26: tarif elektrik tidak dipilih
+L1.5.5	item:diesel_nelayan	re-read 2026-09-27: restates
+L1.5.6	item:budi95	reviewed
+L1.6	exclude:heading	reviewed
+L1.6.1	exclude:infra	
+L1.6.2	exclude:institution	reviewed
+L1.6.3	exclude:infra	
+L1.7	exclude:heading	
+L1.7.1	exclude:institution	
+L1.8	exclude:heading	
+L1.8.1	exclude:heading	
+L1.8.2	exclude:infra	
+L1.8.3	exclude:infra	
+L1.8.4	exclude:infra	
+L1.8.5	exclude:infra	
+L1.8.6	exclude:infra	
+L1.8.7	exclude:infra	
+L1.8.8	exclude:infra	
+L1.8.9	exclude:infra	
+L1.8.10	exclude:infra	
+L1.8.11	exclude:infra	
+L1.8.12	exclude:infra	
+L1.8.13	exclude:infra	
+L1.8.14	exclude:infra	
+L1.8.15	exclude:infra	
+L1.8.16	exclude:infra	
+L1.8.17	exclude:infra	
+L1.8.18	exclude:infra	
+L1.8.19	exclude:infra	
+L1.8.20	exclude:infra	
+L1.8.21	exclude:infra	
+L1.8.22	exclude:infra	
+L1.8.23	exclude:infra	
+L1.8.24	exclude:infra	
+L1.8.25	exclude:infra	
+L1.8.26	exclude:infra	
+L1.8.27	exclude:infra	
+L1.8.28	exclude:infra	
+L1.8.29	exclude:infra	
+L1.8.30	exclude:infra	
+L1.8.31	exclude:infra	
+L1.8.32	exclude:infra	
+L1.8.33	exclude:infra	
+L1.8.34	exclude:infra	
+L1.8.35	exclude:infra	
+L1.8.36	exclude:infra	
+L1.8.37	exclude:infra	
+L1.8.38	exclude:infra	
+L1.8.39	exclude:infra	
+L1.8.40	exclude:infra	
+L1.8.41	exclude:infra	
+L1.8.42	exclude:infra	
+L1.8.43	exclude:infra	
+L1.8.44	exclude:infra	
+L1.8.45	exclude:infra	
+L1.8.46	exclude:infra	
+L1.8.47	exclude:infra	
+L1.8.48	exclude:infra	
+L1.8.49	exclude:infra	
+L1.8.50	exclude:infra	
+L1.8.51	exclude:infra	
+L1.8.52	exclude:infra	
+L1.8.53	exclude:infra	
+L1.8.54	exclude:infra	
+L1.8.55	exclude:infra	
+L1.8.56	exclude:infra	
+L1.8.57	exclude:infra	
+L1.8.58	exclude:infra	
+L1.8.59	exclude:business	
+L1.8.60	exclude:business	
+L1.8.61	exclude:infra	
+L1.8.62	exclude:infra	
+L1.8.63	exclude:infra	
+L1.8.64	exclude:infra	
+L1.8.65	exclude:infra	
+L1.8.66	exclude:infra	
+L1.8.67	exclude:infra	
+L1.8.68	exclude:infra	
+L1.8.69	exclude:infra	
+L1.8.70	exclude:allocation	
+L1.8.71	exclude:user	pengguna 2026-09-26: subsidi elektrik Sabah/Labuan tidak dipilih
+L1.8.72	exclude:infra	
+L1.8.73	exclude:infra	
+L1.8.74	exclude:infra	
+L1.8.75	exclude:infra	
+L1.8.76	item:tamu_desa	pengguna 2026-09-26: dimasukkan
+L1.8.77	exclude:infra	
+L1.8.78	exclude:business	
+L1.8.79	exclude:infra	
+L1.8.80	exclude:governance	
+L1.9	exclude:heading	
+L1.9.1	exclude:business	
+L1.9.2	exclude:governance	
+L1.9.3	exclude:business	
+L1.9.4	exclude:business	
+L1.9.5	exclude:business	
+L1.9.6	exclude:business	
+L1.9.7	exclude:business	
+L1.9.8	exclude:business	
+L1.9.9	exclude:business	
+L1.9.10	exclude:business	
+L1.9.11	exclude:business	
+L1.9.12	exclude:business	
+L1.9.13	exclude:business	
+L1.9.14	exclude:business	
+L1.9.15	exclude:business	
+L1.9.16	exclude:infra	
+L1.9.17	exclude:business	
+L1.9.18	exclude:infra	
+L1.9.19	exclude:business	
+L1.10	exclude:heading	
+L1.10.1	exclude:business	
+L1.10.2	exclude:governance	
+L1.10.3	exclude:infra	
+L1.10.4	exclude:infra	
+L1.10.5	exclude:infra	
+L1.10.6	exclude:business	
+L1.11	exclude:heading	
+L1.11.1	exclude:governance	
+L1.11.2	exclude:allocation	
+L1.11.3	exclude:governance	
+L1.11.4	exclude:user	pengguna 2026-09-26: LiKES tidak dipilih
+L1.12	exclude:heading	
+L1.12.1	exclude:business	
+L1.12.2	item:itekad	pengguna 2026-09-26: dimasukkan
+L1.12.3	exclude:infra	
+L1.12.4	exclude:business	
+L1.12.5	exclude:governance	
+L1.12.6	exclude:infra	
+L1.12.7	exclude:governance	
+L1.12.8	exclude:governance	
+L1.12.9	exclude:business	
+L1.12.10	exclude:governance	
+L1.13	exclude:heading	
+L1.13.1	exclude:business	
+L1.13.2	exclude:infra	
+L1.13.3	exclude:business	
+L1.13.4	item:teksi	restates
+L1.13.5	exclude:institution	
+L1.13.6	exclude:institution	
+L1.13.7	exclude:institution	
+L1.13.8	exclude:infra	
+L1.13.9	exclude:infra	
+L1.13.10	exclude:infra	
+L1.13.11	exclude:infra	
+L1.13.12	exclude:infra	
+L1.13.13	exclude:institution	
+L1.13.14	exclude:business	
+L1.13.15	exclude:institution	
+L1.13.16	exclude:infra	
+L1.14	exclude:heading	
+L1.14.1	exclude:allocation	
+L1.14.2	exclude:institution	
+L1.14.3	exclude:business	
+L1.14.4	exclude:institution	
+L1.14.5	exclude:business	
+L1.14.6	exclude:business	
+L1.14.7	exclude:institution	
+L1.14.8	exclude:institution	
+L1.14.9	exclude:institution	
+L1.14.10	exclude:infra	
+L1.14.11	exclude:institution	
+L1.15	exclude:heading	
+L1.15.1	exclude:business	
+L1.15.2	exclude:governance	
+L1.15.3	exclude:business	
+L1.15.4	exclude:business	
+L1.15.5	exclude:institution	
+L1.16	exclude:heading	
+L1.16.1	exclude:business	
+L1.16.2	exclude:business	
+L1.16.3	exclude:business	
+L1.16.4	exclude:governance	
+L1.16.5	exclude:business	
+L1.17	exclude:heading	
+L1.17.1	exclude:business	reviewed
+L1.17.2	exclude:institution	
+L1.17.3	exclude:business	
+L1.17.4	exclude:business	
+L1.17.5	exclude:business	
+L1.17.6	exclude:business	
+L1.17.7	exclude:business	reviewed
+L1.17.8	exclude:institution	
+L1.17.9	exclude:business	
+L1.17.10	exclude:business	
+L1.17.11	exclude:heading	
+L1.17.12	exclude:business	
+L1.17.13	exclude:business	
+L1.17.14	exclude:heading	
+L1.17.15	exclude:heading	
+L1.17.16	exclude:governance	
+L1.17.17	exclude:business	
+L1.17.18	exclude:business	reviewed
+L1.17.19	exclude:business	
+L1.17.20	exclude:business	
+L1.18	exclude:heading	
+L1.18.1	item:pekebun_kecil	re-read 2026-09-27: restates
+L1.18.2	exclude:business	
+L1.18.3	item:pekebun_kecil	
+L1.18.4	exclude:business	
+L1.18.5	item:pekebun_kecil	restates
+L1.18.6	exclude:infra	
+L1.18.7	exclude:infra	
+L1.18.8	exclude:business	
+L1.19	exclude:heading	
+L1.19.1	exclude:business	
+L1.19.2	exclude:business	
+L1.19.3	exclude:business	
+L1.19.4	exclude:institution	
+L1.19.5	item:solar_atap	pengguna 2026-09-26: dimasukkan
+L1.19.6	exclude:business	
+L1.19.7	exclude:business	
+L1.19.8	exclude:infra	
+L1.19.9	item:rebat_cekap_tenaga	
+L1.19.10	exclude:institution	
+L1.19.11	exclude:business	
+L1.20	exclude:heading	
+L1.20.1	exclude:business	
+L1.20.2	exclude:allocation	
+L1.20.3	item:agro	restates
+L1.20.4	item:agro	re-read 2026-09-27: restates
+L1.20.5	exclude:allocation	
+L1.20.6	exclude:business	
+L1.20.7	item:pesawah	restates
+L1.20.8	item:pesawah	restates
+L1.20.9	item:diesel_nelayan	restates
+L1.20.10	item:nelayan_elaun	re-read 2026-09-27: restates
+L1.20.11	item:nelayan_elaun	re-read 2026-09-27: restates
+L1.20.12	item:penternak	pengguna 2026-09-26: dimasukkan
+L1.20.13	item:penternak	pengguna 2026-09-26: dimasukkan
+L1.20.14	exclude:business	
+L1.20.15	exclude:business	
+L1.20.16	item:buah_buahan	pengguna 2026-09-26: dimasukkan
+L1.20.17	item:buah_buahan	re-read 2026-09-27: restates
+L1.20.18	exclude:infra	
+L1.20.19	exclude:infra	
+L1.21	exclude:heading	
+L1.21.1	exclude:allocation	
+L1.21.2	exclude:infra	
+L1.21.3	exclude:infra	
+L1.21.4	exclude:infra	
+L1.21.5	exclude:infra	
+L1.21.6	item:veteran	restates
+L1.21.7	item:veteran	restates
+L1.21.8	exclude:governance	
+L1.21.9	exclude:governance	
+L1.21.10	exclude:governance	
+L1.21.11	exclude:allocation	
+L1.21.12	exclude:governance	
+L1.21.13	exclude:infra	
+L1.21.14	exclude:infra	
+L1.21.15	exclude:governance	
+L1.21.16	exclude:governance	
+L1.21.17	exclude:governance	
+L1.21.18	exclude:governance	
+L1.21.19	exclude:institution	
+L1.22	exclude:heading	
+L1.22.1	exclude:infra	
+L1.22.2	exclude:infra	
+L1.22.3	exclude:governance	
+L1.22.4	exclude:governance	
+L1.22.5	exclude:institution	
+L1.22.6	exclude:infra	
+L1.22.7	exclude:infra	
+L1.22.8	exclude:infra	
+L1.22.9	exclude:infra	
+L1.22.10	exclude:governance	
+L1.22.11	exclude:institution	
+L1.22.12	exclude:governance	
+L1.22.13	exclude:business	
+L1.23	exclude:heading	
+L1.23.1	exclude:allocation	
+L1.23.2	exclude:governance	
+L1.23.3	exclude:infra	
+L1.23.4	exclude:infra	
+L1.23.5	exclude:infra	
+L1.23.6	exclude:institution	
+L1.23.7	exclude:institution	
+L1.23.8	exclude:governance	
+L1.23.9	item:bkht	
+L1.23.10	exclude:governance	
+L1.23.11	exclude:infra	
+L1.23.12	exclude:infra	
+L1.24	exclude:heading	
+L1.24.1	exclude:infra	
+L1.24.2	exclude:business	
+L1.24.3	exclude:infra	
+L1.24.4	exclude:infra	
+L1.24.5	exclude:infra	
+L1.24.6	exclude:governance	
+L1.24.7	exclude:infra	
+L1.25	exclude:heading	
+L1.25.1	exclude:business	
+L1.25.2	exclude:allocation	
+L1.25.3	exclude:business	
+L1.25.4	exclude:business	reviewed
+L1.25.5	exclude:business	reviewed
+L1.25.6	exclude:governance	
+L1.25.7	exclude:business	
+L1.25.8	exclude:user	pengguna 2026-09-27: tidak dipilih
+L1.25.9	exclude:business	
+L1.26	exclude:heading	
+L1.26.1	exclude:governance	
+L1.26.2	exclude:rhetoric	
+L1.26.3	exclude:heading	
+L1.26.4	exclude:heading	
+L1.26.5	exclude:heading	
+L1.26.6	exclude:heading	
+L1.26.7	item:pembiayaan_wanita	restates
+L1.26.8	item:pembiayaan_wanita	restates
+L1.26.9	item:saringan_wanita	
+L1.26.10	item:rakan_muda,k_youth,pembiayaan_belia	pengguna 2026-09-26: sudah diliputi (had umur 15-30)
+L1.26.11	item:plkn	re-read 2026-09-27: restates
+L1.26.12	item:plkn	re-read 2026-09-27: restates
+L1.26.13	item:k_youth	
+L1.26.14	item:rakan_muda	restates
+L1.26.15	item:pembiayaan_belia	
+L1.26.16	item:mylesen_b2	
+L1.26.17	item:step_up	
+L1.26.18	item:buai	
+L1.26.19	item:tdap_ibu	
+L1.26.20	item:subsidi_taska	
+L1.26.21	exclude:heading	
+L1.27	exclude:heading	
+L1.27.1	item:orang_asli	restates
+L1.27.2	item:orang_asli	restates
+L1.27.3	item:orang_asli	restates
+L1.27.4	item:bantuan_oku	
+L1.27.5	item:autisme	restates
+L1.27.6	item:van_oku	restates
+L1.27.7	exclude:governance	
+L1.27.8	exclude:institution	reviewed
+L1.27.9	exclude:institution	
+L1.27.10	item:peluang_kedua	restates
+L1.27.11	exclude:non-citizen	
+L1.27.12	exclude:institution	
+L1.27.13	exclude:governance	
+L1.27.14	exclude:institution	
+L1.27.15	exclude:institution	
+L1.28	exclude:heading	
+L1.28.1	exclude:rhetoric	
+L1.28.2	exclude:institution	
+L1.28.3	item:geran_bsn	pengguna 2026-09-26: dimasukkan
+L1.28.4	exclude:user	pengguna 2026-09-27: tidak dipilih
+L1.29	exclude:heading	
+L1.29.1	exclude:governance	
+L1.29.2	item:str_sara	reviewed
+L1.29.3	item:penghargaan_sara	restates
+L1.29.4	exclude:past	STR Fasa 4 2025 diawalkan (Okt 2025)
+L1.29.5	item:str_sara	reviewed
+L1.29.6	exclude:past	Diskaun tol 50% dua hari sempena Deepavali 2025
+L1.29.7	item:jkm_bantuan	
+L1.29.8	item:autisme	
+L1.29.9	item:payung_rahmah	restates
+L1.29.10	item:harga_sabah_sarawak	re-read 2026-09-27: restates
+L1.29.11	item:rebat_elektrik	
+L1.29.12	item:harga_sabah_sarawak	
+L1.30	exclude:heading	reviewed
+L1.30.1	item:i_saraan_plus	
+L1.30.2	item:i_suri	restates
+L1.30.3	exclude:infra	
+L1.30.4	item:lindung_kendiri	
+L1.30.5	exclude:user	pengguna 2026-09-26: kajian pemindahan KWSP dikecualikan (masih dikaji)
+L1.30.6	item:kwsp_auto	
+L1.30.7	item:saringan_pemandu	restates
+L1.30.8	item:perkeso_dialisis	pengguna 2026-09-26: semak untuk pekerja yang dilindungi PERKESO
+L1.30.9	item:perkeso_pindah	restates
+L1.31	exclude:heading	
+L1.31.1	exclude:governance	
+L1.31.2	exclude:governance	reviewed
+L1.31.3	item:warga_emas	
+L1.31.4	item:rumah_warga_emas	
+L1.31.5	exclude:institution	
+L1.32	exclude:heading	
+L1.32.1	exclude:allocation	
+L1.32.2	exclude:infra	
+L1.32.3	exclude:infra	
+L1.32.4	exclude:infra	
+L1.32.5	exclude:infra	
+L1.32.6	exclude:infra	
+L1.32.7	exclude:infra	
+L1.32.8	exclude:governance	
+L1.32.9	exclude:user	pengguna 2026-09-26: RESET tidak dipilih
+L1.32.10	item:mhit_kwsp	re-read 2026-09-27: restates
+L1.32.11	item:mysalam	restates; corrected 2026-09-27 after review of the annotated speech	
+L1.32.12	item:lantikan_tetap_kkm	pengguna 2026-09-26: dimasukkan
+L1.32.13	item:fi_klinik_swasta	
+L1.32.14	item:etap_perubatan	pengguna 2026-09-26: dimasukkan
+L1.32.15	exclude:governance	
+L1.32.16	item:vape	
+L1.32.17	item:duti_rokok	restates
+L1.32.18	exclude:governance	
+L1.32.19	exclude:institution	
+L1.32.20	exclude:user	pengguna 2026-09-27: tidak dipilih
+L1.32.21	item:skim_perubatan_madani	
+L1.32.22	exclude:allocation	
+L1.32.23	exclude:allocation	
+L1.32.24	exclude:allocation	
+L1.32.25	exclude:allocation	
+L1.32.26	exclude:infra	
+L1.32.27	exclude:governance	
+L1.32.28	item:peka_b40	
+L1.33	exclude:heading	
+L1.33.1	exclude:allocation	
+L1.33.2	exclude:infra	
+L1.33.3	exclude:infra	
+L1.33.4	exclude:infra	
+L1.33.5	exclude:infra	
+L1.33.6	exclude:allocation	
+L1.33.7	exclude:governance	
+L1.33.8	item:rmt_biasiswa	restates
+L1.33.9	exclude:institution	
+L1.33.10	exclude:institution	
+L1.33.11	exclude:infra	
+L1.33.12	exclude:infra	
+L1.33.13	exclude:infra	reviewed
+L1.33.14	item:elaun_mbk	restates
+L1.33.15	item:autisme	restates
+L1.33.16	exclude:infra	
+L1.33.17	exclude:institution	
+L1.33.18	exclude:institution	
+L1.33.19	exclude:allocation	
+L1.33.20	exclude:infra	
+L1.33.21	exclude:business	
+L1.33.22	item:celik_madani	restates
+L1.33.23	item:dapur_madani	restates
+L1.33.24	item:dapur_madani	restates
+L1.33.25	item:job_on_campus	restates
+L1.33.26	exclude:governance	
+L1.33.27	item:ptptn_kelas_pertama	restates
+L1.33.28	item:gapai	
+L1.33.29	exclude:governance	
+L1.33.30	exclude:infra	
+L1.33.31	exclude:infra	
+L1.33.32	exclude:institution	
+L1.33.33	exclude:institution	
+L1.33.34	exclude:institution	
+L1.33.35	exclude:institution	
+L1.33.36	exclude:institution	
+L1.33.37	exclude:infra	
+L1.33.38	exclude:infra	
+L1.33.39	exclude:infra	
+L1.34	exclude:heading	
+L1.34.1	exclude:governance	
+L1.34.2	item:ras	restates
+L1.34.3	item:myraillife	restates
+L1.34.4	exclude:governance	
+L1.34.5	exclude:infra	
+L1.34.6	exclude:governance	
+L1.34.7	exclude:infra	
+L1.34.8	exclude:infra	
+L1.34.9	exclude:governance	
+L1.34.10	exclude:infra	
+L1.34.11	exclude:infra	
+L1.34.12	exclude:infra	
+L1.34.13	item:lupus_kenderaan	restates
+L1.34.14	exclude:user	pengguna 2026-09-27: tidak dipilih
+L1.34.15	exclude:allocation	
+L1.34.16	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
+L1.35	exclude:heading	
+L1.35.1	exclude:infra	
+L1.35.2	exclude:infra	
+L1.35.3	item:rumah_mampu_milik	
+L1.35.4	item:sjkp_inklusif	restates
+L1.35.5	exclude:infra	
+L1.35.6	item:rumah_daif	
+L1.35.7	exclude:infra	
+L1.35.8	exclude:user	pengguna 2026-09-27: tidak dipilih
+L1.35.9	exclude:infra	
+L1.35.10	exclude:institution	
+L1.35.11	exclude:governance	
+L1.35.12	exclude:infra	
+L1.35.13	item:rumah_mampu_milik	re-read 2026-09-27: restates
+L1.35.14	exclude:infra	
+L1.35.15	exclude:governance	
+L1.35.16	exclude:user	pengguna 2026-09-26: hak milik strata tidak dipilih
+L1.35.17	exclude:business	
+L1.35.18	item:sjkp_akses	restates
+L1.35.19	item:sjkp_inklusif	restates
+L1.35.20	item:step_up	restates
+L1.35.21	item:sjkp_akses	
+L1.35.22	item:sjkp_inklusif	
+L1.36	exclude:heading	
+L1.36.1	exclude:allocation	
+L1.36.2	exclude:business	
+L1.36.3	exclude:governance	
+L1.36.4	exclude:institution	
+L1.36.5	exclude:infra	
+L1.36.6	item:elaun_imam_kafa	pengguna 2026-09-26: dimasukkan
+L1.36.7	exclude:institution	reviewed
+L1.36.8	item:kwsp_haji	restates
+L1.36.9	item:gcr_haji	restates
+L1.36.10	item:sumbangan_agama	restates
+L1.37	exclude:heading	
+L1.37.1	exclude:governance	
+L1.37.2	exclude:institution	
+L1.37.3	exclude:infra	
+L1.37.4	exclude:institution	
+L1.37.5	exclude:institution	
+L1.37.6	exclude:institution	
+L1.37.7	exclude:governance	
+L1.37.8	exclude:institution	
+L1.37.9	exclude:institution	
+L1.37.10	exclude:institution	
+L1.38	exclude:heading	
+L1.38.1	exclude:institution	
+L1.38.2	exclude:institution	
+L1.38.3	exclude:institution	
+L1.38.4	exclude:institution	
+L1.39	exclude:heading	
+L1.39.1	exclude:governance	
+L1.39.2	exclude:business	
+L1.39.3	exclude:business	
+L1.39.4	exclude:business	
+L1.39.5	exclude:governance	
+L1.39.6	exclude:institution	
+L1.39.7	exclude:institution	
+L1.40	exclude:heading	
+L1.40.1	exclude:infra	
+L1.40.2	item:rumah_kontrak_awam	restates
+L1.40.3	item:lppsa	restates
+L1.40.4	item:lppsa	restates
+L1.40.5	exclude:user	pengguna 2026-09-27: tidak dipilih
+L1.40.6	exclude:governance	
+L1.40.7	item:penjawat_sspa	restates
+L1.40.8	item:bsh_pesara_kemas	pengguna 2026-09-26: dimasukkan
+L1.40.9	item:bipk_bipac	pengguna 2026-09-26: dimasukkan
+L1.40.10	item:penghargaan_pesara	pengguna 2026-09-26: dimasukkan
+L1.40.11	item:penjawat_sspa	restates
+L1.40.12	item:pjm	restates
+L1.40.13	item:apel_q	pengguna 2026-09-26: dimasukkan
+L1.40.14	exclude:business	
+L1.40.15	item:bkk_penjawat	restates
+L2.1	item:tax_vaksin	restates
+L2.2	item:tax_taska	
+L2.3	item:tax_kurang_upaya	restates
+L2.4	item:tax_insurans	
+L2.5	item:tax_lestari	
+L2.6	item:tax_pelancongan	
+L2.7	item:cukai_plt	
+L2.8	exclude:business	
+L2.9	exclude:business	
+L2.10	exclude:institution	
+L2.11	exclude:business	
+L2.12	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
+L2.13	item:potongan_derma	pengguna 2026-09-26: satu item cukai untuk pembayar cukai
+L2.14	exclude:non-citizen	pengguna 2026-09-26: duti setem 8% bukan warganegara; dikecualikan
+L2.15	item:duti_rumah_pertama	
+L2.16	item:duti_insurans_kecil	restates
+L2.17	exclude:business	
+L2.18	item:pelabur_runcit	
+L2.19	exclude:business	
+L2.20	item:duti_kontrak_kerja	
+L2.21	exclude:business	
+L2.22	exclude:business	
+L2.23	exclude:business	
+L2.24	exclude:business	
+L2.25	exclude:business	
+L2.26	exclude:business	
+L2.27	exclude:business	
+L2.28	exclude:business	
+L2.29	exclude:governance	
+L2.30	exclude:business	
+L2.31	exclude:business	
+L2.32	exclude:business	
+L2.33	exclude:governance	
+L2.34	exclude:business	
+L2.35	exclude:infra	
+L2.36	exclude:governance	
+L2.37	item:duti_cerut	restates
+L2.38	item:duti_heated_tobacco	restates
+L2.39	item:berhenti_merokok	restates
+L2.40	exclude:governance	

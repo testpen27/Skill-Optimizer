@@ -1,0 +1,21 @@
+
+ub24.md (2024) — programme names learned from: nothing (cold start)
+  units 463, labelled 315, flagged 165 (36%)
+  person-level among flagged: 47%
+  unflagged sample: 14/150 person-level (miss rate 9%, 95% CI 6%–15%)
+  estimated catch rate by piece: 74% (95% CI 63%–82%) of ~106 person-level pieces
+  missed pieces (14):
+    P100      item:pinjaman_mikro          [0: recipient benefit -corporate -macro] Tentunya, usahawan mikro dan peniaga kecil disediakan kemudahan pinjaman kecil dengan dana keseluruhan 2.4 bilion ringgi
+    P112.1    item:academy_in_industry     [0: ] Bagi mengekang kekurangan bakat tempatan dan ketidakpadanan kemahiran, Program Academy in Industry akan dilaksanakan unt
+    P116      item:pelepasan_gaya_hidup    [0: ] Kerajaan juga akan memperluas skop bagi pelepasan gaya hidup meliputi yuran untuk menyertai kursus kemajuan kendiri sepe
+    P129      exclude:non-citizen          [1: eligibility change -corporate] Kerajaan juga telah bersetuju untuk melonggarkan syarat-syarat sedia ada bagi permohonan Malaysia My Second Home (MM2H) 
+    P151.1    item:nem_solar               [0: ] Kerajaan sedia melanjutkan tempoh tawaran program Net Energy Metering (NEM) sehingga 31 Disember 2024 bagi menggalakkan 
+    P158      item:pampasan_hidupan_liar   [1: recipient] Bagi tempoh 2018 hingga 2022, lebih 46 ribu aduan dilaporkan melibatkan konflik hidupan liar seperti gajah, harimau dan 
+    P177      item:payung_rahmah           [0: ] Kerajaan menyediakan 200 juta ringgit untuk meneruskan pelaksanaan Payung Rahmah.
+    P182      item:mystep                  [1: benefit change -corporate] Kerajaan bersetuju untuk semua lantikan MySTEP disediakan tawaran mengikuti program peningkatan kemahiran di bawah platf
+    P204.1    item:bantuan_oku             [1: recipient benefit -macro] Sejumlah 1.2 bilion ringgit disediakan antaranya untuk menyalurkan pelbagai bentuk bantuan seperti penjagaan OKU kronik 
+    P209      exclude:non-citizen          [1: eligibility] Malaysia tidak terkecuali menerima limpahan tempias akibat krisis kemanusiaan dari negara serantau. Kebanyakan pelarian 
+    P224      item:pembelajaran_sepanjang_hayat [1: recipient] Kerajaan akan terus merakyatkan ilmu dengan menggalakkan komuniti rentan seperti OKU, Orang Asli, ibu tunggal dan warga 
+    P247.4    item:my50                    [1: change] Kepada lebih 180 ribu penduduk Lembah Klang yang menggunakan perkhidmatan bas dan rel PRASARANA untuk ulang-alik mencari
+    P251.2    item:ppr                     [0: recipient area -infra] 546 juta ringgit disediakan bagi meneruskan 36 Program Perumahan Rakyat (PPR) termasuk satu projek baharu di Kluang, Joh
+    P252      item:sjkp                    [0: benefit -macro] Kerajaan akan menambah Skim Jaminan Kredit Perumahan sehingga 10 bilion ringgit untuk SJKP bagi memanfaatkan 40 ribu pem
