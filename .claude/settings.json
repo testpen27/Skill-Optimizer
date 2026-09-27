@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && git fetch -q origin main 2>/dev/null; python3 scripts/check_branch.py || true",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

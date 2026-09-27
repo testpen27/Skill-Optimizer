@@ -16,8 +16,14 @@ Anthropic's `skill-creator` description-optimization loop.
 ## Branch layout
 
 `main` holds only the toolkit above. Each skill that gets created or
-optimized with it lives on its own branch, which carries the skill, its
-eval sets, results and reports. See `CLAUDE.md` for the rules.
+optimized with it lives on its own `skill/<name>` branch, which carries the
+skill, its eval sets, results, reports and packaged build. See `CLAUDE.md`
+for the rules. `scripts/check_branch.py` enforces them in CI on every push
+and at the start of every Claude Code session. Run it before pushing:
+
+```bash
+python3 scripts/check_branch.py
+```
 
 ## Running
 
