@@ -1,0 +1,565 @@
+{
+  "exit_reason": "all_passed (iteration 2)",
+  "original_description": "Audit prose for the stylistic tells of LLM-generated writing, then revise them out while preserving the author's voice. Use this skill whenever the user asks whether something \"sounds like AI\" or \"reads like ChatGPT\", asks to make text sound more human or less AI-generated, asks to strip AI slop from a draft, mentions em dashes or \"delve\" as giveaways, asks whether a student, applicant, or colleague used AI, wants a piece checked before publishing, or asks for an edit pass where sounding machine-generated is a worry \u2014 even if they never say the words \"AI writing\". Also use it when the user asks you to check your own draft output for these patterns.",
+  "best_description": "Use this skill whenever anyone worries that writing might come across as AI-generated, whether it's their own or someone else's. Examples: a writer who fears readers will think their newsletter, blog, essay, cover letter, or post came from a bot because of habits like heavy em dash use, words like \"delve\", or tidy three-part lists; a teacher, hiring manager, editor, or reviewer suspicious of a submission; someone who wants a draft checked for \"ChatGPT voice\" before publishing or sending; anyone asking to de-slop or humanize text. The skill flags passages that read as LLM output, explains why, says which habits are harmless, and revises without flattening voice. Use it even when the user names only one tell and asks what actually reads as machine-made. Also use it to check your own drafts. Skip it for plain proofreading, shortening, translating, punch-up edits where AI-sounding isn't the worry, and fiction.",
+  "best_score": "7/8",
+  "best_train_score": "11/12",
+  "best_test_score": "7/8",
+  "final_description": "AI-tell audit and de-slop editor. Invoke it whenever a request involves worry about writing reading as machine-made. That includes the user's own draft (newsletter, Substack issue, blog, essay, cover letter, grant, post) or someone else's (a student, applicant, author, or colleague). Use it even for a narrow worry about one habit, like \"people say em dashes are a giveaway now, I use them a lot\" or \"is 'delve' a red flag?\". Use it too when someone pastes text and asks what actually reads as AI before they publish or send it. Don't answer these from memory; this skill has the current, dated catalogue of tells and knows which habits are harmless. It flags passages, explains why they read as LLM output, says what to leave alone, and revises without flattening voice. It also covers \"humanize this\", \"de-slop this\", and checking your own drafts. Skip it when AI-sounding isn't the concern: plain proofreading, cutting for length, translation, making a post punchier, data cleanup, or fiction.",
+  "iterations_run": 2,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Use this skill whenever anyone worries that writing might come across as AI-generated, whether it's their own or someone else's. Examples: a writer who fears readers will think their newsletter, blog, essay, cover letter, or post came from a bot because of habits like heavy em dash use, words like \"delve\", or tidy three-part lists; a teacher, hiring manager, editor, or reviewer suspicious of a submission; someone who wants a draft checked for \"ChatGPT voice\" before publishing or sending; anyone asking to de-slop or humanize text. The skill flags passages that read as LLM output, explains why, says which habits are harmless, and revises without flattening voice. Use it even when the user names only one tell and asks what actually reads as machine-made. Also use it to check your own drafts. Skip it for plain proofreading, shortening, translating, punch-up edits where AI-sounding isn't the worry, and fiction.",
+      "train_passed": 11,
+      "train_failed": 1,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "we're hiring a content marketer and one candidate's writing sample feels off to me. every paragraph ends with something like 'highlighting the brand's commitment to excellence' and there are like four 'not just X but Y' sentences. is this AI? how confident can I be before I reject them",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "before I send this grant narrative to the foundation can you do a pass for anything that screams chatgpt? program officers have apparently started flagging AI-written applications. file is grant/narrative_v4.docx",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "people keep saying em dashes are a giveaway now. I use them a LOT in my newsletter (substack, ~4k subs) and I'm worried readers think I'm using AI. can you look at this week's issue before I hit publish and tell me what actually reads as machine-written? pasting below",
+          "should_trigger": true,
+          "trigger_rate": 0.4,
+          "triggers": 2,
+          "runs": 5,
+          "pass": false
+        },
+        {
+          "query": "reviewing a journal submission and the discussion section has phrases like 'these findings underscore the intricate interplay' and 'future research should delve deeper'. I want to write a note to the editor about possible undisclosed LLM use \u2014 can you go through the section and point out the specific patterns so my comment is concrete and fair?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "one of my 11th graders turned in this paragraph for the civil war unit and it just doesn't sound like him at all: \"The Battle of Gettysburg stands as a pivotal moment in American history, underscoring the enduring struggle for unity. It was not merely a military clash \u2014 it was a turning point that shaped the nation's evolving landscape.\" can you tell me if he used chatgpt? I need to decide whether to bring it up with his parents",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "be honest does this cover letter read like it was written by a bot? i wrote most of it myself but used claude for the middle paragraph. 'I am deeply passionate about fostering innovative solutions, and my meticulous approach has consistently delivered valuable insights for cross-functional teams.'",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I'm writing a fantasy novel and my beta readers say the dialogue in chapter 3 feels stiff and unnatural. can you rewrite the tavern scene so the characters sound more like real people talking",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "cut this 900-word press release down to about 300 words for the newswire, keep the quotes from our CEO intact",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I have a CSV of scraped article URLs and a bunch of them have ?utm_source=chatgpt.com and other tracking junk on the end. write me a regex or small script to strip all the utm params",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "can you proofread my cover letter for typos and grammar only? don't change the wording, I like how it sounds. it's in cover_letter_acme.txt",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "rewrite my linkedin post announcing my promotion so it's punchier and gets more engagement. currently: 'Happy to share I've been promoted to Senior Data Engineer at Finch. Thanks to my team.'",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "translate this blog post about our new espresso machine from English to Spanish, keeping the casual tone. it's for our Mexico City storefront",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        }
+      ],
+      "test_passed": 7,
+      "test_failed": 1,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "look back at the product announcement you wrote for me earlier in this chat. does it have the typical AI writing patterns? I don't want our customers to clock it as generated",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": false
+        },
+        {
+          "query": "I've got a blog post at drafts/why-we-moved-off-kubernetes.md that I drafted with gpt and it's full of 'delve' and 'tapestry' type stuff. can you go through it and make it sound like a person wrote it without changing any of the numbers or the architecture details",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "My Wikipedia draft about a Lagos jazz club got declined at AfC with a note saying it 'reads like LLM output'. Here's the lead: 'Nestled in the heart of Lagos, the Afrobeat Lounge boasts a vibrant atmosphere and serves as a testament to the city's rich musical heritage.' What exactly are they seeing and how do I fix it before resubmitting?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "my manager said my PR descriptions 'sound like an LLM wrote them'. here's the last one: 'This PR enhances the robustness of the auth module, ensuring seamless integration and streamlining the overall developer experience.' what's wrong with it and can you rewrite it so it sounds like me",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "my bibliography has 40 references and I think some of the DOIs are broken. can you check each DOI in refs.bib actually resolves and points to the paper with that title?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "how do tools like GPTZero and Turnitin's AI detector actually work under the hood? what is burstiness and why do they have false positives on non-native english speakers",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "write a python script that takes a folder of student essays (.txt) and scores each one with a perplexity-based AI detector using gpt2 from huggingface, then outputs a csv with filename and score",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "help me draft our department's policy on students using generative AI in coursework \u2014 what's allowed, disclosure requirements, and what happens on a first violation",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        }
+      ],
+      "passed": 11,
+      "failed": 1,
+      "total": 12,
+      "results": [
+        {
+          "query": "we're hiring a content marketer and one candidate's writing sample feels off to me. every paragraph ends with something like 'highlighting the brand's commitment to excellence' and there are like four 'not just X but Y' sentences. is this AI? how confident can I be before I reject them",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "before I send this grant narrative to the foundation can you do a pass for anything that screams chatgpt? program officers have apparently started flagging AI-written applications. file is grant/narrative_v4.docx",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "people keep saying em dashes are a giveaway now. I use them a LOT in my newsletter (substack, ~4k subs) and I'm worried readers think I'm using AI. can you look at this week's issue before I hit publish and tell me what actually reads as machine-written? pasting below",
+          "should_trigger": true,
+          "trigger_rate": 0.4,
+          "triggers": 2,
+          "runs": 5,
+          "pass": false
+        },
+        {
+          "query": "reviewing a journal submission and the discussion section has phrases like 'these findings underscore the intricate interplay' and 'future research should delve deeper'. I want to write a note to the editor about possible undisclosed LLM use \u2014 can you go through the section and point out the specific patterns so my comment is concrete and fair?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "one of my 11th graders turned in this paragraph for the civil war unit and it just doesn't sound like him at all: \"The Battle of Gettysburg stands as a pivotal moment in American history, underscoring the enduring struggle for unity. It was not merely a military clash \u2014 it was a turning point that shaped the nation's evolving landscape.\" can you tell me if he used chatgpt? I need to decide whether to bring it up with his parents",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "be honest does this cover letter read like it was written by a bot? i wrote most of it myself but used claude for the middle paragraph. 'I am deeply passionate about fostering innovative solutions, and my meticulous approach has consistently delivered valuable insights for cross-functional teams.'",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I'm writing a fantasy novel and my beta readers say the dialogue in chapter 3 feels stiff and unnatural. can you rewrite the tavern scene so the characters sound more like real people talking",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "cut this 900-word press release down to about 300 words for the newswire, keep the quotes from our CEO intact",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I have a CSV of scraped article URLs and a bunch of them have ?utm_source=chatgpt.com and other tracking junk on the end. write me a regex or small script to strip all the utm params",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "can you proofread my cover letter for typos and grammar only? don't change the wording, I like how it sounds. it's in cover_letter_acme.txt",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "rewrite my linkedin post announcing my promotion so it's punchier and gets more engagement. currently: 'Happy to share I've been promoted to Senior Data Engineer at Finch. Thanks to my team.'",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "translate this blog post about our new espresso machine from English to Spanish, keeping the casual tone. it's for our Mexico City storefront",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "description": "AI-tell audit and de-slop editor. Invoke it whenever a request involves worry about writing reading as machine-made. That includes the user's own draft (newsletter, Substack issue, blog, essay, cover letter, grant, post) or someone else's (a student, applicant, author, or colleague). Use it even for a narrow worry about one habit, like \"people say em dashes are a giveaway now, I use them a lot\" or \"is 'delve' a red flag?\". Use it too when someone pastes text and asks what actually reads as AI before they publish or send it. Don't answer these from memory; this skill has the current, dated catalogue of tells and knows which habits are harmless. It flags passages, explains why they read as LLM output, says what to leave alone, and revises without flattening voice. It also covers \"humanize this\", \"de-slop this\", and checking your own drafts. Skip it when AI-sounding isn't the concern: plain proofreading, cutting for length, translation, making a post punchier, data cleanup, or fiction.",
+      "train_passed": 12,
+      "train_failed": 0,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "before I send this grant narrative to the foundation can you do a pass for anything that screams chatgpt? program officers have apparently started flagging AI-written applications. file is grant/narrative_v4.docx",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "we're hiring a content marketer and one candidate's writing sample feels off to me. every paragraph ends with something like 'highlighting the brand's commitment to excellence' and there are like four 'not just X but Y' sentences. is this AI? how confident can I be before I reject them",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "people keep saying em dashes are a giveaway now. I use them a LOT in my newsletter (substack, ~4k subs) and I'm worried readers think I'm using AI. can you look at this week's issue before I hit publish and tell me what actually reads as machine-written? pasting below",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "reviewing a journal submission and the discussion section has phrases like 'these findings underscore the intricate interplay' and 'future research should delve deeper'. I want to write a note to the editor about possible undisclosed LLM use \u2014 can you go through the section and point out the specific patterns so my comment is concrete and fair?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "one of my 11th graders turned in this paragraph for the civil war unit and it just doesn't sound like him at all: \"The Battle of Gettysburg stands as a pivotal moment in American history, underscoring the enduring struggle for unity. It was not merely a military clash \u2014 it was a turning point that shaped the nation's evolving landscape.\" can you tell me if he used chatgpt? I need to decide whether to bring it up with his parents",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "be honest does this cover letter read like it was written by a bot? i wrote most of it myself but used claude for the middle paragraph. 'I am deeply passionate about fostering innovative solutions, and my meticulous approach has consistently delivered valuable insights for cross-functional teams.'",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I'm writing a fantasy novel and my beta readers say the dialogue in chapter 3 feels stiff and unnatural. can you rewrite the tavern scene so the characters sound more like real people talking",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "cut this 900-word press release down to about 300 words for the newswire, keep the quotes from our CEO intact",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "can you proofread my cover letter for typos and grammar only? don't change the wording, I like how it sounds. it's in cover_letter_acme.txt",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I have a CSV of scraped article URLs and a bunch of them have ?utm_source=chatgpt.com and other tracking junk on the end. write me a regex or small script to strip all the utm params",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "rewrite my linkedin post announcing my promotion so it's punchier and gets more engagement. currently: 'Happy to share I've been promoted to Senior Data Engineer at Finch. Thanks to my team.'",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "translate this blog post about our new espresso machine from English to Spanish, keeping the casual tone. it's for our Mexico City storefront",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        }
+      ],
+      "test_passed": 7,
+      "test_failed": 1,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "look back at the product announcement you wrote for me earlier in this chat. does it have the typical AI writing patterns? I don't want our customers to clock it as generated",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": false
+        },
+        {
+          "query": "I've got a blog post at drafts/why-we-moved-off-kubernetes.md that I drafted with gpt and it's full of 'delve' and 'tapestry' type stuff. can you go through it and make it sound like a person wrote it without changing any of the numbers or the architecture details",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "My Wikipedia draft about a Lagos jazz club got declined at AfC with a note saying it 'reads like LLM output'. Here's the lead: 'Nestled in the heart of Lagos, the Afrobeat Lounge boasts a vibrant atmosphere and serves as a testament to the city's rich musical heritage.' What exactly are they seeing and how do I fix it before resubmitting?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "my manager said my PR descriptions 'sound like an LLM wrote them'. here's the last one: 'This PR enhances the robustness of the auth module, ensuring seamless integration and streamlining the overall developer experience.' what's wrong with it and can you rewrite it so it sounds like me",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "my bibliography has 40 references and I think some of the DOIs are broken. can you check each DOI in refs.bib actually resolves and points to the paper with that title?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "how do tools like GPTZero and Turnitin's AI detector actually work under the hood? what is burstiness and why do they have false positives on non-native english speakers",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "write a python script that takes a folder of student essays (.txt) and scores each one with a perplexity-based AI detector using gpt2 from huggingface, then outputs a csv with filename and score",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "help me draft our department's policy on students using generative AI in coursework \u2014 what's allowed, disclosure requirements, and what happens on a first violation",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        }
+      ],
+      "passed": 12,
+      "failed": 0,
+      "total": 12,
+      "results": [
+        {
+          "query": "before I send this grant narrative to the foundation can you do a pass for anything that screams chatgpt? program officers have apparently started flagging AI-written applications. file is grant/narrative_v4.docx",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "we're hiring a content marketer and one candidate's writing sample feels off to me. every paragraph ends with something like 'highlighting the brand's commitment to excellence' and there are like four 'not just X but Y' sentences. is this AI? how confident can I be before I reject them",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "people keep saying em dashes are a giveaway now. I use them a LOT in my newsletter (substack, ~4k subs) and I'm worried readers think I'm using AI. can you look at this week's issue before I hit publish and tell me what actually reads as machine-written? pasting below",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "reviewing a journal submission and the discussion section has phrases like 'these findings underscore the intricate interplay' and 'future research should delve deeper'. I want to write a note to the editor about possible undisclosed LLM use \u2014 can you go through the section and point out the specific patterns so my comment is concrete and fair?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "one of my 11th graders turned in this paragraph for the civil war unit and it just doesn't sound like him at all: \"The Battle of Gettysburg stands as a pivotal moment in American history, underscoring the enduring struggle for unity. It was not merely a military clash \u2014 it was a turning point that shaped the nation's evolving landscape.\" can you tell me if he used chatgpt? I need to decide whether to bring it up with his parents",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "be honest does this cover letter read like it was written by a bot? i wrote most of it myself but used claude for the middle paragraph. 'I am deeply passionate about fostering innovative solutions, and my meticulous approach has consistently delivered valuable insights for cross-functional teams.'",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I'm writing a fantasy novel and my beta readers say the dialogue in chapter 3 feels stiff and unnatural. can you rewrite the tavern scene so the characters sound more like real people talking",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "cut this 900-word press release down to about 300 words for the newswire, keep the quotes from our CEO intact",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "can you proofread my cover letter for typos and grammar only? don't change the wording, I like how it sounds. it's in cover_letter_acme.txt",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I have a CSV of scraped article URLs and a bunch of them have ?utm_source=chatgpt.com and other tracking junk on the end. write me a regex or small script to strip all the utm params",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "rewrite my linkedin post announcing my promotion so it's punchier and gets more engagement. currently: 'Happy to share I've been promoted to Senior Data Engineer at Finch. Thanks to my team.'",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "translate this blog post about our new espresso machine from English to Spanish, keeping the casual tone. it's for our Mexico City storefront",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
