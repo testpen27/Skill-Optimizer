@@ -1,0 +1,57 @@
+{
+  "skill_name": "social-media-report",
+  "notes": "Fixtures in evals/fixtures/ are synthetic Facebook exports. The August file deliberately omits the 'Visits' column to test missing-data handling. No real account data is included.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "monthly-report-with-missing-column",
+      "prompt": "build a FB report for August",
+      "files": [
+        "evals/fixtures/facebook_export_2026-06.csv",
+        "evals/fixtures/facebook_export_2026-07.csv",
+        "evals/fixtures/facebook_export_2026-08.csv",
+        "evals/fixtures/facebook_segments_2026-08.csv"
+      ],
+      "expected_output": "A PDF report for August 2026 comparing against July and June, with Page visits marked Unavailable throughout (the August export lacks that column), and per-day rates shown alongside raw totals.",
+      "assertions": [
+        {"text": "Output is a rendered PDF, produced by scripts/generate_report.py rather than assembled some other way", "critical": true},
+        {"text": "Comparison window shows three periods (Aug, Jul, Jun), not just one prior month", "critical": true},
+        {"text": "Page visits is marked 'Unavailable' for August rather than estimated, interpolated, or silently dropped from the table", "critical": true},
+        {"text": "Per-day rates appear alongside raw totals for daily-granularity metrics", "critical": true},
+        {"text": "At least one finding or recommendation reasons from the per-day rate rather than the raw total, given June has 30 days and August has 31", "critical": true},
+        {"text": "Glossary appears on the final page(s) and includes definitions, derived-measure formulas, benchmark sources with dates, and data notes", "critical": true},
+        {"text": "Claims in the analysis and recommendations link back to their source table or exhibit as clickable internal PDF links", "critical": false},
+        {"text": "Benchmark comparison cites its source and date rather than presenting the figure as an unqualified fact", "critical": false},
+        {"text": "ROI/cost-per metrics are absent, since no ad spend data was supplied", "critical": false}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "yearly-rollup-with-gaps",
+      "prompt": "generate the 2026 yearly Instagram report",
+      "files": [],
+      "expected_output": "Given only a partial set of months, the skill inventories which months are present, confirms with the user, marks absent months Unavailable, leaves visible gaps in trend charts, and labels any annual total by the months it actually covers.",
+      "assertions": [
+        {"text": "Builds and shows a month-by-month source inventory before computing the report", "critical": true},
+        {"text": "Missing months are marked Unavailable rather than interpolated or skipped", "critical": true},
+        {"text": "Trend charts show a visible gap for missing months rather than connecting across them", "critical": true},
+        {"text": "Any annual total is labeled by the months it actually covers, not presented as a full-year figure", "critical": true},
+        {"text": "Figures carried forward from a prior PDF report retain that report's Unavailable markings", "critical": false}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "unrecognized-export-columns",
+      "prompt": "here's the TikTok export for August, make the report",
+      "files": ["evals/fixtures/tiktok_export_2026-08_nonstandard.csv"],
+      "expected_output": "Columns renamed to obvious synonyms (e.g. 'Vid Plays', 'Hearts') get resolved confidently without asking. 'Reposts' triggers a question because TikTok reposts and shares are genuinely distinct features, not just a naming difference. 'Engagement Score' (no schema equivalent) is noted as unused rather than dropped silently or asked about.",
+      "assertions": [
+        {"text": "Confidently maps unambiguous renames (Vid Plays, Hearts) without asking the user", "critical": false},
+        {"text": "Asks about 'Reposts' specifically because it may be a distinct feature from Shares, not merely an unfamiliar column name", "critical": true},
+        {"text": "Does not blanket-ask about every column that doesn't exactly match the documented alias list", "critical": true},
+        {"text": "Notes 'Engagement Score' as unused in the data notes rather than silently dropping it or asking what it is", "critical": false},
+        {"text": "Does not fabricate a metric that isn't present in the supplied export", "critical": true}
+      ]
+    }
+  ]
+}
