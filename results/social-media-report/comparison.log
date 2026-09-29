@@ -1,2 +1,19 @@
 
 === A_original ===
+  [FAIL] rate=3/10 expected=True: can you crunch the numbers in this youtube studio export (views, CTR, 
+  [FAIL] rate=0/10 expected=True: compare these two facebook insights csvs and tell me if reach actually
+  [PASS] rate=7/10 expected=True: our social manager wants the monthly IG numbers wrapped up — engagemen
+  [PASS] rate=6/10 expected=True: analyze this tiktok creator export and tell me which videos drove foll
+  [PASS] rate=5/10 expected=True: our youtube RPM fell in the september export vs august — is that a rea
+  [PASS] rate=10/10 expected=True: pull together the monthly facebook performance summary for the client 
+  [PASS] rate=7/10 expected=True: which instagram month this summer had the best engagement rate? the in
+  [PASS] rate=10/10 expected=True: the tiktok numbers for september are in — how are we tracking against 
+  [FAIL] rate=1/10 expected=True: can you produce the Q3 youtube channel report as a pdf, using the thre
+  [PASS] rate=0/10 expected=False: our instagram engagement has been dropping for months — give me 5 cont
+  [PASS] rate=0/10 expected=False: convert uploads/facebook_export_2026-08.csv to an xlsx with a frozen h
+  [PASS] rate=0/10 expected=False: what's the difference between reach and impressions on facebook?
+  [PASS] rate=0/10 expected=False: write a linkedin post announcing our record instagram growth this quar
+  [PASS] rate=0/10 expected=False: build a monthly shopify sales performance pdf report from the orders e
+A_original: 11/14 passed
+
+=== B_loop_iter2 ===

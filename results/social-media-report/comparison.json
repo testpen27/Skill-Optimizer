@@ -1,0 +1,125 @@
+{
+  "A_original": {
+    "skill_name": "social-media-report",
+    "description": "Builds a professional, corporate-style PDF performance report for one social platform (Facebook, Instagram, TikTok, or YouTube) from uploaded analytics exports \u2014 computing engagement rate, CTR, follower growth, and revenue, benchmarking against industry defaults, and rendering through a locked template so every month's report looks identical. Use this whenever the user asks to build, generate, or update a social media report for a platform and time period (\"build a Facebook report for August,\" \"generate the 2026 yearly Instagram report\"), or uploads platform analytics exports and asks to analyze, compare, or summarize the numbers \u2014 even if they don't say the word \"report.\"",
+    "results": [
+      {
+        "query": "can you crunch the numbers in this youtube studio export (views, CTR, RPM) and tell me how the channel did last month vs the two before",
+        "should_trigger": true,
+        "trigger_rate": 0.3,
+        "triggers": 3,
+        "runs": 10,
+        "pass": false
+      },
+      {
+        "query": "compare these two facebook insights csvs and tell me if reach actually went down or if it's just because february is shorter",
+        "should_trigger": true,
+        "trigger_rate": 0.0,
+        "triggers": 0,
+        "runs": 10,
+        "pass": false
+      },
+      {
+        "query": "our social manager wants the monthly IG numbers wrapped up \u2014 engagement, reach, revenue \u2014 from the xlsx i just dropped in",
+        "should_trigger": true,
+        "trigger_rate": 0.7,
+        "triggers": 7,
+        "runs": 10,
+        "pass": true
+      },
+      {
+        "query": "analyze this tiktok creator export and tell me which videos drove follower growth in august",
+        "should_trigger": true,
+        "trigger_rate": 0.6,
+        "triggers": 6,
+        "runs": 10,
+        "pass": true
+      },
+      {
+        "query": "our youtube RPM fell in the september export vs august \u2014 is that a real drop or noise? files are in uploads",
+        "should_trigger": true,
+        "trigger_rate": 0.5,
+        "triggers": 5,
+        "runs": 10,
+        "pass": true
+      },
+      {
+        "query": "pull together the monthly facebook performance summary for the client from the exports in uploads, same layout as always",
+        "should_trigger": true,
+        "trigger_rate": 1.0,
+        "triggers": 10,
+        "runs": 10,
+        "pass": true
+      },
+      {
+        "query": "which instagram month this summer had the best engagement rate? the insights exports are uploaded",
+        "should_trigger": true,
+        "trigger_rate": 0.7,
+        "triggers": 7,
+        "runs": 10,
+        "pass": true
+      },
+      {
+        "query": "the tiktok numbers for september are in \u2014 how are we tracking against industry benchmarks for engagement?",
+        "should_trigger": true,
+        "trigger_rate": 1.0,
+        "triggers": 10,
+        "runs": 10,
+        "pass": true
+      },
+      {
+        "query": "can you produce the Q3 youtube channel report as a pdf, using the three studio exports I dropped in",
+        "should_trigger": true,
+        "trigger_rate": 0.1,
+        "triggers": 1,
+        "runs": 10,
+        "pass": false
+      },
+      {
+        "query": "our instagram engagement has been dropping for months \u2014 give me 5 content ideas to turn it around",
+        "should_trigger": false,
+        "trigger_rate": 0.0,
+        "triggers": 0,
+        "runs": 10,
+        "pass": true
+      },
+      {
+        "query": "convert uploads/facebook_export_2026-08.csv to an xlsx with a frozen header row, nothing else",
+        "should_trigger": false,
+        "trigger_rate": 0.0,
+        "triggers": 0,
+        "runs": 10,
+        "pass": true
+      },
+      {
+        "query": "what's the difference between reach and impressions on facebook?",
+        "should_trigger": false,
+        "trigger_rate": 0.0,
+        "triggers": 0,
+        "runs": 10,
+        "pass": true
+      },
+      {
+        "query": "write a linkedin post announcing our record instagram growth this quarter",
+        "should_trigger": false,
+        "trigger_rate": 0.0,
+        "triggers": 0,
+        "runs": 10,
+        "pass": true
+      },
+      {
+        "query": "build a monthly shopify sales performance pdf report from the orders export",
+        "should_trigger": false,
+        "trigger_rate": 0.0,
+        "triggers": 0,
+        "runs": 10,
+        "pass": true
+      }
+    ],
+    "summary": {
+      "total": 14,
+      "passed": 11,
+      "failed": 3
+    }
+  }
+}
