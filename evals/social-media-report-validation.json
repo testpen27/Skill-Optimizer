@@ -1,0 +1,12 @@
+[
+  {"query": "our youtube RPM fell in the september export vs august — is that a real drop or noise? files are in uploads", "should_trigger": true},
+  {"query": "pull together the monthly facebook performance summary for the client from the exports in uploads, same layout as always", "should_trigger": true},
+  {"query": "which instagram month this summer had the best engagement rate? the insights exports are uploaded", "should_trigger": true},
+  {"query": "the tiktok numbers for september are in — how are we tracking against industry benchmarks for engagement?", "should_trigger": true},
+  {"query": "can you produce the Q3 youtube channel report as a pdf, using the three studio exports I dropped in", "should_trigger": true},
+  {"query": "our instagram engagement has been dropping for months — give me 5 content ideas to turn it around", "should_trigger": false},
+  {"query": "convert uploads/facebook_export_2026-08.csv to an xlsx with a frozen header row, nothing else", "should_trigger": false},
+  {"query": "what's the difference between reach and impressions on facebook?", "should_trigger": false},
+  {"query": "write a linkedin post announcing our record instagram growth this quarter", "should_trigger": false},
+  {"query": "build a monthly shopify sales performance pdf report from the orders export", "should_trigger": false}
+]
