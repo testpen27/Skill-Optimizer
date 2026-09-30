@@ -34,3 +34,47 @@ A_original: 11/14 passed
 B_loop_iter2: 13/14 passed
 
 === C_targeted_patch ===
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/user/Skill-Optimizer/scripts/trigger_probe.py", line 161, in run_single_query
+    return _run_once(query, skill_name, skill_description, timeout, project_root, model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Skill-Optimizer/scripts/trigger_probe.py", line 224, in _run_once
+    _require_real_turn(text, proc)
+  File "/home/user/Skill-Optimizer/scripts/trigger_probe.py", line 142, in _require_real_turn
+    raise ProbeFailure(
+trigger_probe.ProbeFailure: result subtype='success' is_error=True: You've hit your org's monthly spend limit · ask your admin to raise it at claude.ai/admin-settings/usage · your session limit resets 12:20pm (UTC)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/concurrent/futures/process.py", line 261, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Skill-Optimizer/scripts/trigger_probe.py", line 164, in run_single_query
+    raise ProbeAbort(f"probe failed {attempt}x, aborting pass: {e}") from e
+trigger_probe.ProbeAbort: probe failed 1x, aborting pass: result subtype='success' is_error=True: You've hit your org's monthly spend limit · ask your admin to raise it at claude.ai/admin-settings/usage · your session limit resets 12:20pm (UTC)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/Skill-Optimizer/scripts/compare_descriptions.py", line 77, in <module>
+    main()
+  File "/home/user/Skill-Optimizer/scripts/compare_descriptions.py", line 54, in main
+    output = run_eval_mod.run_eval(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Skill-Optimizer/skill-creator/scripts/run_eval.py", line 222, in run_eval
+    query_triggers[query].append(future.result())
+                                 ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+trigger_probe.ProbeAbort: probe failed 1x, aborting pass: result subtype='success' is_error=True: You've hit your org's monthly spend limit · ask your admin to raise it at claude.ai/admin-settings/usage · your session limit resets 12:20pm (UTC)
+A_original: already scored, skipping
+B_loop_iter2: already scored, skipping
+
+=== C_targeted_patch ===
