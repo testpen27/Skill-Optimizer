@@ -64,6 +64,7 @@ compared against.
 """
 
 import json
+import math
 import re
 import sys
 from pathlib import Path
@@ -289,6 +290,47 @@ def _fmt_value(x, _pos=None):
 _fmt_thousands = _fmt_value
 
 
+class _AxisValueFormatter(mticker.Formatter):
+    """Tick labels whose precision follows the tick spacing, not the value.
+
+    _fmt_value picks decimals from each value's magnitude alone, so a narrow
+    range collapses: engagement rates of 1.83-1.96 all read "1.9", interactions
+    of 2.9K-4.1K all read "3K". Here one unit (M, K or none) is chosen for the
+    whole axis from its largest tick, and just enough decimals to tell adjacent
+    ticks apart.
+    """
+
+    _ticks: list = []
+
+    def set_locs(self, locs):
+        self._ticks = [float(v) for v in locs]
+
+    def format_ticks(self, values):
+        self.set_locs(values)
+        return [self(v, i) for i, v in enumerate(values)]
+
+    def __call__(self, x, pos=None):
+        locs = self._ticks or [x]
+        top = max(abs(v) for v in locs)
+        scale, suffix = (1_000_000, "M") if top >= 1_000_000 else (
+            (1_000, "K") if top >= 1_000 else (1, ""))
+        steps = [abs(b - a) for a, b in zip(locs, locs[1:]) if b != a]
+        if steps:
+            # Fewest decimals that show the step exactly (0.25 needs 2, not 1).
+            step = min(steps) / scale
+            decimals = next((d for d in range(4)
+                             if abs(step * 10**d - round(step * 10**d)) < 1e-6 * max(1, step * 10**d)), 3)
+        else:
+            decimals = 0 if top >= 100 else 1
+        if x == 0:
+            return "0"
+        return f"{x / scale:.{decimals}f}{suffix}"
+
+
+def _axis_formatter():
+    return _AxisValueFormatter()
+
+
 def _pad_category_axis(ax, n_categories: int):
     """Keep bars a sensible width when there are only one or two categories.
 
@@ -324,10 +366,30 @@ def build_chart(spec: dict, out_path: Path) -> Path:
             ax.text(0.99, 0.03, "Shaded = data not supplied", transform=ax.transAxes,
                     ha="right", va="bottom", fontsize=7.5, color="#94A3B8")
         if len(spec["series"]) > 1:
-            ax.legend(frameon=False, loc="upper left", fontsize=8)
-        ax.yaxis.set_major_formatter(mticker.FuncFormatter(_fmt_value))
-        if len(labels) > 6:
-            plt.xticks(rotation=0, fontsize=8)
+            # "best" keeps the legend off the lines; a fixed corner sat on top
+            # of a series that started high.
+            ax.legend(frameon=False, loc="best", fontsize=8)
+        # One point, or a flat series, autoscales to a sliver around the value
+        # and every tick reads the same; give it a real range instead.
+        values = [v for s in spec["series"] for v in s["values"]
+                  if isinstance(v, (int, float)) and not math.isnan(v)]
+        if values and max(values) == min(values):
+            top = max(values)
+            ax.set_ylim(0, top * 1.2 if top > 0 else 1)
+        ax.yaxis.set_major_formatter(_axis_formatter())
+        if len(labels) > 12:
+            # One tick per day overlaps illegibly; show ~10 evenly spaced
+            # ticks (always including the last), angled if the labels are long.
+            step = max(1, len(labels) // 10)
+            idx = list(range(0, len(labels), step))
+            if idx[-1] != len(labels) - 1:
+                idx.append(len(labels) - 1)
+            angled = max(len(str(lbl)) for lbl in labels) > 3
+            ax.set_xticks(idx)
+            ax.set_xticklabels([labels[i] for i in idx], rotation=45 if angled else 0,
+                               ha="right" if angled else "center", fontsize=8)
+        elif len(labels) > 6:
+            plt.xticks(fontsize=8)
 
     elif ctype == "composition":
         labels = spec["labels"]
@@ -339,7 +401,7 @@ def build_chart(spec: dict, out_path: Path) -> Path:
         _pad_category_axis(ax, len(labels))
         ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.12),
                    ncol=min(len(spec["series"]), 4), fontsize=8)
-        ax.yaxis.set_major_formatter(mticker.FuncFormatter(_fmt_value))
+        ax.yaxis.set_major_formatter(_axis_formatter())
 
     elif ctype == "waterfall":
         cats = spec["categories"]
@@ -352,7 +414,7 @@ def build_chart(spec: dict, out_path: Path) -> Path:
             ax.bar(c, height, bottom=bottom, color=color, width=0.6)
             cum += v
         ax.axhline(0, color="#334155", linewidth=0.8)
-        ax.yaxis.set_major_formatter(mticker.FuncFormatter(_fmt_value))
+        ax.yaxis.set_major_formatter(_axis_formatter())
         plt.xticks(rotation=20, ha="right")
 
     elif ctype == "benchmark":
@@ -363,7 +425,7 @@ def build_chart(spec: dict, out_path: Path) -> Path:
             ax.text(b.get_x() + b.get_width() / 2, v, f"{v:g}%", ha="center",
                     va="bottom", fontsize=9, color="#334155")
         _pad_category_axis(ax, len(cats))
-        ax.yaxis.set_major_formatter(mticker.FuncFormatter(_fmt_value))
+        ax.yaxis.set_major_formatter(_axis_formatter())
 
     else:
         raise ValueError(f"Unknown chart type: {ctype}")
