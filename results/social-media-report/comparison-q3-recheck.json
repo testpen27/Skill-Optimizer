@@ -1,0 +1,59 @@
+{
+  "A_original": {
+    "skill_name": "social-media-report",
+    "description": "Builds a professional, corporate-style PDF performance report for one social platform (Facebook, Instagram, TikTok, or YouTube) from uploaded analytics exports \u2014 computing engagement rate, CTR, follower growth, and revenue, benchmarking against industry defaults, and rendering through a locked template so every month's report looks identical. Use this whenever the user asks to build, generate, or update a social media report for a platform and time period (\"build a Facebook report for August,\" \"generate the 2026 yearly Instagram report\"), or uploads platform analytics exports and asks to analyze, compare, or summarize the numbers \u2014 even if they don't say the word \"report.\"",
+    "results": [
+      {
+        "query": "can you produce the Q3 youtube channel report as a pdf, using the three studio exports I dropped in",
+        "should_trigger": true,
+        "trigger_rate": 0.2,
+        "triggers": 2,
+        "runs": 10,
+        "pass": false
+      }
+    ],
+    "summary": {
+      "total": 1,
+      "passed": 0,
+      "failed": 1
+    }
+  },
+  "B_loop_iter2": {
+    "skill_name": "social-media-report",
+    "description": "Use this when the user has analytics exports (CSV/XLSX, or a prior PDF report) from Facebook, Instagram, TikTok, or YouTube and wants the numbers turned into insight \u2014 comparing periods, explaining whether a metric's move is real or just a calendar artifact (like reach \"dropping\" because February is shorter), computing engagement rate, CTR, follower growth, and revenue, and benchmarking against industry norms \u2014 or wants those numbers assembled into a polished, client-ready PDF report for a given platform and time period. Triggers on requests to build, generate, update, analyze, compare, explain, or summarize social platform performance data, even without the word \"report\" and even for a quick comparison between two export files rather than a formal report. One platform per run. Not for general-purpose charting or spreadsheet cleanup unrelated to these four platforms, content calendars, captions, ad-account issues, posting automation, or API scripts to pull the underlying stats.",
+    "results": [
+      {
+        "query": "can you produce the Q3 youtube channel report as a pdf, using the three studio exports I dropped in",
+        "should_trigger": true,
+        "trigger_rate": 0.3,
+        "triggers": 3,
+        "runs": 10,
+        "pass": false
+      }
+    ],
+    "summary": {
+      "total": 1,
+      "passed": 0,
+      "failed": 1
+    }
+  },
+  "C_targeted_patch": {
+    "skill_name": "social-media-report",
+    "description": "Builds a professional, corporate-style PDF performance report for one social platform (Facebook, Instagram, TikTok, or YouTube) from uploaded analytics exports \u2014 computing engagement rate, CTR, follower growth, and revenue, benchmarking against industry defaults, and rendering through a locked template so every month's report looks identical. Use this whenever the user asks to build, generate, or update a social media report for a platform and time period (\"build a Facebook report for August,\" \"generate the 2026 yearly Instagram report\"), or shares platform analytics exports (Facebook or Instagram Insights, TikTok, YouTube Studio) and asks any question about the numbers \u2014 comparing periods, checking whether a change is real, or finding what drove it \u2014 even if they don't say the word \"report\" and want a quick answer rather than a PDF.",
+    "results": [
+      {
+        "query": "can you produce the Q3 youtube channel report as a pdf, using the three studio exports I dropped in",
+        "should_trigger": true,
+        "trigger_rate": 0.5,
+        "triggers": 5,
+        "runs": 10,
+        "pass": true
+      }
+    ],
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    }
+  }
+}
