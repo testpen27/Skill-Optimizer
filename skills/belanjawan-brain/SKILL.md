@@ -1,114 +1,60 @@
 ---
 name: belanjawan-brain
 description: |
-  UI-free "brain" (JS logic engine) for an interactive Malaysian Budget 2026 citizen-benefits Q&A ("Semak faedah Belanjawan", `B26Brain`, `brain.js`). Trigger when the user wants to touch this engine's code: wire its `evaluate()` output into a front end (WordPress, React, vanilla HTML); add, change or re-theme its questions, benefits, tiers or rules; edit or fix its Bahasa Melayu wording; run or extend `test.js`/`verify2.js` verification; inspect its output fields or files; or rebuild the same rule-based Q&A engine for a new source document (Belanjawan 2027, a state budget, another policy text). Also trigger on mentions of "belanjawan-brain", "B26Brain", "kalkulator faedah", or "soal jawab belanjawan", even unnamed.
+  The "brain" of an interactive Malaysian Budget 2026 citizen-benefits Q&A ("Semak faedah Belanjawan", `B26Brain`, `brain.js`): a verified rule engine handed over as one Markdown build spec, `BRAIN-2026.md`, for Claude Code to build the checker from (WordPress, React, vanilla HTML). Trigger when the user wants the brain or its spec; wants to add, change or re-theme its questions, benefits, tiers or rules; edit or fix its Bahasa Melayu wording; run or extend `test.js`/`verify2.js` verification; check what it covers or excludes; or rebuild the same rule-based Q&A brain for a new source document (Belanjawan 2027, a state budget, another policy text). Also trigger on mentions of "belanjawan-brain", "B26Brain", "kalkulator faedah", or "soal jawab belanjawan", even unnamed.
 
   Do NOT trigger for someone just asking what's in Budget 2026, wanting a plain-language summary of tax reliefs/benefits/prices, or any question answerable by reading the budget speech itself -- that's a content question, not a tool-building one.
 ---
 
 # Belanjawan Brain — Belanjawan 2026 Q&A
 
-A self-contained logic engine (no UI, no dependencies) that turns a person's answers into a personalised, themed list of what Budget 2026 means for them. The UI is built separately; this skill is the brain.
+Builds and maintains the "brain" of an interactive Budget 2026 citizen-benefits checker: the questions, the rules that turn answers into a personalised list of what the budget means for a person, the STR/SARA rates, and the Malay wording. The rules live in a verified JavaScript engine inside this skill. **What the skill hands over is one Markdown file, `BRAIN-2026.md`**, which another session or skill (for example `tv3-interactive-embed` in Claude Code) uses to build the actual checker.
 
 ---
 
-## ⭐ OUTPUTS — what this skill gives you
+## ⭐ OUTPUT — what to hand over
 
-### A. Files in this skill
+**`BRAIN-2026.md`** (next to this file) is the deliverable. It is the complete build spec:
+
+- the question flow and all 15 questions, with options and when each is shown;
+- the derived facts the rules use, and the three-valued rule logic;
+- the STR + SARA calculator with its full rate table and reasons;
+- every result card (115), with its rule, Malay text and speech source;
+- advisories, six worked examples with the exact results a build must reproduce, known limits;
+- the **"Not to be built"** list: measures read in the speech and left out on purpose.
+
+**Hand over only `BRAIN-2026.md`.** When the user asks for the brain, the spec, or something to give Claude Code, send that one file. Don't send the `.js` engine, JSON files or other working files: they are internal to this skill. The user builds the checker from the Markdown in a separate step.
+
+`BRAIN-2026.md` is generated, never edited by hand: `node scripts/export-brain-md.js`. Round 1 of verification (`test.js`) fails if it is out of date with the engine.
+
+### Files in this skill (internal)
 
 | File | What it is | When to use it |
 |---|---|---|
-| **`scripts/belanjawan2026-brain.js`** | **The brain.** Questions, 13 themes, 115 items, STR/SARA calculator, rule engine. UMD: `window.B26Brain` in the browser, `require()` in Node. | Load it in the front end. This is the only file the UI needs. |
-| **`references/excluded-2026.md`** | **Not to be built.** Every measure in the speech that reaches people but was deliberately left out (29, mostly by the user's decision), with its text and reason, plus a count of all other exclusions. Generated from the ledger. | Read before developing the calculator. Don't implement anything on it without asking the user. |
-| `scripts/test.js` | Verification round 1: 14,740 checks (speech figures, branching, personas, integrity, Bahasa Melayu lint, "no government-spending figures" lint) | After any edit: `node scripts/test.js` |
+| **`BRAIN-2026.md`** | **The hand-over spec**, generated from the engine | Send this to the user |
+| `scripts/export-brain-md.js` | Writes `BRAIN-2026.md` from the engine, running it for rates, reasons, advisories and worked examples | After any change to the engine or the ledger's exclusions |
+| `scripts/belanjawan2026-brain.js` | The engine: questions, 13 themes, 115 items, STR/SARA calculator, rule evaluator. Source of truth for the spec | Edit here when logic or wording changes |
+| `references/excluded-2026.md` | The "not to be built" list on its own (also the last section of `BRAIN-2026.md`). Generated from the ledger | Regenerate when exclusions change |
+| `scripts/test.js` | Verification round 1: 14,741 checks (speech figures, branching, personas, integrity, Bahasa Melayu lint, "no government-spending figures" lint, spec up to date) | After any edit: `node scripts/test.js` |
 | `scripts/verify2.js` | Verification round 2: 30,000 simulated users walking the real question flow and checking invariants | After any edit: `node scripts/verify2.js` |
-| `scripts/gen-spec.js` | Regenerates the question and rule tables from the code | After any edit: run it, then paste `_generated.md` into the spec |
-| `references/LOGIK-BELANJAWAN-2026.md` | Full spec: design, tiers, STR table, every question and rule with sources, verification record | Read before changing logic |
-| `references/sample-output.json` | A real `evaluate()` result (single mother, 45) | Read before building the results screen |
+| `scripts/gen-spec.js` | Regenerates the question and rule tables for the design spec below | After any edit: run it, then paste `_generated.md` into the spec |
+| `references/LOGIK-BELANJAWAN-2026.md` | Design record: decisions, tiers, every question and rule with sources, verification record, the user's decisions (§9) | Read before changing logic |
 | `references/bm-style.md` | Bahasa Melayu style guide (incl. user corrections such as no "makan gaji") | Read before writing or editing any user-facing text |
 | `references/building-a-new-brain.md` | Method for rebuilding the brain for a new document (e.g. Belanjawan 2027) | Read when the source document changes |
-| `scripts/split-source.js` | Splits a speech (Markdown or `pdftotext` output) into numbered units (paragraph bullets, Lampiran I items, Lampiran II entries) and flags the ones likely to affect a person | First step of any rebuild or source check: `node scripts/split-source.js ub27.md units27.json` |
+| `scripts/split-source.js` | Splits a speech (Markdown or `pdftotext` output) into numbered units (paragraph bullets, Lampiran I items, Lampiran II entries) and flags the ones likely to affect a person | First step of any rebuild or source check: `node scripts/split-source.js ub27.md` |
 | `scripts/text-signals.js` | The word signals behind the flags, learned from the 2024–2026 speeches | Extend when a rebuild finds a measure it didn't flag |
 | `scripts/learn-programmes.js` | Learns citizen programme names across years; lists programmes missing from the newest speech | Rebuild step 1, with all past speeches |
 | `scripts/coverage.js` | Fails unless every unit has a ledger decision and every brain item traces to a unit | After any edit that touches items: `node scripts/coverage.js ub26.md references/ledger-2026.tsv --brain scripts/belanjawan2026-brain.js` |
 | `references/ledger-2026.tsv` | One decision per unit of Ucapan Belanjawan 2026, built from the text only; open `gap`/`ask` rows are questions for the user | Read before adding items; update it with every item change |
-| `references/programmes.json` | Citizen programmes learned from past speeches, with the years each appears | Used by the scorer; read for the cross-year view |
+| `references/programmes.json` | Citizen programmes learned from past speeches (data file for the scorer) | Internal; read for the cross-year view |
 | `references/text-signals.md` | How the text-only method works, its measured recall, and what three years of speeches taught | Read before a rebuild or when extending the signals |
-| `scripts/benchmark.js` | Scores the flagging against a blind answer key, learning programme names only from earlier years; `--draw` samples a key, `--blind` prints pieces without their scores for labelling | After changing `text-signals.js` or `learn-programmes.js`: `node scripts/benchmark.js ub26.md references/ledger-2026.tsv --learn-from ub24.md ub25.md` |
-| `scripts/annotate-source.js` | Builds the hand-over outputs from the ledger: `excluded-<year>.md`, and the speech as HTML/PDF with used units shaded light green and excluded units yellow, each tagged with its item or reason | Hand-over (rebuild step 9). Send the user the PDF. |
+| `scripts/benchmark.js` | Scores the flagging against a blind answer key, learning programme names only from earlier years | After changing `text-signals.js` or `learn-programmes.js`: `node scripts/benchmark.js ub26.md references/ledger-2026.tsv --learn-from ub24.md ub25.md` |
+| `scripts/annotate-source.js` | Writes `excluded-<year>.md`, and the speech as HTML/PDF with used units shaded light green and excluded units yellow | Hand-over (rebuild step 9). Send the user the PDF as a review aid |
 | `references/ledger-2025.tsv` | Blind answer key for all 1,210 units of Ucapan Belanjawan 2025 (labels only; there is no 2025 brain) | Benchmark key, and last year's baseline when rebuilding for 2027 |
 
-### B. What the brain returns at runtime — `B26Brain.evaluate(answers)`
+**Build only what the brain contains.** The "Not to be built" section lists measures that were read and left out on purpose: the Lemon Law, the electricity tariff change, the non-citizen stamp duty, rare-disease funding, free helmets and others. If the user wants one, it goes through step 5 and into the engine first, then the spec is regenerated.
 
-```js
-{
-  version: '2026.5', dataAsOf: '2026-09-27',
-  strSara: {                       // cash estimate card
-    eligible: true | false | null, // null = user skipped something needed
-    category, label, str, sara, saraMonthly, total,
-    totalRange?,                   // when number of children was skipped
-    totalIfEkasih?,                // when eKasih answered "Tidak pasti"
-    reason                         // BM sentence when not eligible / unknown
-  },
-  byTheme: [                       // ← render this: themes in display order, items pre-sorted
-    { id, label, count, items: [
-      { id, kind: 'manfaat' | 'kesan',
-        tier: 'layak' | 'semak' | 'mungkin' | 'kesan', tierLabel,
-        title, value, summary, who, action,  // all in Bahasa Melayu, ready to display
-        reasons: [...],                      // why it matched ("Berumur 40 tahun ke atas")
-        needsConfirm: [...],                 // what the user skipped (for 'mungkin')
-        timing, src, web, portal }           // date note, speech reference, links
-    ]}
-  ],
-  advisories: [{ type: 'action' | 'info' | 'disclaimer', text }], // show above or below results; disclaimer is always last
-  counts: { total, layak, semak, mungkin, kesan }
-}
-```
-
-**Tiers to show the user** (labels in `B26Brain.TIERS`):
-
-| Tier | Label | Meaning |
-|---|---|---|
-| `layak` | Berkemungkinan layak | Likely eligible |
-| `semak` | Semak kelayakan | Means-tested or selective; the person should check with the agency |
-| `mungkin` | Mungkin layak | Depends on something the person skipped; show `needsConfirm` |
-| `kesan` | Perubahan yang menjejaskan anda | A cost increase or new obligation (tobacco, alcohol, clinic fees, LLP tax). Style it differently from benefits. |
-
----
-
-## Integrating into a front end (the usual Claude Code task)
-
-The UI must **only call the API** and never re-implement eligibility logic, because the rules are verified and duplicating them breaks that guarantee.
-
-**Build only what the brain contains.** `references/excluded-2026.md` lists the measures that were read and left out on purpose: the Lemon Law, the electricity tariff change, the non-citizen stamp duty, rare-disease funding, free helmets and others. Don't add cards, questions or calculations for them. If the user wants one, it goes through step 5 and into the brain first.
-
-```js
-let answers = {};
-function next() {
-  const q = B26Brain.getVisibleQuestions(answers).find(q => answers[q.id] === undefined);
-  if (!q) return renderResults(B26Brain.evaluate(answers));
-  renderQuestion(q);
-}
-function onAnswer(id, value) {                         // value: number | string | string[]
-  answers = B26Brain.pruneAnswers({ ...answers, [id]: value });   // drops answers to questions that became hidden
-  next();
-}
-```
-
-Rendering rules:
-
-- **`q.type`** is `number` (age), `single` or `multi`.
-- **Exclusive options:** an option with `exclusive: true` ("Tiada yang berkaitan", "Tidak mahu menyatakan") must clear the other selections in a multi-select.
-- **Skip:** the option with `skip: true` (value `'skip'`) can be shown as a separate "Langkau" link instead of a normal button. Only `age` and `region` have no skip.
-- **Help text:** show `q.help` as small text under the question when present.
-- **Back navigation:** remove the answer from `answers`, then call `next()`.
-- **Results screen:**
-  - Show the STR/SARA card first. Show a range when `totalRange` or `totalIfEkasih` is present.
-  - Then show `byTheme`, and each item's `reasons` as "Kenapa anda layak".
-  - Label `timing` items as time-sensitive. Several are already past, e.g. Penghargaan SARA (Feb 2026).
-  - Always show the disclaimer advisory.
-- **WordPress:** load the brain with `<script src=".../belanjawan2026-brain.js"></script>` before the UI script, or inline it in a Custom HTML block. It is plain ES5 with no build step.
-- **Don't rewrite the Bahasa Melayu text in the UI.** It has been reviewed. Edit it in the brain, following `references/bm-style.md`, then re-run verification.
+**Card tiers** (defined in the spec, section 4): `layak` Berkemungkinan layak; `semak` Semak kelayakan (means-tested, check with the agency); `mungkin` Mungkin layak (depends on something skipped); `kesan` Perubahan yang menjejaskan anda (a cost or obligation, styled differently).
 
 ## Changing the logic
 
@@ -122,6 +68,7 @@ Rendering rules:
    - **When you're unsure whether an item belongs in the brain, or in which theme, ask the user.** Don't decide silently. Use the Q&A format in step 5 of `references/building-a-new-brain.md`, and always leave room for the user to say something else.
 3. **Run verification twice, every time:** `node scripts/test.js && node scripts/verify2.js`. Both must pass with 0 failures and all items reachable. Add a persona test for any new rule, and add any new wording mistake you fix to the lint's banned list.
 4. Run `node scripts/gen-spec.js` and update the tables in `references/LOGIK-BELANJAWAN-2026.md`. Bump `VERSION` and `DATA_AS_OF`.
+5. Regenerate the hand-over: `node scripts/export-brain-md.js`. Test round 1 fails until you do.
 
 ## Rebuilding for a new document (e.g. Belanjawan 2027)
 

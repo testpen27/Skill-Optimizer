@@ -20,7 +20,7 @@ Use this when the user wants the same Q&A for a new source, such as Belanjawan 2
 - Get the text: a Markdown export of the speech, or `pdftotext -layout` on the PDF. It must include the speech, **Lampiran I** (Ringkasan) and **Lampiran II** (Langkah Cukai).
 - Split it into numbered units:
   ```bash
-  node scripts/split-source.js ub27.md units27.json
+  node scripts/split-source.js ub27.md
   ```
   It fails if paragraph or Lampiran I numbering has a gap. Fix the extraction before going on, because a gap is lost text. Each unit gets a reference (`Perenggan 184 (butiran 2)`, `Lampiran I Bil. 29`, `Lampiran II — Lampiran 36`), the signals it contains, and `flagged: true` if it is likely to affect a person.
 - Update what past speeches taught, then see the cross-year view:
@@ -200,9 +200,12 @@ Remind the user of their own rule against unnecessary questions.
 - Bump `VERSION`.
 - Tell the user the pass counts from both rounds.
 - List the step 5 decisions in a few lines so the user can see their choices were applied.
-- **Write the "not to be built" list** for whoever develops the calculator, and ship it with the brain:
+- **Write the "not to be built" list:**
   `node scripts/annotate-source.js ub27.md references/ledger-2027.tsv --excluded references/excluded-2027.md`.
-  It names every person-level measure that was read and left out (user decision, non-citizen, already over), with the text, and counts everything else excluded by reason. Point to it from `SKILL.md`, so a developer in Claude Code knows what not to implement.
+  It names every person-level measure that was read and left out (user decision, non-citizen, already over), with the text, and counts everything else excluded by reason.
+- **Generate the hand-over spec and send it:**
+  `node scripts/export-brain-md.js --brain scripts/belanjawan2027-brain.js`.
+  This writes `BRAIN-2027.md`: questions, derived facts, rule logic, the STR/SARA rate table, every card with its Malay text and source, worked examples, and the "not to be built" list. **This one Markdown file is the deliverable.** The user passes it to Claude Code (for example the `tv3-interactive-embed` skill) to build the checker. Don't send the `.js` engine or any JSON; they stay inside the skill.
 - **Give the user the annotated speech:**
   `node scripts/annotate-source.js ub27.md references/ledger-2027.tsv --brain scripts/belanjawan2027-brain.js --out <dir> --pdf`.
   It writes the speech as HTML and PDF, with every unit the brain uses shaded light green (tagged with the item) and every excluded unit shaded yellow (tagged with the reason). Send the PDF with `SendUserFile`. Look through it yourself first: a wrong decision is easy to spot in context. In 2026, this caught a mySalam line that had been excluded as governance.

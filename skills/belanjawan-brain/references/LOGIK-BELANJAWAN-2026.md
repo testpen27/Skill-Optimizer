@@ -13,6 +13,8 @@ A blind re-read of the 838 speech units that had been set aside unread (done for
 - **New `ptptn_sekatan_perjalanan`:** travel ban on PTPTN borrowers who can pay but default (`kesan`). It is shown only to adults who tick the new option "Mempunyai pinjaman PTPTN" in the existing `assets` question. No new question was added.
 - **Extended `latihan_tvet`:** now also names KPWKM's TVET courses for care workers.
 
+**Hand-over format (1 Oct 2026):** the skill's deliverable is now one Markdown build spec, `BRAIN-2026.md`, generated from the engine by `scripts/export-brain-md.js`. Claude Code or another skill (such as `tv3-interactive-embed`) builds the checker from it. The engine and its tests stay inside the skill, and `test.js` fails if the spec is out of date. `references/sample-output.json` was removed.
+
 ## What changed in v2026.4
 
 A text-only read of the whole speech (1,279 units, every one given a ledger decision in `ledger-2026.tsv`) found measures the brain lacked. The user decided each one in three question rounds on 26 Sep 2026 (see §9). This version adds **19 items**, taking the brain from 94 to 113:

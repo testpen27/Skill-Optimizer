@@ -143,6 +143,17 @@ B.BENEFITS.forEach(b => ['value', 'summary', 'who'].forEach(k => spend.forEach(r
   ok(`E2 spending figure ${re} in ${b.id}.${k}`, !re.test(b[k]), b[k]);
 })));
 
+/* ---- G. Hand-over spec is current ---- */
+{
+  const fs = require('fs'), path = require('path'), os = require('os'), cp = require('child_process');
+  const committed = path.join(__dirname, '..', 'BRAIN-' + String(B.VERSION).slice(0, 4) + '.md');
+  const tmp = path.join(os.tmpdir(), 'brain-spec-check-' + process.pid + '.md');
+  cp.execFileSync(process.execPath, [path.join(__dirname, 'export-brain-md.js'), '--out', tmp], { stdio: 'ignore' });
+  ok('G1 ' + path.basename(committed) + ' matches the engine (run node scripts/export-brain-md.js)',
+    fs.existsSync(committed) && fs.readFileSync(committed, 'utf8') === fs.readFileSync(tmp, 'utf8'));
+  fs.unlinkSync(tmp);
+}
+
 console.log(`Verification round 1: ${pass} passed, ${fail} failed.`);
 fails.forEach(f => console.log('  FAIL ' + f));
 console.log(`Catalogue: ${B.BENEFITS.length} items in ${B.THEMES.length} themes; ${B.QUESTIONS.length} questions.`);
