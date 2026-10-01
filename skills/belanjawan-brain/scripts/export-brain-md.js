@@ -19,6 +19,8 @@ const brainFile = path.resolve(arg('--brain') || path.join(__dirname, 'belanjawa
 const B = require(brainFile);
 const YEAR = String(B.VERSION).slice(0, 4);
 const out = path.resolve(arg('--out') || path.join(ROOT, `BRAIN-${YEAR}.md`));
+const controlsFile = path.join(ROOT, 'references', 'output-controls.md');
+const engineSrc = fs.readFileSync(brainFile, 'utf8');
 const excludedFile = path.resolve(arg('--excluded') || path.join(ROOT, 'references', `excluded-${YEAR}.md`));
 
 const opName = { eq: '=', ne: '≠', in: 'is one of', nin: 'is not one of', gte: '≥', gt: '>', lte: '≤', lt: '<', has: 'includes', hasAny: 'includes any of' };
@@ -175,11 +177,30 @@ md.push(`# Semak Faedah Belanjawan ${YEAR}: build spec (v${B.VERSION})`, '');
 md.push(`> Generated from \`scripts/${path.basename(brainFile)}\` by \`scripts/export-brain-md.js\` (brain data as of ${B.DATA_AS_OF}). Don't edit this file by hand: change the brain, run the tests, and regenerate.`, '');
 md.push('## How to use this file', '');
 md.push(`This is the complete specification of the citizen-benefits checker for Ucapan Belanjawan ${YEAR}. Hand it to Claude Code (for example with the \`tv3-interactive-embed\` skill) to build the checker.`, '');
-md.push('- **Build exactly what is here.** Every question, rule, rate and Malay sentence comes from the speech and its annexes and has passed the engine\'s tests. Use the Malay text as written.');
+md.push('- **Run the engine; don\'t rewrite it.** The tested engine is included in full in the appendix. Put it in the page as-is, inside a `<script>`, and drive the questions and results from its API ("Using the engine" below). Sections 1 to 7 describe what the engine does, to help you design the screens and check the result. Don\'t re-implement them.');
+md.push('- **Follow the output controls.** They say which parts of the results screen are fixed and which are yours to design.');
+md.push('- **Use the Malay text as written.** Every question, rule, rate and sentence comes from the speech and its annexes and has passed the engine\'s tests.');
 md.push('- **Never invent or approximate a figure.** If something you need is not in this file, ask the user.');
 md.push('- **Build nothing from "Not to be built"** at the end of the file. Each item there was read in the speech and left out on purpose.');
-md.push('- **Check your build against the worked examples.** Each lists answers and the exact results they must produce.');
+md.push('- **Check your build with the worked examples.** Enter each example\'s answers through your screens; the results must match.');
 md.push(`- **Size:** ${B.QUESTIONS.length} questions, ${B.THEMES.length} themes, ${B.BENEFITS.length} result cards, one STR + SARA calculator.`, '');
+
+md.push('## Using the engine', '');
+md.push('The engine is plain ES5 JavaScript with no dependencies (about ' + Math.round(engineSrc.length / 1024) + ' KB). Paste the appendix code into a `<script>` before your own script; it defines `window.B26Brain` (in Node, `require()` returns the same object).', '');
+md.push('| Call | Returns |', '|---|---|');
+md.push('| `B26Brain.getVisibleQuestions(answers)` | The questions to show now, in order, with branching applied. Each has `id`, `type` (`number`, `single`, `multi`), `text`, `help`, `options` (`v`, `l`, `exclusive`, `skip`). |');
+md.push('| `B26Brain.pruneAnswers(answers)` | The answers with those to now-hidden questions removed. Call it after every answer. |');
+md.push('| `B26Brain.evaluate(answers)` | The result: `strSara`, `byTheme`, `advisories`, `counts` (below). |');
+md.push('| `B26Brain.TIERS`, `B26Brain.THEMES`, `B26Brain.VERSION`, `B26Brain.DATA_AS_OF` | Tier labels, theme order, version and data date. |', '');
+md.push('Question loop:', '');
+md.push('```js', 'let answers = {};', 'function next() {', '  const q = B26Brain.getVisibleQuestions(answers).find(q => answers[q.id] === undefined);', '  if (!q) return renderResults(B26Brain.evaluate(answers));', '  renderQuestion(q);', '}', 'function onAnswer(id, value) {            // value: number | string | string[]', '  answers = B26Brain.pruneAnswers({ ...answers, [id]: value });', '  next();', '}', '// Back: delete answers[lastId], then next().', '```', '');
+md.push('Result of `evaluate()`:', '');
+md.push('```js', '{', '  version, dataAsOf,', '  strSara: { eligible: true | false | null, category, label, str, sara, saraMonthly, total,', '            totalRange?, totalIfEkasih?, reason },      // reason: Malay sentence when not eligible / unknown', '  byTheme: [ { id, label, count, items: [', '    { id, kind, tier, tierLabel, title, value, summary, who, action,', '      reasons: [...], needsConfirm: [...], timing, src, portal } ] } ],', '  advisories: [ { type: "action" | "info" | "disclaimer", text } ],   // disclaimer is last', '  counts: { total, layak, semak, mungkin, kesan }', '}', '```', '');
+
+if (fs.existsSync(controlsFile)) {
+  md.push('## Output controls', '');
+  md.push(fs.readFileSync(controlsFile, 'utf8').replace(/^# .*\n+/, '').replace(/ This file is copied into[^\n]*/, '').replace(/^## /gm, '### ').trim(), '');
+}
 
 md.push('## 1. Question flow', '');
 md.push('- Ask the questions in the order listed. Show a question only when its "Shown when" condition is true (conditions use the derived facts in section 3, computed from the answers so far).');
@@ -288,5 +309,9 @@ if (fs.existsSync(excludedFile)) {
   md.push(ex.trim(), '');
 }
 
-fs.writeFileSync(out, md.join('\n').replace(/\n{3,}/g, '\n\n'));
+md.push('## Appendix: engine code', '');
+md.push(`The complete engine, \`${path.basename(brainFile)}\` v${B.VERSION}, exactly as tested. Copy it unchanged.`, '');
+let body = md.join('\n').replace(/\n{3,}/g, '\n\n');
+body += '\n````js\n' + engineSrc.replace(/\s+$/, '') + '\n````\n';
+fs.writeFileSync(out, body);
 console.log(`wrote ${path.relative(process.cwd(), out)} (${B.QUESTIONS.length} questions, ${B.BENEFITS.length} cards, ${EXAMPLES.length} worked examples)`);

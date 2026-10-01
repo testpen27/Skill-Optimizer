@@ -21,9 +21,11 @@ Builds and maintains the "brain" of an interactive Budget 2026 citizen-benefits 
 - the STR + SARA calculator with its full rate table and reasons;
 - every result card (115), with its rule, Malay text and speech source;
 - advisories, six worked examples with the exact results a build must reproduce, known limits;
-- the **"Not to be built"** list: measures read in the speech and left out on purpose.
+- the **"Not to be built"** list: measures read in the speech and left out on purpose;
+- the **output controls** (`references/output-controls.md`): which parts of the results screen are fixed and which the builder may design;
+- the **engine code itself**, in full, as an appendix. The builder pastes it into the page and calls its API instead of re-implementing the rules, so the checker runs exactly the tested logic.
 
-**Hand over only `BRAIN-2026.md`.** When the user asks for the brain, the spec, or something to give Claude Code, send that one file. Don't send the `.js` engine, JSON files or other working files: they are internal to this skill. The user builds the checker from the Markdown in a separate step.
+**Hand over only `BRAIN-2026.md`.** When the user asks for the brain, the spec, or something to give Claude Code, send that one file. The engine travels inside it; don't send the `.js` file, JSON files or other working files separately. The user builds the checker from the Markdown in a separate step.
 
 `BRAIN-2026.md` is generated, never edited by hand: `node scripts/export-brain-md.js`. Round 1 of verification (`test.js`) fails if it is out of date with the engine.
 
@@ -32,6 +34,7 @@ Builds and maintains the "brain" of an interactive Budget 2026 citizen-benefits 
 | File | What it is | When to use it |
 |---|---|---|
 | **`BRAIN-2026.md`** | **The hand-over spec**, generated from the engine | Send this to the user |
+| `references/output-controls.md` | Which parts of the results screen are fixed (`locked`) and which the builder may design (`undecided`). Copied into `BRAIN-2026.md` | When the user decides how the output must look: edit the status or rule, then regenerate |
 | `scripts/export-brain-md.js` | Writes `BRAIN-2026.md` from the engine, running it for rates, reasons, advisories and worked examples | After any change to the engine or the ledger's exclusions |
 | `scripts/belanjawan2026-brain.js` | The engine: questions, 13 themes, 115 items, STR/SARA calculator, rule evaluator. Source of truth for the spec | Edit here when logic or wording changes |
 | `references/excluded-2026.md` | The "not to be built" list on its own (also the last section of `BRAIN-2026.md`). Generated from the ledger | Regenerate when exclusions change |
