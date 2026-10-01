@@ -7,7 +7,9 @@ description: Build interactive elements for Buletin TV3 articles (quizzes, eligi
 
 Interactive pieces for Buletin TV3 articles, pasted into a WordPress-style CMS as raw HTML. Two things cause nearly all the trouble: the host page (theme CSS, editor auto-paragraphing, stripped scripts) and outside code, which runs with the full privileges of the news site once it is on the page. The rules below manage those two.
 
-Defaults, taken from the user's earlier embed (`references/house-style.md`): Malay copy with `lang="ms"`, mostly phone readers, raw HTML pasted into a Custom HTML block, the same look family. Confirm once if unsure, then stop asking.
+Defaults, taken from the user's earlier embed (`references/house-style.md`): Malay copy with `lang="ms"`, raw HTML pasted into a Custom HTML block, the same look family. Confirm once if unsure, then stop asking.
+
+**~70% of readers are on a phone; PC is the compatibility floor, not the design target.** Design and judge every piece at 360px first, not 1200px — if something is awkward at 360px and fine at 1200px, that is the failure that matters, even if it is tempting to fix the common case instead. Section 2 and the embed contract's rule 10 exist because of this; the lint script (`scripts/lint_embed.py`) now fails the build (ERROR, not WARN) on mobile-breaking text size and non-fluid fixed widths for the same reason, and the preview (`scripts/make_preview.py`) opens on the 360px phone button by default instead of the widest one.
 
 ## 0. Gate: nothing from outside is used until the user approves it
 
@@ -28,7 +30,7 @@ This is news, so never invent figures, criteria, dates or quotes. Use only what 
 
 Design width follows the earlier embed: `width:100%; max-width:1200px`, with an inner card up to 1050px. The user is widening the article column to fit this. Until then the embed shrinks to whatever column it is in, so stay fluid from 320px up and never use fixed pixel widths.
 
-Default to auto height. For slide decks, stack the slides in one grid cell so the stage is as tall as the tallest slide (snippet in `references/house-style.md`) instead of a fixed pixel height. Never put `overflow:hidden` on text. Check 360px, 768px and 1200px in the preview.
+Default to auto height. For slide decks, stack the slides in one grid cell so the stage is as tall as the tallest slide (snippet in `references/house-style.md`) instead of a fixed pixel height. Never put `overflow:hidden` on text. Check 360px first, then 768px and 1200px, in the preview — 360px is where a real layout problem (wrapped text, overlapping controls, a button pushed off-stage) actually shows up; the wider checks are for catching regressions there, not the primary check.
 
 ## 3. Pick the shape
 

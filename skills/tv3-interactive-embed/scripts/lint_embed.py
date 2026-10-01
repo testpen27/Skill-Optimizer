@@ -4,6 +4,10 @@
 Usage:  python lint_embed.py FILE [--root ROOT_ID] [--allow-host HOST ...]
 Exit code 1 if any ERROR is found (WARN never fails the run).
 Heuristic, regex-based: it catches the common problems, it is not a security proof.
+
+Mobile checks are ERROR, not WARN: this skill's readers are ~70% phone (see
+SKILL.md's Defaults), so a mobile-breaking issue is a build failure, not a
+style note, the same way a third-party-script violation is.
 """
 import argparse, re, sys
 from urllib.parse import urlparse
@@ -124,14 +128,20 @@ def main():
                 if root and not re.match(rf"#{re.escape(root)}(?![\w-])", s):
                     add("ERROR", pos, f"selector leaks into the host page: `{s[:60]}`", html)
             if re.search(r"(^|;)\s*height\s*:\s*\d+px", body) and re.search(r"overflow\s*:\s*hidden", body):
-                add("WARN", pos, f"fixed height + overflow:hidden can clip text on small phones: `{prelude[:50]}`", html)
+                add("WARN", pos, f"fixed height + overflow:hidden: confirm this is a deliberate scroll track, not text that wraps taller on a narrow phone and gets clipped: `{prelude[:50]}`", html)
+    for m in re.finditer(r"(?:^|[;{])\s*width\s*:\s*(\d+)px", html):
+        if int(m.group(1)) >= 300:
+            add("WARN", m.start(), f"fixed width:{m.group(1)}px; a 320-360px phone viewport can't shrink this — use %, max-width, or clamp() instead", html)
+    for m in re.finditer(r"<(input|textarea|select)\b[^>]*\bstyle\s*=\s*[\"'][^\"']*font-size\s*:\s*(\d+(?:\.\d+)?)px", html, re.I):
+        if float(m.group(2)) < 16:
+            add("ERROR", m.start(), f"<{m.group(1)}> font-size {m.group(2)}px; use >= 16px or iOS auto-zooms into the field on tap", html)
     for m in re.finditer(r"font-size\s*:\s*(\d+(?:\.\d+)?)px", html):
-        if float(m.group(1)) < 12:
-            add("WARN", m.start(), f"tiny font-size {m.group(1)}px (readers on phones); use >= 14px for body text", html)
+        if float(m.group(1)) < 14:
+            add("ERROR", m.start(), f"font-size {m.group(1)}px on a ~70% phone audience; body text must be >= 14px", html)
     tiny = re.findall(r"text-\[(\d+(?:\.\d+)?)px\]", html)
-    small = [t for t in tiny if float(t) < 12]
+    small = [t for t in tiny if float(t) < 14]
     if small:
-        add("WARN", 0, f"{len(small)} Tailwind classes set text below 12px (e.g. text-[{small[0]}px])")
+        add("ERROR", 0, f"{len(small)} Tailwind classes set text below 14px (e.g. text-[{small[0]}px])")
 
     # script risk patterns
     scripts = [(m.start(1), m.group(1)) for m in re.finditer(r"<script\b(?![^>]*\bsrc\b)[^>]*>(.*?)</script>", html, re.S | re.I)]

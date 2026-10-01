@@ -11,6 +11,11 @@ buttons; --width adds one more (labelled "Artikel"), or --widths adds several na
 use this whenever the user has given more than one article-column measurement to compare
 (e.g. a current width and a planned future width), a copy-code button, and placeholder
 article text above and below the embed.
+
+The preview OPENS on 360 (phone) by default, not the widest button: ~70% of readers are
+on phones, so that is the view that matters on first glance, and the desktop/article width
+is a secondary check, not the baseline. Pass --default-width to open on something else
+(e.g. when the user specifically asked to check the desktop/article layout first).
 """
 import argparse, html, re
 
@@ -101,6 +106,8 @@ def main():
     ap.add_argument("--width", type=int, help="single extra width, labelled 'Artikel <W>'")
     ap.add_argument("--widths", nargs="+", default=[],
                      help='one or more WIDTH or WIDTH:"Label" (e.g. 811:"Artikel sekarang" 1200:"Artikel akan datang")')
+    ap.add_argument("--default-width", type=int,
+                     help="which width the preview opens on (default: 360, phone -- ~70%% of readers)")
     a = ap.parse_args()
     src = open(a.embed, encoding="utf-8").read()
     title = a.title
@@ -118,7 +125,7 @@ def main():
             w_str, label = item, None
         w = int(float(w_str))
         widths.append((w, label or auto_label(w)))
-    default_w = widths[-1][0]
+    default_w = a.default_width if a.default_width else widths[0][0]
 
     buttons = "\n".join(
         f'<button type="button" data-w="{w}" aria-pressed="{"true" if w == default_w else "false"}">{html.escape(label)}</button>'
