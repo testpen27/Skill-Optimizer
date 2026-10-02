@@ -199,7 +199,7 @@ md.push('```js', '{', '  version, dataAsOf,', '  strSara: { eligible: true | fal
 
 if (fs.existsSync(controlsFile)) {
   md.push('## Output controls', '');
-  md.push(fs.readFileSync(controlsFile, 'utf8').replace(/^# .*\n+/, '').replace(/ This file is copied into[^\n]*/, '').replace(/^## /gm, '### ').trim(), '');
+  md.push(fs.readFileSync(controlsFile, 'utf8').replace(/^# .*\n+/, '').replace(/ This file is copied into[^\n]*/, '').replace(/^## /gm, '### ').replace(/\{\{YEAR\}\}/g, YEAR).trim(), '');
 }
 
 md.push('## 1. Question flow', '');

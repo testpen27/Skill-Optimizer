@@ -152,6 +152,10 @@ B.BENEFITS.forEach(b => ['value', 'summary', 'who'].forEach(k => spend.forEach(r
   ok('G1 ' + path.basename(committed) + ' matches the engine (run node scripts/export-brain-md.js)',
     fs.existsSync(committed) && fs.readFileSync(committed, 'utf8') === fs.readFileSync(tmp, 'utf8'));
   fs.unlinkSync(tmp);
+  const spec = fs.readFileSync(committed, 'utf8'), yr = String(B.VERSION).slice(0, 4);
+  ['KALKULATOR BELANJAWAN ' + yr, 'KETAHUI MANFAAT ANDA!', 'MULA', 'Tutup'].forEach(t =>
+    ok('G2 front page text in spec: ' + t, spec.includes(t)));
+  ok('G3 no unreplaced {{YEAR}} in spec', !spec.includes('{{YEAR}}'));
 }
 
 console.log(`Verification round 1: ${pass} passed, ${fail} failed.`);

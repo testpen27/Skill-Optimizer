@@ -75,6 +75,29 @@ These come from the user's earlier decisions and are not optional.
 - In a multi-select, an exclusive option ("Tiada yang berkaitan", "Tidak mahu menyatakan") clears the other selections.
 - Build nothing from the "Not to be built" list.
 
+### Front page (locked)
+
+The page the reader sees first. The text below is exact; don't change, translate or restyle the wording (the casing is part of it).
+
+```
+KALKULATOR BELANJAWAN 2026      <- heading (H)
+
+KETAHUI MANFAAT ANDA!               <- tagline (T)
+
+[ MULA ]                            <- button
+```
+
+- Only these three elements are on the front page: the heading, the tagline and the **MULA** button. Nothing else is added: no questions, no summary, no extra copy.
+- **Clicking MULA opens the calculator in an in-page modal:** a dialog over the same page, with the page behind it dimmed. It is not a new browser window (`window.open`), because popup blockers and phones make that unreliable, and the embed has to stay one self-contained block.
+- The modal contains the whole calculator: the question flow first, then the results screen. Nothing of the calculator shows on the front page itself.
+- The modal has a visible close button labelled "Tutup" that returns to the front page. Standard modal behaviour applies: `role="dialog"` with `aria-modal="true"`, focus moves into the dialog on open and back to MULA on close, Esc closes it, and the page behind doesn't scroll while it's open.
+- On a phone the modal fills the screen. Its content must fit and scroll inside it, with no clipped text and no horizontal scrolling.
+- Colours, fonts, imagery and spacing of the front page and modal are not decided yet; the builder designs them (see "Look and feel" below).
+
+### Look and feel (undecided)
+
+No style has been chosen. The builder may use a design skill or the house style of the skill it's working with, as long as every rule above is followed.
+
 ### Controls the user will decide
 
 | # | Control | Status | Rule when locked |
