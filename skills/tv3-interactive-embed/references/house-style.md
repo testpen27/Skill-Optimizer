@@ -1,6 +1,20 @@
-# House look and how the earlier embed reached the page
+# House look: default (serious) vs fun register
 
-Source: the user's own file DERMA_DARAH.HTML (World Blood Donor Day slide deck). Use it as the pointer for new embeds: same family, fewer problems.
+Two looks, picked per-build per SKILL.md §1/§4 — not one fixed "house style":
+
+- **Default look** (below): the actual `buletintv3.my` brand, scraped from the live site 2026-10-02 (branding extraction, 95% color confidence). Use for serious-register topics and whenever the topic isn't clearly fun.
+- **Fun register** (further down): the look from the user's own file DERMA_DARAH.HTML (World Blood Donor Day slide deck) — a deliberate campaign skin, not the site's identity. Use only for fun-eligible topics, after confirming per SKILL.md §1.
+
+Both share the same embed-contract shapes (§5 in SKILL.md) and the same slide/no-fixed-height technique below — only the palette, frame decoration and button finish change.
+
+## Default look — matches buletintv3.my (serious register)
+
+- **Brand colors:** primary/accent `#0E4B98` (deep blue), secondary `#EDF5FF` (light blue tint), background `#FFFFFF`, text/link `#0B4DA3`.
+- **Type:** Gantari; fall back to the system stack unless the user approves loading it through the gate (§0) — the live site itself doesn't actually load a web font for this, it's a declared family with no visible `@font-face`.
+- **Frame:** `width:100%; max-width:1200px`, centred, white background, a simple border or hairline rather than the fun register's thick dark border — keep it closer to the site's own flat, uncluttered chrome.
+- **Buttons:** flat, sharp or lightly rounded corners (the live site uses `0px`), no block-shadow bounce — a simple pressed/hover state (background shifts to the light blue tint, or opacity change) is enough. Primary action: `#0E4B98` background, white text.
+- **Contrast:** `#0E4B98` and `#0B4DA3` on white are both ≈8.5:1 — comfortably clears AA (4.5:1) and AAA (7:1) for normal text, so no contrast traps to route around here, unlike the fun palette below.
+- **Mood:** professional, medium energy — this is "official TV3," not a campaign moment. No particles, no pill badges, no playful motion beyond what §5 rule 10 already allows (tap-triggered only).
 
 ## Measured article width
 
@@ -16,7 +30,7 @@ Readings 1 and 3 agree within 13px (810.674 vs 823.984) — well inside the nois
 
 The user plans to widen the article's text column to make use of the full 1200px later. Until then, build fluid (`width:100%; max-width:1200px`) so the embed already fills whatever the column is, and preview both the current text width and the 1200px target so the user can compare (`scripts/make_preview.py ... --widths 820:"Artikel sekarang" 1200:"Artikel akan datang"`).
 
-## Look
+## Fun register — campaign skin (topic-gated, not default)
 - **Frame:** `width:100%; max-width:1200px`, centred. Cream `#FFFDF7` background with a pink dot pattern (`radial-gradient(#FFC4D0 1.5px, transparent 1.5px)`, 30px grid), 4px solid `#3D3033` border, radius 1.5rem (1rem on phones), shadow `0 10px 25px rgba(61,48,51,.15)`, margin 2rem auto (1rem on phones), `touch-action: pan-y`.
 - **Card ("sticker"):** white, 4px `#3D3033` border, radius 1.5rem, hard shadow `6px 6px 0 rgba(61,48,51,.15)`, max-width 1050px, centred.
 - **Buttons ("bouncy"):** 3px dark border, `0 4px 0` dark shadow; pressed state moves down 4px and drops the shadow.
@@ -25,8 +39,8 @@ The user plans to widen the article's text column to make use of the full 1200px
 - **Slide types seen:** hero, info, status, compatibility matrix, eligibility checklist, mini-game.
 - **Type:** the file names Fredoka (headings) and Quicksand (body) but never loads them. Use the system stack unless the user approves Google Fonts through the gate.
 
-## Contrast (computed against WCAG AA, 4.5:1 for normal text)
-Fails: white text on pink 2.72, pink text on cream 2.67. Passes: dark on pink 4.63, white on red 4.83, red on cream 4.75, dark on yellow 8.98, dark on blue 6.44, dark on green 7.34, dark on cream 12.37. So use pink for fills, borders and decoration with dark text on top, and red for primary buttons with white text.
+## Contrast — fun register only (computed against WCAG AA, 4.5:1 for normal text)
+The default look's contrast is already covered above (no traps). This table is for the fun register's palette, which does have traps: fails white text on pink 2.72, pink text on cream 2.67. Passes: dark on pink 4.63, white on red 4.83, red on cream 4.75, dark on yellow 8.98, dark on blue 6.44, dark on green 7.34, dark on cream 12.37. So use pink for fills, borders and decoration with dark text on top, and red for primary buttons with white text.
 
 ## How the earlier embed reached the page (lessons)
 - The CMS accepts pasted raw HTML with inline `<style>` and `<script>`, so no build step is needed.

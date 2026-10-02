@@ -24,6 +24,8 @@ Read `references/source-vetting.md` before you search for, fetch, or adopt anyth
 
 Ask at most one question; otherwise state your assumptions and build. You need the reader's one job for the piece, the facts it presents with their source, and where it sits in the article. See `references/input-recipes.md` for exactly what to ask for per shape — a quiz needs facts (pull from the article if not given), a calculator needs the actual formula or rate table (always ask if not given; never approximate one).
 
+**Also infer the register — serious or fun — from the topic, and say so as part of the one question budget.** Crime, courts, deaths, disasters, policy, tax, health/safety → serious. Sports results, entertainment, trivia, lifestyle, seasonal or cultural campaigns → fun-eligible. State the inferred register and the look it implies (§4) in the same message as whatever else you're confirming — e.g. "Ini kes jenayah, jadi saya guna gaya rasmi TV3 (biru/putih); beritahu jika anda nak gaya 'fun' sebaliknya." Don't spend a second question on it. Once confirmed for this conversation, keep it unless the topic itself shifts register.
+
 This is news, so never invent figures, criteria, dates or quotes. Use only what the article or the user's sources say, show a "Sumber" line with a date inside the embed, and for health, legal or safety content point to the responsible authority. Where a fact is missing, leave an obvious placeholder such as `[Soalan 1: ...]`. A placeholder gets caught in review; a plausible wrong fact gets published.
 
 ## 2. Width and height
@@ -46,7 +48,9 @@ Default to auto height. For slide decks, stack the slides in one grid cell so th
 
 ## 4. Design and quality bar
 
-Keep the family look from `references/house-style.md` (frame, sticker card, bouncy buttons, palette) unless the user asks for something new, and fix the palette's contrast traps listed there. Consult these marketplace skills when relevant; read their SKILL.md rather than copying from memory.
+**Default to the real site identity**, not a one-off campaign look: `references/house-style.md`'s "Default look" section has the actual `buletintv3.my` brand tokens (deep blue `#0E4B98`, light blue `#EDF5FF`, white, Gantari) — scraped from the live site, not guessed. This is the serious register and the default for anything that isn't explicitly fun per §1.
+
+For a fun-register topic, switch to `references/house-style.md`'s "Fun register" section instead (the cream/pink sticker card, bouncy buttons) — same embed-contract shape rules either way, just a different skin. Either way, say which one you're using per §1's one-question budget before building, and fix the palette's contrast traps listed there. Consult these marketplace skills when relevant; read their SKILL.md rather than copying from memory.
 
 - `frontend-design` (`/mnt/skills/public/frontend-design/SKILL.md`): ground the design in the article's subject, write a short token plan before any code, avoid template defaults, spend boldness in one place, then critique your own work.
 - `design:accessibility-review`: WCAG 2.1 AA. Text contrast 4.5:1 (3:1 for large text and UI parts), everything keyboard operable, visible focus, touch targets at least 44px, labels on inputs, results announced via `aria-live`, no autoplay, layout survives 200% zoom.
