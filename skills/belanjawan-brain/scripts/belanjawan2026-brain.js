@@ -25,7 +25,7 @@
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var VERSION = '2026.5';
+  var VERSION = '2026.6';
   var DATA_AS_OF = '2026-09-27';
   var SKIP = 'skip';
   var SKIP_LABEL = 'Tidak mahu menyatakan';
@@ -211,9 +211,16 @@
   var TIERS = {
     layak:   { label: 'Berkemungkinan layak', rank: 0 },
     semak:   { label: 'Semak kelayakan',       rank: 1 },
-    mungkin: { label: 'Mungkin layak',         rank: 2 },
-    kesan:   { label: 'Perubahan yang menjejaskan anda', rank: 3 }
+    mungkin: { label: 'Mungkin layak',         rank: 2 }
   };
+
+  // Results screen groups (user's decision, 2 Oct 2026): what the person clearly qualifies for first,
+  // then everything that is means-tested or depends on a skipped answer. No theme categories.
+  // Cost changes (kind 'kesan', e.g. tobacco duty) are tiered like any other card and get no warning label.
+  var GROUPS = [
+    { id: 'layak',   label: 'Berkemungkinan layak', tiers: ['layak'] },
+    { id: 'mungkin', label: 'Mungkin layak',        tiers: ['semak', 'mungkin'] }
+  ];
 
   /* ================================================================
    * 3. FACT DERIVATION
@@ -427,7 +434,8 @@
 
   /* ================================================================
    * 6. CATALOGUE
-   *   kind: 'manfaat' (benefit) | 'kesan' (a change that costs the person more / new obligation)
+   *   kind: 'manfaat' (benefit) | 'kesan' (a change that costs the person more / new obligation;
+   *         internal only: shown like any other card, with no warning label)
    *   certainty: 'high' = rule reflects the real criterion; 'check' = means-tested, quota-based or partly unasked
    *   value/summary describe what the PERSON gets or pays — never government allocation totals.
    * ================================================================ */
@@ -1407,7 +1415,7 @@
     BENEFITS.forEach(function (b) {
       var r = test(b.when, facts);
       if (r.v === false) return;
-      var tier = b.kind === 'kesan' ? 'kesan' : (r.v === null ? 'mungkin' : (b.certainty === 'check' ? 'semak' : 'layak'));
+      var tier = r.v === null ? 'mungkin' : (b.certainty === 'check' ? 'semak' : 'layak');
       results.push({
         id: b.id, theme: b.theme, kind: b.kind, tier: tier, tierLabel: TIERS[tier].label,
         title: b.title, value: b.value, summary: b.summary, who: b.who, action: b.action,
@@ -1423,13 +1431,21 @@
       return { id: t.id, label: t.label, count: items.length, items: items };
     }).filter(function (g) { return g.count > 0; });
 
+    // Cards for the results grid: every result except the STR + SARA card, which is shown as the panel on top.
+    var cards = results.filter(function (x) { return !x.compute; });
+    var groups = GROUPS.map(function (g) {
+      var items = [];
+      g.tiers.forEach(function (t) { items = items.concat(cards.filter(function (x) { return x.tier === t; })); });
+      return { id: g.id, label: g.label, count: items.length, items: items };
+    }).filter(function (g) { return g.count > 0; });
+
     var counts = { total: results.length };
     Object.keys(TIERS).forEach(function (k) { counts[k] = results.filter(function (x) { return x.tier === k; }).length; });
 
     return {
       version: VERSION, dataAsOf: DATA_AS_OF,
       facts: facts, strSara: strSara,
-      results: results, byTheme: byTheme,
+      results: results, groups: groups, byTheme: byTheme,
       advisories: buildAdvisories(facts, strSara, a),
       counts: counts
     };
@@ -1460,7 +1476,7 @@
 
   return {
     VERSION: VERSION, DATA_AS_OF: DATA_AS_OF, SKIP: SKIP,
-    QUESTIONS: QUESTIONS, THEMES: THEMES, TIERS: TIERS, BENEFITS: BENEFITS,
+    QUESTIONS: QUESTIONS, THEMES: THEMES, TIERS: TIERS, GROUPS: GROUPS, BENEFITS: BENEFITS,
     getVisibleQuestions: getVisibleQuestions, pruneAnswers: pruneAnswers, isComplete: isComplete,
     deriveFacts: deriveFacts, calcStrSara: calcStrSara, evaluate: evaluate,
     _test: test

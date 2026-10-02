@@ -163,11 +163,8 @@ function exampleBlock([title, answers], i) {
     lines.push(t + '.');
   } else lines.push(`**STR + SARA:** ${s.eligible === null ? 'unknown' : 'not eligible'}. "${s.reason}"`);
   lines.push('');
-  for (const tier of Object.keys(B.TIERS)) {
-    const ids = r.results.filter(x => x.tier === tier).map(x => '`' + x.id + '`');
-    if (ids.length) lines.push(`- **${B.TIERS[tier].label}** (\`${tier}\`, ${ids.length}): ${ids.join(', ')}`);
-  }
-  lines.push(`- **Total cards:** ${r.counts.total}`, '');
+  for (const g of r.groups) lines.push(`- **${g.label}** (${g.count} cards, in this order): ${g.items.map(x => '`' + x.id + '`').join(', ')}`);
+  lines.push(`- **Cards in the grid:** ${r.groups.reduce((n, g) => n + g.count, 0)} (plus the STR + SARA panel on top${r.results.some(x => x.id === 'str_sara') ? '' : ', which here shows the reason instead of amounts'})`, '');
   return lines.join('\n');
 }
 
@@ -191,11 +188,13 @@ md.push('| Call | Returns |', '|---|---|');
 md.push('| `B26Brain.getVisibleQuestions(answers)` | The questions to show now, in order, with branching applied. Each has `id`, `type` (`number`, `single`, `multi`), `text`, `help`, `options` (`v`, `l`, `exclusive`, `skip`). |');
 md.push('| `B26Brain.pruneAnswers(answers)` | The answers with those to now-hidden questions removed. Call it after every answer. |');
 md.push('| `B26Brain.evaluate(answers)` | The result: `strSara`, `byTheme`, `advisories`, `counts` (below). |');
-md.push('| `B26Brain.TIERS`, `B26Brain.THEMES`, `B26Brain.VERSION`, `B26Brain.DATA_AS_OF` | Tier labels, theme order, version and data date. |', '');
+md.push('| `B26Brain.GROUPS`, `B26Brain.TIERS`, `B26Brain.VERSION`, `B26Brain.DATA_AS_OF` | Results group headings, tier labels, version and data date. |', '');
 md.push('Question loop:', '');
 md.push('```js', 'let answers = {};', 'function next() {', '  const q = B26Brain.getVisibleQuestions(answers).find(q => answers[q.id] === undefined);', '  if (!q) return renderResults(B26Brain.evaluate(answers));', '  renderQuestion(q);', '}', 'function onAnswer(id, value) {            // value: number | string | string[]', '  answers = B26Brain.pruneAnswers({ ...answers, [id]: value });', '  next();', '}', '// Back: delete answers[lastId], then next().', '```', '');
 md.push('Result of `evaluate()`:', '');
-md.push('```js', '{', '  version, dataAsOf,', '  strSara: { eligible: true | false | null, category, label, str, sara, saraMonthly, total,', '            totalRange?, totalIfEkasih?, reason },      // reason: Malay sentence when not eligible / unknown', '  byTheme: [ { id, label, count, items: [', '    { id, kind, tier, tierLabel, title, value, summary, who, action,', '      reasons: [...], needsConfirm: [...], timing, src, portal } ] } ],', '  advisories: [ { type: "action" | "info" | "disclaimer", text } ],   // disclaimer is last', '  counts: { total, layak, semak, mungkin, kesan }', '}', '```', '');
+md.push('```js', '{', '  version, dataAsOf,', '  strSara: { eligible: true | false | null, category, label, str, sara, saraMonthly, total,', '            totalRange?, totalIfEkasih?, reason },      // reason: Malay sentence when not eligible / unknown', '  groups: [ { id: "layak" | "mungkin", label, count, items: [ card, ... ] } ],   // the results grid, in order; STR + SARA is not in it',
+  '  // card: { id, title, value, summary, reasons: [...], needsConfirm: [...], timing, tier, kind, theme, who, action, src, portal }',
+  '  byTheme: [ ... ],                     // the same cards grouped by theme; not used on the results screen', '  advisories: [ { type: "action" | "info" | "disclaimer", text } ],   // disclaimer is last', '  counts: { total, layak, semak, mungkin }', '}', '```', '');
 
 if (fs.existsSync(controlsFile)) {
   md.push('## Output controls', '');
@@ -231,16 +230,15 @@ md.push('- `AND`: false if any part is false; otherwise unknown if any part is u
 md.push('- `OR`: true if any part is true; otherwise unknown if any part is unknown; otherwise false.');
 md.push('- `NOT`: swaps true and false; unknown stays unknown.', '');
 md.push('Then:', '');
-md.push('| Rule result | Card kind | Certainty | Card tier | Tier label (Malay) |', '|---|---|---|---|---|');
-md.push(`| false | any | any | not shown | — |`);
-md.push(`| true or unknown | \`kesan\` (a cost or obligation) | any | \`kesan\` | ${B.TIERS.kesan.label} |`);
-md.push(`| unknown | \`manfaat\` | any | \`mungkin\` | ${B.TIERS.mungkin.label} |`);
-md.push(`| true | \`manfaat\` | \`check\` | \`semak\` | ${B.TIERS.semak.label} |`);
-md.push(`| true | \`manfaat\` | \`high\` | \`layak\` | ${B.TIERS.layak.label} |`, '');
+md.push('| Rule result | Certainty | Card tier | Results group |', '|---|---|---|---|');
+md.push(`| false | any | not shown | — |`);
+md.push(`| true | \`high\` | \`layak\` | ${B.GROUPS[0].label} |`);
+md.push(`| true | \`check\` | \`semak\` | ${B.GROUPS[1].label} |`);
+md.push(`| unknown | any | \`mungkin\` | ${B.GROUPS[1].label} |`, '');
+md.push('Cost changes (cards of kind `kesan`, such as tobacco or alcohol duty) follow the same table and are shown like any other card, with no warning label.', '');
 md.push('- **"Kenapa anda layak":** list the `why` labels of the conditions that were true (shown with each rule below).');
 md.push('- **"Perlu disahkan":** for a `mungkin` card, list the `why` labels of the conditions that were unknown.');
-md.push(`- **Order:** group cards by theme in this order: ${B.THEMES.map(t => `${t.label} (\`${t.id}\`)`).join('; ')}. Within a theme, order by tier: layak, semak, mungkin, kesan. Hide empty themes.`);
-md.push('- Style `kesan` cards differently from benefits.', '');
+md.push(`- **Groups:** \`evaluate().groups\` gives the results grid ready to show: "${B.GROUPS[0].label}" (layak cards), then "${B.GROUPS[1].label}" (semak cards, then mungkin cards), each in catalogue order. The STR + SARA card is not in the groups; it is the panel on top. Themes are not shown.`, '');
 
 md.push('## 5. STR + SARA calculator', '');
 md.push('Shown as its own card first, and also as the `str_sara` card in the cash theme. Source: Perenggan 158–161; Lampiran I Bil. 29.', '');
@@ -267,13 +265,13 @@ advRows.forEach(r => md.push(r));
 md.push('', '**Topic names in the skipped-questions advisory:** ' + skipNames.join('; ') + '.', '');
 
 md.push(`## 7. Result cards (${B.BENEFITS.length})`, '');
-md.push('Each card shows: title, value, summary, who, action, the tier label, "Kenapa anda layak", and the source. Show `timing` as a time-sensitive note. Write all of it in Malay exactly as given.', '');
+md.push('What each card shows, and when, is set by the output controls ("Results screen"). This list is the full content of every card, for reference. Themes are listed here only to organise the catalogue; they are not shown to the reader.', '');
 B.THEMES.forEach(t => {
   const items = B.BENEFITS.filter(b => b.theme === t.id);
   md.push(`### ${t.label} (\`${t.id}\`, ${items.length})`, '');
   items.forEach(b => {
     md.push(`#### \`${b.id}\`: ${b.title}`, '');
-    md.push(`- **Kind:** ${b.kind === 'kesan' ? '`kesan` (a cost or obligation)' : '`manfaat` (benefit)'}; **certainty:** \`${b.certainty}\``);
+    md.push(`- **Kind:** \`${b.kind}\`${b.kind === 'kesan' ? ' (a cost change; shown like any other card)' : ''}; **certainty:** \`${b.certainty}\``);
     if (b.compute) md.push(`- **Value:** computed by the STR + SARA calculator (section 5)`);
     else md.push(`- **Value:** ${b.value}`);
     md.push(`- **Summary:** ${b.summary}`);

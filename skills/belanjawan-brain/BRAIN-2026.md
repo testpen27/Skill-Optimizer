@@ -1,4 +1,4 @@
-# Semak Faedah Belanjawan 2026: build spec (v2026.5)
+# Semak Faedah Belanjawan 2026: build spec (v2026.6)
 
 > Generated from `scripts/belanjawan2026-brain.js` by `scripts/export-brain-md.js` (brain data as of 2026-09-27). Don't edit this file by hand: change the brain, run the tests, and regenerate.
 
@@ -16,14 +16,14 @@ This is the complete specification of the citizen-benefits checker for Ucapan Be
 
 ## Using the engine
 
-The engine is plain ES5 JavaScript with no dependencies (about 99 KB). Paste the appendix code into a `<script>` before your own script; it defines `window.B26Brain` (in Node, `require()` returns the same object).
+The engine is plain ES5 JavaScript with no dependencies (about 100 KB). Paste the appendix code into a `<script>` before your own script; it defines `window.B26Brain` (in Node, `require()` returns the same object).
 
 | Call | Returns |
 |---|---|
 | `B26Brain.getVisibleQuestions(answers)` | The questions to show now, in order, with branching applied. Each has `id`, `type` (`number`, `single`, `multi`), `text`, `help`, `options` (`v`, `l`, `exclusive`, `skip`). |
 | `B26Brain.pruneAnswers(answers)` | The answers with those to now-hidden questions removed. Call it after every answer. |
 | `B26Brain.evaluate(answers)` | The result: `strSara`, `byTheme`, `advisories`, `counts` (below). |
-| `B26Brain.TIERS`, `B26Brain.THEMES`, `B26Brain.VERSION`, `B26Brain.DATA_AS_OF` | Tier labels, theme order, version and data date. |
+| `B26Brain.GROUPS`, `B26Brain.TIERS`, `B26Brain.VERSION`, `B26Brain.DATA_AS_OF` | Results group headings, tier labels, version and data date. |
 
 Question loop:
 
@@ -48,11 +48,11 @@ Result of `evaluate()`:
   version, dataAsOf,
   strSara: { eligible: true | false | null, category, label, str, sara, saraMonthly, total,
             totalRange?, totalIfEkasih?, reason },      // reason: Malay sentence when not eligible / unknown
-  byTheme: [ { id, label, count, items: [
-    { id, kind, tier, tierLabel, title, value, summary, who, action,
-      reasons: [...], needsConfirm: [...], timing, src, portal } ] } ],
+  groups: [ { id: "layak" | "mungkin", label, count, items: [ card, ... ] } ],   // the results grid, in order; STR + SARA is not in it
+  // card: { id, title, value, summary, reasons: [...], needsConfirm: [...], timing, tier, kind, theme, who, action, src, portal }
+  byTheme: [ ... ],                     // the same cards grouped by theme; not used on the results screen
   advisories: [ { type: "action" | "info" | "disclaimer", text } ],   // disclaimer is last
-  counts: { total, layak, semak, mungkin, kesan }
+  counts: { total, layak, semak, mungkin }
 }
 ```
 
@@ -69,7 +69,7 @@ Each control has a status:
 
 These come from the user's earlier decisions and are not optional.
 
-- Show the Malay text exactly as the engine returns it: titles, values, summaries, reasons, tier labels, advisories. Don't reword, shorten or translate it.
+- Show the Malay text exactly as the engine returns it: titles, values, summaries, reasons, group headings, advisories. Don't reword, shorten or translate it.
 - Always show the disclaimer advisory.
 - Every question except age and region can be skipped. Show the skip option ("Tidak mahu menyatakan"), or a "Langkau" link that sends it.
 - In a multi-select, an exclusive option ("Tiada yang berkaitan", "Tidak mahu menyatakan") clears the other selections.
@@ -94,18 +94,42 @@ KETAHUI MANFAAT ANDA!               <- tagline (T)
 - On a phone the modal fills the screen. Its content must fit and scroll inside it, with no clipped text and no horizontal scrolling.
 - Colours, fonts, imagery and spacing of the front page and modal are not decided yet; the builder designs them (see "Look and feel" below).
 
+### Results screen (locked)
+
+Shown inside the modal after the last question. From top to bottom:
+
+1. **STR + SARA panel.** The main result, on top, as one panel: `strSara.label`, STR, SARA (with the monthly amount) and the total. Add the range when `totalRange` is present, and the "jika berdaftar eKasih" total when `totalIfEkasih` is present. When the person is not eligible or it can't be worked out, show `strSara.reason` instead of amounts.
+2. **The cards, in two groups.** Take them from `evaluate().groups` and keep its order:
+   - first **"Berkemungkinan layak"**: cards the person clearly qualifies for;
+   - then **"Mungkin layak"**: means-tested cards, then cards that depend on a skipped answer.
+
+   Show each group's heading exactly as `group.label`. Hide a group with no cards. No theme categories anywhere.
+3. **Advisories** below the cards, in the engine's order. The disclaimer is last.
+
+**Grid.** Five cards per row on a wide screen, with as many rows as needed. All cards are on one scrolling screen; there are no pages. As the screen narrows, show fewer per row: one or two on a phone.
+
+**Card face: the title only.** No amount, tier label, theme, icon or colour that marks a card as different. Cost changes for the person (tobacco, vape, alcohol, and similar) look exactly like every other card. No warning label of any kind, including the old "Perubahan yang menjejaskan anda".
+
+**Details on hover.** Hovering over a card shows, in this order:
+
+- the amount (`value`);
+- the description (`summary`);
+- the timing note (`timing`), when there is one;
+- "Kenapa anda layak", followed by `reasons`;
+- for cards with `tier` = `mungkin` only: "Perlu disahkan", followed by `needsConfirm`.
+
+Nothing else is shown: not who is eligible (`who`), not what to do next (`action`), not the source, not the tier. On a phone or tablet, where there is no hover, a tap shows the same details and a second tap (or a tap elsewhere) hides them. Cards are focusable, and keyboard focus shows the details too.
+
 ### Look and feel (undecided)
 
 No style has been chosen. The builder may use a design skill or the house style of the skill it's working with, as long as every rule above is followed.
 
-### Controls the user will decide
+### Still undecided
 
 | # | Control | Status | Rule when locked |
 |---|---|---|---|
-| 1 | Results order | undecided | The STR + SARA card comes first. Then themes in the engine's order (`byTheme`), and within a theme layak, semak, mungkin, kesan (the engine already sorts them). Hide empty themes. Style `kesan` cards apart from benefits. |
-| 2 | Card fields | undecided | Every card shows, in this order: tier label, title, value, summary, "Kenapa anda layak" (`reasons`), "Perlu disahkan" (`needsConfirm`, `mungkin` cards only), who, action, timing note, source line (`src`). |
-| 3 | Fixed wording | undecided | Tier labels exactly as `B26Brain.TIERS`. The disclaimer is the last thing on the results screen. No extra marketing or summary copy written by the builder. |
-| 4 | Summary line | undecided | Above the cards, one line with the number of cards and the STR + SARA total, plus counts per tier, built only from `counts` and `strSara`. |
+| 1 | Summary line | undecided | Above the cards, one line with the number of cards and the STR + SARA total, built only from `counts`, `groups` and `strSara`. |
+| 2 | Extra copy | undecided | No text written by the builder beyond what these controls and the engine provide (no intro paragraph, no marketing lines). |
 
 To lock a control, change its status to `locked` (and edit its rule if needed). To add a control, add a row.
 
@@ -182,18 +206,18 @@ Each card has a rule (`when`). Evaluate it with three-valued logic:
 
 Then:
 
-| Rule result | Card kind | Certainty | Card tier | Tier label (Malay) |
-|---|---|---|---|---|
-| false | any | any | not shown | — |
-| true or unknown | `kesan` (a cost or obligation) | any | `kesan` | Perubahan yang menjejaskan anda |
-| unknown | `manfaat` | any | `mungkin` | Mungkin layak |
-| true | `manfaat` | `check` | `semak` | Semak kelayakan |
-| true | `manfaat` | `high` | `layak` | Berkemungkinan layak |
+| Rule result | Certainty | Card tier | Results group |
+|---|---|---|---|
+| false | any | not shown | — |
+| true | `high` | `layak` | Berkemungkinan layak |
+| true | `check` | `semak` | Mungkin layak |
+| unknown | any | `mungkin` | Mungkin layak |
+
+Cost changes (cards of kind `kesan`, such as tobacco or alcohol duty) follow the same table and are shown like any other card, with no warning label.
 
 - **"Kenapa anda layak":** list the `why` labels of the conditions that were true (shown with each rule below).
 - **"Perlu disahkan":** for a `mungkin` card, list the `why` labels of the conditions that were unknown.
-- **Order:** group cards by theme in this order: Bantuan Tunai & Kos Sara Hidup (`cash`); Subsidi Bahan Api & Tenaga (`subsidy`); Kesihatan & Insurans (`health`); Pendidikan (`education`); Perumahan (`housing`); Perlindungan Sosial & Simpanan Persaraan (`protection`); Keluarga & Wanita (`family`); Belia, Latihan & Pekerjaan (`youth`); OKU, Warga Emas & Golongan Rentan (`vulnerable`); Mengikut Pekerjaan (Penjawat Awam, Veteran, Nelayan, Petani, Teksi) (`sector`); Pengangkutan & Mobiliti (`mobility`); Pelepasan Cukai Individu (`tax`); Kes Khas: Gaya Hidup, Pelaburan & Perubahan Harga (`special`). Within a theme, order by tier: layak, semak, mungkin, kesan. Hide empty themes.
-- Style `kesan` cards differently from benefits.
+- **Groups:** `evaluate().groups` gives the results grid ready to show: "Berkemungkinan layak" (layak cards), then "Mungkin layak" (semak cards, then mungkin cards), each in catalogue order. The STR + SARA card is not in the groups; it is the panel on top. Themes are not shown.
 
 ## 5. STR + SARA calculator
 
@@ -257,13 +281,13 @@ Shown above or below the results, in this order. The disclaimer is always last.
 
 ## 7. Result cards (115)
 
-Each card shows: title, value, summary, who, action, the tier label, "Kenapa anda layak", and the source. Show `timing` as a time-sensitive note. Write all of it in Malay exactly as given.
+What each card shows, and when, is set by the output controls ("Results screen"). This list is the full content of every card, for reference. Themes are listed here only to organise the catalogue; they are not shown to the reader.
 
 ### Bantuan Tunai & Kos Sara Hidup (`cash`, 10)
 
 #### `str_sara`: Sumbangan Tunai Rahmah (STR) dan Sumbangan Asas Rahmah (SARA)
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** computed by the STR + SARA calculator (section 5)
 - **Summary:** STR ialah bantuan tunai yang dibayar berperingkat sepanjang tahun. SARA pula ialah kredit bulanan dalam MyKad untuk membeli barangan keperluan asas di kedai yang menyertai program ini.
 - **Who:** Isi rumah berpendapatan RM5,000 dan ke bawah; warga emas tiada pasangan berumur 60 tahun ke atas (RM5,000 dan ke bawah); bujang berumur 21 hingga 59 tahun (RM2,500 dan ke bawah).
@@ -275,7 +299,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `penghargaan_sara`: Penghargaan SARA
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** RM100 (sekali sahaja)
 - **Summary:** Kredit SARA ke dalam MyKad untuk semua rakyat Malaysia berumur 18 tahun ke atas, bagi persiapan Ramadan dan Tahun Baru Cina.
 - **Who:** Semua warganegara pemegang MyKad berumur 18 tahun ke atas.
@@ -287,7 +311,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `bkk_penjawat`: Bantuan Khas Kewangan penjawat awam
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** RM500 (sekali sahaja)
 - **Summary:** Untuk penjawat awam gred 15 dan ke bawah, termasuk yang dilantik secara kontrak.
 - **Who:** Penjawat awam gred 15 dan ke bawah (lantikan tetap atau kontrak).
@@ -299,7 +323,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `bkk_pesara`: Bantuan Khas Kewangan pesara dan veteran
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** RM250 (sekali sahaja)
 - **Summary:** Untuk semua pesara Kerajaan, termasuk veteran yang berpencen dan yang tidak berpencen.
 - **Who:** Pesara Kerajaan dan veteran Angkatan Tentera Malaysia.
@@ -311,7 +335,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `pjm`: Bayaran khas penerima Pingat Jasa Malaysia
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** RM500
 - **Summary:** Sebagai penghargaan kepada anggota tentera yang menerima Pingat Jasa Malaysia.
 - **Who:** Penerima Pingat Jasa Malaysia.
@@ -322,7 +346,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `sumbangan_agama`: Sumbangan khas guru KAFA dan petugas masjid
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** RM500
 - **Summary:** Penghargaan kepada guru KAFA, guru takmir, imam, bilal, tok siak, noja dan marbut.
 - **Who:** Guru KAFA, guru takmir, imam, bilal, tok siak, noja dan marbut.
@@ -333,7 +357,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `jkm_bantuan`: Bantuan bulanan Jabatan Kebajikan Masyarakat (JKM)
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Bantuan bulanan mengikut kategori
 - **Summary:** Antaranya Bantuan Warga Emas, Bantuan Kanak-kanak, Bantuan OKU Tidak Berupaya Bekerja serta Bantuan Penjagaan OKU dan Pesakit Kronik Terlantar.
 - **Who:** Isi rumah miskin, OKU, warga emas dan kanak-kanak yang memerlukan, tertakluk kepada siasatan JKM.
@@ -345,7 +369,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `rebat_elektrik`: Rebat bil elektrik
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Sehingga RM40 sebulan
 - **Summary:** Program rebat bil elektrik diteruskan untuk isi rumah miskin tegar.
 - **Who:** Isi rumah miskin tegar yang berdaftar dalam eKasih.
@@ -356,7 +380,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `payung_rahmah`: Jualan RAHMAH MADANI
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Barangan keperluan asas pada harga lebih rendah
 - **Summary:** Jualan RAHMAH diadakan di semua kawasan DUN, termasuk berhampiran kem tentera dan kuarters polis.
 - **Who:** Semua rakyat.
@@ -367,7 +391,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `harga_sabah_sarawak`: Harga barangan asas setara Semenanjung
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Harga barangan asas sama seperti di Semenanjung
 - **Summary:** Kerajaan menanggung kos pengangkutan dan pengedaran supaya barangan keperluan asas di Sabah, Sarawak dan Labuan, termasuk kawasan pedalaman, dijual pada harga yang sama dengan Semenanjung Malaysia.
 - **Who:** Penduduk Sabah, Sarawak dan Labuan.
@@ -380,7 +404,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `budi95`: BUDI95: petrol RON95 bersubsidi
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** RM1.99 seliter
 - **Summary:** Untuk warganegara berumur 16 tahun ke atas yang mempunyai lesen memandu yang sah. Kuota diselaraskan daripada 300 liter kepada 200 liter sebulan mulai 1 April 2026 sebagai langkah sementara.
 - **Who:** Warganegara berumur 16 tahun ke atas dengan lesen memandu yang sah.
@@ -392,7 +416,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `budi95_ehailing`: Kuota tambahan BUDI95 untuk pemandu e-hailing
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Sehingga 800 liter sebulan
 - **Summary:** Kuota bergantung pada jarak perjalanan bulan sebelumnya: kurang daripada 2,000 km kekal pada kuota asas; 2,000 hingga 5,000 km layak 600 liter; lebih daripada 5,000 km layak 800 liter.
 - **Who:** Pemandu e-hailing aktif yang mempunyai lesen memandu.
@@ -403,7 +427,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `diesel_rm200`: Bantuan diesel bersasar (BUDI MADANI)
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** RM200 sebulan
 - **Summary:** Selepas subsidi diesel disasarkan, bantuan RM200 sebulan diberikan kepada pemilik individu kenderaan diesel, petani dan pekebun kecil.
 - **Who:** Pemilik individu kenderaan persendirian berenjin diesel, petani dan pekebun kecil di Semenanjung Malaysia, tertakluk kepada syarat BUDI MADANI.
@@ -414,7 +438,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `diesel_nelayan`: Diesel bersubsidi untuk nelayan
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** RM1.65 seliter
 - **Summary:** Kerajaan mengekalkan harga diesel bersubsidi khusus untuk nelayan.
 - **Who:** Nelayan berdaftar.
@@ -425,7 +449,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `rebat_cekap_tenaga`: Rebat pembelian peralatan cekap tenaga (Nur@PETRA)
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Rebat untuk peralatan elektrik cekap tenaga
 - **Summary:** Rebat bagi menggalakkan pengguna domestik membeli peralatan elektrik yang cekap tenaga, sekali gus mengurangkan bil elektrik.
 - **Who:** Pengguna domestik, tertakluk kepada syarat program.
@@ -436,7 +460,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `solar_atap`: Solar ATAP: jana elektrik sendiri di rumah
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Lebihan tenaga boleh dijual sebagai pengimbangan (offset) bil elektrik
 - **Summary:** Melalui Solar Accelerated Transition Action Programme (Solar ATAP), pengguna elektrik domestik boleh memasang sistem solar PV untuk kegunaan sendiri dan menjual lebihan tenaga kepada syarikat utiliti sebagai pengimbangan dalam bil elektrik.
 - **Who:** Pengguna elektrik domestik yang boleh memasang sistem solar PV.
@@ -449,7 +473,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `peka_b40`: PeKa B40
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Saringan kesihatan percuma dan bantuan alat perubatan sehingga RM20,000
 - **Summary:** Termasuk insentif RM1,000 untuk melengkapkan rawatan kanser dan bantuan tambang pengangkutan ke hospital (sehingga RM500 di Semenanjung; RM1,000 di Sabah, Sarawak dan Labuan).
 - **Who:** Warganegara berumur 40 tahun ke atas yang menerima STR, serta pasangan mereka.
@@ -461,7 +485,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `mysalam`: mySalam
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** RM8,000 jika disahkan menghidap penyakit kritikal, serta RM50 sehari ketika dimasukkan ke wad
 - **Summary:** Perlindungan takaful percuma untuk penyakit kritikal dan elaun harian ketika dimasukkan ke wad hospital Kerajaan (sehingga 14 hari setahun). Diteruskan pada tahun 2026.
 - **Who:** Penerima STR dan pasangan mereka, tertakluk kepada had umur skim.
@@ -473,7 +497,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `skim_perubatan_madani`: Skim Perubatan MADANI
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Rawatan di klinik swasta panel: RM250 setahun (keluarga), RM125 (warga emas), RM75 (bujang)
 - **Summary:** Untuk rawatan penyakit ringan seperti demam, selesema, batuk dan kecederaan ringan.
 - **Who:** Isi rumah penerima STR, termasuk anak berumur bawah 18 tahun.
@@ -484,7 +508,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `tdap_ibu`: Vaksin Tdap percuma untuk ibu hamil
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Suntikan vaksin percuma
 - **Summary:** Melindungi bayi daripada jangkitan batuk kokol (pertusis) yang serius.
 - **Who:** Ibu hamil.
@@ -495,7 +519,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `saringan_wanita`: Ujian mamogram dan saringan kanser serviks bersubsidi
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Ujian saringan pada kos lebih rendah
 - **Summary:** Subsidi untuk ujian mamogram (kanser payudara) dan saringan kanser serviks.
 - **Who:** Wanita, tertakluk kepada syarat umur dan pendapatan program LPPKN atau KKM.
@@ -506,7 +530,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `mhit_kwsp`: Akaun Sejahtera KWSP boleh digunakan untuk insurans perubatan asas
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Bayar premium menggunakan simpanan KWSP
 - **Summary:** Pencarum boleh menggunakan simpanan Akaun Sejahtera untuk melanggan pelan asas insurans atau takaful perubatan dan kesihatan melalui platform i-Lindung.
 - **Who:** Ahli KWSP.
@@ -518,7 +542,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `duti_insurans_kecil`: Tiada duti setem untuk polisi insurans bernilai kecil
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Dikecualikan duti setem sehingga 2028
 - **Summary:** Polisi insurans atau takaful dengan premium tahunan RM150 dan ke bawah (seperti insurans kebakaran, perjalanan dan kemalangan diri) serta produk Perlindungan Tenang.
 - **Who:** Semua individu yang membeli polisi tersebut.
@@ -529,7 +553,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `perkeso_dialisis`: Kadar bayaran rawatan hemodialisis PERKESO dinaikkan
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Sehingga RM170 bagi setiap rawatan (sebelum ini RM150)
 - **Summary:** PERKESO menaikkan kadar maksimum yang dibayar bagi setiap rawatan hemodialisis.
 - **Who:** Pencarum PERKESO yang menerima rawatan hemodialisis.
@@ -542,7 +566,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `bap`: Bantuan Awal Persekolahan
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** RM150 bagi setiap murid
 - **Summary:** Untuk semua murid sekolah Kerajaan. Mulai 2026, bantuan disalurkan di sekolah melalui guru kepada ibu bapa.
 - **Who:** Semua murid sekolah Kerajaan.
@@ -553,7 +577,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `bantuan_am`: Bantuan Am Persekolahan
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Kini diberikan sehingga Tingkatan 5
 - **Summary:** Sebelum ini hanya sehingga Tingkatan 3. Kini diperluas kepada murid miskin sehingga Tingkatan 5.
 - **Who:** Murid daripada keluarga miskin.
@@ -564,7 +588,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `rmt_biasiswa`: Rancangan Makanan Tambahan dan Biasiswa Kecil Persekutuan
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Makanan berkhasiat percuma dan biasiswa
 - **Summary:** Makanan berkhasiat di sekolah serta biasiswa untuk murid daripada keluarga berpendapatan rendah.
 - **Who:** Murid daripada keluarga berpendapatan rendah, dipilih oleh pihak sekolah.
@@ -575,7 +599,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `tuisyen_madani`: Tuisyen MADANI percuma
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Kelas tuisyen percuma
 - **Summary:** Disediakan di sekolah yang menyertai program Sekolah Angkat MADANI.
 - **Who:** Murid di sekolah yang menyertai program Sekolah Angkat MADANI.
@@ -586,7 +610,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `elaun_mbk`: Elaun Murid Berkeperluan Khas
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** RM150 sebulan
 - **Summary:** Untuk semua murid OKU di sekolah Kerajaan.
 - **Who:** Murid OKU berdaftar di sekolah Kerajaan.
@@ -597,7 +621,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `autisme`: Sokongan untuk anak autisme
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Kelas khas dan bantuan yuran pembelajaran
 - **Summary:** Kelas Tunas Istimewa di TABIKA KEMAS untuk kanak-kanak autisme ringan, Pusat Perkhidmatan Autisme kini diperluas ke Labuan, Sabah dan Sarawak, serta Bantuan Yuran Pembelajaran Anak Autisme.
 - **Who:** Ibu bapa kepada anak autisme.
@@ -608,7 +632,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `ptptn_percuma`: Pendidikan Percuma PTPTN
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Pengajian percuma di IPTA
 - **Summary:** Untuk anak keluarga miskin dan miskin tegar (berdasarkan data eKasih) yang belajar di institusi pengajian tinggi awam.
 - **Who:** Pelajar IPTA daripada keluarga miskin atau miskin tegar dalam eKasih.
@@ -620,7 +644,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `ptptn_kelas_pertama`: Pengecualian bayaran balik PTPTN untuk Kelas Pertama
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Tidak perlu membayar balik pinjaman
 - **Summary:** Untuk peminjam daripada keluarga berpendapatan rendah dan sederhana yang memperoleh Ijazah Sarjana Muda Kepujian Kelas Pertama di IPTA.
 - **Who:** Peminjam PTPTN di IPTA (B40 atau M40) yang lulus dengan Kelas Pertama.
@@ -632,7 +656,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `gapai`: Geran Padanan Ihsan (GAPAI) SSPN
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Geran sehingga RM5,000
 - **Summary:** Geran padanan atas simpanan SSPN untuk pelajar yang melanjutkan pengajian ke IPTA.
 - **Who:** Keluarga berpendapatan sehingga RM6,000 sebulan yang mempunyai anak di IPTA.
@@ -644,7 +668,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `dapur_madani`: Ikhtiar Dapur MADANI
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Bantuan makanan dan peralatan memasak
 - **Summary:** Bantuan makanan dan bahan mentah untuk mahasiswa berpendapatan rendah di universiti awam dan politeknik.
 - **Who:** Mahasiswa B40 di universiti awam dan politeknik.
@@ -655,7 +679,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `job_on_campus`: MySiswa Job on Campus
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Kerja sambilan di dalam kampus
 - **Summary:** Peluang menjana pendapatan sambil belajar dan mengasah kemahiran keusahawanan.
 - **Who:** Mahasiswa B40 dan M40.
@@ -666,7 +690,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `celik_madani`: Program Celik MADANI (PNB)
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Pelaburan permulaan RM50 dalam ASB atau ASM
 - **Summary:** Pelajar terpilih menerima pelaburan permulaan dalam ASB atau ASM bagi memupuk budaya menyimpan.
 - **Who:** Pelajar terpilih.
@@ -677,7 +701,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `tahfiz_kemahiran`: Latihan kemahiran dan teknologi untuk pelajar tahfiz dan pondok
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Kursus teknologi digital dan AI serta latihan kemahiran profesional
 - **Summary:** Pelajar tahfiz dan pondok didedahkan kepada teknologi digital dan AI melalui Program IPT@Komuniti oleh Majlis TVET Negara. Pelajar tahfiz juga dibekalkan latihan kemahiran profesional melalui GiatMARA untuk dimanfaatkan selepas tamat pengajian.
 - **Who:** Pelajar sekolah tahfiz dan pondok.
@@ -690,7 +714,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `duti_rumah_pertama`: Tiada duti setem untuk rumah pertama
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Pengecualian penuh bagi rumah berharga sehingga RM500,000
 - **Summary:** Pengecualian duti setem ke atas surat cara pindah milik dan perjanjian pinjaman, bagi perjanjian jual beli yang ditandatangani dari 1 Januari 2026 hingga 31 Disember 2027.
 - **Who:** Warganegara yang membeli rumah kediaman pertama berharga RM500,000 dan ke bawah.
@@ -701,7 +725,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `sjkp_akses`: SJKP MADANI: Akses Pemilikan Rumah Mampu Milik
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Jaminan pinjaman sehingga 120%, had RM360,000
 - **Summary:** Jaminan Kerajaan untuk pembeli rumah pertama yang tidak mempunyai slip gaji tetap. Fi jaminan 0.25%.
 - **Who:** Pembeli rumah pertama B40 dan M40, termasuk pekerja gig, pekerja bebas, bekerja sendiri dan usahawan mikro.
@@ -712,7 +736,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `sjkp_inklusif`: SJKP: Pembiayaan Rumah Inklusif
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Jaminan pinjaman sehingga 110%, had RM500,000
 - **Summary:** Untuk pembeli rumah pertama yang berpendapatan tidak tetap. Fi jaminan 0.25% (pinjaman sehingga RM300,000) atau 0.50% (RM300,000 hingga RM500,000).
 - **Who:** Pembeli rumah pertama berpendapatan tidak tetap, golongan belia dan kakitangan kontrak perkhidmatan awam.
@@ -723,7 +747,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `step_up`: Step-Up Financing
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Ansuran bulanan lebih rendah pada lima tahun pertama
 - **Summary:** Jaminan Kerajaan untuk golongan muda membeli rumah pertama dengan bayaran balik yang lebih rendah pada lima tahun pertama.
 - **Who:** Pembeli rumah pertama berumur 21 hingga 35 tahun.
@@ -734,7 +758,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `rumah_kontrak_awam`: Pinjaman rumah pertama untuk kakitangan kontrak Kerajaan
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Jaminan pinjaman sehingga 120%
 - **Summary:** SJKP menjamin pinjaman sehingga 120% dan BSN menyediakan pembiayaan khas, termasuk untuk guru TABIKA dan TASKA KEMAS.
 - **Who:** Penjawat awam lantikan kontrak yang membeli rumah pertama.
@@ -745,7 +769,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `lppsa`: Pembiayaan perumahan LPPSA
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Had pembiayaan dinaikkan kepada RM1 juta
 - **Summary:** Pembiayaan kali kedua dipermudah mulai suku keempat 2026. Skim Pembiayaan Perumahan Muda (bawah 30 tahun) dilanjutkan hingga 31 Disember 2026.
 - **Who:** Penjawat awam lantikan tetap.
@@ -757,7 +781,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `rumah_mampu_milik`: Rumah mampu milik Kerajaan (PRR, RMR, Residensi MADANI, PR1MA)
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Peluang memiliki rumah mampu milik
 - **Summary:** Beberapa projek Program Residensi Rakyat, Rumah Mesra Rakyat, Residensi MADANI dan PR1MA dijangka siap pada tahun 2026.
 - **Who:** Isi rumah B40 dan M40 yang belum memiliki rumah.
@@ -768,7 +792,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `rumah_daif`: Baik pulih atau bina semula rumah daif
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Rumah dibaiki atau dibina semula
 - **Summary:** Termasuk rumah nelayan, melalui Program Perumahan Rakyat Sejahtera, Program Pembasmian Kemiskinan Bandar dan Bantuan Rumah Nelayan Laut B40.
 - **Who:** Isi rumah miskin dalam eKasih dan nelayan B40 yang tinggal di rumah daif.
@@ -779,7 +803,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `kota_madani`: Rumah di Kota MADANI Presint 19
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** 80% daripada rumah dikhaskan untuk penjawat awam
 - **Summary:** Kota MADANI Presint 19 ialah bandar pintar dan hijau yang menyediakan rumah kediaman, kebanyakannya untuk penjawat awam.
 - **Who:** Penjawat awam.
@@ -792,7 +816,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `i_saraan`: i-Saraan KWSP
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Padanan 20% caruman, sehingga RM500 setahun (RM5,000 seumur hidup)
 - **Summary:** Kerajaan memadankan caruman sukarela KWSP bagi mereka yang bekerja sendiri atau berpendapatan tidak tetap.
 - **Who:** Mereka yang bekerja sendiri atau berpendapatan tidak tetap, berumur bawah 60 tahun.
@@ -804,7 +828,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `i_saraan_plus`: i-Saraan Plus (baharu)
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Padanan 20% caruman, sehingga RM600 setahun (RM6,000 seumur hidup)
 - **Summary:** Insentif padanan khas untuk pemandu e-hailing dan penghantar p-hailing sepenuh masa.
 - **Who:** Pemandu e-hailing dan penghantar p-hailing sepenuh masa, berumur bawah 60 tahun.
@@ -816,7 +840,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `i_suri`: i-Suri KWSP
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Padanan 50% caruman, sehingga RM300 setahun (RM3,000 seumur hidup)
 - **Summary:** Had umur kelayakan dinaikkan kepada 60 tahun, selaras dengan umur persaraan minimum.
 - **Who:** Suri rumah berumur bawah 60 tahun yang berdaftar dalam eKasih.
@@ -828,7 +852,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `lindung_kendiri`: PERKESO Lindung Kendiri
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Kerajaan menanggung 70% caruman bagi tahun pertama dan 50% bagi tahun kedua
 - **Summary:** Perlindungan kemalangan dan hilang upaya ketika bekerja untuk pekerja gig dan mereka yang bekerja sendiri dalam sektor yang belum diwajibkan, bagi pendaftaran kali pertama.
 - **Who:** Pekerja gig dan mereka yang bekerja sendiri yang mendaftar buat kali pertama.
@@ -840,7 +864,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `perkeso_pindah`: Insentif berpindah tempat kerja (PERKESO)
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Sehingga RM1,000
 - **Summary:** Untuk pencari kerja atau graduan baharu yang menerima tawaran kerja yang memerlukan mereka berpindah ke lokasi lain.
 - **Who:** Pencari kerja dan graduan baharu.
@@ -852,7 +876,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `kwsp_auto`: Akaun KWSP dibuka secara automatik pada umur 18 tahun
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Akaun dibuka secara automatik
 - **Summary:** Semua warganegara Malaysia akan didaftarkan sebagai ahli KWSP secara automatik apabila mencapai umur 18 tahun.
 - **Who:** Warganegara yang mencapai umur 18 tahun.
@@ -863,7 +887,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `kwsp_haji`: Pengeluaran KWSP untuk menunaikan haji
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Had pengeluaran dinaikkan kepada RM10,000 (sebelum ini RM3,000)
 - **Summary:** Ahli KWSP boleh mengeluarkan simpanan yang lebih tinggi untuk menampung kos menunaikan haji.
 - **Who:** Ahli KWSP yang akan menunaikan haji.
@@ -875,7 +899,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `gcr_haji`: Penebusan awal GCR untuk menunaikan haji
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Penebusan sehingga RM10,000
 - **Summary:** Penjawat awam boleh menebus Gantian Cuti Rehat (GCR) lebih awal untuk menunaikan haji.
 - **Who:** Penjawat awam yang akan menunaikan haji.
@@ -888,7 +912,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `kasihnita`: KasihnITA: bantuan guaman untuk ibu tunggal
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Bantuan guaman
 - **Summary:** Membantu ibu tunggal berpendapatan rendah dalam kes mahkamah seperti perceraian dan hak penjagaan anak.
 - **Who:** Ibu tunggal berpendapatan rendah.
@@ -899,7 +923,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `pembiayaan_wanita`: Pembiayaan untuk usahawan wanita
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Pembiayaan daripada RM30,000 hingga RM3 juta
 - **Summary:** AIM Skim Paduri MADANI (sehingga RM30,000), BSN Mikro MADANI Wanita (sehingga RM100,000 pada kadar 4%), MARA DANANITA (sehingga RM150,000 pada kadar 3.5%, untuk Bumiputera), SME Bank MySMELady 2.0 (sehingga RM3 juta) dan Bank Rakyat BizLady.
 - **Who:** Usahawan wanita, daripada perniagaan mikro hingga PMKS.
@@ -910,7 +934,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `subsidi_taska`: Subsidi yuran taska
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Yuran taska lebih rendah
 - **Summary:** Subsidi yuran di taska institusi (mengikut pendapatan) dan taska komuniti untuk keluarga berpendapatan RM5,000 dan ke bawah.
 - **Who:** Ibu bapa yang menghantar anak ke taska, berpendapatan RM5,000 dan ke bawah.
@@ -921,7 +945,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `buai`: Bantuan Rawatan Kesuburan (BuAI)
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Bantuan kos rawatan kesuburan
 - **Summary:** Bantuan untuk pasangan yang memerlukan rawatan bagi mendapatkan zuriat.
 - **Who:** Pasangan suami isteri yang memerlukan rawatan kesuburan, tertakluk kepada syarat LPPKN.
@@ -934,7 +958,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `mylesen_b2`: MyLesen B2
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Lesen motosikal B2 secara percuma atau bersubsidi
 - **Summary:** Diperluas kepada pelajar sekolah menengah, penuntut institusi pengajian tinggi dan belia daripada keluarga kurang berkemampuan.
 - **Who:** Mereka yang berumur 16 tahun ke atas daripada keluarga B40 dan belum mempunyai lesen.
@@ -946,7 +970,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `plkn`: Program Latihan Khidmat Negara (PLKN) 2026
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Latihan jati diri dan kenegaraan
 - **Summary:** Membina jati diri, semangat kenegaraan dan kesukarelawanan. Dirintis di institusi pengajian tinggi sebelum dilaksanakan sepenuhnya pada 2027.
 - **Who:** Belia yang dipilih (lepasan sekolah dan mahasiswa).
@@ -957,7 +981,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `k_youth`: Program K-Youth (Khazanah)
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Latihan sambil bekerja
 - **Summary:** Untuk belia tanpa ijazah dalam sektor semikonduktor, jentera, penyelenggaraan pesawat, digital dan teknologi.
 - **Who:** Belia berumur 30 tahun dan ke bawah yang tidak mempunyai ijazah.
@@ -968,7 +992,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `latihan_tvet`: Latihan kemahiran dan TVET
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Latihan dan pensijilan kemahiran
 - **Summary:** Melalui HRD Corp, pembiayaan PTPK (terutamanya bidang AI, kenderaan elektrik dan semikonduktor), GiatMARA (termasuk untuk pekerja gig), Kolej Komuniti (program pembelajaran sepanjang hayat untuk OKU, warga emas, ibu tunggal dan Orang Asli) serta kursus TVET untuk pekerja penjagaan (care workers) oleh KPWKM.
 - **Who:** Pencari kerja, pekerja gig, mereka yang bekerja sendiri dan golongan rentan.
@@ -979,7 +1003,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `pembiayaan_belia`: Pembiayaan untuk usahawan belia
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Pembiayaan mikro dan bantuan perniagaan
 - **Summary:** Pembiayaan mikro BSN untuk usahawan berumur 30 tahun dan ke bawah, serta program Tunas Usahawan Belia Bumiputera (TUBE) oleh SME Corp untuk latihan dan bantuan perniagaan.
 - **Who:** Usahawan belia berumur 30 tahun dan ke bawah.
@@ -990,7 +1014,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `rakan_muda`: Rakan Muda
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Program pembangunan belia
 - **Summary:** Program membina jati diri, pendidikan demokrasi dan kempen anti-buli, termasuk untuk belia luar bandar yang tercicir daripada pendidikan atau pekerjaan.
 - **Who:** Belia berumur 15 hingga 30 tahun.
@@ -1003,7 +1027,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `bantuan_oku`: Bantuan untuk OKU (JKM)
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Elaun bulanan mengikut kategori
 - **Summary:** Antaranya Elaun OKU Tidak Berupaya Bekerja, Elaun Pekerja OKU, serta bantuan penjagaan OKU dan pesakit kronik terlantar.
 - **Who:** OKU berdaftar dengan JKM, mengikut kategori bantuan.
@@ -1015,7 +1039,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `warga_emas`: Bantuan kebajikan warga emas
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Bantuan sosioekonomi dan pusat aktiviti
 - **Summary:** Bantuan Sosioekonomi Warga Emas, Pusat Aktiviti Warga Emas (PAWE) dan Unit Penyayang Warga Emas.
 - **Who:** Warga emas berumur 60 tahun ke atas yang berpendapatan rendah, tertakluk kepada syarat JKM.
@@ -1026,7 +1050,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `rumah_warga_emas`: Rumah warga emas mandiri (KWAP)
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Kediaman khas untuk warga emas
 - **Summary:** Projek rintis di Kepala Batas, Pulau Pinang untuk pesara dan golongan asnaf berpendapatan rendah. Lokasi lain sedang dinilai.
 - **Who:** Pesara dan warga emas asnaf berpendapatan rendah.
@@ -1037,7 +1061,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `peluang_kedua`: Dasar Peluang Kedua Fast Track
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Proses pelepasan bankrap dipercepat
 - **Summary:** Untuk ibu atau bapa tunggal, usahawan mikro yang terjejas akibat krisis, mangsa penipuan dan mangsa projek perumahan terbengkalai.
 - **Who:** Individu bankrap dalam kategori yang disasarkan.
@@ -1048,7 +1072,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `orang_asli`: Program untuk komuniti Orang Asli
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Jalan kampung, TABIKA dan program pendidikan anak
 - **Summary:** Jalan ke kampung Orang Asli dinaik taraf, TABIKA dibaiki di semua kampung Orang Asli, Sekolah Terapung di Hulu Perak diperluas dan program makanan komuniti diteruskan. Akta Orang Asli 1954 akan dipinda untuk memperkukuh hak berkaitan tanah dan kebajikan.
 - **Who:** Komuniti Orang Asli.
@@ -1059,7 +1083,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `itekad`: Geran padanan iTEKAD
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Geran padanan untuk kemahiran, keusahawanan dan perlindungan
 - **Summary:** iTEKAD diperluas untuk menyediakan geran padanan kepada penerima yang ingin meningkatkan kemahiran bagi pekerjaan dan pendapatan yang lebih stabil. Dana disumbangkan bersama oleh sektor swasta, termasuk institusi kewangan.
 - **Who:** Golongan rentan, termasuk usahawan kecil dan pencari kerja.
@@ -1072,7 +1096,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `nelayan_elaun`: Elaun Sara Hidup Nelayan
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Sehingga RM300 sebulan
 - **Summary:** Serta insentif hasil tangkapan. Bantuan turut disediakan untuk menaik taraf vesel.
 - **Who:** Nelayan berdaftar dengan LKIM atau Jabatan Perikanan.
@@ -1083,7 +1107,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `pesawah`: Subsidi dan insentif pesawah
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Bantuan kira-kira RM4,300 sehektar bagi setiap musim
 - **Summary:** Termasuk subsidi harga padi, baja dan benih; insentif membajak RM160 dan insentif racun RM300 sehektar semusim; serta Insentif Penuaian Padi baharu RM50 sehektar semusim.
 - **Who:** Pesawah padi berdaftar.
@@ -1094,7 +1118,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `pekebun_kecil`: Insentif pekebun kecil getah dan sawit
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Geran tanam semula sawit dan insentif pengeluaran getah
 - **Summary:** Insentif tanam semula untuk pokok sawit berusia 25 tahun (50% geran dan 50% pinjaman mudah pada kadar serendah 2%), Insentif Pengeluaran Getah, Insentif Pengeluaran Lateks serta Bantuan Musim Tengkujuh.
 - **Who:** Pekebun kecil getah dan sawit.
@@ -1105,7 +1129,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `agro`: Pembiayaan dan geran usahawan tani
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Pembiayaan Agrobank dan geran Agropreneur NextGen
 - **Summary:** Pembiayaan untuk mengembangkan, mengautomasikan dan memekanisasikan projek pertanian, serta geran permulaan dan geran pengembangan Agropreneur NextGen.
 - **Who:** Petani, penternak dan pengusaha akuakultur. Agropreneur NextGen untuk golongan muda.
@@ -1116,7 +1140,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `bkht`: Bantuan kerugian akibat serangan hidupan liar
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Pampasan kerosakan harta benda dan tanaman
 - **Summary:** Bantuan Kerugian Harta Benda dan Tanaman Akibat Serangan Hidupan Liar (BKHT) untuk mangsa yang terjejas.
 - **Who:** Mangsa yang mengalami kerugian akibat konflik hidupan liar.
@@ -1127,7 +1151,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `penjawat_sspa`: Penambahbaikan saraan penjawat awam
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Kenaikan gaji SSPA Fasa 2 mulai Januari 2026
 - **Summary:** Sistem Saraan Perkhidmatan Awam (SSPA) Fasa 2 berkuat kuasa Januari 2026. Elaun Sara Hidup RM900 sebulan untuk penerima Hadiah Latihan Persekutuan Separa Biasiswa, dan Bantuan Insentif Berasaskan Prestasi diperluas kepada Kumpulan Pengurusan dan Profesional.
 - **Who:** Penjawat awam Persekutuan.
@@ -1138,7 +1162,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `veteran`: Peluang pekerjaan untuk veteran
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Keutamaan dalam pengambilan pekerja
 - **Summary:** Kontraktor MINDEF menyediakan peluang pekerjaan untuk veteran melalui skim PROTÉGÉ-Veteran, dan Agensi Kawalan dan Perlindungan Sempadan (AKPS) mengutamakan veteran dalam pengambilan.
 - **Who:** Veteran Angkatan Tentera Malaysia.
@@ -1149,7 +1173,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `teksi`: Insentif untuk pemandu teksi
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Tiada duti eksais dan cukai jualan untuk kereta nasional baharu
 - **Summary:** Pengecualian penuh duti eksais dan cukai jualan bagi pembelian kereta Proton atau Perodua baharu oleh pemilik teksi dan kereta sewa. HRD Corp juga menanggung kos kursus dan elaun untuk pemandu teksi berlesen yang mencarum.
 - **Who:** Pemilik dan pemandu teksi serta kereta sewa persendirian.
@@ -1160,7 +1184,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `saringan_pemandu`: Pemeriksaan kesihatan percuma untuk pemandu
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Pemeriksaan kesihatan percuma oleh PERKESO
 - **Summary:** Untuk pemandu kenderaan pengangkutan awam dan barangan berumur 40 hingga 59 tahun.
 - **Who:** Pemandu kenderaan awam dan barangan berumur 40 hingga 59 tahun.
@@ -1171,7 +1195,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `penghargaan_pesara`: Bayaran penghargaan khas pesara dilanjutkan
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Diteruskan dari Januari hingga Disember
 - **Summary:** Bayaran penghargaan khas kepada pesara dan penerima pencen terbitan dilanjutkan. Kadar bayaran tidak dinyatakan dalam teks Belanjawan.
 - **Who:** Pesara Kerajaan dan penerima pencen terbitan.
@@ -1182,7 +1206,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `bsh_pesara_kemas`: Bayaran Sara Hidup pesara kontrak KEMAS dinaikkan
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** RM500 sebulan (sebelum ini RM300)
 - **Summary:** Kadar Bayaran Sara Hidup (BSH) bagi pesara kakitangan kontrak KEMAS dinaikkan daripada RM300 kepada RM500 sebulan.
 - **Who:** Pesara kakitangan kontrak KEMAS.
@@ -1193,7 +1217,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `apel_q`: Program APEL.Q INTAN untuk penjawat awam
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Kerajaan menanggung 50% kos pengajian, sehingga RM15,000
 - **Summary:** Untuk penjawat awam yang telah berkhidmat melebihi 15 tahun dan ingin melanjutkan pengajian ke peringkat yang lebih tinggi.
 - **Who:** Penjawat awam yang telah berkhidmat melebihi 15 tahun.
@@ -1204,7 +1228,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `etap_perubatan`: Elaun Tugas Atas Panggilan (ETAP) pegawai perubatan dinaikkan
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Naik antara 33% hingga 43% mengikut kelayakan
 - **Summary:** Kadar ETAP yang tidak dikaji sejak 2011 dinaikkan. Contohnya, pegawai perubatan pakar yang bertugas atas panggilan aktif pada hari cuti menerima RM350 (sebelum ini RM250).
 - **Who:** Pegawai perubatan, pegawai perubatan pakar dan pegawai pergigian.
@@ -1216,7 +1240,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `lantikan_tetap_kkm`: Lantikan tetap untuk doktor, jururawat dan graduan kontrak KKM
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Tawaran lantikan tetap mulai 2026
 - **Summary:** Doktor kontrak dan graduan Institut Latihan KKM akan ditawarkan jawatan tetap mulai 2026. Jururawat kontrak turut ditawarkan lantikan tetap.
 - **Who:** Doktor kontrak, jururawat kontrak dan graduan Institut Latihan KKM.
@@ -1227,7 +1251,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `bipk_bipac`: Bayaran insentif pasukan khas (BIPK dan BIPAC) dinaikkan
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Kadar bayaran dinaikkan
 - **Summary:** Bayaran Insentif Pasukan Khas (BIPK) dan Bayaran Insentif Pasukan Atur Cara (BIPAC) ditambah baik melalui kenaikan kadar bayaran dan pelarasan syarat tempoh perkhidmatan.
 - **Who:** Pegawai dan anggota pasukan khas.
@@ -1238,7 +1262,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `geran_bsn`: Geran perniagaan BSN untuk usahawan mikro
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Sehingga RM10,000 untuk membeli peralatan perniagaan
 - **Summary:** BSN menyediakan geran perniagaan kepada usahawan mikro yang berpotensi, sebagai modal untuk membeli peralatan perniagaan.
 - **Who:** Usahawan mikro.
@@ -1249,7 +1273,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `pinjaman_mikro`: Pinjaman mikro BSN dan TEKUN
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Pinjaman kecil untuk modal perniagaan
 - **Summary:** BSN dan TEKUN Nasional menyediakan pinjaman mikro kepada usahawan mikro dan peniaga kecil untuk modal dan keperluan perniagaan.
 - **Who:** Usahawan mikro dan peniaga kecil.
@@ -1260,7 +1284,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `kwap_mikro`: Pembiayaan mikro KWAP untuk pesara
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Pembiayaan mikro untuk memulakan perniagaan komuniti
 - **Summary:** KWAP menyediakan program pembiayaan mikro bagi pesara untuk memperkasa keusahawanan di peringkat komuniti.
 - **Who:** Pesara Kerajaan.
@@ -1271,7 +1295,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `tamu_desa`: Ruang niaga Tamu Desa di Sabah dan Sarawak
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Tapak dan ruang niaga baharu dengan kemudahan asas
 - **Summary:** Tapak dan ruang niaga yang dilengkapi kemudahan asas ditambah untuk peniaga kecil Tamu Desa di Sabah dan Sarawak.
 - **Who:** Peniaga kecil Tamu Desa di Sabah dan Sarawak.
@@ -1282,7 +1306,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `buah_buahan`: Insentif pengusaha buah-buahan tempatan
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Insentif tanaman dan prasarana ladang
 - **Summary:** Untuk pengusaha buah-buahan tempatan, antaranya ladang nanas termasuk di Sarawak, serta tanaman durian belanda, jambu air dan limau besar.
 - **Who:** Pengusaha buah-buahan tempatan.
@@ -1293,7 +1317,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `penternak`: Insentif penternak ruminan kecil dan lembu pedaging
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Insentif bagi penternak yang mencapai kadar kelahiran ternakan yang ditetapkan
 - **Summary:** Penternak ruminan kecil dengan kadar kelahiran ternakan sedia ada sekurang-kurangnya 100%, dan penternak lembu pedaging dengan kadar sekurang-kurangnya 60%, layak menerima insentif.
 - **Who:** Penternak ruminan kecil dan lembu pedaging.
@@ -1304,7 +1328,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `elaun_imam_kafa`: Elaun bulanan imam, guru KAFA dan guru takmir
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Elaun bulanan diteruskan
 - **Summary:** Elaun bulanan kepada imam, guru KAFA dan guru takmir diteruskan pada tahun 2026. Kadar elaun tidak dinyatakan dalam teks Belanjawan.
 - **Who:** Imam, guru KAFA dan guru takmir.
@@ -1317,7 +1341,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `myraillife`: Pas MyRailLife percuma
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Perjalanan percuma tanpa had dengan KTM Komuter dan Shuttle DMU
 - **Summary:** Untuk komuniti OKU dan semua murid sekolah, kini diperluas kepada kanak-kanak berumur bawah 6 tahun.
 - **Who:** OKU, murid sekolah dan kanak-kanak berumur bawah 6 tahun.
@@ -1328,7 +1352,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `van_oku`: Van mobiliti khas untuk OKU
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Perkhidmatan van yang boleh membawa kerusi roda
 - **Summary:** Setiap van boleh membawa sehingga tiga penumpang berkerusi roda dan dilengkapi sistem pengangkat kerusi roda.
 - **Who:** OKU, terutamanya pengguna kerusi roda.
@@ -1339,7 +1363,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `lupus_kenderaan`: Geran menukar kereta lama
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Geran RM2,000 dan padanan RM2,000 daripada pengeluar (kira-kira RM4,000)
 - **Summary:** Untuk pemilik yang melupuskan kereta berusia lebih 20 tahun dan membeli kereta nasional baharu.
 - **Who:** Pemilik kereta berusia lebih 20 tahun.
@@ -1350,7 +1374,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `ras`: Subsidi penerbangan luar bandar (RAS)
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Tambang penerbangan bersubsidi
 - **Summary:** Subsidi Perkhidmatan Udara Luar Bandar untuk penduduk desa dan pedalaman Sabah dan Sarawak.
 - **Who:** Penduduk pedalaman Sabah dan Sarawak.
@@ -1363,7 +1387,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `tax_vaksin`: Pelepasan cukai pemvaksinan, kini untuk semua vaksin berdaftar
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Sehingga RM1,000
 - **Summary:** Sebelum ini terhad kepada lapan jenis vaksin. Kini meliputi semua vaksin yang berdaftar dengan KKM, untuk diri sendiri, pasangan atau anak.
 - **Who:** Pembayar cukai pendapatan.
@@ -1374,7 +1398,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `tax_insurans`: Pelepasan cukai insurans nyawa, kini termasuk untuk anak
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Sehingga RM3,000
 - **Summary:** Pelepasan cukai premium insurans nyawa atau takaful hayat diperluas kepada anak (bawah 18 tahun, sedang belajar di institusi pengajian tinggi, atau OKU tanpa had umur).
 - **Who:** Pembayar cukai yang membayar premium untuk anak.
@@ -1385,7 +1409,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `tax_taska`: Pelepasan cukai yuran taska, tadika dan pusat jagaan
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** RM3,000 (kekal)
 - **Summary:** Digabungkan menjadi RM3,000 secara kekal dan diperluas kepada pusat jagaan harian atau pusat transit berdaftar JKM untuk anak sehingga 12 tahun.
 - **Who:** Ibu atau bapa (salah seorang sahaja) yang menghantar anak berumur 12 tahun dan ke bawah ke pusat jagaan berdaftar.
@@ -1396,7 +1420,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `tax_kurang_upaya`: Pelepasan cukai intervensi awal anak kurang upaya pembelajaran
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Dinaikkan daripada RM6,000 kepada RM10,000
 - **Summary:** Untuk pemeriksaan, program intervensi awal dan rawatan pemulihan anak berumur bawah 18 tahun (seperti autisme, ADHD, lewat perkembangan global dan sindrom Down).
 - **Who:** Pembayar cukai yang mempunyai anak kurang upaya pembelajaran.
@@ -1407,7 +1431,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `tax_lestari`: Pelepasan cukai peralatan hijau dan keselamatan rumah
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Sehingga RM2,500
 - **Summary:** Pengecas kenderaan elektrik, mesin kompos, dan kini mesin pengisar sisa makanan serta CCTV untuk kegunaan rumah (Tahun Taksiran 2026 dan 2027).
 - **Who:** Pembayar cukai pendapatan.
@@ -1418,7 +1442,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `tax_pelancongan`: Pelepasan cukai tiket masuk tempat pelancongan dan program budaya
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Sehingga RM1,000 (Tahun Taksiran 2026 sahaja)
 - **Summary:** Untuk fi masuk ke muzium, taman tema, taman negara, taman laut, zoo, geopark dan program kebudayaan, sempena Tahun Melawat Malaysia 2026.
 - **Who:** Pembayar cukai pendapatan.
@@ -1429,7 +1453,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `potongan_derma`: Potongan cukai untuk sumbangan tunai
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Potongan cukai pendapatan bagi sumbangan yang layak
 - **Summary:** Sumbangan tunai kepada program pencegahan rasuah yang diiktiraf SPRM, tabung endowmen hospital pengajar universiti awam, Akaun Amanah Jabatan Muzium Malaysia, serta projek komuniti, amal atau infrastruktur seperti hentian bas layak mendapat potongan cukai pendapatan.
 - **Who:** Pembayar cukai yang membuat sumbangan tunai.
@@ -1443,7 +1467,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `duti_rokok`: Harga rokok naik
 
-- **Kind:** `kesan` (a cost or obligation); **certainty:** `high`
+- **Kind:** `kesan` (a cost change; shown like any other card); **certainty:** `high`
 - **Value:** Naik 40 sen sepaket (2 sen sebatang)
 - **Summary:** Duti eksais rokok dinaikkan secara berperingkat mulai 1 November 2025. Hasil tambahan disalurkan kepada KKM untuk program kesihatan paru-paru serta rawatan diabetes dan penyakit jantung.
 - **Who:** Perokok.
@@ -1454,7 +1478,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `duti_cerut`: Harga cerut naik
 
-- **Kind:** `kesan` (a cost or obligation); **certainty:** `high`
+- **Kind:** `kesan` (a cost change; shown like any other card); **certainty:** `high`
 - **Value:** Duti eksais naik RM40 sekilogram
 - **Summary:** Berkuat kuasa mulai 1 November 2025 sebagai kenaikan berperingkat.
 - **Who:** Pengguna cerut dan cerut kecil (cigarillo).
@@ -1465,7 +1489,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `duti_heated_tobacco`: Harga produk tembakau yang dipanaskan naik
 
-- **Kind:** `kesan` (a cost or obligation); **certainty:** `high`
+- **Kind:** `kesan` (a cost change; shown like any other card); **certainty:** `high`
 - **Value:** Duti eksais naik RM20 sekilogram kandungan tembakau
 - **Summary:** Berkuat kuasa mulai 1 November 2025 sebagai kenaikan berperingkat.
 - **Who:** Pengguna produk tembakau yang dipanaskan.
@@ -1476,7 +1500,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `vape`: Rokok elektronik mungkin diharamkan
 
-- **Kind:** `kesan` (a cost or obligation); **certainty:** `high`
+- **Kind:** `kesan` (a cost change; shown like any other card); **certainty:** `high`
 - **Value:** Kerajaan sedang meneliti larangan penggunaan
 - **Summary:** Kerajaan sedang meneliti cadangan untuk mengharamkan penggunaan rokok elektronik (vape).
 - **Who:** Pengguna vape atau rokok elektronik.
@@ -1487,7 +1511,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `berhenti_merokok`: Produk bantuan berhenti merokok lebih murah
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Dikecualikan duti import dan cukai jualan hingga 31 Disember 2027
 - **Summary:** Gula-gula getah nikotin dan tampalan nikotin kekal dikecualikan, dan kini diperluas kepada semburan nikotin dan lozeng nikotin. Sokongan berhenti merokok percuma juga tersedia melalui program mQuit KKM.
 - **Who:** Sesiapa yang ingin berhenti merokok atau vape.
@@ -1498,7 +1522,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `duti_alkohol`: Harga minuman beralkohol naik
 
-- **Kind:** `kesan` (a cost or obligation); **certainty:** `high`
+- **Kind:** `kesan` (a cost change; shown like any other card); **certainty:** `high`
 - **Value:** Duti eksais naik 10%
 - **Summary:** Berkuat kuasa mulai 1 November 2025. Hasil tambahan disalurkan kepada KKM.
 - **Who:** Pengguna minuman beralkohol.
@@ -1509,7 +1533,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `fi_klinik_swasta`: Fi rundingan klinik swasta disemak semula
 
-- **Kind:** `kesan` (a cost or obligation); **certainty:** `high`
+- **Kind:** `kesan` (a cost change; shown like any other card); **certainty:** `high`
 - **Value:** Kini antara RM10 hingga RM80 (sebelum ini RM10 hingga RM35)
 - **Summary:** Kadar fi rundingan doktor di klinik swasta ditetapkan semula buat kali pertama sejak 2006, bergantung pada jenis perkhidmatan. Kadar minimum RM10 dikekalkan.
 - **Who:** Semua pesakit yang mendapatkan rawatan di klinik swasta.
@@ -1520,7 +1544,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `duti_kontrak_kerja`: Tiada duti setem untuk kontrak pekerjaan bergaji rendah
 
-- **Kind:** `manfaat` (benefit); **certainty:** `check`
+- **Kind:** `manfaat`; **certainty:** `check`
 - **Value:** Dikecualikan jika gaji RM3,000 dan ke bawah sebulan
 - **Summary:** Had gaji untuk pengecualian duti setem RM10 ke atas kontrak pekerjaan dinaikkan daripada RM300 kepada RM3,000 sebulan, bagi kontrak yang ditandatangani mulai 1 Januari 2026.
 - **Who:** Pekerja yang menandatangani kontrak pekerjaan baharu dengan gaji RM3,000 dan ke bawah sebulan.
@@ -1531,7 +1555,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `pelabur_runcit`: Tiada duti setem untuk urus niaga ETF dan waran berstruktur
 
-- **Kind:** `manfaat` (benefit); **certainty:** `high`
+- **Kind:** `manfaat`; **certainty:** `high`
 - **Value:** Dikecualikan duti setem nota kontrak hingga 31 Disember 2028
 - **Summary:** Pengecualian untuk jual beli dana dagangan bursa (ETF) dilanjutkan, dan pengecualian baharu untuk pembelian waran berstruktur.
 - **Who:** Pelabur runcit di Bursa Malaysia.
@@ -1542,7 +1566,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `cukai_plt`: Cukai ke atas agihan keuntungan Perkongsian Liabiliti Terhad (PLT)
 
-- **Kind:** `kesan` (a cost or obligation); **certainty:** `check`
+- **Kind:** `kesan` (a cost change; shown like any other card); **certainty:** `check`
 - **Value:** Cukai 2% ke atas agihan keuntungan melebihi RM100,000 setahun
 - **Summary:** Bermula Tahun Taksiran 2026, agihan keuntungan PLT yang diterima oleh pekongsi individu melebihi RM100,000 setahun dikenakan cukai 2% dan perlu dilaporkan dalam borang nyata cukai.
 - **Who:** Pekongsi individu dalam PLT.
@@ -1553,7 +1577,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `ptptn_sekatan_perjalanan`: Sekatan perjalanan ke luar negara bagi peminjam PTPTN yang culas
 
-- **Kind:** `kesan` (a cost or obligation); **certainty:** `check`
+- **Kind:** `kesan` (a cost change; shown like any other card); **certainty:** `check`
 - **Value:** Boleh disekat daripada ke luar negara
 - **Summary:** Kerajaan akan mengenakan sekatan perjalanan ke luar negara kepada peminjam PTPTN yang mampu membayar dan bekerja di luar negara, tetapi culas membuat bayaran balik.
 - **Who:** Peminjam PTPTN yang mampu membayar tetapi tidak membuat bayaran balik.
@@ -1565,7 +1589,7 @@ Each card shows: title, value, summary, who, action, the tier label, "Kenapa and
 
 #### `cukai_kenderaan_labuan`: Pengecualian cukai kenderaan di Labuan dan Langkawi dihadkan
 
-- **Kind:** `kesan` (a cost or obligation); **certainty:** `high`
+- **Kind:** `kesan` (a cost change; shown like any other card); **certainty:** `high`
 - **Value:** Hanya bagi kenderaan bernilai sehingga RM300,000
 - **Summary:** Pengecualian cukai kenderaan di Labuan dan Langkawi dihadkan kepada kenderaan yang bernilai tidak melebihi RM300,000, bagi menangani ketirisan oleh pemilik kenderaan mewah.
 - **Who:** Pemilik kenderaan di Labuan dan Langkawi.
@@ -1585,11 +1609,9 @@ Your build must produce exactly these results for these answers. They are comput
 
 **STR + SARA:** Isi Rumah. STR RM1,700, SARA RM1,200 (RM100 sebulan), jumlah RM2,900; jika berdaftar eKasih RM4,100.
 
-- **Berkemungkinan layak** (`layak`, 13): `str_sara`, `penghargaan_sara`, `payung_rahmah`, `budi95`, `peka_b40`, `mysalam`, `skim_perubatan_madani`, `mhit_kwsp`, `duti_insurans_kecil`, `bap`, `i_saraan`, `myraillife`, `berhenti_merokok`
-- **Semak kelayakan** (`semak`, 16): `jkm_bantuan`, `rebat_cekap_tenaga`, `solar_atap`, `saringan_wanita`, `perkeso_dialisis`, `bantuan_am`, `rmt_biasiswa`, `tuisyen_madani`, `celik_madani`, `lindung_kendiri`, `kasihnita`, `pembiayaan_wanita`, `latihan_tvet`, `itekad`, `geran_bsn`, `pinjaman_mikro`
-- **Mungkin layak** (`mungkin`, 2): `rebat_elektrik`, `rumah_daif`
-- **Perubahan yang menjejaskan anda** (`kesan`, 2): `duti_rokok`, `fi_klinik_swasta`
-- **Total cards:** 33
+- **Berkemungkinan layak** (14 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `budi95`, `peka_b40`, `mysalam`, `skim_perubatan_madani`, `mhit_kwsp`, `duti_insurans_kecil`, `bap`, `i_saraan`, `myraillife`, `duti_rokok`, `berhenti_merokok`, `fi_klinik_swasta`
+- **Mungkin layak** (18 cards, in this order): `jkm_bantuan`, `rebat_cekap_tenaga`, `solar_atap`, `saringan_wanita`, `perkeso_dialisis`, `bantuan_am`, `rmt_biasiswa`, `tuisyen_madani`, `celik_madani`, `lindung_kendiri`, `kasihnita`, `pembiayaan_wanita`, `latihan_tvet`, `itekad`, `geran_bsn`, `pinjaman_mikro`, `rebat_elektrik`, `rumah_daif`
+- **Cards in the grid:** 32 (plus the STR + SARA panel on top)
 
 ### Contoh 2: Penjawat awam, 34, berkahwin, anak bawah 6 tahun, RM2,501–5,000, pembayar cukai, rumah pertama, haji
 
@@ -1597,10 +1619,9 @@ Your build must produce exactly these results for these answers. They are comput
 
 **STR + SARA:** Isi Rumah. STR RM450, SARA RM1,200 (RM100 sebulan), jumlah RM1,650.
 
-- **Berkemungkinan layak** (`layak`, 17): `str_sara`, `penghargaan_sara`, `payung_rahmah`, `budi95`, `mysalam`, `skim_perubatan_madani`, `duti_insurans_kecil`, `duti_rumah_pertama`, `step_up`, `penjawat_sspa`, `myraillife`, `tax_vaksin`, `tax_insurans`, `tax_taska`, `tax_lestari`, `tax_pelancongan`, `potongan_derma`
-- **Semak kelayakan** (`semak`, 16): `bkk_penjawat`, `rebat_cekap_tenaga`, `solar_atap`, `sjkp_akses`, `sjkp_inklusif`, `rumah_kontrak_awam`, `lppsa`, `rumah_mampu_milik`, `kota_madani`, `gcr_haji`, `subsidi_taska`, `buai`, `apel_q`, `etap_perubatan`, `lantikan_tetap_kkm`, `bipk_bipac`
-- **Perubahan yang menjejaskan anda** (`kesan`, 1): `fi_klinik_swasta`
-- **Total cards:** 34
+- **Berkemungkinan layak** (17 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `budi95`, `mysalam`, `skim_perubatan_madani`, `duti_insurans_kecil`, `duti_rumah_pertama`, `step_up`, `penjawat_sspa`, `myraillife`, `tax_vaksin`, `tax_insurans`, `tax_taska`, `tax_lestari`, `tax_pelancongan`, `potongan_derma`, `fi_klinik_swasta`
+- **Mungkin layak** (16 cards, in this order): `bkk_penjawat`, `rebat_cekap_tenaga`, `solar_atap`, `sjkp_akses`, `sjkp_inklusif`, `rumah_kontrak_awam`, `lppsa`, `rumah_mampu_milik`, `kota_madani`, `gcr_haji`, `subsidi_taska`, `buai`, `apel_q`, `etap_perubatan`, `lantikan_tetap_kkm`, `bipk_bipac`
+- **Cards in the grid:** 33 (plus the STR + SARA panel on top)
 
 ### Contoh 3: Pesara Kerajaan, 67, Sabah, bujang, veteran
 
@@ -1608,10 +1629,9 @@ Your build must produce exactly these results for these answers. They are comput
 
 **STR + SARA:** Warga Emas Tiada Pasangan (60 tahun ke atas). STR RM600, SARA RM600 (RM50 sebulan), jumlah RM1,200.
 
-- **Berkemungkinan layak** (`layak`, 12): `str_sara`, `penghargaan_sara`, `bkk_pesara`, `pjm`, `payung_rahmah`, `harga_sabah_sarawak`, `budi95`, `peka_b40`, `mysalam`, `skim_perubatan_madani`, `duti_insurans_kecil`, `ras`
-- **Semak kelayakan** (`semak`, 10): `jkm_bantuan`, `rebat_cekap_tenaga`, `solar_atap`, `warga_emas`, `rumah_warga_emas`, `veteran`, `penghargaan_pesara`, `bsh_pesara_kemas`, `kwap_mikro`, `lupus_kenderaan`
-- **Perubahan yang menjejaskan anda** (`kesan`, 1): `fi_klinik_swasta`
-- **Total cards:** 23
+- **Berkemungkinan layak** (12 cards, in this order): `penghargaan_sara`, `bkk_pesara`, `pjm`, `payung_rahmah`, `harga_sabah_sarawak`, `budi95`, `peka_b40`, `mysalam`, `skim_perubatan_madani`, `duti_insurans_kecil`, `ras`, `fi_klinik_swasta`
+- **Mungkin layak** (10 cards, in this order): `jkm_bantuan`, `rebat_cekap_tenaga`, `solar_atap`, `warga_emas`, `rumah_warga_emas`, `veteran`, `penghargaan_pesara`, `bsh_pesara_kemas`, `kwap_mikro`, `lupus_kenderaan`
+- **Cards in the grid:** 22 (plus the STR + SARA panel on top)
 
 ### Contoh 4: Murid, 17, Sarawak
 
@@ -1619,9 +1639,9 @@ Your build must produce exactly these results for these answers. They are comput
 
 **STR + SARA:** not eligible. "Anda berumur bawah 18 tahun, jadi anda dikira sebagai anak tanggungan dalam permohonan STR ibu bapa anda."
 
-- **Berkemungkinan layak** (`layak`, 6): `harga_sabah_sarawak`, `bap`, `kwsp_auto`, `rakan_muda`, `myraillife`, `ras`
-- **Semak kelayakan** (`semak`, 4): `celik_madani`, `tahfiz_kemahiran`, `mylesen_b2`, `plkn`
-- **Total cards:** 10
+- **Berkemungkinan layak** (6 cards, in this order): `harga_sabah_sarawak`, `bap`, `kwsp_auto`, `rakan_muda`, `myraillife`, `ras`
+- **Mungkin layak** (4 cards, in this order): `celik_madani`, `tahfiz_kemahiran`, `mylesen_b2`, `plkn`
+- **Cards in the grid:** 10 (plus the STR + SARA panel on top, which here shows the reason instead of amounts)
 
 ### Contoh 5: Pemandu e-hailing, 28, bujang, bawah RM2,500, ada pinjaman PTPTN, vape dan alkohol
 
@@ -1629,10 +1649,9 @@ Your build must produce exactly these results for these answers. They are comput
 
 **STR + SARA:** Bujang (21 hingga 59 tahun). STR RM0, SARA RM600 (RM50 sebulan), jumlah RM600.
 
-- **Berkemungkinan layak** (`layak`, 14): `str_sara`, `penghargaan_sara`, `payung_rahmah`, `budi95`, `mysalam`, `skim_perubatan_madani`, `mhit_kwsp`, `duti_insurans_kecil`, `duti_rumah_pertama`, `step_up`, `i_saraan_plus`, `rakan_muda`, `berhenti_merokok`, `pelabur_runcit`
-- **Semak kelayakan** (`semak`, 12): `budi95_ehailing`, `rebat_cekap_tenaga`, `solar_atap`, `perkeso_dialisis`, `sjkp_akses`, `sjkp_inklusif`, `rumah_mampu_milik`, `lindung_kendiri`, `k_youth`, `latihan_tvet`, `pembiayaan_belia`, `itekad`
-- **Perubahan yang menjejaskan anda** (`kesan`, 4): `vape`, `duti_alkohol`, `fi_klinik_swasta`, `ptptn_sekatan_perjalanan`
-- **Total cards:** 30
+- **Berkemungkinan layak** (16 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `budi95`, `mysalam`, `skim_perubatan_madani`, `mhit_kwsp`, `duti_insurans_kecil`, `duti_rumah_pertama`, `step_up`, `i_saraan_plus`, `rakan_muda`, `vape`, `berhenti_merokok`, `duti_alkohol`, `fi_klinik_swasta`, `pelabur_runcit`
+- **Mungkin layak** (13 cards, in this order): `budi95_ehailing`, `rebat_cekap_tenaga`, `solar_atap`, `perkeso_dialisis`, `sjkp_akses`, `sjkp_inklusif`, `rumah_mampu_milik`, `lindung_kendiri`, `k_youth`, `latihan_tvet`, `pembiayaan_belia`, `itekad`, `ptptn_sekatan_perjalanan`
+- **Cards in the grid:** 29 (plus the STR + SARA panel on top)
 
 ### Contoh 6: Petani, 50, pendapatan dilangkau
 
@@ -1640,11 +1659,9 @@ Your build must produce exactly these results for these answers. They are comput
 
 **STR + SARA:** unknown. "Anda memilih untuk tidak menyatakan pendapatan, jadi amaun STR tidak dapat dianggarkan. Semak kelayakan di portal MySTR."
 
-- **Berkemungkinan layak** (`layak`, 5): `penghargaan_sara`, `payung_rahmah`, `mhit_kwsp`, `duti_insurans_kecil`, `i_saraan`
-- **Semak kelayakan** (`semak`, 7): `diesel_rm200`, `rebat_cekap_tenaga`, `solar_atap`, `lindung_kendiri`, `pekebun_kecil`, `agro`, `bkht`
-- **Mungkin layak** (`mungkin`, 10): `str_sara`, `jkm_bantuan`, `rebat_elektrik`, `peka_b40`, `mysalam`, `skim_perubatan_madani`, `saringan_wanita`, `rumah_daif`, `pembiayaan_wanita`, `mylesen_b2`
-- **Perubahan yang menjejaskan anda** (`kesan`, 1): `fi_klinik_swasta`
-- **Total cards:** 23
+- **Berkemungkinan layak** (6 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `mhit_kwsp`, `duti_insurans_kecil`, `i_saraan`, `fi_klinik_swasta`
+- **Mungkin layak** (16 cards, in this order): `diesel_rm200`, `rebat_cekap_tenaga`, `solar_atap`, `lindung_kendiri`, `pekebun_kecil`, `agro`, `bkht`, `jkm_bantuan`, `rebat_elektrik`, `peka_b40`, `mysalam`, `skim_perubatan_madani`, `saringan_wanita`, `rumah_daif`, `pembiayaan_wanita`, `mylesen_b2`
+- **Cards in the grid:** 22 (plus the STR + SARA panel on top)
 
 ## 9. Known limits (tell the reader where relevant)
 
@@ -1724,7 +1741,7 @@ Out of scope by design: the brain states what a person gets or pays, never gover
 
 ## Appendix: engine code
 
-The complete engine, `belanjawan2026-brain.js` v2026.5, exactly as tested. Copy it unchanged.
+The complete engine, `belanjawan2026-brain.js` v2026.6, exactly as tested. Copy it unchanged.
 
 ````js
 /**
@@ -1754,7 +1771,7 @@ The complete engine, `belanjawan2026-brain.js` v2026.5, exactly as tested. Copy 
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var VERSION = '2026.5';
+  var VERSION = '2026.6';
   var DATA_AS_OF = '2026-09-27';
   var SKIP = 'skip';
   var SKIP_LABEL = 'Tidak mahu menyatakan';
@@ -1940,9 +1957,16 @@ The complete engine, `belanjawan2026-brain.js` v2026.5, exactly as tested. Copy 
   var TIERS = {
     layak:   { label: 'Berkemungkinan layak', rank: 0 },
     semak:   { label: 'Semak kelayakan',       rank: 1 },
-    mungkin: { label: 'Mungkin layak',         rank: 2 },
-    kesan:   { label: 'Perubahan yang menjejaskan anda', rank: 3 }
+    mungkin: { label: 'Mungkin layak',         rank: 2 }
   };
+
+  // Results screen groups (user's decision, 2 Oct 2026): what the person clearly qualifies for first,
+  // then everything that is means-tested or depends on a skipped answer. No theme categories.
+  // Cost changes (kind 'kesan', e.g. tobacco duty) are tiered like any other card and get no warning label.
+  var GROUPS = [
+    { id: 'layak',   label: 'Berkemungkinan layak', tiers: ['layak'] },
+    { id: 'mungkin', label: 'Mungkin layak',        tiers: ['semak', 'mungkin'] }
+  ];
 
   /* ================================================================
    * 3. FACT DERIVATION
@@ -2156,7 +2180,8 @@ The complete engine, `belanjawan2026-brain.js` v2026.5, exactly as tested. Copy 
 
   /* ================================================================
    * 6. CATALOGUE
-   *   kind: 'manfaat' (benefit) | 'kesan' (a change that costs the person more / new obligation)
+   *   kind: 'manfaat' (benefit) | 'kesan' (a change that costs the person more / new obligation;
+   *         internal only: shown like any other card, with no warning label)
    *   certainty: 'high' = rule reflects the real criterion; 'check' = means-tested, quota-based or partly unasked
    *   value/summary describe what the PERSON gets or pays — never government allocation totals.
    * ================================================================ */
@@ -3136,7 +3161,7 @@ The complete engine, `belanjawan2026-brain.js` v2026.5, exactly as tested. Copy 
     BENEFITS.forEach(function (b) {
       var r = test(b.when, facts);
       if (r.v === false) return;
-      var tier = b.kind === 'kesan' ? 'kesan' : (r.v === null ? 'mungkin' : (b.certainty === 'check' ? 'semak' : 'layak'));
+      var tier = r.v === null ? 'mungkin' : (b.certainty === 'check' ? 'semak' : 'layak');
       results.push({
         id: b.id, theme: b.theme, kind: b.kind, tier: tier, tierLabel: TIERS[tier].label,
         title: b.title, value: b.value, summary: b.summary, who: b.who, action: b.action,
@@ -3152,13 +3177,21 @@ The complete engine, `belanjawan2026-brain.js` v2026.5, exactly as tested. Copy 
       return { id: t.id, label: t.label, count: items.length, items: items };
     }).filter(function (g) { return g.count > 0; });
 
+    // Cards for the results grid: every result except the STR + SARA card, which is shown as the panel on top.
+    var cards = results.filter(function (x) { return !x.compute; });
+    var groups = GROUPS.map(function (g) {
+      var items = [];
+      g.tiers.forEach(function (t) { items = items.concat(cards.filter(function (x) { return x.tier === t; })); });
+      return { id: g.id, label: g.label, count: items.length, items: items };
+    }).filter(function (g) { return g.count > 0; });
+
     var counts = { total: results.length };
     Object.keys(TIERS).forEach(function (k) { counts[k] = results.filter(function (x) { return x.tier === k; }).length; });
 
     return {
       version: VERSION, dataAsOf: DATA_AS_OF,
       facts: facts, strSara: strSara,
-      results: results, byTheme: byTheme,
+      results: results, groups: groups, byTheme: byTheme,
       advisories: buildAdvisories(facts, strSara, a),
       counts: counts
     };
@@ -3189,7 +3222,7 @@ The complete engine, `belanjawan2026-brain.js` v2026.5, exactly as tested. Copy 
 
   return {
     VERSION: VERSION, DATA_AS_OF: DATA_AS_OF, SKIP: SKIP,
-    QUESTIONS: QUESTIONS, THEMES: THEMES, TIERS: TIERS, BENEFITS: BENEFITS,
+    QUESTIONS: QUESTIONS, THEMES: THEMES, TIERS: TIERS, GROUPS: GROUPS, BENEFITS: BENEFITS,
     getVisibleQuestions: getVisibleQuestions, pruneAnswers: pruneAnswers, isComplete: isComplete,
     deriveFacts: deriveFacts, calcStrSara: calcStrSara, evaluate: evaluate,
     _test: test

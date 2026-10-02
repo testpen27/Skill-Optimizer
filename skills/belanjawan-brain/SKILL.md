@@ -38,7 +38,7 @@ Builds and maintains the "brain" of an interactive Budget 2026 citizen-benefits 
 | `scripts/export-brain-md.js` | Writes `BRAIN-2026.md` from the engine, running it for rates, reasons, advisories and worked examples | After any change to the engine or the ledger's exclusions |
 | `scripts/belanjawan2026-brain.js` | The engine: questions, 13 themes, 115 items, STR/SARA calculator, rule evaluator. Source of truth for the spec | Edit here when logic or wording changes |
 | `references/excluded-2026.md` | The "not to be built" list on its own (also the last section of `BRAIN-2026.md`). Generated from the ledger | Regenerate when exclusions change |
-| `scripts/test.js` | Verification round 1: 14,741 checks (speech figures, branching, personas, integrity, Bahasa Melayu lint, "no government-spending figures" lint, spec up to date) | After any edit: `node scripts/test.js` |
+| `scripts/test.js` | Verification round 1: 14,755 checks (speech figures, branching, personas, results groups, integrity, Bahasa Melayu lint, "no government-spending figures" lint, spec up to date) | After any edit: `node scripts/test.js` |
 | `scripts/verify2.js` | Verification round 2: 30,000 simulated users walking the real question flow and checking invariants | After any edit: `node scripts/verify2.js` |
 | `scripts/gen-spec.js` | Regenerates the question and rule tables for the design spec below | After any edit: run it, then paste `_generated.md` into the spec |
 | `references/LOGIK-BELANJAWAN-2026.md` | Design record: decisions, tiers, every question and rule with sources, verification record, the user's decisions (§9) | Read before changing logic |
@@ -57,7 +57,7 @@ Builds and maintains the "brain" of an interactive Budget 2026 citizen-benefits 
 
 **Build only what the brain contains.** The "Not to be built" section lists measures that were read and left out on purpose: the Lemon Law, the electricity tariff change, the non-citizen stamp duty, rare-disease funding, free helmets and others. If the user wants one, it goes through step 5 and into the engine first, then the spec is regenerated.
 
-**Card tiers** (defined in the spec, section 4): `layak` Berkemungkinan layak; `semak` Semak kelayakan (means-tested, check with the agency); `mungkin` Mungkin layak (depends on something skipped); `kesan` Perubahan yang menjejaskan anda (a cost or obligation, styled differently).
+**Card tiers** (defined in the spec, section 4): `layak` Berkemungkinan layak; `semak` Semak kelayakan (means-tested, check with the agency); `mungkin` Mungkin layak (depends on something skipped). The results screen shows two groups (`evaluate().groups`): "Berkemungkinan layak" (layak), then "Mungkin layak" (semak, then mungkin). Cost changes are tiered the same way and shown with no warning label (the user's decision).
 
 ## Changing the logic
 
@@ -65,7 +65,7 @@ Builds and maintains the "brain" of an interactive Budget 2026 citizen-benefits 
 2. Follow the user's standing requirements:
    - Output states **what the person gets or pays**, never government allocation totals or beneficiary counts. The lint fails otherwise.
    - **Don't add overly personal questions** unless a rule truly needs them, and every question except age and region must be skippable (appended automatically).
-   - **Special cases** (smokers, alcohol, investors and similar) belong in the `special` theme, as `kind: 'kesan'` when they cost the person more.
+   - **Special cases** (smokers, alcohol, investors and similar) belong in the `special` theme, as `kind: 'kesan'` when they cost the person more. They are shown like any other card, with no warning label.
    - **Work from the text only.** Every item needs a `src` reference to a unit of the speech or its annexes. Take amounts, criteria and dates from the text, not the web; where the text is silent, use `certainty: 'check'` and ask the user. Put date-sensitive facts in `timing`. Leave `web` empty on new items.
    - Record every item change in `references/ledger-2026.tsv` (the unit's decision becomes `item:<id>`), then run `scripts/coverage.js`.
    - **When you're unsure whether an item belongs in the brain, or in which theme, ask the user.** Don't decide silently. Use the Q&A format in step 5 of `references/building-a-new-brain.md`, and always leave room for the user to say something else.

@@ -47,7 +47,7 @@ ok('B10 required questions are only age and region', B.QUESTIONS.filter(q => q.r
 // Mak Timah
 r = B.evaluate({ age: 45, region: 'semenanjung', marital: 'single_parent', children: '3-4', child_stages: ['primary', 'secondary'], income: 'lt2500', ekasih: 'unsure', str_status: 'no', employment: 'self_employed', gender: 'female', assets: ['license'], status: ['none'], lifestyle: ['cigarette'] });
 has('C1 PeKa B40', r, 'peka_b40', 'layak'); has('C2 KasihnITA', r, 'kasihnita', 'semak'); has('C3 BAP', r, 'bap', 'layak');
-has('C4 rebat elektrik mungkin', r, 'rebat_elektrik', 'mungkin'); has('C5 rokok kesan', r, 'duti_rokok', 'kesan');
+has('C4 rebat elektrik mungkin', r, 'rebat_elektrik', 'mungkin'); has('C5 rokok shown as is (layak)', r, 'duti_rokok', 'layak');
 has('C6 berhenti merokok', r, 'berhenti_merokok', 'layak'); not('C7 no alcohol', r, 'duti_alkohol'); not('C8 no tax', r, 'tax_vaksin');
 ok('C9 apply-STR advisory', r.advisories.some(a => a.type === 'action'));
 // Encik Razak, civil servant (no grade asked)
@@ -67,7 +67,7 @@ not('C24 no fi klinik for minor', r, 'fi_klinik_swasta');
 // e-hailing
 r = B.evaluate({ age: 28, region: 'semenanjung', marital: 'single', children: '0', income: 'lt2500', ekasih: 'no', str_status: 'yes', employment: 'gig_ehailing', gender: 'male', assets: ['license', 'first_home', 'invest_bursa'], status: ['none'], lifestyle: ['vape', 'alcohol'] });
 has('C25 i-Saraan Plus', r, 'i_saraan_plus'); not('C26 not plain i-Saraan', r, 'i_saraan');
-has('C27 vape kesan', r, 'vape', 'kesan'); has('C28 alcohol kesan', r, 'duti_alkohol', 'kesan'); has('C29 ETF', r, 'pelabur_runcit');
+has('C27 vape shown as is', r, 'vape', 'layak'); has('C28 alcohol shown as is', r, 'duti_alkohol', 'layak'); has('C29 ETF', r, 'pelabur_runcit');
 // Housewife eKasih
 r = B.evaluate({ age: 38, region: 'semenanjung', marital: 'married', children: '3-4', child_stages: ['under6', 'primary', 'ipt'], income: 'lt2500', ekasih: 'yes', str_status: 'yes', employment: 'housewife', gender: 'female', assets: ['haji_plan'], status: ['pregnant', 'oku_child'], lifestyle: ['none'] });
 has('C30 i-Suri', r, 'i_suri', 'layak'); has('C31 PTPTN percuma', r, 'ptptn_percuma'); has('C32 KWSP haji', r, 'kwsp_haji');
@@ -80,7 +80,7 @@ not('C36 gender skipped: no i-Suri etc. certain', r, 'kasihnita');
 /* ---- F. Items added from the user's step-5 decisions (2026-09-26) ---- */
 const adult = { marital: 'married', children: '0', income: '2501_5000', ekasih: 'no', str_status: 'no', gender: 'male', status: ['none'], lifestyle: ['none'] };
 r = B.evaluate({ ...adult, age: 40, region: 'labuan', employment: 'employed_private', assets: ['license'] });
-has('F1 Labuan driver: vehicle exemption cap', r, 'cukai_kenderaan_labuan', 'kesan');
+has('F1 Labuan driver: vehicle exemption cap', r, 'cukai_kenderaan_labuan', 'layak');
 has('F2 PERKESO dialysis semak', r, 'perkeso_dialisis', 'semak'); has('F3 Solar ATAP', r, 'solar_atap', 'semak');
 not('F4 private employee: no potongan_derma without taxpayer', r, 'potongan_derma');
 ['apel_q', 'etap_perubatan', 'lantikan_tetap_kkm', 'bipk_bipac', 'kota_madani', 'penghargaan_pesara', 'bsh_pesara_kemas', 'kwap_mikro', 'geran_bsn', 'tamu_desa', 'elaun_imam_kafa', 'buah_buahan', 'penternak']
@@ -107,10 +107,29 @@ has('F20 pupil 16: tahfiz skills', r, 'tahfiz_kemahiran', 'semak'); not('F21 min
 not('F22 aged 31: no tahfiz skills', B.evaluate({ ...adult, age: 31, region: 'semenanjung', employment: 'student_ipt', assets: ['none'] }), 'tahfiz_kemahiran');
 has('F23 trader: micro loans', B.evaluate({ ...adult, age: 33, region: 'semenanjung', employment: 'self_employed', assets: ['none'] }), 'pinjaman_mikro', 'semak');
 not('F24 private employee: no micro loans', B.evaluate({ ...adult, age: 33, region: 'semenanjung', employment: 'employed_private', assets: ['none'] }), 'pinjaman_mikro');
-has('F25 PTPTN borrower: travel ban', B.evaluate({ ...adult, age: 29, region: 'semenanjung', employment: 'employed_private', assets: ['ptptn_loan'] }), 'ptptn_sekatan_perjalanan', 'kesan');
+has('F25 PTPTN borrower: travel ban', B.evaluate({ ...adult, age: 29, region: 'semenanjung', employment: 'employed_private', assets: ['ptptn_loan'] }), 'ptptn_sekatan_perjalanan', 'semak');
 not('F26 no PTPTN loan: no travel ban', B.evaluate({ ...adult, age: 29, region: 'semenanjung', employment: 'employed_private', assets: ['none'] }), 'ptptn_sekatan_perjalanan');
 not('F27 minor with PTPTN answer: no travel ban', B.evaluate({ age: 17, region: 'semenanjung', self_school: 'yes', assets: ['ptptn_loan'], status: ['none'] }), 'ptptn_sekatan_perjalanan');
 has('F28 job seeker: TVET card (incl. care-worker courses)', B.evaluate({ ...adult, age: 40, region: 'semenanjung', employment: 'jobseeker', assets: ['none'] }), 'latihan_tvet', 'semak');
+
+/* ---- H. Results screen (user's decisions, 2 Oct 2026) ---- */
+ok('H1 no "kesan" tier and no warning label', !('kesan' in B.TIERS) && !JSON.stringify(B.TIERS).includes('Perubahan yang menjejaskan anda'));
+ok('H2 two groups, eligible first', B.GROUPS.length === 2 && B.GROUPS[0].label === 'Berkemungkinan layak' && B.GROUPS[1].label === 'Mungkin layak');
+[
+  { age: 45, region: 'semenanjung', marital: 'single_parent', children: '3-4', child_stages: ['primary', 'secondary'], income: 'lt2500', ekasih: 'unsure', str_status: 'no', employment: 'self_employed', gender: 'female', assets: ['license'], status: ['none'], lifestyle: ['cigarette'] },
+  { age: 28, region: 'semenanjung', marital: 'single', children: '0', income: 'skip', employment: 'skip', gender: 'skip', assets: ['skip'], status: ['skip'], lifestyle: ['vape', 'alcohol'] },
+].forEach((a, i) => {
+  const r = B.evaluate(a);
+  const inGroups = r.groups.flatMap(g => g.items.map(x => x.id));
+  const expected = r.results.filter(x => x.id !== 'str_sara').map(x => x.id);
+  ok(`H3.${i} groups hold every card except STR + SARA, each once`, inGroups.length === expected.length && expected.every(id => inGroups.includes(id)) && !inGroups.includes('str_sara'));
+  ok(`H4.${i} group 1 is layak only; group 2 is semak then mungkin`,
+    r.groups.every(g => g.id === 'layak' ? g.items.every(x => x.tier === 'layak') : g.items.every(x => x.tier !== 'layak') &&
+      g.items.findIndex(x => x.tier === 'mungkin') === -1 || g.items.slice(g.items.findIndex(x => x.tier === 'mungkin')).every(x => x.tier === 'mungkin')));
+  ok(`H5.${i} no result carries the warning label`, r.results.every(x => x.tierLabel !== 'Perubahan yang menjejaskan anda' && x.tier !== 'kesan'));
+});
+{ const r = B.evaluate({ age: 45, region: 'semenanjung', marital: 'single_parent', children: '3-4', child_stages: ['primary'], income: 'lt2500', ekasih: 'no', str_status: 'yes', employment: 'self_employed', gender: 'female', assets: ['none'], status: ['none'], lifestyle: ['cigarette'] });
+  ok('H6 smoker sees tobacco duty in the eligible group, as is', r.groups[0].items.some(x => x.id === 'duti_rokok')); }
 
 /* ---- D. Catalogue integrity ---- */
 const themes = B.THEMES.map(t => t.id);

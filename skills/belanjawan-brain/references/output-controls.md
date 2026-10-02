@@ -11,7 +11,7 @@ Each control has a status:
 
 These come from the user's earlier decisions and are not optional.
 
-- Show the Malay text exactly as the engine returns it: titles, values, summaries, reasons, tier labels, advisories. Don't reword, shorten or translate it.
+- Show the Malay text exactly as the engine returns it: titles, values, summaries, reasons, group headings, advisories. Don't reword, shorten or translate it.
 - Always show the disclaimer advisory.
 - Every question except age and region can be skipped. Show the skip option ("Tidak mahu menyatakan"), or a "Langkau" link that sends it.
 - In a multi-select, an exclusive option ("Tiada yang berkaitan", "Tidak mahu menyatakan") clears the other selections.
@@ -36,17 +36,41 @@ KETAHUI MANFAAT ANDA!               <- tagline (T)
 - On a phone the modal fills the screen. Its content must fit and scroll inside it, with no clipped text and no horizontal scrolling.
 - Colours, fonts, imagery and spacing of the front page and modal are not decided yet; the builder designs them (see "Look and feel" below).
 
+## Results screen (locked)
+
+Shown inside the modal after the last question. From top to bottom:
+
+1. **STR + SARA panel.** The main result, on top, as one panel: `strSara.label`, STR, SARA (with the monthly amount) and the total. Add the range when `totalRange` is present, and the "jika berdaftar eKasih" total when `totalIfEkasih` is present. When the person is not eligible or it can't be worked out, show `strSara.reason` instead of amounts.
+2. **The cards, in two groups.** Take them from `evaluate().groups` and keep its order:
+   - first **"Berkemungkinan layak"**: cards the person clearly qualifies for;
+   - then **"Mungkin layak"**: means-tested cards, then cards that depend on a skipped answer.
+
+   Show each group's heading exactly as `group.label`. Hide a group with no cards. No theme categories anywhere.
+3. **Advisories** below the cards, in the engine's order. The disclaimer is last.
+
+**Grid.** Five cards per row on a wide screen, with as many rows as needed. All cards are on one scrolling screen; there are no pages. As the screen narrows, show fewer per row: one or two on a phone.
+
+**Card face: the title only.** No amount, tier label, theme, icon or colour that marks a card as different. Cost changes for the person (tobacco, vape, alcohol, and similar) look exactly like every other card. No warning label of any kind, including the old "Perubahan yang menjejaskan anda".
+
+**Details on hover.** Hovering over a card shows, in this order:
+
+- the amount (`value`);
+- the description (`summary`);
+- the timing note (`timing`), when there is one;
+- "Kenapa anda layak", followed by `reasons`;
+- for cards with `tier` = `mungkin` only: "Perlu disahkan", followed by `needsConfirm`.
+
+Nothing else is shown: not who is eligible (`who`), not what to do next (`action`), not the source, not the tier. On a phone or tablet, where there is no hover, a tap shows the same details and a second tap (or a tap elsewhere) hides them. Cards are focusable, and keyboard focus shows the details too.
+
 ## Look and feel (undecided)
 
 No style has been chosen. The builder may use a design skill or the house style of the skill it's working with, as long as every rule above is followed.
 
-## Controls the user will decide
+## Still undecided
 
 | # | Control | Status | Rule when locked |
 |---|---|---|---|
-| 1 | Results order | undecided | The STR + SARA card comes first. Then themes in the engine's order (`byTheme`), and within a theme layak, semak, mungkin, kesan (the engine already sorts them). Hide empty themes. Style `kesan` cards apart from benefits. |
-| 2 | Card fields | undecided | Every card shows, in this order: tier label, title, value, summary, "Kenapa anda layak" (`reasons`), "Perlu disahkan" (`needsConfirm`, `mungkin` cards only), who, action, timing note, source line (`src`). |
-| 3 | Fixed wording | undecided | Tier labels exactly as `B26Brain.TIERS`. The disclaimer is the last thing on the results screen. No extra marketing or summary copy written by the builder. |
-| 4 | Summary line | undecided | Above the cards, one line with the number of cards and the STR + SARA total, plus counts per tier, built only from `counts` and `strSara`. |
+| 1 | Summary line | undecided | Above the cards, one line with the number of cards and the STR + SARA total, built only from `counts`, `groups` and `strSara`. |
+| 2 | Extra copy | undecided | No text written by the builder beyond what these controls and the engine provide (no intro paragraph, no marketing lines). |
 
 To lock a control, change its status to `locked` (and edit its rule if needed). To add a control, add a row.

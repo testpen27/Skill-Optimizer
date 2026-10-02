@@ -1,9 +1,17 @@
-# Belanjawan 2026 — Citizen Benefits Q&A: Logic Spec (v2026.5)
+# Belanjawan 2026 — Citizen Benefits Q&A: Logic Spec (v2026.6)
 
 **Engine:** `belanjawan2026-brain.js` (UI-free, no dependencies, works in browser and Node)
 **Verification:** `test.js` (round 1) and `verify2.js` (round 2). Both pass; see §8.
 **Source:** Ucapan Belanjawan 2026 (MOF). "Perenggan / ms" refer to that document. Items added in v2026.4 and v2026.5 come from the speech text only and cite paragraph and Lampiran numbers (no page numbers). Items from earlier versions that were checked on the web keep their `web` field.
 **Data as of:** 27 Sep 2026
+
+## What changed in v2026.6
+
+The user's results-screen decisions (2 Oct 2026). The data and rules didn't change.
+
+- **No "kesan" tier.** The label "Perubahan yang menjejaskan anda" is gone. Cost changes (`kind: 'kesan'`: tobacco, vape, alcohol, clinic fees and similar) are tiered like any other card (`layak`, `semak` or `mungkin`) and shown as they are, with no warning.
+- **Results in two groups, no themes.** `evaluate()` now also returns `groups`: "Berkemungkinan layak" (`layak` cards), then "Mungkin layak" (`semak` cards, then `mungkin` cards). The STR + SARA card isn't in the groups; it stays as the main panel on top. `byTheme` is still returned but the results screen doesn't use it.
+- **Output controls** (`references/output-controls.md`): cards show the title only, in a five-wide grid; hovering (or tapping, on touch screens) shows the amount, description, timing note and "Kenapa anda layak" (plus "Perlu disahkan" for `mungkin` cards). Who is eligible, what to do next, the source and the tier aren't shown.
 
 ## What changed in v2026.5
 
@@ -71,7 +79,8 @@ answers ──► deriveFacts() ──► facts ──┬──► calcStrSara()
 | `layak` | Berkemungkinan layak | Rule true and it is the real criterion |
 | `semak` | Semak kelayakan | Rule true, but the programme is means-tested, quota-based or depends on something we deliberately don't ask (e.g. grade) |
 | `mungkin` | Mungkin layak | Rule depends on a skipped answer or "Tidak pasti"; `needsConfirm[]` lists what's missing |
-| `kesan` | Perubahan yang menjejaskan anda | `kind: 'kesan'` items (price or duty increases, new tax) |
+
+Cost changes (`kind: 'kesan'`) follow the same three tiers since v2026.6; there is no separate tier or warning label.
 
 **How skipping works**
 
@@ -373,10 +382,11 @@ function onAnswer(id, value) { answers = B26Brain.pruneAnswers({ ...answers, [id
 | Key | Contents |
 |---|---|
 | `strSara` | `{ eligible: true\|false\|null, category, label, str, sara, saraMonthly, total, totalRange?, totalIfEkasih?, reason }` |
-| `byTheme[]` | `{ id, label, count, items[] }`; items sorted layak → semak → mungkin → kesan |
+| `groups[]` | `{ id: 'layak'\|'mungkin', label, count, items[] }`: the results grid, "Berkemungkinan layak" then "Mungkin layak" (semak then mungkin); STR + SARA excluded |
+| `byTheme[]` | `{ id, label, count, items[] }`; items sorted layak → semak → mungkin (not used on the results screen) |
 | `items[]` | `{ id, kind, tier, tierLabel, title, value, summary, who, action, reasons[], needsConfirm[], timing, src, web, portal }` |
 | `advisories[]` | `{ type: 'action' \| 'info' \| 'disclaimer', text }`, including a note listing skipped questions |
-| `counts` | `{ total, layak, semak, mungkin, kesan }` |
+| `counts` | `{ total, layak, semak, mungkin }` |
 
 ## 7. Maintenance
 
@@ -385,6 +395,10 @@ function onAnswer(id, value) { answers = B26Brain.pruneAnswers({ ...answers, [id
 3. Run `node gen-spec.js` to regenerate the tables in this document.
 
 ## 8. Verification record
+
+**2 Oct 2026 (v2026.6):**
+- `test.js`: 14,755 checks, 0 failures. New checks: no "kesan" tier or warning label; the two groups hold every card except STR + SARA exactly once, eligible group first; a smoker's tobacco-duty card sits in the eligible group with no label; the spec contains the locked front-page text.
+- `verify2.js`: 30,000 users, all 115 items and 13 themes reachable, 0 invariant violations (V5 now checks the groups instead of the old kesan tier).
 
 **27 Sep 2026 (v2026.5):**
 - `test.js`: 14,740 checks, 0 failures. New persona checks: micro loans for the self-employed only; the PTPTN travel ban only for adults who tick the PTPTN option (not for minors, and not without the option); TVET card for job seekers.

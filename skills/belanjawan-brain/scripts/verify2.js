@@ -39,8 +39,11 @@ for (let i = 0; i < N; i++) {
   // V4 every shown item re-tests as not-false; every hidden item re-tests false
   const shown = new Set(r.results.map(x => x.id));
   B.BENEFITS.forEach(b => { const v = B._test(b.when, f).v; if (shown.has(b.id) === (v === false)) bump('V4 result/rule mismatch ' + b.id, a); });
-  // V5 kesan items always tier kesan; manfaat never kesan
-  r.results.forEach(x => { if ((x.kind === 'kesan') !== (x.tier === 'kesan')) bump('V5 kind/tier mismatch', x.id); });
+  // V5 no "kesan" tier; the groups hold every card except STR + SARA exactly once, eligible group layak only
+  r.results.forEach(x => { if (!(x.tier in B.TIERS)) bump('V5 unknown tier', x.id); });
+  const gIds = r.groups.flatMap(g => g.items.map(x => x.id));
+  if (gIds.length !== r.results.filter(x => x.id !== 'str_sara').length || gIds.includes('str_sara') || new Set(gIds).size !== gIds.length) bump('V5b groups do not partition the cards', a);
+  r.groups.forEach(g => g.items.forEach(x => { if ((g.id === 'layak') !== (x.tier === 'layak')) bump('V5c card in wrong group', x.id); }));
   // V6 STR invariants
   if (s.eligible === true) {
     if (s.total !== s.str + s.sara) bump('V6a total != str+sara', s);
