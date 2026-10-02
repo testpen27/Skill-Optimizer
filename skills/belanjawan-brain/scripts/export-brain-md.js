@@ -53,9 +53,10 @@ const FACTS = {
   region: 'The `region` answer.',
   eastMalaysia: '`region` is not `semenanjung` (Sabah, Sarawak or Labuan).',
   marital: 'The `marital` answer. Skipped → unknown.',
-  childCount: '`children` answer as a number: `0` → 0, `1-2` → 1, `3-4` → 3, `5+` → 5. Skipped → unknown.',
-  hasChildren: '`childCount` > 0, or any `child_stages` chosen. Skipped `children` → unknown.',
-  childrenSkipped: '`children` was skipped.',
+  minorChildren: '`has_minor_children` = `yes` (has children aged 17 and below). `no`, or not asked → false. Skipped → unknown.',
+  childCount: 'Number of children aged 17 and below: 0 when `minorChildren` is false; otherwise the `children` answer as a number (`1-2` → 1, `3-4` → 3, `5+` → 5). Skipped (either question) → unknown. STR uses this count.',
+  hasChildren: 'true when `minorChildren` is true or any `child_stages` is chosen; false when `minorChildren` is false. Skipped `has_minor_children` → unknown.',
+  childrenSkipped: '`has_minor_children` was skipped, or it was `yes` and `children` was skipped.',
   childStages: 'The `child_stages` answers, without `none`/`skip`.',
   isSchoolPupil: '`child_stages` includes `primary` or `secondary`, or the person is under 18 and answered `self_school` = `yes`.',
   income: 'The `income` band value. Skipped → unknown.',
@@ -71,8 +72,12 @@ const FACTS = {
   status: 'The `status` answers, without `none`/`skip`.',
   lifestyle: 'The `lifestyle` answers, without `none`/`skip`.',
   smoker: '`lifestyle` includes any of `cigarette`, `cigar`, `heated_tobacco`, `vape`.',
-  ipt: 'true if `child_stages` includes `ipt` or `employment` = `student_ipt`; unknown if employment was skipped; otherwise false.',
-  kwspMember: '`employment` is one of `employed_private`, `gig_ehailing`, `self_employed`, `housewife`, `jobseeker`, `fisher`, `farmer`. Skipped → unknown.',
+  ipt: 'true if `status` includes `child_ipt` or `employment` = `student_ipt`; unknown if employment was skipped; otherwise false.',
+  kwspMember: 'The `kwsp` answer (`yes` → true, `no` → false). If `kwsp` was skipped or not asked: guessed from `employment` (true for `employed_private`, `gig_ehailing`, `self_employed`, `housewife`, `jobseeker`, `fisher`, `farmer`); unknown if employment was also skipped.',
+  oku: 'The `oku` answer: `yes` → true, `no` or not asked → false, skipped → unknown.',
+  license: 'The `license` answer: `yes` → true, `no` or not asked → false, skipped → unknown.',
+  ptptnBorrower: 'The `ptptn` answer: `yes` → true, `no` or not asked → false, skipped → unknown.',
+  strRecipient: '`str_status` = `yes` (the reader says they receive STR or SARA). Used with `strEligible` for the cards meant for STR recipients.',
   strEligible: 'Result of the STR calculator below: true, false, or unknown when the calculator cannot decide.',
   strCategory: 'STR category from the calculator: `isi_rumah`, `warga_emas` or `bujang`.',
 };
@@ -88,7 +93,7 @@ const strRows = [];
 for (const income of ['lt2500', '2501_5000']) {
   const band = income === 'lt2500' ? 'RM2,500 dan ke bawah' : 'RM2,501 hingga RM5,000';
   for (const [children, label] of [['0', 'Tiada anak'], ['1-2', '1–2 anak'], ['3-4', '3–4 anak'], ['5+', '5 anak atau lebih']]) {
-    const s = B.calcStrSara(B.deriveFacts({ age: 35, region: 'semenanjung', marital: 'married', children, income, ekasih: 'no' }));
+    const s = B.calcStrSara(B.deriveFacts({ age: 35, region: 'semenanjung', marital: 'married', has_minor_children: children === '0' ? 'no' : 'yes', children, income, ekasih: 'no' }));
     strRows.push(`| Isi Rumah | ${band} | ${label} | ${rm(s.str)} | ${rm(s.sara)} (${rm(s.saraMonthly)} sebulan) | ${rm(s.total)} |`);
   }
 }
@@ -110,7 +115,7 @@ const reasons = [
   ['Under 18', facts({ age: 15 })],
   ['Marital status skipped', B.deriveFacts({ age: 35, region: 'semenanjung', marital: 'skip', children: '0', income: 'lt2500' })],
   ['Income skipped', B.deriveFacts({ age: 35, region: 'semenanjung', marital: 'married', children: '0', income: 'skip' })],
-  ['Single, number of children skipped', B.deriveFacts({ age: 35, region: 'semenanjung', marital: 'single', children: 'skip', income: 'lt2500' })],
+  ['Single, children question skipped', B.deriveFacts({ age: 35, region: 'semenanjung', marital: 'single', has_minor_children: 'skip', income: 'lt2500' })],
   ['Single, no children, aged 18–20', B.deriveFacts({ age: 19, region: 'semenanjung', marital: 'single', children: '0', income: 'lt2500' })],
   ['Household income above RM5,000', B.deriveFacts({ age: 35, region: 'semenanjung', marital: 'married', children: '0', income: '5001_6000' })],
   ['Single 60+, income above RM5,000', B.deriveFacts({ age: 65, region: 'semenanjung', marital: 'single', children: '0', income: '5001_6000' })],
@@ -119,7 +124,7 @@ const reasons = [
 
 /* ---- advisories, texts taken from the engine ---- */
 const adv = a => B.evaluate(a).advisories;
-const base = { age: 35, region: 'semenanjung', marital: 'married', children: '1-2', child_stages: ['primary'], income: 'lt2500', ekasih: 'no', employment: 'employed_private', gender: 'male', assets: ['none'], status: ['none'], lifestyle: ['none'] };
+const base = { age: 35, region: 'semenanjung', marital: 'married', has_minor_children: 'yes', children: '1-2', child_stages: ['primary'], income: 'lt2500', ekasih: 'no', employment: 'employed_private', gender: 'male', assets: ['none'], status: ['none'], lifestyle: ['none'] };
 const pick = (list, type, i = 0) => (list.filter(x => x.type === type)[i] || {}).text;
 const advRows = [
   ['STR likely but the person said they don\'t receive it (`str_status` = `no`)', pick(adv({ ...base, str_status: 'no' }), 'action')],
@@ -140,17 +145,19 @@ const skipNames = B.QUESTIONS.filter(q => q.options && q.options.some(o => o.ski
 /* ---- worked examples: expected results the build must reproduce ---- */
 const EXAMPLES = [
   ['Ibu tunggal, 45, dua anak sekolah, pendapatan bawah RM2,500, eKasih tidak pasti, bekerja sendiri, merokok',
-    { age: 45, region: 'semenanjung', marital: 'single_parent', children: '3-4', child_stages: ['primary', 'secondary'], income: 'lt2500', ekasih: 'unsure', str_status: 'no', employment: 'self_employed', gender: 'female', assets: ['license'], status: ['none'], lifestyle: ['cigarette'] }],
-  ['Penjawat awam, 34, berkahwin, anak bawah 6 tahun, RM2,501–5,000, pembayar cukai, rumah pertama, haji',
-    { age: 34, region: 'semenanjung', marital: 'married', children: '1-2', child_stages: ['under6'], income: '2501_5000', ekasih: 'no', str_status: 'yes', employment: 'civil_servant', gender: 'male', assets: ['license', 'first_home', 'taxpayer', 'haji_plan'], status: ['none'], lifestyle: ['skip'] }],
+    { age: 45, region: 'semenanjung', gender: 'female', employment: 'self_employed', marital: 'single_parent', has_minor_children: 'yes', children: '3-4', child_stages: ['primary', 'secondary'], oku: 'no', license: 'yes', income: 'lt2500', ekasih: 'unsure', str_status: 'no', ptptn: 'no', kwsp: 'yes', assets: ['none'], status: ['none'], lifestyle: ['cigarette'] }],
+  ['Penjawat awam, 34, berkahwin, anak bawah 6 tahun, RM2,501–5,000, peminjam PTPTN, pembayar cukai, rumah pertama, haji',
+    { age: 34, region: 'semenanjung', gender: 'male', employment: 'civil_servant', marital: 'married', has_minor_children: 'yes', children: '1-2', child_stages: ['under6'], oku: 'no', license: 'yes', income: '2501_5000', ekasih: 'no', str_status: 'yes', ptptn: 'yes', kwsp: 'no', assets: ['first_home', 'taxpayer', 'haji_plan'], status: ['none'], lifestyle: ['skip'] }],
   ['Pesara Kerajaan, 67, Sabah, bujang, veteran',
-    { age: 67, region: 'sabah', marital: 'single', children: '0', income: '2501_5000', ekasih: 'no', str_status: 'yes', employment: 'retired_gov', gender: 'male', assets: ['license', 'old_car'], status: ['veteran', 'pjm'], lifestyle: ['none'] }],
+    { age: 67, region: 'sabah', gender: 'male', employment: 'retired_gov', marital: 'single', has_minor_children: 'no', oku: 'no', license: 'yes', income: '2501_5000', ekasih: 'no', str_status: 'yes', ptptn: 'no', kwsp: 'no', assets: ['old_car'], status: ['veteran', 'pjm'], lifestyle: ['none'] }],
   ['Murid, 17, Sarawak',
-    { age: 17, region: 'sarawak', self_school: 'yes', assets: ['none'], status: ['none'] }],
-  ['Pemandu e-hailing, 28, bujang, bawah RM2,500, ada pinjaman PTPTN, vape dan alkohol',
-    { age: 28, region: 'semenanjung', marital: 'single', children: '0', income: 'lt2500', ekasih: 'no', str_status: 'yes', employment: 'gig_ehailing', gender: 'male', assets: ['license', 'first_home', 'invest_bursa', 'ptptn_loan'], status: ['none'], lifestyle: ['vape', 'alcohol'] }],
-  ['Petani, 50, pendapatan dilangkau',
-    { age: 50, region: 'semenanjung', marital: 'married', children: '0', income: 'skip', employment: 'farmer', farm_type: 'smallholder', gender: 'skip', assets: ['none'], status: ['none'], lifestyle: ['none'] }],
+    { age: 17, region: 'sarawak', self_school: 'yes', oku: 'no', license: 'no', assets: ['none'], status: ['none'] }],
+  ['Pemandu e-hailing, 28, bujang, bawah RM2,500, peminjam PTPTN, vape dan alkohol',
+    { age: 28, region: 'semenanjung', gender: 'male', employment: 'gig_ehailing', marital: 'single', has_minor_children: 'no', oku: 'no', license: 'yes', income: 'lt2500', ekasih: 'no', str_status: 'yes', ptptn: 'yes', kwsp: 'yes', assets: ['first_home', 'invest_bursa'], status: ['none'], lifestyle: ['vape', 'alcohol'] }],
+  ['Petani, 50, pendapatan, jantina, OKU dan KWSP dilangkau',
+    { age: 50, region: 'semenanjung', gender: 'skip', employment: 'farmer', farm_type: 'smallholder', marital: 'married', has_minor_children: 'no', oku: 'skip', license: 'yes', income: 'skip', str_status: 'unsure', ptptn: 'no', kwsp: 'skip', assets: ['none'], status: ['none'], lifestyle: ['none'] }],
+  ['OKU, 30, pekerja swasta, pendapatan RM5,001–6,000, menyatakan dirinya penerima STR atau SARA',
+    { age: 30, region: 'semenanjung', gender: 'female', employment: 'employed_private', marital: 'single', has_minor_children: 'no', oku: 'yes', license: 'no', income: '5001_6000', str_status: 'yes', ptptn: 'yes', kwsp: 'yes', assets: ['none'], status: ['none'], lifestyle: ['none'] }],
 ];
 function exampleBlock([title, answers], i) {
   const r = B.evaluate(answers);
@@ -252,7 +259,7 @@ strRows.forEach(r => md.push(r));
 md.push('');
 md.push('Income above these bands → not eligible for that category.', '');
 md.push(`**eKasih top-up** (when \`ekasih\` is true): SARA rises by ${rm(topup['Isi Rumah'].add)} a year for Isi Rumah (to ${rm(topup['Isi Rumah'].monthly)} a month), ${rm(topup['Warga Emas Tiada Pasangan'].add)} for Warga Emas (to ${rm(topup['Warga Emas Tiada Pasangan'].monthly)} a month) and ${rm(topup.Bujang.add)} for Bujang (to ${rm(topup.Bujang.monthly)} a month). When \`ekasih\` is unknown, show the total without the top-up and also the total "jika berdaftar eKasih".`, '');
-md.push('**Number of children skipped** (Isi Rumah): show a range from the 0-children rate to the 5+ rate.', '');
+md.push('**Children question skipped** (Isi Rumah): show a range from the 0-children rate to the 5+ rate. Children means children aged 17 and below (the `has_minor_children` question); answering "Tidak" uses the 0-children rate.', '');
 md.push('**When not eligible or unknown, show this reason (Malay, as written):**', '');
 md.push('| Situation | Result | Reason shown |', '|---|---|---|');
 reasons.forEach(r => md.push(r));

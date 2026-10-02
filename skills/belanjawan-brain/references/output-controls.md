@@ -13,7 +13,16 @@ These come from the user's earlier decisions and are not optional.
 
 - Show the Malay text exactly as the engine returns it: titles, values, summaries, reasons, group headings, advisories. Don't reword, shorten or translate it.
 - Always show the disclaimer advisory.
-- Every question except age and region can be skipped. Show the skip option ("Tidak mahu menyatakan"), or a "Langkau" link that sends it.
+- Ask every question `getVisibleQuestions()` returns, in its order, with its text exactly as given. Don't drop, merge or reorder questions. Eight of them are mandatory and must always appear in the flow (to every adult; the OKU and licence questions to minors too):
+  - Apakah jantina anda?
+  - Pekerjaan anda?
+  - Adakah anda mempunyai anak berusia 17 tahun ke bawah?
+  - Adakah anda Orang Kurang Upaya (OKU)?
+  - Adakah lesen memandu anda aktif?
+  - Adakah anda penerima STR atau SARA?
+  - Adakah anda peminjam PTPTN?
+  - Adakah anda pencarum KWSP?
+- Every question except age and region can be skipped, the eight above included. Show the skip option ("Tidak mahu menyatakan"), or a "Langkau" link that sends it.
 - In a multi-select, an exclusive option ("Tiada yang berkaitan", "Tidak mahu menyatakan") clears the other selections.
 - Build nothing from the "Not to be built" list.
 

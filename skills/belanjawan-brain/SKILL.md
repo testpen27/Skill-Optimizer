@@ -16,11 +16,11 @@ Builds and maintains the "brain" of an interactive Budget 2026 citizen-benefits 
 
 **`BRAIN-2026.md`** (next to this file) is the deliverable. It is the complete build spec:
 
-- the question flow and all 15 questions, with options and when each is shown;
+- the question flow and all 20 questions, with options and when each is shown;
 - the derived facts the rules use, and the three-valued rule logic;
 - the STR + SARA calculator with its full rate table and reasons;
 - every result card (115), with its rule, Malay text and speech source;
-- advisories, six worked examples with the exact results a build must reproduce, known limits;
+- advisories, seven worked examples with the exact results a build must reproduce, known limits;
 - the **"Not to be built"** list: measures read in the speech and left out on purpose;
 - the **output controls** (`references/output-controls.md`): which parts of the results screen are fixed and which the builder may design;
 - the **engine code itself**, in full, as an appendix. The builder pastes it into the page and calls its API instead of re-implementing the rules, so the checker runs exactly the tested logic.
@@ -38,7 +38,7 @@ Builds and maintains the "brain" of an interactive Budget 2026 citizen-benefits 
 | `scripts/export-brain-md.js` | Writes `BRAIN-2026.md` from the engine, running it for rates, reasons, advisories and worked examples | After any change to the engine or the ledger's exclusions |
 | `scripts/belanjawan2026-brain.js` | The engine: questions, 13 themes, 115 items, STR/SARA calculator, rule evaluator. Source of truth for the spec | Edit here when logic or wording changes |
 | `references/excluded-2026.md` | The "not to be built" list on its own (also the last section of `BRAIN-2026.md`). Generated from the ledger | Regenerate when exclusions change |
-| `scripts/test.js` | Verification round 1: 14,755 checks (speech figures, branching, personas, results groups, integrity, Bahasa Melayu lint, "no government-spending figures" lint, spec up to date) | After any edit: `node scripts/test.js` |
+| `scripts/test.js` | Verification round 1: 15,167 checks (speech figures, branching, personas, results groups, integrity, Bahasa Melayu lint, "no government-spending figures" lint, spec up to date) | After any edit: `node scripts/test.js` |
 | `scripts/verify2.js` | Verification round 2: 30,000 simulated users walking the real question flow and checking invariants | After any edit: `node scripts/verify2.js` |
 | `scripts/gen-spec.js` | Regenerates the question and rule tables for the design spec below | After any edit: run it, then paste `_generated.md` into the spec |
 | `references/LOGIK-BELANJAWAN-2026.md` | Design record: decisions, tiers, every question and rule with sources, verification record, the user's decisions (§9) | Read before changing logic |
@@ -65,6 +65,7 @@ Builds and maintains the "brain" of an interactive Budget 2026 citizen-benefits 
 2. Follow the user's standing requirements:
    - Output states **what the person gets or pays**, never government allocation totals or beneficiary counts. The lint fails otherwise.
    - **Don't add overly personal questions** unless a rule truly needs them, and every question except age and region must be skippable (appended automatically).
+   - **Eight questions are mandatory** (the user's decision): always asked, with this wording, and skippable like the rest. Gender, job, children aged 17 or under, OKU, active driving licence, STR or SARA recipient, PTPTN borrower and KWSP contributor (`gender`, `employment`, `has_minor_children`, `oku`, `license`, `str_status`, `ptptn`, `kwsp`). They go to every adult; OKU and licence also go to minors. Don't remove them, fold them into a multi-select, or hide them behind another answer. `test.js` section M checks this.
    - **Special cases** (smokers, alcohol, investors and similar) belong in the `special` theme, as `kind: 'kesan'` when they cost the person more. They are shown like any other card, with no warning label.
    - **Work from the text only.** Every item needs a `src` reference to a unit of the speech or its annexes. Take amounts, criteria and dates from the text, not the web; where the text is silent, use `certainty: 'check'` and ask the user. Put date-sensitive facts in `timing`. Leave `web` empty on new items.
    - Record every item change in `references/ledger-2026.tsv` (the unit's decision becomes `item:<id>`), then run `scripts/coverage.js`.

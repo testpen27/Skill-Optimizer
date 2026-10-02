@@ -25,7 +25,7 @@
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var VERSION = '2026.6';
+  var VERSION = '2026.7';
   var DATA_AS_OF = '2026-09-27';
   var SKIP = 'skip';
   var SKIP_LABEL = 'Tidak mahu menyatakan';
@@ -55,61 +55,17 @@
       text: 'Adakah anda murid sekolah Kerajaan?',
       options: [{ v: 'yes', l: 'Ya' }, { v: 'no', l: 'Tidak' }] },
 
-    { id: 'marital', type: 'single',
+    // The user's mandatory questions (2 Oct 2026): jantina, pekerjaan, anak 17 tahun ke bawah, OKU, lesen,
+    // STR/SARA, PTPTN, KWSP. Always asked (adults; OKU and licence for everyone), and still skippable.
+    { id: 'gender', type: 'single',
       showIf: { f: 'age', gte: 18 },
-      text: 'Apakah status perkahwinan anda?',
-      options: [
-        { v: 'married', l: 'Berkahwin' },
-        { v: 'single_parent', l: 'Ibu atau bapa tunggal yang mempunyai anak tanggungan' },
-        { v: 'single', l: 'Tiada pasangan (belum berkahwin, bercerai atau kematian pasangan)' }
-      ] },
-
-    { id: 'children', type: 'single',
-      showIf: { f: 'age', gte: 18 },
-      text: 'Berapakah bilangan anak tanggungan anda?',
-      help: 'Anak berumur bawah 18 tahun, atau anak berumur 18 tahun ke atas yang masih belajar sepenuh masa atau OKU.',
-      options: [
-        { v: '0', l: 'Tiada' }, { v: '1-2', l: '1 hingga 2 orang' },
-        { v: '3-4', l: '3 hingga 4 orang' }, { v: '5+', l: '5 orang atau lebih' }
-      ] },
-
-    { id: 'child_stages', type: 'multi',
-      showIf: { any: [{ f: 'hasChildren', eq: true }, { f: 'childrenSkipped', eq: true }] },
-      text: 'Di peringkat manakah anak anda sekarang? (pilih semua yang berkaitan)',
-      options: [
-        { v: 'under6', l: 'Belum bersekolah atau prasekolah (bawah 6 tahun)' },
-        { v: 'primary', l: 'Sekolah rendah Kerajaan' },
-        { v: 'secondary', l: 'Sekolah menengah Kerajaan' },
-        { v: 'ipt', l: 'Institusi pengajian tinggi (universiti, politeknik atau kolej)' },
-        { v: 'other', l: 'Lain-lain (sudah bekerja, sekolah swasta dan sebagainya)' },
-        { v: 'none', l: 'Tiada anak tanggungan', exclusive: true }
-      ] },
-
-    { id: 'income', type: 'single',
-      showIf: { f: 'age', gte: 18 },
-      text: 'Berapakah anggaran pendapatan kasar bulanan isi rumah anda?',
-      help: 'Jumlah pendapatan semua ahli isi rumah yang bekerja. Jika anda tinggal seorang diri, masukkan pendapatan anda sendiri.',
-      options: [
-        { v: 'lt2500', l: 'RM2,500 dan ke bawah' },
-        { v: '2501_5000', l: 'RM2,501 hingga RM5,000' },
-        { v: '5001_6000', l: 'RM5,001 hingga RM6,000' },
-        { v: '6001_12000', l: 'RM6,001 hingga RM12,000' },
-        { v: 'gt12000', l: 'Melebihi RM12,000' }
-      ] },
-
-    { id: 'ekasih', type: 'single',
-      showIf: { all: [{ f: 'age', gte: 18 }, { any: [{ f: 'incomeMax', lte: 5000 }, { f: 'incomeSkipped', eq: true }] }] },
-      text: 'Adakah isi rumah anda berdaftar sebagai Miskin atau Miskin Tegar dalam sistem eKasih?',
-      options: [{ v: 'yes', l: 'Ya' }, { v: 'no', l: 'Tidak' }, { v: 'unsure', l: 'Tidak pasti' }] },
-
-    { id: 'str_status', type: 'single',
-      showIf: { f: 'strEligible', eq: true },
-      text: 'Adakah anda sudah menerima Sumbangan Tunai Rahmah (STR) 2026?',
-      options: [{ v: 'yes', l: 'Ya, sudah menerima' }, { v: 'no', l: 'Belum menerima atau tidak memohon' }, { v: 'unsure', l: 'Tidak pasti' }] },
+      text: 'Apakah jantina anda?',
+      help: 'Digunakan untuk memaparkan program khusus wanita seperti i-Suri dan pembiayaan usahawan wanita.',
+      options: [{ v: 'female', l: 'Perempuan' }, { v: 'male', l: 'Lelaki' }] },
 
     { id: 'employment', type: 'single',
       showIf: { f: 'age', gte: 18 },
-      text: 'Apakah status pekerjaan anda sekarang?',
+      text: 'Pekerjaan anda?',
       options: [
         { v: 'employed_private', l: 'Pekerja sektor swasta' },
         { v: 'civil_servant', l: 'Penjawat awam' },
@@ -133,23 +89,89 @@
         { v: 'other', l: 'Tanaman lain, ternakan atau akuakultur' }
       ] },
 
-    { id: 'gender', type: 'single',
+    { id: 'marital', type: 'single',
       showIf: { f: 'age', gte: 18 },
-      text: 'Apakah jantina anda?',
-      help: 'Digunakan untuk memaparkan program khusus wanita seperti i-Suri dan pembiayaan usahawan wanita.',
-      options: [{ v: 'female', l: 'Perempuan' }, { v: 'male', l: 'Lelaki' }] },
+      text: 'Apakah status perkahwinan anda?',
+      options: [
+        { v: 'married', l: 'Berkahwin' },
+        { v: 'single_parent', l: 'Ibu atau bapa tunggal yang mempunyai anak tanggungan' },
+        { v: 'single', l: 'Tiada pasangan (belum berkahwin, bercerai atau kematian pasangan)' }
+      ] },
+
+    { id: 'has_minor_children', type: 'single',
+      showIf: { f: 'age', gte: 18 },
+      text: 'Adakah anda mempunyai anak berusia 17 tahun ke bawah?',
+      options: [{ v: 'yes', l: 'Ya' }, { v: 'no', l: 'Tidak' }] },
+
+    { id: 'children', type: 'single',
+      showIf: { f: 'minorChildren', eq: true },
+      text: 'Berapakah bilangan anak anda yang berusia 17 tahun ke bawah?',
+      options: [
+        { v: '1-2', l: '1 hingga 2 orang' },
+        { v: '3-4', l: '3 hingga 4 orang' }, { v: '5+', l: '5 orang atau lebih' }
+      ] },
+
+    { id: 'child_stages', type: 'multi',
+      showIf: { f: 'minorChildren', eq: true },
+      text: 'Di peringkat manakah anak anda sekarang? (pilih semua yang berkaitan)',
+      options: [
+        { v: 'under6', l: 'Belum bersekolah atau prasekolah (bawah 6 tahun)' },
+        { v: 'primary', l: 'Sekolah rendah Kerajaan' },
+        { v: 'secondary', l: 'Sekolah menengah Kerajaan' },
+        { v: 'other', l: 'Lain-lain (contohnya sekolah swasta)' }
+      ] },
+
+    { id: 'oku', type: 'single',
+      text: 'Adakah anda Orang Kurang Upaya (OKU)?',
+      help: 'OKU yang berdaftar dengan Jabatan Kebajikan Masyarakat (JKM).',
+      options: [{ v: 'yes', l: 'Ya' }, { v: 'no', l: 'Tidak' }] },
+
+    { id: 'license', type: 'single',
+      text: 'Adakah lesen memandu anda aktif?',
+      options: [{ v: 'yes', l: 'Ya' }, { v: 'no', l: 'Tidak, atau tiada lesen memandu' }] },
+
+    { id: 'income', type: 'single',
+      showIf: { f: 'age', gte: 18 },
+      text: 'Berapakah anggaran pendapatan kasar bulanan isi rumah anda?',
+      help: 'Jumlah pendapatan semua ahli isi rumah yang bekerja. Jika anda tinggal seorang diri, masukkan pendapatan anda sendiri.',
+      options: [
+        { v: 'lt2500', l: 'RM2,500 dan ke bawah' },
+        { v: '2501_5000', l: 'RM2,501 hingga RM5,000' },
+        { v: '5001_6000', l: 'RM5,001 hingga RM6,000' },
+        { v: '6001_12000', l: 'RM6,001 hingga RM12,000' },
+        { v: 'gt12000', l: 'Melebihi RM12,000' }
+      ] },
+
+    { id: 'ekasih', type: 'single',
+      showIf: { all: [{ f: 'age', gte: 18 }, { any: [{ f: 'incomeMax', lte: 5000 }, { f: 'incomeSkipped', eq: true }] }] },
+      text: 'Adakah isi rumah anda berdaftar sebagai Miskin atau Miskin Tegar dalam sistem eKasih?',
+      options: [{ v: 'yes', l: 'Ya' }, { v: 'no', l: 'Tidak' }, { v: 'unsure', l: 'Tidak pasti' }] },
+
+    { id: 'str_status', type: 'single',
+      showIf: { f: 'age', gte: 18 },
+      text: 'Adakah anda penerima STR atau SARA?',
+      options: [{ v: 'yes', l: 'Ya' }, { v: 'no', l: 'Tidak' }, { v: 'unsure', l: 'Tidak pasti' }] },
+
+    { id: 'ptptn', type: 'single',
+      showIf: { f: 'age', gte: 18 },
+      text: 'Adakah anda peminjam PTPTN?',
+      options: [{ v: 'yes', l: 'Ya' }, { v: 'no', l: 'Tidak' }] },
+
+    { id: 'kwsp', type: 'single',
+      showIf: { f: 'age', gte: 18 },
+      text: 'Adakah anda pencarum KWSP?',
+      help: 'Termasuk caruman sukarela, contohnya melalui i-Saraan atau i-Suri.',
+      options: [{ v: 'yes', l: 'Ya' }, { v: 'no', l: 'Tidak' }] },
 
     { id: 'assets', type: 'multi',
       text: 'Perkara manakah yang berkaitan dengan anda? (pilih semua yang berkaitan)',
       options: [
-        { v: 'license', l: 'Mempunyai lesen memandu yang masih sah' },
         { v: 'diesel_vehicle', l: 'Memiliki kenderaan persendirian berenjin diesel' },
         { v: 'old_car', l: 'Memiliki kereta berusia lebih 20 tahun' },
         { v: 'first_home', l: 'Merancang untuk membeli rumah pertama' },
         { v: 'taxpayer', l: 'Membayar cukai pendapatan atau mengisi e-Filing' },
         { v: 'invest_bursa', l: 'Melabur di Bursa Malaysia (saham, ETF atau waran)' },
         { v: 'llp_partner', l: 'Pekongsi dalam Perkongsian Liabiliti Terhad (PLT)' },
-        { v: 'ptptn_loan', l: 'Mempunyai pinjaman PTPTN' },
         { v: 'haji_plan', l: 'Merancang untuk menunaikan haji' },
         { v: 'none', l: 'Tiada yang berkaitan', exclusive: true }
       ] },
@@ -157,8 +179,8 @@
     { id: 'status', type: 'multi',
       text: 'Adakah mana-mana keadaan ini berkaitan dengan anda? (pilih semua yang berkaitan)',
       options: [
-        { v: 'oku_self', l: 'Saya OKU berdaftar' },
         { v: 'oku_child', l: 'Anak saya OKU atau kurang upaya pembelajaran (seperti autisme atau ADHD)' },
+        { v: 'child_ipt', l: 'Anak saya belajar di institusi pengajian tinggi (universiti, politeknik atau kolej)' },
         { v: 'pregnant', l: 'Saya atau pasangan sedang hamil' },
         { v: 'veteran', l: 'Veteran Angkatan Tentera Malaysia' },
         { v: 'pjm', l: 'Penerima Pingat Jasa Malaysia' },
@@ -253,9 +275,18 @@
     if (a.marital === SKIP) { f.marital = null; unknown('marital'); } else f.marital = a.marital || null;
 
     // children
-    f.childrenSkipped = a.children === SKIP;
-    if (f.childrenSkipped) { f.childCount = null; f.hasChildren = null; unknown('childCount'); unknown('hasChildren'); }
-    else { f.childCount = CHILD_COUNT[a.children || '0']; f.hasChildren = f.childCount > 0; }
+    // "Adakah anda mempunyai anak berusia 17 tahun ke bawah?" gates the number and stage questions.
+    // "Tidak" counts as no children, including for STR (the user's decision; the speech doesn't state STR's age limit).
+    if (a.has_minor_children === 'yes') f.minorChildren = true;
+    else if (a.has_minor_children === SKIP) { f.minorChildren = null; unknown('minorChildren'); }
+    else f.minorChildren = false;
+    f.childrenSkipped = a.has_minor_children === SKIP || (f.minorChildren === true && a.children === SKIP);
+    if (f.childrenSkipped) {
+      f.childCount = null; unknown('childCount');
+      if (f.minorChildren === true) f.hasChildren = true; else { f.hasChildren = null; unknown('hasChildren'); }
+    } else if (f.minorChildren === true) {
+      f.childCount = CHILD_COUNT[a.children] != null ? CHILD_COUNT[a.children] : 1; f.hasChildren = true;
+    } else { f.childCount = 0; f.hasChildren = false; }
     f.childStages = cleanMulti(a.child_stages);
     if (f.childStages.length) f.hasChildren = true;
     f.hasSchoolChild = f.childStages.indexOf('primary') > -1 || f.childStages.indexOf('secondary') > -1;
@@ -289,12 +320,27 @@
     f.lifestyle = cleanMulti(a.lifestyle);
     f.smoker = ['cigarette', 'cigar', 'heated_tobacco', 'vape'].some(function (x) { return f.lifestyle.indexOf(x) > -1; });
 
-    if (f.childStages.indexOf('ipt') > -1 || f.employment === 'student_ipt') f.ipt = true;
+    if (f.status.indexOf('child_ipt') > -1 || f.employment === 'student_ipt') f.ipt = true;
     else if (f.employment === null && a.employment === SKIP) { f.ipt = null; unknown('ipt'); }
     else f.ipt = false;
 
-    if (a.employment === SKIP) { f.kwspMember = null; unknown('kwspMember'); }
+    // KWSP: the reader's own answer; if skipped, fall back to a guess from the job
+    if (a.kwsp === 'yes') f.kwspMember = true;
+    else if (a.kwsp === 'no') f.kwspMember = false;
+    else if (a.employment === SKIP) { f.kwspMember = null; unknown('kwspMember'); }
     else f.kwspMember = ['employed_private', 'gig_ehailing', 'self_employed', 'housewife', 'jobseeker', 'fisher', 'farmer'].indexOf(f.employment) > -1;
+
+    // Yes/no questions: "yes" -> true, "no" or not asked -> false, skipped -> unknown
+    function yesNo(name, v) {
+      if (v === 'yes') f[name] = true;
+      else if (v === SKIP) { f[name] = null; unknown(name); }
+      else f[name] = false;
+    }
+    yesNo('oku', a.oku);
+    yesNo('license', a.license);
+    yesNo('ptptnBorrower', a.ptptn);
+    // STR/SARA: the reader's own answer ("Ya") counts as an STR recipient for the cards meant for them
+    f.strRecipient = a.str_status === 'yes';
 
     var s = calcStrSara(f);
     f.strEligible = s.eligible;
@@ -419,13 +465,15 @@
     b40:       { f: 'b40', eq: true, why: 'Pendapatan isi rumah RM5,000 dan ke bawah' },
     b40m40:    { f: 'b40m40', eq: true, why: 'Pendapatan isi rumah RM12,000 dan ke bawah' },
     str:       { f: 'strEligible', eq: true, why: 'Dianggarkan layak menerima STR 2026' },
+    strOrRecipient: { any: [{ f: 'strRecipient', eq: true, why: 'Penerima STR atau SARA' },
+                            { f: 'strEligible', eq: true, why: 'Dianggarkan layak menerima STR 2026' }] },
     ekasih:    { f: 'ekasih', eq: true, why: 'Berdaftar sebagai Miskin atau Miskin Tegar dalam eKasih' },
     taxpayer:  { f: 'assets', has: 'taxpayer', why: 'Pembayar cukai pendapatan' },
     firstHome: { f: 'assets', has: 'first_home', why: 'Merancang membeli rumah pertama' },
     female:    { f: 'gender', eq: 'female', why: 'Wanita' },
     ipt:       { f: 'ipt', eq: true, why: 'Anda atau anak anda belajar di institusi pengajian tinggi' },
     school:    { f: 'isSchoolPupil', eq: true, why: 'Ada murid sekolah Kerajaan dalam keluarga' },
-    okuSelf:   { f: 'status', has: 'oku_self', why: 'OKU berdaftar' },
+    okuSelf:   { f: 'oku', eq: true, why: 'OKU berdaftar' },
     okuChild:  { f: 'status', has: 'oku_child', why: 'Anak OKU atau kurang upaya pembelajaran' },
     civil:     { f: 'employment', eq: 'civil_servant', why: 'Penjawat awam' },
     farmer:    { f: 'employment', eq: 'farmer', why: 'Petani atau pekebun' },
@@ -536,7 +584,7 @@
       summary: 'Untuk warganegara berumur 16 tahun ke atas yang mempunyai lesen memandu yang sah. Kuota diselaraskan daripada 300 liter kepada 200 liter sebulan mulai 1 April 2026 sebagai langkah sementara.',
       who: 'Warganegara berumur 16 tahun ke atas dengan lesen memandu yang sah.',
       action: 'Imbas MyKad di pam atau kaunter stesen minyak yang terlibat.',
-      when: { all: [{ f: 'age', gte: 16, why: 'Berumur 16 tahun ke atas' }, { f: 'assets', has: 'license', why: 'Mempunyai lesen memandu yang sah' }] },
+      when: { all: [{ f: 'age', gte: 16, why: 'Berumur 16 tahun ke atas' }, { f: 'license', eq: true, why: 'Mempunyai lesen memandu yang sah' }] },
       certainty: 'high',
       timing: 'Kuota 200 liter sebulan berkuat kuasa 1 April 2026. Semak kuota terkini.',
       src: 'Perenggan 40, ms 26–27',
@@ -547,7 +595,7 @@
       summary: 'Kuota bergantung pada jarak perjalanan bulan sebelumnya: kurang daripada 2,000 km kekal pada kuota asas; 2,000 hingga 5,000 km layak 600 liter; lebih daripada 5,000 km layak 800 liter.',
       who: 'Pemandu e-hailing aktif yang mempunyai lesen memandu.',
       action: 'Diberikan secara automatik berdasarkan data syarikat e-hailing.',
-      when: { all: [{ f: 'employment', eq: 'gig_ehailing', why: 'Pemandu e-hailing atau penghantar p-hailing' }, { f: 'assets', has: 'license', why: 'Mempunyai lesen memandu yang sah' }] },
+      when: { all: [{ f: 'employment', eq: 'gig_ehailing', why: 'Pemandu e-hailing atau penghantar p-hailing' }, { f: 'license', eq: true, why: 'Mempunyai lesen memandu yang sah' }] },
       certainty: 'check',
       src: 'Perenggan 40, ms 27',
       web: 'https://says.com/my/berita/pemandu-e-hailing-bawah-2000km-sebulan-tidak-layak-terima-kuota-tambahan-budi95' },
@@ -591,7 +639,7 @@
       summary: 'Termasuk insentif RM1,000 untuk melengkapkan rawatan kanser dan bantuan tambang pengangkutan ke hospital (sehingga RM500 di Semenanjung; RM1,000 di Sabah, Sarawak dan Labuan).',
       who: 'Warganegara berumur 40 tahun ke atas yang menerima STR, serta pasangan mereka.',
       action: 'Diberikan secara automatik kepada penerima STR. Bawa MyKad ke klinik panel PeKa B40.',
-      when: { all: [{ f: 'age', gte: 40, why: 'Berumur 40 tahun ke atas' }, C.str] }, certainty: 'high',
+      when: { all: [{ f: 'age', gte: 40, why: 'Berumur 40 tahun ke atas' }, C.strOrRecipient] }, certainty: 'high',
       src: 'Lampiran I Bil. 32, ms 273',
       web: 'https://www.malaysia.gov.my/my/topics/peka-b40', portal: 'https://www.protecthealth.com.my' },
 
@@ -600,7 +648,7 @@
       summary: 'Perlindungan takaful percuma untuk penyakit kritikal dan elaun harian ketika dimasukkan ke wad hospital Kerajaan (sehingga 14 hari setahun). Diteruskan pada tahun 2026.',
       who: 'Penerima STR dan pasangan mereka, tertakluk kepada had umur skim.',
       action: 'Diberikan secara automatik kepada penerima STR. Semak status di portal mySalam.',
-      when: { all: [C.adult, C.str] }, certainty: 'high',
+      when: { all: [C.adult, C.strOrRecipient] }, certainty: 'high',
       src: 'Perenggan 181, ms 100–101; Lampiran I Bil. 32, ms 269',
       web: 'https://bernama.com/bm/news.php?id=2574921', portal: 'https://www.mysalam.com.my' },
 
@@ -609,7 +657,7 @@
       summary: 'Untuk rawatan penyakit ringan seperti demam, selesema, batuk dan kecederaan ringan.',
       who: 'Isi rumah penerima STR, termasuk anak berumur bawah 18 tahun.',
       action: 'Diberikan secara automatik kepada penerima STR. Bawa MyKad ke klinik panel.',
-      when: C.str, certainty: 'high',
+      when: C.strOrRecipient, certainty: 'high',
       src: 'Lampiran I Bil. 32, ms 272',
       web: 'https://ringgitplus.com/ms/blog/sudut-pakar/str-cara-dapatkan-perlindungan-perubatan-percuma-jika-pendapatan-isi-rumah-anda-di-bawah-rm5000.html' },
 
@@ -945,7 +993,7 @@
       summary: 'Diperluas kepada pelajar sekolah menengah, penuntut institusi pengajian tinggi dan belia daripada keluarga kurang berkemampuan.',
       who: 'Mereka yang berumur 16 tahun ke atas daripada keluarga B40 dan belum mempunyai lesen.',
       action: 'Mohon melalui JPJ negeri atau pihak sekolah.',
-      when: { all: [{ f: 'age', gte: 16, why: 'Berumur 16 tahun ke atas' }, { not: { f: 'assets', has: 'license' } },
+      when: { all: [{ f: 'age', gte: 16, why: 'Berumur 16 tahun ke atas' }, { not: { f: 'license', eq: true } },
         { any: [C.b40, { f: 'age', lt: 18, why: 'Pelajar sekolah' }] }] },
       certainty: 'check',
       timing: 'Pelaksanaan bagi 2026 disasarkan selesai pada Julai 2026. Semak pengambilan seterusnya.',
@@ -1363,14 +1411,14 @@
       title: 'Sekatan perjalanan ke luar negara bagi peminjam PTPTN yang culas', value: 'Boleh disekat daripada ke luar negara',
       summary: 'Kerajaan akan mengenakan sekatan perjalanan ke luar negara kepada peminjam PTPTN yang mampu membayar dan bekerja di luar negara, tetapi culas membuat bayaran balik.',
       who: 'Peminjam PTPTN yang mampu membayar tetapi tidak membuat bayaran balik.', action: 'Semak baki pinjaman dan jadual bayaran balik melalui PTPTN.',
-      when: { all: [C.adult, { f: 'assets', has: 'ptptn_loan', why: 'Mempunyai pinjaman PTPTN' }] }, certainty: 'check',
+      when: { all: [C.adult, { f: 'ptptnBorrower', eq: true, why: 'Peminjam PTPTN' }] }, certainty: 'check',
       src: 'Perenggan 202, ms 109', portal: 'https://www.ptptn.gov.my' },
 
     { id: 'cukai_kenderaan_labuan', theme: 'special', kind: 'kesan',
       title: 'Pengecualian cukai kenderaan di Labuan dan Langkawi dihadkan', value: 'Hanya bagi kenderaan bernilai sehingga RM300,000',
       summary: 'Pengecualian cukai kenderaan di Labuan dan Langkawi dihadkan kepada kenderaan yang bernilai tidak melebihi RM300,000, bagi menangani ketirisan oleh pemilik kenderaan mewah.',
       who: 'Pemilik kenderaan di Labuan dan Langkawi.', action: 'Semak nilai kenderaan sebelum membeli kenderaan baharu.',
-      when: { all: [C.adult, { f: 'region', eq: 'labuan', why: 'Menetap di Wilayah Persekutuan Labuan' }, { f: 'assets', has: 'license', why: 'Mempunyai lesen memandu' }] },
+      when: { all: [C.adult, { f: 'region', eq: 'labuan', why: 'Menetap di Wilayah Persekutuan Labuan' }, { f: 'license', eq: true, why: 'Mempunyai lesen memandu' }] },
       certainty: 'high', timing: 'Berkuat kuasa 1 Januari 2026.',
       src: 'Perenggan 27' }
   ];
@@ -1453,7 +1501,8 @@
 
   var SKIP_NAMES = { marital: 'status perkahwinan', children: 'bilangan anak', child_stages: 'peringkat anak', income: 'pendapatan',
     ekasih: 'status eKasih', employment: 'pekerjaan', farm_type: 'jenis pertanian', gender: 'jantina', assets: 'aset dan rancangan',
-    status: 'keadaan khas', lifestyle: 'gaya hidup', self_school: 'status persekolahan', str_status: 'status STR' };
+    status: 'keadaan khas', lifestyle: 'gaya hidup', self_school: 'status persekolahan', str_status: 'status STR atau SARA',
+    has_minor_children: 'anak berusia 17 tahun ke bawah', oku: 'status OKU', license: 'lesen memandu', ptptn: 'pinjaman PTPTN', kwsp: 'caruman KWSP' };
 
   function buildAdvisories(f, s, a) {
     var out = [];
