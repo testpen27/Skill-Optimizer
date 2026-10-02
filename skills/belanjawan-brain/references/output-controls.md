@@ -28,17 +28,23 @@ These come from the user's earlier decisions and are not optional.
 
 ## Front page (locked)
 
-The page the reader sees first. The text below is exact; don't change, translate or restyle the wording (the casing is part of it).
+The page the reader sees first. The text below is exact; don't change, translate or restyle the wording (the casing and punctuation, including the asterisk, are part of it). The year is written out as the user gave it (2027); it is not replaced on export.
 
 ```
-KALKULATOR BELANJAWAN {{YEAR}}      <- heading (H)
+KIRA BAJET 2027                     <- heading (H)
 
-KETAHUI MANFAAT ANDA!               <- tagline (T)
+Apa Anda Dapat?                     <- tagline (T)
+
+Terlepas pembentangan Belanjawan 2027? Jangan risau, kami permudahkan anda semak manfaat yang ditawarkan.
+                                    <- intro paragraph
+
+*Data anda tidak akan direkod       <- privacy note, smaller text
 
 [ MULA ]                            <- button
 ```
 
-- Only these three elements are on the front page: the heading, the tagline and the **MULA** button. Nothing else is added: no questions, no summary, no extra copy.
+- Only these five elements are on the front page, in this order: the heading, the tagline, the intro paragraph, the privacy note and the **MULA** button. Nothing else is added: no questions, no summary, no other copy.
+- **The privacy note must be true.** The checker runs entirely in the reader's browser. Don't send the answers or the results anywhere (no form submission, no API call, no analytics events carrying answers) and don't store them (no cookies, `localStorage` or `sessionStorage`). Closing the modal or reloading the page forgets them.
 - **Clicking MULA opens the calculator in an in-page modal:** a dialog over the same page, with the page behind it dimmed. It is not a new browser window (`window.open`), because popup blockers and phones make that unreliable, and the embed has to stay one self-contained block.
 - The modal contains the whole calculator: the question flow first, then the results screen. Nothing of the calculator shows on the front page itself.
 - The modal has a visible close button labelled "Tutup" that returns to the front page. Standard modal behaviour applies: `role="dialog"` with `aria-modal="true"`, focus moves into the dialog on open and back to MULA on close, Esc closes it, and the page behind doesn't scroll while it's open.
