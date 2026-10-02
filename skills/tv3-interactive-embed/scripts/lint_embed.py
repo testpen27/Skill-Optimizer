@@ -13,6 +13,16 @@ import argparse, re, sys
 from urllib.parse import urlparse
 
 findings = []
+
+# The buletintv3.my theme is Bootstrap-based; an embed element carrying one of these classes picks up
+# the theme's rules for every property the embed does not set itself (seen live: `.card` drew a grey frame).
+BOOTSTRAP_CLASSES = {
+    "card", "badge", "btn", "lead", "small", "progress", "nav", "alert", "row", "col", "container",
+    "table", "collapse", "modal", "dropdown", "active", "show", "fade", "close", "visually-hidden",
+    "list-group", "form-control", "form-check", "form-label", "input-group", "carousel", "toast",
+    "tooltip", "popover", "accordion", "spinner-border", "placeholder", "ratio", "sticky-top", "h1",
+    "h2", "h3", "h4", "h5", "h6", "display-1", "fw-bold", "mb-3", "border", "rounded", "shadow",
+}
 def add(level, pos, msg, text=""):
     line = text.count("\n", 0, pos) + 1 if text else 0
     findings.append((level, line, msg))
@@ -127,6 +137,11 @@ def main():
             for s in split_selectors(prelude):
                 if root and not re.match(rf"#{re.escape(root)}(?![\w-])", s):
                     add("ERROR", pos, f"selector leaks into the host page: `{s[:60]}`", html)
+            for s in split_selectors(prelude):
+                for cls in re.findall(r"\.(-?[A-Za-z_][\w-]*)", s):
+                    if cls in BOOTSTRAP_CLASSES or re.match(r"(?:col|d|text|bg|m[trblxy]?|p[trblxy]?|g[xy]?)-", cls):
+                        add("WARN", pos, f"class `.{cls}` is also a Bootstrap class on buletintv3.my; theme rules leak in "
+                            f"(any property you don't set). Prefix it, e.g. `.emb-{cls}`", html)
             if re.search(r"(^|;)\s*height\s*:\s*\d+px", body) and re.search(r"overflow\s*:\s*hidden", body):
                 add("WARN", pos, f"fixed height + overflow:hidden: confirm this is a deliberate scroll track, not text that wraps taller on a narrow phone and gets clipped: `{prelude[:50]}`", html)
     for m in re.finditer(r"(?:^|[;{])\s*width\s*:\s*(\d+)px", html):
@@ -171,6 +186,11 @@ def main():
         for m in re.finditer(r"(?:innerHTML|outerHTML|insertAdjacentHTML)[^\n;]*\$\{", code):
             add("WARN", off + m.start(), "script: HTML built with ${...}; make sure no user-typed text is interpolated", html)
             break
+        amps = [m.start() for m in re.finditer(r"&", code)]
+        if amps:
+            add("ERROR", off + amps[0], f"script contains {len(amps)} `&` character(s). WordPress rewrites `&` inside pasted "
+                "content (seen live on buletintv3.my: `&&` -> `&#038;&#038;`), which is a SyntaxError and the script never runs. "
+                "Use nested if/ternary instead of `&&`, `\\u0026` inside strings, and no `&` in comments", html)
         if re.search(r"[A-Za-z0-9+/=]{200,}", code) or re.search(r"(?:\\x[0-9a-fA-F]{2}){10,}", code) or any(len(l) > 1500 for l in code.split("\n")):
             add("ERROR", off, "script: possible obfuscated/encoded payload (very long line or base64/hex blob)", html)
     for m in re.finditer(r"\bon(?:click|load|error|mouse\w+|touch\w+)\s*=", markup, re.I):

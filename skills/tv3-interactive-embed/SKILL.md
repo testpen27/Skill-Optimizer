@@ -1,6 +1,6 @@
 ---
 name: tv3-interactive-embed
-description: Build interactive elements for Buletin TV3 articles (quizzes, eligibility checkers, calculators, timelines, slide decks and swipe carousels, reveal polls, mini-games, explorable infographics) as one HTML block that is pasted into the WordPress-style CMS, always with an HTML preview the user can open to see it. Use whenever the user wants something interactive inside or alongside an article, mentions TV3, embed, widget, Custom HTML block, CMS, WordPress, sisip, elemen interaktif, kuiz, kalkulator, infografik interaktif or pratonton, or asks to fix or restyle an existing embed (overflow, clipped text, theme CSS clashing, scripts stripped). Also use whenever an embed request involves pulling skills, snippets, libraries, fonts or CDN links from the web, because this skill holds the approval gate that must run first.
+description: Build interactive elements for Buletin TV3 articles (quizzes, eligibility checkers, calculators, timelines, slide decks and swipe carousels, reveal polls, mini-games, explorable infographics) as one HTML block that is pasted into the WordPress-style CMS, always with an HTML preview the user can open to see it. Use whenever the user wants something interactive inside or alongside an article, mentions TV3, embed, widget, Custom HTML block, CMS, WordPress, sisip, elemen interaktif, kuiz, kalkulator, infografik interaktif or pratonton, or asks to fix or restyle an existing embed (overflow, clipped text, theme CSS clashing, scripts stripped, works in the preview but shows only fallback text or a JavaScript error on the live article). Also use whenever an embed request involves pulling skills, snippets, libraries, fonts or CDN links from the web, because this skill holds the approval gate that must run first.
 ---
 
 # TV3 interactive embed
@@ -71,10 +71,13 @@ Each rule exists because of a failure seen in practice.
 8. No `<form>` submit. Use `type="button"` plus handlers so Enter does not reload the article.
 9. External links carry `rel="noopener noreferrer"`. Images only from the user's own media domain, with alt text.
 10. Body text at least 14px on phones (16px for inputs, or iOS zooms). Motion only in response to a tap, and honour `prefers-reduced-motion`.
+11. **No `&` anywhere inside the `<script>`**, not even in comments. WordPress rewrites `&` in post content; on buletintv3.my it turned some `&&` into `&#038;&#038;`, the script died with `SyntaxError: Invalid or unexpected token`, and readers saw only the fallback text. Write `a ? b : false` or nested `if`s instead of `&&`, and `\u0026` for an ampersand inside a string (it still displays as "&"). If the script carries data as JSON, escape it at build time: `.replace(/&/g,'\\u0026')`, and do the same for `<` and `>`. The lint fails the build on any `&` in a script.
+12. Prefix every class name, for example `emb-card` rather than `card`. The site theme is Bootstrap, so an embed element called `card`, `badge`, `btn`, `lead`, `small`, `progress`, `nav` (and so on) picks up the theme's rules for every property the embed doesn't set itself. On the live site `.card` drew a stray grey frame. The lint warns on these names.
+13. Put a visible fallback inside the markup (for example `<p class="emb-nojs">Elemen ini memerlukan JavaScript. Muat semula halaman.</p>`) and have the script replace it once it starts. A failed script then shows a clear message instead of a blank box, and that message is the first clue when debugging (section 8).
 
 ## 6. Verify before delivering
 
-1. Run `python3 scripts/lint_embed.py <file>` from this skill's folder. Fix every ERROR and explain any WARN you keep. Pass `--allow-host` only for hosts the user approved.
+1. Run `python3 scripts/lint_embed.py <file>` from this skill's folder. Fix every ERROR and explain any WARN you keep. Pass `--allow-host` only for hosts the user approved. If Python isn't installed (on Windows, `python3` is often only the Microsoft Store alias, which prints "Python was not found"), run `node scripts/lint_embed.js <file>` instead: same checks, same flags. Keep the two lint scripts in step when changing either.
 2. If `node` is available, syntax-check the script (`node --check`); if you can, load the file in jsdom and click through the main path once. If a browser is available, screenshot the preview at 360px and 1200px. If you could not render it, say so and list what you did check.
 3. Trace every fact in the embed to a source the user or the article gave.
 
@@ -83,9 +86,25 @@ Each rule exists because of a failure seen in practice.
 The user must always be able to see the result in HTML, so every build and every revision ends with two files:
 
 1. Save the paste-ready fragment as `/mnt/user-data/outputs/embed-<slug>.html`. If that directory does not exist in this environment (plain local Claude Code has no such mount), save to `./outputs/embed-<slug>.html` in the current project instead — same rule either way: never overwrite the previous revision, always a fresh `<slug>` or version suffix.
-2. Run `python3 scripts/make_preview.py <embed-path> <preview-path>` (paths matching wherever step 1 saved to). It puts the embed in a sandboxed frame inside a mock article, always with 360 (phone) and 768 (tablet) buttons plus a copy-code button. Add `--widths 820:"Artikel sekarang" 1200:"Artikel akan datang"` (see `references/house-style.md` for how the current width was measured) whenever there is more than one article width worth comparing — a measured current width and a planned future one, for instance. Never hand over the embed without its preview.
+2. Run `python3 scripts/make_preview.py <embed-path> <preview-path>` (paths matching wherever step 1 saved to), or `node scripts/make_preview.js` with the same arguments when Python isn't available (it reads its page template from `make_preview.py`, so the output is identical). It puts the embed in a sandboxed frame inside a mock article, always with 360 (phone) and 768 (tablet) buttons plus a copy-code button. Add `--widths 820:"Artikel sekarang" 1200:"Artikel akan datang"` (see `references/house-style.md` for how the current width was measured) whenever there is more than one article width worth comparing — a measured current width and a planned future one, for instance. Never hand over the embed without its preview.
 3. Hand both files to the user: call `present_files` with the preview first, then the embed, if that tool is available in this environment; otherwise state both file paths directly in the reply so the user can open them. A page for the user's own CMS is a file, not a hosted artifact.
 
 Keep the chat message short: how to paste (WordPress: Custom HTML block, or the Text/Code tab of the classic editor, never the Visual tab, which adds `<p>` tags), what the lint said, and any placeholders left.
 
 If scripts are stripped on publish (WordPress removes them for accounts without the `unfiltered_html` capability) or the theme still clashes, offer iframe mode: host the same file as its own page and paste `<iframe src="URL" title="DESCRIPTION" loading="lazy" sandbox="allow-scripts" style="width:100%;border:0;height:520px"></iframe>`. This needs somewhere to host the file. For a reusable widget the long-term route is a WordPress block or plugin; `WordPress/agent-skills` is an approved reference for that (see `references/approved-sources.md`), read on demand and never run.
+
+## 8. When it works in the preview but not on the live article
+
+The preview runs in a clean frame; the article runs through WordPress and the site's front end. Debug the live page, not the preview, and don't guess from a screenshot. On 2026-10-01 a screenshot looked like "scripts stripped", but the real cause was `&` mangling (rule 11).
+
+1. Get a URL that loads for you. Unpublished or preview URLs return the site's 404 page to anyone not logged in, including scrapers and Claude's browser. Ask the user to publish it (it can be unlisted), or to paste the embed's `outerHTML` from DevTools.
+2. Open the live article in a browser and check the console. `SyntaxError: Invalid or unexpected token` means the script text was altered.
+3. Check what survived: is the root `#emb-<slug>` there, did its CSS apply (`getComputedStyle` on the root), is the `<script>` still inside the root, and did the script mark the root as initialised (for example `data-ready`)?
+4. If the script is present but broken, compare the live `script.textContent` with the built file: length, `&#038;` and other entities, `<p>`/`<br>` inserted, curly quotes, non-ASCII. Fix the cause in the build, not by hand-editing the live post.
+5. Facts measured on buletintv3.my on 2026-10-01 (re-check if things change):
+   - The site is a Next.js front end over WordPress.
+   - A Custom HTML block's `<style>` survives, but is reformatted and moved into `<head>`.
+   - Its `<script>` stays in place and runs on a full page load.
+   - `&` inside the script gets rewritten.
+   - The theme is Bootstrap.
+   - Inline scripts don't run when a reader arrives by client-side navigation from another page on the site. The fallback text (rule 13) asks them to reload, and if that matters for the piece, iframe mode avoids it.

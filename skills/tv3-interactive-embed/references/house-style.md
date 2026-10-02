@@ -5,7 +5,7 @@ Two looks, picked per-build per SKILL.md §1/§4 — not one fixed "house style"
 - **Default look** (below): the actual `buletintv3.my` brand, scraped from the live site 2026-10-02 (branding extraction, 95% color confidence). Use for serious-register topics and whenever the topic isn't clearly fun.
 - **Fun register** (further down): the look from the user's own file DERMA_DARAH.HTML (World Blood Donor Day slide deck) — a deliberate campaign skin, not the site's identity. Use only for fun-eligible topics, after confirming per SKILL.md §1.
 
-Both share the same embed-contract shapes (§5 in SKILL.md) and the same slide/no-fixed-height technique below — only the palette, frame decoration and button finish change.
+Both share the same embed-contract shapes (§5 in SKILL.md) and the same slide/no-fixed-height technique below — only the palette, frame decoration and button finish change. The class-prefixing rule (§5 rule 12 — avoid bare Bootstrap names like `.card`/`.badge`) and the no-`&`-in-scripts rule (§5 rule 11) apply to both registers equally; they're about the live site's theme and CMS, not about which skin you picked.
 
 ## Default look — matches buletintv3.my (serious register)
 
@@ -48,6 +48,13 @@ The default look's contrast is already covered above (no traps). This table is f
 - The `important: '#app-wrapper'` Tailwind trick was there to beat theme CSS. ID-prefixed plain CSS does the same job without the Tailwind CDN.
 - Generic names (`#slider-track`, `.slide-item`, `.sticker-card`, `#main-container`) would collide if two embeds sit on one page. Prefix everything with the embed's slug and look elements up from the root.
 - Fixed 600/550px height with hidden overflow and 8-9px text will clip on small phones.
+- Measured live on 2026-10-01 (a Custom HTML block on a published article):
+  - The site is a Next.js front end over WordPress.
+  - The embed's `<style>` survived, but was reformatted (e.g. `flex:none` became `flex: 0 0 auto`) and moved into the page `<head>`.
+  - The `<script>` stayed in place and ran on a full page load.
+  - WordPress rewrote some `&&` inside the script to `&#038;&#038;`. That is a SyntaxError, so only the fallback text showed. Hence embed contract rule 11: no `&` in scripts.
+- The theme is Bootstrap. Unprefixed classes such as `card`, `badge`, `btn`, `lead`, `small`, `progress` and `nav` pick up theme rules; on the live page `.card` added a grey frame. Hence rule 12: prefix every class.
+- Unpublished or preview URLs return the site 404 page to outside visitors, scrapers included. To debug, you need the published URL or the embed's `outerHTML` from the user (SKILL.md section 8).
 
 ## Slides without a fixed height
 Stack the slides in one grid cell so the stage is as tall as the tallest slide:

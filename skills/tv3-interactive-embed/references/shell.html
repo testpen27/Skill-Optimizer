@@ -7,9 +7,9 @@
   border:4px solid var(--ink); border-radius:1.5rem; box-shadow:0 10px 25px rgba(61,48,51,.15); touch-action:pan-y;
   font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
 #emb-kuiz-contoh :is(h2,p,fieldset,legend) { margin:0; padding:0; border:0; }
-#emb-kuiz-contoh .badge { display:inline-block; margin-bottom:12px; padding:4px 14px; background:#fff; color:var(--red);
+#emb-kuiz-contoh .emb-badge { display:inline-block; margin-bottom:12px; padding:4px 14px; background:#fff; color:var(--red);
   border:2px solid var(--ink); border-radius:999px; box-shadow:0 3px 0 var(--ink); font-size:.875rem; font-weight:700; }
-#emb-kuiz-contoh .card { max-width:760px; margin:0 auto; padding:20px; background:#fff; border:4px solid var(--ink);
+#emb-kuiz-contoh .emb-card { max-width:760px; margin:0 auto; padding:20px; background:#fff; border:4px solid var(--ink);
   border-radius:1.5rem; box-shadow:6px 6px 0 rgba(61,48,51,.15); }
 #emb-kuiz-contoh h2 { font-size:1.375rem; line-height:1.3; margin-bottom:14px; }
 #emb-kuiz-contoh .q { margin-bottom:16px; }
@@ -25,11 +25,11 @@
 #emb-kuiz-contoh .why { margin-top:6px; padding:8px 12px; background:var(--pink-lt); border-radius:10px; }
 #emb-kuiz-contoh .result { margin-top:16px; font-weight:700; }
 #emb-kuiz-contoh .src { margin-top:14px; font-size:.875rem; }
-@media (max-width:768px) { #emb-kuiz-contoh { margin:1rem auto; border-radius:1rem; } #emb-kuiz-contoh .card { padding:14px; } }
+@media (max-width:768px) { #emb-kuiz-contoh { margin:1rem auto; border-radius:1rem; } #emb-kuiz-contoh .emb-card { padding:14px; } }
 @media (prefers-reduced-motion:reduce) { #emb-kuiz-contoh .check:active { transform:none; } }
 </style>
-<span class="badge">[Acara atau tarikh]</span>
-<div class="card">
+<span class="emb-badge">[Acara atau tarikh]</span>
+<div class="emb-card">
 <h2>Kuiz ringkas: [tajuk]</h2>
 <div class="qs"></div>
 <button type="button" class="check">Semak jawapan</button>
@@ -72,7 +72,7 @@
       var score = 0;
       root.querySelectorAll('fieldset').forEach(function (fs, i) {
         var picked = fs.querySelector('input:checked');
-        var right = picked && Number(picked.value) === Q[i].a;
+        var right = picked ? Number(picked.value) === Q[i].a : false; // ternary, not a double ampersand: WordPress rewrites that inside scripts (see embed contract rule 11)
         if (right) score++;
         var why = fs.querySelector('.why');
         why.textContent = (right ? 'Betul. ' : 'Belum tepat. ') + Q[i].why;
