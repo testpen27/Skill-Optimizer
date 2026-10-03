@@ -38,7 +38,7 @@ Builds and maintains the "brain" of an interactive Budget 2026 citizen-benefits 
 | `scripts/export-brain-md.js` | Writes `BRAIN-2026.md` from the engine, running it for rates, reasons, advisories and worked examples | After any change to the engine or the ledger's exclusions |
 | `scripts/belanjawan2026-brain.js` | The engine: questions, 13 themes, 115 items, STR/SARA calculator, rule evaluator. Source of truth for the spec | Edit here when logic or wording changes |
 | `references/excluded-2026.md` | The "not to be built" list on its own (also the last section of `BRAIN-2026.md`). Generated from the ledger | Regenerate when exclusions change |
-| `scripts/test.js` | Verification round 1: 15,169 checks (speech figures, branching, personas, results groups, integrity, Bahasa Melayu lint, "no government-spending figures" lint, spec up to date) | After any edit: `node scripts/test.js` |
+| `scripts/test.js` | Verification round 1: 15,170 checks (speech figures, branching, personas, results groups, integrity, Bahasa Melayu lint, "no government-spending figures" lint, spec up to date) | After any edit: `node scripts/test.js` |
 | `scripts/verify2.js` | Verification round 2: 30,000 simulated users walking the real question flow and checking invariants | After any edit: `node scripts/verify2.js` |
 | `scripts/gen-spec.js` | Regenerates the question and rule tables for the design spec below | After any edit: run it, then paste `_generated.md` into the spec |
 | `references/LOGIK-BELANJAWAN-2026.md` | Design record: decisions, tiers, every question and rule with sources, verification record, the user's decisions (§9) | Read before changing logic |

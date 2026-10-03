@@ -219,9 +219,10 @@ B.BENEFITS.forEach(b => ['value', 'summary', 'who'].forEach(k => spend.forEach(r
     fs.existsSync(committed) && fs.readFileSync(committed, 'utf8') === fs.readFileSync(tmp, 'utf8'));
   fs.unlinkSync(tmp);
   const spec = fs.readFileSync(committed, 'utf8');
-  ['KIRA BAJET 2027', 'Apa Anda Dapat?', 'Terlepas pembentangan Belanjawan 2027? Jangan risau, kami permudahkan anda semak manfaat yang ditawarkan.', '*Data anda tidak akan direkod', 'MULA', 'Tutup'].forEach(t =>
+  ['BAJET 2027', 'Apa Anda Dapat?', 'Terlepas pembentangan Belanjawan 2027? Jangan risau, kami permudahkan anda semak manfaat yang ditawarkan.', '*Data anda tidak akan direkod', 'MULA', 'Tutup'].forEach(t =>
     ok('G2 front page text in spec: ' + t, spec.includes(t)));
   ok('G3 no unreplaced {{YEAR}} in spec', !spec.includes('{{YEAR}}'));
+  ok('G4 old front-page headings gone', !/KIRA BAJET|KALKULATOR BELANJAWAN|KETAHUI MANFAAT/.test(spec));
 }
 
 console.log(`Verification round 1: ${pass} passed, ${fail} failed.`);

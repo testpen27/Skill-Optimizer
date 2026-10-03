@@ -89,7 +89,7 @@ These come from the user's earlier decisions and are not optional.
 The page the reader sees first. The text below is exact; don't change, translate or restyle the wording (the casing and punctuation, including the asterisk, are part of it). The year is written out as the user gave it (2027); it is not replaced on export.
 
 ```
-KIRA BAJET 2027                     <- heading (H)
+BAJET 2027                          <- heading (H)
 
 Apa Anda Dapat?                     <- tagline (T)
 
