@@ -50,7 +50,14 @@ Default to auto height. For slide decks, stack the slides in one grid cell so th
 
 **Default to the real site identity**, not a one-off campaign look: `references/house-style.md`'s "Default look" section has the actual `buletintv3.my` brand tokens (deep blue `#0E4B98`, light blue `#EDF5FF`, white, Gantari) — scraped from the live site, not guessed. This is the serious register and the default for anything that isn't explicitly fun per §1.
 
-For a fun-register topic, switch to `references/house-style.md`'s "Fun register" section instead (the cream/pink sticker card, bouncy buttons) — same embed-contract shape rules either way, just a different skin. Either way, say which one you're using per §1's one-question budget before building, and fix the palette's contrast traps listed there. Consult these marketplace skills when relevant; read their SKILL.md rather than copying from memory.
+For a fun-register topic, switch to `references/house-style.md`'s "Fun register" section instead (the cream/pink sticker card, bouncy buttons) — same embed-contract shape rules either way, just a different skin. Either way, say which one you're using per §1's one-question budget before building, and fix the palette's contrast traps listed there.
+
+**A reference image the user attaches overrides both registers.** It's trusted directly per §0 (a file given in chat, not a web fetch), so no approval step — but unlike the two registers above, nothing about it has been contrast-checked yet, so that work still has to happen before building:
+1. Pull 3-5 colors from the image (dominant background, an accent, text-on-background) and name what mood/genre it reads as (playful, corporate, editorial, etc.) in your one-question confirmation — "Based on the image, I'll use [colors] in a [mood] style; let me know if that's not what you meant."
+2. Check every text/background and button pair you're about to use against WCAG AA (4.5:1 normal text, 3:1 large text/UI) *before* writing the embed, the same way `references/house-style.md` already did for both registers. A color straight off an image has no such guarantee. Where a pulled color fails, darken/lighten it until it passes rather than silently swapping in a house-style color — the point of a reference image is that it's the one the user chose.
+3. Keep everything else the same: the embed-contract shapes (§5), the frame/card/button mechanics from whichever register's structure reads closest to the image's own style (sharp and flat vs. bordered and bouncy), and the mobile rules (§2, rule 10).
+
+Consult these marketplace skills when relevant; read their SKILL.md rather than copying from memory.
 
 - `frontend-design` (`/mnt/skills/public/frontend-design/SKILL.md`): ground the design in the article's subject, write a short token plan before any code, avoid template defaults, spend boldness in one place, then critique your own work.
 - `design:accessibility-review`: WCAG 2.1 AA. Text contrast 4.5:1 (3:1 for large text and UI parts), everything keyboard operable, visible focus, touch targets at least 44px, labels on inputs, results announced via `aria-live`, no autoplay, layout survives 200% zoom.
