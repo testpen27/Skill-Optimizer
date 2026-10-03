@@ -15,8 +15,8 @@ function simulate() {
     else if (q.type === 'single') a[q.id] = pick(q.options).v;
     else {
       const excl = q.options.filter(o => o.exclusive), normal = q.options.filter(o => !o.exclusive);
-      a[q.id] = rnd() < 0.3 ? [pick(excl).v] : normal.filter(() => rnd() < 0.3).map(o => o.v);
-      if (!a[q.id].length) a[q.id] = ['none'];
+      a[q.id] = excl.length && rnd() < 0.3 ? [pick(excl).v] : normal.filter(() => rnd() < 0.3).map(o => o.v);
+      if (!a[q.id].length) a[q.id] = excl.length ? [excl[0].v] : [pick(normal).v];
     }
     a = B.pruneAnswers(a);
   }
@@ -33,9 +33,9 @@ for (let i = 0; i < N; i++) {
   // V1 flow completes and prune is idempotent
   if (!B.isComplete(a)) bump('V1 flow incomplete', a);
   if (JSON.stringify(B.pruneAnswers(a)) !== JSON.stringify(a)) bump('V2 prune not idempotent', a);
-  // V3 no "mungkin" unless the user skipped something or answered "Tidak pasti"
-  const uncertain = Object.values(a).some(v => [].concat(v).includes('skip') || v === 'unsure');
-  if (!uncertain && r.counts.mungkin > 0) bump('V3 mungkin without skip/unsure', { a, m: r.results.filter(x => x.tier === 'mungkin').map(x => x.id) });
+  // V3 no "mungkin" unless the user answered "Tidak pasti" (there is no skip option)
+  if (Object.values(a).some(v => [].concat(v).includes('skip'))) bump('V3a a skip answer was offered', a);
+  if (a.ekasih !== 'unsure' && r.counts.mungkin > 0) bump('V3 mungkin without eKasih "Tidak pasti"', { a, m: r.results.filter(x => x.tier === 'mungkin').map(x => x.id) });
   // V4 every shown item re-tests as not-false; every hidden item re-tests false
   const shown = new Set(r.results.map(x => x.id));
   B.BENEFITS.forEach(b => { const v = B._test(b.when, f).v; if (shown.has(b.id) === (v === false)) bump('V4 result/rule mismatch ' + b.id, a); });

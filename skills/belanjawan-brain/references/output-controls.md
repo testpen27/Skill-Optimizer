@@ -22,8 +22,8 @@ These come from the user's earlier decisions and are not optional.
   - Adakah anda penerima STR atau SARA?
   - Adakah anda peminjam PTPTN?
   - Adakah anda pencarum KWSP?
-- Every question except age and region can be skipped, the eight above included. Show the skip option ("Tidak mahu menyatakan"), or a "Langkau" link that sends it.
-- In a multi-select, an exclusive option ("Tiada yang berkaitan", "Tidak mahu menyatakan") clears the other selections.
+- **No skipping.** Every question shown must be answered before the reader can move on. There is no "Tidak mahu menyatakan" option and no "Langkau" link; don't add either. "Tidak pasti" and "Tiada yang berkaitan" are ordinary answers.
+- In a multi-select, an exclusive option ("Tiada yang berkaitan") clears the other selections.
 - Build nothing from the "Not to be built" list.
 
 ## Front page (locked)
@@ -55,10 +55,10 @@ Terlepas pembentangan Belanjawan 2027? Jangan risau, kami permudahkan anda semak
 
 Shown inside the modal after the last question. From top to bottom:
 
-1. **STR + SARA panel.** The main result, on top, as one panel: `strSara.label`, STR, SARA (with the monthly amount) and the total. Add the range when `totalRange` is present, and the "jika berdaftar eKasih" total when `totalIfEkasih` is present. When the person is not eligible or it can't be worked out, show `strSara.reason` instead of amounts.
+1. **STR + SARA panel.** The main result, on top, as one panel: `strSara.label`, STR, SARA (with the monthly amount) and the total. Add the "jika berdaftar eKasih" total when `totalIfEkasih` is present. When the person is not eligible or it can't be worked out, show `strSara.reason` instead of amounts.
 2. **The cards, in two groups.** Take them from `evaluate().groups` and keep its order:
-   - first **"Berkemungkinan layak"**: cards the person clearly qualifies for;
-   - then **"Mungkin layak"**: means-tested cards, then cards that depend on a skipped answer.
+   - first **"Layak"**: cards the person clearly qualifies for;
+   - then **"Berkemungkinan layak"**: means-tested cards, then cards that depend on a "Tidak pasti" answer.
 
    Show each group's heading exactly as `group.label`. Hide a group with no cards. No theme categories anywhere.
 3. **Advisories** below the cards, in the engine's order. The disclaimer is last.

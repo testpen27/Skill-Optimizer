@@ -1,0 +1,528 @@
+{
+  "version": "2026.8",
+  "date": "2026-10-03",
+  "note": "Pengguna 3 Okt 2026: S1–S19 lulus seperti ditunjukkan; S20 tanpa 'Soalan pilihan:'",
+  "questions": [
+    {
+      "id": "age",
+      "type": "number",
+      "text": "Berapakah umur anda?",
+      "help": "Umur menentukan kelayakan program seperti STR, PeKa B40, bantuan warga emas dan pembiayaan rumah untuk golongan muda.",
+      "min": 0,
+      "max": 120
+    },
+    {
+      "id": "region",
+      "type": "single",
+      "text": "Di manakah anda menetap?",
+      "options": [
+        {
+          "v": "semenanjung",
+          "l": "Semenanjung Malaysia"
+        },
+        {
+          "v": "sabah",
+          "l": "Sabah"
+        },
+        {
+          "v": "sarawak",
+          "l": "Sarawak"
+        },
+        {
+          "v": "labuan",
+          "l": "Wilayah Persekutuan Labuan"
+        }
+      ]
+    },
+    {
+      "id": "self_school",
+      "type": "single",
+      "text": "Adakah anda murid sekolah Kerajaan?",
+      "options": [
+        {
+          "v": "yes",
+          "l": "Ya"
+        },
+        {
+          "v": "no",
+          "l": "Tidak"
+        }
+      ],
+      "showIf": {
+        "f": "age",
+        "lt": 18
+      }
+    },
+    {
+      "id": "gender",
+      "type": "single",
+      "text": "Apakah jantina anda?",
+      "help": "Digunakan untuk memaparkan program khusus wanita seperti i-Suri dan pembiayaan usahawan wanita.",
+      "options": [
+        {
+          "v": "female",
+          "l": "Perempuan"
+        },
+        {
+          "v": "male",
+          "l": "Lelaki"
+        }
+      ],
+      "showIf": {
+        "f": "age",
+        "gte": 18
+      }
+    },
+    {
+      "id": "employment",
+      "type": "single",
+      "text": "Pekerjaan anda?",
+      "options": [
+        {
+          "v": "employed_private",
+          "l": "Pekerja sektor swasta"
+        },
+        {
+          "v": "civil_servant",
+          "l": "Penjawat awam"
+        },
+        {
+          "v": "gig_ehailing",
+          "l": "Pemandu e-hailing atau penghantar p-hailing"
+        },
+        {
+          "v": "self_employed",
+          "l": "Bekerja sendiri, pekerja bebas atau peniaga kecil"
+        },
+        {
+          "v": "fisher",
+          "l": "Nelayan"
+        },
+        {
+          "v": "farmer",
+          "l": "Pesawah, petani, penternak atau pekebun kecil"
+        },
+        {
+          "v": "housewife",
+          "l": "Suri rumah sepenuh masa"
+        },
+        {
+          "v": "student_ipt",
+          "l": "Pelajar institusi pengajian tinggi"
+        },
+        {
+          "v": "jobseeker",
+          "l": "Graduan baharu atau sedang mencari pekerjaan"
+        },
+        {
+          "v": "retired_gov",
+          "l": "Pesara Kerajaan (berpencen)"
+        },
+        {
+          "v": "retired_other",
+          "l": "Bersara atau tidak bekerja"
+        }
+      ],
+      "showIf": {
+        "f": "age",
+        "gte": 18
+      }
+    },
+    {
+      "id": "farm_type",
+      "type": "single",
+      "text": "Apakah jenis kegiatan pertanian utama anda?",
+      "options": [
+        {
+          "v": "padi",
+          "l": "Menanam padi"
+        },
+        {
+          "v": "smallholder",
+          "l": "Pekebun kecil getah atau sawit"
+        },
+        {
+          "v": "other",
+          "l": "Tanaman lain, ternakan atau akuakultur"
+        }
+      ],
+      "showIf": {
+        "f": "employment",
+        "eq": "farmer"
+      }
+    },
+    {
+      "id": "marital",
+      "type": "single",
+      "text": "Apakah status perkahwinan anda?",
+      "options": [
+        {
+          "v": "married",
+          "l": "Berkahwin"
+        },
+        {
+          "v": "single_parent",
+          "l": "Ibu atau bapa tunggal yang mempunyai anak tanggungan"
+        },
+        {
+          "v": "single",
+          "l": "Tiada pasangan (belum berkahwin, bercerai atau kematian pasangan)"
+        }
+      ],
+      "showIf": {
+        "f": "age",
+        "gte": 18
+      }
+    },
+    {
+      "id": "has_minor_children",
+      "type": "single",
+      "text": "Adakah anda mempunyai anak berusia 17 tahun ke bawah?",
+      "options": [
+        {
+          "v": "yes",
+          "l": "Ya"
+        },
+        {
+          "v": "no",
+          "l": "Tidak"
+        }
+      ],
+      "showIf": {
+        "f": "age",
+        "gte": 18
+      }
+    },
+    {
+      "id": "children",
+      "type": "single",
+      "text": "Berapakah bilangan anak anda yang berusia 17 tahun ke bawah?",
+      "options": [
+        {
+          "v": "1-2",
+          "l": "1 hingga 2 orang"
+        },
+        {
+          "v": "3-4",
+          "l": "3 hingga 4 orang"
+        },
+        {
+          "v": "5+",
+          "l": "5 orang atau lebih"
+        }
+      ],
+      "showIf": {
+        "f": "minorChildren",
+        "eq": true
+      }
+    },
+    {
+      "id": "child_stages",
+      "type": "multi",
+      "text": "Di peringkat manakah anak anda sekarang? (pilih semua yang berkaitan)",
+      "options": [
+        {
+          "v": "under6",
+          "l": "Belum bersekolah atau prasekolah (bawah 6 tahun)"
+        },
+        {
+          "v": "primary",
+          "l": "Sekolah rendah Kerajaan"
+        },
+        {
+          "v": "secondary",
+          "l": "Sekolah menengah Kerajaan"
+        },
+        {
+          "v": "other",
+          "l": "Lain-lain (contohnya sekolah swasta)"
+        }
+      ],
+      "showIf": {
+        "f": "minorChildren",
+        "eq": true
+      }
+    },
+    {
+      "id": "oku",
+      "type": "single",
+      "text": "Adakah anda Orang Kurang Upaya (OKU)?",
+      "help": "OKU yang berdaftar dengan Jabatan Kebajikan Masyarakat (JKM).",
+      "options": [
+        {
+          "v": "yes",
+          "l": "Ya"
+        },
+        {
+          "v": "no",
+          "l": "Tidak"
+        }
+      ]
+    },
+    {
+      "id": "license",
+      "type": "single",
+      "text": "Adakah lesen memandu anda aktif?",
+      "options": [
+        {
+          "v": "yes",
+          "l": "Ya"
+        },
+        {
+          "v": "no",
+          "l": "Tidak, atau tiada lesen memandu"
+        }
+      ]
+    },
+    {
+      "id": "income",
+      "type": "single",
+      "text": "Berapakah anggaran pendapatan kasar bulanan isi rumah anda?",
+      "help": "Jumlah pendapatan semua ahli isi rumah yang bekerja. Jika anda tinggal seorang diri, masukkan pendapatan anda sendiri.",
+      "options": [
+        {
+          "v": "lt2500",
+          "l": "RM2,500 dan ke bawah"
+        },
+        {
+          "v": "2501_5000",
+          "l": "RM2,501 hingga RM5,000"
+        },
+        {
+          "v": "5001_6000",
+          "l": "RM5,001 hingga RM6,000"
+        },
+        {
+          "v": "6001_12000",
+          "l": "RM6,001 hingga RM12,000"
+        },
+        {
+          "v": "gt12000",
+          "l": "Melebihi RM12,000"
+        }
+      ],
+      "showIf": {
+        "f": "age",
+        "gte": 18
+      }
+    },
+    {
+      "id": "ekasih",
+      "type": "single",
+      "text": "Adakah isi rumah anda berdaftar sebagai Miskin atau Miskin Tegar dalam sistem eKasih?",
+      "options": [
+        {
+          "v": "yes",
+          "l": "Ya"
+        },
+        {
+          "v": "no",
+          "l": "Tidak"
+        },
+        {
+          "v": "unsure",
+          "l": "Tidak pasti"
+        }
+      ],
+      "showIf": {
+        "all": [
+          {
+            "f": "age",
+            "gte": 18
+          },
+          {
+            "f": "incomeMax",
+            "lte": 5000
+          }
+        ]
+      }
+    },
+    {
+      "id": "str_status",
+      "type": "single",
+      "text": "Adakah anda penerima STR atau SARA?",
+      "options": [
+        {
+          "v": "yes",
+          "l": "Ya"
+        },
+        {
+          "v": "no",
+          "l": "Tidak"
+        },
+        {
+          "v": "unsure",
+          "l": "Tidak pasti"
+        }
+      ],
+      "showIf": {
+        "f": "age",
+        "gte": 18
+      }
+    },
+    {
+      "id": "ptptn",
+      "type": "single",
+      "text": "Adakah anda peminjam PTPTN?",
+      "options": [
+        {
+          "v": "yes",
+          "l": "Ya"
+        },
+        {
+          "v": "no",
+          "l": "Tidak"
+        }
+      ],
+      "showIf": {
+        "f": "age",
+        "gte": 18
+      }
+    },
+    {
+      "id": "kwsp",
+      "type": "single",
+      "text": "Adakah anda pencarum KWSP?",
+      "help": "Termasuk caruman sukarela, contohnya melalui i-Saraan atau i-Suri.",
+      "options": [
+        {
+          "v": "yes",
+          "l": "Ya"
+        },
+        {
+          "v": "no",
+          "l": "Tidak"
+        }
+      ],
+      "showIf": {
+        "f": "age",
+        "gte": 18
+      }
+    },
+    {
+      "id": "assets",
+      "type": "multi",
+      "text": "Perkara manakah yang berkaitan dengan anda? (pilih semua yang berkaitan)",
+      "options": [
+        {
+          "v": "diesel_vehicle",
+          "l": "Memiliki kenderaan persendirian berenjin diesel"
+        },
+        {
+          "v": "old_car",
+          "l": "Memiliki kereta berusia lebih 20 tahun"
+        },
+        {
+          "v": "first_home",
+          "l": "Merancang untuk membeli rumah pertama"
+        },
+        {
+          "v": "taxpayer",
+          "l": "Membayar cukai pendapatan atau mengisi e-Filing"
+        },
+        {
+          "v": "invest_bursa",
+          "l": "Melabur di Bursa Malaysia (saham, ETF atau waran)"
+        },
+        {
+          "v": "llp_partner",
+          "l": "Pekongsi dalam Perkongsian Liabiliti Terhad (PLT)"
+        },
+        {
+          "v": "haji_plan",
+          "l": "Merancang untuk menunaikan haji"
+        },
+        {
+          "v": "none",
+          "l": "Tiada yang berkaitan",
+          "exclusive": true
+        }
+      ]
+    },
+    {
+      "id": "status",
+      "type": "multi",
+      "text": "Adakah mana-mana keadaan ini berkaitan dengan anda? (pilih semua yang berkaitan)",
+      "options": [
+        {
+          "v": "oku_child",
+          "l": "Anak saya OKU atau kurang upaya pembelajaran (seperti autisme atau ADHD)"
+        },
+        {
+          "v": "child_ipt",
+          "l": "Anak saya belajar di institusi pengajian tinggi (universiti, politeknik atau kolej)"
+        },
+        {
+          "v": "pregnant",
+          "l": "Saya atau pasangan sedang hamil"
+        },
+        {
+          "v": "veteran",
+          "l": "Veteran Angkatan Tentera Malaysia"
+        },
+        {
+          "v": "pjm",
+          "l": "Penerima Pingat Jasa Malaysia"
+        },
+        {
+          "v": "religious_staff",
+          "l": "Guru KAFA, guru takmir, imam, bilal, tok siak, noja atau marbut"
+        },
+        {
+          "v": "taxi",
+          "l": "Pemandu atau pemilik teksi, termasuk kereta sewa"
+        },
+        {
+          "v": "orang_asli",
+          "l": "Orang Asli"
+        },
+        {
+          "v": "bankrupt",
+          "l": "Sedang berstatus bankrap"
+        },
+        {
+          "v": "none",
+          "l": "Tiada yang berkaitan",
+          "exclusive": true
+        }
+      ]
+    },
+    {
+      "id": "lifestyle",
+      "type": "multi",
+      "text": "Adakah mana-mana perkara ini berkaitan dengan anda?",
+      "help": "Belanjawan 2026 menaikkan duti ke atas produk tembakau dan minuman beralkohol, serta mengecualikan cukai ke atas produk bantuan berhenti merokok. Jawapan ini hanya digunakan untuk memaparkan perubahan yang berkaitan.",
+      "options": [
+        {
+          "v": "cigarette",
+          "l": "Merokok"
+        },
+        {
+          "v": "cigar",
+          "l": "Menghisap cerut atau cerut kecil (cigarillo)"
+        },
+        {
+          "v": "heated_tobacco",
+          "l": "Menggunakan produk tembakau yang dipanaskan (heated tobacco)"
+        },
+        {
+          "v": "vape",
+          "l": "Menggunakan vape atau rokok elektronik"
+        },
+        {
+          "v": "alcohol",
+          "l": "Mengambil minuman beralkohol"
+        },
+        {
+          "v": "none",
+          "l": "Tiada yang berkaitan",
+          "exclusive": true
+        }
+      ],
+      "showIf": {
+        "f": "age",
+        "gte": 18
+      }
+    }
+  ]
+}

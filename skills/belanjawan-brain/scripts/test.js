@@ -22,26 +22,23 @@ eq('A7 married 66 -> isi rumah', B.evaluate({ ...base, has_minor_children: 'no',
 r = B.evaluate({ ...base, ekasih: 'unsure' });
 eq('A8 eKasih unsure -> 3,400 / 4,600', [r.strSara.total, r.strSara.totalIfEkasih], [3400, 4600]);
 eq('A9 income >5k not eligible', B.evaluate({ ...base, income: '5001_6000' }).strSara.eligible, false);
-r = B.evaluate({ ...base, children: 'skip', ekasih: 'no' });
-eq('A10 children skipped (married) -> STR range 1,900–3,400', r.strSara.totalRange, [1900, 3400]);
-r = B.evaluate({ ...base, income: 'skip' });
-eq('A11 income skipped -> STR unknown', r.strSara.eligible, null);
-has('A12 income skipped -> PeKa not shown (under 40) / mySalam mungkin', r, 'mysalam', 'mungkin');
-eq('A13 marital skipped -> STR unknown', B.evaluate({ ...base, marital: 'skip', ekasih: 'no' }).strSara.eligible, null);
+r = B.evaluate({ ...base, ekasih: 'unsure', str_status: 'yes' });
+ok('A10 eKasih unsure: cards that need eKasih show as mungkin with "Perlu disahkan"', r.results.filter(x => x.tier === 'mungkin').every(x => x.needsConfirm.length > 0));
+ok('A11 no STR range any more (no skipped children question)', !('totalRange' in B.evaluate({ ...base, ekasih: 'no' }).strSara));
 
 /* ---- B. Branching ---- */
 const ids = a => B.getVisibleQuestions(a).map(q => q.id);
 eq('B1 minor question set', ids({ age: 15 }), ['age', 'region', 'self_school', 'oku', 'license', 'assets', 'status']);
 ok('B2 high income hides eKasih', !ids({ age: 40, income: '6001_12000' }).includes('ekasih'));
-ok('B3 income skipped still asks eKasih', ids({ age: 40, income: 'skip' }).includes('ekasih'));
-ok('B4 children skipped still asks child_stages', ids({ age: 40, has_minor_children: 'yes', children: 'skip' }).includes('child_stages'));
+ok('B3 income up to RM5,000 asks eKasih', ids({ age: 40, income: '2501_5000' }).includes('ekasih'));
+ok('B4 children "Ya" asks number and stages', ['children', 'child_stages'].every(id => ids({ age: 40, has_minor_children: 'yes' }).includes(id)));
 ok('B5 no children hides child_stages', !ids({ age: 40, has_minor_children: 'no' }).includes('child_stages'));
 ok('B6 no grade/appointment question exists', !B.QUESTIONS.some(q => q.id === 'cs_grade'));
 ok('B7 lifestyle hidden for minors', !ids({ age: 16 }).includes('lifestyle'));
 eq('B8 prune drops stale eKasih', B.pruneAnswers({ age: 40, income: 'gt12000', ekasih: 'yes' }).ekasih, undefined);
-ok('B9 every non-required question has a skip option',
-  B.QUESTIONS.filter(q => !q.required && q.type !== 'number').every(q => q.options.some(o => o.v === 'skip' && o.exclusive)));
-ok('B10 required questions are only age and region', B.QUESTIONS.filter(q => q.required).map(q => q.id).join() === 'age,region');
+ok('B9 no skip option anywhere (user, 3 Oct 2026)', B.QUESTIONS.every(q => !q.options || !q.options.some(o => o.v === 'skip' || /Tidak mahu menyatakan/.test(o.l))));
+ok('B10 no "required" flag: every question shown must be answered', B.QUESTIONS.every(q => !('required' in q)));
+ok('B11 isComplete needs every visible question answered', !B.isComplete({ age: 40, region: 'semenanjung' }));
 
 /* ---- C. Personas ---- */
 // Mak Timah
@@ -51,11 +48,11 @@ has('C4 rebat elektrik mungkin', r, 'rebat_elektrik', 'mungkin'); has('C5 rokok 
 has('C6 berhenti merokok', r, 'berhenti_merokok', 'layak'); not('C7 no alcohol', r, 'duti_alkohol'); not('C8 no tax', r, 'tax_vaksin');
 ok('C9 apply-STR advisory', r.advisories.some(a => a.type === 'action'));
 // Encik Razak, civil servant (no grade asked)
-r = B.evaluate({ age: 34, region: 'semenanjung', marital: 'married', has_minor_children: 'yes', children: '1-2', child_stages: ['under6'], income: '2501_5000', ekasih: 'no', str_status: 'yes', employment: 'civil_servant', gender: 'male', license: 'yes', assets: ['first_home', 'taxpayer', 'haji_plan'], status: ['none'], lifestyle: ['skip'] });
+r = B.evaluate({ age: 34, region: 'semenanjung', marital: 'married', has_minor_children: 'yes', children: '1-2', child_stages: ['under6'], income: '2501_5000', ekasih: 'no', str_status: 'yes', employment: 'civil_servant', gender: 'male', license: 'yes', assets: ['first_home', 'taxpayer', 'haji_plan'], status: ['none'], lifestyle: ['none'] });
 has('C10 BKK penjawat semak', r, 'bkk_penjawat', 'semak'); has('C11 LPPSA semak', r, 'lppsa', 'semak');
 has('C12 kontrak awam semak', r, 'rumah_kontrak_awam', 'semak'); has('C13 Step-Up', r, 'step_up', 'layak');
 has('C14 GCR haji', r, 'gcr_haji'); not('C15 no KWSP haji (civil servant not KWSP)', r, 'kwsp_haji');
-ok('C16 lifestyle skip advisory', r.advisories.some(a => /gaya hidup/.test(a.text)));
+ok('C16 no skipped-questions advisory', !r.advisories.some(a => /tidak menyatakan/.test(a.text)));
 // Pak Ali
 r = B.evaluate({ age: 67, region: 'sabah', marital: 'single', has_minor_children: 'no', income: '2501_5000', ekasih: 'no', str_status: 'yes', employment: 'retired_gov', gender: 'male', license: 'yes', assets: ['old_car'], status: ['veteran', 'pjm'], lifestyle: ['none'] });
 eq('C17 warga emas RM1,200', [r.strSara.category, r.strSara.total], ['warga_emas', 1200]);
@@ -72,10 +69,11 @@ has('C27 vape shown as is', r, 'vape', 'layak'); has('C28 alcohol shown as is', 
 r = B.evaluate({ age: 38, region: 'semenanjung', marital: 'married', has_minor_children: 'yes', children: '3-4', child_stages: ['under6', 'primary'], income: 'lt2500', ekasih: 'yes', str_status: 'yes', employment: 'housewife', gender: 'female', assets: ['haji_plan'], status: ['pregnant', 'oku_child', 'child_ipt'], lifestyle: ['none'] });
 has('C30 i-Suri', r, 'i_suri', 'layak'); has('C31 PTPTN percuma', r, 'ptptn_percuma'); has('C32 KWSP haji', r, 'kwsp_haji');
 eq('C33 SARA RM200/mo', r.strSara.saraMonthly, 200);
-// Farmer skipped type
-r = B.evaluate({ age: 50, region: 'semenanjung', marital: 'married', has_minor_children: 'no', income: 'lt2500', ekasih: 'no', str_status: 'yes', employment: 'farmer', farm_type: 'skip', gender: 'skip', assets: ['none'], status: ['none'], lifestyle: ['none'] });
-has('C34 pesawah mungkin', r, 'pesawah', 'mungkin'); has('C35 pekebun kecil mungkin', r, 'pekebun_kecil', 'mungkin');
-not('C36 gender skipped: no i-Suri etc. certain', r, 'kasihnita');
+// Farmer, other crops
+r = B.evaluate({ age: 50, region: 'semenanjung', marital: 'married', has_minor_children: 'no', income: 'lt2500', ekasih: 'no', str_status: 'yes', employment: 'farmer', farm_type: 'other', gender: 'male', assets: ['none'], status: ['none'], lifestyle: ['none'] });
+not('C34 other crops: no padi card', r, 'pesawah'); not('C35 other crops: no smallholder card', r, 'pekebun_kecil');
+not('C36 man: no KasihnITA', r, 'kasihnita');
+eq('C37 no mungkin cards without a "Tidak pasti" answer', r.counts.mungkin, 0);
 
 /* ---- F. Items added from the user's step-5 decisions (2026-09-26) ---- */
 const adult = { marital: 'married', has_minor_children: 'no', income: '2501_5000', ekasih: 'no', str_status: 'no', gender: 'male', status: ['none'], lifestyle: ['none'] };
@@ -114,10 +112,11 @@ has('F28 job seeker: TVET card (incl. care-worker courses)', B.evaluate({ ...adu
 
 /* ---- H. Results screen (user's decisions, 2 Oct 2026) ---- */
 ok('H1 no "kesan" tier and no warning label', !('kesan' in B.TIERS) && !JSON.stringify(B.TIERS).includes('Perubahan yang menjejaskan anda'));
-ok('H2 two groups, eligible first', B.GROUPS.length === 2 && B.GROUPS[0].label === 'Berkemungkinan layak' && B.GROUPS[1].label === 'Mungkin layak');
+ok('H2 two groups, eligible first: "Layak", then "Berkemungkinan layak"', B.GROUPS.length === 2 && B.GROUPS[0].label === 'Layak' && B.GROUPS[1].label === 'Berkemungkinan layak');
+ok('H2b tier labels match the groups; "Mungkin layak" is gone', B.TIERS.layak.label === 'Layak' && B.TIERS.mungkin.label === 'Berkemungkinan layak' && !JSON.stringify(B.TIERS).includes('Mungkin layak'));
 [
   { age: 45, region: 'semenanjung', marital: 'single_parent', has_minor_children: 'yes', children: '3-4', child_stages: ['primary', 'secondary'], income: 'lt2500', ekasih: 'unsure', str_status: 'no', employment: 'self_employed', gender: 'female', license: 'yes', assets: ['none'], status: ['none'], lifestyle: ['cigarette'] },
-  { age: 28, region: 'semenanjung', marital: 'single', has_minor_children: 'no', income: 'skip', employment: 'skip', gender: 'skip', assets: ['skip'], status: ['skip'], lifestyle: ['vape', 'alcohol'] },
+  { age: 28, region: 'semenanjung', marital: 'single', has_minor_children: 'no', income: 'lt2500', ekasih: 'unsure', str_status: 'unsure', employment: 'self_employed', gender: 'male', assets: ['none'], status: ['none'], lifestyle: ['vape', 'alcohol'] },
 ].forEach((a, i) => {
   const r = B.evaluate(a);
   const inGroups = r.groups.flatMap(g => g.items.map(x => x.id));
@@ -131,7 +130,7 @@ ok('H2 two groups, eligible first', B.GROUPS.length === 2 && B.GROUPS[0].label =
 { const r = B.evaluate({ age: 45, region: 'semenanjung', marital: 'single_parent', has_minor_children: 'yes', children: '3-4', child_stages: ['primary'], income: 'lt2500', ekasih: 'no', str_status: 'yes', employment: 'self_employed', gender: 'female', assets: ['none'], status: ['none'], lifestyle: ['cigarette'] });
   ok('H6 smoker sees tobacco duty in the eligible group, as is', r.groups[0].items.some(x => x.id === 'duti_rokok')); }
 
-/* ---- M. Mandatory questions (user's decision, 2 Oct 2026): always asked, can be skipped ---- */
+/* ---- M. Mandatory questions (user's decision, 2 Oct 2026): always asked; no skipping (3 Oct 2026) ---- */
 const MANDATORY = ['gender', 'employment', 'has_minor_children', 'oku', 'license', 'str_status', 'ptptn', 'kwsp'];
 const MANDATORY_TEXT = ['Apakah jantina anda?', 'Pekerjaan anda?', 'Adakah anda mempunyai anak berusia 17 tahun ke bawah?',
   'Adakah anda Orang Kurang Upaya (OKU)?', 'Adakah lesen memandu anda aktif?', 'Adakah anda penerima STR atau SARA?',
@@ -141,9 +140,9 @@ MANDATORY.forEach((id, i) => {
   ok('M1 question exists: ' + id, !!q);
   if (!q) return;
   eq('M2 wording: ' + id, q.text, MANDATORY_TEXT[i]);
-  ok('M3 skippable: ' + id, !q.required && q.options.some(o => o.v === 'skip' && o.exclusive));
+  ok('M3 no skip option: ' + id, !q.options.some(o => o.v === 'skip'));
 });
-[{ age: 18 }, { age: 40, income: 'gt12000', employment: 'skip', marital: 'skip' }, { age: 70, employment: 'retired_gov' }].forEach((a, i) => {
+[{ age: 18 }, { age: 40, income: 'gt12000', employment: 'civil_servant', marital: 'single' }, { age: 70, employment: 'retired_gov' }].forEach((a, i) => {
   const vis = ids(a);
   ok('M4.' + i + ' every mandatory question asked of an adult', MANDATORY.every(id => vis.includes(id)), JSON.stringify(MANDATORY.filter(id => !vis.includes(id))));
 });
@@ -154,8 +153,8 @@ ok('M8 children "Tidak" hides count and stages', !ids({ age: 40, has_minor_child
 // Children "Tidak" -> 0-children STR rate
 { const s0 = B.evaluate({ ...base, has_minor_children: 'no', income: '2501_5000', ekasih: 'no' }).strSara;
   const s1 = B.evaluate({ ...base, children: '1-2', income: '2501_5000', ekasih: 'no' }).strSara;
-  ok('M9 "Tidak" uses the 0-children rate, below the 1–2 rate', s0.eligible === true && s0.total < s1.total && !s0.totalRange, JSON.stringify([s0.total, s1.total])); }
-eq('M10 children question skipped -> STR range', B.evaluate({ ...base, has_minor_children: 'skip', ekasih: 'no' }).strSara.eligible !== false, true);
+  ok('M9 "Tidak" uses the 0-children rate, below the 1–2 rate', s0.eligible === true && s0.total < s1.total, JSON.stringify([s0.total, s1.total])); }
+eq('M10 children "Ya" with 5+ -> top rate', B.evaluate({ ...base, ekasih: 'no' }).strSara.total, 3400);
 // STR/SARA "Ya" overrides the estimate for STR-recipient cards; the panel stays the estimate
 { const a = { age: 45, region: 'semenanjung', marital: 'married', has_minor_children: 'no', income: '5001_6000', employment: 'employed_private', gender: 'female', oku: 'no', license: 'no', ptptn: 'no', kwsp: 'yes', assets: ['none'], status: ['none'], lifestyle: ['none'] };
   const yes = B.evaluate({ ...a, str_status: 'yes' }), no = B.evaluate({ ...a, str_status: 'no' });
@@ -166,17 +165,16 @@ eq('M10 children question skipped -> STR range', B.evaluate({ ...base, has_minor
 { const a = { ...adult, age: 40, region: 'semenanjung', assets: ['haji_plan'] };
   not('M16 private employee who says "Tidak" to KWSP: no KWSP haji', B.evaluate({ ...a, employment: 'employed_private', kwsp: 'no' }), 'kwsp_haji');
   has('M17 civil servant who says "Ya" to KWSP: KWSP haji', B.evaluate({ ...a, employment: 'civil_servant', kwsp: 'yes' }), 'kwsp_haji');
-  has('M18 KWSP skipped: guess from job', B.evaluate({ ...a, employment: 'employed_private', kwsp: 'skip' }), 'kwsp_haji'); }
-// OKU, licence and PTPTN: "Ya" -> shown, skipped -> mungkin
+  has('M18 KWSP not asked (no answer): guess from job', B.evaluate({ ...a, employment: 'employed_private' }), 'kwsp_haji'); }
+// OKU, licence and PTPTN: "Ya" -> shown, "Tidak" -> not shown
 { const a = { ...adult, age: 40, region: 'semenanjung', employment: 'employed_private', assets: ['none'] };
   const okuCards = B.BENEFITS.filter(b => JSON.stringify(b.when || {}).includes('"f":"oku"')).map(b => b.id);
   ok('M19 some cards depend on OKU', okuCards.length > 0);
-  const yes = B.evaluate({ ...a, oku: 'yes' }), skip = B.evaluate({ ...a, oku: 'skip' }), no = B.evaluate({ ...a, oku: 'no' });
+  const yes = B.evaluate({ ...a, oku: 'yes' }), no = B.evaluate({ ...a, oku: 'no' });
   ok('M20 OKU "Ya" shows an OKU card', okuCards.some(id => find(yes, id)));
-  ok('M21 OKU skipped: OKU cards only as mungkin', okuCards.every(id => !find(skip, id) || find(skip, id).tier === 'mungkin') && okuCards.some(id => find(skip, id)));
   ok('M22 OKU "Tidak": fewer OKU cards than "Ya"', okuCards.filter(id => find(no, id)).length < okuCards.filter(id => find(yes, id)).length);
-  has('M23 licence skipped -> mungkin', B.evaluate({ ...a, region: 'labuan', license: 'skip' }), 'cukai_kenderaan_labuan', 'mungkin');
-  has('M24 PTPTN skipped -> mungkin', B.evaluate({ ...a, ptptn: 'skip' }), 'ptptn_sekatan_perjalanan', 'mungkin'); }
+  not('M23 licence "Tidak" -> no Labuan vehicle card', B.evaluate({ ...a, region: 'labuan', license: 'no' }), 'cukai_kenderaan_labuan');
+  not('M24 PTPTN "Tidak" -> no travel-ban card', B.evaluate({ ...a, ptptn: 'no' }), 'ptptn_sekatan_perjalanan'); }
 
 /* ---- D. Catalogue integrity ---- */
 const themes = B.THEMES.map(t => t.id);
@@ -223,6 +221,9 @@ B.BENEFITS.forEach(b => ['value', 'summary', 'who'].forEach(k => spend.forEach(r
     ok('G2 front page text in spec: ' + t, spec.includes(t)));
   ok('G3 no unreplaced {{YEAR}} in spec', !spec.includes('{{YEAR}}'));
   ok('G4 old front-page headings gone', !/KIRA BAJET|KALKULATOR BELANJAWAN|KETAHUI MANFAAT/.test(spec));
+  const Q = require('./questions.js'), appr = Q.readApproved();
+  ok('G5 question set approved by the user (node scripts/questions.js, then --approve after they say yes)', !!appr && Q.same(appr.questions, Q.snapshot(B)));
+  ok('G6 spec offers no skip option and no "Mungkin layak" heading', !spec.includes('`skip` →') && !/label: 'Mungkin layak'|\*\*"Mungkin layak"\*\*/.test(spec));
 }
 
 console.log(`Verification round 1: ${pass} passed, ${fail} failed.`);

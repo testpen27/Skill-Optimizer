@@ -13,9 +13,11 @@
  *
  * Design rules
  *  - Output describes what the PERSON gets or pays; never government allocation totals.
- *  - Personal questions are optional: every non-core question offers "Tidak mahu menyatakan" (value 'skip').
- *  - A skipped single-choice answer becomes UNKNOWN (tri-state), so dependent results show as "mungkin".
- *  - A skipped multi-choice answer is treated as "none selected", with an advisory telling the user.
+ *  - Every question shown must be answered; there is no skip option (the user's decision, 3 Oct 2026).
+ *  - An answer of "Tidak pasti" (eKasih) makes the facts that depend on it UNKNOWN (tri-state),
+ *    so dependent results show as "mungkin".
+ *  - The question set (wording and options) is approved by the user before every hand-over:
+ *    scripts/questions.js prints it for review and records the approval.
  *  - Scope: build only the items in BENEFITS. Measures read in the speech and deliberately left
  *    out are listed in references/excluded-2026.md; don't implement them without asking the user.
  */
@@ -25,23 +27,21 @@
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var VERSION = '2026.7';
+  var VERSION = '2026.8';
   var DATA_AS_OF = '2026-09-27';
-  var SKIP = 'skip';
-  var SKIP_LABEL = 'Tidak mahu menyatakan';
 
   /* ================================================================
    * 1. QUESTIONS
    *    type: 'number' | 'single' | 'multi'
-   *    required: true => no skip option (only age & region)
+   *    Every question shown must be answered (no skip option).
    *    showIf: condition in the rule DSL (unknown => hidden unless noted)
    * ================================================================ */
   var QUESTIONS = [
-    { id: 'age', type: 'number', min: 0, max: 120, required: true,
+    { id: 'age', type: 'number', min: 0, max: 120,
       text: 'Berapakah umur anda?',
       help: 'Umur menentukan kelayakan program seperti STR, PeKa B40, bantuan warga emas dan pembiayaan rumah untuk golongan muda.' },
 
-    { id: 'region', type: 'single', required: true,
+    { id: 'region', type: 'single',
       text: 'Di manakah anda menetap?',
       options: [
         { v: 'semenanjung', l: 'Semenanjung Malaysia' },
@@ -56,7 +56,7 @@
       options: [{ v: 'yes', l: 'Ya' }, { v: 'no', l: 'Tidak' }] },
 
     // The user's mandatory questions (2 Oct 2026): jantina, pekerjaan, anak 17 tahun ke bawah, OKU, lesen,
-    // STR/SARA, PTPTN, KWSP. Always asked (adults; OKU and licence for everyone), and still skippable.
+    // STR/SARA, PTPTN, KWSP. Always asked (adults; OKU and licence for everyone).
     { id: 'gender', type: 'single',
       showIf: { f: 'age', gte: 18 },
       text: 'Apakah jantina anda?',
@@ -143,7 +143,7 @@
       ] },
 
     { id: 'ekasih', type: 'single',
-      showIf: { all: [{ f: 'age', gte: 18 }, { any: [{ f: 'incomeMax', lte: 5000 }, { f: 'incomeSkipped', eq: true }] }] },
+      showIf: { all: [{ f: 'age', gte: 18 }, { f: 'incomeMax', lte: 5000 }] },
       text: 'Adakah isi rumah anda berdaftar sebagai Miskin atau Miskin Tegar dalam sistem eKasih?',
       options: [{ v: 'yes', l: 'Ya' }, { v: 'no', l: 'Tidak' }, { v: 'unsure', l: 'Tidak pasti' }] },
 
@@ -193,7 +193,7 @@
 
     { id: 'lifestyle', type: 'multi',
       showIf: { f: 'age', gte: 18 },
-      text: 'Soalan pilihan: adakah mana-mana perkara ini berkaitan dengan anda?',
+      text: 'Adakah mana-mana perkara ini berkaitan dengan anda?',
       help: 'Belanjawan 2026 menaikkan duti ke atas produk tembakau dan minuman beralkohol, serta mengecualikan cukai ke atas produk bantuan berhenti merokok. Jawapan ini hanya digunakan untuk memaparkan perubahan yang berkaitan.',
       options: [
         { v: 'cigarette', l: 'Merokok' },
@@ -204,12 +204,6 @@
         { v: 'none', l: 'Tiada yang berkaitan', exclusive: true }
       ] }
   ];
-
-  // Every non-required question gets a skip option appended.
-  QUESTIONS.forEach(function (q) {
-    if (q.required || q.type === 'number') return;
-    q.options = q.options.concat([{ v: SKIP, l: SKIP_LABEL, exclusive: true, skip: true }]);
-  });
 
   /* ================================================================
    * 2. THEMES & TIERS
@@ -231,23 +225,24 @@
   ];
 
   var TIERS = {
-    layak:   { label: 'Berkemungkinan layak', rank: 0 },
-    semak:   { label: 'Semak kelayakan',       rank: 1 },
-    mungkin: { label: 'Mungkin layak',         rank: 2 }
+    layak:   { label: 'Layak',                rank: 0 },
+    semak:   { label: 'Semak kelayakan',      rank: 1 },
+    mungkin: { label: 'Berkemungkinan layak', rank: 2 }
   };
 
-  // Results screen groups (user's decision, 2 Oct 2026): what the person clearly qualifies for first,
-  // then everything that is means-tested or depends on a skipped answer. No theme categories.
+  // Results screen groups (user's decisions, 2-3 Oct 2026): what the person clearly qualifies for first,
+  // then everything that is means-tested or depends on a "Tidak pasti" answer. No theme categories.
+  // Labels: "Layak", then "Berkemungkinan layak" (the old "Berkemungkinan layak" / "Mungkin layak" pair said the same thing twice).
   // Cost changes (kind 'kesan', e.g. tobacco duty) are tiered like any other card and get no warning label.
   var GROUPS = [
-    { id: 'layak',   label: 'Berkemungkinan layak', tiers: ['layak'] },
-    { id: 'mungkin', label: 'Mungkin layak',        tiers: ['semak', 'mungkin'] }
+    { id: 'layak',   label: 'Layak',                tiers: ['layak'] },
+    { id: 'mungkin', label: 'Berkemungkinan layak', tiers: ['semak', 'mungkin'] }
   ];
 
   /* ================================================================
    * 3. FACT DERIVATION
    *    Scalar facts may be null. A null fact is UNKNOWN only if listed in facts._unknown
-   *    (user skipped / answered "Tidak pasti"); otherwise it simply doesn't apply (= false).
+   *    (the user answered "Tidak pasti"); otherwise it simply doesn't apply (= false).
    * ================================================================ */
   var INCOME_BANDS = {
     lt2500:       { min: 0,     max: 2500 },
@@ -259,12 +254,11 @@
   var CHILD_COUNT = { '0': 0, '1-2': 1, '3-4': 3, '5+': 5 };
 
   function arr(v) { return Array.isArray(v) ? v : (v == null ? [] : [v]); }
-  function cleanMulti(v) { return arr(v).filter(function (x) { return x !== 'none' && x !== SKIP; }); }
+  function cleanMulti(v) { return arr(v).filter(function (x) { return x !== 'none'; }); }
 
   function deriveFacts(a) {
-    var f = { _unknown: [], _skipped: [] };
+    var f = { _unknown: [] };
     function unknown(name) { if (f._unknown.indexOf(name) === -1) f._unknown.push(name); }
-    Object.keys(a).forEach(function (k) { if (arr(a[k]).indexOf(SKIP) > -1) f._skipped.push(k); });
 
     f.age = (a.age === '' || a.age == null) ? null : Number(a.age);
     f.adult = f.age == null ? null : f.age >= 18;
@@ -272,19 +266,13 @@
     f.eastMalaysia = f.region == null ? null : f.region !== 'semenanjung';
 
     // marital
-    if (a.marital === SKIP) { f.marital = null; unknown('marital'); } else f.marital = a.marital || null;
+    f.marital = a.marital || null;
 
     // children
     // "Adakah anda mempunyai anak berusia 17 tahun ke bawah?" gates the number and stage questions.
     // "Tidak" counts as no children, including for STR (the user's decision; the speech doesn't state STR's age limit).
-    if (a.has_minor_children === 'yes') f.minorChildren = true;
-    else if (a.has_minor_children === SKIP) { f.minorChildren = null; unknown('minorChildren'); }
-    else f.minorChildren = false;
-    f.childrenSkipped = a.has_minor_children === SKIP || (f.minorChildren === true && a.children === SKIP);
-    if (f.childrenSkipped) {
-      f.childCount = null; unknown('childCount');
-      if (f.minorChildren === true) f.hasChildren = true; else { f.hasChildren = null; unknown('hasChildren'); }
-    } else if (f.minorChildren === true) {
+    f.minorChildren = a.has_minor_children === 'yes';
+    if (f.minorChildren) {
       f.childCount = CHILD_COUNT[a.children] != null ? CHILD_COUNT[a.children] : 1; f.hasChildren = true;
     } else { f.childCount = 0; f.hasChildren = false; }
     f.childStages = cleanMulti(a.child_stages);
@@ -294,51 +282,40 @@
 
     // income
     var band = INCOME_BANDS[a.income];
-    f.incomeSkipped = a.income === SKIP;
     f.income = band ? a.income : null;
     f.incomeMin = band ? band.min : null;
     f.incomeMax = band ? band.max : null;
     f.b40 = band ? band.max <= 5000 : null;       // approximation of DOSM B40 line (~RM5,249)
     f.b40m40 = band ? band.max <= 12000 : null;   // approximation of M40 ceiling (~RM11,819)
-    if (f.incomeSkipped) ['income', 'incomeMin', 'incomeMax', 'b40', 'b40m40'].forEach(unknown);
 
     // eKasih
     if (band && band.max > 5000) f.ekasih = false;
     else if (a.ekasih === 'yes') f.ekasih = true;
     else if (a.ekasih === 'no') f.ekasih = false;
-    else if (a.ekasih === 'unsure' || a.ekasih === SKIP) { f.ekasih = null; unknown('ekasih'); }
-    else if (f.incomeSkipped) { f.ekasih = null; unknown('ekasih'); }
+    else if (a.ekasih === 'unsure') { f.ekasih = null; unknown('ekasih'); }
     else f.ekasih = false;
 
     // employment
-    if (a.employment === SKIP) { f.employment = null; unknown('employment'); } else f.employment = a.employment || null;
-    if (a.farm_type === SKIP) { f.farmType = null; unknown('farmType'); } else f.farmType = a.farm_type || null;
-    if (a.gender === SKIP) { f.gender = null; unknown('gender'); } else f.gender = a.gender || null;
+    f.employment = a.employment || null;
+    f.farmType = a.farm_type || null;
+    f.gender = a.gender || null;
 
     f.assets = cleanMulti(a.assets);
     f.status = cleanMulti(a.status);
     f.lifestyle = cleanMulti(a.lifestyle);
     f.smoker = ['cigarette', 'cigar', 'heated_tobacco', 'vape'].some(function (x) { return f.lifestyle.indexOf(x) > -1; });
 
-    if (f.status.indexOf('child_ipt') > -1 || f.employment === 'student_ipt') f.ipt = true;
-    else if (f.employment === null && a.employment === SKIP) { f.ipt = null; unknown('ipt'); }
-    else f.ipt = false;
+    f.ipt = f.status.indexOf('child_ipt') > -1 || f.employment === 'student_ipt';
 
-    // KWSP: the reader's own answer; if skipped, fall back to a guess from the job
+    // KWSP: the reader's own answer; if it is missing (a minor, who isn't asked), fall back to a guess from the job
     if (a.kwsp === 'yes') f.kwspMember = true;
     else if (a.kwsp === 'no') f.kwspMember = false;
-    else if (a.employment === SKIP) { f.kwspMember = null; unknown('kwspMember'); }
     else f.kwspMember = ['employed_private', 'gig_ehailing', 'self_employed', 'housewife', 'jobseeker', 'fisher', 'farmer'].indexOf(f.employment) > -1;
 
-    // Yes/no questions: "yes" -> true, "no" or not asked -> false, skipped -> unknown
-    function yesNo(name, v) {
-      if (v === 'yes') f[name] = true;
-      else if (v === SKIP) { f[name] = null; unknown(name); }
-      else f[name] = false;
-    }
-    yesNo('oku', a.oku);
-    yesNo('license', a.license);
-    yesNo('ptptnBorrower', a.ptptn);
+    // Yes/no questions: "yes" -> true, "no" or not asked -> false
+    f.oku = a.oku === 'yes';
+    f.license = a.license === 'yes';
+    f.ptptnBorrower = a.ptptn === 'yes';
     // STR/SARA: the reader's own answer ("Ya") counts as an STR recipient for the cards meant for them
     f.strRecipient = a.str_status === 'yes';
 
@@ -367,23 +344,20 @@
     function res(eligible, reason, extra) { var o = { eligible: eligible, reason: reason || null }; for (var k in extra) o[k] = extra[k]; return o; }
     if (f.age == null) return res(false, 'Umur belum diisi.');
     if (f.age < 18) return res(false, 'Anda berumur bawah 18 tahun, jadi anda dikira sebagai anak tanggungan dalam permohonan STR ibu bapa anda.');
-    if (f.marital === null) return res(null, 'Anda memilih untuk tidak menyatakan status perkahwinan, jadi kategori STR tidak dapat ditentukan. Semak kelayakan di portal MySTR.');
-    if (f.income === null) return res(null, 'Anda memilih untuk tidak menyatakan pendapatan, jadi amaun STR tidak dapat dianggarkan. Semak kelayakan di portal MySTR.');
+    if (f.marital === null || f.income === null) return res(null, 'Status perkahwinan dan pendapatan belum diisi.');
 
     var cat;
     if (f.marital === 'married' || f.marital === 'single_parent') cat = 'isi_rumah';
-    else if (f.childCount === null) return res(null, 'Bilangan anak tidak dinyatakan, jadi kategori STR tidak dapat ditentukan.');
     else if (f.childCount > 0) cat = 'isi_rumah';
     else if (f.age >= 60) cat = 'warga_emas';
     else if (f.age >= 21) cat = 'bujang';
     else return res(false, 'STR kategori Bujang hanya untuk mereka yang berumur 21 hingga 59 tahun.');
 
-    var str, sara, strMin, strMax;
+    var str, sara;
     if (cat === 'isi_rumah') {
       if (!STR_TABLE[f.income]) return res(false, 'STR kategori Isi Rumah untuk isi rumah berpendapatan RM5,000 dan ke bawah sebulan.');
       var t = STR_TABLE[f.income];
-      if (f.childCount === null) { strMin = t[0][0]; strMax = t[5][0]; str = strMin; }
-      else str = t[f.childCount][0];
+      str = t[f.childCount][0];
       sara = 1200;
     } else if (cat === 'warga_emas') {
       if (!STR_TABLE[f.income]) return res(false, 'STR kategori Warga Emas Tiada Pasangan untuk pendapatan RM5,000 dan ke bawah sebulan.');
@@ -399,10 +373,8 @@
       str: str, sara: sara, saraMonthly: SARA_MONTHLY[cat], total: str + sara,
       penghargaanSara: 100, ekasihApplied: 'no'
     });
-    if (strMin != null) { o.strRange = [strMin, strMax]; o.totalRange = [strMin + sara, strMax + sara]; }
     if (f.ekasih === true) {
       o.sara += topup; o.saraMonthly += topup / 12; o.total += topup; o.ekasihApplied = 'yes';
-      if (o.totalRange) o.totalRange = [o.totalRange[0] + topup, o.totalRange[1] + topup];
     } else if (f.ekasih === null) {
       o.ekasihApplied = 'unknown'; o.totalIfEkasih = o.total + topup; o.saraMonthlyIfEkasih = o.saraMonthly + topup / 12;
     }
@@ -1499,23 +1471,15 @@
     };
   }
 
-  var SKIP_NAMES = { marital: 'status perkahwinan', children: 'bilangan anak', child_stages: 'peringkat anak', income: 'pendapatan',
-    ekasih: 'status eKasih', employment: 'pekerjaan', farm_type: 'jenis pertanian', gender: 'jantina', assets: 'aset dan rancangan',
-    status: 'keadaan khas', lifestyle: 'gaya hidup', self_school: 'status persekolahan', str_status: 'status STR atau SARA',
-    has_minor_children: 'anak berusia 17 tahun ke bawah', oku: 'status OKU', license: 'lesen memandu', ptptn: 'pinjaman PTPTN', kwsp: 'caruman KWSP' };
-
   function buildAdvisories(f, s, a) {
     var out = [];
     if (s.eligible === true && f.strStatus === 'no')
       out.push({ type: 'action', text: 'Anda berkemungkinan layak menerima STR tetapi belum menerimanya. Mohon di bantuantunai.hasil.gov.my. Permohonan STR juga membuka akses kepada SARA, mySalam, PeKa B40 dan Skim Perubatan MADANI.' });
-    if (s.eligible === true && (f.strStatus === 'unsure' || f.strStatus === SKIP))
+    if (s.eligible === true && f.strStatus === 'unsure')
       out.push({ type: 'action', text: 'Semak status STR anda di bantuantunai.hasil.gov.my dan status SARA di sara.gov.my.' });
     if (a.ekasih === 'unsure')
       out.push({ type: 'info', text: 'Status eKasih anda tidak pasti. Jika isi rumah anda berdaftar, kadar SARA lebih tinggi dan beberapa bantuan lain mungkin terpakai. Semak dengan Pejabat Daerah.' });
-    var skipped = f._skipped.map(function (k) { return SKIP_NAMES[k] || k; });
-    if (skipped.length)
-      out.push({ type: 'info', text: 'Anda memilih untuk tidak menyatakan: ' + skipped.join(', ') + '. Faedah yang bergantung pada maklumat ini dipaparkan sebagai "Mungkin layak" atau tidak dipaparkan.' });
-    if (f.assets.indexOf('taxpayer') === -1 && f.incomeMin != null && f.incomeMin > 5000 && (!a.assets || a.assets.indexOf(SKIP) === -1))
+    if (f.assets.indexOf('taxpayer') === -1 && f.incomeMin != null && f.incomeMin > 5000)
       out.push({ type: 'info', text: 'Dengan pendapatan ini, anda mungkin perlu membayar cukai pendapatan. Beberapa pelepasan cukai baharu bagi Tahun Taksiran 2026 mungkin berkaitan dengan anda.' });
     out.push({ type: 'disclaimer', text: 'Panduan umum berdasarkan Ucapan Belanjawan 2026 (maklumat setakat ' + DATA_AS_OF + '). Ini bukan penentuan kelayakan rasmi. Sila sahkan dengan agensi yang berkaitan.' });
     return out;
@@ -1524,7 +1488,7 @@
   function dedupe(xs) { var seen = {}; return xs.filter(function (x) { if (seen[x]) return false; seen[x] = 1; return true; }); }
 
   return {
-    VERSION: VERSION, DATA_AS_OF: DATA_AS_OF, SKIP: SKIP,
+    VERSION: VERSION, DATA_AS_OF: DATA_AS_OF,
     QUESTIONS: QUESTIONS, THEMES: THEMES, TIERS: TIERS, GROUPS: GROUPS, BENEFITS: BENEFITS,
     getVisibleQuestions: getVisibleQuestions, pruneAnswers: pruneAnswers, isComplete: isComplete,
     deriveFacts: deriveFacts, calcStrSara: calcStrSara, evaluate: evaluate,

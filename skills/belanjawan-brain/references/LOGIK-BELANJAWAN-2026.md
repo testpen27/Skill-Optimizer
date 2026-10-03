@@ -1,9 +1,18 @@
-# Belanjawan 2026 — Citizen Benefits Q&A: Logic Spec (v2026.7)
+# Belanjawan 2026 — Citizen Benefits Q&A: Logic Spec (v2026.8)
 
 **Engine:** `belanjawan2026-brain.js` (UI-free, no dependencies, works in browser and Node)
 **Verification:** `test.js` (round 1) and `verify2.js` (round 2). Both pass; see §8.
 **Source:** Ucapan Belanjawan 2026 (MOF). "Perenggan / ms" refer to that document. Items added in v2026.4 and v2026.5 come from the speech text only and cite paragraph and Lampiran numbers (no page numbers). Items from earlier versions that were checked on the web keep their `web` field.
-**Data as of:** 2 Oct 2026
+**Data as of:** 3 Oct 2026
+
+## What changed in v2026.8
+
+The user's decisions of 3 Oct 2026. The cards, rules and amounts didn't change.
+
+- **No skipping.** "Tidak mahu menyatakan" is gone from every question, and every question shown must be answered. The answers that remain uncertain on purpose are "Tidak pasti" (eKasih, STR or SARA) and "Tiada yang berkaitan" (the multi-selects). The engine no longer accepts `skip`: the skipped-questions advisory, the STR range for a skipped number of children, and the "status not stated" STR reasons were removed. `mungkin` cards now come only from eKasih "Tidak pasti".
+- **Group and tier labels.** "Berkemungkinan layak" and "Mungkin layak" said the same thing. The groups are now **"Layak"** (`layak` cards) and **"Berkemungkinan layak"** (`semak`, then `mungkin` cards); the tier labels match.
+- **Question set approval.** Before every hand-over the user approves the whole question set (wording, options and when each is asked), and can reword any line while confirming. `scripts/questions.js` prints the set for review, marks what changed since the last approval, applies rewording (`--set`) and records the approval (`--approve`) in `references/questions-approved.json`. `test.js` fails while the set differs from the approved one, so an unapproved set can't be handed over.
+- **First approval (3 Oct 2026).** The user approved S1–S19 as shown and had S20 reworded from "Soalan pilihan: adakah mana-mana perkara ini berkaitan dengan anda?" to "Adakah mana-mana perkara ini berkaitan dengan anda?", since nothing is optional any more.
 
 ## What changed in v2026.7
 
@@ -68,7 +77,7 @@ A text-only read of the whole speech (1,279 units, every one given a ledger deci
 2. **Less personal questioning.**
    - The grade and appointment-type question is removed. Civil-servant items now say who qualifies in the text and are shown as "Semak kelayakan".
    - The fertility question is removed.
-   - Only age and region are compulsory. Every other question has **"Tidak mahu menyatakan"**, and results that depend on a skipped answer show as "Mungkin layak" rather than disappearing silently.
+   - Only age and region are compulsory. Every other question has **"Tidak mahu menyatakan"**, and results that depend on a skipped answer show as "Mungkin layak" rather than disappearing silently. *(Replaced in v2026.8: there is no skip option.)*
 3. **New theme — Kes Khas: Gaya Hidup, Pelaburan & Perubahan Harga.** This covers the cigarette, cigar, heated-tobacco and alcohol duty rises; the review of a possible e-cigarette ban; cheaper quit-smoking aids (NRT); the private clinic fee change (RM10–RM80); stamp-duty relief for retail investors and low-salary employment contracts; and the new 2% LLP tax. These are marked `kind: 'kesan'` when they cost the person more.
 4. **People-facing values only.** All government allocation totals and beneficiary counts ("RM3.1 bilion", "560,000 penerima", "5.2 juta murid") are removed. Each item now states what the person gets or pays, and a lint enforces this.
 5. **New items found:**
@@ -84,7 +93,7 @@ A text-only read of the whole speech (1,279 units, every one given a ledger deci
 ## 1. How the brain works
 
 ```
-answers ──► deriveFacts() ──► facts ──┬──► calcStrSara()   ──► STR + SARA estimate (or range)
+answers ──► deriveFacts() ──► facts ──┬──► calcStrSara()   ──► STR + SARA estimate
                                       └──► BENEFITS[].when  ──► tri-state test ──► tiered results
 ```
 
@@ -96,16 +105,17 @@ answers ──► deriveFacts() ──► facts ──┬──► calcStrSara()
 
 | Tier | Label shown | When |
 |---|---|---|
-| `layak` | Berkemungkinan layak | Rule true and it is the real criterion |
+| `layak` | Layak | Rule true and it is the real criterion |
 | `semak` | Semak kelayakan | Rule true, but the programme is means-tested, quota-based or depends on something we deliberately don't ask (e.g. grade) |
-| `mungkin` | Mungkin layak | Rule depends on a skipped answer or "Tidak pasti"; `needsConfirm[]` lists what's missing |
+| `mungkin` | Berkemungkinan layak | Rule depends on an eKasih "Tidak pasti" answer; `needsConfirm[]` lists what's missing |
 
 Cost changes (`kind: 'kesan'`) follow the same three tiers since v2026.6; there is no separate tier or warning label.
 
-**How skipping works**
+**Uncertain answers**
 
-- **Single-choice skip:** the answer becomes an unknown fact, so dependent items show as `mungkin`.
-- **Multi-choice skip:** treated as "none selected". An advisory tells the user that some items may be hidden.
+- **No skipping** (since v2026.8): every question shown must be answered.
+- **"Tidak pasti" for eKasih:** the `ekasih` fact becomes unknown, so dependent items show as `mungkin`, and STR shows the total with and without the eKasih top-up.
+- **"Tidak pasti" for STR or SARA:** doesn't make anything unknown; it adds the "check your status" advisory.
 - **Unasked questions** (e.g. employment for a minor) count as false, so they never produce `mungkin`.
 
 ---
@@ -146,13 +156,11 @@ Category is decided in this order:
 | Warga emas tiada pasangan (60+) | < RM5,000 | — | 600 | 600 | 1,200 | +1,200 (RM50 → RM150/month) |
 | Bujang (21–59) | ≤ RM2,500 | — | 0 | 600 | 600 | +600 (RM50 → RM100/month) |
 
-How skipped or uncertain answers change the output:
+How the answers change the output:
 
 - **"Adakah anda mempunyai anak berusia 17 tahun ke bawah?" answered "Tidak":** counts as 0 children.
-- **That question, or the number of children, skipped (married or single parent):** returns `totalRange`, e.g. RM1,900–3,400.
-- **"Adakah anda penerima STR atau SARA?" answered "Ya":** the panel still shows the estimate, but the STR-linked items count the person as a recipient.
 - **eKasih "Tidak pasti":** returns `totalIfEkasih`.
-- **Marital status or income skipped:** returns `eligible: null`, and STR-linked items (mySalam, PeKa B40, Skim Perubatan MADANI) show as `mungkin`.
+- **"Adakah anda penerima STR atau SARA?" answered "Ya":** the panel still shows the estimate, but the STR-linked items count the person as a recipient.
 
 ---
 
@@ -174,24 +182,24 @@ These are still returned, with a `timing` note, so the UI can label or grey them
 |---|---|---|---|---|---|
 | 1 | `age` | number | Berapakah umur anda? | always | number 0–120 |
 | 2 | `region` | single | Di manakah anda menetap? | always | `semenanjung` Semenanjung Malaysia<br>`sabah` Sabah<br>`sarawak` Sarawak<br>`labuan` Wilayah Persekutuan Labuan |
-| 3 | `self_school` | single | Adakah anda murid sekolah Kerajaan? | `age < 18` | `yes` Ya<br>`no` Tidak<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 4 | `gender` | single | Apakah jantina anda? | `age ≥ 18` | `female` Perempuan<br>`male` Lelaki<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 5 | `employment` | single | Pekerjaan anda? | `age ≥ 18` | `employed_private` Pekerja sektor swasta<br>`civil_servant` Penjawat awam<br>`gig_ehailing` Pemandu e-hailing atau penghantar p-hailing<br>`self_employed` Bekerja sendiri, pekerja bebas atau peniaga kecil<br>`fisher` Nelayan<br>`farmer` Pesawah, petani, penternak atau pekebun kecil<br>`housewife` Suri rumah sepenuh masa<br>`student_ipt` Pelajar institusi pengajian tinggi<br>`jobseeker` Graduan baharu atau sedang mencari pekerjaan<br>`retired_gov` Pesara Kerajaan (berpencen)<br>`retired_other` Bersara atau tidak bekerja<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 6 | `farm_type` | single | Apakah jenis kegiatan pertanian utama anda? | `employment = farmer` | `padi` Menanam padi<br>`smallholder` Pekebun kecil getah atau sawit<br>`other` Tanaman lain, ternakan atau akuakultur<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 7 | `marital` | single | Apakah status perkahwinan anda? | `age ≥ 18` | `married` Berkahwin<br>`single_parent` Ibu atau bapa tunggal yang mempunyai anak tanggungan<br>`single` Tiada pasangan (belum berkahwin, bercerai atau kematian pasangan)<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 8 | `has_minor_children` | single | Adakah anda mempunyai anak berusia 17 tahun ke bawah? | `age ≥ 18` | `yes` Ya<br>`no` Tidak<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 9 | `children` | single | Berapakah bilangan anak anda yang berusia 17 tahun ke bawah? | `minorChildren = true` | `1-2` 1 hingga 2 orang<br>`3-4` 3 hingga 4 orang<br>`5+` 5 orang atau lebih<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 10 | `child_stages` | multi | Di peringkat manakah anak anda sekarang? (pilih semua yang berkaitan) | `minorChildren = true` | `under6` Belum bersekolah atau prasekolah (bawah 6 tahun)<br>`primary` Sekolah rendah Kerajaan<br>`secondary` Sekolah menengah Kerajaan<br>`other` Lain-lain (contohnya sekolah swasta)<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 11 | `oku` | single | Adakah anda Orang Kurang Upaya (OKU)? | always | `yes` Ya<br>`no` Tidak<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 12 | `license` | single | Adakah lesen memandu anda aktif? | always | `yes` Ya<br>`no` Tidak, atau tiada lesen memandu<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 13 | `income` | single | Berapakah anggaran pendapatan kasar bulanan isi rumah anda? | `age ≥ 18` | `lt2500` RM2,500 dan ke bawah<br>`2501_5000` RM2,501 hingga RM5,000<br>`5001_6000` RM5,001 hingga RM6,000<br>`6001_12000` RM6,001 hingga RM12,000<br>`gt12000` Melebihi RM12,000<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 14 | `ekasih` | single | Adakah isi rumah anda berdaftar sebagai Miskin atau Miskin Tegar dalam sistem eKasih? | `age ≥ 18 AND (incomeMax ≤ 5000 OR incomeSkipped = true)` | `yes` Ya<br>`no` Tidak<br>`unsure` Tidak pasti<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 15 | `str_status` | single | Adakah anda penerima STR atau SARA? | `age ≥ 18` | `yes` Ya<br>`no` Tidak<br>`unsure` Tidak pasti<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 16 | `ptptn` | single | Adakah anda peminjam PTPTN? | `age ≥ 18` | `yes` Ya<br>`no` Tidak<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 17 | `kwsp` | single | Adakah anda pencarum KWSP? | `age ≥ 18` | `yes` Ya<br>`no` Tidak<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 18 | `assets` | multi | Perkara manakah yang berkaitan dengan anda? (pilih semua yang berkaitan) | always | `diesel_vehicle` Memiliki kenderaan persendirian berenjin diesel<br>`old_car` Memiliki kereta berusia lebih 20 tahun<br>`first_home` Merancang untuk membeli rumah pertama<br>`taxpayer` Membayar cukai pendapatan atau mengisi e-Filing<br>`invest_bursa` Melabur di Bursa Malaysia (saham, ETF atau waran)<br>`llp_partner` Pekongsi dalam Perkongsian Liabiliti Terhad (PLT)<br>`haji_plan` Merancang untuk menunaikan haji<br>`none` Tiada yang berkaitan *(exclusive)*<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 19 | `status` | multi | Adakah mana-mana keadaan ini berkaitan dengan anda? (pilih semua yang berkaitan) | always | `oku_child` Anak saya OKU atau kurang upaya pembelajaran (seperti autisme atau ADHD)<br>`child_ipt` Anak saya belajar di institusi pengajian tinggi (universiti, politeknik atau kolej)<br>`pregnant` Saya atau pasangan sedang hamil<br>`veteran` Veteran Angkatan Tentera Malaysia<br>`pjm` Penerima Pingat Jasa Malaysia<br>`religious_staff` Guru KAFA, guru takmir, imam, bilal, tok siak, noja atau marbut<br>`taxi` Pemandu atau pemilik teksi, termasuk kereta sewa<br>`orang_asli` Orang Asli<br>`bankrupt` Sedang berstatus bankrap<br>`none` Tiada yang berkaitan *(exclusive)*<br>`skip` Tidak mahu menyatakan *(exclusive)* |
-| 20 | `lifestyle` | multi | Soalan pilihan: adakah mana-mana perkara ini berkaitan dengan anda? | `age ≥ 18` | `cigarette` Merokok<br>`cigar` Menghisap cerut atau cerut kecil (cigarillo)<br>`heated_tobacco` Menggunakan produk tembakau yang dipanaskan (heated tobacco)<br>`vape` Menggunakan vape atau rokok elektronik<br>`alcohol` Mengambil minuman beralkohol<br>`none` Tiada yang berkaitan *(exclusive)*<br>`skip` Tidak mahu menyatakan *(exclusive)* |
+| 3 | `self_school` | single | Adakah anda murid sekolah Kerajaan? | `age < 18` | `yes` Ya<br>`no` Tidak |
+| 4 | `gender` | single | Apakah jantina anda? | `age ≥ 18` | `female` Perempuan<br>`male` Lelaki |
+| 5 | `employment` | single | Pekerjaan anda? | `age ≥ 18` | `employed_private` Pekerja sektor swasta<br>`civil_servant` Penjawat awam<br>`gig_ehailing` Pemandu e-hailing atau penghantar p-hailing<br>`self_employed` Bekerja sendiri, pekerja bebas atau peniaga kecil<br>`fisher` Nelayan<br>`farmer` Pesawah, petani, penternak atau pekebun kecil<br>`housewife` Suri rumah sepenuh masa<br>`student_ipt` Pelajar institusi pengajian tinggi<br>`jobseeker` Graduan baharu atau sedang mencari pekerjaan<br>`retired_gov` Pesara Kerajaan (berpencen)<br>`retired_other` Bersara atau tidak bekerja |
+| 6 | `farm_type` | single | Apakah jenis kegiatan pertanian utama anda? | `employment = farmer` | `padi` Menanam padi<br>`smallholder` Pekebun kecil getah atau sawit<br>`other` Tanaman lain, ternakan atau akuakultur |
+| 7 | `marital` | single | Apakah status perkahwinan anda? | `age ≥ 18` | `married` Berkahwin<br>`single_parent` Ibu atau bapa tunggal yang mempunyai anak tanggungan<br>`single` Tiada pasangan (belum berkahwin, bercerai atau kematian pasangan) |
+| 8 | `has_minor_children` | single | Adakah anda mempunyai anak berusia 17 tahun ke bawah? | `age ≥ 18` | `yes` Ya<br>`no` Tidak |
+| 9 | `children` | single | Berapakah bilangan anak anda yang berusia 17 tahun ke bawah? | `minorChildren = true` | `1-2` 1 hingga 2 orang<br>`3-4` 3 hingga 4 orang<br>`5+` 5 orang atau lebih |
+| 10 | `child_stages` | multi | Di peringkat manakah anak anda sekarang? (pilih semua yang berkaitan) | `minorChildren = true` | `under6` Belum bersekolah atau prasekolah (bawah 6 tahun)<br>`primary` Sekolah rendah Kerajaan<br>`secondary` Sekolah menengah Kerajaan<br>`other` Lain-lain (contohnya sekolah swasta) |
+| 11 | `oku` | single | Adakah anda Orang Kurang Upaya (OKU)? | always | `yes` Ya<br>`no` Tidak |
+| 12 | `license` | single | Adakah lesen memandu anda aktif? | always | `yes` Ya<br>`no` Tidak, atau tiada lesen memandu |
+| 13 | `income` | single | Berapakah anggaran pendapatan kasar bulanan isi rumah anda? | `age ≥ 18` | `lt2500` RM2,500 dan ke bawah<br>`2501_5000` RM2,501 hingga RM5,000<br>`5001_6000` RM5,001 hingga RM6,000<br>`6001_12000` RM6,001 hingga RM12,000<br>`gt12000` Melebihi RM12,000 |
+| 14 | `ekasih` | single | Adakah isi rumah anda berdaftar sebagai Miskin atau Miskin Tegar dalam sistem eKasih? | `age ≥ 18 AND incomeMax ≤ 5000` | `yes` Ya<br>`no` Tidak<br>`unsure` Tidak pasti |
+| 15 | `str_status` | single | Adakah anda penerima STR atau SARA? | `age ≥ 18` | `yes` Ya<br>`no` Tidak<br>`unsure` Tidak pasti |
+| 16 | `ptptn` | single | Adakah anda peminjam PTPTN? | `age ≥ 18` | `yes` Ya<br>`no` Tidak |
+| 17 | `kwsp` | single | Adakah anda pencarum KWSP? | `age ≥ 18` | `yes` Ya<br>`no` Tidak |
+| 18 | `assets` | multi | Perkara manakah yang berkaitan dengan anda? (pilih semua yang berkaitan) | always | `diesel_vehicle` Memiliki kenderaan persendirian berenjin diesel<br>`old_car` Memiliki kereta berusia lebih 20 tahun<br>`first_home` Merancang untuk membeli rumah pertama<br>`taxpayer` Membayar cukai pendapatan atau mengisi e-Filing<br>`invest_bursa` Melabur di Bursa Malaysia (saham, ETF atau waran)<br>`llp_partner` Pekongsi dalam Perkongsian Liabiliti Terhad (PLT)<br>`haji_plan` Merancang untuk menunaikan haji<br>`none` Tiada yang berkaitan *(exclusive)* |
+| 19 | `status` | multi | Adakah mana-mana keadaan ini berkaitan dengan anda? (pilih semua yang berkaitan) | always | `oku_child` Anak saya OKU atau kurang upaya pembelajaran (seperti autisme atau ADHD)<br>`child_ipt` Anak saya belajar di institusi pengajian tinggi (universiti, politeknik atau kolej)<br>`pregnant` Saya atau pasangan sedang hamil<br>`veteran` Veteran Angkatan Tentera Malaysia<br>`pjm` Penerima Pingat Jasa Malaysia<br>`religious_staff` Guru KAFA, guru takmir, imam, bilal, tok siak, noja atau marbut<br>`taxi` Pemandu atau pemilik teksi, termasuk kereta sewa<br>`orang_asli` Orang Asli<br>`bankrupt` Sedang berstatus bankrap<br>`none` Tiada yang berkaitan *(exclusive)* |
+| 20 | `lifestyle` | multi | Adakah mana-mana perkara ini berkaitan dengan anda? | `age ≥ 18` | `cigarette` Merokok<br>`cigar` Menghisap cerut atau cerut kecil (cigarillo)<br>`heated_tobacco` Menggunakan produk tembakau yang dipanaskan (heated tobacco)<br>`vape` Menggunakan vape atau rokok elektronik<br>`alcohol` Mengambil minuman beralkohol<br>`none` Tiada yang berkaitan *(exclusive)* |
 
 ## Rule matrix (115 items)
 
@@ -401,18 +409,18 @@ function next() {
 function onAnswer(id, value) { answers = B26Brain.pruneAnswers({ ...answers, [id]: value }); next(); }
 ```
 
-- **Skip button:** each skippable question's last option has `skip: true` and value `'skip'`. It can be rendered as a separate "Langkau" link.
+- **No skip button:** every question shown must be answered (since v2026.8).
 - **Tier labels:** read them from `B26Brain.TIERS`.
 
 **`evaluate()` returns:**
 
 | Key | Contents |
 |---|---|
-| `strSara` | `{ eligible: true\|false\|null, category, label, str, sara, saraMonthly, total, totalRange?, totalIfEkasih?, reason }` |
-| `groups[]` | `{ id: 'layak'\|'mungkin', label, count, items[] }`: the results grid, "Berkemungkinan layak" then "Mungkin layak" (semak then mungkin); STR + SARA excluded |
+| `strSara` | `{ eligible: true\|false\|null, category, label, str, sara, saraMonthly, total, totalIfEkasih?, reason }` |
+| `groups[]` | `{ id: 'layak'\|'mungkin', label, count, items[] }`: the results grid, "Layak" then "Berkemungkinan layak" (semak then mungkin); STR + SARA excluded |
 | `byTheme[]` | `{ id, label, count, items[] }`; items sorted layak → semak → mungkin (not used on the results screen) |
 | `items[]` | `{ id, kind, tier, tierLabel, title, value, summary, who, action, reasons[], needsConfirm[], timing, src, web, portal }` |
-| `advisories[]` | `{ type: 'action' \| 'info' \| 'disclaimer', text }`, including a note listing skipped questions |
+| `advisories[]` | `{ type: 'action' \| 'info' \| 'disclaimer', text }` |
 | `counts` | `{ total, layak, semak, mungkin }` |
 
 ## 7. Maintenance
@@ -422,6 +430,11 @@ function onAnswer(id, value) { answers = B26Brain.pruneAnswers({ ...answers, [id
 3. Run `node gen-spec.js` to regenerate the tables in this document.
 
 ## 8. Verification record
+
+**3 Oct 2026 (v2026.8):**
+- `test.js`: 14,847 checks, 0 failures. Fewer than v2026.7 because the per-question skip checks went with the skip option. New checks: no skip option or "required" flag anywhere; an incomplete flow isn't complete; the group and tier labels are "Layak" and "Berkemungkinan layak", with no "Mungkin layak"; no `mungkin` card without a "Tidak pasti" answer; the question set matches the user's approval (G5).
+- `verify2.js`: 30,000 users, all 115 items and 13 themes reachable, 0 invariant violations (V3 now also fails if a skip answer appears).
+- `coverage.js --final`: passes, unchanged.
 
 **2 Oct 2026 (v2026.7):**
 - `test.js`: 15,167 checks, 0 failures. New checks: the eight mandatory questions exist with the user's wording, can be skipped and are shown to every adult (OKU and licence to minors too); licence, PTPTN and OKU are gone from the multi-selects; children "Tidak" hides the follow-ups and uses the 0-children STR rate; an STR/SARA "Ya" shows mySalam and PeKa B40 at RM5,001–6,000 while the panel keeps the estimate; the KWSP answer beats the job guess; OKU, licence and PTPTN skips give `mungkin` cards.

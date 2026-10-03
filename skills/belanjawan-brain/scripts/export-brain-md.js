@@ -52,31 +52,29 @@ const FACTS = {
   adult: '`age` ≥ 18.',
   region: 'The `region` answer.',
   eastMalaysia: '`region` is not `semenanjung` (Sabah, Sarawak or Labuan).',
-  marital: 'The `marital` answer. Skipped → unknown.',
-  minorChildren: '`has_minor_children` = `yes` (has children aged 17 and below). `no`, or not asked → false. Skipped → unknown.',
-  childCount: 'Number of children aged 17 and below: 0 when `minorChildren` is false; otherwise the `children` answer as a number (`1-2` → 1, `3-4` → 3, `5+` → 5). Skipped (either question) → unknown. STR uses this count.',
-  hasChildren: 'true when `minorChildren` is true or any `child_stages` is chosen; false when `minorChildren` is false. Skipped `has_minor_children` → unknown.',
-  childrenSkipped: '`has_minor_children` was skipped, or it was `yes` and `children` was skipped.',
-  childStages: 'The `child_stages` answers, without `none`/`skip`.',
+  marital: 'The `marital` answer.',
+  minorChildren: '`has_minor_children` = `yes` (has children aged 17 and below). `no`, or not asked → false.',
+  childCount: 'Number of children aged 17 and below: 0 when `minorChildren` is false; otherwise the `children` answer as a number (`1-2` → 1, `3-4` → 3, `5+` → 5). STR uses this count.',
+  hasChildren: 'true when `minorChildren` is true or any `child_stages` is chosen; false when `minorChildren` is false.',
+  childStages: 'The `child_stages` answers, without `none`.',
   isSchoolPupil: '`child_stages` includes `primary` or `secondary`, or the person is under 18 and answered `self_school` = `yes`.',
-  income: 'The `income` band value. Skipped → unknown.',
-  incomeSkipped: '`income` was skipped.',
-  incomeMax: 'Upper end of the `income` band in RM: `lt2500` 2,500; `2501_5000` 5,000; `5001_6000` 6,000; `6001_12000` 12,000; `gt12000` no limit. Skipped → unknown.',
-  b40: 'Income band upper end ≤ RM5,000 (approximates B40). Skipped income → unknown.',
-  b40m40: 'Income band upper end ≤ RM12,000 (approximates B40 + M40). Skipped income → unknown.',
-  ekasih: 'false if income is above RM5,000; otherwise the `ekasih` answer (`yes` → true, `no` → false). `unsure` or skipped → unknown. Not asked and income skipped → unknown.',
-  employment: 'The `employment` answer. Skipped → unknown.',
-  farmType: 'The `farm_type` answer. Skipped → unknown.',
-  gender: 'The `gender` answer. Skipped → unknown.',
-  assets: 'The `assets` answers, without `none`/`skip`.',
-  status: 'The `status` answers, without `none`/`skip`.',
-  lifestyle: 'The `lifestyle` answers, without `none`/`skip`.',
+  income: 'The `income` band value.',
+  incomeMax: 'Upper end of the `income` band in RM: `lt2500` 2,500; `2501_5000` 5,000; `5001_6000` 6,000; `6001_12000` 12,000; `gt12000` no limit.',
+  b40: 'Income band upper end ≤ RM5,000 (approximates B40).',
+  b40m40: 'Income band upper end ≤ RM12,000 (approximates B40 + M40).',
+  ekasih: 'false if income is above RM5,000; otherwise the `ekasih` answer (`yes` → true, `no` → false). `unsure` → unknown (the only answer that makes a fact unknown).',
+  employment: 'The `employment` answer.',
+  farmType: 'The `farm_type` answer.',
+  gender: 'The `gender` answer.',
+  assets: 'The `assets` answers, without `none`.',
+  status: 'The `status` answers, without `none`.',
+  lifestyle: 'The `lifestyle` answers, without `none`.',
   smoker: '`lifestyle` includes any of `cigarette`, `cigar`, `heated_tobacco`, `vape`.',
-  ipt: 'true if `status` includes `child_ipt` or `employment` = `student_ipt`; unknown if employment was skipped; otherwise false.',
-  kwspMember: 'The `kwsp` answer (`yes` → true, `no` → false). If `kwsp` was skipped or not asked: guessed from `employment` (true for `employed_private`, `gig_ehailing`, `self_employed`, `housewife`, `jobseeker`, `fisher`, `farmer`); unknown if employment was also skipped.',
-  oku: 'The `oku` answer: `yes` → true, `no` or not asked → false, skipped → unknown.',
-  license: 'The `license` answer: `yes` → true, `no` or not asked → false, skipped → unknown.',
-  ptptnBorrower: 'The `ptptn` answer: `yes` → true, `no` or not asked → false, skipped → unknown.',
+  ipt: 'true if `status` includes `child_ipt` or `employment` = `student_ipt`; otherwise false.',
+  kwspMember: 'The `kwsp` answer (`yes` → true, `no` → false). If `kwsp` was not asked (a minor): guessed from `employment` (true for `employed_private`, `gig_ehailing`, `self_employed`, `housewife`, `jobseeker`, `fisher`, `farmer`).',
+  oku: 'The `oku` answer: `yes` → true, `no` or not asked → false.',
+  license: 'The `license` answer: `yes` → true, `no` or not asked → false.',
+  ptptnBorrower: 'The `ptptn` answer: `yes` → true, `no` or not asked → false.',
   strRecipient: '`str_status` = `yes` (the reader says they receive STR or SARA). Used with `strEligible` for the cards meant for STR recipients.',
   strEligible: 'Result of the STR calculator below: true, false, or unknown when the calculator cannot decide.',
   strCategory: 'STR category from the calculator: `isi_rumah`, `warga_emas` or `bujang`.',
@@ -113,9 +111,6 @@ for (const [cat, a] of [['Isi Rumah', { age: 35, marital: 'married', children: '
 }
 const reasons = [
   ['Under 18', facts({ age: 15 })],
-  ['Marital status skipped', B.deriveFacts({ age: 35, region: 'semenanjung', marital: 'skip', children: '0', income: 'lt2500' })],
-  ['Income skipped', B.deriveFacts({ age: 35, region: 'semenanjung', marital: 'married', children: '0', income: 'skip' })],
-  ['Single, children question skipped', B.deriveFacts({ age: 35, region: 'semenanjung', marital: 'single', has_minor_children: 'skip', income: 'lt2500' })],
   ['Single, no children, aged 18–20', B.deriveFacts({ age: 19, region: 'semenanjung', marital: 'single', children: '0', income: 'lt2500' })],
   ['Household income above RM5,000', B.deriveFacts({ age: 35, region: 'semenanjung', marital: 'married', children: '0', income: '5001_6000' })],
   ['Single 60+, income above RM5,000', B.deriveFacts({ age: 65, region: 'semenanjung', marital: 'single', children: '0', income: '5001_6000' })],
@@ -128,34 +123,26 @@ const base = { age: 35, region: 'semenanjung', marital: 'married', has_minor_chi
 const pick = (list, type, i = 0) => (list.filter(x => x.type === type)[i] || {}).text;
 const advRows = [
   ['STR likely but the person said they don\'t receive it (`str_status` = `no`)', pick(adv({ ...base, str_status: 'no' }), 'action')],
-  ['STR likely and `str_status` is `unsure` or skipped', pick(adv({ ...base, str_status: 'unsure' }), 'action')],
+  ['STR likely and `str_status` is `unsure`', pick(adv({ ...base, str_status: 'unsure' }), 'action')],
   ['`ekasih` answered `unsure`', pick(adv({ ...base, ekasih: 'unsure', str_status: 'yes' }), 'info')],
-  ['Any question skipped. The text lists the skipped topics, joined with ", " (example: gender skipped; names below)', pick(adv({ ...base, gender: 'skip', str_status: 'yes' }), 'info')],
-  ['Income above RM5,000, `taxpayer` not ticked and `assets` not skipped', pick(adv({ ...base, income: '6001_12000', str_status: 'yes' }), 'info')],
+  ['Income above RM5,000 and `taxpayer` not ticked', pick(adv({ ...base, income: '6001_12000', str_status: 'yes' }), 'info')],
   ['Always, shown last', pick(adv({ ...base, str_status: 'yes' }), 'disclaimer')],
 ].map(([when, text]) => `| ${when} | ${cell(text)} |`);
-
-// topic name used in that advisory for each skipped question, read back from the engine
-const skipNames = B.QUESTIONS.filter(q => q.options && q.options.some(o => o.skip)).map(q => {
-  const t = (adv({ ...base, str_status: 'yes', [q.id]: q.type === 'multi' ? ['skip'] : 'skip' }).find(x => /tidak menyatakan:/.test(x.text)) || {}).text;
-  const m = t && t.match(/menyatakan: (.*?)\. Faedah/);
-  return m ? `\`${q.id}\` → ${m[1]}` : null;
-}).filter(Boolean);
 
 /* ---- worked examples: expected results the build must reproduce ---- */
 const EXAMPLES = [
   ['Ibu tunggal, 45, dua anak sekolah, pendapatan bawah RM2,500, eKasih tidak pasti, bekerja sendiri, merokok',
     { age: 45, region: 'semenanjung', gender: 'female', employment: 'self_employed', marital: 'single_parent', has_minor_children: 'yes', children: '3-4', child_stages: ['primary', 'secondary'], oku: 'no', license: 'yes', income: 'lt2500', ekasih: 'unsure', str_status: 'no', ptptn: 'no', kwsp: 'yes', assets: ['none'], status: ['none'], lifestyle: ['cigarette'] }],
   ['Penjawat awam, 34, berkahwin, anak bawah 6 tahun, RM2,501–5,000, peminjam PTPTN, pembayar cukai, rumah pertama, haji',
-    { age: 34, region: 'semenanjung', gender: 'male', employment: 'civil_servant', marital: 'married', has_minor_children: 'yes', children: '1-2', child_stages: ['under6'], oku: 'no', license: 'yes', income: '2501_5000', ekasih: 'no', str_status: 'yes', ptptn: 'yes', kwsp: 'no', assets: ['first_home', 'taxpayer', 'haji_plan'], status: ['none'], lifestyle: ['skip'] }],
+    { age: 34, region: 'semenanjung', gender: 'male', employment: 'civil_servant', marital: 'married', has_minor_children: 'yes', children: '1-2', child_stages: ['under6'], oku: 'no', license: 'yes', income: '2501_5000', ekasih: 'no', str_status: 'yes', ptptn: 'yes', kwsp: 'no', assets: ['first_home', 'taxpayer', 'haji_plan'], status: ['none'], lifestyle: ['none'] }],
   ['Pesara Kerajaan, 67, Sabah, bujang, veteran',
     { age: 67, region: 'sabah', gender: 'male', employment: 'retired_gov', marital: 'single', has_minor_children: 'no', oku: 'no', license: 'yes', income: '2501_5000', ekasih: 'no', str_status: 'yes', ptptn: 'no', kwsp: 'no', assets: ['old_car'], status: ['veteran', 'pjm'], lifestyle: ['none'] }],
   ['Murid, 17, Sarawak',
     { age: 17, region: 'sarawak', self_school: 'yes', oku: 'no', license: 'no', assets: ['none'], status: ['none'] }],
   ['Pemandu e-hailing, 28, bujang, bawah RM2,500, peminjam PTPTN, vape dan alkohol',
     { age: 28, region: 'semenanjung', gender: 'male', employment: 'gig_ehailing', marital: 'single', has_minor_children: 'no', oku: 'no', license: 'yes', income: 'lt2500', ekasih: 'no', str_status: 'yes', ptptn: 'yes', kwsp: 'yes', assets: ['first_home', 'invest_bursa'], status: ['none'], lifestyle: ['vape', 'alcohol'] }],
-  ['Petani, 50, pendapatan, jantina, OKU dan KWSP dilangkau',
-    { age: 50, region: 'semenanjung', gender: 'skip', employment: 'farmer', farm_type: 'smallholder', marital: 'married', has_minor_children: 'no', oku: 'skip', license: 'yes', income: 'skip', str_status: 'unsure', ptptn: 'no', kwsp: 'skip', assets: ['none'], status: ['none'], lifestyle: ['none'] }],
+  ['Pekebun kecil, 50, berkahwin, bawah RM2,500, eKasih dan STR tidak pasti',
+    { age: 50, region: 'semenanjung', gender: 'female', employment: 'farmer', farm_type: 'smallholder', marital: 'married', has_minor_children: 'no', oku: 'no', license: 'yes', income: 'lt2500', ekasih: 'unsure', str_status: 'unsure', ptptn: 'no', kwsp: 'yes', assets: ['none'], status: ['none'], lifestyle: ['none'] }],
   ['OKU, 30, pekerja swasta, pendapatan RM5,001–6,000, menyatakan dirinya penerima STR atau SARA',
     { age: 30, region: 'semenanjung', gender: 'female', employment: 'employed_private', marital: 'single', has_minor_children: 'no', oku: 'yes', license: 'no', income: '5001_6000', str_status: 'yes', ptptn: 'yes', kwsp: 'yes', assets: ['none'], status: ['none'], lifestyle: ['none'] }],
 ];
@@ -165,7 +152,6 @@ function exampleBlock([title, answers], i) {
   const lines = [`### Contoh ${i + 1}: ${title}`, '', '**Answers:** `' + JSON.stringify(answers) + '`', ''];
   if (s.eligible === true) {
     let t = `**STR + SARA:** ${s.label}. STR ${rm(s.str)}, SARA ${rm(s.sara)} (${rm(s.saraMonthly)} sebulan), jumlah ${rm(s.total)}`;
-    if (s.totalRange) t += `; julat jumlah ${rm(s.totalRange[0])}–${rm(s.totalRange[1])}`;
     if (s.totalIfEkasih) t += `; jika berdaftar eKasih ${rm(s.totalIfEkasih)}`;
     lines.push(t + '.');
   } else lines.push(`**STR + SARA:** ${s.eligible === null ? 'unknown' : 'not eligible'}. "${s.reason}"`);
@@ -192,14 +178,14 @@ md.push(`- **Size:** ${B.QUESTIONS.length} questions, ${B.THEMES.length} themes,
 md.push('## Using the engine', '');
 md.push('The engine is plain ES5 JavaScript with no dependencies (about ' + Math.round(engineSrc.length / 1024) + ' KB). Paste the appendix code into a `<script>` before your own script; it defines `window.B26Brain` (in Node, `require()` returns the same object).', '');
 md.push('| Call | Returns |', '|---|---|');
-md.push('| `B26Brain.getVisibleQuestions(answers)` | The questions to show now, in order, with branching applied. Each has `id`, `type` (`number`, `single`, `multi`), `text`, `help`, `options` (`v`, `l`, `exclusive`, `skip`). |');
+md.push('| `B26Brain.getVisibleQuestions(answers)` | The questions to show now, in order, with branching applied. Each has `id`, `type` (`number`, `single`, `multi`), `text`, `help`, `options` (`v`, `l`, `exclusive`). |');
 md.push('| `B26Brain.pruneAnswers(answers)` | The answers with those to now-hidden questions removed. Call it after every answer. |');
 md.push('| `B26Brain.evaluate(answers)` | The result: `strSara`, `byTheme`, `advisories`, `counts` (below). |');
 md.push('| `B26Brain.GROUPS`, `B26Brain.TIERS`, `B26Brain.VERSION`, `B26Brain.DATA_AS_OF` | Results group headings, tier labels, version and data date. |', '');
 md.push('Question loop:', '');
 md.push('```js', 'let answers = {};', 'function next() {', '  const q = B26Brain.getVisibleQuestions(answers).find(q => answers[q.id] === undefined);', '  if (!q) return renderResults(B26Brain.evaluate(answers));', '  renderQuestion(q);', '}', 'function onAnswer(id, value) {            // value: number | string | string[]', '  answers = B26Brain.pruneAnswers({ ...answers, [id]: value });', '  next();', '}', '// Back: delete answers[lastId], then next().', '```', '');
 md.push('Result of `evaluate()`:', '');
-md.push('```js', '{', '  version, dataAsOf,', '  strSara: { eligible: true | false | null, category, label, str, sara, saraMonthly, total,', '            totalRange?, totalIfEkasih?, reason },      // reason: Malay sentence when not eligible / unknown', '  groups: [ { id: "layak" | "mungkin", label, count, items: [ card, ... ] } ],   // the results grid, in order; STR + SARA is not in it',
+md.push('```js', '{', '  version, dataAsOf,', '  strSara: { eligible: true | false | null, category, label, str, sara, saraMonthly, total,', '            totalIfEkasih?, reason },      // reason: Malay sentence when not eligible / unknown', '  groups: [ { id: "layak" | "mungkin", label, count, items: [ card, ... ] } ],   // the results grid, in order; STR + SARA is not in it',
   '  // card: { id, title, value, summary, reasons: [...], needsConfirm: [...], timing, tier, kind, theme, who, action, src, portal }',
   '  byTheme: [ ... ],                     // the same cards grouped by theme; not used on the results screen', '  advisories: [ { type: "action" | "info" | "disclaimer", text } ],   // disclaimer is last', '  counts: { total, layak, semak, mungkin }', '}', '```', '');
 
@@ -210,22 +196,28 @@ if (fs.existsSync(controlsFile)) {
 
 md.push('## 1. Question flow', '');
 md.push('- Ask the questions in the order listed. Show a question only when its "Shown when" condition is true (conditions use the derived facts in section 3, computed from the answers so far).');
-md.push(`- Every question except those marked required and the age question gets an extra option \`skip\` "${B.QUESTIONS.find(q => q.options && q.options.some(o => o.skip)).options.find(o => o.skip).l}", which can be shown as a separate "Langkau" link.`);
+md.push('- Every question shown must be answered before moving on. There is no skip option and no "Langkau" link. "Tidak pasti" and "Tiada yang berkaitan" are ordinary answers.');
 md.push('- In a multi-select, an option marked *exclusive* clears every other selection.');
 md.push('- When a change of answer hides a question, drop that question\'s answer.');
 md.push('- Back navigation: remove the last answer and show that question again.', '');
 
 md.push(`## 2. Questions (${B.QUESTIONS.length})`, '');
+{
+  const Q = require('./questions.js'), appr = Q.readApproved();
+  md.push(appr && Q.same(appr.questions, Q.snapshot(B))
+    ? `**Approved by the user on ${appr.date}.** Use the wording exactly as below.`
+    : '**NOT YET APPROVED BY THE USER.** Don\'t build from this question set until it is approved (`node scripts/questions.js`).', '');
+}
 md.push('| # | id | Type | Question (Malay, as shown) | Shown when | Options: value → label |', '|---|---|---|---|---|---|');
 B.QUESTIONS.forEach((q, i) => {
   const opts = q.options ? q.options.map(o => `\`${o.v}\` → ${cell(o.l)}${o.exclusive ? ' *(exclusive)*' : ''}`).join('<br>') : `number, ${q.min} to ${q.max}`;
-  const text = cell(q.text) + (q.help ? `<br>*Help:* ${cell(q.help)}` : '') + (q.required ? '<br>*(required)*' : '');
+  const text = cell(q.text) + (q.help ? `<br>*Help:* ${cell(q.help)}` : '');
   md.push(`| ${i + 1} | \`${q.id}\` | ${q.type} | ${text} | ${q.showIf ? expr(q.showIf) : 'always'} | ${opts} |`);
 });
 md.push('');
 
 md.push('## 3. Derived facts', '');
-md.push('Rules and "Shown when" conditions test these facts, not the raw answers. A fact is **unknown** when the answer it depends on was skipped (or answered "Tidak pasti"); a fact that simply does not apply (for example, `ekasih` for someone earning above RM5,000) is **false**, not unknown.', '');
+md.push('Rules and "Shown when" conditions test these facts, not the raw answers. A fact is **unknown** when the answer it depends on was "Tidak pasti" (only `ekasih`); a fact that simply does not apply (for example, `ekasih` for someone earning above RM5,000) is **false**, not unknown.', '');
 md.push('| Fact | How it is worked out |', '|---|---|');
 Object.keys(FACTS).forEach(k => md.push(`| \`${k}\` | ${FACTS[k]} |`));
 md.push('');
@@ -259,7 +251,7 @@ strRows.forEach(r => md.push(r));
 md.push('');
 md.push('Income above these bands → not eligible for that category.', '');
 md.push(`**eKasih top-up** (when \`ekasih\` is true): SARA rises by ${rm(topup['Isi Rumah'].add)} a year for Isi Rumah (to ${rm(topup['Isi Rumah'].monthly)} a month), ${rm(topup['Warga Emas Tiada Pasangan'].add)} for Warga Emas (to ${rm(topup['Warga Emas Tiada Pasangan'].monthly)} a month) and ${rm(topup.Bujang.add)} for Bujang (to ${rm(topup.Bujang.monthly)} a month). When \`ekasih\` is unknown, show the total without the top-up and also the total "jika berdaftar eKasih".`, '');
-md.push('**Children question skipped** (Isi Rumah): show a range from the 0-children rate to the 5+ rate. Children means children aged 17 and below (the `has_minor_children` question); answering "Tidak" uses the 0-children rate.', '');
+md.push('**Children** means children aged 17 and below (the `has_minor_children` question); answering "Tidak" uses the 0-children rate.', '');
 md.push('**When not eligible or unknown, show this reason (Malay, as written):**', '');
 md.push('| Situation | Result | Reason shown |', '|---|---|---|');
 reasons.forEach(r => md.push(r));
@@ -269,7 +261,7 @@ md.push('## 6. Advisories', '');
 md.push('Shown above or below the results, in this order. The disclaimer is always last.', '');
 md.push('| When | Text (Malay, as written) |', '|---|---|');
 advRows.forEach(r => md.push(r));
-md.push('', '**Topic names in the skipped-questions advisory:** ' + skipNames.join('; ') + '.', '');
+md.push('');
 
 md.push(`## 7. Result cards (${B.BENEFITS.length})`, '');
 md.push('What each card shows, and when, is set by the output controls ("Results screen"). This list is the full content of every card, for reference. Themes are listed here only to organise the catalogue; they are not shown to the reader.', '');

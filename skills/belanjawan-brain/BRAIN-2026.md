@@ -1,4 +1,4 @@
-# Semak Faedah Belanjawan 2026: build spec (v2026.7)
+# Semak Faedah Belanjawan 2026: build spec (v2026.8)
 
 > Generated from `scripts/belanjawan2026-brain.js` by `scripts/export-brain-md.js` (brain data as of 2026-09-27). Don't edit this file by hand: change the brain, run the tests, and regenerate.
 
@@ -16,11 +16,11 @@ This is the complete specification of the citizen-benefits checker for Ucapan Be
 
 ## Using the engine
 
-The engine is plain ES5 JavaScript with no dependencies (about 103 KB). Paste the appendix code into a `<script>` before your own script; it defines `window.B26Brain` (in Node, `require()` returns the same object).
+The engine is plain ES5 JavaScript with no dependencies (about 99 KB). Paste the appendix code into a `<script>` before your own script; it defines `window.B26Brain` (in Node, `require()` returns the same object).
 
 | Call | Returns |
 |---|---|
-| `B26Brain.getVisibleQuestions(answers)` | The questions to show now, in order, with branching applied. Each has `id`, `type` (`number`, `single`, `multi`), `text`, `help`, `options` (`v`, `l`, `exclusive`, `skip`). |
+| `B26Brain.getVisibleQuestions(answers)` | The questions to show now, in order, with branching applied. Each has `id`, `type` (`number`, `single`, `multi`), `text`, `help`, `options` (`v`, `l`, `exclusive`). |
 | `B26Brain.pruneAnswers(answers)` | The answers with those to now-hidden questions removed. Call it after every answer. |
 | `B26Brain.evaluate(answers)` | The result: `strSara`, `byTheme`, `advisories`, `counts` (below). |
 | `B26Brain.GROUPS`, `B26Brain.TIERS`, `B26Brain.VERSION`, `B26Brain.DATA_AS_OF` | Results group headings, tier labels, version and data date. |
@@ -47,7 +47,7 @@ Result of `evaluate()`:
 {
   version, dataAsOf,
   strSara: { eligible: true | false | null, category, label, str, sara, saraMonthly, total,
-            totalRange?, totalIfEkasih?, reason },      // reason: Malay sentence when not eligible / unknown
+            totalIfEkasih?, reason },      // reason: Malay sentence when not eligible / unknown
   groups: [ { id: "layak" | "mungkin", label, count, items: [ card, ... ] } ],   // the results grid, in order; STR + SARA is not in it
   // card: { id, title, value, summary, reasons: [...], needsConfirm: [...], timing, tier, kind, theme, who, action, src, portal }
   byTheme: [ ... ],                     // the same cards grouped by theme; not used on the results screen
@@ -80,8 +80,8 @@ These come from the user's earlier decisions and are not optional.
   - Adakah anda penerima STR atau SARA?
   - Adakah anda peminjam PTPTN?
   - Adakah anda pencarum KWSP?
-- Every question except age and region can be skipped, the eight above included. Show the skip option ("Tidak mahu menyatakan"), or a "Langkau" link that sends it.
-- In a multi-select, an exclusive option ("Tiada yang berkaitan", "Tidak mahu menyatakan") clears the other selections.
+- **No skipping.** Every question shown must be answered before the reader can move on. There is no "Tidak mahu menyatakan" option and no "Langkau" link; don't add either. "Tidak pasti" and "Tiada yang berkaitan" are ordinary answers.
+- In a multi-select, an exclusive option ("Tiada yang berkaitan") clears the other selections.
 - Build nothing from the "Not to be built" list.
 
 ### Front page (locked)
@@ -113,10 +113,10 @@ Terlepas pembentangan Belanjawan 2027? Jangan risau, kami permudahkan anda semak
 
 Shown inside the modal after the last question. From top to bottom:
 
-1. **STR + SARA panel.** The main result, on top, as one panel: `strSara.label`, STR, SARA (with the monthly amount) and the total. Add the range when `totalRange` is present, and the "jika berdaftar eKasih" total when `totalIfEkasih` is present. When the person is not eligible or it can't be worked out, show `strSara.reason` instead of amounts.
+1. **STR + SARA panel.** The main result, on top, as one panel: `strSara.label`, STR, SARA (with the monthly amount) and the total. Add the "jika berdaftar eKasih" total when `totalIfEkasih` is present. When the person is not eligible or it can't be worked out, show `strSara.reason` instead of amounts.
 2. **The cards, in two groups.** Take them from `evaluate().groups` and keep its order:
-   - first **"Berkemungkinan layak"**: cards the person clearly qualifies for;
-   - then **"Mungkin layak"**: means-tested cards, then cards that depend on a skipped answer.
+   - first **"Layak"**: cards the person clearly qualifies for;
+   - then **"Berkemungkinan layak"**: means-tested cards, then cards that depend on a "Tidak pasti" answer.
 
    Show each group's heading exactly as `group.label`. Hide a group with no cards. No theme categories anywhere.
 3. **Advisories** below the cards, in the engine's order. The disclaimer is last.
@@ -151,39 +151,41 @@ To lock a control, change its status to `locked` (and edit its rule if needed). 
 ## 1. Question flow
 
 - Ask the questions in the order listed. Show a question only when its "Shown when" condition is true (conditions use the derived facts in section 3, computed from the answers so far).
-- Every question except those marked required and the age question gets an extra option `skip` "Tidak mahu menyatakan", which can be shown as a separate "Langkau" link.
+- Every question shown must be answered before moving on. There is no skip option and no "Langkau" link. "Tidak pasti" and "Tiada yang berkaitan" are ordinary answers.
 - In a multi-select, an option marked *exclusive* clears every other selection.
 - When a change of answer hides a question, drop that question's answer.
 - Back navigation: remove the last answer and show that question again.
 
 ## 2. Questions (20)
 
+**Approved by the user on 2026-10-03.** Use the wording exactly as below.
+
 | # | id | Type | Question (Malay, as shown) | Shown when | Options: value → label |
 |---|---|---|---|---|---|
-| 1 | `age` | number | Berapakah umur anda?<br>*Help:* Umur menentukan kelayakan program seperti STR, PeKa B40, bantuan warga emas dan pembiayaan rumah untuk golongan muda.<br>*(required)* | always | number, 0 to 120 |
-| 2 | `region` | single | Di manakah anda menetap?<br>*(required)* | always | `semenanjung` → Semenanjung Malaysia<br>`sabah` → Sabah<br>`sarawak` → Sarawak<br>`labuan` → Wilayah Persekutuan Labuan |
-| 3 | `self_school` | single | Adakah anda murid sekolah Kerajaan? | `age` < 18 | `yes` → Ya<br>`no` → Tidak<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 4 | `gender` | single | Apakah jantina anda?<br>*Help:* Digunakan untuk memaparkan program khusus wanita seperti i-Suri dan pembiayaan usahawan wanita. | `age` ≥ 18 | `female` → Perempuan<br>`male` → Lelaki<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 5 | `employment` | single | Pekerjaan anda? | `age` ≥ 18 | `employed_private` → Pekerja sektor swasta<br>`civil_servant` → Penjawat awam<br>`gig_ehailing` → Pemandu e-hailing atau penghantar p-hailing<br>`self_employed` → Bekerja sendiri, pekerja bebas atau peniaga kecil<br>`fisher` → Nelayan<br>`farmer` → Pesawah, petani, penternak atau pekebun kecil<br>`housewife` → Suri rumah sepenuh masa<br>`student_ipt` → Pelajar institusi pengajian tinggi<br>`jobseeker` → Graduan baharu atau sedang mencari pekerjaan<br>`retired_gov` → Pesara Kerajaan (berpencen)<br>`retired_other` → Bersara atau tidak bekerja<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 6 | `farm_type` | single | Apakah jenis kegiatan pertanian utama anda? | `employment` = `farmer` | `padi` → Menanam padi<br>`smallholder` → Pekebun kecil getah atau sawit<br>`other` → Tanaman lain, ternakan atau akuakultur<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 7 | `marital` | single | Apakah status perkahwinan anda? | `age` ≥ 18 | `married` → Berkahwin<br>`single_parent` → Ibu atau bapa tunggal yang mempunyai anak tanggungan<br>`single` → Tiada pasangan (belum berkahwin, bercerai atau kematian pasangan)<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 8 | `has_minor_children` | single | Adakah anda mempunyai anak berusia 17 tahun ke bawah? | `age` ≥ 18 | `yes` → Ya<br>`no` → Tidak<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 9 | `children` | single | Berapakah bilangan anak anda yang berusia 17 tahun ke bawah? | `minorChildren` = true | `1-2` → 1 hingga 2 orang<br>`3-4` → 3 hingga 4 orang<br>`5+` → 5 orang atau lebih<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 10 | `child_stages` | multi | Di peringkat manakah anak anda sekarang? (pilih semua yang berkaitan) | `minorChildren` = true | `under6` → Belum bersekolah atau prasekolah (bawah 6 tahun)<br>`primary` → Sekolah rendah Kerajaan<br>`secondary` → Sekolah menengah Kerajaan<br>`other` → Lain-lain (contohnya sekolah swasta)<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 11 | `oku` | single | Adakah anda Orang Kurang Upaya (OKU)?<br>*Help:* OKU yang berdaftar dengan Jabatan Kebajikan Masyarakat (JKM). | always | `yes` → Ya<br>`no` → Tidak<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 12 | `license` | single | Adakah lesen memandu anda aktif? | always | `yes` → Ya<br>`no` → Tidak, atau tiada lesen memandu<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 13 | `income` | single | Berapakah anggaran pendapatan kasar bulanan isi rumah anda?<br>*Help:* Jumlah pendapatan semua ahli isi rumah yang bekerja. Jika anda tinggal seorang diri, masukkan pendapatan anda sendiri. | `age` ≥ 18 | `lt2500` → RM2,500 dan ke bawah<br>`2501_5000` → RM2,501 hingga RM5,000<br>`5001_6000` → RM5,001 hingga RM6,000<br>`6001_12000` → RM6,001 hingga RM12,000<br>`gt12000` → Melebihi RM12,000<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 14 | `ekasih` | single | Adakah isi rumah anda berdaftar sebagai Miskin atau Miskin Tegar dalam sistem eKasih? | `age` ≥ 18 AND (`incomeMax` ≤ 5000 OR `incomeSkipped` = true) | `yes` → Ya<br>`no` → Tidak<br>`unsure` → Tidak pasti<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 15 | `str_status` | single | Adakah anda penerima STR atau SARA? | `age` ≥ 18 | `yes` → Ya<br>`no` → Tidak<br>`unsure` → Tidak pasti<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 16 | `ptptn` | single | Adakah anda peminjam PTPTN? | `age` ≥ 18 | `yes` → Ya<br>`no` → Tidak<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 17 | `kwsp` | single | Adakah anda pencarum KWSP?<br>*Help:* Termasuk caruman sukarela, contohnya melalui i-Saraan atau i-Suri. | `age` ≥ 18 | `yes` → Ya<br>`no` → Tidak<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 18 | `assets` | multi | Perkara manakah yang berkaitan dengan anda? (pilih semua yang berkaitan) | always | `diesel_vehicle` → Memiliki kenderaan persendirian berenjin diesel<br>`old_car` → Memiliki kereta berusia lebih 20 tahun<br>`first_home` → Merancang untuk membeli rumah pertama<br>`taxpayer` → Membayar cukai pendapatan atau mengisi e-Filing<br>`invest_bursa` → Melabur di Bursa Malaysia (saham, ETF atau waran)<br>`llp_partner` → Pekongsi dalam Perkongsian Liabiliti Terhad (PLT)<br>`haji_plan` → Merancang untuk menunaikan haji<br>`none` → Tiada yang berkaitan *(exclusive)*<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 19 | `status` | multi | Adakah mana-mana keadaan ini berkaitan dengan anda? (pilih semua yang berkaitan) | always | `oku_child` → Anak saya OKU atau kurang upaya pembelajaran (seperti autisme atau ADHD)<br>`child_ipt` → Anak saya belajar di institusi pengajian tinggi (universiti, politeknik atau kolej)<br>`pregnant` → Saya atau pasangan sedang hamil<br>`veteran` → Veteran Angkatan Tentera Malaysia<br>`pjm` → Penerima Pingat Jasa Malaysia<br>`religious_staff` → Guru KAFA, guru takmir, imam, bilal, tok siak, noja atau marbut<br>`taxi` → Pemandu atau pemilik teksi, termasuk kereta sewa<br>`orang_asli` → Orang Asli<br>`bankrupt` → Sedang berstatus bankrap<br>`none` → Tiada yang berkaitan *(exclusive)*<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
-| 20 | `lifestyle` | multi | Soalan pilihan: adakah mana-mana perkara ini berkaitan dengan anda?<br>*Help:* Belanjawan 2026 menaikkan duti ke atas produk tembakau dan minuman beralkohol, serta mengecualikan cukai ke atas produk bantuan berhenti merokok. Jawapan ini hanya digunakan untuk memaparkan perubahan yang berkaitan. | `age` ≥ 18 | `cigarette` → Merokok<br>`cigar` → Menghisap cerut atau cerut kecil (cigarillo)<br>`heated_tobacco` → Menggunakan produk tembakau yang dipanaskan (heated tobacco)<br>`vape` → Menggunakan vape atau rokok elektronik<br>`alcohol` → Mengambil minuman beralkohol<br>`none` → Tiada yang berkaitan *(exclusive)*<br>`skip` → Tidak mahu menyatakan *(exclusive)* |
+| 1 | `age` | number | Berapakah umur anda?<br>*Help:* Umur menentukan kelayakan program seperti STR, PeKa B40, bantuan warga emas dan pembiayaan rumah untuk golongan muda. | always | number, 0 to 120 |
+| 2 | `region` | single | Di manakah anda menetap? | always | `semenanjung` → Semenanjung Malaysia<br>`sabah` → Sabah<br>`sarawak` → Sarawak<br>`labuan` → Wilayah Persekutuan Labuan |
+| 3 | `self_school` | single | Adakah anda murid sekolah Kerajaan? | `age` < 18 | `yes` → Ya<br>`no` → Tidak |
+| 4 | `gender` | single | Apakah jantina anda?<br>*Help:* Digunakan untuk memaparkan program khusus wanita seperti i-Suri dan pembiayaan usahawan wanita. | `age` ≥ 18 | `female` → Perempuan<br>`male` → Lelaki |
+| 5 | `employment` | single | Pekerjaan anda? | `age` ≥ 18 | `employed_private` → Pekerja sektor swasta<br>`civil_servant` → Penjawat awam<br>`gig_ehailing` → Pemandu e-hailing atau penghantar p-hailing<br>`self_employed` → Bekerja sendiri, pekerja bebas atau peniaga kecil<br>`fisher` → Nelayan<br>`farmer` → Pesawah, petani, penternak atau pekebun kecil<br>`housewife` → Suri rumah sepenuh masa<br>`student_ipt` → Pelajar institusi pengajian tinggi<br>`jobseeker` → Graduan baharu atau sedang mencari pekerjaan<br>`retired_gov` → Pesara Kerajaan (berpencen)<br>`retired_other` → Bersara atau tidak bekerja |
+| 6 | `farm_type` | single | Apakah jenis kegiatan pertanian utama anda? | `employment` = `farmer` | `padi` → Menanam padi<br>`smallholder` → Pekebun kecil getah atau sawit<br>`other` → Tanaman lain, ternakan atau akuakultur |
+| 7 | `marital` | single | Apakah status perkahwinan anda? | `age` ≥ 18 | `married` → Berkahwin<br>`single_parent` → Ibu atau bapa tunggal yang mempunyai anak tanggungan<br>`single` → Tiada pasangan (belum berkahwin, bercerai atau kematian pasangan) |
+| 8 | `has_minor_children` | single | Adakah anda mempunyai anak berusia 17 tahun ke bawah? | `age` ≥ 18 | `yes` → Ya<br>`no` → Tidak |
+| 9 | `children` | single | Berapakah bilangan anak anda yang berusia 17 tahun ke bawah? | `minorChildren` = true | `1-2` → 1 hingga 2 orang<br>`3-4` → 3 hingga 4 orang<br>`5+` → 5 orang atau lebih |
+| 10 | `child_stages` | multi | Di peringkat manakah anak anda sekarang? (pilih semua yang berkaitan) | `minorChildren` = true | `under6` → Belum bersekolah atau prasekolah (bawah 6 tahun)<br>`primary` → Sekolah rendah Kerajaan<br>`secondary` → Sekolah menengah Kerajaan<br>`other` → Lain-lain (contohnya sekolah swasta) |
+| 11 | `oku` | single | Adakah anda Orang Kurang Upaya (OKU)?<br>*Help:* OKU yang berdaftar dengan Jabatan Kebajikan Masyarakat (JKM). | always | `yes` → Ya<br>`no` → Tidak |
+| 12 | `license` | single | Adakah lesen memandu anda aktif? | always | `yes` → Ya<br>`no` → Tidak, atau tiada lesen memandu |
+| 13 | `income` | single | Berapakah anggaran pendapatan kasar bulanan isi rumah anda?<br>*Help:* Jumlah pendapatan semua ahli isi rumah yang bekerja. Jika anda tinggal seorang diri, masukkan pendapatan anda sendiri. | `age` ≥ 18 | `lt2500` → RM2,500 dan ke bawah<br>`2501_5000` → RM2,501 hingga RM5,000<br>`5001_6000` → RM5,001 hingga RM6,000<br>`6001_12000` → RM6,001 hingga RM12,000<br>`gt12000` → Melebihi RM12,000 |
+| 14 | `ekasih` | single | Adakah isi rumah anda berdaftar sebagai Miskin atau Miskin Tegar dalam sistem eKasih? | `age` ≥ 18 AND `incomeMax` ≤ 5000 | `yes` → Ya<br>`no` → Tidak<br>`unsure` → Tidak pasti |
+| 15 | `str_status` | single | Adakah anda penerima STR atau SARA? | `age` ≥ 18 | `yes` → Ya<br>`no` → Tidak<br>`unsure` → Tidak pasti |
+| 16 | `ptptn` | single | Adakah anda peminjam PTPTN? | `age` ≥ 18 | `yes` → Ya<br>`no` → Tidak |
+| 17 | `kwsp` | single | Adakah anda pencarum KWSP?<br>*Help:* Termasuk caruman sukarela, contohnya melalui i-Saraan atau i-Suri. | `age` ≥ 18 | `yes` → Ya<br>`no` → Tidak |
+| 18 | `assets` | multi | Perkara manakah yang berkaitan dengan anda? (pilih semua yang berkaitan) | always | `diesel_vehicle` → Memiliki kenderaan persendirian berenjin diesel<br>`old_car` → Memiliki kereta berusia lebih 20 tahun<br>`first_home` → Merancang untuk membeli rumah pertama<br>`taxpayer` → Membayar cukai pendapatan atau mengisi e-Filing<br>`invest_bursa` → Melabur di Bursa Malaysia (saham, ETF atau waran)<br>`llp_partner` → Pekongsi dalam Perkongsian Liabiliti Terhad (PLT)<br>`haji_plan` → Merancang untuk menunaikan haji<br>`none` → Tiada yang berkaitan *(exclusive)* |
+| 19 | `status` | multi | Adakah mana-mana keadaan ini berkaitan dengan anda? (pilih semua yang berkaitan) | always | `oku_child` → Anak saya OKU atau kurang upaya pembelajaran (seperti autisme atau ADHD)<br>`child_ipt` → Anak saya belajar di institusi pengajian tinggi (universiti, politeknik atau kolej)<br>`pregnant` → Saya atau pasangan sedang hamil<br>`veteran` → Veteran Angkatan Tentera Malaysia<br>`pjm` → Penerima Pingat Jasa Malaysia<br>`religious_staff` → Guru KAFA, guru takmir, imam, bilal, tok siak, noja atau marbut<br>`taxi` → Pemandu atau pemilik teksi, termasuk kereta sewa<br>`orang_asli` → Orang Asli<br>`bankrupt` → Sedang berstatus bankrap<br>`none` → Tiada yang berkaitan *(exclusive)* |
+| 20 | `lifestyle` | multi | Adakah mana-mana perkara ini berkaitan dengan anda?<br>*Help:* Belanjawan 2026 menaikkan duti ke atas produk tembakau dan minuman beralkohol, serta mengecualikan cukai ke atas produk bantuan berhenti merokok. Jawapan ini hanya digunakan untuk memaparkan perubahan yang berkaitan. | `age` ≥ 18 | `cigarette` → Merokok<br>`cigar` → Menghisap cerut atau cerut kecil (cigarillo)<br>`heated_tobacco` → Menggunakan produk tembakau yang dipanaskan (heated tobacco)<br>`vape` → Menggunakan vape atau rokok elektronik<br>`alcohol` → Mengambil minuman beralkohol<br>`none` → Tiada yang berkaitan *(exclusive)* |
 
 ## 3. Derived facts
 
-Rules and "Shown when" conditions test these facts, not the raw answers. A fact is **unknown** when the answer it depends on was skipped (or answered "Tidak pasti"); a fact that simply does not apply (for example, `ekasih` for someone earning above RM5,000) is **false**, not unknown.
+Rules and "Shown when" conditions test these facts, not the raw answers. A fact is **unknown** when the answer it depends on was "Tidak pasti" (only `ekasih`); a fact that simply does not apply (for example, `ekasih` for someone earning above RM5,000) is **false**, not unknown.
 
 | Fact | How it is worked out |
 |---|---|
@@ -191,31 +193,29 @@ Rules and "Shown when" conditions test these facts, not the raw answers. A fact 
 | `adult` | `age` ≥ 18. |
 | `region` | The `region` answer. |
 | `eastMalaysia` | `region` is not `semenanjung` (Sabah, Sarawak or Labuan). |
-| `marital` | The `marital` answer. Skipped → unknown. |
-| `minorChildren` | `has_minor_children` = `yes` (has children aged 17 and below). `no`, or not asked → false. Skipped → unknown. |
-| `childCount` | Number of children aged 17 and below: 0 when `minorChildren` is false; otherwise the `children` answer as a number (`1-2` → 1, `3-4` → 3, `5+` → 5). Skipped (either question) → unknown. STR uses this count. |
-| `hasChildren` | true when `minorChildren` is true or any `child_stages` is chosen; false when `minorChildren` is false. Skipped `has_minor_children` → unknown. |
-| `childrenSkipped` | `has_minor_children` was skipped, or it was `yes` and `children` was skipped. |
-| `childStages` | The `child_stages` answers, without `none`/`skip`. |
+| `marital` | The `marital` answer. |
+| `minorChildren` | `has_minor_children` = `yes` (has children aged 17 and below). `no`, or not asked → false. |
+| `childCount` | Number of children aged 17 and below: 0 when `minorChildren` is false; otherwise the `children` answer as a number (`1-2` → 1, `3-4` → 3, `5+` → 5). STR uses this count. |
+| `hasChildren` | true when `minorChildren` is true or any `child_stages` is chosen; false when `minorChildren` is false. |
+| `childStages` | The `child_stages` answers, without `none`. |
 | `isSchoolPupil` | `child_stages` includes `primary` or `secondary`, or the person is under 18 and answered `self_school` = `yes`. |
-| `income` | The `income` band value. Skipped → unknown. |
-| `incomeSkipped` | `income` was skipped. |
-| `incomeMax` | Upper end of the `income` band in RM: `lt2500` 2,500; `2501_5000` 5,000; `5001_6000` 6,000; `6001_12000` 12,000; `gt12000` no limit. Skipped → unknown. |
-| `b40` | Income band upper end ≤ RM5,000 (approximates B40). Skipped income → unknown. |
-| `b40m40` | Income band upper end ≤ RM12,000 (approximates B40 + M40). Skipped income → unknown. |
-| `ekasih` | false if income is above RM5,000; otherwise the `ekasih` answer (`yes` → true, `no` → false). `unsure` or skipped → unknown. Not asked and income skipped → unknown. |
-| `employment` | The `employment` answer. Skipped → unknown. |
-| `farmType` | The `farm_type` answer. Skipped → unknown. |
-| `gender` | The `gender` answer. Skipped → unknown. |
-| `assets` | The `assets` answers, without `none`/`skip`. |
-| `status` | The `status` answers, without `none`/`skip`. |
-| `lifestyle` | The `lifestyle` answers, without `none`/`skip`. |
+| `income` | The `income` band value. |
+| `incomeMax` | Upper end of the `income` band in RM: `lt2500` 2,500; `2501_5000` 5,000; `5001_6000` 6,000; `6001_12000` 12,000; `gt12000` no limit. |
+| `b40` | Income band upper end ≤ RM5,000 (approximates B40). |
+| `b40m40` | Income band upper end ≤ RM12,000 (approximates B40 + M40). |
+| `ekasih` | false if income is above RM5,000; otherwise the `ekasih` answer (`yes` → true, `no` → false). `unsure` → unknown (the only answer that makes a fact unknown). |
+| `employment` | The `employment` answer. |
+| `farmType` | The `farm_type` answer. |
+| `gender` | The `gender` answer. |
+| `assets` | The `assets` answers, without `none`. |
+| `status` | The `status` answers, without `none`. |
+| `lifestyle` | The `lifestyle` answers, without `none`. |
 | `smoker` | `lifestyle` includes any of `cigarette`, `cigar`, `heated_tobacco`, `vape`. |
-| `ipt` | true if `status` includes `child_ipt` or `employment` = `student_ipt`; unknown if employment was skipped; otherwise false. |
-| `kwspMember` | The `kwsp` answer (`yes` → true, `no` → false). If `kwsp` was skipped or not asked: guessed from `employment` (true for `employed_private`, `gig_ehailing`, `self_employed`, `housewife`, `jobseeker`, `fisher`, `farmer`); unknown if employment was also skipped. |
-| `oku` | The `oku` answer: `yes` → true, `no` or not asked → false, skipped → unknown. |
-| `license` | The `license` answer: `yes` → true, `no` or not asked → false, skipped → unknown. |
-| `ptptnBorrower` | The `ptptn` answer: `yes` → true, `no` or not asked → false, skipped → unknown. |
+| `ipt` | true if `status` includes `child_ipt` or `employment` = `student_ipt`; otherwise false. |
+| `kwspMember` | The `kwsp` answer (`yes` → true, `no` → false). If `kwsp` was not asked (a minor): guessed from `employment` (true for `employed_private`, `gig_ehailing`, `self_employed`, `housewife`, `jobseeker`, `fisher`, `farmer`). |
+| `oku` | The `oku` answer: `yes` → true, `no` or not asked → false. |
+| `license` | The `license` answer: `yes` → true, `no` or not asked → false. |
+| `ptptnBorrower` | The `ptptn` answer: `yes` → true, `no` or not asked → false. |
 | `strRecipient` | `str_status` = `yes` (the reader says they receive STR or SARA). Used with `strEligible` for the cards meant for STR recipients. |
 | `strEligible` | Result of the STR calculator below: true, false, or unknown when the calculator cannot decide. |
 | `strCategory` | STR category from the calculator: `isi_rumah`, `warga_emas` or `bujang`. |
@@ -234,15 +234,15 @@ Then:
 | Rule result | Certainty | Card tier | Results group |
 |---|---|---|---|
 | false | any | not shown | — |
-| true | `high` | `layak` | Berkemungkinan layak |
-| true | `check` | `semak` | Mungkin layak |
-| unknown | any | `mungkin` | Mungkin layak |
+| true | `high` | `layak` | Layak |
+| true | `check` | `semak` | Berkemungkinan layak |
+| unknown | any | `mungkin` | Berkemungkinan layak |
 
 Cost changes (cards of kind `kesan`, such as tobacco or alcohol duty) follow the same table and are shown like any other card, with no warning label.
 
 - **"Kenapa anda layak":** list the `why` labels of the conditions that were true (shown with each rule below).
 - **"Perlu disahkan":** for a `mungkin` card, list the `why` labels of the conditions that were unknown.
-- **Groups:** `evaluate().groups` gives the results grid ready to show: "Berkemungkinan layak" (layak cards), then "Mungkin layak" (semak cards, then mungkin cards), each in catalogue order. The STR + SARA card is not in the groups; it is the panel on top. Themes are not shown.
+- **Groups:** `evaluate().groups` gives the results grid ready to show: "Layak" (layak cards), then "Berkemungkinan layak" (semak cards, then mungkin cards), each in catalogue order. The STR + SARA card is not in the groups; it is the panel on top. Themes are not shown.
 
 ## 5. STR + SARA calculator
 
@@ -274,16 +274,13 @@ Income above these bands → not eligible for that category.
 
 **eKasih top-up** (when `ekasih` is true): SARA rises by RM1,200 a year for Isi Rumah (to RM200 a month), RM1,200 for Warga Emas (to RM150 a month) and RM600 for Bujang (to RM100 a month). When `ekasih` is unknown, show the total without the top-up and also the total "jika berdaftar eKasih".
 
-**Children question skipped** (Isi Rumah): show a range from the 0-children rate to the 5+ rate. Children means children aged 17 and below (the `has_minor_children` question); answering "Tidak" uses the 0-children rate.
+**Children** means children aged 17 and below (the `has_minor_children` question); answering "Tidak" uses the 0-children rate.
 
 **When not eligible or unknown, show this reason (Malay, as written):**
 
 | Situation | Result | Reason shown |
 |---|---|---|
 | Under 18 | not eligible | Anda berumur bawah 18 tahun, jadi anda dikira sebagai anak tanggungan dalam permohonan STR ibu bapa anda. |
-| Marital status skipped | unknown | Anda memilih untuk tidak menyatakan status perkahwinan, jadi kategori STR tidak dapat ditentukan. Semak kelayakan di portal MySTR. |
-| Income skipped | unknown | Anda memilih untuk tidak menyatakan pendapatan, jadi amaun STR tidak dapat dianggarkan. Semak kelayakan di portal MySTR. |
-| Single, children question skipped | unknown | Bilangan anak tidak dinyatakan, jadi kategori STR tidak dapat ditentukan. |
 | Single, no children, aged 18–20 | not eligible | STR kategori Bujang hanya untuk mereka yang berumur 21 hingga 59 tahun. |
 | Household income above RM5,000 | not eligible | STR kategori Isi Rumah untuk isi rumah berpendapatan RM5,000 dan ke bawah sebulan. |
 | Single 60+, income above RM5,000 | not eligible | STR kategori Warga Emas Tiada Pasangan untuk pendapatan RM5,000 dan ke bawah sebulan. |
@@ -296,13 +293,10 @@ Shown above or below the results, in this order. The disclaimer is always last.
 | When | Text (Malay, as written) |
 |---|---|
 | STR likely but the person said they don't receive it (`str_status` = `no`) | Anda berkemungkinan layak menerima STR tetapi belum menerimanya. Mohon di bantuantunai.hasil.gov.my. Permohonan STR juga membuka akses kepada SARA, mySalam, PeKa B40 dan Skim Perubatan MADANI. |
-| STR likely and `str_status` is `unsure` or skipped | Semak status STR anda di bantuantunai.hasil.gov.my dan status SARA di sara.gov.my. |
+| STR likely and `str_status` is `unsure` | Semak status STR anda di bantuantunai.hasil.gov.my dan status SARA di sara.gov.my. |
 | `ekasih` answered `unsure` | Status eKasih anda tidak pasti. Jika isi rumah anda berdaftar, kadar SARA lebih tinggi dan beberapa bantuan lain mungkin terpakai. Semak dengan Pejabat Daerah. |
-| Any question skipped. The text lists the skipped topics, joined with ", " (example: gender skipped; names below) | Anda memilih untuk tidak menyatakan: jantina. Faedah yang bergantung pada maklumat ini dipaparkan sebagai "Mungkin layak" atau tidak dipaparkan. |
-| Income above RM5,000, `taxpayer` not ticked and `assets` not skipped | Dengan pendapatan ini, anda mungkin perlu membayar cukai pendapatan. Beberapa pelepasan cukai baharu bagi Tahun Taksiran 2026 mungkin berkaitan dengan anda. |
+| Income above RM5,000 and `taxpayer` not ticked | Dengan pendapatan ini, anda mungkin perlu membayar cukai pendapatan. Beberapa pelepasan cukai baharu bagi Tahun Taksiran 2026 mungkin berkaitan dengan anda. |
 | Always, shown last | Panduan umum berdasarkan Ucapan Belanjawan 2026 (maklumat setakat 2026-09-27). Ini bukan penentuan kelayakan rasmi. Sila sahkan dengan agensi yang berkaitan. |
-
-**Topic names in the skipped-questions advisory:** `gender` → jantina; `employment` → pekerjaan; `marital` → status perkahwinan; `has_minor_children` → anak berusia 17 tahun ke bawah; `children` → bilangan anak; `child_stages` → peringkat anak; `oku` → status OKU; `license` → lesen memandu; `income` → pendapatan; `ekasih` → status eKasih; `str_status` → status STR atau SARA; `ptptn` → pinjaman PTPTN; `kwsp` → caruman KWSP; `assets` → aset dan rancangan; `status` → keadaan khas; `lifestyle` → gaya hidup.
 
 ## 7. Result cards (115)
 
@@ -1634,18 +1628,18 @@ Your build must produce exactly these results for these answers. They are comput
 
 **STR + SARA:** Isi Rumah. STR RM1,700, SARA RM1,200 (RM100 sebulan), jumlah RM2,900; jika berdaftar eKasih RM4,100.
 
-- **Berkemungkinan layak** (14 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `budi95`, `peka_b40`, `mysalam`, `skim_perubatan_madani`, `mhit_kwsp`, `duti_insurans_kecil`, `bap`, `i_saraan`, `myraillife`, `duti_rokok`, `berhenti_merokok`, `fi_klinik_swasta`
-- **Mungkin layak** (18 cards, in this order): `jkm_bantuan`, `rebat_cekap_tenaga`, `solar_atap`, `saringan_wanita`, `perkeso_dialisis`, `bantuan_am`, `rmt_biasiswa`, `tuisyen_madani`, `celik_madani`, `lindung_kendiri`, `kasihnita`, `pembiayaan_wanita`, `latihan_tvet`, `itekad`, `geran_bsn`, `pinjaman_mikro`, `rebat_elektrik`, `rumah_daif`
+- **Layak** (14 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `budi95`, `peka_b40`, `mysalam`, `skim_perubatan_madani`, `mhit_kwsp`, `duti_insurans_kecil`, `bap`, `i_saraan`, `myraillife`, `duti_rokok`, `berhenti_merokok`, `fi_klinik_swasta`
+- **Berkemungkinan layak** (18 cards, in this order): `jkm_bantuan`, `rebat_cekap_tenaga`, `solar_atap`, `saringan_wanita`, `perkeso_dialisis`, `bantuan_am`, `rmt_biasiswa`, `tuisyen_madani`, `celik_madani`, `lindung_kendiri`, `kasihnita`, `pembiayaan_wanita`, `latihan_tvet`, `itekad`, `geran_bsn`, `pinjaman_mikro`, `rebat_elektrik`, `rumah_daif`
 - **Cards in the grid:** 32 (plus the STR + SARA panel on top)
 
 ### Contoh 2: Penjawat awam, 34, berkahwin, anak bawah 6 tahun, RM2,501–5,000, peminjam PTPTN, pembayar cukai, rumah pertama, haji
 
-**Answers:** `{"age":34,"region":"semenanjung","gender":"male","employment":"civil_servant","marital":"married","has_minor_children":"yes","children":"1-2","child_stages":["under6"],"oku":"no","license":"yes","income":"2501_5000","ekasih":"no","str_status":"yes","ptptn":"yes","kwsp":"no","assets":["first_home","taxpayer","haji_plan"],"status":["none"],"lifestyle":["skip"]}`
+**Answers:** `{"age":34,"region":"semenanjung","gender":"male","employment":"civil_servant","marital":"married","has_minor_children":"yes","children":"1-2","child_stages":["under6"],"oku":"no","license":"yes","income":"2501_5000","ekasih":"no","str_status":"yes","ptptn":"yes","kwsp":"no","assets":["first_home","taxpayer","haji_plan"],"status":["none"],"lifestyle":["none"]}`
 
 **STR + SARA:** Isi Rumah. STR RM450, SARA RM1,200 (RM100 sebulan), jumlah RM1,650.
 
-- **Berkemungkinan layak** (17 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `budi95`, `mysalam`, `skim_perubatan_madani`, `duti_insurans_kecil`, `duti_rumah_pertama`, `step_up`, `penjawat_sspa`, `myraillife`, `tax_vaksin`, `tax_insurans`, `tax_taska`, `tax_lestari`, `tax_pelancongan`, `potongan_derma`, `fi_klinik_swasta`
-- **Mungkin layak** (17 cards, in this order): `bkk_penjawat`, `rebat_cekap_tenaga`, `solar_atap`, `sjkp_akses`, `sjkp_inklusif`, `rumah_kontrak_awam`, `lppsa`, `rumah_mampu_milik`, `kota_madani`, `gcr_haji`, `subsidi_taska`, `buai`, `apel_q`, `etap_perubatan`, `lantikan_tetap_kkm`, `bipk_bipac`, `ptptn_sekatan_perjalanan`
+- **Layak** (17 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `budi95`, `mysalam`, `skim_perubatan_madani`, `duti_insurans_kecil`, `duti_rumah_pertama`, `step_up`, `penjawat_sspa`, `myraillife`, `tax_vaksin`, `tax_insurans`, `tax_taska`, `tax_lestari`, `tax_pelancongan`, `potongan_derma`, `fi_klinik_swasta`
+- **Berkemungkinan layak** (17 cards, in this order): `bkk_penjawat`, `rebat_cekap_tenaga`, `solar_atap`, `sjkp_akses`, `sjkp_inklusif`, `rumah_kontrak_awam`, `lppsa`, `rumah_mampu_milik`, `kota_madani`, `gcr_haji`, `subsidi_taska`, `buai`, `apel_q`, `etap_perubatan`, `lantikan_tetap_kkm`, `bipk_bipac`, `ptptn_sekatan_perjalanan`
 - **Cards in the grid:** 34 (plus the STR + SARA panel on top)
 
 ### Contoh 3: Pesara Kerajaan, 67, Sabah, bujang, veteran
@@ -1654,8 +1648,8 @@ Your build must produce exactly these results for these answers. They are comput
 
 **STR + SARA:** Warga Emas Tiada Pasangan (60 tahun ke atas). STR RM600, SARA RM600 (RM50 sebulan), jumlah RM1,200.
 
-- **Berkemungkinan layak** (12 cards, in this order): `penghargaan_sara`, `bkk_pesara`, `pjm`, `payung_rahmah`, `harga_sabah_sarawak`, `budi95`, `peka_b40`, `mysalam`, `skim_perubatan_madani`, `duti_insurans_kecil`, `ras`, `fi_klinik_swasta`
-- **Mungkin layak** (10 cards, in this order): `jkm_bantuan`, `rebat_cekap_tenaga`, `solar_atap`, `warga_emas`, `rumah_warga_emas`, `veteran`, `penghargaan_pesara`, `bsh_pesara_kemas`, `kwap_mikro`, `lupus_kenderaan`
+- **Layak** (12 cards, in this order): `penghargaan_sara`, `bkk_pesara`, `pjm`, `payung_rahmah`, `harga_sabah_sarawak`, `budi95`, `peka_b40`, `mysalam`, `skim_perubatan_madani`, `duti_insurans_kecil`, `ras`, `fi_klinik_swasta`
+- **Berkemungkinan layak** (10 cards, in this order): `jkm_bantuan`, `rebat_cekap_tenaga`, `solar_atap`, `warga_emas`, `rumah_warga_emas`, `veteran`, `penghargaan_pesara`, `bsh_pesara_kemas`, `kwap_mikro`, `lupus_kenderaan`
 - **Cards in the grid:** 22 (plus the STR + SARA panel on top)
 
 ### Contoh 4: Murid, 17, Sarawak
@@ -1664,8 +1658,8 @@ Your build must produce exactly these results for these answers. They are comput
 
 **STR + SARA:** not eligible. "Anda berumur bawah 18 tahun, jadi anda dikira sebagai anak tanggungan dalam permohonan STR ibu bapa anda."
 
-- **Berkemungkinan layak** (6 cards, in this order): `harga_sabah_sarawak`, `bap`, `kwsp_auto`, `rakan_muda`, `myraillife`, `ras`
-- **Mungkin layak** (4 cards, in this order): `celik_madani`, `tahfiz_kemahiran`, `mylesen_b2`, `plkn`
+- **Layak** (6 cards, in this order): `harga_sabah_sarawak`, `bap`, `kwsp_auto`, `rakan_muda`, `myraillife`, `ras`
+- **Berkemungkinan layak** (4 cards, in this order): `celik_madani`, `tahfiz_kemahiran`, `mylesen_b2`, `plkn`
 - **Cards in the grid:** 10 (plus the STR + SARA panel on top, which here shows the reason instead of amounts)
 
 ### Contoh 5: Pemandu e-hailing, 28, bujang, bawah RM2,500, peminjam PTPTN, vape dan alkohol
@@ -1674,19 +1668,19 @@ Your build must produce exactly these results for these answers. They are comput
 
 **STR + SARA:** Bujang (21 hingga 59 tahun). STR RM0, SARA RM600 (RM50 sebulan), jumlah RM600.
 
-- **Berkemungkinan layak** (16 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `budi95`, `mysalam`, `skim_perubatan_madani`, `mhit_kwsp`, `duti_insurans_kecil`, `duti_rumah_pertama`, `step_up`, `i_saraan_plus`, `rakan_muda`, `vape`, `berhenti_merokok`, `duti_alkohol`, `fi_klinik_swasta`, `pelabur_runcit`
-- **Mungkin layak** (13 cards, in this order): `budi95_ehailing`, `rebat_cekap_tenaga`, `solar_atap`, `perkeso_dialisis`, `sjkp_akses`, `sjkp_inklusif`, `rumah_mampu_milik`, `lindung_kendiri`, `k_youth`, `latihan_tvet`, `pembiayaan_belia`, `itekad`, `ptptn_sekatan_perjalanan`
+- **Layak** (16 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `budi95`, `mysalam`, `skim_perubatan_madani`, `mhit_kwsp`, `duti_insurans_kecil`, `duti_rumah_pertama`, `step_up`, `i_saraan_plus`, `rakan_muda`, `vape`, `berhenti_merokok`, `duti_alkohol`, `fi_klinik_swasta`, `pelabur_runcit`
+- **Berkemungkinan layak** (13 cards, in this order): `budi95_ehailing`, `rebat_cekap_tenaga`, `solar_atap`, `perkeso_dialisis`, `sjkp_akses`, `sjkp_inklusif`, `rumah_mampu_milik`, `lindung_kendiri`, `k_youth`, `latihan_tvet`, `pembiayaan_belia`, `itekad`, `ptptn_sekatan_perjalanan`
 - **Cards in the grid:** 29 (plus the STR + SARA panel on top)
 
-### Contoh 6: Petani, 50, pendapatan, jantina, OKU dan KWSP dilangkau
+### Contoh 6: Pekebun kecil, 50, berkahwin, bawah RM2,500, eKasih dan STR tidak pasti
 
-**Answers:** `{"age":50,"region":"semenanjung","gender":"skip","employment":"farmer","farm_type":"smallholder","marital":"married","has_minor_children":"no","oku":"skip","license":"yes","income":"skip","str_status":"unsure","ptptn":"no","kwsp":"skip","assets":["none"],"status":["none"],"lifestyle":["none"]}`
+**Answers:** `{"age":50,"region":"semenanjung","gender":"female","employment":"farmer","farm_type":"smallholder","marital":"married","has_minor_children":"no","oku":"no","license":"yes","income":"lt2500","ekasih":"unsure","str_status":"unsure","ptptn":"no","kwsp":"yes","assets":["none"],"status":["none"],"lifestyle":["none"]}`
 
-**STR + SARA:** unknown. "Anda memilih untuk tidak menyatakan pendapatan, jadi amaun STR tidak dapat dianggarkan. Semak kelayakan di portal MySTR."
+**STR + SARA:** Isi Rumah. STR RM700, SARA RM1,200 (RM100 sebulan), jumlah RM1,900; jika berdaftar eKasih RM3,100.
 
-- **Berkemungkinan layak** (7 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `budi95`, `mhit_kwsp`, `duti_insurans_kecil`, `i_saraan`, `fi_klinik_swasta`
-- **Mungkin layak** (19 cards, in this order): `diesel_rm200`, `rebat_cekap_tenaga`, `solar_atap`, `lindung_kendiri`, `pekebun_kecil`, `agro`, `bkht`, `jkm_bantuan`, `rebat_elektrik`, `peka_b40`, `mysalam`, `skim_perubatan_madani`, `saringan_wanita`, `rumah_daif`, `pembiayaan_wanita`, `latihan_tvet`, `bantuan_oku`, `myraillife`, `van_oku`
-- **Cards in the grid:** 26 (plus the STR + SARA panel on top)
+- **Layak** (10 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `budi95`, `peka_b40`, `mysalam`, `skim_perubatan_madani`, `mhit_kwsp`, `duti_insurans_kecil`, `i_saraan`, `fi_klinik_swasta`
+- **Berkemungkinan layak** (12 cards, in this order): `diesel_rm200`, `rebat_cekap_tenaga`, `solar_atap`, `saringan_wanita`, `lindung_kendiri`, `pembiayaan_wanita`, `pekebun_kecil`, `agro`, `bkht`, `jkm_bantuan`, `rebat_elektrik`, `rumah_daif`
+- **Cards in the grid:** 22 (plus the STR + SARA panel on top)
 
 ### Contoh 7: OKU, 30, pekerja swasta, pendapatan RM5,001–6,000, menyatakan dirinya penerima STR atau SARA
 
@@ -1694,8 +1688,8 @@ Your build must produce exactly these results for these answers. They are comput
 
 **STR + SARA:** not eligible. "STR kategori Bujang untuk pendapatan RM2,500 dan ke bawah sebulan."
 
-- **Berkemungkinan layak** (9 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `mysalam`, `skim_perubatan_madani`, `mhit_kwsp`, `duti_insurans_kecil`, `rakan_muda`, `myraillife`, `fi_klinik_swasta`
-- **Mungkin layak** (10 cards, in this order): `rebat_cekap_tenaga`, `solar_atap`, `saringan_wanita`, `perkeso_dialisis`, `k_youth`, `latihan_tvet`, `bantuan_oku`, `van_oku`, `duti_kontrak_kerja`, `ptptn_sekatan_perjalanan`
+- **Layak** (9 cards, in this order): `penghargaan_sara`, `payung_rahmah`, `mysalam`, `skim_perubatan_madani`, `mhit_kwsp`, `duti_insurans_kecil`, `rakan_muda`, `myraillife`, `fi_klinik_swasta`
+- **Berkemungkinan layak** (10 cards, in this order): `rebat_cekap_tenaga`, `solar_atap`, `saringan_wanita`, `perkeso_dialisis`, `k_youth`, `latihan_tvet`, `bantuan_oku`, `van_oku`, `duti_kontrak_kerja`, `ptptn_sekatan_perjalanan`
 - **Cards in the grid:** 19 (plus the STR + SARA panel on top, which here shows the reason instead of amounts)
 
 ## 9. Known limits (tell the reader where relevant)
@@ -1776,7 +1770,7 @@ Out of scope by design: the brain states what a person gets or pays, never gover
 
 ## Appendix: engine code
 
-The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy it unchanged.
+The complete engine, `belanjawan2026-brain.js` v2026.8, exactly as tested. Copy it unchanged.
 
 ````js
 /**
@@ -1794,9 +1788,11 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
  *
  * Design rules
  *  - Output describes what the PERSON gets or pays; never government allocation totals.
- *  - Personal questions are optional: every non-core question offers "Tidak mahu menyatakan" (value 'skip').
- *  - A skipped single-choice answer becomes UNKNOWN (tri-state), so dependent results show as "mungkin".
- *  - A skipped multi-choice answer is treated as "none selected", with an advisory telling the user.
+ *  - Every question shown must be answered; there is no skip option (the user's decision, 3 Oct 2026).
+ *  - An answer of "Tidak pasti" (eKasih) makes the facts that depend on it UNKNOWN (tri-state),
+ *    so dependent results show as "mungkin".
+ *  - The question set (wording and options) is approved by the user before every hand-over:
+ *    scripts/questions.js prints it for review and records the approval.
  *  - Scope: build only the items in BENEFITS. Measures read in the speech and deliberately left
  *    out are listed in references/excluded-2026.md; don't implement them without asking the user.
  */
@@ -1806,23 +1802,21 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var VERSION = '2026.7';
+  var VERSION = '2026.8';
   var DATA_AS_OF = '2026-09-27';
-  var SKIP = 'skip';
-  var SKIP_LABEL = 'Tidak mahu menyatakan';
 
   /* ================================================================
    * 1. QUESTIONS
    *    type: 'number' | 'single' | 'multi'
-   *    required: true => no skip option (only age & region)
+   *    Every question shown must be answered (no skip option).
    *    showIf: condition in the rule DSL (unknown => hidden unless noted)
    * ================================================================ */
   var QUESTIONS = [
-    { id: 'age', type: 'number', min: 0, max: 120, required: true,
+    { id: 'age', type: 'number', min: 0, max: 120,
       text: 'Berapakah umur anda?',
       help: 'Umur menentukan kelayakan program seperti STR, PeKa B40, bantuan warga emas dan pembiayaan rumah untuk golongan muda.' },
 
-    { id: 'region', type: 'single', required: true,
+    { id: 'region', type: 'single',
       text: 'Di manakah anda menetap?',
       options: [
         { v: 'semenanjung', l: 'Semenanjung Malaysia' },
@@ -1837,7 +1831,7 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
       options: [{ v: 'yes', l: 'Ya' }, { v: 'no', l: 'Tidak' }] },
 
     // The user's mandatory questions (2 Oct 2026): jantina, pekerjaan, anak 17 tahun ke bawah, OKU, lesen,
-    // STR/SARA, PTPTN, KWSP. Always asked (adults; OKU and licence for everyone), and still skippable.
+    // STR/SARA, PTPTN, KWSP. Always asked (adults; OKU and licence for everyone).
     { id: 'gender', type: 'single',
       showIf: { f: 'age', gte: 18 },
       text: 'Apakah jantina anda?',
@@ -1924,7 +1918,7 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
       ] },
 
     { id: 'ekasih', type: 'single',
-      showIf: { all: [{ f: 'age', gte: 18 }, { any: [{ f: 'incomeMax', lte: 5000 }, { f: 'incomeSkipped', eq: true }] }] },
+      showIf: { all: [{ f: 'age', gte: 18 }, { f: 'incomeMax', lte: 5000 }] },
       text: 'Adakah isi rumah anda berdaftar sebagai Miskin atau Miskin Tegar dalam sistem eKasih?',
       options: [{ v: 'yes', l: 'Ya' }, { v: 'no', l: 'Tidak' }, { v: 'unsure', l: 'Tidak pasti' }] },
 
@@ -1974,7 +1968,7 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
 
     { id: 'lifestyle', type: 'multi',
       showIf: { f: 'age', gte: 18 },
-      text: 'Soalan pilihan: adakah mana-mana perkara ini berkaitan dengan anda?',
+      text: 'Adakah mana-mana perkara ini berkaitan dengan anda?',
       help: 'Belanjawan 2026 menaikkan duti ke atas produk tembakau dan minuman beralkohol, serta mengecualikan cukai ke atas produk bantuan berhenti merokok. Jawapan ini hanya digunakan untuk memaparkan perubahan yang berkaitan.',
       options: [
         { v: 'cigarette', l: 'Merokok' },
@@ -1985,12 +1979,6 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
         { v: 'none', l: 'Tiada yang berkaitan', exclusive: true }
       ] }
   ];
-
-  // Every non-required question gets a skip option appended.
-  QUESTIONS.forEach(function (q) {
-    if (q.required || q.type === 'number') return;
-    q.options = q.options.concat([{ v: SKIP, l: SKIP_LABEL, exclusive: true, skip: true }]);
-  });
 
   /* ================================================================
    * 2. THEMES & TIERS
@@ -2012,23 +2000,24 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
   ];
 
   var TIERS = {
-    layak:   { label: 'Berkemungkinan layak', rank: 0 },
-    semak:   { label: 'Semak kelayakan',       rank: 1 },
-    mungkin: { label: 'Mungkin layak',         rank: 2 }
+    layak:   { label: 'Layak',                rank: 0 },
+    semak:   { label: 'Semak kelayakan',      rank: 1 },
+    mungkin: { label: 'Berkemungkinan layak', rank: 2 }
   };
 
-  // Results screen groups (user's decision, 2 Oct 2026): what the person clearly qualifies for first,
-  // then everything that is means-tested or depends on a skipped answer. No theme categories.
+  // Results screen groups (user's decisions, 2-3 Oct 2026): what the person clearly qualifies for first,
+  // then everything that is means-tested or depends on a "Tidak pasti" answer. No theme categories.
+  // Labels: "Layak", then "Berkemungkinan layak" (the old "Berkemungkinan layak" / "Mungkin layak" pair said the same thing twice).
   // Cost changes (kind 'kesan', e.g. tobacco duty) are tiered like any other card and get no warning label.
   var GROUPS = [
-    { id: 'layak',   label: 'Berkemungkinan layak', tiers: ['layak'] },
-    { id: 'mungkin', label: 'Mungkin layak',        tiers: ['semak', 'mungkin'] }
+    { id: 'layak',   label: 'Layak',                tiers: ['layak'] },
+    { id: 'mungkin', label: 'Berkemungkinan layak', tiers: ['semak', 'mungkin'] }
   ];
 
   /* ================================================================
    * 3. FACT DERIVATION
    *    Scalar facts may be null. A null fact is UNKNOWN only if listed in facts._unknown
-   *    (user skipped / answered "Tidak pasti"); otherwise it simply doesn't apply (= false).
+   *    (the user answered "Tidak pasti"); otherwise it simply doesn't apply (= false).
    * ================================================================ */
   var INCOME_BANDS = {
     lt2500:       { min: 0,     max: 2500 },
@@ -2040,12 +2029,11 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
   var CHILD_COUNT = { '0': 0, '1-2': 1, '3-4': 3, '5+': 5 };
 
   function arr(v) { return Array.isArray(v) ? v : (v == null ? [] : [v]); }
-  function cleanMulti(v) { return arr(v).filter(function (x) { return x !== 'none' && x !== SKIP; }); }
+  function cleanMulti(v) { return arr(v).filter(function (x) { return x !== 'none'; }); }
 
   function deriveFacts(a) {
-    var f = { _unknown: [], _skipped: [] };
+    var f = { _unknown: [] };
     function unknown(name) { if (f._unknown.indexOf(name) === -1) f._unknown.push(name); }
-    Object.keys(a).forEach(function (k) { if (arr(a[k]).indexOf(SKIP) > -1) f._skipped.push(k); });
 
     f.age = (a.age === '' || a.age == null) ? null : Number(a.age);
     f.adult = f.age == null ? null : f.age >= 18;
@@ -2053,19 +2041,13 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
     f.eastMalaysia = f.region == null ? null : f.region !== 'semenanjung';
 
     // marital
-    if (a.marital === SKIP) { f.marital = null; unknown('marital'); } else f.marital = a.marital || null;
+    f.marital = a.marital || null;
 
     // children
     // "Adakah anda mempunyai anak berusia 17 tahun ke bawah?" gates the number and stage questions.
     // "Tidak" counts as no children, including for STR (the user's decision; the speech doesn't state STR's age limit).
-    if (a.has_minor_children === 'yes') f.minorChildren = true;
-    else if (a.has_minor_children === SKIP) { f.minorChildren = null; unknown('minorChildren'); }
-    else f.minorChildren = false;
-    f.childrenSkipped = a.has_minor_children === SKIP || (f.minorChildren === true && a.children === SKIP);
-    if (f.childrenSkipped) {
-      f.childCount = null; unknown('childCount');
-      if (f.minorChildren === true) f.hasChildren = true; else { f.hasChildren = null; unknown('hasChildren'); }
-    } else if (f.minorChildren === true) {
+    f.minorChildren = a.has_minor_children === 'yes';
+    if (f.minorChildren) {
       f.childCount = CHILD_COUNT[a.children] != null ? CHILD_COUNT[a.children] : 1; f.hasChildren = true;
     } else { f.childCount = 0; f.hasChildren = false; }
     f.childStages = cleanMulti(a.child_stages);
@@ -2075,51 +2057,40 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
 
     // income
     var band = INCOME_BANDS[a.income];
-    f.incomeSkipped = a.income === SKIP;
     f.income = band ? a.income : null;
     f.incomeMin = band ? band.min : null;
     f.incomeMax = band ? band.max : null;
     f.b40 = band ? band.max <= 5000 : null;       // approximation of DOSM B40 line (~RM5,249)
     f.b40m40 = band ? band.max <= 12000 : null;   // approximation of M40 ceiling (~RM11,819)
-    if (f.incomeSkipped) ['income', 'incomeMin', 'incomeMax', 'b40', 'b40m40'].forEach(unknown);
 
     // eKasih
     if (band && band.max > 5000) f.ekasih = false;
     else if (a.ekasih === 'yes') f.ekasih = true;
     else if (a.ekasih === 'no') f.ekasih = false;
-    else if (a.ekasih === 'unsure' || a.ekasih === SKIP) { f.ekasih = null; unknown('ekasih'); }
-    else if (f.incomeSkipped) { f.ekasih = null; unknown('ekasih'); }
+    else if (a.ekasih === 'unsure') { f.ekasih = null; unknown('ekasih'); }
     else f.ekasih = false;
 
     // employment
-    if (a.employment === SKIP) { f.employment = null; unknown('employment'); } else f.employment = a.employment || null;
-    if (a.farm_type === SKIP) { f.farmType = null; unknown('farmType'); } else f.farmType = a.farm_type || null;
-    if (a.gender === SKIP) { f.gender = null; unknown('gender'); } else f.gender = a.gender || null;
+    f.employment = a.employment || null;
+    f.farmType = a.farm_type || null;
+    f.gender = a.gender || null;
 
     f.assets = cleanMulti(a.assets);
     f.status = cleanMulti(a.status);
     f.lifestyle = cleanMulti(a.lifestyle);
     f.smoker = ['cigarette', 'cigar', 'heated_tobacco', 'vape'].some(function (x) { return f.lifestyle.indexOf(x) > -1; });
 
-    if (f.status.indexOf('child_ipt') > -1 || f.employment === 'student_ipt') f.ipt = true;
-    else if (f.employment === null && a.employment === SKIP) { f.ipt = null; unknown('ipt'); }
-    else f.ipt = false;
+    f.ipt = f.status.indexOf('child_ipt') > -1 || f.employment === 'student_ipt';
 
-    // KWSP: the reader's own answer; if skipped, fall back to a guess from the job
+    // KWSP: the reader's own answer; if it is missing (a minor, who isn't asked), fall back to a guess from the job
     if (a.kwsp === 'yes') f.kwspMember = true;
     else if (a.kwsp === 'no') f.kwspMember = false;
-    else if (a.employment === SKIP) { f.kwspMember = null; unknown('kwspMember'); }
     else f.kwspMember = ['employed_private', 'gig_ehailing', 'self_employed', 'housewife', 'jobseeker', 'fisher', 'farmer'].indexOf(f.employment) > -1;
 
-    // Yes/no questions: "yes" -> true, "no" or not asked -> false, skipped -> unknown
-    function yesNo(name, v) {
-      if (v === 'yes') f[name] = true;
-      else if (v === SKIP) { f[name] = null; unknown(name); }
-      else f[name] = false;
-    }
-    yesNo('oku', a.oku);
-    yesNo('license', a.license);
-    yesNo('ptptnBorrower', a.ptptn);
+    // Yes/no questions: "yes" -> true, "no" or not asked -> false
+    f.oku = a.oku === 'yes';
+    f.license = a.license === 'yes';
+    f.ptptnBorrower = a.ptptn === 'yes';
     // STR/SARA: the reader's own answer ("Ya") counts as an STR recipient for the cards meant for them
     f.strRecipient = a.str_status === 'yes';
 
@@ -2148,23 +2119,20 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
     function res(eligible, reason, extra) { var o = { eligible: eligible, reason: reason || null }; for (var k in extra) o[k] = extra[k]; return o; }
     if (f.age == null) return res(false, 'Umur belum diisi.');
     if (f.age < 18) return res(false, 'Anda berumur bawah 18 tahun, jadi anda dikira sebagai anak tanggungan dalam permohonan STR ibu bapa anda.');
-    if (f.marital === null) return res(null, 'Anda memilih untuk tidak menyatakan status perkahwinan, jadi kategori STR tidak dapat ditentukan. Semak kelayakan di portal MySTR.');
-    if (f.income === null) return res(null, 'Anda memilih untuk tidak menyatakan pendapatan, jadi amaun STR tidak dapat dianggarkan. Semak kelayakan di portal MySTR.');
+    if (f.marital === null || f.income === null) return res(null, 'Status perkahwinan dan pendapatan belum diisi.');
 
     var cat;
     if (f.marital === 'married' || f.marital === 'single_parent') cat = 'isi_rumah';
-    else if (f.childCount === null) return res(null, 'Bilangan anak tidak dinyatakan, jadi kategori STR tidak dapat ditentukan.');
     else if (f.childCount > 0) cat = 'isi_rumah';
     else if (f.age >= 60) cat = 'warga_emas';
     else if (f.age >= 21) cat = 'bujang';
     else return res(false, 'STR kategori Bujang hanya untuk mereka yang berumur 21 hingga 59 tahun.');
 
-    var str, sara, strMin, strMax;
+    var str, sara;
     if (cat === 'isi_rumah') {
       if (!STR_TABLE[f.income]) return res(false, 'STR kategori Isi Rumah untuk isi rumah berpendapatan RM5,000 dan ke bawah sebulan.');
       var t = STR_TABLE[f.income];
-      if (f.childCount === null) { strMin = t[0][0]; strMax = t[5][0]; str = strMin; }
-      else str = t[f.childCount][0];
+      str = t[f.childCount][0];
       sara = 1200;
     } else if (cat === 'warga_emas') {
       if (!STR_TABLE[f.income]) return res(false, 'STR kategori Warga Emas Tiada Pasangan untuk pendapatan RM5,000 dan ke bawah sebulan.');
@@ -2180,10 +2148,8 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
       str: str, sara: sara, saraMonthly: SARA_MONTHLY[cat], total: str + sara,
       penghargaanSara: 100, ekasihApplied: 'no'
     });
-    if (strMin != null) { o.strRange = [strMin, strMax]; o.totalRange = [strMin + sara, strMax + sara]; }
     if (f.ekasih === true) {
       o.sara += topup; o.saraMonthly += topup / 12; o.total += topup; o.ekasihApplied = 'yes';
-      if (o.totalRange) o.totalRange = [o.totalRange[0] + topup, o.totalRange[1] + topup];
     } else if (f.ekasih === null) {
       o.ekasihApplied = 'unknown'; o.totalIfEkasih = o.total + topup; o.saraMonthlyIfEkasih = o.saraMonthly + topup / 12;
     }
@@ -3280,23 +3246,15 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
     };
   }
 
-  var SKIP_NAMES = { marital: 'status perkahwinan', children: 'bilangan anak', child_stages: 'peringkat anak', income: 'pendapatan',
-    ekasih: 'status eKasih', employment: 'pekerjaan', farm_type: 'jenis pertanian', gender: 'jantina', assets: 'aset dan rancangan',
-    status: 'keadaan khas', lifestyle: 'gaya hidup', self_school: 'status persekolahan', str_status: 'status STR atau SARA',
-    has_minor_children: 'anak berusia 17 tahun ke bawah', oku: 'status OKU', license: 'lesen memandu', ptptn: 'pinjaman PTPTN', kwsp: 'caruman KWSP' };
-
   function buildAdvisories(f, s, a) {
     var out = [];
     if (s.eligible === true && f.strStatus === 'no')
       out.push({ type: 'action', text: 'Anda berkemungkinan layak menerima STR tetapi belum menerimanya. Mohon di bantuantunai.hasil.gov.my. Permohonan STR juga membuka akses kepada SARA, mySalam, PeKa B40 dan Skim Perubatan MADANI.' });
-    if (s.eligible === true && (f.strStatus === 'unsure' || f.strStatus === SKIP))
+    if (s.eligible === true && f.strStatus === 'unsure')
       out.push({ type: 'action', text: 'Semak status STR anda di bantuantunai.hasil.gov.my dan status SARA di sara.gov.my.' });
     if (a.ekasih === 'unsure')
       out.push({ type: 'info', text: 'Status eKasih anda tidak pasti. Jika isi rumah anda berdaftar, kadar SARA lebih tinggi dan beberapa bantuan lain mungkin terpakai. Semak dengan Pejabat Daerah.' });
-    var skipped = f._skipped.map(function (k) { return SKIP_NAMES[k] || k; });
-    if (skipped.length)
-      out.push({ type: 'info', text: 'Anda memilih untuk tidak menyatakan: ' + skipped.join(', ') + '. Faedah yang bergantung pada maklumat ini dipaparkan sebagai "Mungkin layak" atau tidak dipaparkan.' });
-    if (f.assets.indexOf('taxpayer') === -1 && f.incomeMin != null && f.incomeMin > 5000 && (!a.assets || a.assets.indexOf(SKIP) === -1))
+    if (f.assets.indexOf('taxpayer') === -1 && f.incomeMin != null && f.incomeMin > 5000)
       out.push({ type: 'info', text: 'Dengan pendapatan ini, anda mungkin perlu membayar cukai pendapatan. Beberapa pelepasan cukai baharu bagi Tahun Taksiran 2026 mungkin berkaitan dengan anda.' });
     out.push({ type: 'disclaimer', text: 'Panduan umum berdasarkan Ucapan Belanjawan 2026 (maklumat setakat ' + DATA_AS_OF + '). Ini bukan penentuan kelayakan rasmi. Sila sahkan dengan agensi yang berkaitan.' });
     return out;
@@ -3305,7 +3263,7 @@ The complete engine, `belanjawan2026-brain.js` v2026.7, exactly as tested. Copy 
   function dedupe(xs) { var seen = {}; return xs.filter(function (x) { if (seen[x]) return false; seen[x] = 1; return true; }); }
 
   return {
-    VERSION: VERSION, DATA_AS_OF: DATA_AS_OF, SKIP: SKIP,
+    VERSION: VERSION, DATA_AS_OF: DATA_AS_OF,
     QUESTIONS: QUESTIONS, THEMES: THEMES, TIERS: TIERS, GROUPS: GROUPS, BENEFITS: BENEFITS,
     getVisibleQuestions: getVisibleQuestions, pruneAnswers: pruneAnswers, isComplete: isComplete,
     deriveFacts: deriveFacts, calcStrSara: calcStrSara, evaluate: evaluate,

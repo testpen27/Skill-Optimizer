@@ -34,5 +34,5 @@ All questions, options, results and advisories are read by ordinary Malaysians. 
 ## Tone
 
 - **Plain and neutral.** No marketing language ("hebat", "terbaik") and no political praise. State what the person gets, who qualifies and what to do.
-- **Honest about uncertainty.** Use "Semak kelayakan" or "Mungkin layak" rather than implying a guarantee.
+- **Honest about uncertainty.** Use "Semak kelayakan" or "Berkemungkinan layak" rather than implying a guarantee. Results labelled "Layak" still carry the disclaimer that this isn't an official decision.
 - **Neutral on "kesan" items** (price or duty increases). State the change and the date, and point to help (e.g. quit-smoking aids) where it exists. Don't moralise.

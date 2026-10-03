@@ -25,6 +25,8 @@ Builds and maintains the "brain" of an interactive Budget 2026 citizen-benefits 
 - the **output controls** (`references/output-controls.md`): which parts of the results screen are fixed and which the builder may design;
 - the **engine code itself**, in full, as an appendix. The builder pastes it into the page and calls its API instead of re-implementing the rules, so the checker runs exactly the tested logic.
 
+**The user approves the question set before any hand-over** (see "Changing the logic", step 3); `node scripts/questions.js --check` must pass.
+
 **Hand over only `BRAIN-2026.md`.** When the user asks for the brain, the spec, or something to give Claude Code, send that one file. The engine travels inside it; don't send the `.js` file, JSON files or other working files separately. The user builds the checker from the Markdown in a separate step.
 
 `BRAIN-2026.md` is generated, never edited by hand: `node scripts/export-brain-md.js`. Round 1 of verification (`test.js`) fails if it is out of date with the engine.
@@ -38,7 +40,9 @@ Builds and maintains the "brain" of an interactive Budget 2026 citizen-benefits 
 | `scripts/export-brain-md.js` | Writes `BRAIN-2026.md` from the engine, running it for rates, reasons, advisories and worked examples | After any change to the engine or the ledger's exclusions |
 | `scripts/belanjawan2026-brain.js` | The engine: questions, 13 themes, 115 items, STR/SARA calculator, rule evaluator. Source of truth for the spec | Edit here when logic or wording changes |
 | `references/excluded-2026.md` | The "not to be built" list on its own (also the last section of `BRAIN-2026.md`). Generated from the ledger | Regenerate when exclusions change |
-| `scripts/test.js` | Verification round 1: 15,170 checks (speech figures, branching, personas, results groups, integrity, Bahasa Melayu lint, "no government-spending figures" lint, spec up to date) | After any edit: `node scripts/test.js` |
+| `scripts/test.js` | Verification round 1: 14,847 checks (speech figures, branching, personas, results groups, integrity, Bahasa Melayu lint, "no government-spending figures" lint, spec up to date) | After any edit: `node scripts/test.js` |
+| `scripts/questions.js` | Prints the question set for the user to approve, marking changes since the last approval; applies their rewording (`--set`); records the approval (`--approve`) | Before every hand-over, and whenever a question changes |
+| `references/questions-approved.json` | The question set the user last approved, with date and their words. Written only by `questions.js --approve` | Read by `test.js` (check G5) |
 | `scripts/verify2.js` | Verification round 2: 30,000 simulated users walking the real question flow and checking invariants | After any edit: `node scripts/verify2.js` |
 | `scripts/gen-spec.js` | Regenerates the question and rule tables for the design spec below | After any edit: run it, then paste `_generated.md` into the spec |
 | `references/LOGIK-BELANJAWAN-2026.md` | Design record: decisions, tiers, every question and rule with sources, verification record, the user's decisions (§9) | Read before changing logic |
@@ -57,22 +61,24 @@ Builds and maintains the "brain" of an interactive Budget 2026 citizen-benefits 
 
 **Build only what the brain contains.** The "Not to be built" section lists measures that were read and left out on purpose: the Lemon Law, the electricity tariff change, the non-citizen stamp duty, rare-disease funding, free helmets and others. If the user wants one, it goes through step 5 and into the engine first, then the spec is regenerated.
 
-**Card tiers** (defined in the spec, section 4): `layak` Berkemungkinan layak; `semak` Semak kelayakan (means-tested, check with the agency); `mungkin` Mungkin layak (depends on something skipped). The results screen shows two groups (`evaluate().groups`): "Berkemungkinan layak" (layak), then "Mungkin layak" (semak, then mungkin). Cost changes are tiered the same way and shown with no warning label (the user's decision).
+**Card tiers** (defined in the spec, section 4): `layak` Layak; `semak` Semak kelayakan (means-tested, check with the agency); `mungkin` Berkemungkinan layak (depends on an eKasih "Tidak pasti" answer). The results screen shows two groups (`evaluate().groups`): "Layak" (layak), then "Berkemungkinan layak" (semak, then mungkin). Don't bring back "Mungkin layak"; the user dropped it as a repeat of "Berkemungkinan layak". Cost changes are tiered the same way and shown with no warning label (the user's decision).
 
 ## Changing the logic
 
 1. Edit `QUESTIONS`, `deriveFacts()` or `BENEFITS` in `scripts/belanjawan2026-brain.js`. Rules are declarative JSON, e.g. `{ all: [{ f:'age', gte:40, why:'Berumur 40 tahun ke atas' }, { f:'strEligible', eq:true, why:'…' }] }`, with operators `eq ne in nin gt gte lt lte has hasAny` and groups `all any not`.
 2. Follow the user's standing requirements:
    - Output states **what the person gets or pays**, never government allocation totals or beneficiary counts. The lint fails otherwise.
-   - **Don't add overly personal questions** unless a rule truly needs them, and every question except age and region must be skippable (appended automatically).
-   - **Eight questions are mandatory** (the user's decision): always asked, with this wording, and skippable like the rest. Gender, job, children aged 17 or under, OKU, active driving licence, STR or SARA recipient, PTPTN borrower and KWSP contributor (`gender`, `employment`, `has_minor_children`, `oku`, `license`, `str_status`, `ptptn`, `kwsp`). They go to every adult; OKU and licence also go to minors. Don't remove them, fold them into a multi-select, or hide them behind another answer. `test.js` section M checks this.
+   - **Don't add overly personal questions** unless a rule truly needs them.
+   - **No skipping** (the user's decision, 3 Oct 2026): every question shown must be answered. Don't add "Tidak mahu menyatakan" or a "Langkau" link. Offer "Tidak pasti" only where a reader may honestly not know, and "Tiada yang berkaitan" in multi-selects.
+   - **Eight questions are mandatory** (the user's decision): always asked, with this wording. Gender, job, children aged 17 or under, OKU, active driving licence, STR or SARA recipient, PTPTN borrower and KWSP contributor (`gender`, `employment`, `has_minor_children`, `oku`, `license`, `str_status`, `ptptn`, `kwsp`). They go to every adult; OKU and licence also go to minors. Don't remove them, fold them into a multi-select, or hide them behind another answer. `test.js` section M checks this.
    - **Special cases** (smokers, alcohol, investors and similar) belong in the `special` theme, as `kind: 'kesan'` when they cost the person more. They are shown like any other card, with no warning label.
    - **Work from the text only.** Every item needs a `src` reference to a unit of the speech or its annexes. Take amounts, criteria and dates from the text, not the web; where the text is silent, use `certainty: 'check'` and ask the user. Put date-sensitive facts in `timing`. Leave `web` empty on new items.
    - Record every item change in `references/ledger-2026.tsv` (the unit's decision becomes `item:<id>`), then run `scripts/coverage.js`.
    - **When you're unsure whether an item belongs in the brain, or in which theme, ask the user.** Don't decide silently. Use the Q&A format in step 5 of `references/building-a-new-brain.md`, and always leave room for the user to say something else.
-3. **Run verification twice, every time:** `node scripts/test.js && node scripts/verify2.js`. Both must pass with 0 failures and all items reachable. Add a persona test for any new rule, and add any new wording mistake you fix to the lint's banned list.
-4. Run `node scripts/gen-spec.js` and update the tables in `references/LOGIK-BELANJAWAN-2026.md`. Bump `VERSION` and `DATA_AS_OF`.
-5. Regenerate the hand-over: `node scripts/export-brain-md.js`. Test round 1 fails until you do.
+3. **Get the question set approved.** Whenever a question, help line or option changes (and before every hand-over), print the set with `node scripts/questions.js`, show it to the user and ask them to approve it or reword any line. Apply their wording exactly with `--set` (e.g. `node scripts/questions.js --set kwsp.yes "Ya, saya pencarum"`), show the set again, and only after they say yes run `node scripts/questions.js --approve --note "<their words>"`. Round 1 fails while the set differs from the approved one. Steps in `references/building-a-new-brain.md`, step 6.
+4. **Run verification twice, every time:** `node scripts/test.js && node scripts/verify2.js`. Both must pass with 0 failures and all items reachable. Add a persona test for any new rule, and add any new wording mistake you fix to the lint's banned list.
+5. Run `node scripts/gen-spec.js` and update the tables in `references/LOGIK-BELANJAWAN-2026.md`. Bump `VERSION` and `DATA_AS_OF`.
+6. Regenerate the hand-over: `node scripts/export-brain-md.js`. Test round 1 fails until you do.
 
 ## Rebuilding for a new document (e.g. Belanjawan 2027)
 
@@ -83,7 +89,7 @@ Read `references/building-a-new-brain.md` and follow its nine steps:
 3. Take eligibility from the text (this year's, then past years').
 4. Theme the items.
 5. **Check with the user.**
-6. Design minimal skippable questions.
+6. Design minimal questions (no skip option) and get the question set approved by the user, rewording as they ask.
 7. Write the rules.
 8. Verify twice, plus the coverage check.
 9. Hand over. This includes `excluded-<year>.md`, the "not to be built" list, and the annotated speech PDF for the user: light green for what the brain uses, yellow for what was excluded.

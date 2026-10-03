@@ -165,19 +165,33 @@ Remind the user of their own rule against unnecessary questions.
 - **Don't ask overly personal questions** unless a rule truly needs them. Examples the user rejected:
   - Civil-service grade and appointment type. Instead, show those items as `semak` and put the grade in the `who` text.
   - Fertility status.
-- **Only age and region are required.** Every other question gets the auto-appended "Tidak mahu menyatakan" (`skip`).
-- **Handle skips honestly:**
-  - A skipped single-choice answer becomes an unknown fact, so results show as `mungkin`.
-  - A skipped multi-choice answer means none were selected, and an advisory lists what was skipped.
+- **No skipping.** Every question shown must be answered; there is no "Tidak mahu menyatakan" option (the user's decision, 3 Oct 2026). Where a reader may honestly not know, offer "Tidak pasti" and make the fact unknown, so results show as `mungkin`. Give every multi-select a "Tiada yang berkaitan" option when none may apply.
+- **Keep the user's mandatory questions** (gender, job, children aged 17 or under, OKU, active driving licence, STR or SARA recipient, PTPTN borrower, KWSP contributor) with the approved wording, unless the user changes them.
 - **Use branching (`showIf`)** so people only see relevant questions. For example, `farm_type` appears only for farmers, and `lifestyle` only for adults.
 - **Match income bands to real cut-offs.** In 2026 these were RM2,500 / RM5,000 / RM6,000 / RM12,000, and ages 16 / 18 / 21 / 30 / 35 / 40 / 60.
+
+### Get the question set approved (mandatory)
+
+Before writing the rules on top of them, and again before every hand-over, run the whole question set past the user. Don't hand over a set they haven't approved.
+
+1. Print it for review: `node scripts/questions.js --out <scratch>/soalan.md`. It lists every question with its help line, its options and who is asked, and marks what changed since the last approval (**BAHARU**, **BERUBAH**, **DIBUANG**, with the old wording).
+2. Show it to the user in the conversation (and send the file). Ask them to approve it or reword anything. Use `AskUserQuestion` where it's available, with options such as "Lulus, guna seperti ini" and "Saya mahu ubah ayat", and leave "Other" open so they can type the new wording directly.
+3. Apply each rewording exactly as the user writes it:
+   - a question: `node scripts/questions.js --set kwsp "Adakah anda pencarum KWSP?"`
+   - its help line: `node scripts/questions.js --set kwsp.help "…"`
+   - one option: `node scripts/questions.js --set license.no "Tidak, atau tiada lesen memandu"`
+
+   Rewording changes text only. If the user wants a question or option added, removed or moved, or a new meaning, edit the engine and the rules, and say what it changes in the results.
+4. Run `node scripts/test.js`. The Bahasa Melayu lint also checks the user's wording; if it objects, show the user the lint's suggestion and let them decide.
+5. Show the set again with the changes marked, and repeat until the user approves it.
+6. Record the approval only after the user says yes: `node scripts/questions.js --approve --note "<the user's words>"`. It writes `references/questions-approved.json`. Round 1 fails (check G5) whenever the set differs from the approved one.
 
 ## 7. Write the rules
 
 - Use facts, not raw answers. Add derived facts in `deriveFacts()` (e.g. `b40`, `ipt`, `smoker`).
 - Give every leaf condition a `why` in Bahasa Melayu. It becomes the explanation shown to the user.
 - Set `certainty: 'check'` when the programme is means-tested, quota-based or depends on something not asked.
-- Any fact that can be skipped must be pushed into `facts._unknown` in `deriveFacts()`. Otherwise a skip silently reads as "no".
+- Any fact that a "Tidak pasti" answer leaves open must be pushed into `facts._unknown` in `deriveFacts()`. Otherwise it silently reads as "no".
 
 ## 8. Verify twice (mandatory)
 
@@ -196,6 +210,7 @@ Remind the user of their own rule against unnecessary questions.
 
 ## 9. Hand over
 
+- Confirm the user approved the current question set: `node scripts/questions.js --check`. If it fails, go back to "Get the question set approved" in step 6.
 - Run `node scripts/gen-spec.js` to regenerate the tables in the spec.
 - Bump `VERSION`.
 - Tell the user the pass counts from both rounds.
