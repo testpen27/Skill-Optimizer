@@ -105,6 +105,13 @@ used), use those instead and note the substitution in the glossary. Always cite 
 benchmark's source and date in the report — these figures vary enormously by
 methodology and go stale within a year.
 
+Only compare a rate against a benchmark with the same denominator. An engagement
+rate computed on reach or views is not comparable to a follower-based benchmark,
+and the gap between them is methodology, not performance. If the denominators
+differ, say so next to the figure and make no over/under-performance claim. On a
+benchmark chart, set `account_basis` and `benchmark_basis`; the template draws a
+mismatch as not comparable.
+
 ## Step 6 — Assemble the report data
 
 Build a single JSON object matching the schema documented at the top of

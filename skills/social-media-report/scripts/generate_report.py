@@ -33,6 +33,9 @@ produce this data):
   "charts": [
     {"id": str, "type": "trend"|"composition"|"waterfall"|"benchmark",
      "title": str, "takeaway": str, ...type-specific fields, see build_chart()}
+    # benchmark charts: "account_value", "benchmark_value", and optionally
+    # "account_basis" / "benchmark_basis" (the denominator, e.g. "reach",
+    # "followers", "views"). Give both: a mismatch is drawn as not comparable.
   ],
   "findings": [str, ...],            # may contain [[link text|ref_id]] markup
   "analysis_paragraphs": [str, ...], # may contain [[link text|ref_id]] markup
@@ -82,7 +85,7 @@ from reportlab.lib.units import inch
 from reportlab.lib.enums import TA_LEFT
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle,
-    Image, PageBreak, Flowable, KeepTogether,
+    Image, PageBreak, CondPageBreak, Flowable, KeepTogether,
 )
 
 # ---------------------------------------------------------------------------
@@ -203,9 +206,11 @@ STYLES = {
     "Subtitle": ParagraphStyle("Subtitle", fontName=FONT, fontSize=11, textColor=SLATE,
                                 spaceAfter=14, leading=14),
     "H1": ParagraphStyle("H1", fontName=FONT_BOLD, fontSize=15, textColor=NAVY,
-                          spaceBefore=18, spaceAfter=8, leading=18),
+                          spaceBefore=18, spaceAfter=8, leading=18, keepWithNext=1),
+    # keepWithNext: a heading never sits alone at the foot of a page while its
+    # table or text starts on the next one.
     "H2": ParagraphStyle("H2", fontName=FONT_BOLD, fontSize=12, textColor=NAVY,
-                          spaceBefore=12, spaceAfter=6, leading=15),
+                          spaceBefore=12, spaceAfter=6, leading=15, keepWithNext=1),
     "Body": ParagraphStyle("Body", fontName=FONT, fontSize=9.5, textColor=SLATE,
                             leading=14, spaceAfter=8, alignment=TA_LEFT),
     "Bullet": ParagraphStyle("Bullet", fontName=FONT, fontSize=9.5, textColor=SLATE,
@@ -231,7 +236,7 @@ STYLES = {
     "TableHeaderSmall": ParagraphStyle("TableHeaderSmall", fontName=FONT_BOLD, fontSize=7.3,
                                         textColor=WHITE, leading=9.5),
     "GlossaryTerm": ParagraphStyle("GlossaryTerm", fontName=FONT_BOLD, fontSize=9,
-                                    textColor=NAVY, leading=12),
+                                    textColor=NAVY, leading=12, keepWithNext=1),
     "RecTitle": ParagraphStyle("RecTitle", fontName=FONT_BOLD, fontSize=10.5,
                                 textColor=NAVY, leading=13, spaceAfter=2),
     "RecPriority": ParagraphStyle("RecPriority", fontName=FONT_BOLD, fontSize=7.5,
@@ -362,9 +367,6 @@ def build_chart(spec: dict, out_path: Path) -> Path:
             if lbl in labels:
                 idx = labels.index(lbl)
                 ax.axvspan(idx - 0.5, idx + 0.5, color="#E2E8F0", alpha=0.75, zorder=0)
-        if missing:
-            ax.text(0.99, 0.03, "Shaded = data not supplied", transform=ax.transAxes,
-                    ha="right", va="bottom", fontsize=7.5, color="#94A3B8")
         if len(spec["series"]) > 1:
             # "best" keeps the legend off the lines; a fixed corner sat on top
             # of a series that started high.
@@ -376,7 +378,30 @@ def build_chart(spec: dict, out_path: Path) -> Path:
         if values and max(values) == min(values):
             top = max(values)
             ax.set_ylim(0, top * 1.2 if top > 0 else 1)
+        elif values and min(values) > 0:
+            # Autoscale stretches any change to fill the plot, so +0.13pt on a
+            # 1.9% rate or -9% on views reads as a spike or a crash. Keep the
+            # range at least 30% of the top value, centred on the data, so the
+            # slope reflects the size of the change.
+            lo, hi = min(values), max(values)
+            min_span = 0.30 * hi
+            if hi - lo < min_span:
+                bottom = (hi + lo) / 2 - min_span / 2
+                if bottom <= 0:
+                    ax.set_ylim(0, hi * 1.1)
+                else:
+                    ax.set_ylim(bottom, bottom + min_span)
         ax.yaxis.set_major_formatter(_axis_formatter())
+        # Notes sit above the plot, where they cannot cover a data point.
+        notes = []
+        if missing:
+            notes.append("Shaded = data not supplied")
+        y_bottom = ax.get_ylim()[0]
+        if y_bottom > 0:
+            notes.append(f"Axis starts at {_fmt_value(y_bottom)}, not zero")
+        if notes:
+            ax.text(1.0, 1.02, "   ·   ".join(notes), transform=ax.transAxes,
+                    ha="right", va="bottom", fontsize=7.5, color="#64748B")
         if len(labels) > 12:
             # One tick per day overlaps illegibly; show ~10 evenly spaced
             # ticks (always including the last), angled if the labels are long.
@@ -420,7 +445,23 @@ def build_chart(spec: dict, out_path: Path) -> Path:
     elif ctype == "benchmark":
         cats = ["This account", "Benchmark"]
         vals = [spec["account_value"], spec["benchmark_value"]]
+        acc_basis = (spec.get("account_basis") or "").strip()
+        bench_basis = (spec.get("benchmark_basis") or "").strip()
+        if acc_basis and bench_basis:
+            cats = [f"This account\n(per {acc_basis})", f"Benchmark\n(per {bench_basis})"]
+        # A reach- or view-based rate runs many times a follower-based one, so
+        # side-by-side bars on different denominators show methodology, not
+        # performance. Draw the benchmark hollow and say so above the plot.
+        mismatch = bool(acc_basis and bench_basis
+                        and acc_basis.lower() != bench_basis.lower())
         bars = ax.bar(cats, vals, color=[CHART_PALETTE[0], MUTED_HEX], width=0.45)
+        if mismatch:
+            bars[1].set_facecolor("none")
+            bars[1].set_edgecolor(MUTED_HEX)
+            bars[1].set_hatch("///")
+            ax.text(1.0, 1.02, "Different denominators: not a like-for-like comparison",
+                    transform=ax.transAxes, ha="right", va="bottom", fontsize=7.5,
+                    color="#B45309")
         for b, v in zip(bars, vals):
             ax.text(b.get_x() + b.get_width() / 2, v, f"{v:g}%", ha="center",
                     va="bottom", fontsize=9, color="#334155")
@@ -633,7 +674,12 @@ def make_page_decorator(meta: dict):
 # ---------------------------------------------------------------------------
 
 def build_report(data: dict, output_path: Path, tmp_dir: Path):
-    meta = data["meta"]
+    meta = dict(data["meta"])
+    # Print known platforms under their own spelling, whatever case the data
+    # used: "facebook" titled a report "facebook performance report".
+    theme = PLATFORM_THEMES.get((meta.get("platform") or "").strip().lower())
+    if theme:
+        meta["platform"] = theme["name"]
     apply_platform_theme(meta.get("platform", ""))
     doc = SimpleDocTemplate(str(output_path), pagesize=LETTER,
                              topMargin=0.9 * inch, bottomMargin=0.75 * inch,
@@ -696,7 +742,10 @@ def build_report(data: dict, output_path: Path, tmp_dir: Path):
         ]
         story.append(KeepTogether(block))
 
-    story.append(PageBreak())
+    # Analysis and the glossary start on a new page only when the current one
+    # is mostly used; a hard break left pages holding one chart or one
+    # recommendation. The glossary is still the last section.
+    story.append(CondPageBreak(3.5 * inch))
 
     # --- Analysis ---
     story.append(Paragraph("Analysis", STYLES["H1"]))
@@ -710,7 +759,7 @@ def build_report(data: dict, output_path: Path, tmp_dir: Path):
     for rec in data["recommendations"]:
         story.append(KeepTogether(build_recommendation(rec)))
 
-    story.append(PageBreak())
+    story.append(CondPageBreak(3.5 * inch))
 
     # --- Glossary ---
     g = data["glossary"]

@@ -20,8 +20,19 @@ over/under-performance.
 
 | Metric | Default benchmark | Source |
 |---|---|---|
-| Engagement rate (interactions ÷ reach) | ~0.15% | Quid/Rival IQ 2026 Social Media Industry Benchmark Report |
-| Organic engagement rate (interactions ÷ followers) | 0.02%–0.23% depending on industry | Rival IQ 2026 |
+| Engagement rate per post, all industries (interactions ÷ followers) | ~0.15% | Quid/Rival IQ 2026 Social Media Industry Benchmark Report |
+| Organic engagement rate by industry (interactions ÷ followers) | 0.02%–0.23% depending on industry | Rival IQ 2026 |
+| Engagement rate (interactions ÷ reach) | No sourced default | — |
+
+Rival IQ divides interactions by **follower count** ("Engagement rate is calculated
+based on all these interactions divided by total follower count", Rival IQ benchmark
+report methodology). An earlier version of this file labelled the ~0.15% figure as
+interactions ÷ reach; it is not. Facebook exports usually give reach but not total
+followers, and a reach-based rate runs many times higher than a follower-based one
+(a 1.9% reach-based rate against this 0.15% looked like a 13x outperformance). So
+when only a reach-based rate can be computed, report it without a benchmark verdict,
+or show the benchmark labelled "follower-based, not comparable", never as a
+like-for-like bar.
 | CTR (link clicks ÷ impressions) | ~0.90% average, 1.5–2.5% good, >2.5% excellent | Industry compilation, 2025–2026 |
 
 Facebook organic reach and engagement are structurally low platform-wide in 2026 —

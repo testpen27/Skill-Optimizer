@@ -152,19 +152,35 @@ data were re-rendered with the fixed template
 (`output-evals/rerendered-with-fixed-template/`). Eval 2's data file was not
 kept by its run.
 
-Not fixed (judgement calls, noted for the owner):
+### Second round: the remaining four
 
-- Trend charts autoscale the y-axis, so a +0.13pt rise or a −9% dip
-  across three points looks dramatic. Starting rate charts at zero would
-  flatten them into unreadability; an axis-break marker or a "range shown"
-  note would be the honest middle ground.
-- The report title takes the platform in whatever case the data JSON gives it
-  ("facebook performance report" in eval 1).
-- A section that spills by one or two blocks leaves a mostly empty page (page
-  6 in evals 1 and 2).
-- The Facebook benchmark in `references/benchmarks.md` (~0.15%, interactions
-  ÷ reach) makes a normal account look 13× above benchmark. Worth checking
-  the source figure.
+- **Charts exaggerated small changes.** Autoscaling stretched a +0.13pt rise
+  on a 1.9% rate into a spike, and a −9% dip in views into a crash. Trend
+  charts now keep a y-range of at least 30% of the top value, centred on
+  the data, and any axis that does not start at zero says so above the plot
+  ("Axis starts at 1.6, not zero"). The "data not supplied" note moved up
+  there too, so neither note can cover a point.
+- **Lowercase title.** Known platforms are printed under their own spelling
+  (Facebook, Instagram, TikTok, YouTube) whatever case the data uses.
+- **Near-empty pages.** The hard page breaks before Analysis and the Glossary
+  are now conditional: a section starts on the same page when at least 3.5in
+  is left. The Glossary is still the last section. Headings keep with the
+  content after them, which fixes TikTok's "Derived measures" heading that
+  had been stranded at the foot of a page. Re-renders: Facebook 8 → 7 pages,
+  TikTok 7 → 6, every internal link still resolves.
+- **The Facebook benchmark was mislabelled.** `benchmarks.md` called the ~0.15%
+  Quid/Rival IQ figure "interactions ÷ reach". Rival IQ defines its rate as
+  "all these interactions divided by total follower count". So eval 1
+  compared a reach-based 1.96% with a follower-based 0.15% and called the
+  account "well above" benchmark. The row is now labelled follower-based. A
+  new "interactions ÷ reach: no sourced default" row and a note explain the
+  mix-up. The 0.15% value itself was not re-verified, because Rival IQ publishes
+  its figures as images. SKILL.md step 5 now requires a benchmark with the
+  same denominator and no verdict across different ones. Benchmark charts take
+  optional `account_basis` / `benchmark_basis` fields; on a mismatch the
+  benchmark bar is drawn hollow and the chart reads "Different denominators:
+  not a like-for-like comparison" (`facebook_2026-08_with-basis-fields.pdf`
+  shows this on eval 1's data).
 
 ## Where to pick this up
 
