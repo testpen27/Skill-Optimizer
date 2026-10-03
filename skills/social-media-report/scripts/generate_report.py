@@ -137,9 +137,16 @@ def apply_platform_theme(platform: str) -> dict:
     NAVY = colors.HexColor(theme["dark"])
     ACCENT = colors.HexColor(theme["accent"])
     KPI_DIVIDER = colors.HexColor(theme["divider"])
-    CHART_PALETTE[0] = theme["accent"]
-    if theme.get("accent2"):
-        CHART_PALETTE[1] = theme["accent2"]
+    # Rebuilt per report (not patched in place) so one platform's colors never
+    # leak into the next build. Brand colors lead; base colors follow only if
+    # clearly distinct from everything already chosen. Patching index 0 alone
+    # left Facebook's #1877F2 next to the base #2563EB, two near-identical
+    # blues for two different series.
+    palette = [theme["accent"]] + ([theme["accent2"]] if theme.get("accent2") else [])
+    for c in BASE_CHART_PALETTE:
+        if all(_color_distance(c, p) >= 90 for p in palette):
+            palette.append(c)
+    CHART_PALETTE[:] = palette
     for style_name in ("Title", "H1", "H2", "GlossaryTerm", "RecTitle"):
         STYLES[style_name].textColor = NAVY
     STYLES["RecPriority"].textColor = ACCENT
@@ -183,7 +190,15 @@ FONT = "Helvetica"
 FONT_BOLD = "Helvetica-Bold"
 FONT_ITALIC = "Helvetica-Oblique"
 
-CHART_PALETTE = ["#0B2545", "#2563EB", "#D97706", "#15803D", "#B91C1C", "#7C3AED"]
+# Ordered for contrast with a blue/pink/cyan/red brand accent placed first.
+BASE_CHART_PALETTE = ["#D97706", "#15803D", "#7C3AED", "#B91C1C", "#0B2545", "#2563EB"]
+CHART_PALETTE = list(BASE_CHART_PALETTE)
+
+
+def _color_distance(a: str, b: str) -> float:
+    ra, ga, ba = (int(a.lstrip("#")[i:i + 2], 16) for i in (0, 2, 4))
+    rb, gb, bb = (int(b.lstrip("#")[i:i + 2], 16) for i in (0, 2, 4))
+    return ((ra - rb) ** 2 + (ga - gb) ** 2 + (ba - bb) ** 2) ** 0.5
 
 plt.rcParams.update({
     "font.family": "DejaVu Sans",

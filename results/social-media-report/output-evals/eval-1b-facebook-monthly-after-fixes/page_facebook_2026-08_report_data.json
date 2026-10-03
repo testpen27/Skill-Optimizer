@@ -1,0 +1,511 @@
+{
+  "meta": {
+    "account_name": "Page",
+    "platform": "facebook",
+    "period_label": "August 2026",
+    "comparison_labels": [
+      "July 2026",
+      "June 2026"
+    ],
+    "report_type": "monthly",
+    "data_sources": [
+      "facebook_export_2026-06.csv",
+      "facebook_export_2026-07.csv",
+      "facebook_export_2026-08.csv",
+      "facebook_segments_2026-08.csv"
+    ],
+    "currency": "USD",
+    "prepared_date": "2026-10-03"
+  },
+  "kpis": [
+    {
+      "name": "Views",
+      "value_display": "12,401,581",
+      "per_day_display": "400,051",
+      "change_pct": -7.9,
+      "change_label": "per day vs. July",
+      "unavailable": false
+    },
+    {
+      "name": "Reach",
+      "value_display": "8,681,092",
+      "per_day_display": "280,035",
+      "change_pct": -7.9,
+      "change_label": "per day vs. July",
+      "unavailable": false
+    },
+    {
+      "name": "Interactions",
+      "value_display": "170,003",
+      "per_day_display": "5,484.0",
+      "change_pct": -1.3,
+      "change_label": "per day vs. July",
+      "unavailable": false
+    },
+    {
+      "name": "Engagement rate",
+      "value_display": "1.96%",
+      "per_day_display": null,
+      "change_pt": 0.13,
+      "change_label": "pt vs. July (reach-based)",
+      "unavailable": false
+    },
+    {
+      "name": "Net new followers",
+      "value_display": "3,708",
+      "per_day_display": "119.6",
+      "change_pct": -1.6,
+      "change_label": "per day vs. July",
+      "unavailable": false
+    }
+  ],
+  "performance_table": {
+    "id": "perf-table",
+    "title": "Performance table \u2014 August 2026 vs. prior two months",
+    "columns": [
+      "Metric",
+      "August 2026",
+      "July 2026",
+      "June 2026"
+    ],
+    "rows": [
+      [
+        "Views",
+        {
+          "value": "12,401,581 total / 400,051.0/day",
+          "change_pct": -7.9
+        },
+        "13,466,434 total / 434,401.1/day",
+        "13,195,187 total / 439,839.6/day"
+      ],
+      [
+        "Reach (unique viewers)",
+        {
+          "value": "8,681,092 total / 280,035.2/day",
+          "change_pct": -7.9
+        },
+        "9,426,492 total / 304,080.4/day",
+        "9,236,618 total / 307,887.3/day"
+      ],
+      [
+        "Interactions",
+        {
+          "value": "170,003 total / 5,484.0/day",
+          "change_pct": -1.3
+        },
+        "172,156 total / 5,553.4/day",
+        "168,585 total / 5,619.5/day"
+      ],
+      [
+        "Engagement rate (interactions / reach)",
+        {
+          "value": "1.96%",
+          "change_pt": 0.13
+        },
+        "1.83%",
+        "1.83%"
+      ],
+      [
+        "Gross follows",
+        {
+          "value": "5,510 total / 177.7/day",
+          "change_pct": -1.2
+        },
+        "5,579 total / 180.0/day",
+        "5,478 total / 182.6/day"
+      ],
+      [
+        "Unfollows",
+        {
+          "value": "1,802 total / 58.1/day",
+          "change_pct": -0.4
+        },
+        "1,810 total / 58.4/day",
+        "1,814 total / 60.5/day"
+      ],
+      [
+        "Net new followers",
+        {
+          "value": "3,708 total / 119.6/day",
+          "change_pct": -1.6
+        },
+        "3,769 total / 121.6/day",
+        "3,664 total / 122.1/day"
+      ],
+      [
+        "Page visits",
+        "Unavailable",
+        "51,754 total / 1,669.5/day",
+        "54,268 total / 1,808.9/day"
+      ],
+      [
+        "Link clicks",
+        {
+          "value": "31,114 total / 1,003.7/day",
+          "change_pct": -3.9
+        },
+        "32,368 total / 1,044.1/day",
+        "33,613 total / 1,120.4/day"
+      ],
+      [
+        "CTR (link clicks / impressions)",
+        "Unavailable",
+        "Unavailable",
+        "Unavailable"
+      ]
+    ]
+  },
+  "segment_table": {
+    "id": "segment-table",
+    "title": "Content segment breakdown \u2014 August 2026",
+    "columns": [
+      "Segment",
+      "Views",
+      "Share of views",
+      "Interactions",
+      "Share of interactions",
+      "Engagement rate",
+      "Revenue",
+      "Share of revenue"
+    ],
+    "rows": [
+      [
+        "Photos",
+        "6,200,790",
+        "50.0%",
+        "71,401",
+        "42.0%",
+        "1.15%",
+        "$1,865.20",
+        "47.0%"
+      ],
+      [
+        "Reels",
+        "4,092,521",
+        "33.0%",
+        "74,801",
+        "44.0%",
+        "1.83%",
+        "$1,746.14",
+        "44.0%"
+      ],
+      [
+        "Text",
+        "992,126",
+        "8.0%",
+        "8,500",
+        "5.0%",
+        "0.86%",
+        "$198.43",
+        "5.0%"
+      ],
+      [
+        "Live",
+        "1,116,142",
+        "9.0%",
+        "15,300",
+        "9.0%",
+        "1.37%",
+        "$158.74",
+        "4.0%"
+      ]
+    ]
+  },
+  "charts": [
+    {
+      "id": "chart-views-reach",
+      "type": "trend",
+      "title": "Views & reach per day, Jun\u2013Aug 2026",
+      "labels": [
+        "Jun 2026",
+        "Jul 2026",
+        "Aug 2026"
+      ],
+      "series": [
+        {
+          "name": "Views/day",
+          "values": [
+            439839.56666666665,
+            434401.0967741936,
+            400051.0
+          ]
+        },
+        {
+          "name": "Reach/day",
+          "values": [
+            307887.26666666666,
+            304080.3870967742,
+            280035.22580645164
+          ]
+        }
+      ],
+      "takeaway": "Views and reach fell together (both -7.9%/day from July to August) while the views-per-reach ratio held constant at ~1.43 \u2014 the decline is a reach/distribution issue, not a drop in content quality. [[See performance table|perf-table]]"
+    },
+    {
+      "id": "chart-int-clicks",
+      "type": "trend",
+      "title": "Interactions & link clicks per day, Jun\u2013Aug 2026",
+      "labels": [
+        "Jun 2026",
+        "Jul 2026",
+        "Aug 2026"
+      ],
+      "series": [
+        {
+          "name": "Interactions/day",
+          "values": [
+            5619.5,
+            5553.419354838709,
+            5483.967741935484
+          ]
+        },
+        {
+          "name": "Link clicks/day",
+          "values": [
+            1120.4333333333334,
+            1044.1290322580646,
+            1003.6774193548387
+          ]
+        }
+      ],
+      "takeaway": "Interactions held up far better than views (-1.3%/day vs. -7.9%/day), which is why August's engagement rate is the best of the three months. [[See engagement rate vs. benchmark|chart-benchmark]]"
+    },
+    {
+      "id": "chart-benchmark",
+      "type": "benchmark",
+      "title": "Engagement rate vs. Facebook benchmark, August 2026",
+      "account_value": 1.96,
+      "benchmark_value": 0.15,
+      "account_basis": "reach",
+      "benchmark_basis": "followers",
+      "takeaway": "This account's reach-based rate (1.96%) isn't comparable to Rival IQ's 0.15% follower-based default \u2014 the export has no total-follower count to compute a like-for-like rate. [[See performance table|perf-table]]"
+    },
+    {
+      "id": "chart-segment-rev",
+      "type": "composition",
+      "title": "Revenue by content segment, August 2026",
+      "labels": [
+        "August 2026"
+      ],
+      "series": [
+        {
+          "name": "Photos",
+          "values": [
+            1865.2
+          ]
+        },
+        {
+          "name": "Reels",
+          "values": [
+            1746.14
+          ]
+        },
+        {
+          "name": "Text",
+          "values": [
+            198.43
+          ]
+        },
+        {
+          "name": "Live",
+          "values": [
+            158.74
+          ]
+        }
+      ],
+      "takeaway": "Reels generated 44% of August revenue from just 33% of views \u2014 the highest revenue-per-view of any segment. [[See segment breakdown|segment-table]]"
+    },
+    {
+      "id": "chart-daily-int",
+      "type": "trend",
+      "title": "Daily interactions, August 2026",
+      "labels": [
+        "Aug 1",
+        "Aug 2",
+        "Aug 3",
+        "Aug 4",
+        "Aug 5",
+        "Aug 6",
+        "Aug 7",
+        "Aug 8",
+        "Aug 9",
+        "Aug 10",
+        "Aug 11",
+        "Aug 12",
+        "Aug 13",
+        "Aug 14",
+        "Aug 15",
+        "Aug 16",
+        "Aug 17",
+        "Aug 18",
+        "Aug 19",
+        "Aug 20",
+        "Aug 21",
+        "Aug 22",
+        "Aug 23",
+        "Aug 24",
+        "Aug 25",
+        "Aug 26",
+        "Aug 27",
+        "Aug 28",
+        "Aug 29",
+        "Aug 30",
+        "Aug 31"
+      ],
+      "series": [
+        {
+          "name": "Interactions",
+          "values": [
+            4266.0,
+            5560.0,
+            4472.0,
+            7081.0,
+            6531.0,
+            5385.0,
+            7368.0,
+            3365.0,
+            4323.0,
+            4126.0,
+            5261.0,
+            6509.0,
+            5364.0,
+            5153.0,
+            4626.0,
+            9106.0,
+            5419.0,
+            5445.0,
+            5461.0,
+            5015.0,
+            5915.0,
+            4098.0,
+            5625.0,
+            6321.0,
+            6637.0,
+            6733.0,
+            5387.0,
+            4138.0,
+            4934.0,
+            4628.0,
+            5751.0
+          ]
+        }
+      ],
+      "takeaway": "August 16 alone produced 9,106 interactions (66% above the month's daily average of 5,484); August 8 was the quietest day at 3,365. [[See performance table|perf-table]]"
+    }
+  ],
+  "findings": [
+    "Reach and views both fell 7.9%/day from July to August, but interactions dipped only 1.3%/day, pushing the reach-based engagement rate to 1.96% \u2014 the best of the three months [[Views & reach trend|chart-views-reach]], [[Performance table|perf-table]].",
+    "Reels drove a disproportionate share of monetization: 33% of August views but 44% of interactions and 44% of revenue, versus Photos' 50% of views for 47% of revenue [[Segment breakdown|segment-table]], [[Revenue by segment|chart-segment-rev]].",
+    "A single day, August 16, produced 5.4% of the month's total interactions on its own \u2014 66% above the daily average [[Daily interactions|chart-daily-int]].",
+    "Net new followers softened to 3,708 (119.6/day) from July's 3,769 (121.6/day); the drop is fully attributable to fewer gross follows, not more unfollows [[Performance table|perf-table]].",
+    "August's 1.96% reach-based engagement rate cannot be benchmarked against Facebook's published 0.15% follower-based default because total follower count isn't in the export [[Engagement rate vs. benchmark|chart-benchmark]]."
+  ],
+  "analysis_paragraphs": [
+    "The headline story in August is a reach contraction, not an engagement problem. Views and reach both dropped 7.9% per day versus July [[Performance table|perf-table]], but the views-per-reach ratio was essentially identical across all three months (~1.4286 in June, July, and August \u2014 [[Views & reach trend|chart-views-reach]]), meaning each person reached saw the same number of views each time. Fewer people were reached; the content shown to them performed the same or slightly better.",
+    "Interactions fell far less than views (-1.3%/day vs. -7.9%/day \u2014 [[Interactions & link clicks trend|chart-int-clicks]]), so the reach-based engagement rate actually rose to 1.96% in August from 1.83% in July and June (+0.13pt). Because the export doesn't include a total-follower count, this rate can only be benchmarked on a reach basis, and Facebook's commonly cited 0.15% default is follower-based \u2014 nearly 13x lower by methodology alone, not performance \u2014 so no over/under-performance claim is made here [[Engagement rate vs. benchmark|chart-benchmark]].",
+    "On follower growth, net new followers fell 1.6%/day from July to August. Decomposing the change: gross follows per day dropped from 179.97 to 177.74 (-2.23/day), which more than fully explains the net decline; unfollows per day also eased slightly, from 58.39 to 58.13 (-0.26/day), which cushioned the net decline by about 13%. In short, softer top-of-funnel discovery, not a retention problem, is driving the slower follower growth [[Performance table|perf-table]].",
+    "At the content level, August's segment data (supplied for August only, so no month-over-month segment comparison is possible) shows Reels converting views to revenue roughly 1.6x as efficiently as Photos (Reels: 44% of revenue from 33% of views; Photos: 47% of revenue from 50% of views) [[Segment breakdown|segment-table]], [[Revenue by segment|chart-segment-rev]]. Text and Live remain minor contributors at 5% and 4% of revenue respectively.",
+    "A single day, August 16, posted 9,106 interactions against a monthly daily average of 5,484 (+66%) and 508,993 views, the month's highest. That one day contributed 5.4% of August's total interactions [[Daily interactions|chart-daily-int]]. August 8, by contrast, was the softest day at 3,365 interactions (-39% vs. average)."
+  ],
+  "recommendations": [
+    {
+      "priority": "High",
+      "title": "Shift incremental content investment toward Reels",
+      "body": "Reels converts views to revenue at roughly 1.6x the rate of Photos (44% of revenue from 33% of views vs. Photos' 47% from 50%). Increasing Reels' share of the content mix is the fastest lever to grow revenue without needing more total reach [[Segment breakdown|segment-table]]."
+    },
+    {
+      "priority": "High",
+      "title": "Reverse-engineer the August 16 spike",
+      "body": "August 16 generated 66% more interactions than an average August day and was the single-largest contributor (5.4%) to the month's interaction total. Identify what was posted that day and test whether the format or topic is repeatable [[Daily interactions|chart-daily-int]]."
+    },
+    {
+      "priority": "Medium",
+      "title": "Investigate the reach decline before assuming a content problem",
+      "body": "Views and reach fell together while views-per-reach stayed flat at ~1.43 across all three months, so this is a distribution/reach issue (algorithmic or posting-frequency related), not declining content quality \u2014 engagement on the content that was shown actually improved [[Views & reach trend|chart-views-reach]]."
+    },
+    {
+      "priority": "Medium",
+      "title": "Diagnose the softer gross-follow rate",
+      "body": "The net follower slowdown (3,708 vs. 3,769, -1.6%/day) is fully explained by fewer gross follows (-2.23/day), not by rising unfollows, which actually eased slightly. Treat this as a top-of-funnel/discovery question rather than a retention one [[Performance table|perf-table]]."
+    },
+    {
+      "priority": "Low",
+      "title": "Request Impressions and total-follower-count fields in future exports",
+      "body": "CTR (link clicks / impressions) is Unavailable this month because no export included an Impressions column, and engagement rate could only be computed on a reach basis because total follower count wasn't present either \u2014 both are needed for benchmarkable, like-for-like comparisons going forward [[Performance table|perf-table]]."
+    }
+  ],
+  "glossary": {
+    "definitions": [
+      {
+        "term": "Views",
+        "meaning": "Total number of times content from the Page was displayed, summed daily."
+      },
+      {
+        "term": "Reach (unique viewers)",
+        "meaning": "Number of unique people who saw content from the Page, summed daily."
+      },
+      {
+        "term": "Interactions",
+        "meaning": "Reactions, comments, shares, and other engagements on Page content, summed daily."
+      },
+      {
+        "term": "Net new followers",
+        "meaning": "Gross follows minus unfollows for the period."
+      },
+      {
+        "term": "Engagement rate (this report)",
+        "meaning": "Interactions divided by reach (unique viewers), expressed as a percentage. Computed this way because the export includes reach but not a total-follower count."
+      }
+    ],
+    "formulas": [
+      {
+        "measure": "Per-day rate",
+        "formula": "Period total \u00f7 days in period"
+      },
+      {
+        "measure": "Engagement rate (%)",
+        "formula": "Interactions \u00f7 Reach \u00d7 100"
+      },
+      {
+        "measure": "Net new followers",
+        "formula": "Gross follows \u2212 Unfollows"
+      },
+      {
+        "measure": "Share of period total (%)",
+        "formula": "Segment value \u00f7 period total for that metric \u00d7 100"
+      },
+      {
+        "measure": "Change vs. comparison period (%)",
+        "formula": "(Current \u2212 Prior) \u00f7 Prior \u00d7 100, computed on per-day rates; suppressed (shown as \u2014) if prior value < 50"
+      },
+      {
+        "measure": "CTR (%)",
+        "formula": "Link clicks \u00f7 Impressions \u00d7 100 \u2014 Unavailable this report; no export included an Impressions column"
+      }
+    ],
+    "benchmark_sources": [
+      {
+        "platform": "Facebook",
+        "metric": "Engagement rate (interactions \u00f7 followers)",
+        "value": "~0.15%",
+        "source": "Quid/Rival IQ 2026 Social Media Industry Benchmark Report"
+      },
+      {
+        "platform": "Facebook",
+        "metric": "CTR (link clicks \u00f7 impressions)",
+        "value": "~0.90% avg, 1.5-2.5% good, >2.5% excellent",
+        "source": "Industry compilation, 2025-2026"
+      }
+    ],
+    "data_notes": [
+      "No account/page name was present in any supplied export; \"Page\" is used as a placeholder label in this report.",
+      "Three daily exports were supplied: facebook_export_2026-06.csv (30 days), facebook_export_2026-07.csv (31 days), facebook_export_2026-08.csv (31 days), plus facebook_segments_2026-08.csv (content-segment breakdown for August only).",
+      "The August daily export did not include a Visits column (present in June and July); Visits is marked Unavailable for August rather than estimated.",
+      "No export included an Impressions column, so CTR (link clicks \u00f7 impressions) is Unavailable for all three months.",
+      "No export included a total page-follower count, so engagement rate is computed on reach (unique viewers) rather than followers; it is shown against the Facebook benchmark with denominators labeled, and no over/under-performance verdict is given due to the mismatch.",
+      "Segment-level data (Photos/Reels/Text/Live) was supplied only for August; no June or July segment files were provided, so a month-over-month segment comparison could not be made.",
+      "Segment totals reconcile against the daily August export within rounding: segment Views sum to 12,401,579 vs. 12,401,581 from the daily file; segment Interactions sum to 170,002 vs. 170,003 from the daily file (differences of 2 and 1, consistent with per-post rounding in the segment export).",
+      "No ad-spend data was supplied, so ROI/cost-per-X metrics are not included."
+    ]
+  }
+}

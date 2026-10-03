@@ -182,6 +182,26 @@ kept by its run.
   not a like-for-like comparison" (`facebook_2026-08_with-basis-fields.pdf`
   shows this on eval 1's data).
 
+### Confirmation run, and one more template bug
+
+Eval 1 was re-run end to end with the updated skill
+(`output-evals/eval-1b-facebook-monthly-after-fixes/`). Every assertion still
+passes (8 pages, 26/26 internal links resolve), and the new rules held in a real
+run. The benchmark chart set `account_basis: reach` / `benchmark_basis:
+followers`, the takeaway says the 1.96% "isn't comparable" to the 0.15%
+follower-based default, and nothing in the report claims the account is above
+benchmark. Its own PDF shows the axis notes and the title fix too.
+
+That run found one more template bug. Two series on one chart (Views/day and
+Reach/day; Photos and Reels) were drawn in the same blue. The Facebook theme
+replaced only the first palette color with #1877F2, leaving the base #2563EB
+second. The palette is now rebuilt for every report: brand colors first, then base
+colors that are clearly distinct from those already chosen. It is no longer patched
+in place, so one platform's colors cannot leak into the next build. The run's data
+re-rendered with this fix is `page_facebook_2026-08_report_rerendered-palette-fix.pdf`.
+`generate_report.py` also no longer leaves a `.chart_tmp/` folder next to every
+report.
+
 ## Where to pick this up
 
 - The "is this change real or a calendar artifact?" question is still the
