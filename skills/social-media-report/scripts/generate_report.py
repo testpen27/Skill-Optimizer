@@ -70,6 +70,7 @@ import json
 import math
 import re
 import sys
+import tempfile
 from pathlib import Path
 
 import matplotlib
@@ -807,11 +808,13 @@ def main():
         sys.exit(1)
     input_path = Path(sys.argv[1])
     output_path = Path(sys.argv[2])
-    tmp_dir = output_path.parent / ".chart_tmp"
-    tmp_dir.mkdir(exist_ok=True, parents=True)
+    output_path.parent.mkdir(exist_ok=True, parents=True)
 
     data = json.loads(input_path.read_text())
-    build_report(data, output_path, tmp_dir)
+    # Chart PNGs are embedded in the PDF, so they go in a throwaway directory
+    # rather than a .chart_tmp/ left next to every delivered report.
+    with tempfile.TemporaryDirectory(prefix="report_charts_") as tmp:
+        build_report(data, output_path, Path(tmp))
     print(f"Wrote {output_path}")
 
 
