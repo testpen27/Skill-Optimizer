@@ -60,7 +60,23 @@ For a proper matrix, aim to gather at least 15–20 candidate papers before filt
 
 **If the pool runs much bigger than that:** gather the usual breadth first — don't cut the search short just because results look plentiful early. But if the highly-relevant pool is running well past what a 15–20-paper matrix needs (e.g., dozens of directly-on-topic hits after only 2–3 queries), that's a sign the topic is broader than one thesis-sized review can responsibly cover. Before arbitrarily trimming the list yourself, check whether the research title/topic has a natural dimension to niche down by — region/country, age group or population, industry/sector, a specific variant of the intervention, or a tighter time window than the 5-year default — and propose that narrowing to the user instead of silently deciding which papers survive. Let them confirm the narrower angle (or say "keep it broad") before you commit to a final candidate set.
 
-Keep a running scratch list (plain text or a markdown table) of everything found before filtering — don't discard anything yet.
+Keep a running scratch list (plain text or a markdown table) of everything found before filtering — don't discard anything yet. Alongside it, log every query as you run it — see Search Strategy Matrix below — rather than trying to reconstruct the search process from memory afterward.
+
+## Search Strategy Matrix
+
+The user needs a record of exactly what was searched and how, to build their own PRISMA flow diagram from — **building that diagram is not this skill's responsibility**, only supplying the raw search documentation it's built from. Log every query from Step 2 as you run it, then deliver this table alongside the LRM (as a markdown table in the chat, same as the LRM's Step 6 draft):
+
+| # | Source | Query string (verbatim) | Phrase searching | Boolean operators | Truncation/wildcards | Date run | Results returned |
+|---|--------|--------------------------|-------------------|---------------------|------------------------|----------|-------------------|
+
+- **Source**: the specific database/engine (Google Scholar, Scopus, Web of Science, PubMed, ERIC, `firecrawl_research_search_papers`, etc.) — not just "web_search."
+- **Query string (verbatim)**: the exact string sent, not a paraphrase — copy it, don't reconstruct it from memory after the fact.
+- **Phrase searching**: which quoted phrase(s) were used, or "None" if the query was unquoted keywords.
+- **Boolean operators**: which of `AND`/`OR`/`NOT`/`-` appeared, or "None."
+- **Truncation/wildcards**: which truncated term(s) (`educat*`, `motivat*`, etc.) appeared, or "None."
+- **Results returned**: how many hits/candidates that specific query surfaced — this is what feeds the "records identified" counts a PRISMA diagram needs per database.
+
+Be literal here, not aspirational: `firecrawl_research_search_papers` doesn't parse any of these four techniques (per Step 2), so its rows get "None" across phrase/boolean/truncation — don't write in operators that weren't actually honored just to make the row look consistent with the others. The same applies to any Google-backed query that skipped truncation because Google doesn't expand it reliably (per Step 2) — mark that column "None," not "N/A," so the user can see a technique was available but deliberately not used, versus never supported at all.
 
 ## Step 3 — Filter for relevance and recency
 
