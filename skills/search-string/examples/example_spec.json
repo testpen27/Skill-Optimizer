@@ -1,0 +1,69 @@
+{
+  "title": "OTT Streaming Adoption among Malaysian Consumers: A Systematic Literature Review",
+  "field": "Communication & Media Studies",
+  "years": [
+    2022,
+    2026
+  ],
+  "concepts": [
+    {
+      "name": "OTT and streaming platforms",
+      "terms": [
+        "\"over-the-top\"",
+        "OTT",
+        "\"video on demand\"",
+        "VOD",
+        "\"video streaming\"",
+        "\"streaming service*\"",
+        "\"streaming platform*\"",
+        "Netflix",
+        "Viu",
+        "Tonton"
+      ]
+    },
+    {
+      "name": "Adoption and usage",
+      "terms": [
+        "adopt*",
+        "accept*",
+        "subscri*",
+        "\"continuance intention\"",
+        "\"intention to use\"",
+        "\"willingness to pay\"",
+        "satisf*",
+        "loyal*",
+        "\"uses and gratifications\"",
+        "behavio*r"
+      ]
+    },
+    {
+      "name": "Consumers and audiences",
+      "terms": [
+        "consumer*",
+        "user*",
+        "viewer*",
+        "audience*",
+        "subscriber*",
+        "youth*",
+        "\"Generation Z\""
+      ]
+    },
+    {
+      "name": "Malaysia (niche)",
+      "terms": [
+        "Malaysia*",
+        "\"Kuala Lumpur\"",
+        "\"Klang Valley\"",
+        "Selangor",
+        "Penang",
+        "Johor"
+      ]
+    }
+  ],
+  "scholar": [
+    "(\"OTT\" OR \"video on demand\" OR \"streaming platform\" OR Netflix) AND (adoption OR \"continuance intention\" OR subscription OR satisfaction OR \"uses and gratifications\") AND (consumers OR users OR viewers OR audience) AND Malaysia",
+    "(Netflix OR Tonton OR \"Astro Go\" OR \"Unifi TV\" OR iQIYI OR Viu) AND (viewers OR audience OR consumers) AND (Malaysia OR Malaysian) AND (adoption OR subscription OR \"willingness to pay\" OR satisfaction)"
+  ],
+  "malay": "(OTT OR penstriman OR Netflix OR \"media OTT\") AND (pengguna OR penonton OR khalayak OR penerimaan OR penggunaan OR kepuasan) AND Malaysia",
+  "searchDate": ""
+}
