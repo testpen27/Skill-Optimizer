@@ -21,6 +21,15 @@ This skill runs on the same discipline as the /f5 fact-checking standard, applie
 - **Surface disagreements, don't silently pick one.** If two sources give different quartiles or different numbers for the same paper (common — SJR quartiles shift by year and by subject category), say so in the cell rather than choosing one and hiding the conflict.
 - **When a paper tool returns nothing, say so and fall back — don't fill the gap from memory.** If a full-text tool comes back empty, note it and pull the detail from another real source (e.g., the paper's PubMed/PMC page) instead of writing a plausible-sounding summary from general knowledge of the topic.
 
+## Model routing (where it's worth delegating)
+
+This skill runs in whatever model is powering the current session by default — that's the right call for most of it. Three steps below are high-volume, low-judgment lookup/formatting work that's worth fanning out to a cheaper, faster subagent instead of spending the main session's turns on it; two are the actual quality bottleneck and worth upgrading if the default model's output falls short there. Delegation uses the `Agent` tool's `model` parameter — if that tool isn't available in this environment, just do the step directly in the main thread; delegation is a speed/cost/quality optimization, not a requirement.
+
+- **Step 2 (running the search queries)** → delegate to subagent(s) with `model: "haiku"`, parallelized across sources/batches. Query construction and tool routing stay in the main thread; only firing the queries and collecting raw results is delegated.
+- **Steps 4 + 5 (quartile lookup, method/access labeling)** → delegate together to one subagent with `model: "haiku"`. Both are per-paper classification or lookup over data already in hand, not new judgment calls.
+- **Steps 6 + 7 (building the LRM, synthesis)** → optionally delegate together to one subagent with `model: "opus"` when the deliverable's paraphrasing or synthesis quality needs to be stronger than the default model gives. This is where quality actually shows up, so it's the one pair worth upgrading rather than downgrading.
+- **Steps 1, 3, and Output (PDF build)** stay in the main thread — they need the same judgment driving the rest of the skill (1, 3) or are a coding task the default model already handles well (Output).
+
 ## Step 1 — Ask the field, then build a keyword set
 
 Always ask the user which field or discipline the research sits in (e.g., education, psychology, computer science, nursing, business) before searching — even if it seems obvious from the title. The same title can mean different things across fields (e.g., "engagement" means something different in education vs. marketing), and the field name itself becomes a search term that filters out same-keyword-different-discipline noise. Skip asking only if the user already stated the field earlier in the conversation.
@@ -62,6 +71,8 @@ For a proper matrix, aim to gather at least 15–20 candidate papers before filt
 
 Keep a running scratch list (plain text or a markdown table) of everything found before filtering — don't discard anything yet. Alongside it, log every query as you run it — see Search Strategy Matrix below — rather than trying to reconstruct the search process from memory afterward.
 
+**Delegating the query execution (see Model routing above):** once queries are built and routed above, firing them and collecting raw results is mechanical — a good candidate for `Agent` subagent(s) with `model: "haiku"`, parallelized across sources or query batches. Give each subagent the exact query strings to run, which tool/source each goes to, and what to return per candidate: title, author(s), year, journal/publisher or repository, link/DOI, abstract — plus one Search Strategy Matrix row per query (source, verbatim string, which of phrase/boolean/truncation were used, results returned), so the main thread doesn't have to reconstruct the log afterward. If subagents aren't available, just run the queries directly as described above.
+
 ## Search Strategy Matrix
 
 The user needs a record of exactly what was searched and how, to build their own PRISMA flow diagram from — **building that diagram is not this skill's responsibility**, only supplying the raw search documentation it's built from. Log every query from Step 2 as you run it, then deliver this table alongside the LRM (as a markdown table in the chat, same as the LRM's Step 6 draft):
@@ -91,6 +102,8 @@ Drop tangential papers unless the user asks to keep the full list. Tell the user
 
 ## Step 4 — Group by journal quartile (Q1–Q4)
 
+**Steps 4 and 5 are both per-paper classification or lookup over data you already have in hand (see Model routing above)** — no new judgment calls, just applying the fixed rules below to each paper. Do them together in one pass. If the `Agent` tool is available, delegate that pass to a subagent with `model: "haiku"`: hand it the filtered paper list from Step 3 (with the abstracts/full text gathered in Step 2) plus both rule sets below, and have it return quartile, method type, and access for every paper in one response. If subagents aren't available, just work through both steps directly, back to back, in the main thread.
+
 For each surviving paper, identify its journal and look up its Scimago Journal Rank (SJR) quartile — search "[journal name] Scimago quartile" via web_search, or fetch scimagojr.com directly. This lookup stays on plain web tools regardless of whether Firecrawl is connected — it's a journal-ranking lookup, not a paper search, so it's outside the paper-tool family Step 2 scopes Firecrawl to. Use the quartile for the subject category most relevant to the paper's topic if the journal spans multiple categories, and note the year if quartiles have shifted.
 
 Be strict about not guessing:
@@ -100,11 +113,15 @@ Be strict about not guessing:
 
 ## Step 5 — Label method type and access
 
+(Done in the same pass as Step 4 — see the delegation note at the top of Step 4.)
+
 For each paper, determine:
 - **Method type**: Quantitative, Qualitative, Mixed-methods, or Theoretical/Review — based on what the abstract or methods section actually states, not the topic alone.
 - **Access**: Free (open access, DOAJ-listed, or full text you could actually retrieve) or Paid (paywalled, abstract-only access). If genuinely unclear, label "Unclear" rather than guessing.
 
 ## Step 6 — Build the Literature Review Matrix (LRM)
+
+**Steps 6 and 7 are where this skill's actual quality shows up (see Model routing above)** — accurate paraphrasing, catching "too clean" details per the rigor discipline, and synthesizing across the whole set. The default model handles both fine; this is optional upgrading, not a requirement. If the `Agent` tool is available and paraphrasing or synthesis quality needs to be stronger than the default gives, delegate both together to a subagent with `model: "opus"`: hand it the rigor discipline above, every paper's gathered data (abstracts/full text, quartile, method, access from Steps 3–5), and have it return the completed LRM cells plus the Step 7 synthesis in one response. If subagents aren't available, or the default model's output is already good enough, just do both steps directly in the main thread as described below.
 
 Present it first as a markdown table inline in the chat — this is the reviewable draft, not the final deliverable (see Output below for the PDF export). IMRAD gets its own four columns rather than one combined summary, so each stage of a paper's structure is scannable on its own:
 
@@ -127,6 +144,8 @@ Each IMRAD cell should be condensed and paraphrased, not copied sentences from t
 Every cell must trace back to something actually found in the search/fetch steps. If a detail can't be verified, mark it as such rather than leaving a plausible-looking guess.
 
 ## Step 7 — Short synthesis
+
+(Done in the same pass as Step 6 if delegated — see the delegation note at the top of Step 6.)
 
 After the LRM, add a brief synthesis (not another table): recurring theories across papers, dominant methodologies, any quartile imbalance (e.g., mostly Q3/Q4 sources — worth flagging to the user), and visible gaps the user's own research could address. Keep this to a few sentences — the LRM is the deliverable, this is the "so what."
 
