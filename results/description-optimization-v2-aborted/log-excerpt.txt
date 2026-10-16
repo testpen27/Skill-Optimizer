@@ -1,0 +1,10 @@
+Iteration 1/5
+Description: Build ready-to-paste Boolean search strings for finding academic papers in Scopus, Web of Science and Google Scholar. Use this whenever the user gives a research title, topic, research question or SLR title and wants search strings, keywords, a Boolean search, a concept table, or a way to find papers on Scopus (they may say "Opus", "Scopus" or "WoS"), Web of Science or Google Scholar.
+Train: 122/128 correct, precision=100% recall=91% accuracy=95% (379.6s)
+Test : 73/80 correct, precision=100% recall=82% accuracy=91% (0.0s)
+Proposed (8.2s): Use this skill for anything involving Boolean search strings for academic literature databases: Scopus (users may say "Opus"), Web of Science (WoS) and Google Scholar. Trigger when a user gives a research title, topic, research question or SLR title and wants search strings, keywords, a concept table or a search strategy, including as a Word file. Also trigger when a user pastes a
+Iteration 2/5
+Description: Use this skill for anything involving Boolean search strings for academic literature databases: Scopus (users may say "Opus"), Web of Science (WoS) and Google Scholar. Trigger when a user gives a research title, topic, research question or SLR title and wants search strings, keywords, a concept table or a search strategy, including as a Word file. Also trigger when a user pastes an ex
+trigger_probe.ProbeFailure: result subtype='success' is_error=True: You've hit your session limit · resets 5:20pm (UTC)
+trigger_probe.ProbeAbort: probe failed 3x, aborting pass: result subtype='success' is_error=True: You've hit your session limit · resets 5:20pm (UTC)
+trigger_probe.ProbeAbort: probe failed 3x, aborting pass: result subtype='success' is_error=True: You've hit your session limit · resets 5:20pm (UTC)

@@ -1,0 +1,129 @@
+{
+ "optimized_description": "Use this skill for anything involving Boolean search queries for academic literature databases: Scopus (users may say \"Opus\"), Web of Science (WoS) and Google Scholar. Build ready-to-paste search strings, keywords or a concept table from a research title, topic, question or SLR title. Also use it to debug, fix, shorten, widen or narrow a search the user already wrote, including when a database rejects it with \"invalid query\", a syntax error, zero results, or too many or too few hits. Handles field tags (TS=, TITLE-ABS-KEY, PY=), AND/OR/NOT logic, truncation (*), wildcards (?), phrase quotes, country niches, date limits, Malay or other local-language strings, and exporting the search strategy as a Word file. Not for screening abstracts, general Boolean or SQL help, or finding specific papers.",
+ "results": {
+  "original": [
+   {
+    "query": "need boolean keywords for 'impact of ChatGPT on academic integrity in higher education' for scopus and WoS pls, 2021 to 2026",
+    "should_trigger": true,
+    "triggers": 5,
+    "runs": 5
+   },
+   {
+    "query": "my web of science search for blockchain AND supply chain gives 31,000 hits. how do i tighten it without losing the key papers",
+    "should_trigger": true,
+    "triggers": 5,
+    "runs": 5
+   },
+   {
+    "query": "my google scholar results are exactly the same for my english string and my malay string, did i combine them wrong? english: (halal OR syariah) AND tourism AND (halal OR muslim-friendly)",
+    "should_trigger": true,
+    "triggers": 5,
+    "runs": 5
+   },
+   {
+    "query": "doing a bibliometric analysis on halal tourism. what is the best TITLE-ABS-KEY string to pull everything from 2015-2025",
+    "should_trigger": true,
+    "triggers": 5,
+    "runs": 5
+   },
+   {
+    "query": "convert my scopus search into web of science syntax please: TITLE-ABS-KEY((\"smart farming\" OR \"precision agriculture\") AND (adopt* OR accept*)) AND PUBYEAR > 2018",
+    "should_trigger": true,
+    "triggers": 3,
+    "runs": 5
+   },
+   {
+    "query": "recommend 10 good indexed journals where I could publish my paper on halal tourism, ideally q2 or above with fast review",
+    "should_trigger": false,
+    "triggers": 0,
+    "runs": 5
+   },
+   {
+    "query": "I exported my scopus results as csv. what settings should I use in VOSviewer for a keyword co-occurrence map? minimum occurrences etc",
+    "should_trigger": false,
+    "triggers": 0,
+    "runs": 5
+   },
+   {
+    "query": "write a python script that calls the Scopus API with my key and downloads the abstracts for a list of 300 DOIs into a csv",
+    "should_trigger": false,
+    "triggers": 0,
+    "runs": 5
+   },
+   {
+    "query": "paraphrase my abstract so the turnitin similarity score drops below 15%, keep the meaning the same",
+    "should_trigger": false,
+    "triggers": 0,
+    "runs": 5
+   },
+   {
+    "query": "write an elasticsearch query with must and should clauses that matches job postings by title and required skills, boost exact title matches",
+    "should_trigger": false,
+    "triggers": 0,
+    "runs": 5
+   }
+  ],
+  "optimized": [
+   {
+    "query": "need boolean keywords for 'impact of ChatGPT on academic integrity in higher education' for scopus and WoS pls, 2021 to 2026",
+    "should_trigger": true,
+    "triggers": 5,
+    "runs": 5
+   },
+   {
+    "query": "my web of science search for blockchain AND supply chain gives 31,000 hits. how do i tighten it without losing the key papers",
+    "should_trigger": true,
+    "triggers": 5,
+    "runs": 5
+   },
+   {
+    "query": "my google scholar results are exactly the same for my english string and my malay string, did i combine them wrong? english: (halal OR syariah) AND tourism AND (halal OR muslim-friendly)",
+    "should_trigger": true,
+    "triggers": 5,
+    "runs": 5
+   },
+   {
+    "query": "doing a bibliometric analysis on halal tourism. what is the best TITLE-ABS-KEY string to pull everything from 2015-2025",
+    "should_trigger": true,
+    "triggers": 5,
+    "runs": 5
+   },
+   {
+    "query": "convert my scopus search into web of science syntax please: TITLE-ABS-KEY((\"smart farming\" OR \"precision agriculture\") AND (adopt* OR accept*)) AND PUBYEAR > 2018",
+    "should_trigger": true,
+    "triggers": 5,
+    "runs": 5
+   },
+   {
+    "query": "recommend 10 good indexed journals where I could publish my paper on halal tourism, ideally q2 or above with fast review",
+    "should_trigger": false,
+    "triggers": 0,
+    "runs": 5
+   },
+   {
+    "query": "I exported my scopus results as csv. what settings should I use in VOSviewer for a keyword co-occurrence map? minimum occurrences etc",
+    "should_trigger": false,
+    "triggers": 0,
+    "runs": 5
+   },
+   {
+    "query": "write a python script that calls the Scopus API with my key and downloads the abstracts for a list of 300 DOIs into a csv",
+    "should_trigger": false,
+    "triggers": 0,
+    "runs": 5
+   },
+   {
+    "query": "paraphrase my abstract so the turnitin similarity score drops below 15%, keep the meaning the same",
+    "should_trigger": false,
+    "triggers": 0,
+    "runs": 5
+   },
+   {
+    "query": "write an elasticsearch query with must and should clauses that matches job postings by title and required skills, boost exact title matches",
+    "should_trigger": false,
+    "triggers": 0,
+    "runs": 5
+   }
+  ]
+ }
+}

@@ -1,0 +1,75 @@
+{
+  "title": "E-commerce Adoption among Small Businesses in Indonesia",
+  "field": "Business & Information Systems",
+  "concepts": [
+    {
+      "name": "E-commerce and digital platforms",
+      "terms": [
+        "e-commerce",
+        "ecommerce",
+        "\"electronic commerce*\"",
+        "\"online shop*\"",
+        "\"online selling*\"",
+        "\"online marketplace*\"",
+        "\"digital commerce*\"",
+        "\"social commerce*\"",
+        "\"digital platform*\"",
+        "Shopee",
+        "Tokopedia",
+        "Bukalapak"
+      ]
+    },
+    {
+      "name": "Adoption and use",
+      "terms": [
+        "adopt*",
+        "accept*",
+        "\"technology adoption*\"",
+        "\"intention to adopt\"",
+        "\"intention to use\"",
+        "implement*",
+        "utili?ation",
+        "\"digital transformation*\"",
+        "\"digital adoption*\"",
+        "barrier*",
+        "determinant*",
+        "\"success factor*\""
+      ]
+    },
+    {
+      "name": "Small businesses",
+      "terms": [
+        "\"small business*\"",
+        "SME",
+        "SMEs",
+        "MSME",
+        "MSMEs",
+        "UMKM",
+        "\"small and medium enterprise*\"",
+        "\"small and medium-sized enterprise*\"",
+        "\"micro enterprise*\"",
+        "\"small enterprise*\"",
+        "entrepreneur*",
+        "\"small firm*\""
+      ]
+    },
+    {
+      "name": "Indonesia (niche)",
+      "terms": [
+        "Indonesia*",
+        "Jakarta",
+        "Surabaya",
+        "Bandung",
+        "Yogyakarta",
+        "Bali"
+      ]
+    }
+  ],
+  "scholar": [
+    "(e-commerce OR \"online marketplace\" OR \"electronic commerce\" OR \"digital platform\") AND (adoption OR \"intention to adopt\" OR acceptance OR barriers) AND (SMEs OR MSMEs OR \"small business\" OR \"small enterprises\") AND Indonesia",
+    "(Shopee OR Tokopedia OR Bukalapak OR \"social commerce\" OR \"online shop\") AND (adoption OR \"digital transformation\" OR utilization OR determinants) AND (UMKM OR MSMEs OR \"small business\") AND (Indonesia OR Indonesian)"
+  ],
+  "local": "(\"e-commerce\" OR \"toko online\" OR \"jual beli online\" OR marketplace OR \"transformasi digital\") AND (adopsi OR penerimaan OR penggunaan OR pemanfaatan OR penerapan OR hambatan) AND (UMKM OR \"usaha kecil\" OR \"pelaku usaha\") AND Indonesia",
+  "localLanguage": "Indonesian",
+  "searchDate": "2026-10-12"
+}

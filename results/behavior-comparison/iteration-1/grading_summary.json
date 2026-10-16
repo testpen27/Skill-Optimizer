@@ -1,0 +1,36 @@
+{
+ "with_skill": {
+  "1 scopus form": true,
+  "1 wos form": true,
+  "1 concepts bracketed": true,
+  "1 scholar ok": true,
+  "1 phrases truncated": "7/16 multiword phrases wildcarded",
+  "1 no tested claim": true,
+  "2 straight quotes": true,
+  "2 OR caps": true,
+  "2 behavio*r": true,
+  "2 names curly": true,
+  "2 balanced": true,
+  "3 docx valid": true,
+  "3 Indonesian row": true,
+  "3 local not ANDed to English": false,
+  "3 strings in chat": true
+ },
+ "old_skill": {
+  "1 scopus form": true,
+  "1 wos form": true,
+  "1 concepts bracketed": true,
+  "1 scholar ok": true,
+  "1 phrases truncated": "0/26 multiword phrases wildcarded",
+  "1 no tested claim": true,
+  "2 straight quotes": true,
+  "2 OR caps": true,
+  "2 behavio*r": true,
+  "2 names curly": true,
+  "2 balanced": true,
+  "3 docx valid": true,
+  "3 Indonesian row": false,
+  "3 local not ANDed to English": false,
+  "3 strings in chat": true
+ }
+}

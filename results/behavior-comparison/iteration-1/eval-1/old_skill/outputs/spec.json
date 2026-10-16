@@ -1,0 +1,86 @@
+{
+  "title": "Telemedicine adoption among elderly patients in rural areas: a systematic review",
+  "field": "Health informatics",
+  "years": [
+    2022,
+    2026
+  ],
+  "concepts": [
+    {
+      "name": "Telemedicine",
+      "terms": [
+        "telemedicine",
+        "telehealth",
+        "\"tele-health\"",
+        "\"digital health\"",
+        "eHealth",
+        "\"e-health\"",
+        "mHealth",
+        "\"mobile health\"",
+        "\"remote consultation\"",
+        "\"remote consultations\"",
+        "\"virtual care\"",
+        "\"video consultation\"",
+        "\"video consultations\"",
+        "teleconsultation*",
+        "\"remote patient monitoring\""
+      ]
+    },
+    {
+      "name": "Adoption and acceptance",
+      "terms": [
+        "adopt*",
+        "accept*",
+        "uptake",
+        "utili?ation",
+        "\"intention to use\"",
+        "willingness",
+        "barrier*",
+        "facilitator*",
+        "satisf*",
+        "\"technology acceptance\"",
+        "usability",
+        "engagement"
+      ]
+    },
+    {
+      "name": "Elderly patients",
+      "terms": [
+        "elderly",
+        "\"older adult\"",
+        "\"older adults\"",
+        "\"older people\"",
+        "\"older patient\"",
+        "\"older patients\"",
+        "senior*",
+        "geriatric*",
+        "\"older person\"",
+        "\"older persons\"",
+        "\"aging population\"",
+        "\"ageing population\""
+      ]
+    },
+    {
+      "name": "Rural areas (niche)",
+      "terms": [
+        "rural*",
+        "\"remote area\"",
+        "\"remote areas\"",
+        "\"underserved area\"",
+        "\"underserved areas\"",
+        "\"medically underserved\"",
+        "village*",
+        "countryside",
+        "\"non-urban\"",
+        "\"low-resource setting\"",
+        "\"low-resource settings\"",
+        "\"hard-to-reach\""
+      ]
+    }
+  ],
+  "scholar": [
+    "(telemedicine OR telehealth OR \"digital health\" OR teleconsultation) AND (adoption OR acceptance OR barriers OR uptake) AND (elderly OR \"older adults\" OR seniors) AND (rural OR remote)",
+    "(\"remote consultation\" OR \"video consultation\" OR mHealth OR eHealth) AND (\"intention to use\" OR utilization OR satisfaction OR facilitators) AND (\"older people\" OR \"older patients\" OR geriatric) AND (\"rural areas\" OR underserved)"
+  ],
+  "searchDate": "2026-10-12"
+}

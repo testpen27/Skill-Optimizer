@@ -1,0 +1,87 @@
+{
+ "title": "E-commerce Adoption among Small Businesses in Indonesia",
+ "field": "Business & Information Systems",
+ "years": [
+  2022,
+  2026
+ ],
+ "concepts": [
+  {
+   "name": "E-commerce and digital platforms",
+   "terms": [
+    "e-commerce",
+    "\"electronic commerce\"",
+    "ecommerce",
+    "\"online shop\"",
+    "\"online shops\"",
+    "\"online store\"",
+    "\"online selling\"",
+    "\"online marketplace\"",
+    "\"digital commerce\"",
+    "\"social commerce\"",
+    "Shopee",
+    "Tokopedia",
+    "Bukalapak",
+    "Lazada"
+   ]
+  },
+  {
+   "name": "Adoption and use",
+   "terms": [
+    "adopt*",
+    "accept*",
+    "\"intention to use\"",
+    "\"continuance intention\"",
+    "implement*",
+    "\"technology acceptance\"",
+    "\"technology organisation environment\"",
+    "\"technology organization environment\"",
+    "barrier*",
+    "determinant*",
+    "readiness",
+    "digitali?ation",
+    "usage"
+   ]
+  },
+  {
+   "name": "Small businesses",
+   "terms": [
+    "\"small business\"",
+    "\"small businesses\"",
+    "SME",
+    "SMEs",
+    "MSME",
+    "MSMEs",
+    "UMKM",
+    "\"small and medium enterprise\"",
+    "\"small and medium enterprises\"",
+    "\"small enterprise\"",
+    "\"small enterprises\"",
+    "\"micro enterprise\"",
+    "\"micro enterprises\"",
+    "\"micro business\"",
+    "\"micro businesses\"",
+    "entrepreneur*"
+   ]
+  },
+  {
+   "name": "Indonesia (niche)",
+   "terms": [
+    "Indonesia*",
+    "Jakarta",
+    "Surabaya",
+    "Bandung",
+    "Yogyakarta",
+    "Bali",
+    "Sumatra",
+    "Medan"
+   ]
+  }
+ ],
+ "scholar": [
+  "(\"e-commerce\" OR \"online marketplace\" OR \"social commerce\" OR Shopee OR Tokopedia) AND (adoption OR acceptance OR \"intention to use\" OR barriers) AND (SMEs OR MSMEs OR UMKM OR \"small business\") AND Indonesia",
+  "(\"electronic commerce\" OR \"online selling\" OR \"digital platform\" OR Lazada OR Bukalapak) AND (adoption OR readiness OR determinants OR \"technology acceptance\") AND (\"small enterprises\" OR \"micro enterprises\" OR entrepreneurs) AND (Indonesia OR Indonesian)"
+ ],
+ "malay": "(\"e-commerce\" OR \"toko online\" OR \"jual beli online\" OR marketplace OR Shopee OR Tokopedia) AND (adopsi OR penerimaan OR penggunaan OR penerapan OR kesiapan) AND (UMKM OR \"usaha kecil\" OR \"usaha mikro\" OR \"pelaku usaha\") AND Indonesia",
+ "searchDate": ""
+}

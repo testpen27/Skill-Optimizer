@@ -1,0 +1,106 @@
+[
+ {
+  "query": "need a scopus string for my thesis lit review. topic is AI chatbots and student learning in malaysian universities, 2020 to 2025. can u also do the WoS version",
+  "should_trigger": true
+ },
+ {
+  "query": "my supervisor wants the search strategy for my SLR 'Telemedicine adoption among elderly patients in rural areas: a systematic review' in the 3 column concept table format from the lecture slides, with the boolean strings for Scopus and Web of science",
+  "should_trigger": true
+ },
+ {
+  "query": "i searched remote work AND productivity in scopus and got 48,000 results, way too many for a review. how do i narrow it down without losing the good papers",
+  "should_trigger": true
+ },
+ {
+  "query": "WoS keeps saying invalid query for this: TS=(“social media” OR facebook OR instagram) AND (adolescent* OR teen*) AND (“body image” OR self-esteem) AND PY=(2021-2025). what did i do wrong",
+  "should_trigger": true
+ },
+ {
+  "query": "saya perlukan search string Google Scholar untuk tajuk kajian: penerimaan teknologi kewangan dalam kalangan usahawan mikro di Malaysia. boleh buat dalam bahasa Inggeris dan Melayu?",
+  "should_trigger": true
+ },
+ {
+  "query": "Can you put the search strategy for my review on e-wallet adoption into a word document? Table with database, date searched, filters applied, syntax used and link, plus the concept table",
+  "should_trigger": true
+ },
+ {
+  "query": "opus only gives me 12 results for climate anxiety in university students in Pakistan. widen it pls, here is what i used: TITLE-ABS-KEY(\"climate anxiety\" AND student* AND Pakistan)",
+  "should_trigger": true
+ },
+ {
+  "query": "google scholar cuts off my long boolean query halfway and the results look wrong. how can i shorten it? (\"gamification\" OR \"game-based learning\" OR \"serious games\" OR \"educational games\") AND (\"mathematics\" OR \"numeracy\") AND (\"primary school\" OR \"elementary school\" OR \"pupils\") AND (\"academic achievement\" OR \"motivation\" OR \"engagement\")",
+  "should_trigger": true
+ },
+ {
+  "query": "doing a PRISMA review on gamification in primary school maths. what keywords and synonyms should i use and how do i combine them with AND/OR for scopus, truncation and all",
+  "should_trigger": true
+ },
+ {
+  "query": "title of my paper: Digital transformation of newsrooms in Indonesia. give me keywords + boolean for scopus and google scholar, last 5 years only",
+  "should_trigger": true
+ },
+ {
+  "query": "find me 15 Q1 journal papers on microfinance and women's empowerment, split them into qualitative vs quantitative and put them in a literature review matrix for my phd",
+  "should_trigger": false
+ },
+ {
+  "query": "here's a pdf of a paper on telemedicine in rural clinics. summarise the methodology and limitations and tell me if the sample size is big enough",
+  "should_trigger": false
+ },
+ {
+  "query": "write the literature review section (about 1500 words) on social media and body image in adolescents. I'll paste my 8 references below, use them and cite in APA 7",
+  "should_trigger": false
+ },
+ {
+  "query": "write a SQL query on my orders table that finds customers who bought product A AND (product B OR product C) but have not had a refund in the last 90 days",
+  "should_trigger": false
+ },
+ {
+  "query": "explain boolean logic and de morgan's laws to me like i'm new to it, with a few worked examples I can try",
+  "should_trigger": false
+ },
+ {
+  "query": "i exported results from scopus and web of science as csv. merge them, remove duplicate DOIs, and make an excel sheet with the number of papers per year and per country",
+  "should_trigger": false
+ },
+ {
+  "query": "what's the difference between Scopus and Web of Science coverage? which one is better for education research and which is more respected for promotion in a Malaysian public university",
+  "should_trigger": false
+ },
+ {
+  "query": "how do i grep for a string across all files in my repo, case insensitive, and exclude the node_modules and dist folders",
+  "should_trigger": false
+ },
+ {
+  "query": "do a deep research report on the state of LLM evaluation methods in 2025, compare the main benchmarks and cite sources",
+  "should_trigger": false
+ },
+ {
+  "query": "write a regex that matches DOIs like 10.1016/j.compedu.2023.104567 in a big text file of references, and a python snippet to extract them",
+  "should_trigger": false
+ },
+ {
+  "query": "this WoS advanced search returns zero results and i dont know why: TS=((\"digital literacy\" OR \"digital skills\") AND (elderly OR seniors) AND \"Selangor\") AND PY=(2020-2025). pls fix",
+  "should_trigger": true
+ },
+ {
+  "query": "my lecturer says the 'adoption' part of my concept table has too few synonyms. can you expand that column for my scopus search on mobile banking among gen z",
+  "should_trigger": true
+ },
+ {
+  "query": "is this too long for google scholar? (\"mobile banking\" OR \"m-banking\" OR \"internet banking\" OR \"digital banking\" OR \"fintech\") AND (adoption OR acceptance OR usage OR intention OR trust OR satisfaction) AND (\"generation z\" OR students OR youth OR millennials) AND Malaysia",
+  "should_trigger": true
+ },
+ {
+  "query": "I have 212 abstracts exported from Scopus in a csv. help me screen them for inclusion in my SLR using these criteria: empirical, 2020 onwards, about teachers",
+  "should_trigger": false
+ },
+ {
+  "query": "i need to pick 5 keywords to put under the abstract of my journal manuscript on esports and mental health. which ones would help indexing",
+  "should_trigger": false
+ },
+ {
+  "query": "I have the counts from my search: 1,204 identified, 312 duplicates removed, 892 screened, 140 full text, 38 included. draw me the PRISMA 2020 flow diagram",
+  "should_trigger": false
+ }
+]
