@@ -1,8 +1,8 @@
-# search-string: robustness pass
+# research-search-string: robustness pass
 
-Skill: `search-string` (Boolean search strings for Scopus, Web of Science and
+Skill: `research-search-string`, renamed from `search-string` (Boolean search strings for Scopus, Web of Science and
 Google Scholar). Input was the uploaded `search-string.skill`. Output is
-`skills/search-string/` and `dist/search-string.skill`.
+`skills/research-search-string/` and `dist/research-search-string.skill`.
 
 ## Summary
 
@@ -116,9 +116,15 @@ fit the budget. Set 1 used 8 runs per query; set 2 used 5.
 
 ## Files
 
-- `skills/search-string/`: the skill. `dist/search-string.skill`: package.
+- `skills/research-search-string/`: the skill. `dist/research-search-string.skill`: package.
 - `evals/trigger-eval.json`, `trigger-eval-v2.json`, `trigger-holdout.json`:
   trigger sets. `evals/evals.json`: behavior tasks and assertions.
   `evals/original-description.txt`, `optimized-description.txt`.
 - `results/`: raw loop output, hold-out validation, behavior-comparison outputs.
 - `scripts/test_search_tool.py`: regression tests for the script.
+
+## Rename
+
+Renamed from `search-string` to `research-search-string` at the owner's request. The
+evaluation above was run under the old name; files in `results/` keep the old
+name because they are the raw record of those runs.

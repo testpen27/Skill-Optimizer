@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression tests for skills/search-string/scripts/search_tool.js.
+"""Regression tests for skills/research-search-string/scripts/search_tool.js.
 
     python3 scripts/test_search_tool.py
 
@@ -12,7 +12,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-TOOL = Path(__file__).resolve().parent.parent / "skills/search-string/scripts/search_tool.js"
+TOOL = Path(__file__).resolve().parent.parent / "skills/research-search-string/scripts/search_tool.js"
 EXAMPLE = TOOL.parent.parent / "examples/example_spec.json"
 failures = []
 
