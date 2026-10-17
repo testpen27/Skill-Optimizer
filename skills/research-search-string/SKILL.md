@@ -1,92 +1,165 @@
 ---
 name: research-search-string
-description: 'Use this skill for anything involving Boolean search queries for academic literature databases: Scopus (users may say "Opus"), Web of Science (WoS) and Google Scholar. Build ready-to-paste search strings, keywords or a concept table from a research title, topic, question or SLR title. Also use it to debug, fix, shorten, widen or narrow a search the user already wrote, including when a database rejects it with "invalid query", a syntax error, zero results, or too many or too few hits. Handles field tags (TS=, TITLE-ABS-KEY, PY=), AND/OR/NOT logic, truncation (*), wildcards (?), phrase quotes, country niches, date limits, Malay or other local-language strings, and exporting the search strategy as a Word file. Not for screening abstracts, general Boolean or SQL help, or finding specific papers.'
+description: 'Build, run and document Boolean literature searches for Scopus (users may say "Opus"), Web of Science (WoS) and Google Scholar. Use it whenever someone gives a research title, topic, question or systematic, scoping or bibliometric review and wants search strings, keywords or a concept table; wants the strings run and the hit counts recorded; wants the free or full-text papers a search finds downloaded into a folder; or wants a search strategy report or PRISMA flow diagram for their database search. Also use it to debug, fix, shorten, widen or narrow a search they already wrote, including an "invalid query", zero results, or too many or too few hits. Handles field tags (TS=, TITLE-ABS-KEY, PY=), AND/OR/NOT, truncation (*), wildcards (?), phrase quotes, country niches, several year ranges, broad to narrow tiers, and Malay or other local-language strings. Not for screening abstracts, writing the review itself, a literature review matrix, or general Boolean or SQL help.'
 ---
 
 # research-search-string
 
-Turn a research title or topic into search strings that can be pasted straight into Scopus, Web of Science and Google Scholar. The three databases use different syntax, so each gets its own version of the same logic.
+Turn a research topic into tested search strings for Scopus, Web of Science and Google Scholar, run them, record how many hits each one gets, collect the papers that are legally free, and hand over a PDF report with every string, its hit count and a PRISMA 2020 flow diagram.
 
 "Opus" almost always means Scopus. Use Scopus without correcting the user.
 
-## What you need from the user
+The whole job has nine steps. Not every request needs all of them: someone who pastes a broken string only needs the checker (see "When the user brings their own string"). Ask before moving from strings (steps 1 to 4) to collecting papers (steps 5 to 9), because that part takes their time in the browser.
 
-Take it from the message and the conversation first. Ask at most one short question, and only if something essential is missing. A title that is vague but usable is not missing: make sensible choices, say what you assumed, and let the hit counts steer the next round.
+## Step 0: know what you can do here
 
-- **Topic or title** (required).
-- **Niche** such as a country or sector (optional, e.g. "Malaysia only"). It becomes its own concept.
-- **Date range** (optional). Default to the last five calendar years including the current one, working from today's date (in 2026 that is 2022 to 2026). The script does this when `years` is left out. Say which range you used.
-- **Field** (optional). Infer it from the topic. It only affects which synonyms and journal vocabulary you choose.
+Check once, at the start, and say plainly what will not be possible.
 
-## Workflow
+- **Browser.** The built-in browser in the Claude desktop app (tools `mcp__Claude_Browser__*` or `mcp__remote-devices__Claude_Browser__*`) keeps the user's university sign-ins between sessions. Load the `built-in-browser` skill before its first use. Claude in Chrome (`mcp__claude-in-chrome__*`, `chrome-browser` skill) works too. With neither, the user runs the searches and tells you the counts.
+- **Firecrawl** (`mcp__Firecrawl__*` or the `firecrawl` skill) finds free copies on the open web. Without it, rely on OpenAlex alone.
+- **Where files go.** If you are working on the user's own computer (Claude desktop app, Claude Code or Cowork with access to their home folder), you can save into a folder they choose. In claude.ai on the web you work in a sandbox: save to `/mnt/user-data/outputs/` and share with `present_files`; their browser puts the files in Downloads when they click.
+- **Scripts** need Node (strings), Python 3 (everything else) and `reportlab` for the PDF (`pip install reportlab` if missing).
 
-1. **Split the topic into 3 or 4 concepts.** Mirror the lecturer-style table: Concept 1 AND Concept 2 AND Concept 3 (AND Concept 4 for the niche).
-   - Concept 1: the main subject (e.g. OTT streaming, newsrooms).
-   - Concept 2: the action, outcome or process (e.g. adoption, continuance, transformation). Use many synonyms here, the way a verb list like enhance / improve / strengthen / boost works.
-   - Concept 3: the population or context (e.g. consumers, journalists).
-   - Concept 4: the niche, if any.
-2. **Choose 6 to 14 terms per concept.** Every term should earn its place.
-   - Put multi-word terms in double quotes: `"video on demand"`.
-   - Use truncation for word families: `adopt*` finds adopt, adoption, adopting. Keep at least 3 characters before the `*`.
-   - Use `*` for spelling variants inside a word: `behavio*r` matches behavior and behaviour in both Scopus and Web of Science. `?` means exactly one character, so `digitali?ation` works but `behavio?r` misses the American spelling.
-   - Quoted phrases need care in Web of Science, because it does not match plurals or UK/US spellings inside quotes. Truncate the last word (`"streaming service*"`) or use `?` for spelling (`"news organi?ation*"`). Both Scopus and Web of Science accept `*` and `?` inside quotes; `$` is Web of Science only and is not allowed in quotes. Google Scholar accepts none of these, so write the variants out there.
-   - Add acronyms, brand names and local outlet names when the niche is a country. Studies often name the outlet or place instead of the country.
-3. **Write a spec file and run the script.** Save the concepts as JSON (see `examples/example_spec.json`) and run:
+## Step 1: ask first
+
+Do not write a string until you know the niche. Ask everything in one short message, filling in what the user already told you so they only correct it:
+
+1. Field or discipline.
+2. Working title or research question.
+3. Population or context (who or what is studied).
+4. Niche: country, region, sector or platform, if any.
+5. Year range or ranges. Ask outright; several are fine (for example 2016 to 2020 and 2021 to 2026, to compare before and after an event). If they have no preference, suggest the last five calendar years including the current one, and say which years that is.
+6. Review type: systematic, scoping, bibliometric or narrative.
+7. Document types and languages (journal articles only? conference papers? English only?).
+8. Which databases their university gives them: Scopus, Web of Science, or neither.
+9. Roughly how many papers they hope to end up screening.
+
+Keep the answers; they go in the report as the search profile.
+
+## Step 2: build the strings
+
+1. **Split the topic into 3 or 4 concepts**: Concept 1 the main subject, Concept 2 the action or outcome (many synonyms), Concept 3 the population or context, Concept 4 the niche.
+2. **Choose 6 to 14 terms per concept.**
+   - Quote multi-word terms: `"video on demand"`.
+   - Truncate word families: `adopt*`. Keep at least 3 characters before `*`.
+   - Use `*` for spelling variants inside a word: `behavio*r`. `?` is exactly one character, so `behavio?r` misses "behavior".
+   - In Web of Science a quoted phrase does not match plurals or UK/US spellings, so truncate the last word (`"streaming service*"`) or use `?` (`"news organi?ation*"`). Scopus and Web of Science both accept `*` and `?` inside quotes; `$` is Web of Science only. Google Scholar accepts none of these.
+   - When the niche is a country, add place, brand and outlet names: studies often name the outlet, not the country.
+3. **Write the spec** (see `examples/example_spec.json`) with `ranges` for the year ranges and, if the default does not fit, `tiers`:
+   - `broad`: subject and outcome only (concepts 1 and 2).
+   - `balanced`: adds the niche or the population.
+   - `narrow`: every concept.
+4. **Run the checker and fix every warning** you cannot explain away:
    ```
    node scripts/search_tool.js strings spec.json
    ```
-   It builds the Scopus and Web of Science strings, prints character counts and flags common mistakes (unbalanced quotes or brackets, curly quotes pasted from a phone or Word, operator words inside a term, wildcards that are too short, Scholar strings that are too long or use `*`). Read the warnings and fix the spec until they are gone or you can say why one does not apply. If the script reports an error instead, it is telling you what is wrong with the spec file; fix that and rerun. If Node is not available, build the strings by hand with the formula in `references/syntax.md` and check them against the same rules.
-4. **Write the Google Scholar versions by hand.** Scholar has no truncation or wildcards and cuts queries at about 256 characters, so write two short versions that each pick the strongest spelled-out terms. Version A uses the core subject, outcome and population terms. Version B swaps in the niche, brand and outlet names so that it finds papers that name the place or platform but not the general concept. Put them in the spec under `scholar` and rerun the script to check the length.
-5. **Add a separate local-language string** when the niche is a country whose research is often published in its own language (for Malaysia, many Jurnal Komunikasi papers have Malay titles). Put it under `malay`, or under `local` with `localLanguage` set (for example `"Indonesian"`) for any other language. Tell the user to run it as its own search and merge the results. Do not join it to the English string with AND, because then every record must contain both English and local terms and most good papers drop out.
-6. **Give the user the result.** Read `references/syntax.md` if you are unsure about a database feature.
+5. **Write two Google Scholar strings by hand** under `scholar` (no truncation, 256 characters or fewer): A with the core terms, B swapping in the niche, brand and outlet names. Rerun the checker.
+6. **Add a local-language string** under `local` with `localLanguage` (for Malaysia, Malay) when local journals publish in that language. It runs as its own search and is merged afterwards, never joined to the English string with AND.
+7. **Make the search log**, the one file that records every search from here on:
+   ```
+   node scripts/search_tool.js plan spec.json > search_log.json
+   ```
+   Add the interview answers to it as `"profile": {"Field": "...", ...}`.
+
+Show the user the strings now (format below), before running anything.
+
+## Step 3: run the searches and record the hits
+
+Read `references/browser-runs.md` first. In short: ask the user to open the browser pane and sign in through their university, then run each Scopus and Web of Science string yourself in Advanced Search, one at a time, while they watch, and read the result count off the page. Stop at any CAPTCHA, "unusual traffic" or access-denied page and hand that search to the user; never try to get past a bot check.
+
+After each search, write the count into its row in `search_log.json`: `"hits"`, `"source": "browser"` (or `"user"` if they told you), `"date"`. A count nobody read stays `null`. Never fill in an estimate, because the report presents these numbers as facts.
+
+For a free cross-check that needs no login, also run:
+```
+python3 scripts/openalex.py count search_log.json
+```
+It adds an OpenAlex row per tier and year range, labelled as an approximation. OpenAlex is free, but without a key every user on one network shares a small daily budget; if it says the budget is used up, suggest a free key (`OPENALEX_API_KEY`, from openalex.org/settings/api).
+
+## Step 4: choose the search with the user
+
+Show a small table of hits per tier and range. As a guide, 100 to 2,000 records in Scopus or Web of Science is workable for a review. Over that, use a narrower tier or tighten Concept 2; under about 50, use a broader tier or widen the niche terms. Re-run only the strings you changed. Record the decision in the log as `"chosen": {"tier": "...", "range": "...", "reason": "..."}`.
+
+## Step 5: get the records
+
+The reliable source is the database's own export. Ask the user to click Export in Scopus (CSV, with DOI) and Web of Science (tab-delimited or plain text, full record) for the chosen search; an export is a bulk download, so it is theirs to click. Then:
+```
+python3 scripts/openalex.py import scopus.csv savedrecs.txt --out records.json
+```
+It merges the files and removes duplicates by DOI, then by title and year; the counts feed the PRISMA diagram. If the user has no Scopus or Web of Science access, use OpenAlex instead:
+```
+python3 scripts/openalex.py list search_log.json --tier balanced --range 2021-2026 --out records.json
+```
+
+## Step 6: find the free copies
+
+1. `python3 scripts/openalex.py enrich records.json` marks every DOI with a legal open-access copy (OpenAlex includes Unpaywall's data).
+2. For records still without one, use Firecrawl to look for the paper's title as a PDF on university repositories, the author's page, arXiv or other preprint servers, and the journal's own site if it is open access. Put any direct PDF link you find into that record's `pdf_url` and set `"is_oa": true`.
+3. If the user ran a Google Scholar search in the browser, the `[PDF]` links on that results page are fair to collect the same way. Do not send Firecrawl to Google Scholar: it blocks automated access.
+
+Never use Sci-Hub, LibGen, Anna's Archive or similar sites, and never scrape ResearchGate or Academia.edu.
+
+## Step 7: download
+
+Ask where to put the papers:
+- **On the user's computer**: a folder they name, or their Downloads folder (default a subfolder named after the review).
+- **In claude.ai on the web**: say the files will arrive through the download links, so their browser saves them to Downloads.
+
+If more than 50 papers are free, say how many and confirm before starting. Then:
+```
+python3 scripts/retrieve.py download records.json --dest "<folder>" --max 50
+```
+It only fetches free copies, obeys each site's robots.txt, waits between requests to the same site, and keeps a file only if it is a complete PDF. A "failed" row usually means the link was a landing page or a bot check; try the next source for that paper or leave it for the user. On the web, zip the folder and share it.
+
+## Step 8: paywalled papers
+
+These are fetched through the user's own library access, and the publisher's terms decide who clicks. Read `references/publisher-terms.md`. In short:
+
+- **Elsevier (ScienceDirect)** forbids automation: open each article in a new tab and ask the user to click Download.
+- **Other publishers**: check the terms first, as that file describes. Only where the terms clearly allow automated downloading may you click Download yourself, one paper at a time. Otherwise the user clicks.
+
+After each download, file it:
+```
+python3 scripts/retrieve.py adopt "<folder>/manifest.json" --file "<downloaded file>" --doi <doi> --move
+```
+
+## Step 9: the PDF report
+
+Ask whether they have screening numbers yet (records excluded at title and abstract, reports assessed, excluded with reasons, studies included). Put any they give under `"prisma"` in the log; the rest print as "to be completed", never as a guess. Then:
+```
+python3 scripts/build_report.py --log search_log.json --records records.json --manifest "<folder>/manifest.json" --out search_report.pdf
+```
+The report holds the search profile, the concepts and tiers, every string with its hit count, how and when the count was recorded, the PRISMA 2020 flow diagram, and the retrieved and not-retrieved papers. Save it next to the papers and share it.
+
+## Reply format for the strings
+
+Easy to copy on a phone:
+- One line with the concepts, tiers and year ranges.
+- A code block per string: Scopus and Web of Science per tier, Scholar A and B, and the local-language string.
+- Two or three lines on what happens next.
 
 ## When the user brings their own string
 
-Run it through the checker before you change anything, so you fix what is actually broken and not what looks odd:
-
+Run the checker before changing anything, so you fix what is broken, not what looks odd:
 ```
-node scripts/search_tool.js check "their string here" [scopus|wos|scholar]
+node scripts/search_tool.js check "their string" [scopus|wos|scholar]
 ```
+- **Too many results**: narrower tier, tighter Concept 2 or dates, or drop broad stems such as `innovat*`.
+- **Too few**: drop Concept 3 first, then widen the niche terms, then the dates.
+- **Shorten it**: cut the weakest terms from the longest concept, keeping every concept.
+- **Mixed-up databases**: a Scopus string in Scholar, or `TS=` in Scopus, is the usual cause of zero results.
 
-It guesses the database from the field codes when you leave it out. Then:
-
-- **Too many results:** tighten Concept 2 or the date range, or drop broad stems such as `innovat*` and `user*`.
-- **Too few results:** drop Concept 3 first, then widen the niche terms, then the date range.
-- **Shorten it:** cut the weakest terms from the longest concept, not the shortest. Keep all the concepts.
-- **Mixed up databases:** a Scopus string pasted into Scholar, or `TS=` inside Scopus, is the most common reason for zero results.
-
-Show what you changed and why in one or two lines, then give the new string in a code block.
+Say what you changed in one or two lines, then give the new string in a code block.
 
 ## Other databases
 
-PubMed, IEEE Xplore, ProQuest, EBSCO and similar use different field tags and wildcard rules, and this skill has not verified them. Still build the concept table, since the logic carries over, then give the Boolean skeleton and say the user needs to adapt the field tags and wildcards to that database's help page. Do not invent field codes.
+PubMed, IEEE Xplore, ProQuest and EBSCO use different field tags and wildcard rules that this skill has not verified. Build the concept table and the Boolean skeleton, and tell the user to adapt the field tags from that database's help page. Do not invent field codes.
 
-## Reply format
+## Things that went wrong before
 
-Keep it short and easy to copy on a phone:
-
-- One line listing the concepts and the date range used.
-- A separate code block for each: Scopus, Web of Science, Google Scholar A, Google Scholar B, and the local-language string if there is one.
-- Two or three lines on what to do next. Always include: run the strings, then send back the hit counts so you can tighten or widen them.
-
-Do not claim the strings were tested. You cannot open Scopus or Web of Science, so say the user has to run them. As a rough guide, Scopus or Web of Science returning between about 100 and 2,000 records is workable for a literature review. Above that, tighten Concept 2 or the date range. Below about 50, drop Concept 3 first, then widen the niche terms.
-
-## Word file (only when asked)
-
-If the user asks for a Word file, a table, or "the document", build it with:
-```
-node scripts/search_tool.js docx spec.json output.docx
-```
-Pass an array of specs to put several titles in one file. The file has, per title, the concept table in lecturer-slide format and a Search result table (database, date searched, filters, syntax used, link). Fill `searchDate` and `links` in the spec if the user gives search links. The script creates the output folder if it is missing.
-
-Where to save it depends on where you are running. In claude.ai, save to `/mnt/user-data/outputs/` and share it with `present_files`. In Claude Code or Cowork, save it in the working folder (or wherever the user said) and give the path. If the `docx` module is missing the script says so; install it with `npm install docx`, or follow the docx skill and keep the same layout. The strings in the reply do not depend on the Word file, so give them either way.
-
-## Things that went wrong before, so check for them
-
-- **Google Scholar "Review articles" filter.** A Scholar link containing `as_rr=1` has the Review articles filter on, which hides most primary studies. If the user shares a Scholar link, check for it and tell them to switch it off.
-- **Identical results for different Scholar versions** usually mean one block is limiting the search, often because English and local-language strings were joined with AND.
-- **Scopus and Web of Science links from a university proxy** only open while logged in, so you cannot read the result counts. Ask the user for the counts.
-- **Concept 4 is a topic filter.** Do not replace it with an affiliation-country filter, which finds local authors writing about other countries and misses foreign authors writing about the niche.
-- **Curly quotes.** Text copied from a phone, Word or a chat app often carries curly quotes. Scopus and Web of Science do not read them as phrase marks, so the phrase turns into loose words. The script converts them in a spec and the `check` mode flags them in a pasted string.
-- **Lower-case `or` and `and`.** Scholar only reads `OR` in capitals, and the other two databases are safest with capitals too.
-- **Scholar shows at most the first 1,000 results** of any query, so record how many were screened.
+- **Scholar's "Review articles" filter** (`as_rr=1` in the link) hides most primary studies. Check shared links for it.
+- **Identical Scholar counts for different versions** usually mean English and local-language terms were joined with AND.
+- **Concept 4 is a topic filter**, not an affiliation-country filter.
+- **Curly quotes** from phones, Word or chat apps stop Scopus and Web of Science reading a phrase as a phrase. The checker flags and converts them.
+- **Lower-case `or`**: Scholar only reads `OR` in capitals.
+- **Scholar shows at most 1,000 results** per query, and its counts are approximate ("About 12,300").
+- **A "PDF" link that is really a web page** is the most common download failure. The downloader rejects anything that is not a complete PDF.

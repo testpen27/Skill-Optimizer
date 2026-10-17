@@ -52,3 +52,15 @@ A bare word such as `adoption` is lemmatized in Web of Science, so it finds adop
 
 For a country niche, a short second string in the local language catches papers in local journals. Keep it separate from the English string and merge the results. Example (Malaysia, streaming):
 `(OTT OR penstriman OR Netflix) AND (pengguna OR penonton OR khalayak OR penerimaan OR penggunaan OR kepuasan) AND Malaysia`
+
+## OpenAlex (free cross-check)
+
+`scripts/openalex.py` turns the Scopus concept blocks into an OpenAlex query (checked against the OpenAlex help pages, October 2026):
+
+- It searches title, abstract and keywords (`search.title_abstract_keywords`), the closest match to `TITLE-ABS-KEY`.
+- Wildcards only work in OpenAlex's exact (unstemmed) search, so a query with `*` or `?` uses `search.title_abstract_keywords.exact`; one without uses the stemmed search, which matches plurals.
+- OpenAlex needs 3 letters before a wildcard and has no leading wildcard, so such terms are dropped with a note. `$` becomes `*`.
+- Request URLs are limited to about 4 KB; a longer query is reported as not counted rather than cut.
+- Without an API key all users on one network share a small daily budget. A free key from openalex.org/settings/api, set as `OPENALEX_API_KEY`, gives each user their own.
+
+Its counts differ from Scopus and Web of Science because the coverage differs. The report labels them as approximations.

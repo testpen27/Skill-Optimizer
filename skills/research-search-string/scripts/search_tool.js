@@ -1,23 +1,25 @@
 #!/usr/bin/env node
 /*
  * search_tool.js: build and check Boolean search strings for Scopus,
- * Web of Science and Google Scholar, and optionally write a Word file.
+ * Web of Science and Google Scholar, in tiers (broad / balanced / narrow)
+ * and for one or more year ranges.
  *
  * Usage:
- *   node search_tool.js strings spec.json          prints the strings and any warnings
- *   node search_tool.js docx spec.json out.docx    writes the Word file
+ *   node search_tool.js strings spec.json     prints every string and any warnings
+ *   node search_tool.js plan spec.json        prints the search log skeleton (JSON):
+ *                                             one row per tier x year range x database,
+ *                                             with the string and a ready search URL
  *   node search_tool.js check "query" [scopus|wos|scholar]   lints a pasted string
  *
- * spec.json is one object, or an array of objects (one per research title):
+ * spec.json is one object:
  * {
  *   "title": "OTT Streaming Adoption among Malaysian Consumers: A Systematic Literature Review",
  *   "field": "Communication & Media Studies",
- *   "years": [2022, 2026],
- *   "concepts": [ { "name": "OTT and streaming", "terms": ["\"video on demand\"", "OTT", "adopt*"] }, ... ],
- *   "scholar": ["short string A", "short string B"],      // no truncation, 256 characters or fewer
- *   "malay": "optional separate Malay-language string",   // or "local": "...", "localLanguage": "Indonesian"
- *   "searchDate": "6 Oct 2026",                             // optional
- *   "links": { "scopus": "url", "wos": "url", "scholar": "url", "scholarLocal": "url" }  // optional
+ *   "ranges": [[2016, 2020], [2021, 2026]],      // or "years": [2022, 2026] for one range
+ *   "concepts": [ { "name": "OTT and streaming", "terms": ["\"video on demand\"", "OTT"] }, ... ],
+ *   "tiers": { "broad": [1, 2], "balanced": [1, 2, 3], "narrow": [1, 2, 3, 4] },   // optional; concept numbers
+ *   "scholar": ["short string A", "short string B"],   // no truncation, 256 characters or fewer
+ *   "local": "optional separate local-language string", "localLanguage": "Malay"   // "malay" also accepted
  * }
  * Terms are written exactly as they should appear in the database,
  * so phrases carry their own double quotes.
@@ -54,10 +56,30 @@ function normalise(spec, label) {
     return { name: c.name || `Concept ${i + 1}`, terms };
   });
   const thisYear = new Date().getFullYear();
-  let [y0, y1] = Array.isArray(spec.years) && spec.years.length === 2 ? spec.years.map(Number) : [thisYear - 4, thisYear];
-  if (!Number.isInteger(y0) || !Number.isInteger(y1)) fail(`${at}"years" must be two whole years such as [2022, 2026].`);
-  if (y0 > y1) { notes.push(`${at}years were reversed, swapped to ${y1}-${y0}`); [y0, y1] = [y1, y0]; }
-  if (y0 < 1900 || y1 > thisYear + 1) fail(`${at}years ${y0}-${y1} look wrong; expected between 1900 and ${thisYear + 1}.`);
+  const rawRanges = Array.isArray(spec.ranges) && spec.ranges.length ? spec.ranges
+    : Array.isArray(spec.years) && spec.years.length === 2 ? [spec.years] : [[thisYear - 4, thisYear]];
+  const ranges = rawRanges.map((r, i) => {
+    const what = rawRanges.length > 1 ? `year range ${i + 1}` : 'years';
+    if (!Array.isArray(r) || r.length !== 2) fail(`${at}${what} must be two whole years such as [2022, 2026].`);
+    let [y0, y1] = r.map(Number);
+    if (!Number.isInteger(y0) || !Number.isInteger(y1)) fail(`${at}${what} must be two whole years such as [2022, 2026].`);
+    if (y0 > y1) { notes.push(`${at}${what} were reversed, swapped to ${y1}-${y0}`); [y0, y1] = [y1, y0]; }
+    if (y0 < 1900 || y1 > thisYear + 1) fail(`${at}${what} ${y0}-${y1} look wrong; expected between 1900 and ${thisYear + 1}.`);
+    return [y0, y1];
+  });
+  const k = concepts.length;
+  let tiers = spec.tiers;
+  if (tiers === undefined || tiers === null) {
+    // Broad drops the population and niche blocks; narrow keeps every block.
+    tiers = k >= 4 ? { broad: [1, 2], balanced: [1, 2, 3], narrow: concepts.map((_, i) => i + 1) }
+      : k === 3 ? { broad: [1, 2], balanced: [1, 2, 3] }
+      : { main: concepts.map((_, i) => i + 1) };
+  }
+  if (typeof tiers !== 'object' || Array.isArray(tiers) || !Object.keys(tiers).length) fail(`${at}"tiers" must map a tier name to concept numbers, e.g. {"broad": [1, 2]}.`);
+  const tierList = Object.entries(tiers).map(([name, nums]) => {
+    if (!Array.isArray(nums) || !nums.length || nums.some(n => !Number.isInteger(n) || n < 1 || n > k)) fail(`${at}tier "${name}" must list concept numbers from 1 to ${k}.`);
+    return { name, concepts: [...new Set(nums)].sort((a, b) => a - b) };
+  });
   let scholar = spec.scholar === undefined || spec.scholar === null ? [] : spec.scholar;
   if (typeof scholar === 'string') scholar = [scholar];
   if (!Array.isArray(scholar) || scholar.some(x => typeof x !== 'string')) fail(`${at}"scholar" must be an array of strings.`);
@@ -67,21 +89,52 @@ function normalise(spec, label) {
   const language = typeof spec.localLanguage === 'string' && spec.localLanguage.trim()
     ? spec.localLanguage.trim() : (spec.local ? 'local-language' : 'Malay');
   return Object.assign({}, spec, {
-    concepts, years: [y0, y1], notes, language,
+    concepts, ranges, years: ranges[0], tiers: tierList, notes, language,
     scholar: scholar.map(tidy).filter(Boolean), malay: tidy(localRaw || '')
   });
 }
 
-function buildStrings(spec) {
-  const [y0, y1] = spec.years;
-  const body = spec.concepts.map(c => '(' + join(c.terms) + ')').join(' AND ');
+function buildStrings(spec, tier, range) {
+  const [y0, y1] = range || spec.ranges[0];
+  const nums = tier ? tier.concepts : spec.concepts.map((_, i) => i + 1);
+  const body = nums.map(n => '(' + join(spec.concepts[n - 1].terms) + ')').join(' AND ');
   return {
-    y0, y1,
+    y0, y1, body,
     scopus: `TITLE-ABS-KEY(${body}) AND PUBYEAR > ${y0 - 1} AND PUBYEAR < ${y1 + 1}`,
     wos: `TS=(${body}) AND PY=(${y0}-${y1})`,
     scholar: spec.scholar,
     malay: spec.malay
   };
+}
+
+const scholarUrl = (q, y0, y1) => 'https://scholar.google.com/scholar?' +
+  `q=${encodeURIComponent(q)}&as_ylo=${y0}&as_yhi=${y1}&hl=en`;
+
+/* One row per tier x year range x database: the skeleton of the search log. */
+function plan(spec) {
+  const runs = [];
+  spec.ranges.forEach(range => {
+    const [y0, y1] = range;
+    spec.tiers.forEach(tier => {
+      const s = buildStrings(spec, tier, range);
+      const row = (database, string, url) => runs.push({
+        tier: tier.name, range: `${y0}-${y1}`, database, string, url: url || null,
+        hits: null, source: null, date: null, note: ''
+      });
+      row('Scopus', s.scopus, 'https://www.scopus.com/search/form.uri?display=advanced');
+      row('Web of Science', s.wos, 'https://www.webofscience.com/wos/woscc/advanced-search');
+    });
+    // Scholar strings are written by hand and shared by every tier; only the dates change.
+    spec.scholar.forEach((g, i) => runs.push({
+      tier: 'all', range: `${y0}-${y1}`, database: `Google Scholar ${String.fromCharCode(65 + i)}`,
+      string: g, url: scholarUrl(g, y0, y1), hits: null, source: null, date: null, note: ''
+    }));
+    if (spec.malay) runs.push({
+      tier: 'all', range: `${y0}-${y1}`, database: `Google Scholar (${spec.language})`,
+      string: spec.malay, url: scholarUrl(spec.malay, y0, y1), hits: null, source: null, date: null, note: ''
+    });
+  });
+  return runs;
 }
 
 // A bare AND / OR / NOT (outside quotes) as a whole term, or hiding inside a
@@ -151,145 +204,34 @@ function validate(spec) {
   });
   if (plurals.length) w.push(`Web of Science does not match plurals inside quotes. If any of these can appear in the plural, truncate the last word, e.g. "streaming service*" (works in Scopus and Web of Science): ${plurals.slice(0, 6).join(', ')}${plurals.length > 6 ? ` and ${plurals.length - 6} more` : ''}.`);
   if (total > 80) w.push(`${total} terms in total. Scopus and Web of Science will run it, but a string this long is hard to debug and usually returns noise.`);
-  const s = buildStrings(spec);
-  w.push(...lintString(s.scopus, 'scopus', 'Scopus string'));
-  w.push(...lintString(s.wos, 'wos', 'Web of Science string'));
+  spec.tiers.forEach(tier => {
+    const s = buildStrings(spec, tier, spec.ranges[0]);
+    w.push(...lintString(s.scopus, 'scopus', `Scopus string (${tier.name})`));
+    w.push(...lintString(s.wos, 'wos', `Web of Science string (${tier.name})`));
+  });
   spec.scholar.forEach((g, i) => w.push(...lintString(g, 'scholar', `Scholar string ${String.fromCharCode(65 + i)}`)));
   if (spec.malay) w.push(...lintString(spec.malay, 'scholar', `${spec.language} string`));
   if (!spec.scholar.length) w.push('No Scholar strings yet. Scholar cannot take the long Scopus string, so write two short ones under "scholar".');
-  return w.concat(spec.notes.map(n => 'Fixed: ' + n));
+  return [...new Set(w)].concat(spec.notes.map(n => 'Fixed: ' + n));
 }
 
 function printStrings(spec) {
-  const s = buildStrings(spec);
   console.log(`# ${spec.title || 'Untitled'}\n`);
-  console.log('## Scopus (Advanced search)\n' + s.scopus + `\n(${s.scopus.length} characters)\n`);
-  console.log('## Web of Science (Advanced search, Core Collection)\n' + s.wos + `\n(${s.wos.length} characters)\n`);
-  s.scholar.forEach((g, i) => console.log(`## Google Scholar, version ${String.fromCharCode(65 + i)}\n${g}\n(${g.length} characters)\n`));
-  if (s.malay) console.log(`## Google Scholar, ${spec.language}-language (run separately)\n${s.malay}\n(${s.malay.length} characters)\n`);
+  spec.concepts.forEach((c, i) => console.log(`Concept ${i + 1}: ${c.name}`));
+  console.log('Tiers: ' + spec.tiers.map(t => `${t.name} = concepts ${t.concepts.join(', ')}`).join('; ') + '\n');
+  spec.ranges.forEach(range => {
+    const [y0, y1] = range;
+    console.log(`=============== ${y0} to ${y1} ===============\n`);
+    spec.tiers.forEach(tier => {
+      const s = buildStrings(spec, tier, range);
+      console.log(`## Scopus, ${tier.name} (Advanced search)\n${s.scopus}\n(${s.scopus.length} characters)\n`);
+      console.log(`## Web of Science, ${tier.name} (Advanced search, Core Collection)\n${s.wos}\n(${s.wos.length} characters)\n`);
+    });
+    spec.scholar.forEach((g, i) => console.log(`## Google Scholar, version ${String.fromCharCode(65 + i)} (set ${y0} to ${y1} in the left menu)\n${g}\n(${g.length} characters)\n${scholarUrl(g, y0, y1)}\n`));
+    if (spec.malay) console.log(`## Google Scholar, ${spec.language}-language (run separately)\n${spec.malay}\n(${spec.malay.length} characters)\n${scholarUrl(spec.malay, y0, y1)}\n`);
+  });
   const w = validate(spec);
   console.log(w.length ? '## Warnings\n- ' + w.join('\n- ') : '## Warnings\nNone.');
-}
-
-/* ---------- Word output ---------- */
-function writeDocx(specs, outPath) {
-  let docx;
-  try { docx = require('docx'); } catch (e) {
-    fail('The "docx" module is not installed, so the Word file cannot be built. Run "npm install docx" (or use the docx skill with the same layout). The search strings themselves are unaffected: use "strings" mode.');
-  }
-  const {
-    Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthType,
-    ShadingType, AlignmentType, BorderStyle, HeadingLevel, PageOrientation,
-    VerticalAlign, ExternalHyperlink
-  } = docx;
-  const FONT = 'Calibri';
-  const bd = { style: BorderStyle.SINGLE, size: 4, color: 'BFBFBF' };
-  const borders = { top: bd, bottom: bd, left: bd, right: bd };
-
-  const cell = (text, width, o = {}) => new TableCell({
-    width: { size: width, type: WidthType.DXA },
-    shading: { type: ShadingType.CLEAR, fill: o.fill || 'FFFFFF', color: 'auto' },
-    margins: { top: 40, bottom: 40, left: 90, right: 90 },
-    verticalAlign: o.top ? VerticalAlign.TOP : VerticalAlign.CENTER,
-    borders,
-    children: (Array.isArray(text) ? text : [text]).map(t => new Paragraph({
-      alignment: o.align || AlignmentType.LEFT, spacing: { before: 0, after: 0 },
-      children: [new TextRun({ text: t, bold: !!o.bold, color: o.color || '000000', size: o.size || 18, font: o.font || FONT })]
-    }))
-  });
-  const linkCell = (label, url, width, fill) => new TableCell({
-    width: { size: width, type: WidthType.DXA },
-    shading: { type: ShadingType.CLEAR, fill: fill || 'FFFFFF', color: 'auto' },
-    margins: { top: 40, bottom: 40, left: 90, right: 90 },
-    verticalAlign: VerticalAlign.TOP, borders,
-    children: [new Paragraph({ spacing: { before: 0, after: 0 }, children: url
-      ? [new ExternalHyperlink({ link: url, children: [new TextRun({ text: label, color: '0563C1', underline: {}, size: 18, font: FONT })] })]
-      : [new TextRun({ text: '', size: 18, font: FONT })] })]
-  });
-
-  function conceptTable(concepts) {
-    const k = concepts.length;
-    const andW = 700;
-    const total = 14838;
-    const cw = Math.floor((total - andW * (k - 1)) / k);
-    const W = [];
-    for (let i = 0; i < k; i++) { W.push(cw); if (i < k - 1) W.push(andW); }
-    W[W.length - 1] += total - W.reduce((a, b) => a + b, 0);
-    const n = Math.max(...concepts.map(c => c.terms.length));
-    const cols = W.length;
-    const rows = [new TableRow({ tableHeader: true, cantSplit: true, children: W.map((w, i) => i % 2 === 0
-      ? cell(['Concept ' + (i / 2 + 1), concepts[i / 2].name], w, { bold: true, color: 'FFFFFF', fill: '595959', align: AlignmentType.CENTER })
-      : cell('', w, { fill: '595959' })) })];
-    for (let r = 0; r < 2 * n - 1; r++) {
-      const isTerm = r % 2 === 0, fill = isTerm ? 'E7E6E6' : 'FFFFFF';
-      rows.push(new TableRow({ cantSplit: true, children: W.map((w, i) => {
-        if (i % 2 === 1) return cell(r === 0 ? 'AND' : '', w, { fill, bold: true, align: AlignmentType.CENTER });
-        const c = concepts[i / 2];
-        if (isTerm) return cell(c.terms[r / 2] || '', w, { fill, align: AlignmentType.CENTER });
-        const showOr = Math.floor(r / 2) < c.terms.length - 1;
-        return cell(showOr ? 'OR' : '', w, { fill, bold: true, color: '7F7F7F', align: AlignmentType.CENTER });
-      }) }));
-    }
-    return new Table({ width: { size: total, type: WidthType.DXA }, columnWidths: W, rows });
-  }
-
-  function resultTable(spec, s) {
-    const W = [1700, 1100, 2000, 7438, 2600];
-    const L = spec.links || {};
-    const yr = `${s.y0} to ${s.y1}`;
-    const data = [
-      { db: 'Scopus', filters: `TITLE-ABS-KEY; ${yr}`, syntax: s.scopus, label: 'Open Scopus results', url: L.scopus },
-      { db: 'Web of Science (Core Collection)', filters: `Topic (TS); ${yr}`, syntax: s.wos, label: 'Open Web of Science results', url: L.wos }
-    ];
-    s.scholar.forEach((g, i) => data.push({ db: 'Google Scholar' + (s.scholar.length > 1 ? ' ' + String.fromCharCode(65 + i) : ''), filters: yr, syntax: g, label: 'Open Google Scholar search', url: i === 0 ? L.scholar : (L['scholar' + String.fromCharCode(65 + i)] || null) }));
-    if (s.malay) data.push({ db: `Google Scholar (${spec.language})`, filters: yr, syntax: s.malay, label: 'Open Google Scholar search', url: L.scholarLocal || L.scholarMalay });
-    const hdr = new TableRow({ tableHeader: true, cantSplit: true, children: ['Database', 'Date searched', 'Filters applied', 'Syntax used', 'Link'].map((h, i) => cell(h, W[i], { bold: true, color: 'FFFFFF', fill: '1F3864' })) });
-    const body = data.map((r, ri) => {
-      const fill = ri % 2 ? 'F2F2F2' : 'FFFFFF';
-      return new TableRow({ cantSplit: true, children: [
-        cell(r.db, W[0], { fill, bold: true, top: true }),
-        cell(spec.searchDate || '', W[1], { fill, top: true }),
-        cell(r.filters, W[2], { fill, top: true }),
-        cell(r.syntax, W[3], { fill, top: true, font: 'Consolas', size: 15 }),
-        linkCell(r.label, r.url, W[4], fill)
-      ] });
-    });
-    return new Table({ width: { size: 14838, type: WidthType.DXA }, columnWidths: W, rows: [hdr, ...body] });
-  }
-
-  const h1 = t => new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun(t)] });
-  const p = t => new Paragraph({ spacing: { before: 40, after: 100 }, children: [new TextRun({ text: t, size: 21, font: FONT })] });
-  const kv = (k, v) => new Paragraph({ spacing: { before: 0, after: 30 }, children: [new TextRun({ text: k + ': ', bold: true, size: 21, font: FONT }), new TextRun({ text: v, size: 21, font: FONT })] });
-
-  const children = [];
-  specs.forEach((spec, idx) => {
-    const s = buildStrings(spec);
-    children.push(new Paragraph({ heading: HeadingLevel.TITLE, pageBreakBefore: idx > 0, children: [new TextRun(spec.title || 'Search strategy')] }));
-    if (spec.field) children.push(kv('Field', spec.field));
-    children.push(kv('Date range', `${s.y0} to ${s.y1}`));
-    children.push(h1('1. Search concept table'));
-    children.push(p('Terms in the same column are joined with OR. The columns are joined with AND.'));
-    children.push(conceptTable(spec.concepts));
-    children.push(h1('2. Search result'));
-    children.push(resultTable(spec, s));
-  });
-
-  const doc = new Document({
-    creator: 'Claude', title: 'Search strategy',
-    styles: {
-      default: { document: { run: { font: FONT, size: 21 } } },
-      paragraphStyles: [
-        { id: 'Title', name: 'Title', basedOn: 'Normal', next: 'Normal', quickFormat: true, run: { size: 36, bold: true, color: '1F3864', font: FONT }, paragraph: { spacing: { before: 0, after: 100 } } },
-        { id: 'Heading1', name: 'Heading 1', basedOn: 'Normal', next: 'Normal', quickFormat: true, run: { size: 28, bold: true, color: '1F3864', font: FONT }, paragraph: { spacing: { before: 280, after: 100 }, outlineLevel: 0, keepNext: true } }
-      ]
-    },
-    sections: [{ properties: { page: { size: { width: 11906, height: 16838, orientation: PageOrientation.LANDSCAPE }, margin: { top: 900, bottom: 900, left: 1000, right: 1000 } } }, children }]
-  });
-  return Packer.toBuffer(doc).then(b => {
-    fs.mkdirSync(path.dirname(path.resolve(outPath)), { recursive: true });
-    fs.writeFileSync(outPath, b);
-    console.log('Wrote ' + outPath);
-  });
 }
 
 /* ---------- CLI ---------- */
@@ -315,12 +257,17 @@ function checkRaw(str, kind) {
 
 function main() {
   const [mode, a, b] = process.argv.slice(2);
-  if (!mode || !a) fail('Usage: node search_tool.js strings|docx spec.json [out.docx]  or  node search_tool.js check "query" [scopus|wos|scholar]');
+  if (!mode || !a) fail('Usage: node search_tool.js strings|plan spec.json  or  node search_tool.js check "query" [scopus|wos|scholar]');
   if (mode === 'check') return checkRaw(a, b);
   const specs = readSpecs(a);
   if (mode === 'strings') specs.forEach((s, i) => { if (i) console.log('\n----------------\n'); printStrings(s); });
-  else if (mode === 'docx') { if (!b) fail('Give an output path, e.g. node search_tool.js docx spec.json out.docx'); return writeDocx(specs, b); }
-  else fail('Unknown mode: ' + mode);
+  else if (mode === 'plan') {
+    const out = specs.map(s => ({
+      title: s.title || '', ranges: s.ranges.map(([y0, y1]) => `${y0}-${y1}`),
+      tiers: s.tiers, concepts: s.concepts, runs: plan(s)
+    }));
+    console.log(JSON.stringify(out.length === 1 ? out[0] : out, null, 2));
+  } else fail('Unknown mode: ' + mode + ' (use strings, plan or check)');
 }
 
 Promise.resolve().then(main).catch(e => {

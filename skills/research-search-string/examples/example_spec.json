@@ -1,10 +1,6 @@
 {
   "title": "OTT Streaming Adoption among Malaysian Consumers: A Systematic Literature Review",
   "field": "Communication & Media Studies",
-  "years": [
-    2022,
-    2026
-  ],
   "concepts": [
     {
       "name": "OTT and streaming platforms",
@@ -64,6 +60,33 @@
     "(\"OTT\" OR \"video on demand\" OR \"streaming platform\" OR Netflix) AND (adoption OR \"continuance intention\" OR subscription OR satisfaction OR \"uses and gratifications\") AND (consumers OR users OR viewers OR audience) AND Malaysia",
     "(Netflix OR Tonton OR \"Astro Go\" OR \"Unifi TV\" OR iQIYI OR Viu) AND (viewers OR audience OR consumers) AND (Malaysia OR Malaysian) AND (adoption OR subscription OR \"willingness to pay\" OR satisfaction)"
   ],
-  "malay": "(OTT OR penstriman OR Netflix OR \"media OTT\") AND (pengguna OR penonton OR khalayak OR penerimaan OR penggunaan OR kepuasan) AND Malaysia",
-  "searchDate": ""
+  "ranges": [
+    [
+      2016,
+      2020
+    ],
+    [
+      2021,
+      2026
+    ]
+  ],
+  "tiers": {
+    "broad": [
+      1,
+      2
+    ],
+    "balanced": [
+      1,
+      2,
+      4
+    ],
+    "narrow": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "local": "(OTT OR penstriman OR Netflix OR \"media OTT\") AND (pengguna OR penonton OR khalayak OR penerimaan OR penggunaan OR kepuasan) AND Malaysia",
+  "localLanguage": "Malay"
 }
