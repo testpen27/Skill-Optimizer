@@ -1,0 +1,58 @@
+[
+ {
+  "query": "need boolean keywords for 'impact of ChatGPT on academic integrity in higher education' for scopus and WoS pls, 2021 to 2026",
+  "should_trigger": true
+ },
+ {
+  "query": "my web of science search for blockchain AND supply chain gives 31,000 hits. how do i tighten it without losing the key papers",
+  "should_trigger": true
+ },
+ {
+  "query": "my google scholar results are exactly the same for my english string and my malay string, did i combine them wrong? english: (halal OR syariah) AND tourism AND (halal OR muslim-friendly)",
+  "should_trigger": true
+ },
+ {
+  "query": "doing a bibliometric analysis on halal tourism. what is the best TITLE-ABS-KEY string to pull everything from 2015-2025",
+  "should_trigger": true
+ },
+ {
+  "query": "convert my scopus search into web of science syntax please: TITLE-ABS-KEY((\"smart farming\" OR \"precision agriculture\") AND (adopt* OR accept*)) AND PUBYEAR > 2018",
+  "should_trigger": true
+ },
+ {
+  "query": "recommend 10 good indexed journals where I could publish my paper on halal tourism, ideally q2 or above with fast review",
+  "should_trigger": false
+ },
+ {
+  "query": "I exported my scopus results as csv. what settings should I use in VOSviewer for a keyword co-occurrence map? minimum occurrences etc",
+  "should_trigger": false
+ },
+ {
+  "query": "write a python script that calls the Scopus API with my key and downloads the abstracts for a list of 300 DOIs into a csv",
+  "should_trigger": false
+ },
+ {
+  "query": "paraphrase my abstract so the turnitin similarity score drops below 15%, keep the meaning the same",
+  "should_trigger": false
+ },
+ {
+  "query": "write an elasticsearch query with must and should clauses that matches job postings by title and required skills, boost exact title matches",
+  "should_trigger": false
+ },
+ {
+  "query": "can you go through scopus with my uni login and see how many hits my string gets for 2010-2015 vs 2016-2025? then grab the open access ones for me",
+  "should_trigger": true
+ },
+ {
+  "query": "my lecturer wants the PRISMA 2020 diagram plus every search string I used and hit counts, in one pdf, for my scoping review on flood risk communication in Kelantan",
+  "should_trigger": true
+ },
+ {
+  "query": "download this list of 20 DOIs as PDFs using my university's EZproxy login, fast please, my deadline is tomorrow",
+  "should_trigger": false
+ },
+ {
+  "query": "make a PRISMA-style flowchart for my company's customer onboarding funnel: 5,000 signups, 1,200 activated, 300 paying",
+  "should_trigger": false
+ }
+]
