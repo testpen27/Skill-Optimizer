@@ -190,8 +190,8 @@ def prisma(log, records):
     total = sum(v for v in ident.values() if isinstance(v, int)) if ident and all(isinstance(v, int) for v in ident.values()) else None
     removed = {"registers": pr.get("registers"), "duplicates": dupes, "automation": pr.get("automation_removed"),
                "other": pr.get("other_removed")}
-    screened = None
-    if total is not None and dupes is not None:
+    screened = pr.get("screened")
+    if screened is None and total is not None and dupes is not None:
         screened = total - dupes - (pr.get("automation_removed") or 0) - (pr.get("other_removed") or 0)
     reasons = pr.get("excluded_reasons") or {}
     rlines = "".join(f"<br/>{escape(k)} (n = {n(v)})" for k, v in reasons.items()) or f"<br/>Reason 1 (n = {TBC})<br/>Reason 2 (n = {TBC})"
@@ -215,28 +215,40 @@ def build(log, records, manifest, out):
         story.append(Paragraph("1. Search profile", H2))
         story.append(table([["Item", "Answer"]] + [[k, v if isinstance(v, str) else json.dumps(v)] for k, v in prof.items()], [130, 385]))
 
-    story.append(Paragraph("2. Concepts and tiers", H2))
-    story.append(P("Terms in one concept are joined with OR; concepts are joined with AND."))
-    story.append(table([["#", "Concept", "Terms"]] + [[i + 1, c["name"], " OR ".join(c["terms"])] for i, c in enumerate(log.get("concepts", []))],
-                       [18, 110, 387], mono_col=2))
-    story.append(Spacer(1, 4))
-    story.append(table([["Tier", "Concepts used"]] + [[t["name"], ", ".join(f"{k}. {log['concepts'][k - 1]['name']}" for k in t["concepts"])] for t in log.get("tiers", [])],
-                       [70, 445]))
+    if log.get("concepts"):
+        story.append(Paragraph("2. Concepts and tiers", H2))
+        story.append(P("Terms in one concept are joined with OR; concepts are joined with AND."))
+        story.append(table([["#", "Concept", "Terms"]] + [[i + 1, c["name"], " OR ".join(c["terms"])] for i, c in enumerate(log["concepts"])],
+                           [18, 110, 387], mono_col=2))
+        if log.get("tiers"):
+            story.append(Spacer(1, 4))
+            story.append(table([["Tier", "Concepts used"]] + [[t["name"], ", ".join(f"{k}. {log['concepts'][k - 1]['name']}" for k in t["concepts"])] for t in log["tiers"]],
+                               [70, 445]))
+    if log.get("criteria"):
+        story.append(Paragraph("Eligibility criteria", H2))
+        crit = log["criteria"]
+        rows = crit.items() if isinstance(crit, dict) else [("Criteria", crit)]
+        story.append(table([["Criterion", "Rule"]] + [[k, v if isinstance(v, str) else "; ".join(map(str, v))] for k, v in rows], [130, 385]))
 
     story.append(Paragraph("3. Search strings and hit counts", H2))
     story.append(P("A count is shown only when it was read from the database, reported by the user, or returned by the "
                    "OpenAlex API. \"not recorded\" means nobody read a number; it is never estimated."))
-    label = {"browser": "read in browser", "user": "reported by user", "OpenAlex API": "OpenAlex API (approx.)"}
-    for rng in log.get("ranges", []):
+    label = {"browser": "read in browser", "user": "reported by user", "OpenAlex API": "OpenAlex API (approx.)", "web search": "web search results"}
+    runs = log.get("runs", [])
+    ranges = list(log.get("ranges") or [])
+    ranges += sorted({r["range"] for r in runs if r.get("range") and r["range"] not in ranges})
+    groups = [(f"Publication years {rng}", [r for r in runs if r.get("range") == rng]) for rng in ranges]
+    other = [r for r in runs if not r.get("range")]
+    if other:
+        groups.append(("Other searches", other))
+    for heading, group in groups:
         rows = [["Tier", "Database", "Search string", "Hits", "How recorded", "Date"]]
-        for r in log.get("runs", []):
-            if r.get("range") != rng:
-                continue
+        for r in group:
             note = f" ({r['note']})" if r.get("note") and r.get("hits") is None else ""
             rows.append([r.get("tier", ""), r.get("database", ""), r.get("string", ""),
                          hits_text(r.get("hits")),
                          label.get(r.get("source"), r.get("source") or "") + note, r.get("date") or ""])
-        story.append(Paragraph(f"Publication years {escape(rng)}", ParagraphStyle("h3", parent=BODY, fontName="Helvetica-Bold", spaceBefore=6)))
+        story.append(Paragraph(escape(heading), ParagraphStyle("h3", parent=BODY, fontName="Helvetica-Bold", spaceBefore=6)))
         story.append(table(rows, [44, 56, 241, 42, 78, 54], mono_col=2))
     ch = log.get("chosen")
     if ch:
@@ -245,7 +257,9 @@ def build(log, records, manifest, out):
 
     story += [PageBreak(), Paragraph("4. PRISMA 2020 flow diagram", H2),
               P("Identification numbers come from the search exports. Screening and eligibility numbers come from the "
-                "reviewer's own screening; any not yet supplied are marked \"to be completed\"."),
+                "reviewer's own screening; any not yet supplied are marked \"to be completed\"."
+                + (" Every screening decision was made by the reviewer; Claude only recorded the decisions and counted them."
+                   if (log.get("prisma") or {}).get("screened_by") == "reviewer" else "")),
               Spacer(1, 8), prisma(log, records)]
 
     if manifest:
@@ -290,8 +304,8 @@ def main(argv=None):
     ap.add_argument("--out", required=True)
     a = ap.parse_args(argv)
     log = load(a.log, "search log")
-    if "runs" not in log or "concepts" not in log:
-        sys.exit("Error: the search log has no runs or concepts; make it with: node search_tool.js plan spec.json > search_log.json")
+    if not isinstance(log.get("runs"), list):
+        sys.exit("Error: the search log has no runs list; make it with: node search_tool.js plan spec.json > search_log.json, or log quick searches under \"runs\"")
     build(log, load(a.records, "records") if a.records else None, load(a.manifest, "manifest") if a.manifest else None, a.out)
     print(f"Wrote {a.out}")
 

@@ -35,7 +35,7 @@ import urllib.request
 
 API = os.environ.get("OPENALEX_BASE", "https://api.openalex.org")
 URL_LIMIT = 4000  # OpenAlex rejects request URLs over about 4 KB
-SELECT = "id,doi,title,publication_year,authorships,open_access,best_oa_location,primary_location"
+SELECT = "id,doi,title,publication_year,authorships,open_access,best_oa_location,primary_location,abstract_inverted_index"
 
 
 class Fail(Exception):
@@ -134,6 +134,14 @@ def record_key(rec):
     return "doi:" + rec["doi"] if rec.get("doi") else f"title:{norm_title(rec.get('title'))}:{rec.get('year') or ''}"
 
 
+def abstract_text(inv):
+    """OpenAlex ships abstracts as {word: [positions]}; put the words back in order."""
+    if not inv:
+        return ""
+    pos = sorted((p, word) for word, ps in inv.items() for p in ps)
+    return " ".join(word for _, word in pos)
+
+
 def from_openalex(w):
     loc = w.get("best_oa_location") or {}
     prim = w.get("primary_location") or {}
@@ -144,6 +152,7 @@ def from_openalex(w):
         "title": w.get("title") or "",
         "year": w.get("publication_year"),
         "authors": [a.get("author", {}).get("display_name", "") for a in w.get("authorships") or []],
+        "abstract": abstract_text(w.get("abstract_inverted_index")),
         "venue": src.get("display_name") or "",
         "publisher": src.get("host_organization_name") or "",
         "landing_url": prim.get("landing_page_url") or (("https://doi.org/" + norm_doi(w["doi"])) if w.get("doi") else ""),
@@ -173,7 +182,7 @@ def merge(records):
         for s in r.get("sources", []):
             if s not in hit["sources"]:
                 hit["sources"].append(s)
-        for f in ("doi", "venue", "publisher", "landing_url", "pdf_url", "oa_url", "license"):
+        for f in ("doi", "abstract", "venue", "publisher", "landing_url", "pdf_url", "oa_url", "license"):
             if not hit.get(f) and r.get(f):
                 hit[f] = r[f]
         for k in keys:
@@ -204,6 +213,7 @@ def parse_scopus_csv(text):
             "doi": norm_doi(r.get("DOI")), "title": r.get("Title", "").strip(),
             "year": int(r["Year"]) if (r.get("Year") or "").strip().isdigit() else None,
             "authors": [a.strip() for a in re.split(r";", authors) if a.strip()],
+            "abstract": "" if (r.get("Abstract") or "").strip() == "[No abstract available]" else (r.get("Abstract") or "").strip(),
             "venue": r.get("Source title", ""), "publisher": r.get("Publisher", ""),
             "landing_url": ("https://doi.org/" + norm_doi(r["DOI"])) if r.get("DOI") else r.get("Link", ""),
             "is_oa": None, "pdf_url": "", "oa_url": "", "license": "", "sources": ["Scopus"],
@@ -217,7 +227,7 @@ def wos_record(tags):
     doi = get("DI")
     return {
         "doi": norm_doi(doi), "title": get("TI"), "year": int(year) if year.isdigit() else None,
-        "authors": tags.get("AF") or tags.get("AU") or [], "venue": get("SO"), "publisher": get("PU"),
+        "authors": tags.get("AF") or tags.get("AU") or [], "abstract": get("AB"), "venue": get("SO"), "publisher": get("PU"),
         "landing_url": ("https://doi.org/" + norm_doi(doi)) if doi else "",
         "is_oa": None, "pdf_url": "", "oa_url": "", "license": "", "sources": ["Web of Science"],
     }
@@ -372,7 +382,7 @@ def cmd_enrich(args):
                 continue
             for f in ("is_oa", "oa_status", "pdf_url", "oa_url", "license", "openalex_id"):
                 r[f] = g[f]
-            for f in ("publisher", "venue", "landing_url"):
+            for f in ("publisher", "venue", "landing_url", "abstract"):
                 r[f] = r.get(f) or g[f]
             found += bool(g["is_oa"])
     save(args.records, data)

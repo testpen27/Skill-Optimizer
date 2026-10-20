@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Regression tests for the research-search-string skill's scripts.
+"""Regression tests for the pre-research skill's scripts.
 
-    python3 scripts/test_research_search_string.py
+    python3 scripts/test_pre_research.py
 
 No network needed: OpenAlex is replaced by a recorded response and the
 download sites by a local web server. Malformed input must fail with a
 one-line error (exit 1, no stack trace).
 """
+import csv
 import json
 import shutil
 import subprocess
@@ -14,7 +15,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-TOOL = Path(__file__).resolve().parent.parent / "skills/research-search-string/scripts/search_tool.js"
+TOOL = Path(__file__).resolve().parent.parent / "skills/pre-research/scripts/search_tool.js"
 EXAMPLE = TOOL.parent.parent / "examples/example_spec.json"
 failures = []
 
@@ -234,6 +235,98 @@ with tempfile.TemporaryDirectory() as tmp:
               "Records identified from" in text and "Duplicate records removed (n = 1)" in text
               and "to be completed" in text and "Wrong population (n = 4)" in text)
         check("report: unread counts say not recorded", "not recorded" in text and "233" in text)
+
+
+# ---------------------------------------------------------------- screening (the reviewer decides, the script records)
+sc = module("screening")
+
+
+def quiet(fn, *args):
+    with contextlib.redirect_stdout(io.StringIO()) as out, contextlib.redirect_stderr(io.StringIO()) as err:
+        rc = fn(list(args))
+    return rc, out.getvalue(), err.getvalue()
+
+
+with tempfile.TemporaryDirectory() as tmp:
+    recs = Path(tmp) / "records.json"
+    recs.write_text(json.dumps({"records": [
+        {"doi": f"10.9/{i}", "title": f"Paper {i}", "year": 2024, "authors": ["A, B"], "abstract": "x" * 50}
+        for i in range(1, 7)]}))
+    log = Path(tmp) / "log.json"
+    log.write_text(json.dumps({"runs": [], "prisma": {}}))
+    rc, out, _ = quiet(sc.main, "batch", str(recs), "--stage", "ta", "--size", "3")
+    check("screening: batch shows ids and progress", rc == 0 and "R001" in out and "0 of 6 decided" in out and "R004" not in out)
+    rc, _, err = quiet(sc.main, "record", str(recs), "--stage", "ft", "--ids", "R001", "--decision", "include")
+    check("screening: full text refused before title/abstract", rc == 1 and "did not pass" in err)
+    quiet(sc.main, "record", str(recs), "--stage", "ta", "--ids", "R001-R003", "--decision", "include")
+    quiet(sc.main, "record", str(recs), "--stage", "ta", "--ids", "4", "--decision", "exclude", "--reason", "wrong population")
+    rc, _, err = quiet(sc.main, "record", str(recs), "--stage", "ta", "--ids", "R099", "--decision", "include")
+    check("screening: unknown id rejected", rc == 1 and "R099" in err)
+    rc, _, err = quiet(sc.main, "record", str(recs), "--stage", "ta", "--ids", "R005", "--decision", "probably")
+    check("screening: unknown decision rejected", rc == 1 and "include, exclude or maybe" in err)
+    quiet(sc.main, "prisma", str(recs), "--log", str(log))
+    pr = json.loads(log.read_text())["prisma"]
+    check("screening: incomplete stage leaves PRISMA boxes empty", pr["screened"] == 6 and pr["screened_excluded"] is None and pr["screened_by"] == "reviewer")
+    # spreadsheet route for the rest
+    sheet = Path(tmp) / "ta.csv"
+    quiet(sc.main, "sheet", str(recs), "--stage", "ta", "--out", str(sheet))
+    rows = list(csv.reader(open(sheet, encoding="utf-8-sig")))
+    for r in rows[1:]:
+        if r[0] == "R005":
+            r[1] = "maybe"
+        if r[0] == "R006":
+            r[1], r[2] = "no", "not empirical"
+    with open(sheet, "w", newline="", encoding="utf-8-sig") as f:
+        csv.writer(f).writerows(rows)
+    rc, out, _ = quiet(sc.main, "load", str(recs), "--stage", "ta", str(sheet))
+    check("screening: spreadsheet decisions loaded", rc == 0 and "loaded 6" in out)
+    tr = Path(tmp) / "to_retrieve.json"
+    quiet(sc.main, "included", str(recs), "--stage", "ta", "--out", str(tr))
+    check("screening: include and maybe go to full text", len(json.loads(tr.read_text())["records"]) == 4)
+    rc, _, err = quiet(sc.main, "record", str(recs), "--stage", "ft", "--ids", "R002", "--decision", "exclude")
+    check("screening: full-text exclusion needs a reason", rc == 1 and "needs a reason" in err)
+    quiet(sc.main, "record", str(recs), "--stage", "ft", "--ids", "R001,R005", "--decision", "include")
+    quiet(sc.main, "record", str(recs), "--stage", "ft", "--ids", "R002", "--decision", "exclude", "--reason", "wrong outcome")
+    quiet(sc.main, "record", str(recs), "--stage", "ft", "--ids", "R003", "--decision", "exclude", "--reason", "wrong outcome")
+    man = Path(tmp) / "manifest.json"
+    man.write_text(json.dumps({"items": [{"doi": "10.9/1", "status": "downloaded"}, {"doi": "10.9/2", "status": "downloaded by user"},
+                                         {"doi": "10.9/3", "status": "downloaded"}, {"doi": "10.9/5", "status": "paywalled"}]}))
+    quiet(sc.main, "prisma", str(recs), "--log", str(log), "--manifest", str(man))
+    pr = json.loads(log.read_text())["prisma"]
+    check("screening: PRISMA numbers from recorded decisions",
+          (pr["screened"], pr["screened_excluded"], pr["sought"], pr["not_retrieved"], pr["assessed"], pr["included"])
+          == (6, 2, 4, 1, 4, 2) and pr["excluded_reasons"] == {"wrong outcome": 2}, json.dumps(pr))
+    # report built from a quick-search log with no concepts, plus the reviewer note
+    lg = json.loads(log.read_text())
+    lg.update(title="Quick search", runs=[{"database": "Google Scholar (web search)", "string": '"gamification" AND motivation',
+                                          "hits": 10, "source": "web search", "date": "2026-10-20"}],
+              criteria={"Population": "university students", "Years": "2021-2026"})
+    log.write_text(json.dumps(lg))
+    pdf_out = Path(tmp) / "r.pdf"
+    p = subprocess.run([sys.executable, str(SCRIPTS / "build_report.py"), "--log", str(log), "--out", str(pdf_out)], capture_output=True, text=True)
+    text = " ".join(subprocess.run(["pdftotext", str(pdf_out), "-"], capture_output=True, text=True).stdout.split()) if p.returncode == 0 and shutil.which("pdftotext") else ""
+    check("report: works from a quick-search log", p.returncode == 0, p.stderr[-200:])
+    if text:
+        check("report: states the reviewer screened", "made by the reviewer" in text and "Eligibility criteria" in text and "Other searches" in text)
+        check("report: PRISMA screening numbers", "Records excluded (n = 2)" in text and "wrong outcome (n = 2)" in text and "Reports not retrieved (n = 1)" in text)
+
+# ---------------------------------------------------------------- LRM
+with tempfile.TemporaryDirectory() as tmp:
+    good = {"title": "T", "papers": [{"title": "A", "authors_year": "Tan (2024)", "quartile": "Unranked/Unavailable",
+                                      "method": "Quantitative", "access": "Free", "introduction": "aim",
+                                      "methodology": "", "results": "r", "discussion": "d"}]}
+    gp, bp = Path(tmp) / "g.json", Path(tmp) / "b.json"
+    gp.write_text(json.dumps(good))
+    bad = json.loads(json.dumps(good)); bad["papers"][0].update(quartile="Q1-ish guess", method="Survey", access="Open")
+    bp.write_text(json.dumps(bad))
+    p = subprocess.run([sys.executable, str(SCRIPTS / "build_lrm.py"), str(bp), "--check"], capture_output=True, text=True)
+    check("lrm: invalid labels refused", p.returncode == 1 and "quartile" in p.stderr and "method" in p.stderr and "access" in p.stderr)
+    out_pdf = Path(tmp) / "lrm.pdf"
+    p = subprocess.run([sys.executable, str(SCRIPTS / "build_lrm.py"), str(gp), "--out", str(out_pdf)], capture_output=True, text=True)
+    text = " ".join(subprocess.run(["pdftotext", str(out_pdf), "-"], capture_output=True, text=True).stdout.split()) if p.returncode == 0 and shutil.which("pdftotext") else ""
+    check("lrm: PDF built", p.returncode == 0, p.stderr[-200:])
+    if text:
+        check("lrm: empty cells say Not retrieved / Not explicitly stated", "Not retrieved" in text and "Not explicitly stated" in text)
 
 print(f"\n{len(failures)} failure(s)")
 sys.exit(1 if failures else 0)
