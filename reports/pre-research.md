@@ -1,7 +1,91 @@
-# research-search-string
+# pre-research
 
-Two rounds of work. Round 2 (below first) redesigned the skill at the owner's
-request; round 1 (after it) is the original robustness pass, kept as the record.
+Three rounds of work on one skill. Round 3 (first below) merged it with the
+owner's `find-paper` skill into `pre-research`. Rounds 2 and 1 are kept as the
+record of how the search side was built.
+
+## Round 3: merge with find-paper into pre-research (October 2026)
+
+### Why
+
+Both skills began the same way (find the papers relevant to a topic and field)
+and then diverged: `find-paper` built a Literature Review Matrix from about 15
+to 20 papers found by web search; `research-search-string` ran a full database
+search and documented it. They competed for the same requests, duplicated the
+Boolean keyword work and the search log, and contradicted each other on years
+(fixed five years against asking).
+
+### Shape
+
+- **SKILL.md** (71 lines): the shared intake (field always asked, year ranges
+  always asked, what the user wants at the end, where to save), a choice of
+  quick or systematic search, a table routing to four branches, and the rules
+  that hold everywhere.
+- **Branches**, each in its own reference file read only when reached:
+  strings (`references/strings.md`), conduct PRISMA (`references/prisma.md`),
+  access and download (`references/access-download.md`), LRM
+  (`references/lrm.md`). The searches themselves: `references/quick-search.md`
+  (find-paper's method) and `references/systematic-search.md`.
+- **One project folder** per topic holds every file, so the branches chain:
+  PRISMA, then download the included papers, then an LRM of them.
+
+### Decisions by the owner
+
+- **Screening: the reviewer screens, Claude records.** `scripts/screening.py`
+  shows records in batches or writes a spreadsheet, records each decision
+  with its reason and date, refuses invented ids and decisions, requires a
+  reason for full-text exclusions, and computes the PRISMA screening numbers,
+  leaving any unfinished stage as "to be completed". The report states that
+  every screening decision was the reviewer's.
+- **Year ranges are always asked**, including for the LRM. find-paper's fixed
+  five-year cutoff is gone.
+
+### New script for the LRM
+
+`scripts/build_lrm.py` replaces find-paper's write-it-yourself PDF step. It
+scales the 11 columns to the landscape page so the table cannot run off the
+edge (a failure find-paper's own notes warned about), wraps every cell,
+refuses a quartile that is not Q1 to Q4 from a lookup (or the two allowed
+labels), a method outside the four types, or an access label outside
+Free/Paid/Unclear, and prints "Not retrieved" or "Not explicitly stated" for
+empty cells. Rendered and checked by eye.
+
+Corrected from find-paper on the way: `$` truncation does not work in Scopus
+(it is Web of Science only).
+
+### Testing
+
+`scripts/test_pre_research.py`: 61 checks, all passing (the 46 from round 2
+plus screening, the LRM builder, and a report built from a quick-search log).
+The same limits as round 2 apply: no live browser, Scopus, Web of Science or
+OpenAlex in this environment.
+
+### Trigger accuracy
+
+Eval set `evals/trigger-eval-v4.json`: 34 queries, 20 positive across all four
+branches (strings, PRISMA, download, LRM, classifying papers the user already
+has) and 14 near-miss negatives. `find-paper` was removed from the competitor
+set because the owner will uninstall it. Model Sonnet 5.5, 5 runs per query.
+
+| Description | Eval set (34) | Fresh hold-out (20) |
+|---|---|---|
+| Draft | 33/34 (classify-my-papers query 0.4; three positives at 0.6) | not run |
+| Revised (adopted) | 34/34 (classify-my-papers 0.8; pasted-string queries 1.0) | 20/20, every positive 5/5, every negative 0/5 |
+
+The revision was written by hand after seeing the draft's weak queries (the
+optimizer stopped after one iteration because every training query passed),
+so its 34/34 is in-sample; the 20-query hold-out, 6 of them new LRM and
+near-miss queries, is the independent check. One query stays at 0.6: asking
+for the search strategy "as a Word document", which the skill now delivers
+as a PDF.
+
+Results: `results/description-optimization-v4/`,
+`results/description-v4-revision.json`, `results/holdout-validation-v4.json`.
+
+### Before installing
+
+Uninstall `search-string`, `research-search-string` and `find-paper` from the
+account, or they will compete with `pre-research` for the same requests.
 
 ## Round 2: from string writer to documented search (October 2026)
 
