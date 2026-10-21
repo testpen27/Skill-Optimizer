@@ -1,12 +1,12 @@
 ---
 name: ai-audit
 description: >-
-  Use this skill whenever anyone worries that writing might come across as AI-generated, whether it's their own or someone else's. Examples: a writer who fears readers will think their newsletter, blog, essay, cover letter, or post came from a bot because of habits like heavy em dash use, words like "delve", or tidy three-part lists; a teacher, hiring manager, editor, or reviewer suspicious of a submission; someone who wants a draft checked for "ChatGPT voice" before publishing or sending; anyone asking to de-slop or humanize text. The skill flags passages that read as LLM output, explains why, says which habits are harmless, and revises without flattening voice. Use it even when the user names only one tell and asks what actually reads as machine-made. Also use it to check your own drafts. Skip it for plain proofreading, shortening, translating, punch-up edits where AI-sounding isn't the worry, and fiction.
+  Use this skill whenever anyone worries that writing might come across as AI-generated, whether it's their own or someone else's, or wants to understand an AI checker's verdict. Examples: a writer who fears readers will think their newsletter, blog, essay, cover letter, or post came from a bot because of habits like heavy em dash use, words like "delve", or tidy three-part lists; a student with a Turnitin AI score or GPTZero result asking what it means and why passages were flagged; a teacher, editor, or reviewer suspicious of a submission; a draft to check for "ChatGPT voice" before publishing or sending; anyone asking to de-slop or humanize text. It flags passages that read as LLM output, explains why, reads detector reports, and revises without flattening voice. Use it even when the user names only one tell, and to check your own drafts. Skip it for plain proofreading, shortening, translating, punch-up edits where AI-sounding isn't the worry, plagiarism or similarity reports, and fiction.
 ---
 
 # AI Audit
 
-Find the patterns that make prose read as machine-generated, explain why each one reads that way, and revise them out without flattening the writing.
+Find the patterns that make prose read as machine-generated, explain why each one reads that way, and revise them out without flattening the writing. Also help writers understand AI checkers such as Turnitin: what a score measures, how to read a report, and what a revision can and cannot change.
 
 Based on Wikipedia's *Signs of AI writing* (WikiProject AI Cleanup), read from the page's own wikitext in September 2026, with additions from community de-AI skills where they cover non-encyclopedic genres. Sources are listed at the end.
 
@@ -22,6 +22,10 @@ Based on Wikipedia's *Signs of AI writing* (WikiProject AI Cleanup), read from t
 
 **Cleaning the tells does not fix what they point at.** Surface signs often sit on top of fabricated citations or invented specifics. A revision that removes the tells and leaves the fabrication makes the real problem harder to find, so fabrication flags must survive into the output.
 
+**A detector score is a different measurement.** Turnitin and GPTZero use trained classifiers that score how predictable each sentence is in context; they do not look up the tells in this catalogue. A text can be clean of tells and still be flagged, and a revision cannot promise a score. Never treat a detector percentage as an audit result or an audit as a score forecast. See `references/ai-checkers.md`.
+
+**Help the writer, not the disguise.** Explaining a report and making the writing more specific and more the writer's own is the job. Making AI-generated text pass as human-written is not: no humanizer tactics, no tricks aimed at the detector rather than the reader. If the user says the work is theirs, take that at face value.
+
 If the user is auditing their own work, skip the epistemics and get to the edit.
 
 ## Modes
@@ -33,6 +37,9 @@ Read what the user is asking for and pick one. Default to **Both** when the requ
 | **Audit** | "Does this sound like AI?", "check this before I publish" | Flagged passages, counter-evidence, density read, no rewrite |
 | **Revise** | "make this sound human", "clean this up" | Rewritten text plus a short note on what changed |
 | **Both** | Ambiguous, or user wants to learn the patterns | Audit, then revision, then what was deliberately left alone |
+| **Checker** | The user brings a Turnitin, GPTZero or other detector result, or asks how AI checkers work | What the score means, where the flags cluster, what flagged and unflagged text differ in, what revision can and cannot do |
+
+A Checker request often continues into Revise. Keep the two separate: explain the report first, then revise only if asked.
 
 ## Workflow
 
@@ -47,6 +54,8 @@ Read what the user is asking for and pick one. Default to **Both** when the requ
 5. **Collect counter-evidence** as you go. A piece with three moderate tells and four human markers is a different finding from one with three tells and none.
 6. **Revise surgically.** See the rules below.
 7. **Say what you left alone and why.** Users find this the most useful part, and it is the guardrail against over-correction.
+
+**In Checker mode,** read `references/ai-checkers.md` first. With a Turnitin AI Writing Report PDF, run `python scripts/checker_report.py <report.pdf>` (needs `pip install pymupdf`) to split the text into highlighted and unhighlighted sentences, with tables and references removed. Then: state what the score is and is not; show where the highlights cluster by section and sentence type; compare the flagged sentences against the unflagged ones in the user's own text; and only then suggest revisions, from section 6 of that file. Run the normal audit as well when it helps, but report it separately, since the two measure different things. Keep the report and its text out of anything you save or publish unless asked.
 
 ## Rewriting rules
 
@@ -86,6 +95,17 @@ Quote only the fragment needed — a few words — not whole paragraphs. Group b
 
 If density is genuinely low, say so and stop. Do not manufacture findings to fill out a report.
 
+### Checker
+
+```
+**Score:** 67% of evaluated prose sentences flagged (tables, headings and references are not evaluated). This is Turnitin's estimate, not a finding of misconduct.
+**Where it clusters:** definitions and topic sentences in §1–2; the five parallel bullets in §1.2; the conclusion. The worked figures in §3.1 and the stated assumptions in §4 are unflagged.
+**Flagged vs unflagged here:** flagged sentences restate standard definitions or announce structure; unflagged ones work with specific numbers or qualify a source in the writer's own terms.
+**What revision can do:** make those passages specific and yours (see below). It cannot guarantee a score, and humanizer tools are detected and count against you.
+```
+
+Then, if asked, the revision in the usual format. Keep quotes from the report short, as in an audit.
+
 ### Revision
 
 Give the revised text in full, then a compact note:
@@ -101,6 +121,8 @@ Give the revised text in full, then a compact note:
 This catalogue is built for informational and persuasive nonfiction. Fiction has a separate set of tells and is out of scope; say so rather than applying these rules to a short story.
 
 The skill flags citation problems but does not resolve them. Checking whether a DOI leads to the right paper, or whether a quoted page contains the quote, needs network access and is a fact-checking job.
+
+Detector reports are explained, not reproduced. The skill reads the highlights a report drew; it does not re-score text, and it cannot say why the detector flagged a particular sentence, because the detector's predictions are not explainable sentence by sentence.
 
 ## Worked example
 
@@ -121,3 +143,4 @@ The example is deliberately brutal to make the point: most AI padding deletes to
 - Wikipedia, *Signs of AI writing* (WP:AISIGNS), WikiProject AI Cleanup, read September 2026. The catalogue's backbone, including the model-era vocabulary table, the signs-of-human-writing section, and the ineffective-indicators list. Summarized in full in `references/wikipedia-signs.md`.
 - `blader/humanizer`, `conorbronsdon/avoid-ai-writing`, `brandonwise/humanizer` — community skills covering genres Wikipedia's page does not, such as marketing and personal essays. Entries taken from these are marked in the catalogue.
 - `andrewroxby/claude-style-patch` and slhck's "Claudish" write-up, for Claude's own current habits.
+- Turnitin Guides, *Using the AI Writing Report* and *AI writing detection capabilities FAQs*, plus Turnitin's release notes and its post on sentence-level false positives, read October 2026; GPTZero's technology pages; Liang et al. (2023), *Patterns*, on detector bias against non-native writers. Summarized with a worked case in `references/ai-checkers.md`.
