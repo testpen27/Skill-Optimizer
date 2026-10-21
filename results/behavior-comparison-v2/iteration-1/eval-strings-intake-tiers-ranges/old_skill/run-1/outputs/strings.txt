@@ -1,0 +1,93 @@
+# Telemedicine Adoption among Older Adults in Rural Malaysia: A Systematic Literature Review
+
+Concept 1: Telemedicine and telehealth
+Concept 2: Adoption, acceptance and use
+Concept 3: Older adults (60+)
+Concept 4: Rural and remote settings
+Concept 5: Malaysia (niche)
+Tiers: broad = concepts 1, 2, 5; balanced = concepts 1, 2, 3, 5; narrow = concepts 1, 2, 3, 4, 5
+
+=============== 2016 to 2020 ===============
+
+## Scopus, broad (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth* OR "tele-medicine" OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR "video consult*" OR "virtual care" OR "remote patient monitoring" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR "intention to use" OR "behavio*ral intention*" OR "continuance intention*" OR "willingness to use" OR readiness OR barrier* OR facilitator* OR "technology acceptance" OR UTAUT) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR "Negeri Sembilan" OR Melaka)) AND PUBYEAR > 2015 AND PUBYEAR < 2021
+(672 characters)
+
+## Web of Science, broad (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth* OR "tele-medicine" OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR "video consult*" OR "virtual care" OR "remote patient monitoring" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR "intention to use" OR "behavio*ral intention*" OR "continuance intention*" OR "willingness to use" OR readiness OR barrier* OR facilitator* OR "technology acceptance" OR UTAUT) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR "Negeri Sembilan" OR Melaka)) AND PY=(2016-2020)
+(643 characters)
+
+## Scopus, balanced (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth* OR "tele-medicine" OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR "video consult*" OR "virtual care" OR "remote patient monitoring" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR "intention to use" OR "behavio*ral intention*" OR "continuance intention*" OR "willingness to use" OR readiness OR barrier* OR facilitator* OR "technology acceptance" OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older patient*" OR "older population*" OR "older Malaysian*" OR elder* OR "senior citizen*" OR seniors OR geriatric* OR gerontolog* OR "old age" OR "ag*ing population*" OR "warga emas") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR "Negeri Sembilan" OR Melaka)) AND PUBYEAR > 2015 AND PUBYEAR < 2021
+(919 characters)
+
+## Web of Science, balanced (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth* OR "tele-medicine" OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR "video consult*" OR "virtual care" OR "remote patient monitoring" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR "intention to use" OR "behavio*ral intention*" OR "continuance intention*" OR "willingness to use" OR readiness OR barrier* OR facilitator* OR "technology acceptance" OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older patient*" OR "older population*" OR "older Malaysian*" OR elder* OR "senior citizen*" OR seniors OR geriatric* OR gerontolog* OR "old age" OR "ag*ing population*" OR "warga emas") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR "Negeri Sembilan" OR Melaka)) AND PY=(2016-2020)
+(890 characters)
+
+## Scopus, narrow (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth* OR "tele-medicine" OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR "video consult*" OR "virtual care" OR "remote patient monitoring" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR "intention to use" OR "behavio*ral intention*" OR "continuance intention*" OR "willingness to use" OR readiness OR barrier* OR facilitator* OR "technology acceptance" OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older patient*" OR "older population*" OR "older Malaysian*" OR elder* OR "senior citizen*" OR seniors OR geriatric* OR gerontolog* OR "old age" OR "ag*ing population*" OR "warga emas") AND (rural* OR "remote area*" OR "remote communit*" OR "remote region*" OR "remote location*" OR village* OR countryside OR underserved OR "hard-to-reach" OR "non-urban" OR "low-resource setting*" OR kampung* OR FELDA OR "Orang Asli") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR "Negeri Sembilan" OR Melaka)) AND PUBYEAR > 2015 AND PUBYEAR < 2021
+(1154 characters)
+
+## Web of Science, narrow (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth* OR "tele-medicine" OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR "video consult*" OR "virtual care" OR "remote patient monitoring" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR "intention to use" OR "behavio*ral intention*" OR "continuance intention*" OR "willingness to use" OR readiness OR barrier* OR facilitator* OR "technology acceptance" OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older patient*" OR "older population*" OR "older Malaysian*" OR elder* OR "senior citizen*" OR seniors OR geriatric* OR gerontolog* OR "old age" OR "ag*ing population*" OR "warga emas") AND (rural* OR "remote area*" OR "remote communit*" OR "remote region*" OR "remote location*" OR village* OR countryside OR underserved OR "hard-to-reach" OR "non-urban" OR "low-resource setting*" OR kampung* OR FELDA OR "Orang Asli") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR "Negeri Sembilan" OR Melaka)) AND PY=(2016-2020)
+(1125 characters)
+
+## Google Scholar, version A (set 2016 to 2020 in the left menu)
+(telemedicine OR telehealth OR teleconsultation OR "video consultation") AND (adoption OR acceptance OR "intention to use" OR barriers) AND ("older adults" OR elderly OR "senior citizens") AND rural AND Malaysia
+(211 characters)
+https://scholar.google.com/scholar?q=(telemedicine%20OR%20telehealth%20OR%20teleconsultation%20OR%20%22video%20consultation%22)%20AND%20(adoption%20OR%20acceptance%20OR%20%22intention%20to%20use%22%20OR%20barriers)%20AND%20(%22older%20adults%22%20OR%20elderly%20OR%20%22senior%20citizens%22)%20AND%20rural%20AND%20Malaysia&as_ylo=2016&as_yhi=2020&hl=en
+
+## Google Scholar, version B (set 2016 to 2020 in the left menu)
+(telemedicine OR telehealth OR teleconsultation) AND (elderly OR "older adults" OR "warga emas") AND (Sabah OR Sarawak OR Kelantan OR Pahang OR "Orang Asli" OR FELDA OR kampung) AND (adoption OR acceptance OR barriers)
+(218 characters)
+https://scholar.google.com/scholar?q=(telemedicine%20OR%20telehealth%20OR%20teleconsultation)%20AND%20(elderly%20OR%20%22older%20adults%22%20OR%20%22warga%20emas%22)%20AND%20(Sabah%20OR%20Sarawak%20OR%20Kelantan%20OR%20Pahang%20OR%20%22Orang%20Asli%22%20OR%20FELDA%20OR%20kampung)%20AND%20(adoption%20OR%20acceptance%20OR%20barriers)&as_ylo=2016&as_yhi=2020&hl=en
+
+## Google Scholar, Malay-language (run separately)
+(teleperubatan OR telekesihatan OR telemedicine OR "konsultasi maya") AND ("warga emas" OR "warga tua" OR "orang tua") AND ("luar bandar" OR desa OR pedalaman) AND (penerimaan OR penggunaan OR kesediaan)
+(203 characters)
+https://scholar.google.com/scholar?q=(teleperubatan%20OR%20telekesihatan%20OR%20telemedicine%20OR%20%22konsultasi%20maya%22)%20AND%20(%22warga%20emas%22%20OR%20%22warga%20tua%22%20OR%20%22orang%20tua%22)%20AND%20(%22luar%20bandar%22%20OR%20desa%20OR%20pedalaman)%20AND%20(penerimaan%20OR%20penggunaan%20OR%20kesediaan)&as_ylo=2016&as_yhi=2020&hl=en
+
+=============== 2021 to 2026 ===============
+
+## Scopus, broad (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth* OR "tele-medicine" OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR "video consult*" OR "virtual care" OR "remote patient monitoring" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR "intention to use" OR "behavio*ral intention*" OR "continuance intention*" OR "willingness to use" OR readiness OR barrier* OR facilitator* OR "technology acceptance" OR UTAUT) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR "Negeri Sembilan" OR Melaka)) AND PUBYEAR > 2020 AND PUBYEAR < 2027
+(672 characters)
+
+## Web of Science, broad (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth* OR "tele-medicine" OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR "video consult*" OR "virtual care" OR "remote patient monitoring" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR "intention to use" OR "behavio*ral intention*" OR "continuance intention*" OR "willingness to use" OR readiness OR barrier* OR facilitator* OR "technology acceptance" OR UTAUT) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR "Negeri Sembilan" OR Melaka)) AND PY=(2021-2026)
+(643 characters)
+
+## Scopus, balanced (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth* OR "tele-medicine" OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR "video consult*" OR "virtual care" OR "remote patient monitoring" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR "intention to use" OR "behavio*ral intention*" OR "continuance intention*" OR "willingness to use" OR readiness OR barrier* OR facilitator* OR "technology acceptance" OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older patient*" OR "older population*" OR "older Malaysian*" OR elder* OR "senior citizen*" OR seniors OR geriatric* OR gerontolog* OR "old age" OR "ag*ing population*" OR "warga emas") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR "Negeri Sembilan" OR Melaka)) AND PUBYEAR > 2020 AND PUBYEAR < 2027
+(919 characters)
+
+## Web of Science, balanced (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth* OR "tele-medicine" OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR "video consult*" OR "virtual care" OR "remote patient monitoring" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR "intention to use" OR "behavio*ral intention*" OR "continuance intention*" OR "willingness to use" OR readiness OR barrier* OR facilitator* OR "technology acceptance" OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older patient*" OR "older population*" OR "older Malaysian*" OR elder* OR "senior citizen*" OR seniors OR geriatric* OR gerontolog* OR "old age" OR "ag*ing population*" OR "warga emas") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR "Negeri Sembilan" OR Melaka)) AND PY=(2021-2026)
+(890 characters)
+
+## Scopus, narrow (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth* OR "tele-medicine" OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR "video consult*" OR "virtual care" OR "remote patient monitoring" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR "intention to use" OR "behavio*ral intention*" OR "continuance intention*" OR "willingness to use" OR readiness OR barrier* OR facilitator* OR "technology acceptance" OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older patient*" OR "older population*" OR "older Malaysian*" OR elder* OR "senior citizen*" OR seniors OR geriatric* OR gerontolog* OR "old age" OR "ag*ing population*" OR "warga emas") AND (rural* OR "remote area*" OR "remote communit*" OR "remote region*" OR "remote location*" OR village* OR countryside OR underserved OR "hard-to-reach" OR "non-urban" OR "low-resource setting*" OR kampung* OR FELDA OR "Orang Asli") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR "Negeri Sembilan" OR Melaka)) AND PUBYEAR > 2020 AND PUBYEAR < 2027
+(1154 characters)
+
+## Web of Science, narrow (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth* OR "tele-medicine" OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR "video consult*" OR "virtual care" OR "remote patient monitoring" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR "intention to use" OR "behavio*ral intention*" OR "continuance intention*" OR "willingness to use" OR readiness OR barrier* OR facilitator* OR "technology acceptance" OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older patient*" OR "older population*" OR "older Malaysian*" OR elder* OR "senior citizen*" OR seniors OR geriatric* OR gerontolog* OR "old age" OR "ag*ing population*" OR "warga emas") AND (rural* OR "remote area*" OR "remote communit*" OR "remote region*" OR "remote location*" OR village* OR countryside OR underserved OR "hard-to-reach" OR "non-urban" OR "low-resource setting*" OR kampung* OR FELDA OR "Orang Asli") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR "Negeri Sembilan" OR Melaka)) AND PY=(2021-2026)
+(1125 characters)
+
+## Google Scholar, version A (set 2021 to 2026 in the left menu)
+(telemedicine OR telehealth OR teleconsultation OR "video consultation") AND (adoption OR acceptance OR "intention to use" OR barriers) AND ("older adults" OR elderly OR "senior citizens") AND rural AND Malaysia
+(211 characters)
+https://scholar.google.com/scholar?q=(telemedicine%20OR%20telehealth%20OR%20teleconsultation%20OR%20%22video%20consultation%22)%20AND%20(adoption%20OR%20acceptance%20OR%20%22intention%20to%20use%22%20OR%20barriers)%20AND%20(%22older%20adults%22%20OR%20elderly%20OR%20%22senior%20citizens%22)%20AND%20rural%20AND%20Malaysia&as_ylo=2021&as_yhi=2026&hl=en
+
+## Google Scholar, version B (set 2021 to 2026 in the left menu)
+(telemedicine OR telehealth OR teleconsultation) AND (elderly OR "older adults" OR "warga emas") AND (Sabah OR Sarawak OR Kelantan OR Pahang OR "Orang Asli" OR FELDA OR kampung) AND (adoption OR acceptance OR barriers)
+(218 characters)
+https://scholar.google.com/scholar?q=(telemedicine%20OR%20telehealth%20OR%20teleconsultation)%20AND%20(elderly%20OR%20%22older%20adults%22%20OR%20%22warga%20emas%22)%20AND%20(Sabah%20OR%20Sarawak%20OR%20Kelantan%20OR%20Pahang%20OR%20%22Orang%20Asli%22%20OR%20FELDA%20OR%20kampung)%20AND%20(adoption%20OR%20acceptance%20OR%20barriers)&as_ylo=2021&as_yhi=2026&hl=en
+
+## Google Scholar, Malay-language (run separately)
+(teleperubatan OR telekesihatan OR telemedicine OR "konsultasi maya") AND ("warga emas" OR "warga tua" OR "orang tua") AND ("luar bandar" OR desa OR pedalaman) AND (penerimaan OR penggunaan OR kesediaan)
+(203 characters)
+https://scholar.google.com/scholar?q=(teleperubatan%20OR%20telekesihatan%20OR%20telemedicine%20OR%20%22konsultasi%20maya%22)%20AND%20(%22warga%20emas%22%20OR%20%22warga%20tua%22%20OR%20%22orang%20tua%22)%20AND%20(%22luar%20bandar%22%20OR%20desa%20OR%20pedalaman)%20AND%20(penerimaan%20OR%20penggunaan%20OR%20kesediaan)&as_ylo=2021&as_yhi=2026&hl=en
+
+## Warnings
+- Web of Science does not match plurals inside quotes. If any of these can appear in the plural, truncate the last word, e.g. "streaming service*" (works in Scopus and Web of Science): "virtual care", "remote patient monitoring", "mobile health", "intention to use", "willingness to use", "technology acceptance" and 4 more.

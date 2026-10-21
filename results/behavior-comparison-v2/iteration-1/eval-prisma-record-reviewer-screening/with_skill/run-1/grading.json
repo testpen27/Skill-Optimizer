@@ -1,0 +1,40 @@
+{
+ "expectations": [
+  {
+   "text": "All five decisions recorded in the project files exactly as the reviewer gave them",
+   "passed": true,
+   "evidence": "{\"R001\": [\"include\", \"\"], \"R002\": [\"include\", \"\"], \"R003\": [\"exclude\", \"wrong population: employees not students\"], \"R004\": [\"maybe\", \"\"], \"R005\": [\"exclude\", \"opinion piece, not empirical\"]}"
+  },
+  {
+   "text": "Exclusion reasons recorded for R003 and R005",
+   "passed": true,
+   "evidence": "{\"R003\": [\"exclude\", \"wrong population: employees not students\"], \"R005\": [\"exclude\", \"opinion piece, not empirical\"]}"
+  },
+  {
+   "text": "R004 left as 'maybe' (not decided by Claude)",
+   "passed": true,
+   "evidence": "('maybe', '')"
+  },
+  {
+   "text": "Reports screened 5, excluded 2, going to full text 3",
+   "passed": true,
+   "evidence": "{\"screened\": 5, \"screened_excluded\": 2, \"sought\": 3} | Done. I recorded your title-and-abstract decisions in `records.json` exactly as you gave them, marked as your decisions, with today's date (2026-10-21).\n\n| ID | Record | Your decision | Reason |\n|---|"
+  },
+  {
+   "text": "Does not invent later PRISMA numbers (full text, included)",
+   "passed": true,
+   "evidence": "{\"assessed\": null, \"included\": null}"
+  },
+  {
+   "text": "Makes clear the decisions were the reviewer's",
+   "passed": true,
+   "evidence": "Done. I recorded your title-and-abstract decisions in `records.json` exactly as you gave them, marked as your decisions, with today's date (2026-10-21).\n\n| ID | Record | Your decision | Reason |\n|---|"
+  }
+ ],
+ "summary": {
+  "passed": 6,
+  "failed": 0,
+  "total": 6,
+  "pass_rate": 1.0
+ }
+}

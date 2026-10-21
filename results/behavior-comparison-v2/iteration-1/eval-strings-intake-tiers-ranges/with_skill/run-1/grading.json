@@ -1,0 +1,40 @@
+{
+ "expectations": [
+  {
+   "text": "Asked for the field and the year range(s) before writing strings",
+   "passed": true,
+   "evidence": "Before I build the strings, a few quick checks. I've filled in what you already told me, so just correct anything that's wrong:\n\n1. **Field or discipline:** which field is this review in (for example Public Health, Nursing, Gerontology, Health Informatics, Information Systems)? This helps keep out s"
+  },
+  {
+   "text": "Scopus strings for both 2016-2020 and 2021-2026",
+   "passed": true,
+   "evidence": "found"
+  },
+  {
+   "text": "Web of Science strings for both ranges",
+   "passed": true,
+   "evidence": "checked PY=(...)"
+  },
+  {
+   "text": "More than one tier (broad / balanced / narrow) offered",
+   "passed": true,
+   "evidence": "tiers seen: ['broad', 'balanced', 'narrow']"
+  },
+  {
+   "text": "Malaysia niche in the strings",
+   "passed": true,
+   "evidence": "searched outputs"
+  },
+  {
+   "text": "Does not claim hit counts it never read",
+   "passed": true,
+   "evidence": "no hit-count claims"
+  }
+ ],
+ "summary": {
+  "passed": 6,
+  "failed": 0,
+  "total": 6,
+  "pass_rate": 1.0
+ }
+}

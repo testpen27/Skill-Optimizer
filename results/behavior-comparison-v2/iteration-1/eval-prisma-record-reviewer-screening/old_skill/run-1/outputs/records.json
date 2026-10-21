@@ -1,0 +1,91 @@
+{
+ "records": [
+  {
+   "doi": "10.1/a",
+   "title": "Gamified quizzes and motivation in Malaysian undergraduates",
+   "year": 2023,
+   "authors": [
+    "Tan, Ben"
+   ],
+   "venue": "Journal of Asian Education Studies",
+   "abstract": "Survey of 320 Malaysian undergraduates on gamified quizzes and intrinsic motivation.",
+   "id": "R001",
+   "screening": {
+    "stage": "title_abstract",
+    "decision": "include",
+    "date": "2026-10-21",
+    "by": "reviewer (user)"
+   }
+  },
+  {
+   "doi": "10.1/b",
+   "title": "Leaderboards in secondary science classrooms",
+   "year": 2022,
+   "authors": [
+    "Lee, Ann"
+   ],
+   "venue": "Science Teaching Review",
+   "abstract": "Quasi-experiment with 140 secondary pupils in Penang.",
+   "id": "R002",
+   "screening": {
+    "stage": "title_abstract",
+    "decision": "include",
+    "date": "2026-10-21",
+    "by": "reviewer (user)"
+   }
+  },
+  {
+   "doi": "10.1/c",
+   "title": "Gamification in corporate onboarding",
+   "year": 2024,
+   "authors": [
+    "Ng, Chi"
+   ],
+   "venue": "HR Practice Quarterly",
+   "abstract": "Case study of employee onboarding in three firms.",
+   "id": "R003",
+   "screening": {
+    "stage": "title_abstract",
+    "decision": "exclude",
+    "date": "2026-10-21",
+    "by": "reviewer (user)",
+    "reason": "Wrong population: employees, not students"
+   }
+  },
+  {
+   "doi": "10.1/d",
+   "title": "Badges and engagement in MOOCs: a review",
+   "year": 2021,
+   "authors": [
+    "Ali, Siti"
+   ],
+   "venue": "Open Learning Letters",
+   "abstract": "Narrative review of 40 MOOC studies on digital badges.",
+   "id": "R004",
+   "screening": {
+    "stage": "title_abstract",
+    "decision": "maybe",
+    "date": "2026-10-21",
+    "by": "reviewer (user)"
+   }
+  },
+  {
+   "doi": "10.1/e",
+   "title": "Opinion: why games belong in lecture halls",
+   "year": 2025,
+   "authors": [
+    "Wong, Dan"
+   ],
+   "venue": "Campus Voices",
+   "abstract": "An opinion essay arguing for games in teaching.",
+   "id": "R005",
+   "screening": {
+    "stage": "title_abstract",
+    "decision": "exclude",
+    "date": "2026-10-21",
+    "by": "reviewer (user)",
+    "reason": "Not empirical: opinion piece"
+   }
+  }
+ ]
+}

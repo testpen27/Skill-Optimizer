@@ -1,0 +1,109 @@
+# Telemedicine Adoption among Older Adults in Rural Malaysia: A Systematic Literature Review
+
+Concept 1: Telemedicine and telehealth
+Concept 2: Adoption and acceptance
+Concept 3: Older adults (60+)
+Concept 4: Malaysia (niche)
+Concept 5: Rural setting
+Tiers: broad = concepts 1, 2; balanced = concepts 1, 2, 4; focused = concepts 1, 2, 3, 4; narrow = concepts 1, 2, 3, 4, 5
+
+=============== 2016 to 2020 ===============
+
+## Scopus, broad (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT)) AND PUBYEAR > 2015 AND PUBYEAR < 2021
+(484 characters)
+
+## Web of Science, broad (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT)) AND PY=(2016-2020)
+(455 characters)
+
+## Scopus, balanced (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perak OR Johor OR Selangor OR "Orang Asli" OR "Klinik Kesihatan" OR "Klinik Desa" OR MySejahtera)) AND PUBYEAR > 2015 AND PUBYEAR < 2021
+(665 characters)
+
+## Web of Science, balanced (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perak OR Johor OR Selangor OR "Orang Asli" OR "Klinik Kesihatan" OR "Klinik Desa" OR MySejahtera)) AND PY=(2016-2020)
+(636 characters)
+
+## Scopus, focused (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older individual*" OR "older patient*" OR elderly OR senior* OR aged OR ageing OR aging OR geriatric* OR gerontolog* OR "later life" OR retiree*) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perak OR Johor OR Selangor OR "Orang Asli" OR "Klinik Kesihatan" OR "Klinik Desa" OR MySejahtera)) AND PUBYEAR > 2015 AND PUBYEAR < 2021
+(872 characters)
+
+## Web of Science, focused (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older individual*" OR "older patient*" OR elderly OR senior* OR aged OR ageing OR aging OR geriatric* OR gerontolog* OR "later life" OR retiree*) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perak OR Johor OR Selangor OR "Orang Asli" OR "Klinik Kesihatan" OR "Klinik Desa" OR MySejahtera)) AND PY=(2016-2020)
+(843 characters)
+
+## Scopus, narrow (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older individual*" OR "older patient*" OR elderly OR senior* OR aged OR ageing OR aging OR geriatric* OR gerontolog* OR "later life" OR retiree*) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perak OR Johor OR Selangor OR "Orang Asli" OR "Klinik Kesihatan" OR "Klinik Desa" OR MySejahtera) AND (rural* OR village* OR countryside OR "remote area*" OR "remote communit*" OR "remote region*" OR "remote setting*" OR "hard-to-reach" OR underserved OR "under-served" OR "non-urban" OR kampung OR FELDA)) AND PUBYEAR > 2015 AND PUBYEAR < 2021
+(1080 characters)
+
+## Web of Science, narrow (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older individual*" OR "older patient*" OR elderly OR senior* OR aged OR ageing OR aging OR geriatric* OR gerontolog* OR "later life" OR retiree*) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perak OR Johor OR Selangor OR "Orang Asli" OR "Klinik Kesihatan" OR "Klinik Desa" OR MySejahtera) AND (rural* OR village* OR countryside OR "remote area*" OR "remote communit*" OR "remote region*" OR "remote setting*" OR "hard-to-reach" OR underserved OR "under-served" OR "non-urban" OR kampung OR FELDA)) AND PY=(2016-2020)
+(1051 characters)
+
+## Google Scholar, version A (set 2016 to 2020 in the left menu)
+(telemedicine OR telehealth OR teleconsultation OR "virtual care") AND (adoption OR acceptance OR uptake OR "intention to use") AND ("older adults" OR elderly) AND (rural OR village) AND Malaysia
+(195 characters)
+https://scholar.google.com/scholar?q=(telemedicine%20OR%20telehealth%20OR%20teleconsultation%20OR%20%22virtual%20care%22)%20AND%20(adoption%20OR%20acceptance%20OR%20uptake%20OR%20%22intention%20to%20use%22)%20AND%20(%22older%20adults%22%20OR%20elderly)%20AND%20(rural%20OR%20village)%20AND%20Malaysia&as_ylo=2016&as_yhi=2020&hl=en
+
+## Google Scholar, version B (set 2016 to 2020 in the left menu)
+(telemedicine OR telehealth OR teleconsultation OR MySejahtera OR "Klinik Kesihatan") AND (elderly OR "older adults" OR "warga emas") AND (Sabah OR Sarawak OR Kelantan OR Pahang OR "Orang Asli" OR FELDA)
+(203 characters)
+https://scholar.google.com/scholar?q=(telemedicine%20OR%20telehealth%20OR%20teleconsultation%20OR%20MySejahtera%20OR%20%22Klinik%20Kesihatan%22)%20AND%20(elderly%20OR%20%22older%20adults%22%20OR%20%22warga%20emas%22)%20AND%20(Sabah%20OR%20Sarawak%20OR%20Kelantan%20OR%20Pahang%20OR%20%22Orang%20Asli%22%20OR%20FELDA)&as_ylo=2016&as_yhi=2020&hl=en
+
+## Google Scholar, Malay-language (run separately)
+(telekesihatan OR teleperubatan OR "konsultasi maya" OR "kesihatan digital") AND ("warga emas" OR "warga tua" OR "orang tua") AND ("luar bandar" OR desa OR kampung) AND (penerimaan OR penggunaan OR penerapan)
+(208 characters)
+https://scholar.google.com/scholar?q=(telekesihatan%20OR%20teleperubatan%20OR%20%22konsultasi%20maya%22%20OR%20%22kesihatan%20digital%22)%20AND%20(%22warga%20emas%22%20OR%20%22warga%20tua%22%20OR%20%22orang%20tua%22)%20AND%20(%22luar%20bandar%22%20OR%20desa%20OR%20kampung)%20AND%20(penerimaan%20OR%20penggunaan%20OR%20penerapan)&as_ylo=2016&as_yhi=2020&hl=en
+
+=============== 2021 to 2026 ===============
+
+## Scopus, broad (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT)) AND PUBYEAR > 2020 AND PUBYEAR < 2027
+(484 characters)
+
+## Web of Science, broad (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT)) AND PY=(2021-2026)
+(455 characters)
+
+## Scopus, balanced (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perak OR Johor OR Selangor OR "Orang Asli" OR "Klinik Kesihatan" OR "Klinik Desa" OR MySejahtera)) AND PUBYEAR > 2020 AND PUBYEAR < 2027
+(665 characters)
+
+## Web of Science, balanced (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perak OR Johor OR Selangor OR "Orang Asli" OR "Klinik Kesihatan" OR "Klinik Desa" OR MySejahtera)) AND PY=(2021-2026)
+(636 characters)
+
+## Scopus, focused (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older individual*" OR "older patient*" OR elderly OR senior* OR aged OR ageing OR aging OR geriatric* OR gerontolog* OR "later life" OR retiree*) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perak OR Johor OR Selangor OR "Orang Asli" OR "Klinik Kesihatan" OR "Klinik Desa" OR MySejahtera)) AND PUBYEAR > 2020 AND PUBYEAR < 2027
+(872 characters)
+
+## Web of Science, focused (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older individual*" OR "older patient*" OR elderly OR senior* OR aged OR ageing OR aging OR geriatric* OR gerontolog* OR "later life" OR retiree*) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perak OR Johor OR Selangor OR "Orang Asli" OR "Klinik Kesihatan" OR "Klinik Desa" OR MySejahtera)) AND PY=(2021-2026)
+(843 characters)
+
+## Scopus, narrow (Advanced search)
+TITLE-ABS-KEY((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older individual*" OR "older patient*" OR elderly OR senior* OR aged OR ageing OR aging OR geriatric* OR gerontolog* OR "later life" OR retiree*) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perak OR Johor OR Selangor OR "Orang Asli" OR "Klinik Kesihatan" OR "Klinik Desa" OR MySejahtera) AND (rural* OR village* OR countryside OR "remote area*" OR "remote communit*" OR "remote region*" OR "remote setting*" OR "hard-to-reach" OR underserved OR "under-served" OR "non-urban" OR kampung OR FELDA)) AND PUBYEAR > 2020 AND PUBYEAR < 2027
+(1080 characters)
+
+## Web of Science, narrow (Advanced search, Core Collection)
+TS=((telemedic* OR telehealth OR "tele-health" OR telecare OR teleconsult* OR telemonitor* OR "virtual care" OR "video consult*" OR "remote consult*" OR "remote patient monitoring" OR eHealth OR "e-health" OR mHealth OR "mobile health") AND (adopt* OR accept* OR uptake OR utili?ation OR usage OR readiness OR willing* OR "intention* to use" OR "behavio*ral intention*" OR "continuance intention*" OR barrier* OR facilitator* OR UTAUT) AND ("older adult*" OR "older people" OR "older person*" OR "older individual*" OR "older patient*" OR elderly OR senior* OR aged OR ageing OR aging OR geriatric* OR gerontolog* OR "later life" OR retiree*) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perak OR Johor OR Selangor OR "Orang Asli" OR "Klinik Kesihatan" OR "Klinik Desa" OR MySejahtera) AND (rural* OR village* OR countryside OR "remote area*" OR "remote communit*" OR "remote region*" OR "remote setting*" OR "hard-to-reach" OR underserved OR "under-served" OR "non-urban" OR kampung OR FELDA)) AND PY=(2021-2026)
+(1051 characters)
+
+## Google Scholar, version A (set 2021 to 2026 in the left menu)
+(telemedicine OR telehealth OR teleconsultation OR "virtual care") AND (adoption OR acceptance OR uptake OR "intention to use") AND ("older adults" OR elderly) AND (rural OR village) AND Malaysia
+(195 characters)
+https://scholar.google.com/scholar?q=(telemedicine%20OR%20telehealth%20OR%20teleconsultation%20OR%20%22virtual%20care%22)%20AND%20(adoption%20OR%20acceptance%20OR%20uptake%20OR%20%22intention%20to%20use%22)%20AND%20(%22older%20adults%22%20OR%20elderly)%20AND%20(rural%20OR%20village)%20AND%20Malaysia&as_ylo=2021&as_yhi=2026&hl=en
+
+## Google Scholar, version B (set 2021 to 2026 in the left menu)
+(telemedicine OR telehealth OR teleconsultation OR MySejahtera OR "Klinik Kesihatan") AND (elderly OR "older adults" OR "warga emas") AND (Sabah OR Sarawak OR Kelantan OR Pahang OR "Orang Asli" OR FELDA)
+(203 characters)
+https://scholar.google.com/scholar?q=(telemedicine%20OR%20telehealth%20OR%20teleconsultation%20OR%20MySejahtera%20OR%20%22Klinik%20Kesihatan%22)%20AND%20(elderly%20OR%20%22older%20adults%22%20OR%20%22warga%20emas%22)%20AND%20(Sabah%20OR%20Sarawak%20OR%20Kelantan%20OR%20Pahang%20OR%20%22Orang%20Asli%22%20OR%20FELDA)&as_ylo=2021&as_yhi=2026&hl=en
+
+## Google Scholar, Malay-language (run separately)
+(telekesihatan OR teleperubatan OR "konsultasi maya" OR "kesihatan digital") AND ("warga emas" OR "warga tua" OR "orang tua") AND ("luar bandar" OR desa OR kampung) AND (penerimaan OR penggunaan OR penerapan)
+(208 characters)
+https://scholar.google.com/scholar?q=(telekesihatan%20OR%20teleperubatan%20OR%20%22konsultasi%20maya%22%20OR%20%22kesihatan%20digital%22)%20AND%20(%22warga%20emas%22%20OR%20%22warga%20tua%22%20OR%20%22orang%20tua%22)%20AND%20(%22luar%20bandar%22%20OR%20desa%20OR%20kampung)%20AND%20(penerimaan%20OR%20penggunaan%20OR%20penerapan)&as_ylo=2021&as_yhi=2026&hl=en
+
+## Warnings
+- Web of Science does not match plurals inside quotes. If any of these can appear in the plural, truncate the last word, e.g. "streaming service*" (works in Scopus and Web of Science): "virtual care", "remote patient monitoring", "mobile health", "intention* to use", "older people", "later life" and 3 more.

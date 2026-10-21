@@ -1,0 +1,363 @@
+{
+  "metadata": {
+    "skill_name": "pre-research",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-21T17:29:07Z",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 3,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 113.9,
+        "tokens": 89629,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "LRM PDF produced, landscape",
+          "passed": true,
+          "evidence": "literature_review_matrix.pdf Page size:       792 x 612"
+        },
+        {
+          "text": "All four papers in the matrix",
+          "passed": true,
+          "evidence": "[]"
+        },
+        {
+          "text": "No quartile invented for journals that cannot be looked up",
+          "passed": true,
+          "evidence": "no Q1-Q4 in PDF"
+        },
+        {
+          "text": "Thesis marked N/A for quartile",
+          "passed": true,
+          "evidence": "searched for N/A"
+        },
+        {
+          "text": "Missing results shown as not retrieved, not invented",
+          "passed": true,
+          "evidence": "searched PDF"
+        },
+        {
+          "text": "Missing framework shown as not stated",
+          "passed": true,
+          "evidence": "searched PDF"
+        },
+        {
+          "text": "Access marked Unclear (no evidence of free or paid)",
+          "passed": true,
+          "evidence": "['Unclear', 'Unclear', 'Unclear', 'Unclear']"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 55.6,
+        "tokens": 77585,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "All five decisions recorded in the project files exactly as the reviewer gave them",
+          "passed": true,
+          "evidence": "{\"R001\": [\"include\", \"\"], \"R002\": [\"include\", \"\"], \"R003\": [\"exclude\", \"Wrong population: employees, not students\"], \"R004\": [\"maybe\", \"\"], \"R005\": [\"exclude\", \"Not empirical: opinion piece\"]}"
+        },
+        {
+          "text": "Exclusion reasons recorded for R003 and R005",
+          "passed": true,
+          "evidence": "{\"R003\": [\"exclude\", \"Wrong population: employees, not students\"], \"R005\": [\"exclude\", \"Not empirical: opinion piece\"]}"
+        },
+        {
+          "text": "R004 left as 'maybe' (not decided by Claude)",
+          "passed": true,
+          "evidence": "('maybe', '')"
+        },
+        {
+          "text": "Reports screened 5, excluded 2, going to full text 3",
+          "passed": true,
+          "evidence": "{\"screened\": null, \"screened_excluded\": 2, \"sought\": null} | I've recorded your title and abstract decisions in both project files.\n\nYour records didn't have IDs, so I numbered them R001 to R005 in the order they appear in `records.json`:\n\n| ID | Title | Decisi"
+        },
+        {
+          "text": "Does not invent later PRISMA numbers (full text, included)",
+          "passed": true,
+          "evidence": "{\"assessed\": null, \"included\": null}"
+        },
+        {
+          "text": "Makes clear the decisions were the reviewer's",
+          "passed": true,
+          "evidence": "I've recorded your title and abstract decisions in both project files.\n\nYour records didn't have IDs, so I numbered them R001 to R005 in the order they appear in `records.json`:\n\n| ID | Title | Decisi"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 126.0,
+        "tokens": 100031,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Asked for the field and the year range(s) before writing strings",
+          "passed": true,
+          "evidence": "Before I write the strings, a few quick questions so they fit your review. I've filled in what I can from your message, so just correct anything that's wrong:\n\n1. **Field or discipline:** which field is this for (e.g. public health, nursing, health informatics, gerontology)?\n2. **Working title or re"
+        },
+        {
+          "text": "Scopus strings for both 2016-2020 and 2021-2026",
+          "passed": true,
+          "evidence": "found"
+        },
+        {
+          "text": "Web of Science strings for both ranges",
+          "passed": true,
+          "evidence": "checked PY=(...)"
+        },
+        {
+          "text": "More than one tier (broad / balanced / narrow) offered",
+          "passed": true,
+          "evidence": "tiers seen: ['broad', 'balanced', 'narrow']"
+        },
+        {
+          "text": "Malaysia niche in the strings",
+          "passed": true,
+          "evidence": "searched outputs"
+        },
+        {
+          "text": "Does not claim hit counts it never read",
+          "passed": true,
+          "evidence": "no hit-count claims"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 96.0,
+        "tokens": 92335,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "LRM PDF produced, landscape",
+          "passed": true,
+          "evidence": "LRM.pdf Page size:       841.89 x 595.276"
+        },
+        {
+          "text": "All four papers in the matrix",
+          "passed": true,
+          "evidence": "[]"
+        },
+        {
+          "text": "No quartile invented for journals that cannot be looked up",
+          "passed": true,
+          "evidence": "no Q1-Q4 in PDF"
+        },
+        {
+          "text": "Thesis marked N/A for quartile",
+          "passed": true,
+          "evidence": "searched for N/A"
+        },
+        {
+          "text": "Missing results shown as not retrieved, not invented",
+          "passed": true,
+          "evidence": "searched PDF"
+        },
+        {
+          "text": "Missing framework shown as not stated",
+          "passed": true,
+          "evidence": "searched PDF"
+        },
+        {
+          "text": "Access marked Unclear (no evidence of free or paid)",
+          "passed": true,
+          "evidence": "['Unclear', 'Unclear', 'Unclear', 'Unclear']"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 50.0,
+        "tokens": 78096,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "All five decisions recorded in the project files exactly as the reviewer gave them",
+          "passed": true,
+          "evidence": "{\"R001\": [\"include\", \"\"], \"R002\": [\"include\", \"\"], \"R003\": [\"exclude\", \"wrong population: employees not students\"], \"R004\": [\"maybe\", \"\"], \"R005\": [\"exclude\", \"opinion piece, not empirical\"]}"
+        },
+        {
+          "text": "Exclusion reasons recorded for R003 and R005",
+          "passed": true,
+          "evidence": "{\"R003\": [\"exclude\", \"wrong population: employees not students\"], \"R005\": [\"exclude\", \"opinion piece, not empirical\"]}"
+        },
+        {
+          "text": "R004 left as 'maybe' (not decided by Claude)",
+          "passed": true,
+          "evidence": "('maybe', '')"
+        },
+        {
+          "text": "Reports screened 5, excluded 2, going to full text 3",
+          "passed": true,
+          "evidence": "{\"screened\": 5, \"screened_excluded\": 2, \"sought\": 3} | Done. I recorded your title-and-abstract decisions in `records.json` exactly as you gave them, marked as your decisions, with today's date (2026-10-21).\n\n| ID | Record | Your decision | Reason |\n|---|"
+        },
+        {
+          "text": "Does not invent later PRISMA numbers (full text, included)",
+          "passed": true,
+          "evidence": "{\"assessed\": null, \"included\": null}"
+        },
+        {
+          "text": "Makes clear the decisions were the reviewer's",
+          "passed": true,
+          "evidence": "Done. I recorded your title-and-abstract decisions in `records.json` exactly as you gave them, marked as your decisions, with today's date (2026-10-21).\n\n| ID | Record | Your decision | Reason |\n|---|"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 142.2,
+        "tokens": 98840,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Asked for the field and the year range(s) before writing strings",
+          "passed": true,
+          "evidence": "Before I build the strings, a few quick checks. I've filled in what you already told me, so just correct anything that's wrong:\n\n1. **Field or discipline:** which field is this review in (for example Public Health, Nursing, Gerontology, Health Informatics, Information Systems)? This helps keep out s"
+        },
+        {
+          "text": "Scopus strings for both 2016-2020 and 2021-2026",
+          "passed": true,
+          "evidence": "found"
+        },
+        {
+          "text": "Web of Science strings for both ranges",
+          "passed": true,
+          "evidence": "checked PY=(...)"
+        },
+        {
+          "text": "More than one tier (broad / balanced / narrow) offered",
+          "passed": true,
+          "evidence": "tiers seen: ['broad', 'balanced', 'narrow']"
+        },
+        {
+          "text": "Malaysia niche in the strings",
+          "passed": true,
+          "evidence": "searched outputs"
+        },
+        {
+          "text": "Does not claim hit counts it never read",
+          "passed": true,
+          "evidence": "no hit-count claims"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "old_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 98.5,
+        "stddev": 37.6419,
+        "min": 55.6,
+        "max": 126.0
+      },
+      "tokens": {
+        "mean": 89081.6667,
+        "stddev": 11233.0054,
+        "min": 77585,
+        "max": 100031
+      }
+    },
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 96.0667,
+        "stddev": 46.1,
+        "min": 50.0,
+        "max": 142.2
+      },
+      "tokens": {
+        "mean": 89757.0,
+        "stddev": 10609.5687,
+        "min": 78096,
+        "max": 98840
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "+2.4",
+      "tokens": "-675"
+    }
+  },
+  "notes": []
+}

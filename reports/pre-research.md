@@ -97,6 +97,33 @@ are no helpers, so every step runs on the model chosen in the chat. Trigger
 accuracy is unaffected (the description did not change). The routing itself
 has not been exercised: this environment has no Claude desktop app.
 
+### Behaviour test (skill-creator, final check before publishing)
+
+Three tasks, each run once with `pre-research` and once with the skill it
+replaces, by independent subagents with no browser or database access
+(`results/behavior-comparison-v2/`, viewer `review-iteration-1.html`):
+
+| Task | pre-research | Old skill |
+|---|---|---|
+| Strings for an SLR, two year ranges (old: research-search-string) | 6/6 | 6/6 |
+| Record the reviewer's screening and give PRISMA numbers (old: research-search-string) | 6/6 | 6/6 |
+| LRM PDF from four supplied papers (old: find-paper) | 7/7 | 7/7 |
+
+Time and tokens were the same within noise (96 s against 99 s a task, about
+90k tokens each). The checks do not tell the versions apart: both followed
+the honesty rules (no invented hit counts, quartiles or screening decisions).
+Four apparent failures in the first grading pass were grader errors (a "Q1/Q2"
+in the synthesis advice, a cell split across lines by the PDF extractor, a
+flat screening record, the phrase "your decision") and were fixed in
+`grade.py` before the final scores. What differed was how the work was done:
+pre-research used its scripts (screening recorder, LRM builder) where the old
+skills improvised, and it asked all nine intake questions even when the user
+only wanted an LRM of papers they already had, which is a candidate fix.
+
+The description optimizer, rerun on the 34-query set with the adopted
+description, scored every run correct (105/105 train, 65/65 held-out runs)
+and proposed no change (`results/description-optimization-v5/`).
+
 ### Before installing
 
 Uninstall `search-string`, `research-search-string` and `find-paper` from the

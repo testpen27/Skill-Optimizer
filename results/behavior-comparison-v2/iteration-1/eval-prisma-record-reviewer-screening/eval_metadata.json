@@ -1,0 +1,6 @@
+{
+ "eval_id": 2,
+ "eval_name": "prisma-record-reviewer-screening",
+ "prompt": "I've screened my records by title and abstract. My decisions: include R001 and R002, exclude R003 (wrong population: employees not students), maybe R004, exclude R005 (opinion piece, not empirical). Please record these and tell me my PRISMA numbers so far. records.json and search_log.json are in my project folder.",
+ "assertions": []
+}

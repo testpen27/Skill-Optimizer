@@ -1,0 +1,345 @@
+{
+  "profile": {
+    "Field": "Public Health",
+    "Working title": "Telemedicine Adoption among Older Adults in Rural Malaysia: A Systematic Literature Review",
+    "Population": "Adults aged 60 and over",
+    "Context": "Rural and remote areas",
+    "Niche": "Malaysia",
+    "Year ranges": "2016-2020 and 2021-2026",
+    "Review type": "Systematic review",
+    "Document types and languages": "Not specified; no limit applied in the strings",
+    "Databases": "Scopus and Web of Science (university access)",
+    "Target screening size": "Not specified",
+    "Deliverable": "Search strings only (searches not yet run)"
+  },
+  "title": "Telemedicine Adoption among Older Adults in Rural Malaysia: A Systematic Literature Review",
+  "ranges": [
+    "2016-2020",
+    "2021-2026"
+  ],
+  "tiers": [
+    {
+      "name": "broad",
+      "concepts": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "name": "balanced",
+      "concepts": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "name": "narrow",
+      "concepts": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "name": "Telemedicine and telehealth",
+      "terms": [
+        "telemedic*",
+        "telehealth*",
+        "\"tele-medicine\"",
+        "\"tele-health\"",
+        "telecare",
+        "teleconsult*",
+        "telemonitor*",
+        "telerehab*",
+        "\"video consult*\"",
+        "\"virtual care\"",
+        "\"remote patient monitoring\"",
+        "mHealth",
+        "\"mobile health\""
+      ]
+    },
+    {
+      "name": "Adoption, acceptance and use",
+      "terms": [
+        "adopt*",
+        "accept*",
+        "uptake",
+        "utili*ation",
+        "usage",
+        "\"intention to use\"",
+        "\"behavio*ral intention*\"",
+        "\"continuance intention*\"",
+        "\"willingness to use\"",
+        "readiness",
+        "barrier*",
+        "facilitator*",
+        "\"technology acceptance\"",
+        "UTAUT"
+      ]
+    },
+    {
+      "name": "Older adults (60+)",
+      "terms": [
+        "\"older adult*\"",
+        "\"older people\"",
+        "\"older person*\"",
+        "\"older patient*\"",
+        "\"older population*\"",
+        "\"older Malaysian*\"",
+        "elder*",
+        "\"senior citizen*\"",
+        "seniors",
+        "geriatric*",
+        "gerontolog*",
+        "\"old age\"",
+        "\"ag*ing population*\"",
+        "\"warga emas\""
+      ]
+    },
+    {
+      "name": "Rural and remote settings",
+      "terms": [
+        "rural*",
+        "\"remote area*\"",
+        "\"remote communit*\"",
+        "\"remote region*\"",
+        "\"remote location*\"",
+        "village*",
+        "countryside",
+        "underserved",
+        "\"hard-to-reach\"",
+        "\"non-urban\"",
+        "\"low-resource setting*\"",
+        "kampung*",
+        "FELDA",
+        "\"Orang Asli\""
+      ]
+    },
+    {
+      "name": "Malaysia (niche)",
+      "terms": [
+        "Malaysia*",
+        "Sabah",
+        "Sarawak",
+        "Kelantan",
+        "Terengganu",
+        "Pahang",
+        "Kedah",
+        "Perlis",
+        "Perak",
+        "Johor",
+        "Selangor",
+        "Penang",
+        "\"Negeri Sembilan\"",
+        "Melaka"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "tier": "broad",
+      "range": "2016-2020",
+      "database": "Scopus",
+      "string": "TITLE-ABS-KEY((telemedic* OR telehealth* OR \"tele-medicine\" OR \"tele-health\" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR \"video consult*\" OR \"virtual care\" OR \"remote patient monitoring\" OR mHealth OR \"mobile health\") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR \"intention to use\" OR \"behavio*ral intention*\" OR \"continuance intention*\" OR \"willingness to use\" OR readiness OR barrier* OR facilitator* OR \"technology acceptance\" OR UTAUT) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR \"Negeri Sembilan\" OR Melaka)) AND PUBYEAR > 2015 AND PUBYEAR < 2021",
+      "url": "https://www.scopus.com/search/form.uri?display=advanced",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "broad",
+      "range": "2016-2020",
+      "database": "Web of Science",
+      "string": "TS=((telemedic* OR telehealth* OR \"tele-medicine\" OR \"tele-health\" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR \"video consult*\" OR \"virtual care\" OR \"remote patient monitoring\" OR mHealth OR \"mobile health\") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR \"intention to use\" OR \"behavio*ral intention*\" OR \"continuance intention*\" OR \"willingness to use\" OR readiness OR barrier* OR facilitator* OR \"technology acceptance\" OR UTAUT) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR \"Negeri Sembilan\" OR Melaka)) AND PY=(2016-2020)",
+      "url": "https://www.webofscience.com/wos/woscc/advanced-search",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "balanced",
+      "range": "2016-2020",
+      "database": "Scopus",
+      "string": "TITLE-ABS-KEY((telemedic* OR telehealth* OR \"tele-medicine\" OR \"tele-health\" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR \"video consult*\" OR \"virtual care\" OR \"remote patient monitoring\" OR mHealth OR \"mobile health\") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR \"intention to use\" OR \"behavio*ral intention*\" OR \"continuance intention*\" OR \"willingness to use\" OR readiness OR barrier* OR facilitator* OR \"technology acceptance\" OR UTAUT) AND (\"older adult*\" OR \"older people\" OR \"older person*\" OR \"older patient*\" OR \"older population*\" OR \"older Malaysian*\" OR elder* OR \"senior citizen*\" OR seniors OR geriatric* OR gerontolog* OR \"old age\" OR \"ag*ing population*\" OR \"warga emas\") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR \"Negeri Sembilan\" OR Melaka)) AND PUBYEAR > 2015 AND PUBYEAR < 2021",
+      "url": "https://www.scopus.com/search/form.uri?display=advanced",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "balanced",
+      "range": "2016-2020",
+      "database": "Web of Science",
+      "string": "TS=((telemedic* OR telehealth* OR \"tele-medicine\" OR \"tele-health\" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR \"video consult*\" OR \"virtual care\" OR \"remote patient monitoring\" OR mHealth OR \"mobile health\") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR \"intention to use\" OR \"behavio*ral intention*\" OR \"continuance intention*\" OR \"willingness to use\" OR readiness OR barrier* OR facilitator* OR \"technology acceptance\" OR UTAUT) AND (\"older adult*\" OR \"older people\" OR \"older person*\" OR \"older patient*\" OR \"older population*\" OR \"older Malaysian*\" OR elder* OR \"senior citizen*\" OR seniors OR geriatric* OR gerontolog* OR \"old age\" OR \"ag*ing population*\" OR \"warga emas\") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR \"Negeri Sembilan\" OR Melaka)) AND PY=(2016-2020)",
+      "url": "https://www.webofscience.com/wos/woscc/advanced-search",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "narrow",
+      "range": "2016-2020",
+      "database": "Scopus",
+      "string": "TITLE-ABS-KEY((telemedic* OR telehealth* OR \"tele-medicine\" OR \"tele-health\" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR \"video consult*\" OR \"virtual care\" OR \"remote patient monitoring\" OR mHealth OR \"mobile health\") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR \"intention to use\" OR \"behavio*ral intention*\" OR \"continuance intention*\" OR \"willingness to use\" OR readiness OR barrier* OR facilitator* OR \"technology acceptance\" OR UTAUT) AND (\"older adult*\" OR \"older people\" OR \"older person*\" OR \"older patient*\" OR \"older population*\" OR \"older Malaysian*\" OR elder* OR \"senior citizen*\" OR seniors OR geriatric* OR gerontolog* OR \"old age\" OR \"ag*ing population*\" OR \"warga emas\") AND (rural* OR \"remote area*\" OR \"remote communit*\" OR \"remote region*\" OR \"remote location*\" OR village* OR countryside OR underserved OR \"hard-to-reach\" OR \"non-urban\" OR \"low-resource setting*\" OR kampung* OR FELDA OR \"Orang Asli\") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR \"Negeri Sembilan\" OR Melaka)) AND PUBYEAR > 2015 AND PUBYEAR < 2021",
+      "url": "https://www.scopus.com/search/form.uri?display=advanced",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "narrow",
+      "range": "2016-2020",
+      "database": "Web of Science",
+      "string": "TS=((telemedic* OR telehealth* OR \"tele-medicine\" OR \"tele-health\" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR \"video consult*\" OR \"virtual care\" OR \"remote patient monitoring\" OR mHealth OR \"mobile health\") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR \"intention to use\" OR \"behavio*ral intention*\" OR \"continuance intention*\" OR \"willingness to use\" OR readiness OR barrier* OR facilitator* OR \"technology acceptance\" OR UTAUT) AND (\"older adult*\" OR \"older people\" OR \"older person*\" OR \"older patient*\" OR \"older population*\" OR \"older Malaysian*\" OR elder* OR \"senior citizen*\" OR seniors OR geriatric* OR gerontolog* OR \"old age\" OR \"ag*ing population*\" OR \"warga emas\") AND (rural* OR \"remote area*\" OR \"remote communit*\" OR \"remote region*\" OR \"remote location*\" OR village* OR countryside OR underserved OR \"hard-to-reach\" OR \"non-urban\" OR \"low-resource setting*\" OR kampung* OR FELDA OR \"Orang Asli\") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR \"Negeri Sembilan\" OR Melaka)) AND PY=(2016-2020)",
+      "url": "https://www.webofscience.com/wos/woscc/advanced-search",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "all",
+      "range": "2016-2020",
+      "database": "Google Scholar A",
+      "string": "(telemedicine OR telehealth OR teleconsultation OR \"video consultation\") AND (adoption OR acceptance OR \"intention to use\" OR barriers) AND (\"older adults\" OR elderly OR \"senior citizens\") AND rural AND Malaysia",
+      "url": "https://scholar.google.com/scholar?q=(telemedicine%20OR%20telehealth%20OR%20teleconsultation%20OR%20%22video%20consultation%22)%20AND%20(adoption%20OR%20acceptance%20OR%20%22intention%20to%20use%22%20OR%20barriers)%20AND%20(%22older%20adults%22%20OR%20elderly%20OR%20%22senior%20citizens%22)%20AND%20rural%20AND%20Malaysia&as_ylo=2016&as_yhi=2020&hl=en",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "all",
+      "range": "2016-2020",
+      "database": "Google Scholar B",
+      "string": "(telemedicine OR telehealth OR teleconsultation) AND (elderly OR \"older adults\" OR \"warga emas\") AND (Sabah OR Sarawak OR Kelantan OR Pahang OR \"Orang Asli\" OR FELDA OR kampung) AND (adoption OR acceptance OR barriers)",
+      "url": "https://scholar.google.com/scholar?q=(telemedicine%20OR%20telehealth%20OR%20teleconsultation)%20AND%20(elderly%20OR%20%22older%20adults%22%20OR%20%22warga%20emas%22)%20AND%20(Sabah%20OR%20Sarawak%20OR%20Kelantan%20OR%20Pahang%20OR%20%22Orang%20Asli%22%20OR%20FELDA%20OR%20kampung)%20AND%20(adoption%20OR%20acceptance%20OR%20barriers)&as_ylo=2016&as_yhi=2020&hl=en",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "all",
+      "range": "2016-2020",
+      "database": "Google Scholar (Malay)",
+      "string": "(teleperubatan OR telekesihatan OR telemedicine OR \"konsultasi maya\") AND (\"warga emas\" OR \"warga tua\" OR \"orang tua\") AND (\"luar bandar\" OR desa OR pedalaman) AND (penerimaan OR penggunaan OR kesediaan)",
+      "url": "https://scholar.google.com/scholar?q=(teleperubatan%20OR%20telekesihatan%20OR%20telemedicine%20OR%20%22konsultasi%20maya%22)%20AND%20(%22warga%20emas%22%20OR%20%22warga%20tua%22%20OR%20%22orang%20tua%22)%20AND%20(%22luar%20bandar%22%20OR%20desa%20OR%20pedalaman)%20AND%20(penerimaan%20OR%20penggunaan%20OR%20kesediaan)&as_ylo=2016&as_yhi=2020&hl=en",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "broad",
+      "range": "2021-2026",
+      "database": "Scopus",
+      "string": "TITLE-ABS-KEY((telemedic* OR telehealth* OR \"tele-medicine\" OR \"tele-health\" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR \"video consult*\" OR \"virtual care\" OR \"remote patient monitoring\" OR mHealth OR \"mobile health\") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR \"intention to use\" OR \"behavio*ral intention*\" OR \"continuance intention*\" OR \"willingness to use\" OR readiness OR barrier* OR facilitator* OR \"technology acceptance\" OR UTAUT) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR \"Negeri Sembilan\" OR Melaka)) AND PUBYEAR > 2020 AND PUBYEAR < 2027",
+      "url": "https://www.scopus.com/search/form.uri?display=advanced",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "broad",
+      "range": "2021-2026",
+      "database": "Web of Science",
+      "string": "TS=((telemedic* OR telehealth* OR \"tele-medicine\" OR \"tele-health\" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR \"video consult*\" OR \"virtual care\" OR \"remote patient monitoring\" OR mHealth OR \"mobile health\") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR \"intention to use\" OR \"behavio*ral intention*\" OR \"continuance intention*\" OR \"willingness to use\" OR readiness OR barrier* OR facilitator* OR \"technology acceptance\" OR UTAUT) AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR \"Negeri Sembilan\" OR Melaka)) AND PY=(2021-2026)",
+      "url": "https://www.webofscience.com/wos/woscc/advanced-search",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "balanced",
+      "range": "2021-2026",
+      "database": "Scopus",
+      "string": "TITLE-ABS-KEY((telemedic* OR telehealth* OR \"tele-medicine\" OR \"tele-health\" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR \"video consult*\" OR \"virtual care\" OR \"remote patient monitoring\" OR mHealth OR \"mobile health\") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR \"intention to use\" OR \"behavio*ral intention*\" OR \"continuance intention*\" OR \"willingness to use\" OR readiness OR barrier* OR facilitator* OR \"technology acceptance\" OR UTAUT) AND (\"older adult*\" OR \"older people\" OR \"older person*\" OR \"older patient*\" OR \"older population*\" OR \"older Malaysian*\" OR elder* OR \"senior citizen*\" OR seniors OR geriatric* OR gerontolog* OR \"old age\" OR \"ag*ing population*\" OR \"warga emas\") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR \"Negeri Sembilan\" OR Melaka)) AND PUBYEAR > 2020 AND PUBYEAR < 2027",
+      "url": "https://www.scopus.com/search/form.uri?display=advanced",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "balanced",
+      "range": "2021-2026",
+      "database": "Web of Science",
+      "string": "TS=((telemedic* OR telehealth* OR \"tele-medicine\" OR \"tele-health\" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR \"video consult*\" OR \"virtual care\" OR \"remote patient monitoring\" OR mHealth OR \"mobile health\") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR \"intention to use\" OR \"behavio*ral intention*\" OR \"continuance intention*\" OR \"willingness to use\" OR readiness OR barrier* OR facilitator* OR \"technology acceptance\" OR UTAUT) AND (\"older adult*\" OR \"older people\" OR \"older person*\" OR \"older patient*\" OR \"older population*\" OR \"older Malaysian*\" OR elder* OR \"senior citizen*\" OR seniors OR geriatric* OR gerontolog* OR \"old age\" OR \"ag*ing population*\" OR \"warga emas\") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR \"Negeri Sembilan\" OR Melaka)) AND PY=(2021-2026)",
+      "url": "https://www.webofscience.com/wos/woscc/advanced-search",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "narrow",
+      "range": "2021-2026",
+      "database": "Scopus",
+      "string": "TITLE-ABS-KEY((telemedic* OR telehealth* OR \"tele-medicine\" OR \"tele-health\" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR \"video consult*\" OR \"virtual care\" OR \"remote patient monitoring\" OR mHealth OR \"mobile health\") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR \"intention to use\" OR \"behavio*ral intention*\" OR \"continuance intention*\" OR \"willingness to use\" OR readiness OR barrier* OR facilitator* OR \"technology acceptance\" OR UTAUT) AND (\"older adult*\" OR \"older people\" OR \"older person*\" OR \"older patient*\" OR \"older population*\" OR \"older Malaysian*\" OR elder* OR \"senior citizen*\" OR seniors OR geriatric* OR gerontolog* OR \"old age\" OR \"ag*ing population*\" OR \"warga emas\") AND (rural* OR \"remote area*\" OR \"remote communit*\" OR \"remote region*\" OR \"remote location*\" OR village* OR countryside OR underserved OR \"hard-to-reach\" OR \"non-urban\" OR \"low-resource setting*\" OR kampung* OR FELDA OR \"Orang Asli\") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR \"Negeri Sembilan\" OR Melaka)) AND PUBYEAR > 2020 AND PUBYEAR < 2027",
+      "url": "https://www.scopus.com/search/form.uri?display=advanced",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "narrow",
+      "range": "2021-2026",
+      "database": "Web of Science",
+      "string": "TS=((telemedic* OR telehealth* OR \"tele-medicine\" OR \"tele-health\" OR telecare OR teleconsult* OR telemonitor* OR telerehab* OR \"video consult*\" OR \"virtual care\" OR \"remote patient monitoring\" OR mHealth OR \"mobile health\") AND (adopt* OR accept* OR uptake OR utili*ation OR usage OR \"intention to use\" OR \"behavio*ral intention*\" OR \"continuance intention*\" OR \"willingness to use\" OR readiness OR barrier* OR facilitator* OR \"technology acceptance\" OR UTAUT) AND (\"older adult*\" OR \"older people\" OR \"older person*\" OR \"older patient*\" OR \"older population*\" OR \"older Malaysian*\" OR elder* OR \"senior citizen*\" OR seniors OR geriatric* OR gerontolog* OR \"old age\" OR \"ag*ing population*\" OR \"warga emas\") AND (rural* OR \"remote area*\" OR \"remote communit*\" OR \"remote region*\" OR \"remote location*\" OR village* OR countryside OR underserved OR \"hard-to-reach\" OR \"non-urban\" OR \"low-resource setting*\" OR kampung* OR FELDA OR \"Orang Asli\") AND (Malaysia* OR Sabah OR Sarawak OR Kelantan OR Terengganu OR Pahang OR Kedah OR Perlis OR Perak OR Johor OR Selangor OR Penang OR \"Negeri Sembilan\" OR Melaka)) AND PY=(2021-2026)",
+      "url": "https://www.webofscience.com/wos/woscc/advanced-search",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "all",
+      "range": "2021-2026",
+      "database": "Google Scholar A",
+      "string": "(telemedicine OR telehealth OR teleconsultation OR \"video consultation\") AND (adoption OR acceptance OR \"intention to use\" OR barriers) AND (\"older adults\" OR elderly OR \"senior citizens\") AND rural AND Malaysia",
+      "url": "https://scholar.google.com/scholar?q=(telemedicine%20OR%20telehealth%20OR%20teleconsultation%20OR%20%22video%20consultation%22)%20AND%20(adoption%20OR%20acceptance%20OR%20%22intention%20to%20use%22%20OR%20barriers)%20AND%20(%22older%20adults%22%20OR%20elderly%20OR%20%22senior%20citizens%22)%20AND%20rural%20AND%20Malaysia&as_ylo=2021&as_yhi=2026&hl=en",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "all",
+      "range": "2021-2026",
+      "database": "Google Scholar B",
+      "string": "(telemedicine OR telehealth OR teleconsultation) AND (elderly OR \"older adults\" OR \"warga emas\") AND (Sabah OR Sarawak OR Kelantan OR Pahang OR \"Orang Asli\" OR FELDA OR kampung) AND (adoption OR acceptance OR barriers)",
+      "url": "https://scholar.google.com/scholar?q=(telemedicine%20OR%20telehealth%20OR%20teleconsultation)%20AND%20(elderly%20OR%20%22older%20adults%22%20OR%20%22warga%20emas%22)%20AND%20(Sabah%20OR%20Sarawak%20OR%20Kelantan%20OR%20Pahang%20OR%20%22Orang%20Asli%22%20OR%20FELDA%20OR%20kampung)%20AND%20(adoption%20OR%20acceptance%20OR%20barriers)&as_ylo=2021&as_yhi=2026&hl=en",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    },
+    {
+      "tier": "all",
+      "range": "2021-2026",
+      "database": "Google Scholar (Malay)",
+      "string": "(teleperubatan OR telekesihatan OR telemedicine OR \"konsultasi maya\") AND (\"warga emas\" OR \"warga tua\" OR \"orang tua\") AND (\"luar bandar\" OR desa OR pedalaman) AND (penerimaan OR penggunaan OR kesediaan)",
+      "url": "https://scholar.google.com/scholar?q=(teleperubatan%20OR%20telekesihatan%20OR%20telemedicine%20OR%20%22konsultasi%20maya%22)%20AND%20(%22warga%20emas%22%20OR%20%22warga%20tua%22%20OR%20%22orang%20tua%22)%20AND%20(%22luar%20bandar%22%20OR%20desa%20OR%20pedalaman)%20AND%20(penerimaan%20OR%20penggunaan%20OR%20kesediaan)&as_ylo=2021&as_yhi=2026&hl=en",
+      "hits": null,
+      "source": null,
+      "date": null,
+      "note": ""
+    }
+  ]
+}

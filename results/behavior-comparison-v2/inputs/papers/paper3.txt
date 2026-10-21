@@ -1,0 +1,8 @@
+Title: Students' lived experience of gamified learning
+Authors: Ali S., Wong D. (2024)
+Thesis: PhD thesis, Universiti Example
+Introduction: Explores how students experience gamified courses.
+Method: Interviews with 18 students, thematic analysis.
+Results: Three themes: competition, autonomy, fatigue.
+Discussion: Gamification fatigue sets in after week 6.
+Framework: Flow theory

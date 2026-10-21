@@ -1,0 +1,26 @@
+{
+ "title": "Gamification and student motivation in Malaysian higher education",
+ "runs": [],
+ "prisma": {
+  "screened_excluded": 2
+ },
+ "screening_log": [
+  {
+   "stage": "title_abstract",
+   "date": "2026-10-21",
+   "screened": 5,
+   "included": [
+    "R001",
+    "R002"
+   ],
+   "maybe": [
+    "R004"
+   ],
+   "excluded": {
+    "R003": "Wrong population: employees, not students",
+    "R005": "Not empirical: opinion piece"
+   },
+   "note": "Record IDs R001-R005 assigned in the order the records appear in records.json."
+  }
+ ]
+}

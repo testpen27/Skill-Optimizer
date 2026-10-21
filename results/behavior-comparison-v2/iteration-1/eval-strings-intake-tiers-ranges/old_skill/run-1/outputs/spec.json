@@ -1,0 +1,38 @@
+{
+  "title": "Telemedicine Adoption among Older Adults in Rural Malaysia: A Systematic Literature Review",
+  "field": "Public Health",
+  "concepts": [
+    {
+      "name": "Telemedicine and telehealth",
+      "terms": ["telemedic*", "telehealth*", "\"tele-medicine\"", "\"tele-health\"", "telecare", "teleconsult*", "telemonitor*", "telerehab*", "\"video consult*\"", "\"virtual care\"", "\"remote patient monitoring\"", "mHealth", "\"mobile health\""]
+    },
+    {
+      "name": "Adoption, acceptance and use",
+      "terms": ["adopt*", "accept*", "uptake", "utili*ation", "usage", "\"intention to use\"", "\"behavio*ral intention*\"", "\"continuance intention*\"", "\"willingness to use\"", "readiness", "barrier*", "facilitator*", "\"technology acceptance\"", "UTAUT"]
+    },
+    {
+      "name": "Older adults (60+)",
+      "terms": ["\"older adult*\"", "\"older people\"", "\"older person*\"", "\"older patient*\"", "\"older population*\"", "\"older Malaysian*\"", "elder*", "\"senior citizen*\"", "seniors", "geriatric*", "gerontolog*", "\"old age\"", "\"ag*ing population*\"", "\"warga emas\""]
+    },
+    {
+      "name": "Rural and remote settings",
+      "terms": ["rural*", "\"remote area*\"", "\"remote communit*\"", "\"remote region*\"", "\"remote location*\"", "village*", "countryside", "underserved", "\"hard-to-reach\"", "\"non-urban\"", "\"low-resource setting*\"", "kampung*", "FELDA", "\"Orang Asli\""]
+    },
+    {
+      "name": "Malaysia (niche)",
+      "terms": ["Malaysia*", "Sabah", "Sarawak", "Kelantan", "Terengganu", "Pahang", "Kedah", "Perlis", "Perak", "Johor", "Selangor", "Penang", "\"Negeri Sembilan\"", "Melaka"]
+    }
+  ],
+  "ranges": [[2016, 2020], [2021, 2026]],
+  "tiers": {
+    "broad": [1, 2, 5],
+    "balanced": [1, 2, 3, 5],
+    "narrow": [1, 2, 3, 4, 5]
+  },
+  "scholar": [
+    "(telemedicine OR telehealth OR teleconsultation OR \"video consultation\") AND (adoption OR acceptance OR \"intention to use\" OR barriers) AND (\"older adults\" OR elderly OR \"senior citizens\") AND rural AND Malaysia",
+    "(telemedicine OR telehealth OR teleconsultation) AND (elderly OR \"older adults\" OR \"warga emas\") AND (Sabah OR Sarawak OR Kelantan OR Pahang OR \"Orang Asli\" OR FELDA OR kampung) AND (adoption OR acceptance OR barriers)"
+  ],
+  "local": "(teleperubatan OR telekesihatan OR telemedicine OR \"konsultasi maya\") AND (\"warga emas\" OR \"warga tua\" OR \"orang tua\") AND (\"luar bandar\" OR desa OR pedalaman) AND (penerimaan OR penggunaan OR kesediaan)",
+  "localLanguage": "Malay"
+}

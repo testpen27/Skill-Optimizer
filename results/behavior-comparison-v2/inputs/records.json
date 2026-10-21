@@ -1,0 +1,54 @@
+{
+ "records": [
+  {
+   "doi": "10.1/a",
+   "title": "Gamified quizzes and motivation in Malaysian undergraduates",
+   "year": 2023,
+   "authors": [
+    "Tan, Ben"
+   ],
+   "venue": "Journal of Asian Education Studies",
+   "abstract": "Survey of 320 Malaysian undergraduates on gamified quizzes and intrinsic motivation."
+  },
+  {
+   "doi": "10.1/b",
+   "title": "Leaderboards in secondary science classrooms",
+   "year": 2022,
+   "authors": [
+    "Lee, Ann"
+   ],
+   "venue": "Science Teaching Review",
+   "abstract": "Quasi-experiment with 140 secondary pupils in Penang."
+  },
+  {
+   "doi": "10.1/c",
+   "title": "Gamification in corporate onboarding",
+   "year": 2024,
+   "authors": [
+    "Ng, Chi"
+   ],
+   "venue": "HR Practice Quarterly",
+   "abstract": "Case study of employee onboarding in three firms."
+  },
+  {
+   "doi": "10.1/d",
+   "title": "Badges and engagement in MOOCs: a review",
+   "year": 2021,
+   "authors": [
+    "Ali, Siti"
+   ],
+   "venue": "Open Learning Letters",
+   "abstract": "Narrative review of 40 MOOC studies on digital badges."
+  },
+  {
+   "doi": "10.1/e",
+   "title": "Opinion: why games belong in lecture halls",
+   "year": 2025,
+   "authors": [
+    "Wong, Dan"
+   ],
+   "venue": "Campus Voices",
+   "abstract": "An opinion essay arguing for games in teaching."
+  }
+ ]
+}

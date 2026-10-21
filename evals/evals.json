@@ -1,46 +1,61 @@
 {
-  "skill_name": "research-search-string",
+  "skill_name": "pre-research",
   "evals": [
     {
       "id": 1,
-      "name": "full-build-telemedicine",
-      "prompt": "My SLR title is 'Telemedicine adoption among elderly patients in rural areas: a systematic review'. Give me the search strings for Scopus, Web of Science and Google Scholar. Last 5 years only.",
-      "expected_output": "Concept table summary, Scopus + WoS + two Scholar strings, next-step guidance, no claim the strings were tested.",
+      "name": "strings-intake-tiers-ranges",
+      "prompt": "i need search strings for my SLR on telemedicine adoption among older adults in rural areas. can you make them for scopus and wos?",
+      "expected_output": "",
       "files": [],
+      "assumed_answers": "field Public Health; population adults aged 60+; niche Malaysia; year ranges 2016-2020 and 2021-2026; systematic review; university has Scopus and Web of Science; wants the strings only; save in outputs.",
+      "baseline": "research-search-string",
       "assertions": [
-        "Scopus string starts with TITLE-ABS-KEY( and ends with PUBYEAR > 2021 AND PUBYEAR < 2027",
-        "Web of Science string starts with TS=( and ends with PY=(2022-2026)",
-        "Every concept in the Scopus and WoS strings is wrapped in its own brackets joined by AND",
-        "Both Google Scholar strings are 256 characters or fewer and contain no * ? or $",
-        "Quoted multi-word phrases that can be plural carry a truncated last word (e.g. \"telehealth service*\") or the plural is written out, so Web of Science does not miss them",
-        "The reply does not claim the strings were run or tested, and asks the user to send back hit counts"
+        "Asked for the field and the year range(s) before writing strings",
+        "Scopus strings for both 2016-2020 and 2021-2026",
+        "Web of Science strings for both ranges",
+        "More than one tier (broad / balanced / narrow) offered",
+        "Malaysia niche in the strings",
+        "Does not claim hit counts it never read"
       ]
     },
     {
       "id": 2,
-      "name": "repair-pasted-string",
-      "prompt": "this scopus search gives me an error and then 0 results when i fix the brackets, can you fix it? TITLE-ABS-KEY((“social media” OR facebook OR instagram) AND (adolescen* or teen*) AND (“body image” OR behavio?r)) AND PUBYEAR > 2020",
-      "expected_output": "Diagnoses curly quotes, lower-case or, behavio?r missing American spelling, and gives a corrected string.",
-      "files": [],
+      "name": "prisma-record-reviewer-screening",
+      "prompt": "I've screened my records by title and abstract. My decisions: include R001 and R002, exclude R003 (wrong population: employees not students), maybe R004, exclude R005 (opinion piece, not empirical). Please record these and tell me my PRISMA numbers so far. records.json and search_log.json are in my project folder.",
+      "expected_output": "",
+      "files": [
+        "records.json",
+        "search_log.json"
+      ],
+      "assumed_answers": "field Education; topic gamification and student motivation in Malaysian higher education; years 2021-2026; systematic review; project folder is the outputs folder.",
+      "baseline": "research-search-string",
       "assertions": [
-        "The corrected string uses only straight double quotes",
-        "The corrected string writes OR in capitals everywhere",
-        "behavio?r is replaced by behavio*r",
-        "The reply names curly quotes as a cause",
-        "The corrected string has balanced brackets and balanced quotes"
+        "All five decisions recorded in the project files exactly as the reviewer gave them",
+        "Exclusion reasons recorded for R003 and R005",
+        "R004 left as 'maybe' (not decided by Claude)",
+        "Reports screened 5, excluded 2, going to full text 3",
+        "Does not invent later PRISMA numbers (full text, included)",
+        "Makes clear the decisions were the reviewer's"
       ]
     },
     {
       "id": 3,
-      "name": "word-file-local-language",
-      "prompt": "Please make me a Word file with the search strategy table for my review 'E-commerce adoption among small businesses in Indonesia'. I also want an Indonesian-language string. Save the docx in your outputs folder.",
-      "expected_output": "A valid .docx with concept table and search-result table including an Indonesian-language Scholar row.",
-      "files": [],
+      "name": "lrm-from-four-papers",
+      "prompt": "I have 4 papers already (text copies in the papers folder). Please make me a literature review matrix PDF with intro, methodology, results, discussion and theoretical framework columns, plus the journal quartile, method and whether it's free or paid.",
+      "expected_output": "",
+      "files": [
+        "papers"
+      ],
+      "assumed_answers": "field Education; topic gamification and student motivation; years 2021-2026; just the LRM; save in outputs. The quartile lookup may use web search if you have it.",
+      "baseline": "find-paper",
       "assertions": [
-        "A .docx file exists in the outputs folder and opens as a valid zip",
-        "The docx contains a Google Scholar row labelled for Indonesian, not Malay",
-        "The Indonesian string is not joined to the English strings with AND",
-        "The reply gives the strings in the chat as well as the file"
+        "LRM PDF produced, landscape",
+        "All four papers in the matrix",
+        "No quartile invented for journals that cannot be looked up",
+        "Thesis marked N/A for quartile",
+        "Missing results shown as not retrieved, not invented",
+        "Missing framework shown as not stated",
+        "Access marked Unclear (no evidence of free or paid)"
       ]
     }
   ]

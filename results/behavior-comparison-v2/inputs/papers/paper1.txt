@@ -1,0 +1,9 @@
+Title: Gamified quizzes and intrinsic motivation among Malaysian undergraduates
+Authors: Tan B., Rahman S. (2023)
+Journal: Journal of Asian Education Studies
+DOI: 10.1/a
+Introduction: Examines whether gamified quizzes raise intrinsic motivation.
+Method: Cross-sectional survey, 320 undergraduates at two public universities, PLS-SEM.
+Results: Gamified quiz use predicted intrinsic motivation (beta = 0.38, p < .001).
+Discussion: Supports self-determination theory; recommends autonomy-supportive design.
+Framework: Self-Determination Theory
