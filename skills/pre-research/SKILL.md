@@ -19,19 +19,35 @@ Check once, at the start, and say plainly what will not be possible.
 - **Scripts** need Node (strings), Python 3 and `reportlab` for the PDFs (`pip install reportlab` if missing).
 - **Models.** Each step runs on a planned model, mostly through helpers (subagents): read `references/model-routing.md` before the first step. The plan is fixed; the only change allowed is moving a step to a stronger model, and only after asking the user.
 
-## 2. Ask first
+## 2. Ask first, but only what the job needs
 
-Ask in one short message, filling in what the user already said so they only correct it. Skip what their branch does not need (a string fix needs none of this):
+Work out what the user wants before asking anything, then ask only the questions that job needs, in one short message. Anything their message already answers, fill in yourself and show it so they can correct it; do not ask it again. Long questionnaires put people off, and most answers are only needed for searching.
 
-1. Field or discipline. Always ask, even when the title seems clear: the field name filters out same-word-different-discipline papers.
-2. Working title or research question.
-3. Population or context.
-4. Niche: country, region, sector or platform, if any.
-5. Year range or ranges. Always ask; several are fine (for example 2016 to 2020 and 2021 to 2026). If they have no preference, suggest the last five calendar years including the current one and say which years.
-6. Review type: systematic, scoping, bibliometric, narrative, or just background for a proposal.
-7. Which databases their university gives them: Scopus, Web of Science, or neither.
-8. What they want at the end, if they have not said: strings, a PRISMA search, the papers downloaded, an LRM, or several.
-9. Where to save (on their computer only): a folder they name, or Downloads.
+The questions:
+
+- **A. Field or discipline.** The field name filters out same-word-different-discipline papers, and it picks the subject category for journal quartiles.
+- **B. Working title or research question.**
+- **C. Population or context.**
+- **D. Niche**: country, region, sector or platform, if any.
+- **E. Year range or ranges.** Several are fine (for example 2016 to 2020 and 2021 to 2026). If they have no preference, suggest the last five calendar years including the current one and say which years.
+- **F. Review type**: systematic, scoping, bibliometric, narrative, or background for a proposal.
+- **G. Databases** their university gives them: Scopus, Web of Science, or neither.
+- **H. What they want at the end**, if it is not clear: strings, a PRISMA search, the papers downloaded, an LRM, or several.
+- **I. Where to save** (on their computer only): a folder they name, or Downloads.
+
+What each job needs:
+
+| The user wants | Ask |
+|---|---|
+| A string they pasted checked or fixed | Nothing. Only ask which database it is for if the string does not show it |
+| New search strings | A, B, C, D, E, and G only if they want the strings run |
+| A PRISMA search | A to G and I |
+| Papers downloaded from a list or export they already have | I |
+| An LRM of papers they already have | A, E (to flag papers outside it, not to search) and I |
+| An LRM from a new search | A to E and I |
+| Unclear | H first, on its own |
+
+When several jobs are chained, ask the union once, at the start.
 
 Make a project folder named after the topic (for example `pre-research/ott-adoption-malaysia/`) and keep every file from every branch there. Keep the answers: they go into the reports.
 
