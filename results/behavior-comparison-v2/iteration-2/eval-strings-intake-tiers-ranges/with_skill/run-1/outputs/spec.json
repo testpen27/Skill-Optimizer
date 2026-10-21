@@ -1,0 +1,96 @@
+{
+  "title": "Telemedicine Adoption among Older Adults in Rural Malaysia: A Systematic Literature Review",
+  "field": "Public Health",
+  "concepts": [
+    {
+      "name": "Telemedicine",
+      "terms": [
+        "telemedicine",
+        "telehealth",
+        "\"tele-health\"",
+        "telecare",
+        "teleconsult*",
+        "telemonitor*",
+        "\"remote consultation*\"",
+        "\"video consultation*\"",
+        "\"virtual care\"",
+        "\"remote patient monitoring\"",
+        "mHealth",
+        "\"mobile health\"",
+        "eHealth",
+        "\"e-health\""
+      ]
+    },
+    {
+      "name": "Adoption and use",
+      "terms": [
+        "adopt*",
+        "accept*",
+        "uptake",
+        "utili?ation",
+        "usage",
+        "\"intention* to use\"",
+        "\"behavio*ral intention*\"",
+        "\"continuance intention*\"",
+        "readiness",
+        "willingness",
+        "UTAUT",
+        "barrier*",
+        "\"digital literacy\""
+      ]
+    },
+    {
+      "name": "Older adults (60+)",
+      "terms": [
+        "\"older adult*\"",
+        "\"older people\"",
+        "\"older person*\"",
+        "\"older patient*\"",
+        "elder*",
+        "\"senior citizen*\"",
+        "seniors",
+        "geriatric*",
+        "gerontolog*",
+        "retiree*",
+        "\"later life\"",
+        "\"warga emas\"",
+        "\"ageing population*\"",
+        "\"aging population*\""
+      ]
+    },
+    {
+      "name": "Malaysia and its rural settings (niche)",
+      "terms": [
+        "Malaysia*",
+        "Sabah",
+        "Sarawak",
+        "Kelantan",
+        "Terengganu",
+        "Pahang",
+        "Kedah",
+        "Perlis",
+        "Perak",
+        "\"Orang Asli\"",
+        "FELDA",
+        "\"Klinik Desa\"",
+        "MySejahtera",
+        "\"Teleprimary Care\""
+      ]
+    }
+  ],
+  "scholar": [
+    "(telemedicine OR telehealth OR teleconsultation OR \"virtual care\") AND (adoption OR acceptance OR \"intention to use\" OR uptake) AND (\"older adults\" OR elderly OR \"senior citizens\") AND rural AND Malaysia",
+    "(MySejahtera OR \"Teleprimary Care\" OR telemedicine OR telehealth) AND (elderly OR \"warga emas\" OR \"older adults\") AND (Sabah OR Sarawak OR Kelantan OR \"Orang Asli\" OR rural) AND Malaysia AND (adoption OR acceptance)"
+  ],
+  "ranges": [
+    [2016, 2020],
+    [2021, 2026]
+  ],
+  "tiers": {
+    "broad": [1, 2],
+    "balanced": [1, 2, 4],
+    "narrow": [1, 2, 3, 4]
+  },
+  "local": "(teleperubatan OR telekesihatan OR \"kesihatan digital\" OR \"konsultasi dalam talian\") AND (\"warga emas\" OR \"warga tua\" OR \"orang tua\") AND (penerimaan OR penggunaan OR kesediaan)",
+  "localLanguage": "Malay"
+}

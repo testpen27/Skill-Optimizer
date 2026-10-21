@@ -120,6 +120,16 @@ pre-research used its scripts (screening recorder, LRM builder) where the old
 skills improvised, and it asked all nine intake questions even when the user
 only wanted an LRM of papers they already had, which is a candidate fix.
 
+**Iteration 2: intake fix.** The intake now asks only what the chosen job
+needs (a table in SKILL.md maps each job to its questions; answers already
+given are shown back, not asked again). A new check measures it. Rerun with
+the fix: the LRM-of-own-papers task asked 3 questions (field, year range,
+where to save) instead of 7 and scored 8/8; the strings task asked 5 instead
+of 7, with none about databases or saving, and scored 7/7. The rerun also
+showed the strings branch dropping "rural" from a title to stay at four
+concepts, so `references/strings.md` now allows a fifth concept when the title
+needs it. That last change has not been rerun.
+
 The description optimizer, rerun on the 34-query set with the adopted
 description, scored every run correct (105/105 train, 65/65 held-out runs)
 and proposed no change (`results/description-optimization-v5/`).

@@ -6,7 +6,7 @@ Build database-ready Boolean strings for Scopus, Web of Science and Google Schol
 
 Steps 1, 2, 5 and 6 below go to a helper on `opus` (see `references/model-routing.md`): give it the intake answers and these rules, and have it return the spec JSON. Then run the checker yourself and fix what it flags.
 
-1. **Split the topic into 3 or 4 concepts**: Concept 1 the main subject, Concept 2 the action or outcome (many synonyms), Concept 3 the population or context, Concept 4 the niche.
+1. **Split the topic into concepts**, usually 3 or 4: Concept 1 the main subject, Concept 2 the action or outcome (many synonyms), Concept 3 the population or context, Concept 4 the niche. Add a fifth when the title names one more essential element (for example "rural" in "older adults in rural areas"); do not drop a part of the title to stay at four. Each extra concept narrows the search, so put it only in the narrow tier if it would cut the hits too far.
 2. **Choose 6 to 14 terms per concept.**
    - Quote multi-word terms: `"video on demand"`.
    - Truncate word families: `adopt*`. Keep at least 3 characters before `*`.

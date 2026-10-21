@@ -1,0 +1,45 @@
+{
+ "expectations": [
+  {
+   "text": "Asked for the field and the year range(s) before writing strings",
+   "passed": true,
+   "evidence": "Happy to build these. Here is what I have taken from your message (correct anything that is off):\n\n- **Topic:** telemedicine adoption among older adults in rural areas\n- **Review type:** systematic literature review\n- **Databases:** Scopus and Web of Science\n\nA few quick questions before I write the"
+  },
+  {
+   "text": "Scopus strings for both 2016-2020 and 2021-2026",
+   "passed": true,
+   "evidence": "found"
+  },
+  {
+   "text": "Web of Science strings for both ranges",
+   "passed": true,
+   "evidence": "checked PY=(...)"
+  },
+  {
+   "text": "More than one tier (broad / balanced / narrow) offered",
+   "passed": true,
+   "evidence": "tiers seen: ['broad', 'balanced', 'narrow']"
+  },
+  {
+   "text": "Asks only what new strings need (no questions about databases or where to save)",
+   "passed": true,
+   "evidence": "1 questions; off-scope: []"
+  },
+  {
+   "text": "Malaysia niche in the strings",
+   "passed": true,
+   "evidence": "searched outputs"
+  },
+  {
+   "text": "Does not claim hit counts it never read",
+   "passed": true,
+   "evidence": "no hit-count claims"
+  }
+ ],
+ "summary": {
+  "passed": 7,
+  "failed": 0,
+  "total": 7,
+  "pass_rate": 1.0
+ }
+}

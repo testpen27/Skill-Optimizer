@@ -1,0 +1,6 @@
+{
+ "eval_id": 3,
+ "eval_name": "lrm-from-four-papers",
+ "prompt": "I have 4 papers already (text copies in the papers folder). Please make me a literature review matrix PDF with intro, methodology, results, discussion and theoretical framework columns, plus the journal quartile, method and whether it's free or paid.",
+ "assertions": []
+}

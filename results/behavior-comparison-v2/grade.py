@@ -30,6 +30,11 @@ def a(text, passed, evidence):
     return {"text": text, "passed": bool(passed), "evidence": evidence[:400]}
 
 
+def questions(out):
+    q = open(os.path.join(out, "questions.md"), encoding="utf-8").read() if os.path.exists(os.path.join(out, "questions.md")) else ""
+    return q, [l for l in q.splitlines() if l.strip().endswith("?")]
+
+
 def grade_strings(out):
     allt = read_all(out)
     resp = open(os.path.join(out, "response.md"), encoding="utf-8").read() if os.path.exists(os.path.join(out, "response.md")) else ""
@@ -45,6 +50,10 @@ def grade_strings(out):
                "PY=(2016-2020)" in allt and "PY=(2021-2026)" in allt, "checked PY=(...)"))
     tiers = [t for t in ("broad", "balanced", "narrow") if re.search(rf"\b{t}\b", allt, re.I)]
     r.append(a("More than one tier (broad / balanced / narrow) offered", len(tiers) >= 2, f"tiers seen: {tiers}"))
+    q2, qs = questions(out)
+    extra = [l for l in qs if re.search(r"database|scopus|web of science|save|folder|download", l, re.I)]
+    r.append(a("Asks only what new strings need (no questions about databases or where to save)", not extra,
+               f"{len(qs)} questions; off-scope: {extra}"))
     r.append(a("Malaysia niche in the strings", re.search(r"Malaysia", allt) is not None, "searched outputs"))
     claimed = re.search(r"(returned|found|gives?|got)\s+[\d,]{2,}\s+(results|documents|records|hits)", resp, re.I)
     r.append(a("Does not claim hit counts it never read", not claimed, claimed.group(0) if claimed else "no hit-count claims"))
@@ -116,6 +125,10 @@ def grade_lrm(out):
     m = re.search(r"Page size:\s+([\d.]+) x ([\d.]+)", info)
     landscape = m and float(m.group(1)) > float(m.group(2))
     r.append(a("LRM PDF produced, landscape", landscape, f"{os.path.basename(pdf)} {m.group(0) if m else info[:80]}"))
+    q, qs = questions(out)
+    off = [l for l in qs if re.search(r"database|scopus|web of science|review type|systematic|scoping|population|niche", l, re.I)]
+    r.append(a("Asks only what an LRM of the user's own papers needs (4 questions or fewer, none about databases, review type or niche)",
+               len(qs) <= 4 and not off, f"{len(qs)} questions; off-scope: {off}"))
     titles = ["Gamified quizzes", "Leaderboards", "lived experience", "Badges and engagement"]
     r.append(a("All four papers in the matrix", all(t.lower() in flat.lower() for t in titles), str([t for t in titles if t.lower() not in flat.lower()])))
     fake_q = re.search(r"\bQ[1-4]\b", table)
@@ -134,7 +147,9 @@ GRADERS = {"strings-intake-tiers-ranges": grade_strings, "prisma-record-reviewer
 for d in sorted(glob.glob(os.path.join(IT, "eval-*"))):
     name = os.path.basename(d)[5:]
     for cfg in ("with_skill", "old_skill"):
-        out = os.path.join(d, cfg, "outputs")
+        out = os.path.join(d, cfg, "run-1", "outputs")
+        if not os.path.isdir(out):
+            continue
         if not os.path.exists(os.path.join(out, "response.md")):
             print(f"{name}/{cfg}: not finished")
             continue
@@ -142,7 +157,7 @@ for d in sorted(glob.glob(os.path.join(IT, "eval-*"))):
         passed = sum(e["passed"] for e in exp)
         json.dump({"expectations": exp, "summary": {"passed": passed, "failed": len(exp) - passed, "total": len(exp),
                                                    "pass_rate": round(passed / len(exp), 3)}},
-                  open(os.path.join(d, cfg, "grading.json"), "w"), indent=1)
+                  open(os.path.join(d, cfg, "run-1", "grading.json"), "w"), indent=1)
         print(f"{name}/{cfg}: {passed}/{len(exp)}")
         for e in exp:
             if not e["passed"]:

@@ -1,0 +1,50 @@
+{
+ "expectations": [
+  {
+   "text": "LRM PDF produced, landscape",
+   "passed": true,
+   "evidence": "LRM.pdf Page size:       841.89 x 595.276"
+  },
+  {
+   "text": "Asks only what an LRM of the user's own papers needs (4 questions or fewer, none about databases, review type or niche)",
+   "passed": true,
+   "evidence": "0 questions; off-scope: []"
+  },
+  {
+   "text": "All four papers in the matrix",
+   "passed": true,
+   "evidence": "[]"
+  },
+  {
+   "text": "No quartile invented for journals that cannot be looked up",
+   "passed": true,
+   "evidence": "no Q1-Q4 in PDF"
+  },
+  {
+   "text": "Thesis marked N/A for quartile",
+   "passed": true,
+   "evidence": "searched for N/A"
+  },
+  {
+   "text": "Missing results shown as not retrieved, not invented",
+   "passed": true,
+   "evidence": "searched PDF"
+  },
+  {
+   "text": "Missing framework shown as not stated",
+   "passed": true,
+   "evidence": "searched PDF"
+  },
+  {
+   "text": "Access marked Unclear (no evidence of free or paid)",
+   "passed": true,
+   "evidence": "['Unclear', 'Unclear', 'Unclear', 'Unclear']"
+  }
+ ],
+ "summary": {
+  "passed": 8,
+  "failed": 0,
+  "total": 8,
+  "pass_rate": 1.0
+ }
+}
