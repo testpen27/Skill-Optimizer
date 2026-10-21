@@ -12,6 +12,8 @@ Turn a set of papers into an LRM with split Introduction, Methodology, Results a
 
 ## Steps
 
+Models per step, from `references/model-routing.md`: relevance on `sonnet`, quartile/method/access on `haiku`, IMRAD reading on `sonnet` (about 4 papers per helper, in parallel), synthesis on `opus`. The session checks each result and keeps the draft table.
+
 1. **Relevance.** Tag each paper highly, moderately or tangentially relevant to the title's constructs. Drop tangential ones unless the user wants the full list, and tell them how many were found and how many remain. Apply the year range(s) from the intake. Skip this for papers that already passed PRISMA screening: the reviewer has decided.
 2. **Quartile.** Look up each journal's Scimago (SJR) quartile: search "[journal] Scimago quartile" or open scimagojr.com. Use the subject category closest to the paper, and note the year if quartiles moved. A thesis, preprint or conference paper is "N/A (thesis/preprint/conference)"; a journal with no quartile found is "Unranked/Unavailable". Never assign a quartile from reputation.
 3. **Method and access.** Method is Quantitative, Qualitative, Mixed-methods or Theoretical/Review, from what the paper states. Access is Free or Paid; if `openalex.py enrich` or the download manifest already says, use that; otherwise "Unclear".
@@ -26,7 +28,3 @@ Turn a set of papers into an LRM with split Introduction, Methodology, Results a
    The script lays out the landscape table so it always fits the page and refuses invalid quartile, method or access labels. Render the first page to an image and look at it before sharing.
 
 If the paper list changes later, rebuild both the markdown draft and the PDF so they stay consistent.
-
-## Working faster with subagents (optional)
-
-When the `Agent` tool is available, the quartile, method and access lookups (steps 2 and 3) are mechanical and can go to one subagent with `model: "haiku"`, given the paper list and the rules above. Steps 4 to 6 are where quality shows; delegate them to `model: "opus"` only if the default model's paraphrasing falls short. Without subagents, do everything directly.

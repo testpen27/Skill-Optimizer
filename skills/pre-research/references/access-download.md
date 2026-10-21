@@ -7,7 +7,7 @@ A records file is JSON: `{"records": [{"doi": "10.xxx/yyy", "title": "...", "yea
 ## 1. Find the free copies
 
 1. `python3 scripts/openalex.py enrich records.json` marks every DOI with a legal open-access copy (OpenAlex includes Unpaywall's data).
-2. For records still without one, use Firecrawl (`firecrawl_search` or `firecrawl_scrape`) to look for the paper's title as a PDF on university repositories, the author's page, arXiv or other preprint servers, and the journal's own site if it is open access. Put any direct PDF link you find into that record's `pdf_url` and set `"is_oa": true`.
+2. For records still without one, hand them to helpers on `haiku`, about 10 records each (see `references/model-routing.md`), to search with Firecrawl (`firecrawl_search` or `firecrawl_scrape`) for each paper's title as a PDF on university repositories, the author's page, arXiv or other preprint servers, and the journal's own site if it is open access. Each helper returns the direct PDF links it found; put them into the records' `pdf_url` and set `"is_oa": true`.
 3. If the user ran a Google Scholar search in the browser, the `[PDF]` links on that results page are fair to collect the same way. Do not send Firecrawl to Google Scholar: it blocks automated access.
 
 Never use Sci-Hub, LibGen, Anna's Archive or similar sites, and never scrape ResearchGate or Academia.edu.
@@ -27,7 +27,7 @@ It only fetches free copies, obeys each site's robots.txt, waits between request
 These come through the user's own library access, and the publisher's terms decide who clicks. Read `references/publisher-terms.md`. In short:
 
 - **Elsevier (ScienceDirect)** forbids automation: open each article in a new tab and ask the user to click Download.
-- **Other publishers**: check the terms first, as that file describes. Only where the terms clearly allow automated downloading may you click Download yourself, one paper at a time. Otherwise the user clicks.
+- **Other publishers**: check the terms first, as that file describes; the reading of the terms goes to a helper on `sonnet`, which returns the decision with the quoted clause and the link. Only where the terms clearly allow automated downloading may you click Download yourself, one paper at a time. Otherwise the user clicks.
 
 After each download, file it:
 ```

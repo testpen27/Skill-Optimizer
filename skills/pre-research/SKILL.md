@@ -17,6 +17,7 @@ Check once, at the start, and say plainly what will not be possible.
 - **Firecrawl** (`mcp__Firecrawl__*`): its research tools search papers; its web search finds free copies. Without it, use web search and OpenAlex.
 - **Where files go.** On the user's own computer (Claude desktop app, Claude Code, Cowork), ask whether to use a folder they name or their Downloads folder. In claude.ai on the web, save to `/mnt/user-data/outputs/` and share with `present_files`; their browser saves the files to Downloads.
 - **Scripts** need Node (strings), Python 3 and `reportlab` for the PDFs (`pip install reportlab` if missing).
+- **Models.** Each step runs on a planned model, mostly through helpers (subagents): read `references/model-routing.md` before the first step. The plan is fixed; the only change allowed is moving a step to a stronger model, and only after asking the user.
 
 ## 2. Ask first
 

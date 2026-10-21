@@ -82,6 +82,21 @@ as a PDF.
 Results: `results/description-optimization-v4/`,
 `results/description-v4-revision.json`, `results/holdout-validation-v4.json`.
 
+### Model routing
+
+At the owner's request every step has a planned model
+(`references/model-routing.md`): helpers on `opus` for the search strings and
+the LRM synthesis, `sonnet` for reading publisher terms, relevance tagging and
+IMRAD extraction, `haiku` for running quick-search queries, finding free
+copies and the quartile/method/access labels. Intake, browser searches and
+screening stay in the session, which the owner is advised to run on Sonnet.
+The plan is fixed: user requests to change a model are declined, and the only
+change allowed is moving a step to a stronger model when its output is
+clearly not good enough, after asking the user. On claude.ai on the web there
+are no helpers, so every step runs on the model chosen in the chat. Trigger
+accuracy is unaffected (the description did not change). The routing itself
+has not been exercised: this environment has no Claude desktop app.
+
 ### Before installing
 
 Uninstall `search-string`, `research-search-string` and `find-paper` from the

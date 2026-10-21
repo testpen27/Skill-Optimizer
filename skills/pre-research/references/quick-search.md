@@ -20,6 +20,8 @@ From the intake, pull out the main constructs, the population or context, and th
 
 **Web search**: Google Scholar, Scopus and Web of Science first (`site:scholar.google.com [keywords] [field]`, `[keywords] [field] scopus`, `[keywords] [field] "web of science"`), then the fallback tier only if needed: Semantic Scholar, ScienceDirect, SpringerLink, Wiley, MDPI, IEEE Xplore, JSTOR, ERIC, DOAJ, PubMed for health topics, and university repositories for theses.
 
+Run the queries through helpers on `haiku`, in parallel, one per source or batch (see `references/model-routing.md`). Give each the exact query strings, the tool or site to use, and what to return per candidate: title, authors, year, journal or repository, DOI or link, abstract, plus one log row per query. Choosing which papers stay is done in the session.
+
 ## Gather, then narrow
 
 - Gather at least 15 to 20 candidates before filtering. For each, record title, authors, year, journal or repository, DOI or link, and the abstract.
