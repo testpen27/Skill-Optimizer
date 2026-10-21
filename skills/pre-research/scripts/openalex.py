@@ -11,10 +11,15 @@ Standard library only. Subcommands:
                                   read Scopus CSV and Web of Science exports
                                   (tab-delimited or plain text), merge, de-duplicate
   enrich records.json             look up open-access PDFs for every DOI
+  key status | set KEY | skip | forget
+                                  the user's own OpenAlex key, kept outside the skill
 
 OpenAlex is free. Without a key all users on one network share a small daily
-budget; set OPENALEX_API_KEY (free from https://openalex.org/settings/api) for
-your own. OPENALEX_MAILTO is sent as a courtesy contact if set.
+budget; a free key (https://openalex.org/settings/api) gives each user their own.
+The key is read from OPENALEX_API_KEY if set, otherwise from a file in the
+user's config folder (~/.config/pre-research/openalex_key, or
+$PRE_RESEARCH_CONFIG_DIR). It is never stored inside the skill, so a shared copy
+of the skill carries no key. OPENALEX_MAILTO is sent as a courtesy contact if set.
 
 OpenAlex counts are an approximation of a Scopus or Web of Science search, not a
 replacement: different coverage, and it searches title, abstract and keywords
@@ -61,13 +66,82 @@ def http_get(url, timeout=60):
             if attempt == 3:
                 raise Fail(f"cannot reach OpenAlex ({e.reason}). Check the internet connection.")
             time.sleep(2 ** attempt)
-    raise Fail("OpenAlex kept returning errors (rate limit or outage). Try again later or set OPENALEX_API_KEY.")
+    raise Fail("OpenAlex kept returning errors (rate limit or outage). Try again later, or save a free key: openalex.py key set KEY")
+
+
+# ---------------------------------------------------------------- the user's key
+
+SKIP = "none"  # stored when the user chose to work without a key, so nobody asks again
+
+
+def config_dir():
+    d = os.environ.get("PRE_RESEARCH_CONFIG_DIR") or os.path.join(os.path.expanduser("~"), ".config", "pre-research")
+    skill_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if os.path.abspath(d).startswith(skill_dir + os.sep) or os.path.abspath(d) == skill_dir:
+        raise Fail("the key folder must be outside the skill folder, or the key would be shared with the skill")
+    return d
+
+
+def key_file():
+    return os.path.join(config_dir(), "openalex_key")
+
+
+def stored_key():
+    """The key to use (None for none) and where it came from."""
+    if os.environ.get("OPENALEX_API_KEY"):
+        return os.environ["OPENALEX_API_KEY"].strip(), "environment"
+    try:
+        value = open(key_file(), encoding="utf-8").read().strip()
+    except OSError:
+        return None, "not set"
+    if value == SKIP:
+        return None, "skipped"
+    return (value, "saved") if value else (None, "not set")
+
+
+def masked(k):
+    return f"...{k[-4:]}" if k and len(k) > 8 else "(set)"
+
+
+def cmd_key(args):
+    if args.action == "status":
+        key, where = stored_key()
+        if where == "environment":
+            print(f"key: from OPENALEX_API_KEY ({masked(key)})")
+        elif where == "saved":
+            print(f"key: saved for this user ({masked(key)})")
+        elif where == "skipped":
+            print("key: none, by choice (shared free budget)")
+        else:
+            print("key: not set. Ask the user once whether they have an OpenAlex key, then run 'key set' or 'key skip'.")
+        return
+    os.makedirs(config_dir(), exist_ok=True)
+    if args.action == "forget":
+        try:
+            os.remove(key_file())
+        except FileNotFoundError:
+            pass
+        print("key: forgotten")
+        return
+    value = SKIP if args.action == "skip" else (args.value or "").strip()
+    if args.action == "set":
+        if not value or not re.fullmatch(r"[A-Za-z0-9_\-]{8,200}", value):
+            raise Fail("that does not look like an OpenAlex API key (letters, digits, - and _ only)")
+    fd = os.open(key_file(), os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
+        f.write(value + "\n")
+    try:
+        os.chmod(key_file(), 0o600)
+    except OSError:
+        pass
+    print("key: none, by choice; it will not be asked again" if value == SKIP else f"key: saved ({masked(value)})")
 
 
 def api_url(path, params):
     params = dict(params)
-    if os.environ.get("OPENALEX_API_KEY"):
-        params["api_key"] = os.environ["OPENALEX_API_KEY"]
+    key, _ = stored_key()
+    if key:
+        params["api_key"] = key
     if os.environ.get("OPENALEX_MAILTO"):
         params["mailto"] = os.environ["OPENALEX_MAILTO"]
     return f"{API}{path}?{urllib.parse.urlencode(params, safe=':,|*?')}"
@@ -399,6 +473,8 @@ def main(argv=None):
     p = sub.add_parser("import"); p.add_argument("files", nargs="+"); p.add_argument("--out", required=True)
     p.set_defaults(fn=cmd_import)
     p = sub.add_parser("enrich"); p.add_argument("records"); p.set_defaults(fn=cmd_enrich)
+    p = sub.add_parser("key"); p.add_argument("action", choices=["status", "set", "skip", "forget"])
+    p.add_argument("value", nargs="?"); p.set_defaults(fn=cmd_key)
     args = ap.parse_args(argv)
     try:
         args.fn(args)

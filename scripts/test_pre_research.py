@@ -9,6 +9,7 @@ one-line error (exit 1, no stack trace).
 """
 import csv
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -112,6 +113,13 @@ def module(name):
 
 oa = module("openalex")
 rt = module("retrieve")
+
+
+def quiet_oa(*args):
+    with contextlib.redirect_stdout(io.StringIO()) as out, contextlib.redirect_stderr(io.StringIO()) as err:
+        rc = oa.main(list(args))
+    return rc, out.getvalue(), err.getvalue()
+
 
 # OpenAlex query conversion
 q, wild, notes = oa.openalex_query([
@@ -236,6 +244,39 @@ with tempfile.TemporaryDirectory() as tmp:
               and "to be completed" in text and "Wrong population (n = 4)" in text)
         check("report: unread counts say not recorded", "not recorded" in text and "233" in text)
 
+
+# ---------------------------------------------------------------- the user's OpenAlex key
+with tempfile.TemporaryDirectory() as tmp:
+    old_env = {k: os.environ.pop(k, None) for k in ("OPENALEX_API_KEY", "PRE_RESEARCH_CONFIG_DIR")}
+    os.environ["PRE_RESEARCH_CONFIG_DIR"] = str(Path(tmp) / "cfg")
+    try:
+        rc, out, _ = quiet_oa("key", "status")
+        check("key: starts as not set, telling Claude to ask once", rc == 0 and "not set" in out and "Ask the user once" in out)
+        rc, _, err = quiet_oa("key", "set", "bad key!")
+        check("key: rejects something that is not a key", rc == 1 and "does not look like" in err)
+        rc, out, _ = quiet_oa("key", "set", "abcd1234efgh5678")
+        kf = Path(tmp) / "cfg" / "openalex_key"
+        check("key: saved privately and never echoed in full", rc == 0 and "...5678" in out and "abcd1234" not in out
+              and kf.read_text().strip() == "abcd1234efgh5678" and (kf.stat().st_mode & 0o777) == 0o600)
+        check("key: sent to OpenAlex once saved", "api_key=abcd1234efgh5678" in oa.api_url("/works", {"search": "x"}))
+        os.environ["OPENALEX_API_KEY"] = "envkey99999999"
+        check("key: the environment setting wins over the saved file", "api_key=envkey99999999" in oa.api_url("/works", {}))
+        del os.environ["OPENALEX_API_KEY"]
+        rc, out, _ = quiet_oa("key", "skip")
+        rc2, out2, _ = quiet_oa("key", "status")
+        check("key: 'skip' is remembered, no key sent, not asked again",
+              "api_key" not in oa.api_url("/works", {}) and "by choice" in out2 and "Ask the user" not in out2)
+        quiet_oa("key", "forget")
+        check("key: 'forget' clears it", "not set" in quiet_oa("key", "status")[1])
+        os.environ["PRE_RESEARCH_CONFIG_DIR"] = str(SCRIPTS.parent / "cfg")
+        rc, _, err = quiet_oa("key", "set", "abcd1234efgh5678")
+        check("key: refuses to store the key inside the skill folder", rc == 1 and "outside the skill" in err
+              and not (SCRIPTS.parent / "cfg").exists())
+    finally:
+        os.environ.pop("PRE_RESEARCH_CONFIG_DIR", None)
+        for k, v in old_env.items():
+            if v is not None:
+                os.environ[k] = v
 
 # ---------------------------------------------------------------- screening (the reviewer decides, the script records)
 sc = module("screening")

@@ -134,6 +134,18 @@ The description optimizer, rerun on the 34-query set with the adopted
 description, scored every run correct (105/105 train, 65/65 held-out runs)
 and proposed no change (`results/description-optimization-v5/`).
 
+### The user's OpenAlex key
+
+The owner wants to share the skill without sharing an API key. `openalex.py
+key set | skip | status | forget` keeps the key in the user's own config folder
+(`~/.config/pre-research/openalex_key`, readable only by them), refuses to
+store it inside the skill folder, and never prints more than its last four
+characters. SKILL.md has Claude ask once, only when a step is about to use
+OpenAlex; the answer, a key or "no key", is remembered for the rest of the
+chat and later chats on that computer. Without a key everything still works
+on OpenAlex's shared free allowance. Eight tests cover it; the packaged skill
+was checked for anything that looks like a key and holds none.
+
 ### Before installing
 
 Uninstall `search-string`, `research-search-string` and `find-paper` from the
