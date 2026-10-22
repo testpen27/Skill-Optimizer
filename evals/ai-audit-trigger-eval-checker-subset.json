@@ -1,0 +1,26 @@
+[
+ {
+  "query": "how do tools like GPTZero and Turnitin's AI detector actually work under the hood? what is burstiness and why do they have false positives on non-native english speakers",
+  "should_trigger": true
+ },
+ {
+  "query": "my lecturer shared my turnitin AI writing report and it says 67% detected as AI. the tables arent highlighted but almost all my bullet points are. what does that number actually mean and what is it reacting to? pdf is in Downloads/week3_ai_report.pdf",
+  "should_trigger": true
+ },
+ {
+  "query": "GPTZero says my personal statement is 'mixed' and highlighted the whole intro paragraph. I wrote it myself last week in google docs. what is it picking up on and is there anything wrong with the writing itself?",
+  "should_trigger": true
+ },
+ {
+  "query": "got 45% AI on turnitin for my marketing report but I only used grammarly to fix grammar. which parts should I actually look at revising, and what should I definitely not do? my viva is next week",
+  "should_trigger": true
+ },
+ {
+  "query": "my turnitin similarity score is 38%, most of the matches are my reference list and direct quotes from the textbook. should I be worried and how do I bring it down?",
+  "should_trigger": false
+ },
+ {
+  "query": "write me a python script that uses the turnitin LTI API to bulk download the AI writing reports for my 120 students into one spreadsheet with name, score and submission date",
+  "should_trigger": false
+ }
+]

@@ -1,0 +1,129 @@
+{
+  "exit_reason": "max_iterations (1)",
+  "original_description": "Use this skill whenever anyone worries that writing might come across as AI-generated, whether it's their own or someone else's, or wants to understand an AI checker's verdict. Examples: a writer who fears readers will think their newsletter, blog, essay, cover letter, or post came from a bot because of habits like heavy em dash use, words like \"delve\", or tidy three-part lists; a student with a Turnitin AI score or GPTZero result asking what it means and why passages were flagged; a teacher, editor, or reviewer suspicious of a submission; a draft to check for \"ChatGPT voice\" before publishing or sending; anyone asking to de-slop or humanize text. It flags passages that read as LLM output, explains why, reads detector reports, and revises without flattening voice. Use it even when the user names only one tell, and to check your own drafts. Skip it for plain proofreading, shortening, translating, punch-up edits where AI-sounding isn't the worry, plagiarism or similarity reports, and fiction.",
+  "best_description": "Use this skill whenever anyone worries that writing might come across as AI-generated, whether it's their own or someone else's, or wants to understand an AI checker's verdict. Examples: a writer who fears readers will think their newsletter, blog, essay, cover letter, or post came from a bot because of habits like heavy em dash use, words like \"delve\", or tidy three-part lists; a student with a Turnitin AI score or GPTZero result asking what it means and why passages were flagged; a teacher, editor, or reviewer suspicious of a submission; a draft to check for \"ChatGPT voice\" before publishing or sending; anyone asking to de-slop or humanize text. It flags passages that read as LLM output, explains why, reads detector reports, and revises without flattening voice. Use it even when the user names only one tell, and to check your own drafts. Skip it for plain proofreading, shortening, translating, punch-up edits where AI-sounding isn't the worry, plagiarism or similarity reports, and fiction.",
+  "best_score": "5/6",
+  "best_train_score": "5/6",
+  "best_test_score": null,
+  "final_description": "Use this skill whenever anyone worries that writing might come across as AI-generated, whether it's their own or someone else's, or wants to understand an AI checker's verdict. Examples: a writer who fears readers will think their newsletter, blog, essay, cover letter, or post came from a bot because of habits like heavy em dash use, words like \"delve\", or tidy three-part lists; a student with a Turnitin AI score or GPTZero result asking what it means and why passages were flagged; a teacher, editor, or reviewer suspicious of a submission; a draft to check for \"ChatGPT voice\" before publishing or sending; anyone asking to de-slop or humanize text. It flags passages that read as LLM output, explains why, reads detector reports, and revises without flattening voice. Use it even when the user names only one tell, and to check your own drafts. Skip it for plain proofreading, shortening, translating, punch-up edits where AI-sounding isn't the worry, plagiarism or similarity reports, and fiction.",
+  "iterations_run": 1,
+  "holdout": 0.0,
+  "train_size": 6,
+  "test_size": 0,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Use this skill whenever anyone worries that writing might come across as AI-generated, whether it's their own or someone else's, or wants to understand an AI checker's verdict. Examples: a writer who fears readers will think their newsletter, blog, essay, cover letter, or post came from a bot because of habits like heavy em dash use, words like \"delve\", or tidy three-part lists; a student with a Turnitin AI score or GPTZero result asking what it means and why passages were flagged; a teacher, editor, or reviewer suspicious of a submission; a draft to check for \"ChatGPT voice\" before publishing or sending; anyone asking to de-slop or humanize text. It flags passages that read as LLM output, explains why, reads detector reports, and revises without flattening voice. Use it even when the user names only one tell, and to check your own drafts. Skip it for plain proofreading, shortening, translating, punch-up edits where AI-sounding isn't the worry, plagiarism or similarity reports, and fiction.",
+      "train_passed": 5,
+      "train_failed": 1,
+      "train_total": 6,
+      "train_results": [
+        {
+          "query": "how do tools like GPTZero and Turnitin's AI detector actually work under the hood? what is burstiness and why do they have false positives on non-native english speakers",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": false
+        },
+        {
+          "query": "my lecturer shared my turnitin AI writing report and it says 67% detected as AI. the tables arent highlighted but almost all my bullet points are. what does that number actually mean and what is it reacting to? pdf is in Downloads/week3_ai_report.pdf",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "GPTZero says my personal statement is 'mixed' and highlighted the whole intro paragraph. I wrote it myself last week in google docs. what is it picking up on and is there anything wrong with the writing itself?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "got 45% AI on turnitin for my marketing report but I only used grammarly to fix grammar. which parts should I actually look at revising, and what should I definitely not do? my viva is next week",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "my turnitin similarity score is 38%, most of the matches are my reference list and direct quotes from the textbook. should I be worried and how do I bring it down?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "write me a python script that uses the turnitin LTI API to bulk download the AI writing reports for my 120 students into one spreadsheet with name, score and submission date",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        }
+      ],
+      "test_passed": null,
+      "test_failed": null,
+      "test_total": null,
+      "test_results": null,
+      "passed": 5,
+      "failed": 1,
+      "total": 6,
+      "results": [
+        {
+          "query": "how do tools like GPTZero and Turnitin's AI detector actually work under the hood? what is burstiness and why do they have false positives on non-native english speakers",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": false
+        },
+        {
+          "query": "my lecturer shared my turnitin AI writing report and it says 67% detected as AI. the tables arent highlighted but almost all my bullet points are. what does that number actually mean and what is it reacting to? pdf is in Downloads/week3_ai_report.pdf",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "GPTZero says my personal statement is 'mixed' and highlighted the whole intro paragraph. I wrote it myself last week in google docs. what is it picking up on and is there anything wrong with the writing itself?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "got 45% AI on turnitin for my marketing report but I only used grammarly to fix grammar. which parts should I actually look at revising, and what should I definitely not do? my viva is next week",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "my turnitin similarity score is 38%, most of the matches are my reference list and direct quotes from the textbook. should I be worried and how do I bring it down?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "write me a python script that uses the turnitin LTI API to bulk download the AI writing reports for my 120 students into one spreadsheet with name, score and submission date",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
