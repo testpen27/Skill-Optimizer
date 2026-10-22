@@ -143,7 +143,16 @@ The gain is on the core case, a user bringing an actual report. The general
 answers such questions directly, and the `learn` skill covers explanations.
 Left as is rather than tuned to one query.
 
-Three earlier attempts at a full 25-query run stopped on the account's
-session limit; the probe aborted each cleanly rather than recording zeros,
-and none of those partial runs are reported here. Results:
-`results/ai-audit/checker-v2/`.
+Regression check: the new description on the 19 unchanged queries
+(`evals/ai-audit-trigger-eval-unchanged-subset.json`), 2 runs each, scored
+36/38 with no false fires. Every should-trigger query fired 2/2 except the
+"look back at the product announcement you wrote earlier" query, which has
+failed under every description since version 1 (a fresh session has no
+earlier draft). All ten near-misses stayed at 0/2. Only 2 runs per query,
+to fit the session limit, so this rules out a broad regression rather than
+measuring small changes.
+
+Four earlier attempts at larger runs stopped on the account's session
+limit (and one on a session restart); the probe aborted each cleanly rather
+than recording zeros, and none of those partial runs are reported here.
+Results: `results/ai-audit/checker-v2/`.
