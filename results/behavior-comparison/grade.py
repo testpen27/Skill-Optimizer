@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mechanical checks for the ilac-legal-report behaviour comparison.
+"""Mechanical checks for the ilac-report behaviour comparison.
 
     python3 grade.py <iteration-dir>
 

@@ -1,5 +1,5 @@
 ---
-name: "ilac-legal-report"
+name: "ilac-report"
 description: "Write a media law case report or incident report in ILAC (Issue, Law, Application, Conclusion) followed by a theory-driven comparative Discussion, for COM741 Media Law."
 ---
 
@@ -19,6 +19,10 @@ This is legal information for study, not legal advice. End every report with a o
 ILAC is IRAC with "Law" in place of "Rule"; the method is the same. It is a *doctrinal* method: it answers what the law is and how it applies ("law in the books"). It cannot, on its own, show how the law works in practice, who it falls on, or whether it is justified ("law in action"). That is the Discussion's job. Say this in one or two sentences near the start of the report, so the reader sees why the report has two halves.
 
 One ILAC per discrete issue. If a report raises three issues, write three ILAC blocks (I1-L1-A1-C1, I2-...), never one big blended block. Put sub-issues (each element in dispute, each defence) under their own subheadings inside the block. Where several parties are involved (the speaker, the platform, the regulator), give each party its own Law and Application with a short conclusion, then an overall conclusion.
+
+## Models
+
+Each step below has a planned model: Opus for issue spotting and drafting, Sonnet for reading judgments and sources, Haiku for status and citation look-ups. Read `references/model-routing.md` before Step 1. It says which steps go to helpers (subagents) and what each helper needs in its prompt.
 
 ## Step 0: Read the brief first
 
