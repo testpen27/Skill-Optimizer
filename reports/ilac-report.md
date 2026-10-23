@@ -143,11 +143,50 @@ treatment (*Mat Shuhaimi*).
 
 ## 5. Trigger accuracy (description optimizer)
 
-TRIGGER_PLACEHOLDER
+Harness: `scripts/run_loop_resilient.py` with the corrected probe, real
+`claude -p` turns on Sonnet 5.5 (the model the session is advised to run on),
+rewrites on Opus 5.5, user-level skills excluded (`PROBE_SETTING_SOURCES=project`;
+the account syncs an older copy of this skill), and nine synced skills copied
+in as competitors (`deep-research`, `docx`, `pdf`, `pptx`, `xlsx`, `learn`,
+`docs`, `firecrawl`, `pre-research`). Control first: an obviously matching
+description fired 2/2 on a clear positive and 0/2 on a clear negative.
+
+**Eval set** (`evals/trigger-eval.json`): 22 queries, 10 positive (case
+reports, incident reports, a lecturer's scenario, a comparative report) and
+12 near-miss negatives (legal advice to a worried friend, a literature
+review, a news summary, a letter of demand, IRAC-vs-CREAC explainer, fixing
+references only, a Hallin & Mancini essay, slides from a finished report, a
+contract-law problem question, an Excel timeline, a news article on a
+judgment, a status question). 3 runs per query (lowered from 5 after two
+runs were cut off by the account's usage limit).
+
+| Description | Train (14) | Held-out (8) |
+|---|---|---|
+| Original (kept) | 14/14 (42/42 runs) | 8/8 (24/24 runs) |
+
+Every run was correct, so the optimizer stopped after one iteration and
+proposed no change (`results/description-optimization/2026-10-23_181429/`).
+
+**Fresh hard hold-out** (`evals/trigger-holdout.json`, 12 queries never seen by
+the optimizer, 3 runs each, `results/holdout-original.json`): positives that
+avoid "ILAC" and the course code (a case comment on *Heidy Quah*; "identify
+each legal issue, state the law, apply it"; a request in Malay; a deepfake
+tutorial hypothetical) and near-misses (an IRAC brief for a tort case, a
+policy brief on s. 233, an NGO summary, a ratio/obiter explainer, an exam
+timetable, translating a finished report). 12/12, every run unanimous.
+
+The description stays as the owner wrote it. Its precision comes from naming
+the deliverable (a case or incident report in ILAC with a comparative
+Discussion) and the domain (media law); a "pushier" rewrite would risk
+pulling in the IRAC-for-tort and policy-brief near-misses, which it
+currently rejects. The probe sees only name and description, so the rename
+was in place for both trigger runs.
 
 ## 6. Limits
 
 - One run per task per version: this shows differences exist, not how often.
+- Trigger runs used 3 runs per query, below the README's 10; with every run
+  unanimous the margin is wide, but borderline wording was not stress-tested.
 - Several test runs could not open the judgments (WebFetch DNS failures,
   Firecrawl rate limits) and worked from law reports or summaries; the blind
   grader noticed the difference this made.
@@ -157,3 +196,13 @@ TRIGGER_PLACEHOLDER
 - Scope: ILAC tasks outside media law (e.g. a contract-law tutorial problem)
   are treated as out of scope in the trigger eval set. If the owner wants the
   skill for any ILAC assignment, the description and the negatives change.
+
+## 7. Packaging
+
+`dist/ilac-report.skill` (SKILL.md and both reference files), built with
+skill-creator's `package_skill.py`. The owner's upload also carried a
+`.claude-plugin/plugin.json` naming `ilac-legal-report`
+(`evals/original-plugin.json`); if the skill is distributed as a plugin, that
+name needs changing to `ilac-report` too. The account still syncs the old
+`ilac-legal-report`; installing the new one alongside it would put two
+competing skills in front of Claude, so remove the old one when installing.
