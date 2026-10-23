@@ -1,0 +1,65 @@
+{
+  "expectations": [
+    {
+      "text": "At least two separate ILAC blocks (Law and Application parts)",
+      "passed": true,
+      "evidence": "3 Law/Application pairs found"
+    },
+    {
+      "text": "Every Issue is framed as a question (\"Whether ...\" or ends with ?)",
+      "passed": true,
+      "evidence": "3 issue statements; first: Could the clown caricature, posted online, constitute an offence under s.233(1)(a) CMA as it stood in 2016?"
+    },
+    {
+      "text": "Application is longer than Law in every ILAC block",
+      "passed": false,
+      "evidence": "(law, application) words: [(124, 187), (42, 150), (252, 209)]"
+    },
+    {
+      "text": "Discussion has a comparison table with an ICCPR column",
+      "passed": true,
+      "evidence": "table header row with ICCPR"
+    },
+    {
+      "text": "Discussion is 30-45% of the body",
+      "passed": false,
+      "evidence": "discussion share 24%"
+    },
+    {
+      "text": "Study-only, not-legal-advice note",
+      "passed": true,
+      "evidence": "regex 'not legal advice'"
+    },
+    {
+      "text": "Reference list with at least 6 entries",
+      "passed": true,
+      "evidence": "22 entries"
+    },
+    {
+      "text": "Status of laws flagged (in force / amended / repealed)",
+      "passed": true,
+      "evidence": "mentions 'in force' and amend/repeal"
+    },
+    {
+      "text": "Flags the 2025 amendment to s.233 ('grossly offensive')",
+      "passed": true,
+      "evidence": "'grossly offensive'"
+    },
+    {
+      "text": "Separates confirmed facts from allegations",
+      "passed": true,
+      "evidence": "'confirmed' plus 'alleged' / 'not confirmed' / 'unverified'"
+    },
+    {
+      "text": "Has a current-status section",
+      "passed": true,
+      "evidence": "heading containing 'status'"
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 2,
+    "total": 11,
+    "pass_rate": 0.82
+  }
+}

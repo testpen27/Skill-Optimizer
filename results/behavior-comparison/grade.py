@@ -45,30 +45,53 @@ def body_words(text):
     return len(cut[0].split())
 
 
+LABEL = re.compile(r"^\s*\*\*([^*]{1,40}?)\.?\*\*[.:]?\s*(.*)$")
+
+
+def segments(text):
+    """Split at headings and at bold run-in labels (**Law.** ...).
+
+    Returns [(kind, label, first_line, words)], kind "h" or "b". A segment runs
+    to the next heading or bold label, so a **Law.** paragraph's words stop at
+    the **Application.** label that follows it.
+    """
+    out, cur = [], None
+    for line in text.splitlines():
+        h, b = HEADING.match(line), LABEL.match(line)
+        if h or b:
+            kind, label, rest = ("h", h.group(2).strip(), "") if h else ("b", b.group(1).strip(), b.group(2))
+            cur = [kind, label, rest, len(rest.split())]
+            out.append(cur)
+        elif cur is not None:
+            if not cur[2] and line.strip():
+                cur[2] = line
+            cur[3] += len(line.split())
+    return out
+
+
 def issue_statements(text):
-    """The sentence that follows each Issue label or heading."""
-    found = []
-    lines = text.splitlines()
-    for i, line in enumerate(lines):
-        h = HEADING.match(line)
-        label = re.match(r"^\s*\*\*(I\d*\s*[—–:-]|Issue\b)[^*]*\*\*[:.]?\s*(.*)$", line)
-        if h and re.search(r"\bIssue\b|^I\d*\b|\bI\d+\s*[—–:-]", h.group(2)) and not re.search(r"issues\b", h.group(2), re.I):
-            rest = next((l for l in lines[i + 1:] if l.strip()), "")
-            found.append(rest)
-        elif label:
-            found.append(label.group(2) or next((l for l in lines[i + 1:] if l.strip()), ""))
+    """The question each Issue states: a bold **Issue.** label's text, or an
+    "Issue N: ..." heading's own wording when no label follows it."""
+    found, segs = [], segments(text)
+    for i, (kind, label, first, _) in enumerate(segs):
+        if kind == "b" and re.fullmatch(r"Issue( \d+)?", label, re.I):
+            found.append(first)
+        elif kind == "h" and re.match(r"(Issue|ILAC|I)\s*\d+\b", label, re.I):
+            nxt = segs[i + 1] if i + 1 < len(segs) else None
+            if not (nxt and nxt[0] == "b" and re.fullmatch(r"Issue( \d+)?", nxt[1], re.I)):
+                found.append(re.sub(r"^(Issue|ILAC|I)\s*\d+\s*[^:]*:\s*", "", label, flags=re.I))
     return found
 
 
-def law_application_pairs(secs):
-    """Pair each Law heading with the next Application heading."""
+def law_application_pairs(text):
+    """(law words, application words) for each Law label followed by an
+    Application label."""
     pairs, law = [], None
-    for i, (lvl, title, _) in enumerate(secs):
-        t = title.lower()
-        if re.search(r"\blaw\b|^l\d*\b|\bl\d+\s*[—–:-]", t) and "media law" not in t and "case law" not in t:
-            law = subtree_words(secs, i)
-        elif re.search(r"\bapplication\b|^a\d*\b|\ba\d+\s*[—–:-]", t) and law is not None:
-            pairs.append((law, subtree_words(secs, i)))
+    for kind, label, _, words in segments(text):
+        if re.fullmatch(r"(Law|Rule|L\d*)", label, re.I):
+            law = words
+        elif re.fullmatch(r"(Application|A\d*)", label, re.I) and law is not None:
+            pairs.append((law, words))
             law = None
     return pairs
 
@@ -89,13 +112,13 @@ def grade(eval_name, text):
     secs = sections(text)
     words = body_words(text)
     issues = issue_statements(text)
-    pairs = law_application_pairs(secs)
+    pairs = law_application_pairs(text)
     share = discussion_share(secs, text)
     refs = re.split(r"^#{1,6}\s+(?:References|Reference list)\b.*$", text, flags=re.M | re.I)
     ref_entries = [l for l in refs[-1].splitlines() if l.strip() and not l.startswith("#")] if len(refs) > 1 else []
 
     out = [
-        check("At least two separate ILAC blocks (Law and Application headings)", len(pairs) >= 2,
+        check("At least two separate ILAC blocks (Law and Application parts)", len(pairs) >= 2,
               f"{len(pairs)} Law/Application pairs found"),
         check("Every Issue is framed as a question (\"Whether ...\" or ends with ?)",
               issues and all(re.search(r"\bwhether\b|\?", s, re.I) for s in issues),
@@ -123,7 +146,8 @@ def grade(eval_name, text):
             check("Flags the 2025 amendment to s.233 ('grossly offensive')",
                   re.search(r"grossly offensive", text, re.I), "'grossly offensive'"),
             check("Separates confirmed facts from allegations",
-                  re.search(r"\bconfirmed\b", text, re.I) and re.search(r"\balleg", text, re.I), "confirmed + alleg*"),
+                  re.search(r"\bconfirmed\b", text, re.I) and re.search(r"\balleg|not confirmed|unconfirmed|unverified", text, re.I),
+                  "'confirmed' plus 'alleged' / 'not confirmed' / 'unverified'"),
             check("Has a current-status section", any(re.search(r"status", t, re.I) for _, t, _ in secs),
                   "heading containing 'status'"),
         ]

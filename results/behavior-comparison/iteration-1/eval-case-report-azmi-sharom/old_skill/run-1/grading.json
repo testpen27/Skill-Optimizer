@@ -1,0 +1,60 @@
+{
+  "expectations": [
+    {
+      "text": "At least two separate ILAC blocks (Law and Application parts)",
+      "passed": true,
+      "evidence": "2 Law/Application pairs found"
+    },
+    {
+      "text": "Every Issue is framed as a question (\"Whether ...\" or ends with ?)",
+      "passed": true,
+      "evidence": "2 issue statements; first: Is the Sedition Act 1948 a valid and enforceable law when Article 10(2) says only \"Parliament\" may restrict speech \"by l"
+    },
+    {
+      "text": "Application is longer than Law in every ILAC block",
+      "passed": true,
+      "evidence": "(law, application) words: [(138, 209), (230, 271)]"
+    },
+    {
+      "text": "Discussion has a comparison table with an ICCPR column",
+      "passed": true,
+      "evidence": "table header row with ICCPR"
+    },
+    {
+      "text": "Discussion is 30-45% of the body",
+      "passed": true,
+      "evidence": "discussion share 37%"
+    },
+    {
+      "text": "Study-only, not-legal-advice note",
+      "passed": true,
+      "evidence": "regex 'not legal advice'"
+    },
+    {
+      "text": "Reference list with at least 6 entries",
+      "passed": true,
+      "evidence": "11 entries"
+    },
+    {
+      "text": "Status of laws flagged (in force / amended / repealed)",
+      "passed": true,
+      "evidence": "mentions 'in force' and amend/repeal"
+    },
+    {
+      "text": "Ratio decidendi and obiter dicta both identified",
+      "passed": true,
+      "evidence": "ratio + obiter"
+    },
+    {
+      "text": "Length 1,800-2,500 words (excluding references)",
+      "passed": true,
+      "evidence": "2460 words"
+    }
+  ],
+  "summary": {
+    "passed": 10,
+    "failed": 0,
+    "total": 10,
+    "pass_rate": 1.0
+  }
+}

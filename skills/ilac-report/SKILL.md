@@ -28,6 +28,8 @@ Each step below has a planned model: Opus for issue spotting and drafting, Sonne
 
 If NIK supplies an assignment brief, rubric, scenario, or word limit, it overrides the defaults in this skill. Follow its headings (some lecturers want a case note in FIRODA order, or "Facts / Issues / Judgment / Impact"), its word count, and its referencing style. Spend words where the marks are.
 
+Set a word budget before drafting, and write to it. For a 2,000-word report, roughly: case details and facts 200–250, the ILAC blocks 950–1,050, Discussion 700–800, conclusion 100. Long ILAC blocks squeeze the Discussion below its share, which is the commonest way these reports drift. A word limit in the brief is a ceiling: it counts everything except the reference list (headings and tables included) unless the brief says otherwise, so count before delivering and cut to fit.
+
 ## Step 1: Research before writing (mandatory)
 
 1. Identify the mode: **Case report** (a court judgment) or **Incident report** (a real event that may or may not have reached court).
@@ -71,7 +73,7 @@ If NIK supplies an assignment brief, rubric, scenario, or word limit, it overrid
 
 ## Writing each ILAC part well
 
-The commonest weakness in ILAC writing is a long Law section and a thin Application: rules recited, then asserted to apply. Reverse that weighting. In each block, Application should be the longest part (roughly half the block), Law about a quarter to a third, Issue one sentence, Conclusion one to three sentences.
+The commonest weakness in ILAC writing is a long Law section and a thin Application: rules recited, then asserted to apply. Reverse that weighting. In each block, Application should be the longest part (roughly half the block), Law about a quarter to a third, Issue one sentence, Conclusion one to three sentences. Keep the Law to what this issue needs: state each rule once, then put the case-by-case reasoning in the Application, where it earns marks.
 
 ### Issue
 - One sentence, framed as a question, naming the law and the actor.
@@ -147,7 +149,8 @@ Deliver the report as a living document (Claude Docs) unless NIK asks for Word/.
 - [ ] Each issue has its own complete I-L-A-C block; no legally significant fact left unused.
 - [ ] Every Issue is a question; every Conclusion answers that exact question.
 - [ ] Law is stated explicitly, broken into elements, and every element is applied to facts.
-- [ ] Application is the longest part of each block, compares the facts with decided cases, and argues both sides.
+- [ ] Application is longer than Law in every block (count them), compares the facts with decided cases, and argues both sides.
+- [ ] Word count within the brief's limit (everything but references), and the Discussion within its share of the total.
 - [ ] Status of each law flagged (in force / amended / repealed / proposed), with date checked.
 - [ ] Confirmed facts separated from allegations (incident mode).
 - [ ] Ratio stated as a rule (not the order), obiter identified, dissent noted, later treatment checked (case mode).
