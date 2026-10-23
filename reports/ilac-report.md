@@ -117,7 +117,29 @@ failed all six on structure. Fixed before the scores above.
 
 ### Iteration 2 (revised skill with the word-budget fix)
 
-ITERATION2_PLACEHOLDER
+The three tasks were rerun with the revised skill after the word-budget
+change (mechanical checks only; no blind grading this round). Viewer:
+`results/behavior-comparison/review-iteration-2.html`.
+
+| Task | Iteration 1 (mechanical) | Iteration 2 (mechanical) |
+|---|---|---|
+| Case report, Azmi Sharom | 9/10 (Discussion 26%) | 9/10 (Discussion 29%, body ~2,020 words) |
+| Incident report, Fahmi Reza | 10/11 (Discussion 26%) | 9/11 (Discussion 25%; ~3,300 words; no heading named "current status", though section 3 gives the position as checked) |
+| TikTok scenario | 8/11 (1,543 words; Law longer than Application) | 11/11 (~1,420 words; Application longer than Law in every block; Discussion 35%) |
+| Total | 27/32 | 29/32 |
+
+The word limit and the Law/Application balance are fixed. The Discussion
+share is still under target in the two longer reports: the case-report run
+said it held the Discussion at about 600 words to keep the 2,000 total, i.e.
+it cut the Discussion rather than the ILAC blocks. SKILL.md now says to cut
+Law and background first, not the Discussion. That last sentence has not been
+rerun. The incident report had no length set by the user and ran well over
+the 2,200-word default.
+
+Notable in the reruns: all three found and used the Federal Court's 2026
+*Heidy Quah* ruling from the updated status file, and the case report now
+names a ratio as a rule, distinguishes *Nordin Salleh*, and traces later
+treatment (*Mat Shuhaimi*).
 
 ## 5. Trigger accuracy (description optimizer)
 

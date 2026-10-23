@@ -1,0 +1,259 @@
+{
+  "metadata": {
+    "skill_name": "ilac-report",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-23T18:16:59Z",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.9,
+        "passed": 9,
+        "failed": 1,
+        "total": 10,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "At least two separate ILAC blocks (Law and Application parts)",
+          "passed": true,
+          "evidence": "3 Law/Application pairs found"
+        },
+        {
+          "text": "Every Issue is framed as a question (\"Whether ...\" or ends with ?)",
+          "passed": true,
+          "evidence": "3 issue statements; first: Whether a pre-Merdeka statute made by the Federal Legislative Council can restrict speech, when Article 10(2) says \"Parl"
+        },
+        {
+          "text": "Application is longer than Law in every ILAC block",
+          "passed": true,
+          "evidence": "(law, application) words: [(76, 146), (104, 122), (86, 227)]"
+        },
+        {
+          "text": "Discussion has a comparison table with an ICCPR column",
+          "passed": true,
+          "evidence": "table header row with ICCPR"
+        },
+        {
+          "text": "Discussion is 30-45% of the body",
+          "passed": false,
+          "evidence": "discussion share 29%"
+        },
+        {
+          "text": "Study-only, not-legal-advice note",
+          "passed": true,
+          "evidence": "regex 'not legal advice'"
+        },
+        {
+          "text": "Reference list with at least 6 entries",
+          "passed": true,
+          "evidence": "15 entries"
+        },
+        {
+          "text": "Status of laws flagged (in force / amended / repealed)",
+          "passed": true,
+          "evidence": "mentions 'in force' and amend/repeal"
+        },
+        {
+          "text": "Ratio decidendi and obiter dicta both identified",
+          "passed": true,
+          "evidence": "ratio + obiter"
+        },
+        {
+          "text": "Length 1,800-2,500 words (excluding references)",
+          "passed": true,
+          "evidence": "2023 words"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.82,
+        "passed": 9,
+        "failed": 2,
+        "total": 11,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "At least two separate ILAC blocks (Law and Application parts)",
+          "passed": true,
+          "evidence": "3 Law/Application pairs found"
+        },
+        {
+          "text": "Every Issue is framed as a question (\"Whether ...\" or ends with ?)",
+          "passed": true,
+          "evidence": "3 issue statements; first: Did the Facebook post satisfy the elements of s. 233(1)(a) CMA as it stood in 2016?"
+        },
+        {
+          "text": "Application is longer than Law in every ILAC block",
+          "passed": true,
+          "evidence": "(law, application) words: [(173, 247), (159, 234), (74, 168)]"
+        },
+        {
+          "text": "Discussion has a comparison table with an ICCPR column",
+          "passed": true,
+          "evidence": "table header row with ICCPR"
+        },
+        {
+          "text": "Discussion is 30-45% of the body",
+          "passed": false,
+          "evidence": "discussion share 25%"
+        },
+        {
+          "text": "Study-only, not-legal-advice note",
+          "passed": true,
+          "evidence": "regex 'not legal advice'"
+        },
+        {
+          "text": "Reference list with at least 6 entries",
+          "passed": true,
+          "evidence": "19 entries"
+        },
+        {
+          "text": "Status of laws flagged (in force / amended / repealed)",
+          "passed": true,
+          "evidence": "mentions 'in force' and amend/repeal"
+        },
+        {
+          "text": "Flags the 2025 amendment to s.233 ('grossly offensive')",
+          "passed": true,
+          "evidence": "'grossly offensive'"
+        },
+        {
+          "text": "Separates confirmed facts from allegations",
+          "passed": true,
+          "evidence": "'confirmed' plus 'alleged' / 'not confirmed' / 'unverified'"
+        },
+        {
+          "text": "Has a current-status section",
+          "passed": false,
+          "evidence": "heading containing 'status'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 11,
+        "failed": 0,
+        "total": 11,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "At least two separate ILAC blocks (Law and Application parts)",
+          "passed": true,
+          "evidence": "3 Law/Application pairs found"
+        },
+        {
+          "text": "Every Issue is framed as a question (\"Whether ...\" or ends with ?)",
+          "passed": true,
+          "evidence": "3 issue statements; first: Could the video be an offence under Penal Code s. 298A?"
+        },
+        {
+          "text": "Application is longer than Law in every ILAC block",
+          "passed": true,
+          "evidence": "(law, application) words: [(114, 124), (105, 128), (77, 94)]"
+        },
+        {
+          "text": "Discussion has a comparison table with an ICCPR column",
+          "passed": true,
+          "evidence": "table header row with ICCPR"
+        },
+        {
+          "text": "Discussion is 30-45% of the body",
+          "passed": true,
+          "evidence": "discussion share 33%"
+        },
+        {
+          "text": "Study-only, not-legal-advice note",
+          "passed": true,
+          "evidence": "regex 'not legal advice'"
+        },
+        {
+          "text": "Reference list with at least 6 entries",
+          "passed": true,
+          "evidence": "14 entries"
+        },
+        {
+          "text": "Status of laws flagged (in force / amended / repealed)",
+          "passed": true,
+          "evidence": "mentions 'in force' and amend/repeal"
+        },
+        {
+          "text": "Within the 1,500-word limit (excluding references)",
+          "passed": true,
+          "evidence": "1404 words"
+        },
+        {
+          "text": "Applies the Online Safety Act 2025 to TikTok",
+          "passed": true,
+          "evidence": "'Online Safety Act 2025'"
+        },
+        {
+          "text": "Uses the current s.233 threshold ('grossly offensive')",
+          "passed": true,
+          "evidence": "'grossly offensive'"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9067,
+        "stddev": 0.0902,
+        "min": 0.82,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.91",
+      "time_seconds": "+0.0",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}
