@@ -54,12 +54,57 @@
       "text": "Uses the current s.233 threshold ('grossly offensive')",
       "passed": true,
       "evidence": "'grossly offensive'"
+    },
+    {
+      "text": "Application reasons element by element against the facts",
+      "passed": true,
+      "evidence": "[blind grader] s. 233: 'use of network facilities is clearly met... Character and intent are contested'; s. 298A: elements are applied ('likely to cause' suffices, no express intent element, mocking practices is not enmity between groups). I1 bundles s. 298A, s. 233 and Art. 10 into one Issue, so each is treated more briefly."
+    },
+    {
+      "text": "Application gives the strongest argument for both sides on contested points",
+      "passed": true,
+      "evidence": "[blind grader] 'The prosecution would argue that mocking religious practice is grossly offensive... The influencer would argue that grossly is undefined, satire, offence a side effect'; the TikTok section sets the state's gatekeeper argument against TikTok's statutory-category argument."
+    },
+    {
+      "text": "Application compares the facts with decided cases (analogises or distinguishes a precedent)",
+      "passed": false,
+      "evidence": "[blind grader] It applies the Heidy Quah principle ('offence as a side effect... does not satisfy intent') but never sets the hypothetical's facts against those of a decided case. The Kuching 2019 sentence is cited only to show enforcement can be severe. It omits Mamat Daud and Alvivi."
+    },
+    {
+      "text": "Every Conclusion answers its Issue directly and states a degree of certainty",
+      "passed": true,
+      "evidence": "[blind grader] I1: 's. 298A... arguable and, given wide circulation, fairly likely... s. 233 arguable but turns on intent... probably survive an Art. 10 challenge'; I2: 'very likely bound to comply promptly... liability for the video is unlikely'."
+    },
+    {
+      "text": "Discussion states where the chosen theory fits AND where it fits poorly",
+      "passed": true,
+      "evidence": "[blind grader] Balkin's triangle explains the 'old-school' and 'new-school' pairing and predicts collateral censorship; 'The fit is imperfect. Balkin wrote for liberal democracies... Malaysia formalises it... cannot explain why religion is a special category'."
+    },
+    {
+      "text": "Discussion explains why each comparator jurisdiction was chosen and links back to the ILAC findings",
+      "passed": true,
+      "evidence": "[blind grader] Reasons are given but are terse ('Singapore: shared heritage, similar harmony rationale. UK: liberal, rights-based contrast'). Links back: 'Malaysia's likely-to-cause wording and prison minimum place it at the restrictive end'. The table has many '[to verify]' or blank cells."
+    },
+    {
+      "text": "Uncertain or unverified points are flagged rather than stated as fact",
+      "passed": true,
+      "evidence": "[blind grader] Assumed facts stated up front; '[date and report citation to verify]'; Balkin pages 'from memory, verify'; '(my inference)' on the ONSA deadlines; '[verify]' throughout the comparator table."
+    },
+    {
+      "text": "The Discussion uses only one theoretical framework, as the brief requires",
+      "passed": true,
+      "evidence": "[blind grader] Balkin's free speech triangle only (the 2014 and 2018 articles are the same framework); no other theory appears."
+    },
+    {
+      "text": "The influencer and TikTok are analysed separately, each with its own conclusion",
+      "passed": true,
+      "evidence": "[blind grader] I1: Influencer and I2: TikTok, each with its own Issue/Law/Application/Conclusion. The Art. 10 point sits inside I1 only."
     }
   ],
   "summary": {
-    "passed": 10,
-    "failed": 1,
-    "total": 11,
-    "pass_rate": 0.91
+    "passed": 18,
+    "failed": 2,
+    "total": 20,
+    "pass_rate": 0.9
   }
 }

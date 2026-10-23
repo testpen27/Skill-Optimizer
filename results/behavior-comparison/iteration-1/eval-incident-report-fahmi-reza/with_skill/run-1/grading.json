@@ -54,12 +54,52 @@
       "text": "Has a current-status section",
       "passed": true,
       "evidence": "heading containing 'status'"
+    },
+    {
+      "text": "Application reasons element by element against the facts",
+      "passed": true,
+      "evidence": "[blind grader] Elements (a)-(d) are set out, then applied under labelled sub-headings: '(a) and (b), the means and the act', '(c) Offensive in character', '(d) Intent to annoy... the contested element'."
+    },
+    {
+      "text": "Application gives the strongest argument for both sides on contested points",
+      "passed": true,
+      "evidence": "[blind grader] 'The defence had the better of the textual argument...' against the state's inference from the mock MCMC logo; Issue 2 sets the public-order justification against the critics' point that no race, religion or royalty angle arises; Issue 3 uses 'On one hand/On the other hand'."
+    },
+    {
+      "text": "Application compares the facts with decided cases (analogises or distinguishes a precedent)",
+      "passed": true,
+      "evidence": "[blind grader] Labelled 'Comparison with decided cases': 'Unlike Heidy Quah... the Fahmi image makes no factual claim. It is, however, closer to the protected category of satire... than to targeted harassment, doxxing or trolling'."
+    },
+    {
+      "text": "Every Conclusion answers its Issue directly and states a degree of certainty",
+      "passed": true,
+      "evidence": "[blind grader] Each Conclusion gives a verdict and a label: 'Certainty: moderate, because I did not read the judgments themselves'; 'probably not... Certainty is moderate'; 'No court found abuse of process. Certainty: moderate'."
+    },
+    {
+      "text": "Discussion states where the chosen theory fits AND where it fits poorly",
+      "passed": true,
+      "evidence": "[blind grader] Siebert 'fits the 2016 to 2019 phase... fits poorly after 2025 to 2026' and says little about a single Facebook poster; Habermas 'fits... because...; fits poorly because social media platforms are commercially owned... and a clown image is affective rather than rational-critical'."
+    },
+    {
+      "text": "Discussion explains why each comparator jurisdiction was chosen and links back to the ILAC findings",
+      "passed": true,
+      "evidence": "[blind grader] 'UK because s. 127(1)... is the closest textual cousin; India because its Supreme Court struck down a comparable offence; ICCPR as the benchmark'; links back to Issue 3 ('the UK prosecutor is not the regulator whose logo is mocked') and to the intent finding."
+    },
+    {
+      "text": "Uncertain or unverified points are flagged rather than stated as fact",
+      "passed": true,
+      "evidence": "[blind grader] 'Not confirmed or in conflict' list (offence dates, complainants, charge particulars); 'from search summary' tags; '[citation to verify]' on comparator cases; states that the main limitation is reliance on news and law-firm summaries."
+    },
+    {
+      "text": "Explains how s.233 has changed since 2016 and what that means for a similar case today",
+      "passed": true,
+      "evidence": "[blind grader] Section 4 sets out the 2025 amendment ('grossly offensive', Explanations 1-6, RM500,000/2 years) and the 2026 Federal Court reading-down. Conclusion: 'a similar caricature today would more probably fall outside it, though the outcome would depend on proof of primary purpose'."
     }
   ],
   "summary": {
-    "passed": 10,
+    "passed": 18,
     "failed": 1,
-    "total": 11,
-    "pass_rate": 0.91
+    "total": 19,
+    "pass_rate": 0.95
   }
 }

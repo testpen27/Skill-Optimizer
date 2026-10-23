@@ -1,0 +1,42 @@
+[
+  {
+    "text": "Application reasons element by element against the facts",
+    "passed": true,
+    "evidence": "[blind grader] Issue 2 says 'Two elements matter: (1) whether the court may review reasonableness, (2) whether s. 4(1) passes proportionality' and works through each; Issue 1 sets out the defence and State readings of Art. 10(2) against Art. 162. It is thinner than A because the judgment was not read (flagged 'to verify')."
+  },
+  {
+    "text": "Application gives the strongest argument for both sides on contested points",
+    "passed": true,
+    "evidence": "[blind grader] 'The State's strongest point is that s. 3(2) leaves room for criticism... The defence's strongest point is that seditious tendency is vague, needs no intent and no likelihood of violence'; Issue 1 also gives both sides."
+  },
+  {
+    "text": "Application compares the facts with decided cases (analogises or distinguishes a precedent)",
+    "passed": true,
+    "evidence": "[blind grader] Departs from Sivarasa, follows Pung Chen Choon and notes Yuneswaran Ramaraj, and mentions Nordin Salleh. Weak pass: the Nordin Salleh treatment is admitted to be unclear ('reported only briefly in my sources [to verify]') and is not really distinguished."
+  },
+  {
+    "text": "Every Conclusion answers its Issue directly and states a degree of certainty",
+    "passed": true,
+    "evidence": "[blind grader] 'Yes... This is the settled position for a Federal Court ruling, though critics say it sidesteps the text'; 'No... The holding is firm as a matter of precedent, but its reasoning on proportionality is thin'."
+  },
+  {
+    "text": "Discussion states where the chosen theory fits AND where it fits poorly",
+    "passed": true,
+    "evidence": "[blind grader] Authoritarian theory 'fits reasonably well... imperfect' because Malaysia has elections and a proportionality test; Habermas fits well but 'fits poorly where the Act protects race relations'."
+  },
+  {
+    "text": "Discussion explains why each comparator jurisdiction was chosen and links back to the ILAC findings",
+    "passed": true,
+    "evidence": "[blind grader] 'I chose Singapore (shared colonial heritage... now repealed), the UK (origin... abolished) and India (colonial-era sedition law in a constitutional democracy)'; links back: Indian courts apply a textual 'reasonable' test whereas Azmi Sharom 'declined to read reasonable in'."
+  },
+  {
+    "text": "Uncertain or unverified points are flagged rather than stated as fact",
+    "passed": true,
+    "evidence": "[blind grader] Very heavy flagging: 'the judgment itself was not retrieved [to verify against the eJudgment text]', s. 3(2) 'paraphrase from memory', conflicting discontinuance dates, 2015 amendment commencement. Strongest of the six on this check."
+  },
+  {
+    "text": "Ratio decidendi stated as a legal rule (not merely the order/outcome) and obiter identified as obiter",
+    "passed": false,
+    "evidence": "[blind grader] Ratio is stated per issue (Art. 162 saves existing laws; s. 4(1) passes proportionality because of s. 3(2)), but the second is close to the outcome. Obiter is addressed only hesitantly ('may be treated as obiter by later courts... classifying it is contestable'), and it wrongly implies the departure from Sivarasa, which answered the question, could be obiter. No clear ratio/obiter separation."
+  }
+]

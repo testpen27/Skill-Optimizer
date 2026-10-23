@@ -54,12 +54,57 @@
       "text": "Uses the current s.233 threshold ('grossly offensive')",
       "passed": true,
       "evidence": "'grossly offensive'"
+    },
+    {
+      "text": "Application reasons element by element against the facts",
+      "passed": true,
+      "evidence": "[blind grader] I1 lists elements (a)-(c) for s. 298A and finds (a) satisfied and (c) contested; I2 does (a)-(c) for s. 233: '(a) is met: uploaded to TikTok. (b) contested. (c) decisive'."
+    },
+    {
+      "text": "Application gives the strongest argument for both sides on contested points",
+      "passed": true,
+      "evidence": "[blind grader] 'The prosecution would say virality shows likelihood... The influencer would say mocking practices is not hatred of persons'; 'The state would infer intent to annoy from tone, targeting and refusal to remove... The influencer would say the purpose was entertainment or critique'."
+    },
+    {
+      "text": "Application compares the facts with decided cases (analogises or distinguishes a precedent)",
+      "passed": true,
+      "evidence": "[blind grader] Uses Mamat Daud, Alvivi ('Unlike Alvivi, where a specific halal-logo post was charged, the content here is unknown') and Heidy Quah ('the prosecution failed on exactly this intent element'). Fact comparison is thin because the hypothetical gives few facts."
+    },
+    {
+      "text": "Every Conclusion answers its Issue directly and states a degree of certainty",
+      "passed": true,
+      "evidence": "[blind grader] I1 'arguable but legally fragile, depending on the parties' religions and Mamat Daud'; I2 'Conviction is possible but unlikely'; I3 'likely bound to comply... low liability... uncertain' whether the content is harmful."
+    },
+    {
+      "text": "Discussion states where the chosen theory fits AND where it fits poorly",
+      "passed": true,
+      "evidence": "[blind grader] Habermas 'fits in three ways' and 'fits poorly in two ways' (assumes a neutral state guarantor; Western-derived deliberative standard would classify nearly any viral satire as non-discourse)."
+    },
+    {
+      "text": "Discussion explains why each comparator jurisdiction was chosen and links back to the ILAC findings",
+      "passed": true,
+      "evidence": "[blind grader] 'I chose Singapore for its shared Penal Code heritage and religious-harmony priority... I chose the UK because 'grossly offensive' echoes s. 127... and its platform-duty model parallels the Online Safety Act'; links back: 'Malaysia's s. 298A sets the lowest mental-element threshold of the three'."
+    },
+    {
+      "text": "Uncertain or unverified points are flagged rather than stated as fact",
+      "passed": true,
+      "evidence": "[blind grader] Opens with 'a lecturer's hypothetical; no fact is confirmed'; '[to verify]' on the s. 298A penalty, Mamat Daud and Alvivi citations, TikTok's user count and whether religious mockery is 'harmful content'."
+    },
+    {
+      "text": "The Discussion uses only one theoretical framework, as the brief requires",
+      "passed": true,
+      "evidence": "[blind grader] Habermas's public sphere only (1989, 2006, 2022 are all the same framework); no second theory is introduced. Fit is imperfect, since Habermas is a weaker match for a state-platform-speaker problem."
+    },
+    {
+      "text": "The influencer and TikTok are analysed separately, each with its own conclusion",
+      "passed": true,
+      "evidence": "[blind grader] I1 and I2 for the influencer (s. 298A and s. 233/Art. 10), I3 for TikTok, each with its own Issue/Law/Application/Conclusion."
     }
   ],
   "summary": {
-    "passed": 8,
+    "passed": 17,
     "failed": 3,
-    "total": 11,
-    "pass_rate": 0.73
+    "total": 20,
+    "pass_rate": 0.85
   }
 }

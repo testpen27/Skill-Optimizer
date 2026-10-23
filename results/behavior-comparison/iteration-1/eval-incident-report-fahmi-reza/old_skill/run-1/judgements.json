@@ -1,0 +1,42 @@
+[
+  {
+    "text": "Application reasons element by element against the facts",
+    "passed": true,
+    "evidence": "[blind grader] Issue 1 lists five elements (i)-(v) and applies them: 'Elements (i), (ii) and (v) are not seriously contested... The contest lies in elements (iii) and (iv)'."
+  },
+  {
+    "text": "Application gives the strongest argument for both sides on contested points",
+    "passed": true,
+    "evidence": "[blind grader] 'On one hand, the prosecution would argue... offensive in character... On the other hand, the defence would argue that offensive is undefined... annoyance may be a foreseeable by-product'; similar split on selective enforcement in Issue 2."
+  },
+  {
+    "text": "Application compares the facts with decided cases (analogises or distinguishes a precedent)",
+    "passed": true,
+    "evidence": "[blind grader] Issue 3 compares Fahmi's clown image with Heidy Quah: 'plausibly closer to Quah's protected opinion than to targeted harassment. But a clown image is also more plainly insulting than Quah's factual post, so the analogy is not clean'. Issue 1 has no case comparison."
+  },
+  {
+    "text": "Every Conclusion answers its Issue directly and states a degree of certainty",
+    "passed": true,
+    "evidence": "[blind grader] 'It is likely, and it was in fact held at three court levels'; 'most likely procedurally lawful'; 'open to serious doubt'. Each answers its question with a degree of certainty."
+  },
+  {
+    "text": "Discussion states where the chosen theory fits AND where it fits poorly",
+    "passed": true,
+    "evidence": "[blind grader] Habermas and Siebert are used; 'These theories fit poorly, however. They were built to classify press systems... not individual online satirists... treat Malaysia as a fixed type'. The poor-fit comment is joint rather than per theory."
+  },
+  {
+    "text": "Discussion explains why each comparator jurisdiction was chosen and links back to the ILAC findings",
+    "passed": true,
+    "evidence": "[blind grader] 'Chosen because each has (or had) a near-identical grossly offensive/annoyance offence'; links back: 'Malaysia's Federal Court took a third path... more dependent on prosecutorial and judicial restraint, which was exactly what failed in Fahmi's case'. Also explains why Singapore and Thailand are omitted."
+  },
+  {
+    "text": "Uncertain or unverified points are flagged rather than stated as fact",
+    "passed": true,
+    "evidence": "[blind grader] Separate 'Confirmed' list; 'Source conflicts and gaps' paragraph; '[to verify]' on the date of the Federal Court referral ruling, Najib pardon status and foreign citations."
+  },
+  {
+    "text": "Explains how s.233 has changed since 2016 and what that means for a similar case today",
+    "passed": true,
+    "evidence": "[blind grader] Dated table (2016 wording, 11 Feb 2025 'grossly offensive' and RM500,000/2 years, Court of Appeal 19 Aug 2025, Federal Court 6 Feb 2026) with a net-effect paragraph. Implication for a similar case is less explicit than B's: it sits in Issue 3 ('plausibly closer to Quah's protected opinion') and the conclusion ('depend on how prosecutors and judges apply the law')."
+  }
+]

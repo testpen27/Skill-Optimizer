@@ -1,0 +1,33 @@
+{
+  "blind_labels": {
+    "e1-A": [
+      "case-report-azmi-sharom",
+      "with_skill"
+    ],
+    "e1-B": [
+      "case-report-azmi-sharom",
+      "old_skill"
+    ],
+    "e2-A": [
+      "incident-report-fahmi-reza",
+      "old_skill"
+    ],
+    "e2-B": [
+      "incident-report-fahmi-reza",
+      "with_skill"
+    ],
+    "e3-A": [
+      "scenario-tiktok-religion-osa",
+      "with_skill"
+    ],
+    "e3-B": [
+      "scenario-tiktok-religion-osa",
+      "old_skill"
+    ]
+  },
+  "overall": {
+    "e1": "A is better. It appears to have read the judgment (paragraph-level cites, the two quotations in the judgment, the special-case procedure). It separates ratio from outcome and labels obiter, and it ties the comparison to ILAC findings, e.g. India's 'reasonable' text against the court's refusal to read the word in. B is competent and flags uncertainty very carefully. But it admits it never retrieved the judgment, so its Application is thinner, and its ratio/obiter treatment is hesitant and arguably wrong. Both exceed the ~2,000-word target.",
+    "e2": "Close call, with B slightly ahead. B is more rigorous as ILAC: three issues with explicit 'Certainty: moderate' labels, a 'Comparison with decided cases' passage on Heidy Quah, and a clear verdict that a similar caricature today would more probably fall outside s.233 because intent cannot be inferred from offensiveness. A has the cleaner timeline and a dated s.233 change table. It also includes the failed 2016 constitutional referral, which B omits, and it explains the omitted comparators. A is less explicit on what the changes mean for a similar case today. B's weakness is length (about 4,100 words) and its admission that it relied on news and law-firm summaries.",
+    "e3": "A is somewhat better as legal analysis. It spots the threshold problem under s.298A (Mamat Daud ultra vires; Alvivi non-Muslims; the religion of the parties), analyses each element, compares Alvivi and Heidy Quah, and gives separate conclusions with clear hedging. B has the more apt single framework (Balkin's triangle fits the speaker-state-platform problem better than Habermas) and a fuller ONSA and TikTok analysis. But it skips the key s.298A authorities, never compares facts with a decided case, and its comparator table is mostly '[to verify]'. Both are at or near the 1,500-word limit (body about 1,540 for A, about 1,480 for B, excluding references); A is slightly over."
+  }
+}

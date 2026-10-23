@@ -49,12 +49,52 @@
       "text": "Length 1,800-2,500 words (excluding references)",
       "passed": true,
       "evidence": "2287 words"
+    },
+    {
+      "text": "Application reasons element by element against the facts",
+      "passed": true,
+      "evidence": "[blind grader] Each ILAC block walks through the court's reasoning step by step with paragraph cites (e.g. ILAC 1: Act is 'existing law' (paras 7, 17-18), then Nordin Salleh distinguished on two grounds (para 15), then Art. 10(2) read with Art. 162 (paras 23-25)); ILAC 3 ties the holding back to Azmi's actual remarks."
+    },
+    {
+      "text": "Application gives the strongest argument for both sides on contested points",
+      "passed": true,
+      "evidence": "[blind grader] ILAC 1: 'On one hand, this is orthodox... On the other hand, the defence's textual point has force'; ILAC 3 sets the prosecution's mapping of tendencies onto Art. 10(2)(a)/(4) against critics who say the three limbs were never worked through, plus ICJ and Article 19."
+    },
+    {
+      "text": "Application compares the facts with decided cases (analogises or distinguishes a precedent)",
+      "passed": true,
+      "evidence": "[blind grader] Distinguishes Nordin Salleh (State law, post-Merdeka), departs from Sivarasa and Mohd Nasir Hashim in favour of Pung Chen Choon, and notes Mat Shuhaimi (2016) later tested s. 3(3)."
+    },
+    {
+      "text": "Every Conclusion answers its Issue directly and states a degree of certainty",
+      "passed": true,
+      "evidence": "[blind grader] 'Yes... This holding is firm and binds lower courts'; 'No. Courts will not review... reasonable'; 'No... The holding is secure as precedent, but the proportionality analysis is thin'. Conclusion 2 is slightly weaker on certainty (the application text calls it 'the least stable part')."
+    },
+    {
+      "text": "Discussion states where the chosen theory fits AND where it fits poorly",
+      "passed": true,
+      "evidence": "[blind grader] Authoritarian theory 'fits the Act's design... fits poorly with a constitution that entrenches Art. 10 and a court that applies proportionality'; Hallin and Mancini 'fits poorly'; Habermas used as second lens."
+    },
+    {
+      "text": "Discussion explains why each comparator jurisdiction was chosen and links back to the ILAC findings",
+      "passed": true,
+      "evidence": "[blind grader] 'Singapore is chosen for shared colonial heritage and a recent repeal. The UK is the origin... India... a constitutional text that expressly says reasonable', which Malaysia's court declined to read in (ILAC 2). Also notes Singapore's repeal is not simply a liberal turn."
+    },
+    {
+      "text": "Uncertain or unverified points are flagged rather than stated as fact",
+      "passed": true,
+      "evidence": "[blind grader] '[to verify]' on the Sedition (Amendment) Act 2015 commencement, Singapore successor laws, Kedar Nath Singh, and the Mat Shuhaimi citation; notes the Columbia third quotation conflicts with the judgment and follows the judgment."
+    },
+    {
+      "text": "Ratio decidendi stated as a legal rule (not merely the order/outcome) and obiter identified as obiter",
+      "passed": true,
+      "evidence": "[blind grader] Separate 'Ratio' paragraph states two rules ((1) Art. 162 saves pre-Merdeka laws; (2) no reasonableness review but must fall within a listed ground and be proportionate), separate from 'Outcome and order'; labels the Ooi Ah Phua criticism and drafting history 'Obiter (not needed for the result)'. The obiter label is arguable, since this reasoning supports the ratio."
     }
   ],
   "summary": {
-    "passed": 9,
+    "passed": 17,
     "failed": 1,
-    "total": 10,
-    "pass_rate": 0.9
+    "total": 18,
+    "pass_rate": 0.94
   }
 }
