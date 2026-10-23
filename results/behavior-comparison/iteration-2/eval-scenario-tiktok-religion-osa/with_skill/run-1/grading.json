@@ -1,0 +1,65 @@
+{
+  "expectations": [
+    {
+      "text": "At least two separate ILAC blocks (Law and Application parts)",
+      "passed": true,
+      "evidence": "3 Law/Application pairs found"
+    },
+    {
+      "text": "Every Issue is framed as a question (\"Whether ...\" or ends with ?)",
+      "passed": true,
+      "evidence": "3 issue statements; first: Could the video be an offence under Penal Code s. 298A?"
+    },
+    {
+      "text": "Application is longer than Law in every ILAC block",
+      "passed": true,
+      "evidence": "(law, application) words: [(114, 124), (105, 128), (77, 94)]"
+    },
+    {
+      "text": "Discussion has a comparison table with an ICCPR column",
+      "passed": true,
+      "evidence": "table header row with ICCPR"
+    },
+    {
+      "text": "Discussion is 30-45% of the body",
+      "passed": true,
+      "evidence": "discussion share 33%"
+    },
+    {
+      "text": "Study-only, not-legal-advice note",
+      "passed": true,
+      "evidence": "regex 'not legal advice'"
+    },
+    {
+      "text": "Reference list with at least 6 entries",
+      "passed": true,
+      "evidence": "14 entries"
+    },
+    {
+      "text": "Status of laws flagged (in force / amended / repealed)",
+      "passed": true,
+      "evidence": "mentions 'in force' and amend/repeal"
+    },
+    {
+      "text": "Within the 1,500-word limit (excluding references)",
+      "passed": true,
+      "evidence": "1404 words"
+    },
+    {
+      "text": "Applies the Online Safety Act 2025 to TikTok",
+      "passed": true,
+      "evidence": "'Online Safety Act 2025'"
+    },
+    {
+      "text": "Uses the current s.233 threshold ('grossly offensive')",
+      "passed": true,
+      "evidence": "'grossly offensive'"
+    }
+  ],
+  "summary": {
+    "passed": 11,
+    "failed": 0,
+    "total": 11,
+    "pass_rate": 1.0
+  }
+}

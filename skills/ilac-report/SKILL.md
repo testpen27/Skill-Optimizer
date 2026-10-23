@@ -28,7 +28,7 @@ Each step below has a planned model: Opus for issue spotting and drafting, Sonne
 
 If NIK supplies an assignment brief, rubric, scenario, or word limit, it overrides the defaults in this skill. Follow its headings (some lecturers want a case note in FIRODA order, or "Facts / Issues / Judgment / Impact"), its word count, and its referencing style. Spend words where the marks are.
 
-Set a word budget before drafting, and write to it. For a 2,000-word report, roughly: case details and facts 200–250, the ILAC blocks 950–1,050, Discussion 700–800, conclusion 100. Long ILAC blocks squeeze the Discussion below its share, which is the commonest way these reports drift. A word limit in the brief is a ceiling: it counts everything except the reference list (headings and tables included) unless the brief says otherwise, so count before delivering and cut to fit.
+Set a word budget before drafting, and write to it. For a 2,000-word report, roughly: case details and facts 200–250, the ILAC blocks 950–1,050, Discussion 700–800, conclusion 100. Long ILAC blocks squeeze the Discussion below its share, which is the commonest way these reports drift. When the draft runs long, cut Law and background first, not the Discussion. A word limit in the brief is a ceiling: it counts everything except the reference list (headings and tables included) unless the brief says otherwise, so count before delivering and cut to fit.
 
 ## Step 1: Research before writing (mandatory)
 
