@@ -1,0 +1,50 @@
+[
+ {
+  "query": "can you write me a case comment on the Federal Court's Heidy Quah decision from Feb 2026 on s233 - issues, the law, how the court applied it, what it decided, then a critical discussion. it's for my media regulation module",
+  "should_trigger": true
+ },
+ {
+  "query": "My lecturer wants a structured legal analysis of the MCMC blocking of a news website last week: identify each legal issue, state the law, apply it to the facts, conclude, then discuss using a media theory and compare with Singapore. Postgrad comms, ~1800 words.",
+  "should_trigger": true
+ },
+ {
+  "query": "analyse whether the police arrest of a student over an X post insulting the Agong was lawful - sedition act, CMA, art 10. need it in issue/law/application/conclusion for my assignment",
+  "should_trigger": true
+ },
+ {
+  "query": "Tolong buat laporan kes ILAC untuk kes Malaysiakini contempt (Peguam Negara v Mkini Dotcom) untuk subjek undang-undang media saya, dengan perbincangan teori dan jadual perbandingan.",
+  "should_trigger": true
+ },
+ {
+  "query": "Write up the Utusan Malaysia defamation judgment as a case report for my communication law class: case details, facts, each issue analysed, ratio and obiter, then a discussion of press freedom implications.",
+  "should_trigger": true
+ },
+ {
+  "query": "For my tutorial I have this hypothetical: a YouTuber in Penang uploads a deepfake of a politician; MCMC orders removal under the Online Safety Act and police investigate. Analyse the YouTuber's and YouTube's legal positions, then discuss.",
+  "should_trigger": true
+ },
+ {
+  "query": "Write a case brief in IRAC format for Donoghue v Stevenson for my first-year tort law class.",
+  "should_trigger": false
+ },
+ {
+  "query": "Prepare a policy brief for the Ministry of Communications recommending amendments to section 233 of the CMA, with options and costs. Audience is civil servants, not academics.",
+  "should_trigger": false
+ },
+ {
+  "query": "Summarise the main arguments in Article 19's July 2026 analysis of the Federal Court ruling on s233 in one page, plain English, for an NGO newsletter.",
+  "should_trigger": false
+ },
+ {
+  "query": "What's the difference between ratio decidendi and obiter dicta? Give two quick examples from Malaysian cases.",
+  "should_trigger": false
+ },
+ {
+  "query": "Make a study timetable for my COM741 Media Law exam in three weeks, covering defamation, sedition, CMA and the Online Safety Act topics.",
+  "should_trigger": false
+ },
+ {
+  "query": "Translate my finished COM741 ILAC report (pasted below) into formal Bahasa Melayu, keeping the headings and citations exactly as they are.\n\n# Fahmi Reza and s.233: an ILAC analysis\n## Issue 1 ...",
+  "should_trigger": false
+ }
+]

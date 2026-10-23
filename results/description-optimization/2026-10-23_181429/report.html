@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ilac-report — Skill Description Optimization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', Georgia, serif;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background: #faf9f5;
+            color: #141413;
+        }
+        h1 { font-family: 'Poppins', sans-serif; color: #141413; }
+        .explainer {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+            color: #b0aea5;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .summary {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+        }
+        .summary p { margin: 5px 0; }
+        .best { color: #788c5d; font-weight: bold; }
+        .table-container {
+            overflow-x: auto;
+            width: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            background: white;
+            border: 1px solid #e8e6dc;
+            border-radius: 6px;
+            font-size: 12px;
+            min-width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #e8e6dc;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        th {
+            font-family: 'Poppins', sans-serif;
+            background: #141413;
+            color: #faf9f5;
+            font-weight: 500;
+        }
+        th.test-col {
+            background: #6a9bcc;
+        }
+        th.query-col { min-width: 200px; }
+        td.description {
+            font-family: monospace;
+            font-size: 11px;
+            word-wrap: break-word;
+            max-width: 400px;
+        }
+        td.result {
+            text-align: center;
+            font-size: 16px;
+            min-width: 40px;
+        }
+        td.test-result {
+            background: #f0f6fc;
+        }
+        .pass { color: #788c5d; }
+        .fail { color: #c44; }
+        .rate {
+            font-size: 9px;
+            color: #b0aea5;
+            display: block;
+        }
+        tr:hover { background: #faf9f5; }
+        .score {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .score-good { background: #eef2e8; color: #788c5d; }
+        .score-ok { background: #fef3c7; color: #d97706; }
+        .score-bad { background: #fceaea; color: #c44; }
+        .train-label { color: #b0aea5; font-size: 10px; }
+        .test-label { color: #6a9bcc; font-size: 10px; font-weight: bold; }
+        .best-row { background: #f5f8f2; }
+        th.positive-col { border-bottom: 3px solid #788c5d; }
+        th.negative-col { border-bottom: 3px solid #c44; }
+        th.test-col.positive-col { border-bottom: 3px solid #788c5d; }
+        th.test-col.negative-col { border-bottom: 3px solid #c44; }
+        .legend { font-family: 'Poppins', sans-serif; display: flex; gap: 20px; margin-bottom: 10px; font-size: 13px; align-items: center; }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-swatch { width: 16px; height: 16px; border-radius: 3px; display: inline-block; }
+        .swatch-positive { background: #141413; border-bottom: 3px solid #788c5d; }
+        .swatch-negative { background: #141413; border-bottom: 3px solid #c44; }
+        .swatch-test { background: #6a9bcc; }
+        .swatch-train { background: #141413; }
+    </style>
+</head>
+<body>
+    <h1>ilac-report — Skill Description Optimization</h1>
+    <div class="explainer">
+        <strong>Optimizing your skill's description.</strong> This page updates automatically as Claude tests different versions of your skill's description. Each row is an iteration — a new description attempt. The columns show test queries: green checkmarks mean the skill triggered correctly (or correctly didn't trigger), red crosses mean it got it wrong. The "Train" score shows performance on queries used to improve the description; the "Test" score shows performance on held-out queries the optimizer hasn't seen. When it's done, Claude will apply the best-performing description to your skill.
+    </div>
+
+    <div class="summary">
+        <p><strong>Original:</strong> Write a media law case report or incident report in ILAC (Issue, Law, Application, Conclusion) followed by a theory-driven comparative Discussion, for COM741 Media Law.</p>
+        <p class="best"><strong>Best:</strong> Write a media law case report or incident report in ILAC (Issue, Law, Application, Conclusion) followed by a theory-driven comparative Discussion, for COM741 Media Law.</p>
+        <p><strong>Best Score:</strong> 8/8 (test)</p>
+        <p><strong>Iterations:</strong> 1 | <strong>Train:</strong> 14 | <strong>Test:</strong> 8</p>
+    </div>
+
+    <div class="legend">
+        <span style="font-weight:600">Query columns:</span>
+        <span class="legend-item"><span class="legend-swatch swatch-positive"></span> Should trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-negative"></span> Should NOT trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-train"></span> Train</span>
+        <span class="legend-item"><span class="legend-swatch swatch-test"></span> Test</span>
+    </div>
+
+    <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Iter</th>
+                <th>Train</th>
+                <th>Test</th>
+                <th class="query-col">Description</th>
+                <th class="positive-col">pls help me analyse the Lim Guan Eng v Utusan defamation judgment for my case report assignment. need case details, material facts, ratio decidendi and obiter, then ILAC per issue. postgraduate communication studies</th>
+                <th class="positive-col">Do an IRAC-style breakdown of the Kini News / Malaysiakini contempt case (Peguam Negara v Mkini Dotcom, Federal Court 2021) over readers&#x27; comments. I&#x27;m a masters student in communication, explain legal terms simply and add a critique section with Hallin &amp; Mancini.</th>
+                <th class="positive-col">For COM741 I have to compare how Malaysia, India (Shreya Singhal) and the US treat online speech offences. Frame it as an ILAC report on the Malaysian s233 prosecution of a student over a tweet, then the comparative discussion with a table.</th>
+                <th class="positive-col">Write a legal report on the Online Safety Act 2025 being applied to a platform that refused to remove harmful content - issue law application conclusion format, with a comparison table vs UK Online Safety Act 2023 and Singapore. This is for a media law &amp; regulation class at UiTM.</th>
+                <th class="positive-col">can u do an ILAC analysis on the Fahmi Reza case? the one where he got charged under s233 CMA for the satirical clown sticker/caricature. need it for my COM741 assignment, around 2000 words with discussion part</th>
+                <th class="positive-col">I need a case report on Public Prosecutor v Azmi Sharom [2015] 6 MLJ 751 (Federal Court) - the Sedition Act constitutional challenge. Use issue, law, application, conclusion for each issue and then a discussion comparing with Singapore and the UK. APA 7 references please.</th>
+                <th class="negative-col">Explain the difference between IRAC, ILAC and CREAC in legal writing - which is better for law school exams? just a short explanation</th>
+                <th class="negative-col">Write a news article (inverted pyramid, 600 words) reporting on the Federal Court decision in the Malaysiakini contempt case, for my journalism practice class.</th>
+                <th class="negative-col">Turn my COM741 media law report into a 10-slide PowerPoint deck for my presentation next week, with speaker notes. The report is in ~/Documents/COM741/ilac_report_final.docx</th>
+                <th class="negative-col">Write a 2500-word literature review on press freedom in Malaysia since 2018, covering scholarly debates on Asian values and development journalism. APA 7, at least 20 sources from Scopus.</th>
+                <th class="negative-col">What&#x27;s the current status of the Malaysian Media Council Act - is it in force yet and who sits on the council?</th>
+                <th class="negative-col">my friend sent a WhatsApp message criticising a politician and now he got a letter from MCMC asking him to come in for a statement. what should he do? does he need a lawyer? he&#x27;s really scared</th>
+                <th class="negative-col">Write an essay applying Hallin and Mancini&#x27;s three media system models to Southeast Asia, critically assessing whether the polarised pluralist model fits Malaysia and Thailand. 3000 words, theory focused, no legal analysis needed.</th>
+                <th class="negative-col">Compile a timeline of every amendment to the Communications and Multimedia Act 1998 since it was passed, with dates and what each changed, as a table in an Excel sheet.</th>
+                <th class="test-col positive-col">the government banned a book under the Printing Presses and Publications Act last month and the author is challenging it in court. can you write an incident report for my media law module - background/timeline, stakeholders, ILAC for each legal issue, current status, discussion, references</th>
+                <th class="test-col positive-col">lecturer gave us this scenario for media law: a TikTok influencer in KL posts a video mocking a religious group, it goes viral, police open investigation under Penal Code 298A and CMA s233. Analyse the legal issues using ILAC then a theory-based discussion (normative press theory / public sphere). ~1800 words</th>
+                <th class="test-col positive-col">MCMC just ordered a news portal to take down an article about a minister and the editor was called in by police under section 233. Write me an incident report analysing whether the takedown and investigation were lawful under Article 10 of the Federal Constitution. Postgrad level, my lecturer wants ILAC.</th>
+                <th class="test-col positive-col">Analyse this news story as a media law incident: a journalist was arrested over a Facebook post about the King&#x27;s remarks. Is it sedition? Is the arrest a proportionate restriction under Art 10(2)(a)? I need a structured legal analysis for a postgraduate assignment, not legal advice.</th>
+                <th class="test-col negative-col">I wrote my ILAC report on the Fahmi Reza case already (attached as report.docx). Please just fix the APA 7 reference list formatting and the in-text citations, don&#x27;t change the content.</th>
+                <th class="test-col negative-col">Draft a letter of demand on behalf of my client, a Penang restaurant owner, to a food blogger who posted a defamatory Google review claiming food poisoning. Malaysian law, formal tone.</th>
+                <th class="test-col negative-col">can you summarise this Malaysiakini article about the Online Safety Act into 5 bullet points for a class discussion slide?</th>
+                <th class="test-col negative-col">Advise Ahmad: he sold a second-hand car to Bala with a warranty that it had never been in an accident; it turns out it had. Contract law problem question for my LLB tutorial, Malaysian Contracts Act 1950.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="best-row">
+                <td>1</td>
+                <td><span class="score score-good">42/42</span></td>
+                <td><span class="score score-good">24/24</span></td>
+                <td class="description">Write a media law case report or incident report in ILAC (Issue, Law, Application, Conclusion) followed by a theory-driven comparative Discussion, for COM741 Media Law.</td>
+                <td class="result pass">✓<span class="rate">3/3</span></td>
+                <td class="result pass">✓<span class="rate">3/3</span></td>
+                <td class="result pass">✓<span class="rate">3/3</span></td>
+                <td class="result pass">✓<span class="rate">3/3</span></td>
+                <td class="result pass">✓<span class="rate">3/3</span></td>
+                <td class="result pass">✓<span class="rate">3/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">3/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">3/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">3/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">3/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+</body>
+</html>
