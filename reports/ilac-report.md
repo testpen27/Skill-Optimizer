@@ -132,8 +132,20 @@ The word limit and the Law/Application balance are fixed. The Discussion
 share is still under target in the two longer reports: the case-report run
 said it held the Discussion at about 600 words to keep the 2,000 total, i.e.
 it cut the Discussion rather than the ILAC blocks. SKILL.md now says to cut
-Law and background first, not the Discussion. That last sentence has not been
-rerun. The incident report had no length set by the user and ran well over
+Law and background first, not the Discussion.
+
+### Iteration 3 (case report only, after the cut-order sentence)
+
+The case-report task was rerun once more with the current skill
+(`results/behavior-comparison/iteration-3/`). 10/10 on the mechanical checks:
+1,952 words excluding references, Discussion 35% (about 700 words, up from
+26% and 29%), Application longer than Law in all three blocks (153/75,
+130/58, 182/77 words). This run also read the full judgment text (a CLJ copy)
+and quoted the court directly. One point a marker might query: it calls the
+departure from *Sivarasa* "arguably obiter", reasoning that the case would
+have ended the same way had *Sivarasa* stood; that is a defensible reading
+but contestable, and the report flags it as such. The incident-report task,
+where the Discussion was also short, was not rerun. The incident report had no length set by the user and ran well over
 the 2,200-word default.
 
 Notable in the reruns: all three found and used the Federal Court's 2026
