@@ -1,0 +1,321 @@
+[
+ {
+  "id": "multi-constraint",
+  "prompt": "build scopus strings only (no web of science) for digital literacy among orang asli children, 2019-2025. exclude conference papers and include malay terms too",
+  "jobs": [
+   "strings"
+  ],
+  "should_ask": false,
+  "keywords": [
+   [
+    "digital literacy"
+   ],
+   [
+    "orang asli"
+   ],
+   [
+    "child"
+   ]
+  ],
+  "constraints": [
+   [
+    "2019"
+   ],
+   [
+    "2025"
+   ],
+   [
+    "conference"
+   ],
+   [
+    "malay"
+   ],
+   [
+    "scopus"
+   ]
+  ],
+  "note": "Clear request: proceed (the field may be asked); must keep Scopus-only, the exclusion and the Malay string",
+  "must_not_ask": "year|database|web of science|wos\\b|malay|conference",
+  "must_not_plan_databases": [
+   "web of science",
+   "wos"
+  ]
+ },
+ {
+  "id": "unclear-goal",
+  "prompt": "can you help me with my lit review on halal tourism",
+  "jobs": [],
+  "should_ask": true,
+  "ask_about": [
+   "string|search|prisma|matrix|lrm|download|what (do|would) you (want|need)|which"
+  ],
+  "keywords": [
+   [
+    "halal tourism"
+   ]
+  ],
+  "constraints": [],
+  "note": "Goal unclear: ask what they want before doing anything"
+ },
+ {
+  "id": "ambiguous-term",
+  "prompt": "i need papers on engagement for my thesis, around 20 would be good",
+  "jobs": [
+   "quick-search"
+  ],
+  "should_ask": true,
+  "ask_about": [
+   "field|discipline|kind of engagement|type of engagement|student|employee|customer|what (do you mean|kind)"
+  ],
+  "keywords": [
+   [
+    "engagement"
+   ]
+  ],
+  "constraints": [
+   [
+    "20"
+   ]
+  ],
+  "note": "'engagement' means different things by field: ask"
+ },
+ {
+  "id": "implicit-prisma",
+  "prompt": "my supervisor wants the PRISMA thing for my SLR on flood risk communication in kelantan, 2015-2025",
+  "jobs": [
+   "prisma"
+  ],
+  "should_ask": true,
+  "ask_about": [
+   "field|discipline|database|scopus|web of science|criteria|population"
+  ],
+  "keywords": [
+   [
+    "flood"
+   ],
+   [
+    "risk communication",
+    "communication"
+   ],
+   [
+    "kelantan"
+   ]
+  ],
+  "constraints": [
+   [
+    "2015"
+   ],
+   [
+    "2025"
+   ]
+  ],
+  "note": "Job is PRISMA; asks only the missing intake items"
+ },
+ {
+  "id": "missing-files",
+  "prompt": "attached are 6 pdfs of my papers, make the literature review matrix please",
+  "jobs": [
+   "lrm"
+  ],
+  "should_ask": true,
+  "ask_about": [
+   "attach|upload|pdf|files|can't see|cannot see|don't see|do not see|not (see|find)|share"
+  ],
+  "keywords": [],
+  "constraints": [
+   [
+    "6"
+   ]
+  ],
+  "note": "No files actually attached: say so and ask for them"
+ },
+ {
+  "id": "fix-string",
+  "prompt": "web of science says my search is wrong: TS=(“mobile learning” AND (nurs* OR midwi*)) PY=2020-2024",
+  "jobs": [
+   "fix-string"
+  ],
+  "should_ask": false,
+  "keywords": [
+   [
+    "mobile learning"
+   ],
+   [
+    "nurs"
+   ],
+   [
+    "midwi"
+   ]
+  ],
+  "constraints": [
+   [
+    "2020"
+   ],
+   [
+    "2024"
+   ]
+  ],
+  "note": "Clear: fix it without an intake (curly quotes, missing AND, PY needs brackets)",
+  "must_not_ask": "field|discipline|population|which database"
+ },
+ {
+  "id": "download-dois",
+  "prompt": "get the free pdfs of these into my downloads folder: 10.3390/su12010001 and 10.1016/j.compedu.2020.103819",
+  "jobs": [
+   "download"
+  ],
+  "should_ask": false,
+  "keywords": [
+   [
+    "10.3390/su12010001"
+   ],
+   [
+    "10.1016/j.compedu.2020.103819"
+   ]
+  ],
+  "constraints": [
+   [
+    "download"
+   ]
+  ],
+  "note": "Clear: download job, no topic intake",
+  "must_not_ask": "field|discipline|topic|year|population"
+ },
+ {
+  "id": "negation",
+  "prompt": "I don't want a PRISMA, just find me 15 recent Q1 papers on telework and burnout among nurses and put them in a table",
+  "jobs": [
+   "quick-search",
+   "lrm"
+  ],
+  "should_ask": false,
+  "keywords": [
+   [
+    "telework",
+    "remote work",
+    "telecommut"
+   ],
+   [
+    "burnout"
+   ],
+   [
+    "nurs"
+   ]
+  ],
+  "constraints": [
+   [
+    "15"
+   ],
+   [
+    "q1"
+   ]
+  ],
+  "must_not_plan": [
+   "prisma flow",
+   "prisma diagram",
+   "screening"
+  ],
+  "note": "Must respect 'no PRISMA'; keep Q1 and 15",
+  "must_not_ask": "prisma|systematic review|screen",
+  "must_not_plan_jobs": [
+   "prisma"
+  ]
+ },
+ {
+  "id": "malay-language",
+  "prompt": "buatkan search string untuk kajian saya: penggunaan TikTok dalam kalangan pelajar universiti di Malaysia, untuk Scopus dan Google Scholar",
+  "jobs": [
+   "strings"
+  ],
+  "should_ask": false,
+  "keywords": [
+   [
+    "tiktok"
+   ],
+   [
+    "universit",
+    "pelajar"
+   ],
+   [
+    "malaysia"
+   ]
+  ],
+  "constraints": [
+   [
+    "scopus"
+   ],
+   [
+    "scholar"
+   ]
+  ],
+  "reply_language": "ms",
+  "note": "Malay request: understand it and reply in Malay; Scopus and Scholar only",
+  "must_not_ask": "pangkalan data|database|web of science|scopus atau|google scholar atau"
+ },
+ {
+  "id": "conflicting-years",
+  "prompt": "make me scopus and wos strings for green marketing and gen z purchase intention, 2010 to 2015, but only papers from the last five years",
+  "jobs": [
+   "strings"
+  ],
+  "should_ask": true,
+  "ask_about": [
+   "2010|2015|last five|last 5|which (year|range)|conflict|both"
+  ],
+  "keywords": [
+   [
+    "green marketing"
+   ],
+   [
+    "gen z",
+    "generation z"
+   ],
+   [
+    "purchase intention"
+   ]
+  ],
+  "constraints": [],
+  "note": "Contradictory years: ask which"
+ },
+ {
+  "id": "too-broad",
+  "prompt": "find me papers about AI",
+  "jobs": [
+   "quick-search"
+  ],
+  "should_ask": true,
+  "ask_about": [
+   "field|discipline|aspect|which|narrow|specific|topic|focus"
+  ],
+  "keywords": [
+   [
+    "ai",
+    "artificial intelligence"
+   ]
+  ],
+  "constraints": [],
+  "note": "Far too broad: narrow it before searching"
+ },
+ {
+  "id": "partly-out-of-scope",
+  "prompt": "write my literature review chapter on AI chatbots in higher education using the papers you find, about 3000 words",
+  "jobs": [
+   "quick-search"
+  ],
+  "should_ask": true,
+  "ask_about": [
+   "writ|chapter|matrix|lrm|instead|can('|no)t|not (write|cover)"
+  ],
+  "keywords": [
+   [
+    "chatbot"
+   ],
+   [
+    "higher education",
+    "universit"
+   ]
+  ],
+  "constraints": [],
+  "note": "Writing the chapter is out of scope: say so and offer what it can do"
+ }
+]
