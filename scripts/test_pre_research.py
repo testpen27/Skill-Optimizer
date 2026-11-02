@@ -77,6 +77,24 @@ with tempfile.TemporaryDirectory() as tmp:
     check("default tiers for three concepts", "broad = concepts 1, 2; balanced = concepts 1, 2, 3" in out)
     rc, out, err = run("strings", spec(tmp, {"tiers": {"x": [1, 5]}, "concepts": [{"name": "a", "terms": ["alpha*"]}]}))
     check("tier with a missing concept is rejected", rc == 1 and "concept numbers from 1 to 1" in err)
+    lim = {"years": [2019, 2025], "databases": ["Scopus"], "doctypes": {"exclude": ["conference"]}, "languages": ["english"],
+           "concepts": [{"name": "a", "terms": ["alpha*", "beta*", "gamma*"]}, {"name": "b", "terms": ["delta*", "eps*", "zeta*"]}]}
+    rc, out, _ = run("plan", spec(tmp, lim))
+    dbs = {r["database"] for r in json.loads(out)["runs"]}
+    check("databases: 'Scopus only' builds no Web of Science or Scholar rows", rc == 0 and dbs == {"Scopus"}, str(dbs))
+    rc, out, _ = run("strings", spec(tmp, lim))
+    check("doctypes/languages: Scopus string carries EXCLUDE(DOCTYPE) and LIMIT-TO(LANGUAGE)",
+          'AND (EXCLUDE(DOCTYPE, "cp"))' in out and 'LIMIT-TO(LANGUAGE, "English")' in out and "Web of Science," not in out)
+    lim2 = dict(lim, databases=["wos"], doctypes={"include": ["article", "review"]})
+    rc, out, _ = run("strings", spec(tmp, lim2))
+    check("doctypes: WoS string carries DT= and LA=", 'AND DT=("Article" OR "Review")' in out and "AND LA=(English)" in out)
+    rc, out, err = run("strings", spec(tmp, dict(lim, databases=["pubmed"])))
+    check("databases: unknown database rejected", rc == 1 and "unknown database" in err)
+    rc, out, err = run("strings", spec(tmp, dict(lim, doctypes={"exclude": ["podcast"]})))
+    check("doctypes: unknown document type rejected", rc == 1 and "unknown document type" in err)
+    rc, out, _ = run("strings", spec(tmp, dict(lim, databases=["wos"], doctypes={"exclude": ["conference"]})))
+    check("doctypes: warns that excluding WoS proceedings drops dual-typed articles", "two document types" in out)
+
     rc, out, _ = run("plan", str(EXAMPLE))
     plan = json.loads(out)
     check("plan has a row per tier x range x database", len(plan["runs"]) == 18 and all(r["hits"] is None for r in plan["runs"]))
@@ -88,6 +106,8 @@ with tempfile.TemporaryDirectory() as tmp:
         ("check: scholar wildcard", "adopt* AND tv", "scholar", "does not support"),
         ("check: wrong database codes", "TS=(a OR b)", "scopus", "Web of Science field codes"),
         ("check: scholar too long", "a " * 200, "scholar", "256"),
+        ("check: missing AND before PY=", 'TS=("mobile learning" AND nurs*) PY=(2020-2024)', "wos", "no AND/OR/NOT before PY"),
+        ("check: PY= without brackets", 'TS=("mobile learning" AND nurs*) AND PY=2020-2024', "wos", "in brackets"),
     ]:
         rc, out, _ = run("check", s, kind)
         check(name, want in out, out[-120:])
@@ -368,6 +388,9 @@ with tempfile.TemporaryDirectory() as tmp:
     check("lrm: PDF built", p.returncode == 0, p.stderr[-200:])
     if text:
         check("lrm: empty cells say Not retrieved / Not explicitly stated", "Not retrieved" in text and "Not explicitly stated" in text)
+
+rc, out, _ = run("check", 'TITLE-ABS-KEY(("AB testing" OR LA OR TI) AND xyzz*) AND PUBYEAR > 2019', "scopus")
+check("check: short terms like LA or TI are not mistaken for field codes", "None." in out, out[-150:])
 
 print(f"\n{len(failures)} failure(s)")
 sys.exit(1 if failures else 0)

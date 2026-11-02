@@ -20,9 +20,31 @@ Check once, at the start, and say plainly what will not be possible.
 - **OpenAlex key.** Only when a step is about to use `scripts/openalex.py` (hit counts, record lists, the free-copy check), run `python3 scripts/openalex.py key status` first. If it says "not set", ask once, in one line: "Do you have a free OpenAlex API key? Paste it, or say no: it works without one, sharing a small daily allowance with your network." Then run `key set <the key>` or `key skip`. Both are remembered for the rest of this chat and later chats on this computer, so do not ask again. The key is saved in the user's own config folder, never in the skill, so a shared copy of the skill carries no key; do not repeat the key back, write it into any project file, or log it. If OpenAlex later reports its budget used up and the user has no key, mention the free key once (openalex.org/settings/api) and carry on without OpenAlex.
 - **Models.** Each step runs on a planned model, mostly through helpers (subagents): read `references/model-routing.md` before the first step. The plan is fixed; the only change allowed is moving a step to a stronger model, and only after asking the user.
 
-## 2. Ask first, but only what the job needs
+## 2. Understand the request before anything else
 
-Work out what the user wants before asking anything, then ask only the questions that job needs, in one short message. Anything their message already answers, fill in yourself and show it so they can correct it; do not ask it again. Long questionnaires put people off, and most answers are only needed for searching.
+Most failures here come from doing the wrong job well: dropping a word from the title, adding a database the user excluded, running a PRISMA search when they said no PRISMA. So before any question or any work, read the message for three things:
+
+- **The job or jobs** (strings, fixing a string, PRISMA, download, LRM, quick search), and anything the user says they do **not** want.
+- **The topic keywords**, every concept in their title or topic, in their own words. Do not drop one, merge two, or swap in a synonym yet; synonyms come later, inside the strings.
+- **The constraints**: years, databases (and ones they excluded), document types ("no conference papers"), languages, counts ("15 papers"), quartiles ("Q1 only"), where to save.
+
+Open your first reply with one line that says what you understood, in the user's language, so a misreading is caught before it costs anything: *"You want Scopus-only strings for digital literacy, Orang Asli and children, 2019 to 2025, excluding conference papers, plus a Malay string."* What the user states always overrides this skill's defaults: if they name databases, build only those (`"databases"` in the spec); if they limit document types or languages, put that in the spec (`"doctypes"`, `"languages"`) so the strings carry it.
+
+**Ask before working only when you are genuinely unsure**, and then ask only what blocks you, most important first, offering likely answers so a reply can be one word. Ask when:
+
+- the goal is unclear ("help me with my lit review"): ask what they want at the end;
+- "PRISMA" could mean either a full search or only a flow diagram from counts they already have: ask which;
+- a key term means different things in different fields ("engagement", "adoption", "performance") and the field is not given;
+- the topic is too broad to search ("AI", "social media"): ask for the angle;
+- two instructions conflict ("2010 to 2015, but only the last five years"): name the conflict and ask which, or offer both as separate ranges;
+- something the user refers to is not there (attached files, an export, a string);
+- part of the request is outside this skill (writing the chapter, formatting references): say what is not covered, propose what the skill can do instead, and ask whether to go ahead with that before starting it.
+
+Put any clarifying question first and keep the whole message to three questions or fewer; the intake below can follow once the blocker is answered. When nothing is unclear, do not ask: restate, then go to the intake or straight to work.
+
+## 3. Ask only what the job needs
+
+Ask only the questions the job needs, in one short message. Anything their message already answers, fill in yourself and show it so they can correct it; do not ask it again. Long questionnaires put people off, and most answers are only needed for searching.
 
 The questions:
 
@@ -52,14 +74,14 @@ When several jobs are chained, ask the union once, at the start.
 
 Make a project folder named after the topic (for example `pre-research/ott-adoption-malaysia/`) and keep every file from every branch there. Keep the answers: they go into the reports.
 
-## 3. Find the papers: quick or systematic
+## 4. Find the papers: quick or systematic
 
 Pick the depth from what they want, and say which you chose:
 
 - **Quick** (about 15 to 20 strong papers from open web and paper search): enough for an LRM, a proposal or background reading. Read `references/quick-search.md`.
 - **Systematic** (database strings run in Scopus and Web of Science, full exports, duplicates removed): needed for PRISMA, a systematic or scoping review, or when they ask for hit counts. Read `references/strings.md`, then `references/systematic-search.md`.
 
-## 4. Branches
+## 5. Branches
 
 Run the ones the user asked for, in this order when several apply. Read each branch's file when you reach it.
 
@@ -72,7 +94,7 @@ Run the ones the user asked for, in this order when several apply. Read each bra
 
 Common chains: PRISMA, then download the included papers, then an LRM of them. Quick search, then download, then LRM. When one branch finishes, offer the next one that fits instead of stopping.
 
-## 5. Deliver
+## 6. Deliver
 
 Every PDF goes into the project folder and is shared:
 - **Search report** (strings, hit counts, how and when each was recorded, PRISMA 2020 diagram, retrieval list): `scripts/build_report.py`, described in `references/prisma.md`. Also useful after a quick search, as a record of what was searched.

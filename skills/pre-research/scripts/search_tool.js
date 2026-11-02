@@ -19,8 +19,12 @@
  *   "concepts": [ { "name": "OTT and streaming", "terms": ["\"video on demand\"", "OTT"] }, ... ],
  *   "tiers": { "broad": [1, 2], "balanced": [1, 2, 3], "narrow": [1, 2, 3, 4] },   // optional; concept numbers
  *   "scholar": ["short string A", "short string B"],   // no truncation, 256 characters or fewer
- *   "local": "optional separate local-language string", "localLanguage": "Malay"   // "malay" also accepted
+ *   "local": "optional separate local-language string", "localLanguage": "Malay",  // "malay" also accepted
+ *   "databases": ["scopus", "scholar"],                    // optional; default all three: scopus, wos, scholar
+ *   "doctypes": {"include": ["article", "review"]},        // optional; or {"exclude": ["conference"]}
+ *   "languages": ["English"]                               // optional; Scopus and Web of Science only
  * }
+ * Document types: article, review, conference, chapter, book, editorial, letter.
  * Terms are written exactly as they should appear in the database,
  * so phrases carry their own double quotes.
  */
@@ -88,20 +92,70 @@ function normalise(spec, label) {
   if (localRaw !== undefined && localRaw !== null && typeof localRaw !== 'string') fail(`${at}"local" (or "malay") must be a string.`);
   const language = typeof spec.localLanguage === 'string' && spec.localLanguage.trim()
     ? spec.localLanguage.trim() : (spec.local ? 'local-language' : 'Malay');
+  const DBS = ['scopus', 'wos', 'scholar'];
+  const alias = { 'web of science': 'wos', webofscience: 'wos', 'google scholar': 'scholar' };
+  let databases = spec.databases === undefined || spec.databases === null ? DBS : spec.databases;
+  if (!Array.isArray(databases) || !databases.length) fail(`${at}"databases" must list one or more of ${DBS.join(', ')}.`);
+  databases = databases.map(d => { const k = String(d).toLowerCase().trim(); return alias[k] || k; });
+  const unknownDb = databases.filter(d => !DBS.includes(d));
+  if (unknownDb.length) fail(`${at}unknown database ${unknownDb.join(', ')}; use ${DBS.join(', ')}.`);
+  const dt = spec.doctypes || {};
+  if (typeof dt !== 'object' || Array.isArray(dt)) fail(`${at}"doctypes" must be {"include": [...]} or {"exclude": [...]}.`);
+  for (const key of ['include', 'exclude']) {
+    if (dt[key] === undefined) continue;
+    if (!Array.isArray(dt[key]) || !dt[key].length) fail(`${at}"doctypes.${key}" must be a non-empty list.`);
+    const bad = dt[key].filter(x => !DOCTYPES[String(x).toLowerCase()]);
+    if (bad.length) fail(`${at}unknown document type ${bad.join(', ')}; use ${Object.keys(DOCTYPES).join(', ')}.`);
+  }
+  if (dt.include && dt.exclude) fail(`${at}"doctypes" takes include or exclude, not both.`);
+  let languages = spec.languages || [];
+  if (!Array.isArray(languages) || languages.some(l => typeof l !== 'string' || !l.trim())) fail(`${at}"languages" must be a list of language names such as ["English"].`);
+  languages = languages.map(l => l.trim().charAt(0).toUpperCase() + l.trim().slice(1).toLowerCase());
   return Object.assign({}, spec, {
+    databases, doctypes: dt, languages,
     concepts, ranges, years: ranges[0], tiers: tierList, notes, language,
     scholar: scholar.map(tidy).filter(Boolean), malay: tidy(localRaw || '')
   });
+}
+
+// Document-type codes, checked against published Scopus and Web of Science
+// search strategies (LIMIT-TO(DOCTYPE, "ar"), DT=("Article" OR "Proceedings Paper")).
+const DOCTYPES = {
+  article: ['ar', 'Article'], review: ['re', 'Review'], conference: ['cp', 'Proceedings Paper'],
+  chapter: ['ch', 'Book Chapter'], book: ['bk', 'Book'], editorial: ['ed', 'Editorial Material'],
+  letter: ['le', 'Letter']
+};
+
+function limits(spec) {
+  const dt = spec.doctypes || {};
+  const inc = (dt.include || []).map(x => DOCTYPES[String(x).toLowerCase()]);
+  const exc = (dt.exclude || []).map(x => DOCTYPES[String(x).toLowerCase()]);
+  let scopus = '', wos = '';
+  if (inc.length) {
+    scopus += ' AND (' + inc.map(([c]) => `LIMIT-TO(DOCTYPE, "${c}")`).join(' OR ') + ')';
+    wos += ' AND DT=(' + inc.map(([, w]) => `"${w}"`).join(' OR ') + ')';
+  }
+  if (exc.length) {
+    scopus += ' AND (' + exc.map(([c]) => `EXCLUDE(DOCTYPE, "${c}")`).join(' AND ') + ')';
+    wos += ' NOT DT=(' + exc.map(([, w]) => `"${w}"`).join(' OR ') + ')';
+  }
+  const langs = spec.languages || [];
+  if (langs.length) {
+    scopus += ' AND (' + langs.map(l => `LIMIT-TO(LANGUAGE, "${l}")`).join(' OR ') + ')';
+    wos += ' AND LA=(' + langs.join(' OR ') + ')';
+  }
+  return { scopus, wos };
 }
 
 function buildStrings(spec, tier, range) {
   const [y0, y1] = range || spec.ranges[0];
   const nums = tier ? tier.concepts : spec.concepts.map((_, i) => i + 1);
   const body = nums.map(n => '(' + join(spec.concepts[n - 1].terms) + ')').join(' AND ');
+  const lim = limits(spec);
   return {
     y0, y1, body,
-    scopus: `TITLE-ABS-KEY(${body}) AND PUBYEAR > ${y0 - 1} AND PUBYEAR < ${y1 + 1}`,
-    wos: `TS=(${body}) AND PY=(${y0}-${y1})`,
+    scopus: `TITLE-ABS-KEY(${body}) AND PUBYEAR > ${y0 - 1} AND PUBYEAR < ${y1 + 1}${lim.scopus}`,
+    wos: `TS=(${body}) AND PY=(${y0}-${y1})${lim.wos}`,
     scholar: spec.scholar,
     malay: spec.malay
   };
@@ -121,11 +175,11 @@ function plan(spec) {
         tier: tier.name, range: `${y0}-${y1}`, database, string, url: url || null,
         hits: null, source: null, date: null, note: ''
       });
-      row('Scopus', s.scopus, 'https://www.scopus.com/search/form.uri?display=advanced');
-      row('Web of Science', s.wos, 'https://www.webofscience.com/wos/woscc/advanced-search');
+      if (spec.databases.includes('scopus')) row('Scopus', s.scopus, 'https://www.scopus.com/search/form.uri?display=advanced');
+      if (spec.databases.includes('wos')) row('Web of Science', s.wos, 'https://www.webofscience.com/wos/woscc/advanced-search');
     });
     // Scholar strings are written by hand and shared by every tier; only the dates change.
-    spec.scholar.forEach((g, i) => runs.push({
+    if (spec.databases.includes('scholar')) spec.scholar.forEach((g, i) => runs.push({
       tier: 'all', range: `${y0}-${y1}`, database: `Google Scholar ${String.fromCharCode(65 + i)}`,
       string: g, url: scholarUrl(g, y0, y1), hits: null, source: null, date: null, note: ''
     }));
@@ -162,6 +216,12 @@ function lintString(str, kind, label) {
   } else {
     if (kind === 'scopus' && /\bTS=|\bPY=/.test(str)) w.push(`${label}: contains Web of Science field codes (TS=, PY=). Scopus uses TITLE-ABS-KEY and PUBYEAR.`);
     if (kind === 'wos' && /TITLE-ABS-KEY|PUBYEAR/.test(str)) w.push(`${label}: contains Scopus field codes. Web of Science uses TS= and PY=.`);
+    // A field code glued to the previous block without AND is the classic Web of Science "search error".
+    (bare.match(/(\S+)\s+((?:PY|DT|LA|TS|TI|AB|SO|AU)=|PUBYEAR\s*[<>=]|(?:DOCTYPE|LANGUAGE|TITLE-ABS-KEY|TITLE|ABS|KEY)\()/g) || []).forEach(m => {
+      const [prev, code] = m.split(/\s+/);
+      if (!/^(AND|OR|NOT)$/.test(prev) && !/\($/.test(prev)) w.push(`${label}: no AND/OR/NOT before ${code.replace(/[=(<>\s]+$/, '')}. Add AND, for example ") AND PY=(2020-2024)".`);
+    });
+    if (kind === 'wos' && /\bPY=\s*(?!\()/.test(bare)) w.push(`${label}: put the PY= year range in brackets, for example PY=(2020-2024).`);
     if (kind === 'scopus' && /\$/.test(bare)) w.push(`${label}: $ is a Web of Science wildcard; Scopus does not support it.`);
     (bare.match(/(?:^|[\s(])[*?]\S*/g) || []).forEach(m => {
       if (m.replace(/[\s(*?]/g, '').length < 3) w.push(`${label}: wildcard at the start of a word needs 3 or more characters after it (${m.trim()}).`);
@@ -211,23 +271,28 @@ function validate(spec) {
   });
   spec.scholar.forEach((g, i) => w.push(...lintString(g, 'scholar', `Scholar string ${String.fromCharCode(65 + i)}`)));
   if (spec.malay) w.push(...lintString(spec.malay, 'scholar', `${spec.language} string`));
-  if (!spec.scholar.length) w.push('No Scholar strings yet. Scholar cannot take the long Scopus string, so write two short ones under "scholar".');
+  if (spec.malay && !spec.databases.includes('scholar')) w.push(`The ${spec.language} string runs in Google Scholar, which is not in "databases". Either add Scholar, or put the ${spec.language} terms into the concepts as extra OR terms.`);
+  if ((spec.doctypes.exclude || []).map(x => x.toLowerCase()).includes('conference') && spec.databases.includes('wos')) w.push('Web of Science gives some records two document types (Article and Proceedings Paper), so NOT DT=("Proceedings Paper") also drops those journal articles. Say so to the user.');
+  if (!spec.scholar.length && spec.databases.includes('scholar')) w.push('No Scholar strings yet. Scholar cannot take the long Scopus string, so write two short ones under "scholar".');
   return [...new Set(w)].concat(spec.notes.map(n => 'Fixed: ' + n));
 }
 
 function printStrings(spec) {
   console.log(`# ${spec.title || 'Untitled'}\n`);
   spec.concepts.forEach((c, i) => console.log(`Concept ${i + 1}: ${c.name}`));
+  console.log('Databases: ' + spec.databases.join(', ') + (spec.doctypes.include ? ` | only ${spec.doctypes.include.join(', ')}` : '') +
+              (spec.doctypes.exclude ? ` | excluding ${spec.doctypes.exclude.join(', ')}` : '') +
+              (spec.languages.length ? ` | ${spec.languages.join(', ')} only` : ''));
   console.log('Tiers: ' + spec.tiers.map(t => `${t.name} = concepts ${t.concepts.join(', ')}`).join('; ') + '\n');
   spec.ranges.forEach(range => {
     const [y0, y1] = range;
     console.log(`=============== ${y0} to ${y1} ===============\n`);
     spec.tiers.forEach(tier => {
       const s = buildStrings(spec, tier, range);
-      console.log(`## Scopus, ${tier.name} (Advanced search)\n${s.scopus}\n(${s.scopus.length} characters)\n`);
-      console.log(`## Web of Science, ${tier.name} (Advanced search, Core Collection)\n${s.wos}\n(${s.wos.length} characters)\n`);
+      if (spec.databases.includes('scopus')) console.log(`## Scopus, ${tier.name} (Advanced search)\n${s.scopus}\n(${s.scopus.length} characters)\n`);
+      if (spec.databases.includes('wos')) console.log(`## Web of Science, ${tier.name} (Advanced search, Core Collection)\n${s.wos}\n(${s.wos.length} characters)\n`);
     });
-    spec.scholar.forEach((g, i) => console.log(`## Google Scholar, version ${String.fromCharCode(65 + i)} (set ${y0} to ${y1} in the left menu)\n${g}\n(${g.length} characters)\n${scholarUrl(g, y0, y1)}\n`));
+    if (spec.databases.includes('scholar')) spec.scholar.forEach((g, i) => console.log(`## Google Scholar, version ${String.fromCharCode(65 + i)} (set ${y0} to ${y1} in the left menu)\n${g}\n(${g.length} characters)\n${scholarUrl(g, y0, y1)}\n`));
     if (spec.malay) console.log(`## Google Scholar, ${spec.language}-language (run separately)\n${spec.malay}\n(${spec.malay.length} characters)\n${scholarUrl(spec.malay, y0, y1)}\n`);
   });
   const w = validate(spec);

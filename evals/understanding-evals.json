@@ -109,7 +109,8 @@
     "2025"
    ]
   ],
-  "note": "Job is PRISMA; asks only the missing intake items"
+  "note": "Job is PRISMA; asks only the missing intake items",
+  "also_ask": "diagram|full (systematic )?search|already have|counts|run the search"
  },
  {
   "id": "missing-files",
@@ -185,8 +186,7 @@
   "id": "negation",
   "prompt": "I don't want a PRISMA, just find me 15 recent Q1 papers on telework and burnout among nurses and put them in a table",
   "jobs": [
-   "quick-search",
-   "lrm"
+   "quick-search"
   ],
   "should_ask": false,
   "keywords": [
@@ -215,7 +215,7 @@
    "prisma diagram",
    "screening"
   ],
-  "note": "Must respect 'no PRISMA'; keep Q1 and 15",
+  "note": "Must respect 'no PRISMA'; keep Q1 and 15 (a plain table or an LRM are both fair readings of 'a table')",
   "must_not_ask": "prisma|systematic review|screen",
   "must_not_plan_jobs": [
    "prisma"

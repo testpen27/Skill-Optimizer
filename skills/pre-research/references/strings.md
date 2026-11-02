@@ -13,7 +13,7 @@ Steps 1, 2, 5 and 6 below go to a helper on `opus` (see `references/model-routin
    - Use `*` for spelling variants inside a word: `behavio*r`. `?` is exactly one character, so `behavio?r` misses "behavior".
    - In Web of Science a quoted phrase does not match plurals or UK/US spellings, so truncate the last word (`"streaming service*"`) or use `?` (`"news organi?ation*"`). Scopus and Web of Science both accept `*` and `?` inside quotes; `$` is Web of Science only. Google Scholar accepts none of these.
    - When the niche is a country, add place, brand and outlet names: studies often name the outlet, not the country.
-3. **Write the spec** (see `examples/example_spec.json`) with `ranges` for the year ranges from the intake and, if the default does not fit, `tiers`:
+3. **Write the spec** (see `examples/example_spec.json`) with `ranges` for the year ranges from the intake. Carry every limit the user gave: `"databases"` when they named only some (for example `["scopus"]` for "Scopus only"), `"doctypes"` for document types (`{"exclude": ["conference"]}` or `{"include": ["article", "review"]}`), and `"languages"` (`["English"]`). The script turns these into each database's own syntax. If the default tiers do not fit, set `tiers`:
    - `broad`: subject and outcome only (concepts 1 and 2).
    - `balanced`: adds the niche or the population.
    - `narrow`: every concept.
