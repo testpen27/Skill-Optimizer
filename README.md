@@ -31,9 +31,21 @@ python3 scripts/check_branch.py
 python3 scripts/run_loop_resilient.py \
   --eval-set path/to/trigger-eval.json \
   --skill-path path/to/your-skill \
-  --model <model-id> --runs-per-query 10 \
-  --num-workers 4 --timeout 240 --verbose
+  --model <probe-model-id> --improve-model <rewrite-model-id> \
+  --runs-per-query 10 --num-workers 4 --timeout 240 --verbose
 ```
+
+`--model` and `--improve-model` point at two different jobs, and the right
+model for one is usually wrong for the other:
+
+- `--model` drives the trigger probe -- dozens of cheap `claude -p` calls
+  that stand in for a real user's session. Set it to whatever model you
+  actually ship behind the skill, or the trigger rate you measure isn't the
+  one that will happen in production.
+- `--improve-model` (optional) drives the per-iteration description
+  rewrite -- a handful of calls per run where getting the wording right
+  matters more than the cost. Point it at your strongest available model.
+  Omit it to fall back to `--model` for both, matching upstream.
 
 The eval set is a JSON list of `{"query": ..., "should_trigger": true|false}`.
 Two things learned the hard way:

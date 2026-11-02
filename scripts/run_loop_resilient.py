@@ -8,14 +8,45 @@ collected so far, which is expensive -- one iteration is 60 `claude -p`
 invocations. This wrapper retries that one call with backoff so a blip
 costs a minute instead of the run.
 
-Usage is identical to `python -m scripts.run_loop`. It uses the skill-creator
-vendored at the repo root; set SKILL_CREATOR to point at a different copy.
+Usage is identical to `python -m scripts.run_loop`, plus one extra flag:
+`--improve-model`. Upstream's single `--model` drives two different jobs --
+the trigger probe (many cheap calls simulating a real user session; this
+should run whatever model you actually ship behind the skill, so the
+trigger rate you measure is the one that will actually happen) and the
+per-iteration description rewrite (a handful of calls where the judgment
+quality of the proposed text matters more than its cost). Forcing both onto
+one model means either overpaying for every probe or stuck with a probe-tier
+model writing the rewrites. `--improve-model` decouples them; omit it to
+keep upstream's behavior of using `--model` for both.
+
+It uses the skill-creator vendored at the repo root; set SKILL_CREATOR to
+point at a different copy.
 """
 
 import os
 import sys
 import time
 from pathlib import Path
+
+
+def _pop_improve_model() -> str | None:
+    """Strip --improve-model out of sys.argv before run_loop.py's own
+    parser sees it; that parser rejects any flag it doesn't define."""
+    for i, arg in enumerate(sys.argv[1:], start=1):
+        if arg == "--improve-model":
+            if i == len(sys.argv) - 1:
+                sys.exit("--improve-model requires a value")
+            value = sys.argv[i + 1]
+            del sys.argv[i:i + 2]
+            return value
+        if arg.startswith("--improve-model="):
+            value = arg.split("=", 1)[1]
+            del sys.argv[i]
+            return value
+    return None
+
+
+_IMPROVE_MODEL = _pop_improve_model()
 
 SKILL_CREATOR = os.environ.get("SKILL_CREATOR") or str(
     Path(__file__).resolve().parent.parent / "skill-creator"
@@ -50,6 +81,10 @@ def _call_with_retry(prompt: str, model, timeout: int = 300, attempts: int = 6) 
     """
     import subprocess
 
+    # run_loop.py passes its shared --model here; --improve-model overrides
+    # it for this call only, leaving the probe side (run_eval, elsewhere)
+    # on the model the --model flag named.
+    model = _IMPROVE_MODEL or model
     cmd = ["claude", "-p", "--output-format", "text"]
     if model:
         cmd.extend(["--model", model])
