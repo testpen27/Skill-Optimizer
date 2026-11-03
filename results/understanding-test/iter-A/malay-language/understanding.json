@@ -1,0 +1,21 @@
+{
+  "jobs": ["strings"],
+  "topic_keywords": ["TikTok", "usage / use", "university students", "Malaysia"],
+  "constraints": [
+    "Databases: Scopus and Google Scholar only (no Web of Science)",
+    "Niche/context: Malaysia; platform TikTok",
+    "Population: university students",
+    "Only search strings requested, not running searches, PRISMA, download or LRM",
+    "Year range not given: suggest last five calendar years 2022-2026",
+    "Write a separate Malay-language string for local journals, not joined to English with AND",
+    "User wrote in Malay, so reply in Malay",
+    "Google Scholar strings: no truncation or wildcards, 256 characters or fewer"
+  ],
+  "databases": ["Scopus", "Google Scholar"],
+  "will_ask_first": true,
+  "questions": [
+    "What is your field or discipline (e.g. communication and media, psychology, education)?",
+    "What year range do you want? Suggested default 2022-2026."
+  ],
+  "plan": "After the field and year range are confirmed, have an opus helper build the concept table and spec JSON (broad/balanced/narrow Scopus tiers, two Scholar strings, one Malay string), run scripts/search_tool.js to check it, create the search log in a project folder, and reply with copy-ready code blocks."
+}

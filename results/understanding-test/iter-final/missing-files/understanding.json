@@ -1,0 +1,19 @@
+{
+  "jobs": ["lrm"],
+  "topic_keywords": [],
+  "constraints": [
+    "6 PDFs of the user's own papers, said to be attached but none actually attached",
+    "LRM of papers they already have: no new search, no PRISMA, no download",
+    "drop no papers; flag any outside the year range only",
+    "quartile only from a real Scimago lookup, never from memory",
+    "no topic, years, databases, languages or save location given"
+  ],
+  "databases": [],
+  "will_ask_first": true,
+  "questions": [
+    "Re-attach the 6 PDFs (or give the folder path), since no attachments arrived",
+    "What is your field or discipline (for Scimago subject category)?",
+    "Any year range to flag papers against, and where to save the LRM (default project folder, or Downloads)?"
+  ],
+  "plan": "Wait for the PDFs and the field/years/save answers, then read each PDF in full, tag quartile/method/access, draft the IMRAD matrix as a markdown table in chat for correction, add a short synthesis, and only then build lrm.json and the PDF with build_lrm.py."
+}

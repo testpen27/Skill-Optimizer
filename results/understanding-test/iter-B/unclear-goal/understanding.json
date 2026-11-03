@@ -1,0 +1,9 @@
+{
+  "jobs": [],
+  "topic_keywords": ["halal tourism"],
+  "constraints": [],
+  "databases": [],
+  "will_ask_first": true,
+  "questions": ["What do you want at the end: search strings, a quick set of papers, a full systematic/PRISMA search, papers downloaded, or a Literature Review Matrix (or several)?"],
+  "plan": "Wait for the user to say what they want at the end (question H only), then ask only the intake questions that job needs (field, title, population, niche, years, databases, save location) and start work."
+}

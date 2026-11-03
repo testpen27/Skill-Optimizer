@@ -1,0 +1,20 @@
+{
+  "jobs": ["strings"],
+  "topic_keywords": ["green marketing", "Gen Z", "purchase intention"],
+  "constraints": [
+    "databases: Scopus and Web of Science only",
+    "year range stated as 2010 to 2015",
+    "also stated: only papers from the last five years (2022-2026 as of 2026-11-02)",
+    "the two year constraints conflict and do not overlap, so must be resolved by the user",
+    "output is search strings only, not run, no PRISMA, download or LRM",
+    "no Google Scholar requested"
+  ],
+  "databases": ["Scopus", "Web of Science"],
+  "will_ask_first": true,
+  "questions": [
+    "Which years: 2022-2026 (last five years), 2010-2015, or both as separate ranges?",
+    "What field or discipline (marketing, consumer behaviour, business, environmental studies)?",
+    "Any niche (country, region, product category, platform)?"
+  ],
+  "plan": "After the user resolves the year conflict and gives field and niche, build the concept table and Scopus and WoS strings in broad, balanced and narrow tiers with the chosen year range(s) via strings.md and the checker script."
+}

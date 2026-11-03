@@ -1,0 +1,9 @@
+{
+  "jobs": ["strings"],
+  "topic_keywords": ["TikTok", "usage / use", "university students", "Malaysia"],
+  "constraints": ["databases: Scopus and Google Scholar only (no Web of Science)", "language of user: Malay, reply in Malay", "no year range given (default suggestion 2022-2026)", "no document type or count constraints", "strings only, not run"],
+  "databases": ["scopus", "google scholar"],
+  "will_ask_first": true,
+  "questions": ["What is your field/discipline (communication/media, education, psychology/mental health, other)?", "Year range? Default 2022-2026 if no preference"],
+  "plan": "After the user answers, build the concept table and spec (TikTok / usage / university students / Malaysia), run the checker, then give Scopus tiered strings, two Google Scholar strings and a Malay-language string in code blocks."
+}

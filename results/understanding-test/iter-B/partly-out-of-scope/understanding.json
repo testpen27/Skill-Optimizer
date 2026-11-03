@@ -1,0 +1,14 @@
+{
+  "jobs": ["quick-search", "download", "lrm"],
+  "topic_keywords": ["AI chatbots", "higher education"],
+  "constraints": ["about 3000 words (applies to the chapter, which is out of scope)", "use papers the assistant finds", "no databases, years, doctypes or languages stated", "no exclusions stated"],
+  "databases": [],
+  "will_ask_first": true,
+  "questions": [
+    "Is it OK to do the groundwork (quick paper search, download, LRM) instead of writing the chapter, which this skill does not cover?",
+    "Which angle of AI chatbots in higher education (learning, academic integrity, teaching/assessment, student support, generative AI)?",
+    "Which field/discipline?",
+    "Year range: default 2022-2026 acceptable?"
+  ],
+  "plan": "After the user agrees and answers, run a quick search for about 15-20 papers on AI chatbots in higher education, then offer to download them and build an LRM to support their own writing, declining to write the chapter."
+}

@@ -1,0 +1,18 @@
+{
+  "jobs": ["strings"],
+  "topic_keywords": ["green marketing", "Gen Z", "purchase intention"],
+  "constraints": [
+    "databases: Scopus and Web of Science only",
+    "year range stated as 2010 to 2015",
+    "also 'only papers from the last five years' which today (2026-11-02) means 2022 to 2026: conflicts with 2010-2015",
+    "no other constraints stated (no doctype, language, count, exclusion)",
+    "user did not ask for PRISMA, download or LRM; strings only"
+  ],
+  "databases": ["Scopus", "Web of Science"],
+  "will_ask_first": true,
+  "questions": [
+    "Which year range: 2022-2026 (last five calendar years), 2010-2015, or both as separate ranges?",
+    "Confirm assumed field: marketing / consumer behaviour (correct me if different)"
+  ],
+  "plan": "Once the user resolves the year conflict, build Scopus and Web of Science strings (per references/strings.md) for green marketing, Gen Z and purchase intention with the chosen year range(s), without running searches."
+}

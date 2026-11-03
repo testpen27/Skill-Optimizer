@@ -1,0 +1,7 @@
+{"jobs":["prisma"],
+"topic_keywords":["flood","risk communication","Kelantan","systematic literature review (SLR)"],
+"constraints":["years 2015-2025","niche: Kelantan (Malaysia)","review type: systematic","no databases specified","no exclusions, document type or language limits stated","supervisor requested PRISMA"],
+"databases":["Scopus","Web of Science (pending user's answer on access; fallback OpenAlex/open sources)"],
+"will_ask_first":true,
+"questions":["Full PRISMA search (strings, hits, dedup, screening, flow diagram) or only a flow diagram from existing counts?","Which databases does your university provide (Scopus, Web of Science, both, neither)?","What is your field or discipline?"],
+"plan":"Wait for answers, then build strings for flood risk communication in Kelantan 2015-2025, run the systematic search, ask for eligibility criteria and a save folder, and proceed to screening and the PRISMA diagram."}

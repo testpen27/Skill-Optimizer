@@ -1,0 +1,9 @@
+{
+  "jobs": [],
+  "topic_keywords": ["halal tourism"],
+  "constraints": [],
+  "databases": [],
+  "will_ask_first": true,
+  "questions": ["What do you want at the end: search strings, a PRISMA systematic search, the papers downloaded, an LRM, a quick set of papers, or several of these?"],
+  "plan": "Ask only question H (what the user wants at the end) on its own, then ask the extra questions that the chosen job needs, and start the project folder pre-research/halal-tourism/."
+}

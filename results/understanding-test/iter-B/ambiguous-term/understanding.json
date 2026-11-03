@@ -1,0 +1,13 @@
+{
+  "jobs": ["quick-search"],
+  "topic_keywords": ["engagement"],
+  "constraints": ["about 20 papers (count)", "for a thesis", "no years given", "no databases given", "no exclusions stated", "no languages or document types given", "did not ask for strings, PRISMA, download or LRM"],
+  "databases": [],
+  "will_ask_first": true,
+  "questions": [
+    "What field is your thesis in (education, organisational/HR, marketing/social media, health, other)?",
+    "Engagement of whom, and in what setting (or paste your working title)?",
+    "Which years? Default suggestion: last five calendar years, 2022 to 2026"
+  ],
+  "plan": "Wait for the field/context/years answers, then run a quick search (references/quick-search.md) using Firecrawl research/web search and OpenAlex for about 20 strong papers, and offer download and LRM as next steps."
+}

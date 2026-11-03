@@ -1,0 +1,411 @@
+{
+ "multi-constraint": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['strings'] got ['strings']"
+  },
+  {
+   "text": "keyword kept: digital literacy",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: orang asli",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: child",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 2019",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 2025",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: conference",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: malay",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: scopus",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not re-ask what the user already said",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not plan web of science",
+   "passed": true,
+   "evidence": "scopus"
+  },
+  {
+   "text": "does not plan wos",
+   "passed": true,
+   "evidence": "scopus"
+  }
+ ],
+ "unclear-goal": [
+  {
+   "text": "job: does not commit to a job before asking",
+   "passed": true,
+   "evidence": "set()"
+  },
+  {
+   "text": "keyword kept: halal tourism",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": true,
+   "evidence": "What would you like to end up with? Pick one or more, or tell me something else:"
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": true,
+   "evidence": "1 questions: What do you want at the end: search strings, a quick set of papers, a full systematic/PRISMA search, papers downloaded, or a Literature Review Matrix (or several)?"
+  }
+ ],
+ "ambiguous-term": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['quick-search'] got ['quick-search']"
+  },
+  {
+   "text": "keyword kept: engagement",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 20",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": true,
+   "evidence": "1. **What field is your thesis in?** For example: education (student engagement), organisational / HR (employee engagement), marketing / social media (customer or consumer engagement), health (patient"
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": true,
+   "evidence": "3 questions: What field is your thesis in (education, organisational/HR, marketing/social media, health, other)? | Engagement of whom, and in what setting (or paste your working title)? | Which years? Default suggestion: last five ca"
+  }
+ ],
+ "implicit-prisma": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['prisma'] got ['prisma']"
+  },
+  {
+   "text": "keyword kept: flood",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: risk communication",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: kelantan",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 2015",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 2025",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": true,
+   "evidence": "1. **Which PRISMA do you mean?** | 2. **Which databases does your university give you?** Scopus, Web of Science, both, or neither? (If neither, I use OpenAlex and open sources and tell you the limits."
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": true,
+   "evidence": "3 questions: Full PRISMA search (strings, hits, dedup, screening, flow diagram) or only a flow diagram from existing counts? | Which databases does your university provide (Scopus, Web of Science, both, neither)? | What is your field"
+  },
+  {
+   "text": "asks the specific ambiguity (question or its options)",
+   "passed": true,
+   "evidence": "1. **Which PRISMA do you mean?** | 2. **Which databases does your university give you?** Scopus, Web of Science, both, or neither? (If neither, I use OpenAlex and open sources and tell you the limits."
+  }
+ ],
+ "missing-files": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['lrm'] got ['lrm']"
+  },
+  {
+   "text": "constraint kept: 6",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": true,
+   "evidence": "2. **What is your field or discipline** (for example education, public health, information systems)? I use it to pick the right subject category for each journal's Scimago quartile (Q1 to Q4). | 3. **"
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": true,
+   "evidence": "3 questions: Re-attach the 6 PDFs (or give the folder path), since no attachments arrived | What is your field or discipline (for Scimago subject category)? | Any year range to flag papers against, and where to save the LRM (default "
+  }
+ ],
+ "fix-string": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['fix-string'] got ['fix-string', 'strings']"
+  },
+  {
+   "text": "keyword kept: mobile learning",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: nurs",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: midwi",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 2020",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 2024",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not re-ask what the user already said",
+   "passed": true,
+   "evidence": ""
+  }
+ ],
+ "download-dois": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['download'] got ['download']"
+  },
+  {
+   "text": "keyword kept: 10.3390/su12010001",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: 10.1016/j.compedu.2020.103819",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: download",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not re-ask what the user already said",
+   "passed": true,
+   "evidence": ""
+  }
+ ],
+ "negation": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['quick-search'] got ['quick-search']"
+  },
+  {
+   "text": "keyword kept: telework",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: burnout",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: nurs",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 15",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: q1",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not re-ask what the user already said",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not plan prisma",
+   "passed": true,
+   "evidence": "{'quick-search'}"
+  }
+ ],
+ "malay-language": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['strings'] got ['strings']"
+  },
+  {
+   "text": "keyword kept: tiktok",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: universit",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: malaysia",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: scopus",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: scholar",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not re-ask what the user already said",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "replies in the user's language (Malay)",
+   "passed": true,
+   "evidence": "19 Malay function words"
+  }
+ ],
+ "conflicting-years": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['strings'] got ['strings']"
+  },
+  {
+   "text": "keyword kept: green marketing",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: gen z",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: purchase intention",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": true,
+   "evidence": "Before I build them, one thing in your request conflicts. \"2010 to 2015\" and \"only papers from the last five years\" can't both hold, because today is November 2026 and the last five years are 2022 to "
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": true,
+   "evidence": "2 questions: Which year range: 2022-2026 (last five calendar years), 2010-2015, or both as separate ranges? | Confirm assumed field: marketing / consumer behaviour (correct me if different)"
+  }
+ ],
+ "too-broad": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['quick-search'] got ['quick-search']"
+  },
+  {
+   "text": "keyword kept: ai",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": true,
+   "evidence": "1. **Which angle or field?** For example: AI in education, AI in healthcare or diagnosis, generative AI / large language models, AI ethics and regulation, AI in business or marketing, or something els"
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": true,
+   "evidence": "3 questions: Which angle or field of AI (education, healthcare, generative AI/LLMs, ethics/regulation, business, other)? | How many papers and for what (quick ~15-20 for background, or full systematic search with database strings)? |"
+  }
+ ],
+ "partly-out-of-scope": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['quick-search'] got ['download', 'lrm', 'quick-search']"
+  },
+  {
+   "text": "keyword kept: chatbot",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: higher education",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": true,
+   "evidence": "Writing the chapter itself is not something I cover. What I can do is the groundwork it rests on: find the strongest papers on the topic, download the open-access ones, and build a Literature Review M"
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": false,
+   "evidence": "4 questions: Is it OK to do the groundwork (quick paper search, download, LRM) instead of writing the chapter, which this skill does not cover? | Which angle of AI chatbots in higher education (learning, academic integrity, teaching/"
+  }
+ ]
+}

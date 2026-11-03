@@ -1,0 +1,15 @@
+{
+  "jobs": ["strings"],
+  "topic_keywords": ["digital literacy", "Orang Asli", "children", "Malaysia", "literasi digital", "kanak-kanak"],
+  "constraints": [
+    "Scopus only; no Web of Science (and no Google Scholar strings requested)",
+    "Year range 2019-2025 (PUBYEAR > 2018 AND PUBYEAR < 2026)",
+    "Exclude conference papers (add AND NOT DOCTYPE(cp), possibly also cr, to the Scopus strings)",
+    "Include Malay terms: separate local-language Malay string, merged afterwards, not ANDed with the English string",
+    "Strings only: do not run searches, no PRISMA, no download, no LRM"
+  ],
+  "databases": ["Scopus"],
+  "will_ask_first": true,
+  "questions": ["What is your field or discipline (e.g. Education, Educational Technology, Information Science, Social Sciences)?"],
+  "plan": "After the user gives the field, have an opus helper build the concept table and spec (digital literacy / children / Orang Asli niche, broad-balanced-narrow tiers, 2019-2025, Malay local string), run search_tool.js to check, append the conference-paper exclusion to the Scopus strings, and reply with copyable Scopus code blocks plus the Malay string."
+}

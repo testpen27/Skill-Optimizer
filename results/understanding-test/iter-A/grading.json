@@ -1,0 +1,411 @@
+{
+ "multi-constraint": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['strings'] got ['strings']"
+  },
+  {
+   "text": "keyword kept: digital literacy",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: orang asli",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: child",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 2019",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 2025",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: conference",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: malay",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: scopus",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not re-ask what the user already said",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not plan web of science",
+   "passed": true,
+   "evidence": "scopus"
+  },
+  {
+   "text": "does not plan wos",
+   "passed": true,
+   "evidence": "scopus"
+  }
+ ],
+ "unclear-goal": [
+  {
+   "text": "job: does not commit to a job before asking",
+   "passed": true,
+   "evidence": "set()"
+  },
+  {
+   "text": "keyword kept: halal tourism",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": true,
+   "evidence": "Happy to help with your halal tourism lit review. What do you want to end up with? Pick one or more:"
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": true,
+   "evidence": "1 questions: What do you want at the end: search strings, a PRISMA systematic search, the papers downloaded, an LRM, a quick set of papers, or several of these?"
+  }
+ ],
+ "ambiguous-term": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['quick-search'] got ['quick-search']"
+  },
+  {
+   "text": "keyword kept: engagement",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 20",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": true,
+   "evidence": "1. **Which field or discipline is your thesis in, and which kind of engagement?** This is the one I can't guess. Example: \"student engagement in higher education\". | 4. **Where should I save the files"
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": false,
+   "evidence": "5 questions: Which field/discipline and which kind of engagement? | Working title or research question, and population/country/sector? | Year range (default proposed 2022-2026)? | Where to save files (named folder or Downloads)? | Li"
+  }
+ ],
+ "implicit-prisma": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['prisma'] got ['prisma', 'strings']"
+  },
+  {
+   "text": "keyword kept: flood",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: risk communication",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: kelantan",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 2015",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 2025",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": true,
+   "evidence": "1. **Field or discipline?** For example disaster risk management, environmental science, or communication studies. It filters out same-word papers from other disciplines. | 2. **Population or context?"
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": false,
+   "evidence": "4 questions: Field or discipline? | Population or context? | Which databases does your university give you (Scopus, Web of Science, neither)? | Where to save files (named folder or Downloads)?"
+  },
+  {
+   "text": "asks the specific ambiguity (question or its options)",
+   "passed": true,
+   "evidence": "1. **Field or discipline?** For example disaster risk management, environmental science, or communication studies. It filters out same-word papers from other disciplines. | 2. **Population or context?"
+  }
+ ],
+ "missing-files": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['lrm'] got ['lrm']"
+  },
+  {
+   "text": "constraint kept: 6",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": true,
+   "evidence": "I can build the matrix, but no PDFs came through with your message. I can only see the text. Could you attach the 6 papers again? If they are too big to upload, give me the folder they are in instead."
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": false,
+   "evidence": "4 questions: Please re-attach the 6 PDFs or give the folder path (they did not come through) | Field or discipline (for the quartile subject category) | Year range, if any (used only to flag papers outside it) | Where to save: a name"
+  }
+ ],
+ "fix-string": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['fix-string'] got ['fix-string', 'strings']"
+  },
+  {
+   "text": "keyword kept: mobile learning",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: nurs",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: midwi",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 2020",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 2024",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not re-ask what the user already said",
+   "passed": true,
+   "evidence": ""
+  }
+ ],
+ "download-dois": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['download'] got ['download']"
+  },
+  {
+   "text": "keyword kept: 10.3390/su12010001",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: 10.1016/j.compedu.2020.103819",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: download",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not re-ask what the user already said",
+   "passed": true,
+   "evidence": ""
+  }
+ ],
+ "negation": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['quick-search'] got ['quick-search']"
+  },
+  {
+   "text": "keyword kept: telework",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: burnout",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: nurs",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: 15",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: q1",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not re-ask what the user already said",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not plan prisma",
+   "passed": true,
+   "evidence": "{'quick-search'}"
+  }
+ ],
+ "malay-language": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['strings'] got ['strings']"
+  },
+  {
+   "text": "keyword kept: tiktok",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: universit",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: malaysia",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: scopus",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "constraint kept: scholar",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "does not re-ask what the user already said",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "replies in the user's language (Malay)",
+   "passed": true,
+   "evidence": "25 Malay function words"
+  }
+ ],
+ "conflicting-years": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['strings'] got ['strings']"
+  },
+  {
+   "text": "keyword kept: green marketing",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: gen z",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: purchase intention",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": true,
+   "evidence": "1. **Years.** \"2010 to 2015\" and \"the last five years\" are different windows. Today is 2 November 2026, so the last five years would be 2022 to 2026, and none of that overlaps 2010 to 2015. Which do y"
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": true,
+   "evidence": "3 questions: Which years: 2022-2026 (last five years), 2010-2015, or both as separate ranges? | What field or discipline (marketing, consumer behaviour, business, environmental studies)? | Any niche (country, region, product category"
+  }
+ ],
+ "too-broad": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['quick-search'] got ['quick-search']"
+  },
+  {
+   "text": "keyword kept: ai",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": true,
+   "evidence": "1. **Which part of AI, and in which field?** For example: AI in healthcare, generative AI in education, AI ethics and regulation, machine learning for finance, or a title or question you are working o"
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": false,
+   "evidence": "4 questions: Which part of AI and in which field (A/B)? | What do you want at the end: short list, downloaded PDFs, LRM, or search strings (H)? | Which years? Default suggestion 2022-2026 (E) | Where to save files: named folder or Do"
+  }
+ ],
+ "partly-out-of-scope": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['quick-search'] got ['quick-search']"
+  },
+  {
+   "text": "keyword kept: chatbot",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: higher education",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": false,
+   "evidence": "1. **Field:** is this education or educational technology, computer science, or another discipline? The field name keeps out papers where \"chatbot\" means something else, such as customer service. | 2."
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": false,
+   "evidence": "5 questions: Field or discipline? | Niche (country, discipline, chatbot type) or keep general? | Year range (default suggestion 2022 to 2026)? | Where to save (named folder or Downloads)? | Optional: working title or research questio"
+  }
+ ]
+}

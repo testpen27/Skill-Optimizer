@@ -1,0 +1,29 @@
+{
+ "partly-out-of-scope": [
+  {
+   "text": "job identified",
+   "passed": true,
+   "evidence": "want ['quick-search'] got ['download', 'lrm', 'quick-search']"
+  },
+  {
+   "text": "keyword kept: chatbot",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "keyword kept: higher education",
+   "passed": true,
+   "evidence": ""
+  },
+  {
+   "text": "asks the right clarifying question before working",
+   "passed": false,
+   "evidence": "Do you want me to go ahead with that? (yes / no)"
+  },
+  {
+   "text": "asks three questions or fewer",
+   "passed": true,
+   "evidence": "1 questions: Do you want me to go ahead with finding the papers (about 15 to 20), downloading the open-access ones and building an LRM, since I can't write the chapter itself?"
+  }
+ ]
+}

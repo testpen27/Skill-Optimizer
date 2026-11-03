@@ -1,0 +1,22 @@
+{
+  "jobs": ["lrm"],
+  "topic_keywords": [],
+  "constraints": [
+    "6 PDFs of the user's own papers (already in hand, no search needed)",
+    "Output: literature review matrix",
+    "Attachments did not arrive, so ask for re-attachment or a folder path",
+    "Drop nothing from the user's papers; only flag any outside the year range",
+    "Never invent quartiles or results; use Not explicitly stated / Unranked/Unavailable",
+    "Paraphrase rather than copy",
+    "Draft the table in chat before building the PDF"
+  ],
+  "databases": [],
+  "will_ask_first": true,
+  "questions": [
+    "Please re-attach the 6 PDFs or give the folder path (they did not come through)",
+    "Field or discipline (for the quartile subject category)",
+    "Year range, if any (used only to flag papers outside it)",
+    "Where to save: a named folder or Downloads"
+  ],
+  "plan": "Once the PDFs and answers arrive, read each PDF in full for IMRAD, look up Scimago quartiles, draft the matrix as a markdown table in chat for correction, then build the PDF."
+}

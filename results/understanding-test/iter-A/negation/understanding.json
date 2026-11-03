@@ -1,0 +1,17 @@
+{
+  "jobs": ["quick-search"],
+  "topic_keywords": ["telework", "remote work", "working from home", "burnout", "nurses", "nursing"],
+  "constraints": [
+    "NO PRISMA (no systematic search, screening or flow diagram)",
+    "exactly 15 papers",
+    "recent: last five calendar years 2022-2026 (assumed, shown to user)",
+    "Q1 journals only (Scimago SJR quartile lookup, never from reputation)",
+    "population: nurses",
+    "output as a table",
+    "cannot confirm Scopus/WoS indexing (quick search limitation)"
+  ],
+  "databases": ["Firecrawl research paper search (biomedical)", "web search / Google Scholar", "PubMed", "Scimago SJR for quartiles"],
+  "will_ask_first": false,
+  "questions": [],
+  "plan": "Build 5-10 keyword combinations, run haiku helpers in parallel for candidates 2022-2026, look up Scimago quartiles, keep Q1 only, and present 15 papers as a markdown table (offering an LRM or download afterwards)."
+}

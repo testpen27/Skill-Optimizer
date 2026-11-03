@@ -1,0 +1,13 @@
+multi-constraint     12/12
+unclear-goal         4/4
+ambiguous-term       5/5
+implicit-prisma      9/9
+missing-files        4/4
+fix-string           7/7
+download-dois        5/5
+negation             8/8
+malay-language       8/8
+conflicting-years    6/6
+too-broad            4/4
+partly-out-of-scope  5/5
+TOTAL 77/77

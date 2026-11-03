@@ -1,0 +1,15 @@
+{
+  "jobs": ["download"],
+  "topic_keywords": ["10.3390/su12010001", "10.1016/j.compedu.2020.103819"],
+  "constraints": [
+    "free (legal open-access) PDFs only",
+    "save to the user's Downloads folder",
+    "two papers identified by DOI, no search wanted",
+    "no search strings, PRISMA or LRM requested",
+    "no paywalled or shadow-library sources (skill rule: no Sci-Hub/LibGen/Anna's Archive)"
+  ],
+  "databases": ["OpenAlex (open-access check by DOI)", "Firecrawl web search for repository/preprint copies if OpenAlex finds none"],
+  "will_ask_first": false,
+  "questions": [],
+  "plan": "Build a records file from the two DOIs, run the OpenAlex open-access check (after the one-time OpenAlex key status check, asking about the key only if it is not set), download the free copies into Downloads/papers with retrieve.py, then report what was fetched and list any paywalled paper (likely the Elsevier one) with its DOI link for the user to click."
+}

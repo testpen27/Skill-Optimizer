@@ -1,0 +1,14 @@
+{
+  "jobs": ["quick-search"],
+  "topic_keywords": ["AI", "artificial intelligence"],
+  "constraints": [],
+  "databases": [],
+  "will_ask_first": true,
+  "questions": [
+    "Which part of AI and in which field (A/B)?",
+    "What do you want at the end: short list, downloaded PDFs, LRM, or search strings (H)?",
+    "Which years? Default suggestion 2022-2026 (E)",
+    "Where to save files: named folder or Downloads (I)"
+  ],
+  "plan": "Wait for the user to narrow the topic and confirm the end product, then run a quick search (references/quick-search.md) with paper search tools into a pre-research/<topic>/ project folder, offering download or LRM next."
+}

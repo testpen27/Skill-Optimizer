@@ -1,0 +1,7 @@
+{"jobs":["fix-string"],
+"topic_keywords":["mobile learning","nurs*","midwi*"],
+"constraints":["Web of Science","years 2020-2024","TS= topic field","keep user's terms unchanged","only fix syntax"],
+"databases":["Web of Science"],
+"will_ask_first":false,
+"questions":[],
+"plan":"Fix the string immediately (straight quotes, add AND before PY, bracket the year range), verified with the checker, and offer to widen or narrow it."}

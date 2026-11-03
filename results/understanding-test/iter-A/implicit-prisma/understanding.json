@@ -1,0 +1,7 @@
+{"jobs": ["prisma", "strings"],
+ "topic_keywords": ["flood risk communication", "flood", "risk communication", "Kelantan", "Malaysia", "systematic literature review", "SLR"],
+ "constraints": ["years 2015-2025", "niche: Kelantan (Malaysia)", "review type: systematic (SLR)", "PRISMA flow diagram wanted (supervisor requirement)"],
+ "databases": ["Scopus", "Web of Science"],
+ "will_ask_first": true,
+ "questions": ["Field or discipline?", "Population or context?", "Which databases does your university give you (Scopus, Web of Science, neither)?", "Where to save files (named folder or Downloads)?"],
+ "plan": "After the user answers, build Boolean strings for Scopus and Web of Science (via an opus helper), have them run and report hit counts, then de-duplicate, ask for eligibility criteria and run reviewer-led screening to produce the PRISMA 2020 report."}

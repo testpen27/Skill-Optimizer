@@ -1,0 +1,9 @@
+{
+  "jobs": ["fix-string"],
+  "topic_keywords": ["mobile learning", "nursing", "midwifery", "nurs*", "midwi*"],
+  "constraints": ["Database: Web of Science (TS= and PY= tags)", "Years 2020-2024", "Keep the user's concepts and terms: mobile learning AND (nurs* OR midwi*)", "Fix the syntax only, do not rebuild the search or add concepts", "Straight quotes required", "PY must be joined with AND and written PY=(2020-2024)"],
+  "databases": ["Web of Science"],
+  "will_ask_first": false,
+  "questions": [],
+  "plan": "Run the checker, which flagged curly quotes. Also add the missing AND before PY and the brackets around the range. Reply at once with the corrected string and a two-line note on what changed."
+}

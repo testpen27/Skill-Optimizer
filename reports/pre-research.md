@@ -146,6 +146,47 @@ chat and later chats on that computer. Without a key everything still works
 on OpenAlex's shared free allowance. Eight tests cover it; the packaged skill
 was checked for anything that looks like a key and holds none.
 
+### Understanding the request (owner reported the skill sometimes not following the prompt)
+
+Test: 12 realistic requests (`evals/understanding-evals.json`), six clear (several
+constraints at once, a pasted broken string, a DOI list, "no PRISMA", a Malay-language
+request) and six ambiguous (unclear goal, "engagement" with no field, "papers about
+AI", contradictory years, attachments that are not there, a request to write the
+chapter). Each was run once by a Sonnet subagent that followed the skill up to its
+first message and recorded what it understood. `results/understanding-test/grade_uw.py`
+checks the job, every topic keyword and constraint, that it asks when it should
+(with the right question, three questions at most), and that it does not re-ask what
+the user said.
+
+| | Checks passed |
+|---|---|
+| Before (skill as published) | 71 / 77 |
+| After the fix | 77 / 77 |
+
+The baseline already understood most requests; its misses were asking too much when
+unsure (four or five questions), never asking whether "the PRISMA thing" meant a full
+search or only the diagram, and starting on a substitute for an out-of-scope request
+without asking. Reading the runs also showed three tool gaps behind "not following
+the prompt": no way to honour "Scopus only" (strings were always built for all three
+databases), no support for "exclude conference papers", and a checker that missed a
+missing AND before PY= and an unbracketed year range.
+
+Fixes: SKILL.md now starts with "Understand the request before anything else" (read
+the job, every keyword and every constraint, restate them in one line, let the user's
+stated limits override the defaults, and ask only when genuinely unsure, blocker
+first, three questions at most, the scope question alone when part of the request is
+out of scope). `search_tool.js` takes `databases`, `doctypes` and `languages` in the
+spec and writes Scopus `LIMIT-TO`/`EXCLUDE` and Web of Science `DT=`/`LA=` syntax
+(checked against published search strategies), and the checker catches the two
+missing-operator errors. Nine new script tests; 78 pass.
+
+Limits: one run per request, one model, 12 requests. The grader was corrected four
+times for false negatives (a question worded "would you like", options listed under
+the question, numbered options counted as questions, a yes/no confirmation); each
+correction was applied to both the before and after runs. The final out-of-scope
+result comes from a rerun after the last instruction change; the other eleven come
+from the run before it, which differs from the final skill only in that one line.
+
 ### Before installing
 
 Uninstall `search-string`, `research-search-string` and `find-paper` from the

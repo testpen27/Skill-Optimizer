@@ -38,7 +38,7 @@ Open your first reply with one line that says what you understood, in the user's
 - the topic is too broad to search ("AI", "social media"): ask for the angle;
 - two instructions conflict ("2010 to 2015, but only the last five years"): name the conflict and ask which, or offer both as separate ranges;
 - something the user refers to is not there (attached files, an export, a string);
-- part of the request is outside this skill (writing the chapter, formatting references): say what is not covered, propose what the skill can do instead, and ask whether to go ahead with that before starting it.
+- part of the request is outside this skill (writing the chapter, formatting references): say what is not covered, propose what the skill can do instead, and ask only whether to go ahead with that. Leave the intake questions until they say yes, because they may not want the substitute at all.
 
 Put any clarifying question first and keep the whole message to three questions or fewer; the intake below can follow once the blocker is answered. When nothing is unclear, do not ask: restate, then go to the intake or straight to work.
 

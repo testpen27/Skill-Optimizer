@@ -47,7 +47,7 @@
   "jobs": [],
   "should_ask": true,
   "ask_about": [
-   "string|search|prisma|matrix|lrm|download|what (do|would) you (want|need)|which"
+   "string|search|prisma|matrix|lrm|download|what (do|would) you (want|need|like)|end up|which"
   ],
   "keywords": [
    [
@@ -304,7 +304,7 @@
   ],
   "should_ask": true,
   "ask_about": [
-   "writ|chapter|matrix|lrm|instead|can('|no)t|not (write|cover)"
+   "writ|chapter|matrix|lrm|instead|go ahead|can('|no)t|not (write|cover)"
   ],
   "keywords": [
    [

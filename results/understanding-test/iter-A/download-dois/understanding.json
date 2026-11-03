@@ -1,0 +1,7 @@
+{"jobs": ["download"],
+ "topic_keywords": ["10.3390/su12010001", "10.1016/j.compedu.2020.103819"],
+ "constraints": ["only the free / legally open-access PDFs", "save into the user's Downloads folder (already stated, so not asked again)", "two DOIs given as the list", "no Sci-Hub/LibGen/Anna's Archive; paywalled ones not auto-downloaded (Elsevier paywalled would be user-click)"],
+ "databases": ["OpenAlex (free-copy check)", "Firecrawl web search for repository copies if OpenAlex finds none"],
+ "will_ask_first": true,
+ "questions": ["Do you have a free OpenAlex API key? Paste it, or say no."],
+ "plan": "After the OpenAlex key answer (key set or key skip), run openalex.py enrich on a records file of the two DOIs, download any free PDFs with retrieve.py into Downloads, and report which are downloaded and which are missing."}

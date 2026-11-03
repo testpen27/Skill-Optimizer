@@ -1,0 +1,9 @@
+{
+  "jobs": ["quick-search"],
+  "topic_keywords": ["AI chatbots", "higher education", "literature review"],
+  "constraints": ["about 3000 words (applies to the writing, which is out of scope)", "use papers found by the assistant", "no years, databases, exclusions or languages specified"],
+  "databases": ["none confirmed; quick search via open web and Firecrawl paper search only (Google Scholar, Semantic Scholar, ERIC etc.)"],
+  "will_ask_first": true,
+  "questions": ["Field or discipline?", "Niche (country, discipline, chatbot type) or keep general?", "Year range (default suggestion 2022 to 2026)?", "Where to save (named folder or Downloads)?", "Optional: working title or research question"],
+  "plan": "Say the chapter writing is out of scope, offer download and LRM as the follow-ons, collect the missing answers, then run a quick search for 15 to 20 papers."
+}

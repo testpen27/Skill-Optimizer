@@ -1,0 +1,17 @@
+{
+  "jobs": ["strings"],
+  "topic_keywords": ["digital literacy", "Orang Asli", "children"],
+  "constraints": [
+    "Scopus only",
+    "no Web of Science",
+    "years 2019 to 2025",
+    "exclude conference papers (document type)",
+    "include Malay terms (Malay-language string / terms)",
+    "niche implied: Malaysia (Orang Asli)",
+    "strings only; not running searches, PRISMA, download or LRM"
+  ],
+  "databases": ["Scopus"],
+  "will_ask_first": true,
+  "questions": ["Which field is this in: education / indigenous or community studies / something else?"],
+  "plan": "After the field answer, read references/strings.md and build a Scopus English string and a Malay-term string with PUBYEAR 2019-2025 and conference papers excluded, with no Web of Science string."
+}

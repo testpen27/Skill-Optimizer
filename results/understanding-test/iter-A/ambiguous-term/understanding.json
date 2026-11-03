@@ -1,0 +1,9 @@
+{
+  "jobs": ["quick-search"],
+  "topic_keywords": ["engagement"],
+  "constraints": ["about 20 papers (15 to 20 strong candidates)", "for a thesis", "no year range given: proposing 2022-2026 (last five calendar years incl. current)", "no database, country, population, language or exclusion given", "field unknown: 'engagement' is ambiguous across education, HR, marketing, health, social media"],
+  "databases": ["none confirmed: open web search and Firecrawl paper search (Google Scholar, Semantic Scholar etc.), no Scopus/WoS login assumed"],
+  "will_ask_first": true,
+  "questions": ["Which field/discipline and which kind of engagement?", "Working title or research question, and population/country/sector?", "Year range (default proposed 2022-2026)?", "Where to save files (named folder or Downloads)?", "List only, or also download PDFs / LRM?"],
+  "plan": "After the user answers, create a project folder, build 5-10 field-qualified keyword queries, run them via haiku helpers on Firecrawl paper search and web search, narrow to about 20 papers in the year range, and save records.json and search_log.json."
+}

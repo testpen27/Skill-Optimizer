@@ -1,0 +1,13 @@
+{
+  "jobs": ["quick-search"],
+  "topic_keywords": ["AI"],
+  "constraints": [],
+  "databases": [],
+  "will_ask_first": true,
+  "questions": [
+    "Which angle or field of AI (education, healthcare, generative AI/LLMs, ethics/regulation, business, other)?",
+    "How many papers and for what (quick ~15-20 for background, or full systematic search with database strings)?",
+    "Any year range (default: last five years 2022-2026)?"
+  ],
+  "plan": "Ask for the angle because 'AI' is too broad to search, then run a quick search (about 15-20 papers via Firecrawl research tools/OpenAlex) in a project folder once the user answers."
+}

@@ -1,0 +1,9 @@
+{
+  "jobs": ["quick-search", "download", "lrm"],
+  "topic_keywords": ["AI chatbots", "higher education"],
+  "constraints": ["about 3000 words (chapter length; not searchable, part of the out-of-scope writing request)", "use the papers I find (no user-supplied papers, no attached files)", "no databases, years, document types or languages stated", "writing the chapter itself is outside the skill"],
+  "databases": [],
+  "will_ask_first": true,
+  "questions": ["Do you want me to go ahead with finding the papers (about 15 to 20), downloading the open-access ones and building an LRM, since I can't write the chapter itself?"],
+  "plan": "Wait for a yes; if yes, ask the intake questions (field, working title, year range, where to save, etc.), then do a quick search, download and LRM in a project folder."
+}
