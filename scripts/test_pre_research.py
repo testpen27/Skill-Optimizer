@@ -232,6 +232,26 @@ with tempfile.TemporaryDirectory() as tmp:
     check("download: truncated PDF rejected", items["10.1/cut"]["status"] == "failed" and "incomplete" in items["10.1/cut"]["reason"])
     check("download: paywalled listed, not fetched", items["10.1/pay"]["status"] == "paywalled")
     check("download: cap respected", items["10.1/many"]["status"] == "skipped")
+    local = Path(tmp) / "local_secret.pdf"
+    local.write_bytes(pdf)
+    odd = {"records": [
+        {"doi": "10.1/local", "title": "Local file link", "is_oa": True, "pdf_url": local.as_uri()},
+        {"doi": None, "title": "No authors or DOI", "authors": None, "is_oa": False},
+    ]}
+    opath = Path(tmp) / "odd.json"
+    opath.write_text(json.dumps(odd))
+    odest = Path(tmp) / "odd_papers"
+    try:
+        with contextlib.redirect_stdout(io.StringIO()):
+            rt.main(["download", str(opath), "--dest", str(odest), "--max", "4"])
+        oitems = json.loads((odest / "manifest.json").read_text())["items"]
+        crashed = ""
+    except Exception as e:
+        oitems, crashed = [], repr(e)
+    check("download: null authors and DOI do not crash the run", not crashed and len(oitems) == 2, crashed)
+    check("download: file:// links are refused, nothing local is copied",
+          any(i["doi"] == "10.1/local" and i["status"] == "failed" and "http" in i["reason"] for i in oitems)
+          and not list(odest.glob("*.pdf")))
     user_pdf = Path(tmp) / "Downloads_paper.pdf"
     user_pdf.write_bytes(pdf)
     with contextlib.redirect_stdout(io.StringIO()):

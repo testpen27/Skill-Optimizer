@@ -413,3 +413,21 @@ fit the budget. Set 1 used 8 runs per query; set 2 used 5.
 Renamed from `search-string` to `research-search-string` at the owner's request. The
 evaluation above was run under the old name; files in `results/` keep the old
 name because they are the raw record of those runs.
+
+## Skill audit (November 2026)
+
+No dedicated skill-audit skill is installed, so the audit used skill-creator's own standards plus a code and safety review.
+
+Automated checks, all passing: `quick_validate` (frontmatter valid; description 1007 of 1024 characters), `check_branch.py`, every Python script compiles and `search_tool.js` passes `node --check`, every file the docs reference exists and every bundled file is referenced, every `--flag` and subcommand the docs give exists in its script, no keys or tokens in the skill, no `shell=True`/`eval`/`os.system`, no `__pycache__` in the package, and every PDF builder escapes paper text before reportlab renders it.
+
+Found and fixed:
+
+| Finding | Severity | Fix |
+|---|---|---|
+| `retrieve.py download` fetched any URL scheme, so a `file://` link in a records file (records come partly from web search) copied a local PDF into the papers folder | Medium | Only `http`/`https` links are downloaded; others fail with a reason |
+| A record with `"authors": null` crashed the download run before the manifest was saved, losing that run's record of what was fetched | Medium | Null `authors`, `doi` and `title` are treated as empty |
+| `publisher-terms.md` told Claude to add rows to the skill's own file during a run; installed skills can be read-only and a shared copy should not change under its users | Low | Checked publishers go into the project's `search_log.json` under `"publisher_terms"` |
+
+Two regression tests were added (both fail on the old `retrieve.py`, pass on the new): 80 checks, 0 failures.
+
+Left as is: when `robots.txt` cannot be fetched at all (timeout, DNS), the site is treated as unrestricted, which is the usual convention; 401/403 on `robots.txt` still means stay out.

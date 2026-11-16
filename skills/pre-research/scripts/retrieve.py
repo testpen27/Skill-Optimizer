@@ -96,6 +96,8 @@ class Fetcher:
         self.last[host] = time.time()
 
     def get_pdf(self, url):
+        if urllib.parse.urlsplit(url).scheme.lower() not in ("http", "https"):
+            raise Fail("only http(s) links are downloaded")
         if not self.allowed(url):
             raise Fail("robots.txt does not allow automated download from this site")
         self.wait(url)
@@ -145,8 +147,8 @@ def cmd_download(args, fetcher=None):
         prev = done.get(key)
         if prev and prev["status"] in ("downloaded", "downloaded by user"):
             continue
-        item = {"key": key, "doi": r.get("doi", ""), "title": r.get("title", ""), "year": r.get("year"),
-                "authors": r.get("authors", [])[:3], "publisher": r.get("publisher", ""),
+        item = {"key": key, "doi": r.get("doi") or "", "title": r.get("title") or "", "year": r.get("year"),
+                "authors": (r.get("authors") or [])[:3], "publisher": r.get("publisher", ""),
                 "venue": r.get("venue", ""), "landing_url": r.get("landing_url", ""),
                 "status": "", "file": "", "source_url": "", "license": r.get("license", ""), "reason": ""}
         urls = [u for u in (r.get("pdf_url"), r.get("oa_url")) if u]
