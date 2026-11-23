@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Build a concept matrix PDF: papers down the side, concepts across the top.
+"""Build a concept matrix sheet: papers down the side, concepts across the top.
 
-    python3 build_concept.py concept.json --out Concept.pdf [--lrm lrm.json] [--check]
+    python3 build_concept.py concept.json --out Matrix.xlsx [--lrm lrm.json] [--check]
 
-Use only when the user explicitly asks for a concept matrix. After Webster and
-Watson (2002): an X marks a paper that deals with a concept. The counts under
-each column and the list of rarely covered concepts are computed from the
-marks, never typed, so they show which concepts the literature has covered and
-where the gaps are.
+Use only when the user explicitly asks for a concept matrix. --out is the same
+workbook as the LRM: the sheet "Concept matrix" is added (or replaced) and the
+other sheets are kept. After Webster and Watson (2002): an X marks a paper that
+deals with a concept. The counts under each column and the coverage table are
+live Excel formulas over the X marks (edit a mark and they update), so they
+show which concepts the literature has covered and where the gaps are.
 
 concept.json:
 {
@@ -23,25 +24,25 @@ concept.json:
 With "units", write each paper's concepts as a map from concept to the units of
 analysis it was studied at (the second paper above); the matrix then has one
 column per concept and unit. Without "units", a plain list is enough.
---lrm lrm.json takes the codes and labels from the LRM. Needs reportlab.
+--lrm lrm.json takes the codes and labels from the LRM. Needs openpyxl.
 """
-
-import argparse
-import json
-import sys
 
 import os as _os
 import sys as _sys
 
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 
+import argparse
+import json
+import sys
+
 from build_synthesis import labels_from_lrm
-from common import build_doc, escape, make_styles, pdf_parts, table_style
+from common import print_setup, AMBER_FILL, FONT, fresh_sheet, open_workbook, save, set_widths, style_body, style_header
 
-MAX_COLS = 10
+SHEET = "Concept matrix"
 
 
-def marks(paper, units):
+def marks(paper):
     """-> set of (concept, unit-or-None) the paper is marked for."""
     c = paper.get("concepts")
     c = [] if c is None else c
@@ -76,56 +77,72 @@ def problems_in(data, papers):
     return out
 
 
-def build(data, papers, out):
-    pp = pdf_parts()
-    Paragraph, Spacer, Table = pp["Paragraph"], pp["Spacer"], pp["Table"]
-    cell, head, h1, body = make_styles(pp)
-    margin = 0.4 * pp["inch"]
-    frame_w = pp["landscape"](pp["A4"])[0] - 2 * margin
+def add_sheet(wb, data, papers):
+    from openpyxl.formatting.rule import FormulaRule
+    from openpyxl.styles import Alignment, Font, PatternFill
+    from openpyxl.utils import get_column_letter as L
+
     concepts, units = data["concepts"], data.get("units") or []
     cols = [(c, u) for c in concepts for u in (units or [None])]
-    by_code = {p["code"]: marks(p, units) for p in data.get("papers") or []}
-    centre = pp["ParagraphStyle"]("c", parent=cell, alignment=1)
-    centre_head = pp["ParagraphStyle"]("ch", parent=head, alignment=1)
+    by_code = {p["code"]: marks(p) for p in data.get("papers") or []}
+    npap, ncol = len(papers), len(cols)
+    ws = fresh_sheet(wb, SHEET)
+    ws.append(["Paper"] + [c + (f"\n({u})" if u else "") for c, u in cols])
+    for s in papers:
+        ws.append([f"{s['code']}  {s['label']}"] + ["X" if (c, u) in by_code.get(s["code"], set()) else None
+                                                    for c, u in cols])
+    first, last = 2, npap + 1
+    cnt = last + 1
+    ws.cell(row=cnt, column=1, value="Papers covering")
+    for j in range(ncol):
+        col = L(j + 2)
+        ws.cell(row=cnt, column=j + 2, value=f'=COUNTIF({col}{first}:{col}{last},"X")')
+    style_header(ws, 1, ncol + 1, height=34)
+    style_body(ws, first, cnt, ncol + 1)
+    centre = Alignment(horizontal="center", vertical="top", wrap_text=True)
+    for r in range(first, cnt + 1):
+        ws.cell(row=r, column=1).font = Font(name=FONT, size=9, bold=(r == cnt))
+        for c in range(2, ncol + 2):
+            ws.cell(row=r, column=c).alignment = centre
+            if r == cnt:
+                ws.cell(row=r, column=c).font = Font(name=FONT, size=9, bold=True)
+    for c in range(2, ncol + 2):
+        ws.cell(row=1, column=c).alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
 
-    story = [Paragraph(escape(data.get("title") or "Concept matrix"), h1),
-             Paragraph(escape(f"{len(papers)} papers, {len(concepts)} concepts"
-                              + (f", by unit of analysis ({', '.join(units)})" if units else "")), body),
-             Spacer(1, 6)]
-    for start in range(0, len(cols), MAX_COLS):
-        chunk = cols[start:start + MAX_COLS]
-        rel = [4.2] + [1.6] * len(chunk)
-        widths = [frame_w * r / sum(rel) for r in rel]
-        hdr = [Paragraph("Paper", head)]
-        for c, u in chunk:
-            hdr.append(Paragraph(escape(c) + (f"<br/>({escape(u)})" if u else ""), centre_head))
-        rows = [hdr]
-        for s in papers:
-            row = [Paragraph(f"{escape(s['code'])}  {escape(s['label'])}", cell)]
-            row += [Paragraph("X" if (c, u) in by_code.get(s["code"], set()) else "", centre) for c, u in chunk]
-            rows.append(row)
-        total = [Paragraph("<b>Papers</b>", cell)]
-        total += [Paragraph(f"<b>{sum(1 for s in papers if (c, u) in by_code.get(s['code'], set()))}</b>", centre)
-                  for c, u in chunk]
-        rows.append(total)
-        tb = Table(rows, colWidths=widths, repeatRows=1, hAlign="LEFT")
-        tb.setStyle(table_style(pp))
-        story += [tb, Spacer(1, 10)]
+    # Coverage table: papers per concept (any unit) and a plain-words status, both formulas.
+    top = cnt + 3
+    ws.cell(row=top - 1, column=1, value="Coverage by concept (updates when marks change)").font = \
+        Font(name=FONT, size=10, bold=True)
+    for j, h in enumerate(["Concept", "Papers", "Status"], 1):
+        ws.cell(row=top, column=j, value=h)
+    style_header(ws, top, 3)
+    for i, c in enumerate(concepts, top + 1):
+        idx = [j for j, (cc, _) in enumerate(cols) if cc == c]
+        parts = "+".join(f'({L(j + 2)}{first}:{L(j + 2)}{last}="X")' for j in idx)
+        ws.cell(row=i, column=1, value=c)
+        ws.cell(row=i, column=2, value=f"=SUMPRODUCT(--(({parts})>0))")
+        ws.cell(row=i, column=3, value=f'=IF(B{i}=0,"no paper (gap)",IF(B{i}=1,"only one paper (gap)",B{i}&" papers"))')
+    style_body(ws, top + 1, top + len(concepts), 3)
+    ws.conditional_formatting.add(f"B{top + 1}:C{top + len(concepts)}",
+                                  FormulaRule(formula=[f"$B{top + 1}<=1"], fill=PatternFill("solid", bgColor=AMBER_FILL)))
+    set_widths(ws, [34] + [14] * ncol)
+    print_setup(ws)
+    ws.column_dimensions["C"].width = max(ws.column_dimensions["C"].width or 14, 24)
+    ws.freeze_panes = "B2"
+    return ws
 
-    story.append(Paragraph("<b>Coverage</b> (computed from the marks above)", body))
-    for c in concepts:
-        n = sum(1 for s in papers if any(k == c for k, _ in by_code.get(s["code"], set())))
-        note = "no paper" if n == 0 else "only one paper" if n == 1 else f"{n} papers"
-        flag = "  <- gap" if n <= 1 else ""
-        story.append(Paragraph(escape(f"{c}: {note}{flag}"), body))
-    build_doc(pp, out, story, data.get("title") or "Concept matrix", margin)
+
+def build(data, papers, out):
+    wb = open_workbook(out)
+    add_sheet(wb, data, papers)
+    save(wb, out, order=["Summary", "LRM", "Synthesis matrix", SHEET])
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("concept")
     ap.add_argument("--lrm")
-    ap.add_argument("--out")
+    ap.add_argument("--out", help="the .xlsx workbook to create or update")
     ap.add_argument("--check", action="store_true")
     a = ap.parse_args(argv)
     try:
@@ -143,7 +160,7 @@ def main(argv=None):
         print(f"OK: {len(papers)} papers x {len(data['concepts'])} concepts")
         return 0
     if not a.out:
-        print("Error: give --out Concept.pdf", file=sys.stderr)
+        print("Error: give --out Matrix.xlsx", file=sys.stderr)
         return 1
     build(data, papers, a.out)
     print(f"Wrote {a.out}")

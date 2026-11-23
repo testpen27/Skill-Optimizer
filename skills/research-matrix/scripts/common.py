@@ -1,5 +1,5 @@
 """Shared helpers for the research-matrix scripts: APA 7 author formatting,
-sorting, robust loading of saved web responses, and PDF page furniture."""
+sorting, robust loading of saved web responses, and Excel styling."""
 
 import json
 import re
@@ -104,57 +104,90 @@ def die(msg, code=1):
     sys.exit(code)
 
 
-# ------------------------------------------------------------- PDF ----------
+# ------------------------------------------------------------ Excel --------
 
-def pdf_parts():
-    """Import reportlab lazily so --check works without it."""
+FONT = "Arial"
+NAVY = "1F3864"
+GREY_FILL = "F2F2F2"
+AMBER_FILL = "FFF2CC"
+RED = "C00000"
+
+
+def xl():
+    """Import openpyxl lazily so --check works without it."""
     try:
-        from reportlab.lib import colors
-        from reportlab.lib.pagesizes import A4, landscape
-        from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
-        from reportlab.lib.units import inch
-        from reportlab.platypus import (KeepTogether, Paragraph, SimpleDocTemplate,
-                                        Spacer, Table, TableStyle)
+        import openpyxl
+        from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
     except ImportError:
-        die("Error: reportlab is not installed. Run: pip install reportlab")
-    return dict(colors=colors, A4=A4, landscape=landscape, ParagraphStyle=ParagraphStyle,
-                getSampleStyleSheet=getSampleStyleSheet, inch=inch, KeepTogether=KeepTogether,
-                Paragraph=Paragraph, SimpleDocTemplate=SimpleDocTemplate, Spacer=Spacer,
-                Table=Table, TableStyle=TableStyle)
+        die("Error: openpyxl is not installed. Run: pip install openpyxl")
+    return openpyxl, Alignment, Border, Font, PatternFill, Side
 
 
-def make_styles(p):
-    ss = p["getSampleStyleSheet"]()
-    PS, colors = p["ParagraphStyle"], p["colors"]
-    cell = PS("cell", parent=ss["BodyText"], fontSize=7, leading=8.6)
-    head = PS("head", parent=cell, textColor=colors.white, fontName="Helvetica-Bold")
-    h1 = PS("h1", parent=ss["Heading1"], fontSize=14, textColor=colors.HexColor("#1F3864"))
-    body = PS("body", parent=ss["BodyText"], fontSize=9, leading=12)
-    return cell, head, h1, body
+def open_workbook(path):
+    """Load the workbook at path, or start a new one (its default sheet removed)."""
+    import os
+    openpyxl = xl()[0]
+    if os.path.exists(path):
+        return openpyxl.load_workbook(path, rich_text=True)
+    wb = openpyxl.Workbook()
+    wb.remove(wb.active)
+    return wb
 
 
-def build_doc(p, out, story, title, margin):
-    colors = p["colors"]
-    page = p["landscape"](p["A4"])
-
-    def footer(c, doc):
-        c.saveState()
-        c.setFont("Helvetica", 7)
-        c.setFillColor(colors.grey)
-        c.drawRightString(page[0] - margin, 14, f"Page {doc.page}")
-        c.restoreState()
-
-    doc = p["SimpleDocTemplate"](out, pagesize=page, leftMargin=margin, rightMargin=margin,
-                                 topMargin=margin, bottomMargin=margin, title=title)
-    doc.build(story, onFirstPage=footer, onLaterPages=footer)
+def fresh_sheet(wb, name, index=None):
+    """Create sheet `name`, replacing any sheet of that name (so a rebuild is clean)."""
+    if name in wb.sheetnames:
+        del wb[name]
+    ws = wb.create_sheet(name, index)
+    return ws
 
 
-def table_style(p, header_rows=1):
-    colors = p["colors"]
-    return p["TableStyle"]([
-        ("BACKGROUND", (0, 0), (-1, header_rows - 1), colors.HexColor("#1F3864")),
-        ("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#BFBFBF")),
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("ROWBACKGROUNDS", (0, header_rows), (-1, -1), [colors.white, colors.HexColor("#F2F2F2")]),
-        ("LEFTPADDING", (0, 0), (-1, -1), 3), ("RIGHTPADDING", (0, 0), (-1, -1), 3),
-    ])
+def style_header(ws, row, ncols, height=None):
+    _, Alignment, Border, Font, PatternFill, Side = xl()
+    for c in range(1, ncols + 1):
+        cell = ws.cell(row=row, column=c)
+        cell.font = Font(name=FONT, size=10, bold=True, color="FFFFFF")
+        cell.fill = PatternFill("solid", fgColor=NAVY)
+        cell.alignment = Alignment(wrap_text=True, vertical="center", horizontal="left")
+    if height:
+        ws.row_dimensions[row].height = height
+
+
+def style_body(ws, first_row, last_row, ncols, size=9):
+    _, Alignment, Border, Font, PatternFill, Side = xl()
+    thin = Side(style="thin", color="BFBFBF")
+    for r in range(first_row, last_row + 1):
+        for c in range(1, ncols + 1):
+            cell = ws.cell(row=r, column=c)
+            cell.alignment = Alignment(wrap_text=True, vertical="top")
+            cell.border = Border(left=thin, right=thin, top=thin, bottom=thin)
+            if cell.font is None or cell.font.name != FONT:
+                cell.font = Font(name=FONT, size=size)
+            if (r - first_row) % 2 == 1:
+                cell.fill = PatternFill("solid", fgColor=GREY_FILL)
+
+
+def set_widths(ws, widths):
+    from openpyxl.utils import get_column_letter
+    for i, w in enumerate(widths, 1):
+        ws.column_dimensions[get_column_letter(i)].width = w
+
+
+def print_setup(ws):
+    """Landscape, one page wide, header row repeated: prints legibly from Excel."""
+    ws.page_setup.orientation = "landscape"
+    ws.page_setup.paperSize = ws.PAPERSIZE_A4
+    ws.page_setup.fitToWidth = 1
+    ws.page_setup.fitToHeight = 0
+    ws.sheet_properties.pageSetUpPr.fitToPage = True
+    ws.print_title_rows = "1:1"
+    ws.page_margins.left = ws.page_margins.right = 0.4
+
+
+def save(wb, path, order=None):
+    """Save, putting the sheets named in `order` first."""
+    if order:
+        names = [n for n in order if n in wb.sheetnames] + [n for n in wb.sheetnames if n not in order]
+        wb._sheets = [wb[n] for n in names]
+    wb.active = 0
+    wb.save(path)

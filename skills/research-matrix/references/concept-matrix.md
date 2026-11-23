@@ -32,9 +32,12 @@ Offer it only when the user's topic spans levels.
 4. Write `concept.json` (format at the top of `scripts/build_concept.py`), then:
    ```
    python3 scripts/build_concept.py concept.json --lrm lrm.json --check
-   python3 scripts/build_concept.py concept.json --lrm lrm.json --out "<folder>/Concept.pdf"
+   python3 scripts/build_concept.py concept.json --lrm lrm.json --out "<folder>/Matrix.xlsx"
    ```
-   The paper counts under each column and the "gap" list are computed from the
-   marks. Do not type them. Render and look at page 1.
+   This adds the `Concept matrix` sheet to the project workbook. The paper
+   counts under each column and the coverage table are live Excel formulas over
+   the X marks, so they update if the user changes a mark; concepts covered by
+   0 or 1 paper are shaded as gaps. Do not type the counts. Open or render the
+   sheet and look at it.
 5. Tell the user what the matrix shows: which concepts are well covered, which
    are thin, and what that suggests for their study, in a few sentences.

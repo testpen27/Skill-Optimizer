@@ -1,6 +1,7 @@
 # Literature review matrix (LRM)
 
-One row per paper. Columns, left to right:
+One row per paper, on the `LRM` sheet of the project workbook (`Matrix.xlsx`,
+named after the topic). Columns, left to right:
 
 | Code | Type | Authors | Title | Introduction | Methodology | Theory | Results | Discussion | Quartile | Access |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -36,6 +37,14 @@ One row per paper. Columns, left to right:
    `api.crossref.org`, scrape `https://api.crossref.org/works/<doi>` with
    Firecrawl, save each result as `<doi with / replaced by _>.json` in a
    folder, and add `--offline <folder>`.
+   The same lookup reads the record's **retraction and correction notices**
+   (Crossref's `updated-by` field, fed by the Retraction Watch database) into
+   `notices`. A retracted paper gets a red code cell and a red "RETRACTED
+   <date>" line in its Title cell; a correction or expression of concern gets
+   an amber line. Tell the user straight away if a paper is retracted and let
+   them decide what to do with it. No notice means none was found, not a
+   guarantee: Retraction Watch is most complete for retractions and less so
+   for corrections.
 4. **Look up the quartile.** For each journal paper:
    ```
    python3 scripts/scimago_quartile.py --issn <issn> --year <publication year> --category "<user's field>"
@@ -54,19 +63,25 @@ One row per paper. Columns, left to right:
    only have an abstract, fill what it supports and leave the rest "Not
    retrieved" (leave the cell empty in the JSON).
 6. **Draft in chat first** as a markdown table with the same columns, so the
-   user can correct it. A table in chat is cheap to redo; a PDF is not.
+   user can correct it. A table in chat is cheap to redo; a built workbook is slower to correct.
 7. **Synthesis paragraph** after the table: recurring theories, dominant
    methods, quartile balance (flag a set that is mostly Q3/Q4), gaps the
    user's study could fill. Write it from the rows, not from memory.
 8. **Build and look.**
    ```
    python3 scripts/build_lrm.py lrm.json --check
-   python3 scripts/build_lrm.py lrm.json --out "<folder>/LRM.pdf"
+   python3 scripts/build_lrm.py lrm.json --out "<folder>/Matrix.xlsx"
    ```
    `--check` refuses a bad quartile, type or access label and warns about long
-   cells, first-person wording and repeated openers. Render page 1 to an image
-   and look at it before sharing. If the paper list changes, rebuild the
-   draft and the PDF together.
+   cells, first-person wording, repeated openers and retracted papers. The
+   workbook has a `Summary` sheet (field, years, counts, the Crossref status of
+   each paper, retraction notices and the synthesis paragraph) and the `LRM`
+   sheet, with a frozen header and filters so the user can sort and filter. If
+   the `xlsx` skill's `recalc.py` is available, run it on the file so the
+   formula cells (the counts on `Summary`) carry values for previewers. Render
+   or open the `LRM` sheet and look at it before sharing. If the paper list
+   changes, rebuild the draft and the workbook together; the build replaces the
+   `Summary` and `LRM` sheets and keeps any other sheets.
 
 ## Writing the cells
 
@@ -92,9 +107,10 @@ short enough to scan and never read like a copy of the abstract.
 - Numbers only as the paper reports them. A result that looks too clean, or a
   quartile that does not fit the journal, gets a second look at the source.
 
-## What the PDF states about itself
+## What the workbook states about itself
 
-The footer line under the table says how many citations were checked against
-Crossref and lists the codes that were not, and that quartiles are SJR
-quartiles for the year and subject area shown. Do not hand-edit the PDF; fix
-`lrm.json` and rebuild.
+The `Summary` sheet says how many citations were checked against Crossref and
+which were not, lists any retraction or correction notices, and says that
+quartiles are SJR quartiles for the year and subject area shown. Do not edit
+the numbers by hand; fix `lrm.json` and rebuild. The DOI is shown as text in
+the Title cell (a cell hyperlink would flatten the italic journal name).

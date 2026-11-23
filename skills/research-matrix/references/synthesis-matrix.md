@@ -31,8 +31,9 @@ literature says about each idea).
    then:
    ```
    python3 scripts/build_synthesis.py synthesis.json --lrm lrm.json --check
-   python3 scripts/build_synthesis.py synthesis.json --lrm lrm.json --out "<folder>/Synthesis.pdf"
+   python3 scripts/build_synthesis.py synthesis.json --lrm lrm.json --out "<folder>/Matrix.xlsx"
    ```
-   Empty cells show as a dash and the script lists, under the table, every
-   theme with sources that have no entry. More than five sources are split
-   into several tables so the text stays readable. Render and look at page 1.
+   This adds the `Synthesis matrix` sheet to the project workbook. An empty
+   cell is shaded; the `Sources covering` column counts the filled cells with
+   a live formula, and a theme covered by 0 or 1 sources is shaded as a gap.
+   Open or render the sheet and look at it.

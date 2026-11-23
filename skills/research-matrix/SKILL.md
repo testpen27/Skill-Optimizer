@@ -1,11 +1,11 @@
 ---
 name: research-matrix
-description: Build an academic literature review matrix (LRM) from scholarly papers the user already has, with one row per paper (APA 7 authors and title, introduction, methodology, theory, results, discussion, journal quartile checked on Scimago, citation checked against Crossref), sorted A-Z and delivered as a PDF. Use for a literature review matrix, review matrix or literature matrix for a thesis, dissertation, proposal or academic review. Build a synthesis matrix (themes by sources) or a concept matrix (papers by concepts) only when the user asks for that exact matrix. Academic research only; never for SWOT, competitor, marketing, product, risk or decision matrices.
+description: Build an academic literature review matrix (LRM) from scholarly papers the user already has, with one row per paper (APA 7 authors and title, introduction, methodology, theory, results, discussion, journal quartile checked on Scimago, citation checked against Crossref, retractions flagged), sorted A-Z and delivered as an Excel workbook (.xlsx). Use for a literature review matrix, review matrix or literature matrix for a thesis, dissertation, proposal or academic review. Build a synthesis matrix (themes by sources) or a concept matrix (papers by concepts) only when the user asks for that exact matrix. Academic research only; never for SWOT, competitor, marketing, product, risk or decision matrices.
 ---
 
 # research-matrix
 
-Builds one academic matrix per request, as a PDF the user can read, from
+Builds one academic matrix per request, as a sheet in an Excel workbook, from
 papers the user supplies (a list, DOIs, an export or PDFs). Finding the papers
 is a different job (search strings, PRISMA, downloads); say so if asked.
 
@@ -20,7 +20,8 @@ is a different job (search strings, PRISMA, downloads); say so if asked.
 - One matrix per request. Never build the synthesis or concept matrix unless
   the user asks for it by name; offer it in one line after the LRM at most.
 - Synthesis and concept matrices reuse the LRM's paper codes (P01, P02, ...),
-  so build or load the LRM first when both are wanted.
+  so build or load the LRM first when both are wanted. They are added as
+  extra sheets to the same workbook, never as separate files.
 - Anything that is not academic literature review work (SWOT, competitor or
   marketing comparison, risk, decision, feature or pricing matrices): say it
   is outside this skill and stop.
@@ -46,8 +47,9 @@ supervisor, show it back and follow its headings where the scripts allow.
 - **Paraphrase**; quote only a short phrase worth quoting, with its page.
 - **Stop at bot checks and paywalls.** Never use Sci-Hub, LibGen or similar.
 - Show disagreements between sources (two quartiles, two numbers) in the cell.
-- Look at the first page of every PDF you build (render it to an image)
-  before sharing.
+- Every matrix goes into one Excel workbook for the project (`Summary`, `LRM`,
+  then `Synthesis matrix` or `Concept matrix` if asked for). There is no PDF
+  output. Open or render the workbook and look at it before sharing.
 
 ## Files
 
@@ -55,4 +57,4 @@ supervisor, show it back and follow its headings where the scripts allow.
 - `scripts/build_synthesis.py`, `build_concept.py` (only on request)
 - `examples/`: illustrative inputs. The made-up rows are labelled as such;
   never copy them into a user's matrix.
-- Needs Python 3 and `reportlab` (`pip install reportlab`).
+- Needs Python 3 and `openpyxl` (`pip install openpyxl`).

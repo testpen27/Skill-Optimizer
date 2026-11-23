@@ -33,8 +33,9 @@ Verified in the build session:
   The SJSU handout itself misspells this author as "Tufecki".
 - The Scimago parser reads the real journal page for ISSN 0002-7642: Q1 in
   Cultural Studies, Q2 in Education for 2013.
-- PDFs for the LRM, synthesis matrix and concept matrix were rendered and
-  looked at.
+- All three matrices were rebuilt as Excel sheets (PDF output removed at the
+  user's request), recalculated with the xlsx skill's recalc.py (18 formulas,
+  0 errors) and rendered through LibreOffice and looked at.
 
 Not yet done:
 
@@ -42,3 +43,22 @@ Not yet done:
   has not been run, so the description has not been optimized.
 - No full-text paper has been run through the whole workflow with the user's
   own papers.
+
+## Update 2026-11-23 (second round)
+
+- Output is now one Excel workbook per project (Summary, LRM, then Synthesis
+  matrix or Concept matrix on request). The PDF builders and reportlab are gone.
+- Retraction flag added to crossref_check.py. Correction to an earlier note:
+  Crossref puts the notices in `updated-by` on the paper's own record
+  (`update-to` is the field on the notice's record). Tested on the real record
+  of the Lancet 1998 paper: a 2004 correction and a 2010 retraction, both from
+  Retraction Watch, and a "RETRACTED:" title prefix, which the title comparison
+  now ignores.
+- Cell hyperlinks flatten rich text in LibreOffice, so the DOI is plain text.
+- TCCM attribution corrected: Paul and Rosado-Serrano (2019, International
+  Marketing Review) define it as a framework for the research-agenda part of a
+  review (theory, context, characteristics, methodology). Paul and Criado
+  (2020) only describe it as one example of a framework-based review.
+
+Proposed, not built (awaiting the user's decision): gap map, quality appraisal,
+TCCM, scoping-review charting, PICO.

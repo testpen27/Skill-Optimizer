@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""Build a synthesis matrix PDF: themes down the side, sources across the top.
+"""Build a synthesis matrix sheet: themes down the side, sources across the top.
 
-    python3 build_synthesis.py synthesis.json --out Synthesis.pdf [--lrm lrm.json] [--check]
+    python3 build_synthesis.py synthesis.json --out Matrix.xlsx [--lrm lrm.json] [--check]
 
-Use only when the user asks for a synthesis matrix. Each cell holds what that
-source says about that theme (paraphrased; add a page number only for a direct
-quotation). An empty cell is shown as a dash: a theme that few sources cover is
-a gap in the literature, and the gaps are listed under the table.
+Use only when the user asks for a synthesis matrix. --out is the same workbook
+as the LRM: the sheet "Synthesis matrix" is added (or replaced) and the other
+sheets are kept. Each cell holds what that source says about that theme
+(paraphrased; add a page number only for a direct quotation). A cell left
+empty means the source does not address the theme: it is shaded, and the
+"Sources covering" column counts the filled cells with a live formula, so a
+theme few sources cover reads as a gap.
 
 synthesis.json:
 {
@@ -18,22 +21,23 @@ synthesis.json:
   ]
 }
 --lrm lrm.json takes the codes and "Surname (year)" labels from the LRM, so the
-two matrices use the same P01, P02 ... codes. Needs reportlab.
+matrices use the same P01, P02 ... codes. Needs openpyxl.
 """
-
-import argparse
-import json
-import sys
 
 import os as _os
 import sys as _sys
 
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 
-from build_lrm import ordered
-from common import build_doc, escape, first_family, make_styles, pdf_parts, table_style
+import argparse
+import json
+import sys
 
-PER_TABLE = 5
+from build_lrm import ordered
+from common import (print_setup, AMBER_FILL, FONT, first_family, fresh_sheet, open_workbook, save, set_widths,
+                    style_body, style_header, xl)
+
+SHEET = "Synthesis matrix"
 
 
 def labels_from_lrm(path):
@@ -63,59 +67,51 @@ def problems_in(data, sources):
     return out
 
 
-def gaps(data, sources):
-    lines = []
-    for t in data["themes"]:
-        missing = [s["code"] for s in sources if not (t.get("cells") or {}).get(s["code"], "").strip()]
-        if missing:
-            lines.append(f"{t['name']}: no entry from {', '.join(missing)}"
-                         + (" (no source covers it)" if len(missing) == len(sources) else ""))
-    return lines
+def add_sheet(wb, data, sources):
+    from openpyxl.formatting.rule import FormulaRule
+    from openpyxl.styles import Font, PatternFill
+    from openpyxl.utils import get_column_letter as L
+
+    themes = data["themes"]
+    ns, nt = len(sources), len(themes)
+    ws = fresh_sheet(wb, SHEET)
+    last_src = 1 + ns
+    cov_col, across_col = last_src + 1, last_src + 2
+    ws.append(["Theme"] + [f"{s['code']}\n{s['label']}" for s in sources] + ["Sources covering", "Across the sources"])
+    for t in themes:
+        cells = t.get("cells") or {}
+        ws.append([t["name"]] + [(cells.get(s["code"]) or "").strip() or None for s in sources] + [None, t.get("across") or None])
+    ncols = across_col
+    style_header(ws, 1, ncols, height=34)
+    style_body(ws, 2, nt + 1, ncols)
+    for r in range(2, nt + 2):
+        ws.cell(row=r, column=1).font = Font(name=FONT, size=9, bold=True)
+        ws.cell(row=r, column=cov_col, value=f"=COUNTA({L(2)}{r}:{L(last_src)}{r})")
+    rng = f"{L(2)}2:{L(last_src)}{nt + 1}"
+    ws.conditional_formatting.add(rng, FormulaRule(formula=["ISBLANK(B2)"], fill=PatternFill("solid", bgColor=AMBER_FILL)))
+    ws.conditional_formatting.add(f"{L(cov_col)}2:{L(cov_col)}{nt + 1}",
+                                  FormulaRule(formula=[f"{L(cov_col)}2<=1"], fill=PatternFill("solid", bgColor=AMBER_FILL)))
+    note = ws.cell(row=nt + 3, column=1,
+                   value="A shaded empty cell means the source does not address the theme. "
+                         "'Sources covering' counts the filled cells; 0 or 1 is shaded as a gap.")
+    note.font = Font(name=FONT, size=9, italic=True)
+    set_widths(ws, [28] + [30] * ns + [11, 40])
+    ws.freeze_panes = "B2"
+    print_setup(ws)
+    return ws
 
 
 def build(data, sources, out):
-    pp = pdf_parts()
-    Paragraph, Spacer, Table = pp["Paragraph"], pp["Spacer"], pp["Table"]
-    cell, head, h1, body = make_styles(pp)
-    margin = 0.4 * pp["inch"]
-    frame_w = pp["landscape"](pp["A4"])[0] - 2 * margin
-    story = [Paragraph(escape(data.get("title") or "Synthesis matrix"), h1),
-             Paragraph(escape(f"{len(data['themes'])} themes, {len(sources)} sources"), body), Spacer(1, 6)]
-    for start in range(0, len(sources), PER_TABLE):
-        chunk = sources[start:start + PER_TABLE]
-        rel = [2.2] + [3.0] * len(chunk)
-        widths = [frame_w * r / sum(rel) for r in rel]
-        rows = [[Paragraph("Theme", head)] + [Paragraph(f"{escape(s['code'])}<br/>{escape(s['label'])}", head)
-                                              for s in chunk]]
-        for t in data["themes"]:
-            row = [Paragraph(f"<b>{escape(t['name'])}</b>", cell)]
-            for s in chunk:
-                txt = ((t.get("cells") or {}).get(s["code"]) or "").strip()
-                row.append(Paragraph(escape(txt) if txt else "–", cell))
-            rows.append(row)
-        tb = Table(rows, colWidths=widths, repeatRows=1, hAlign="LEFT")
-        tb.setStyle(table_style(pp))
-        story += [tb, Spacer(1, 10)]
-    across = [t for t in data["themes"] if t.get("across")]
-    if across:
-        rows = [[Paragraph("Theme", head), Paragraph("Across the sources", head)]]
-        rows += [[Paragraph(f"<b>{escape(t['name'])}</b>", cell), Paragraph(escape(t["across"]), cell)]
-                 for t in across]
-        tb = Table(rows, colWidths=[frame_w * 0.25, frame_w * 0.75], repeatRows=1, hAlign="LEFT")
-        tb.setStyle(table_style(pp))
-        story += [Paragraph("<b>Reading across the rows</b>", body), Spacer(1, 3), tb, Spacer(1, 8)]
-    g = gaps(data, sources)
-    if g:
-        story += [Paragraph("<b>Gaps</b> (a dash in the table)", body)]
-        story += [Paragraph(escape(line), body) for line in g]
-    build_doc(pp, out, story, data.get("title") or "Synthesis matrix", margin)
+    wb = open_workbook(out)
+    add_sheet(wb, data, sources)
+    save(wb, out, order=["Summary", "LRM", SHEET])
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("synthesis")
     ap.add_argument("--lrm")
-    ap.add_argument("--out")
+    ap.add_argument("--out", help="the .xlsx workbook to create or update")
     ap.add_argument("--check", action="store_true")
     a = ap.parse_args(argv)
     try:
@@ -132,7 +128,7 @@ def main(argv=None):
         print(f"OK: {len(data['themes'])} themes x {len(sources)} sources")
         return 0
     if not a.out:
-        print("Error: give --out Synthesis.pdf", file=sys.stderr)
+        print("Error: give --out Matrix.xlsx", file=sys.stderr)
         return 1
     build(data, sources, a.out)
     print(f"Wrote {a.out}")

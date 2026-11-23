@@ -1,0 +1,49 @@
+{
+  "title": "TEST FIXTURE: retraction flag",
+  "field": "Medicine",
+  "years": "1998",
+  "papers": [
+    {
+      "authors": [
+        "Wakefield, A. J.",
+        "Murch, S. H.",
+        "Anthony, A.",
+        "Linnell, J.",
+        "Casson, D. M.",
+        "Malik, M.",
+        "Berelowitz, M.",
+        "Dhillon, A. P.",
+        "Thomson, M. A.",
+        "Harvey, P.",
+        "Valentine, A.",
+        "Davies, S. E.",
+        "Walker-Smith, J. A."
+      ],
+      "year": 1998,
+      "title": "Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children",
+      "journal": "The Lancet",
+      "volume": "351",
+      "issue": "9103",
+      "pages": "637-641",
+      "doi": "10.1016/S0140-6736(97)11096-0",
+      "type": "Quantitative",
+      "access": "Unclear",
+      "quartile": "Unranked/Unavailable"
+    },
+    {
+      "authors": [
+        "Tufekci, Z."
+      ],
+      "year": 2013,
+      "title": "“Not this one”: Social movements, the attention economy, and microcelebrity networked activism",
+      "journal": "American Behavioral Scientist",
+      "volume": "57",
+      "issue": "7",
+      "pages": "848-870",
+      "doi": "10.1177/0002764213479369",
+      "type": "Qualitative",
+      "access": "Unclear",
+      "quartile": "Unranked/Unavailable"
+    }
+  ]
+}
