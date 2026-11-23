@@ -29,7 +29,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # Git tree hash of the vendored skill-creator/. Change it only when
 # deliberately re-vendoring a newer upstream copy, in its own commit.
-SKILL_CREATOR_TREE = "04461e2b49d065f657de48f1145b5ad884650926"
+SKILL_CREATOR_TREE = "f569eadb0bff083d10f2bd19a0e4eede0ec4e7dd"
 
 # Everything main may contain. Skill branches must carry these unchanged.
 TOOLKIT_FILES = {
