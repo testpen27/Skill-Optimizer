@@ -37,6 +37,11 @@ import json
 import re
 import sys
 
+import os as _os
+import sys as _sys
+
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+
 from common import (apa_authors, build_doc, clean_doi, dash, escape, make_styles, pdf_parts,
                     sort_key, table_style)
 

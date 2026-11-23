@@ -30,6 +30,11 @@ import argparse
 import json
 import sys
 
+import os as _os
+import sys as _sys
+
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+
 from build_synthesis import labels_from_lrm
 from common import build_doc, escape, make_styles, pdf_parts, table_style
 

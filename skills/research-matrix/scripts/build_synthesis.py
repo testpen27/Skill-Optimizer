@@ -25,6 +25,11 @@ import argparse
 import json
 import sys
 
+import os as _os
+import sys as _sys
+
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+
 from build_lrm import ordered
 from common import build_doc, escape, first_family, make_styles, pdf_parts, table_style
 

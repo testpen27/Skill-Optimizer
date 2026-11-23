@@ -29,6 +29,11 @@ import sys
 import urllib.error
 import urllib.request
 
+import os as _os
+import sys as _sys
+
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+
 from common import fold, read_text
 
 UA = "research-matrix/1.0 (academic quartile lookup)"
