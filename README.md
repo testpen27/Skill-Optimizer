@@ -22,8 +22,12 @@ for the rules. `scripts/check_branch.py` enforces them in CI on every push
 and at the start of every Claude Code session. Run it before pushing:
 
 ```bash
-python3 scripts/check_branch.py
+python3 scripts/check_branch.py             # this branch
+python3 scripts/check_branch.py --branches  # every branch on origin
 ```
+
+The second command shows which session branches still hold work missing
+from their `skill/<name>` branch, and which are safe to delete.
 
 ## Running
 
