@@ -10,11 +10,18 @@ The branch name picks the rules:
 - `skill/<name>`: exactly one skill, `skills/<name>/`, in the standard
   layout; toolkit files identical to main's; main fully merged in; and
   `dist/<name>.skill`, if present, matching the skill source.
-- a session-assigned `claude/*` branch carrying `skills/`: the skill rules,
-  plus a reminder that the work has to end up on `skill/<name>`.
+- a session-assigned branch (`claude/*`, `ccr-*`) carrying `skills/`: the
+  skill rules, plus a reminder that the work has to end up on `skill/<name>`.
 
 Prints ERROR and WARN lines and exits 1 if there is any ERROR. It runs in
 CI on every push and at the start of every Claude Code session.
+
+    python3 scripts/check_branch.py --branches
+
+instead reports on every branch on origin (run `git fetch origin` first):
+which session branches still hold skill work missing from its
+`skill/<name>` branch, which are fully merged and safe to delete, and which
+skill branches have not merged the latest main. Exits 0; it only informs.
 """
 
 import argparse
@@ -181,6 +188,8 @@ def check_skill(name, files, base, r):
     for f in files:
         if not (is_toolkit(f) or f.startswith(SKILL_DIRS)):
             r.error(f"outside the skill-branch layout: {f}")
+        elif f.endswith(".skill") and not f.startswith("dist/"):
+            r.error(f"packaged skill outside dist/: {f}; keep only dist/{name}.skill")
     if not any(f.startswith("evals/") for f in files):
         r.warn("no evals/ yet; add the trigger eval set")
     if not any(f.startswith("reports/") for f in files):
@@ -200,11 +209,72 @@ def check_skill(name, files, base, r):
         )
 
 
+def skills_on(ref):
+    out = git("ls-tree", "--name-only", f"{ref}:skills", check=False)
+    return out.stdout.split() if out.returncode == 0 else []
+
+
+def count(range_, path=None):
+    return int(git("rev-list", "--count", range_, *(["--", path] if path else [])).stdout.strip())
+
+
+def report_branches(quiet):
+    """Summarise every branch on origin: what needs migrating or merging."""
+    refs = git("for-each-ref", "--format=%(refname:short)", "refs/remotes/origin").stdout.split()
+    refs = [r for r in refs if r not in ("origin", "origin/HEAD")]
+    names = {r[len("origin/"):] for r in refs}
+    has_main = "main" in names
+    attention, info = [], []
+    for ref in sorted(refs):
+        b = ref[len("origin/"):]
+        if b == "main":
+            continue
+        if b.startswith("skill/"):
+            if has_main and count(f"{ref}..origin/main"):
+                attention.append(f"{b}: main not merged in; run `git merge origin/main` there")
+            else:
+                info.append(f"{b}: up to date with main")
+            continue
+        # A session branch: is everything on it already somewhere permanent?
+        homes = [f"skill/{s}" for s in skills_on(ref)] or ["main"]
+        missing = [h for h in homes if h not in names]
+        if missing:
+            attention.append(
+                f"{b}: holds work with no {', '.join(missing)} branch yet; "
+                f"move it there (ask the user first)"
+            )
+            continue
+        # Only commits touching that skill count against its branch.
+        ahead = {
+            h: count(f"origin/{h}..{ref}", f"skills/{h[len('skill/'):]}" if h != "main" else None)
+            for h in homes
+        }
+        if any(ahead.values()):
+            behind = [h for h, n in ahead.items() if n]
+            what = ", ".join(f"{ahead[h]} commit(s) on skills/ not on {h}" for h in behind)
+            attention.append(f"{b}: {what}; merge it into {' and '.join(behind)} before deleting")
+        else:
+            info.append(f"{b}: fully contained in {', '.join(homes)}; safe to delete")
+    if attention or not quiet:
+        print("Branches on origin:")
+        for line in attention:
+            print(f"  ATTENTION: {line}")
+        if not quiet:
+            for line in info:
+                print(f"  ok: {line}")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--branch", help="branch name to check as (default: current)")
     ap.add_argument("--base", help="ref for main (default: origin/main, then main)")
+    ap.add_argument("--branches", action="store_true", help="report on every branch on origin")
+    ap.add_argument("--quiet", action="store_true", help="with --branches: print only what needs attention")
     args = ap.parse_args()
+
+    if args.branches:
+        return report_branches(args.quiet)
 
     branch = args.branch or current_branch()
     files = tracked()
