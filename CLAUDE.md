@@ -15,6 +15,27 @@ every Claude Code session, through the SessionStart hook in
 every push: `python3 scripts/check_branch.py`. Fix every ERROR it reports
 before pushing.
 
+At session start the hook also runs `check_branch.py --branches --quiet`.
+That lists every ATTENTION item on origin: session branches holding skill
+work their `skill/<name>` branch lacks, and skill branches behind `main`.
+Read those lines before starting. Run it without `--quiet` for the full
+picture, including branches that are safe to delete.
+
+## Before working on a skill
+
+1. **Find what already exists.** Run `git fetch origin`, then
+   `python3 scripts/check_branch.py --branches`. If the skill has a
+   `skill/<name>` branch, that's where the work continues. If a `claude/*`
+   or `ccr-*` branch holds newer commits for it, merge that branch into
+   `skill/<name>` first (ask the user). Never start the skill over from an
+   older copy.
+2. **The repo is the source of truth, not the installed copy.** The skill
+   Claude has installed may be older than `skill/<name>`. When the two
+   disagree, ask the user which is current. Don't overwrite the branch
+   with the installed copy.
+3. **One skill per branch, always.** Don't copy another skill into a skill
+   branch, even as a reference. Link to its `skill/<name>` branch instead.
+
 ## Where skill work goes
 
 Every skill you create or optimize gets its own branch, never `main`.
@@ -28,12 +49,15 @@ Every skill you create or optimize gets its own branch, never `main`.
   - `results/`: raw run output, logs and `results.json`.
   - `reports/`: the write-up of what was tested and what changed.
   - `dist/<name>.skill`: the packaged skill, and nothing else in `dist/`.
+    No `.skill` file goes anywhere else.
   - `scripts/`: optional. Only new, skill-specific scripts go here.
 
   Nothing else goes at the top level.
 - **Keep the package current.** Whenever `skills/<name>/` changes,
   rebuild `dist/<name>.skill` with skill-creator's
-  `scripts/package_skill.py`. The checker fails on a stale package.
+  `scripts/package_skill.py`. The checker fails on a stale package. Then
+  tell the user to upload the new `dist/<name>.skill` to Claude, or Claude
+  keeps using the old version.
 - **Nothing flows back into `main`.** Don't merge skill branches into
   `main`, and don't open PRs from them into `main`.
 - **Stay current with `main`.** When `main` changes, merge it into the skill
@@ -42,17 +66,20 @@ Every skill you create or optimize gets its own branch, never `main`.
 
 ## Session-assigned branches
 
-A cloud session is often assigned a `claude/<random>` branch and may push
-only there. If the session's work is a skill:
+A cloud session is often assigned a `claude/<random>` or `ccr-<random>`
+branch and may push only there. If the session's work is a skill:
 
 1. Do the work in the skill-branch layout above on the assigned branch.
 2. When it's done, ask the user for permission to push it to
    `skill/<name>`. If `skill/<name>` already exists, merge it in first
    instead of overwriting it.
-3. Tell the user that the `claude/*` branch can be deleted. Sessions can't
+3. Tell the user that the session branch can be deleted. Sessions can't
    delete branches, so the user has to do it.
+4. **Once the user deletes a session branch, don't push to it again.** An
+   old session that keeps pushing to its deleted branch recreates it. Stray
+   work then piles up where `skill/<name>` never sees it.
 
-Don't leave finished skill work only on a `claude/*` branch.
+Don't leave finished skill work only on a session branch.
 
 ## Changing `main`
 
