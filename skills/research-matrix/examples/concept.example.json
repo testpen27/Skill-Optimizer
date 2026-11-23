@@ -1,0 +1,10 @@
+{
+  "title": "ILLUSTRATIVE EXAMPLE ONLY: concept matrix",
+  "concepts": ["Attention economy", "Activism", "Survey methods"],
+  "units": ["Individual", "Group"],
+  "papers": [
+    {"code": "P01", "concepts": {"Survey methods": ["Individual"]}},
+    {"code": "P02", "concepts": {"Attention economy": ["Group"], "Activism": ["Individual", "Group"]}},
+    {"code": "P03", "concepts": {}}
+  ]
+}

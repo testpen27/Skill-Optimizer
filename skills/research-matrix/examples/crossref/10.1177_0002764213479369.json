@@ -1,0 +1,50 @@
+{
+ "status": "ok",
+ "message-type": "work",
+ "message": {
+  "DOI": "10.1177/0002764213479369",
+  "type": "journal-article",
+  "publisher": "SAGE Publications",
+  "title": [
+   "\u201cNot This One\u201d"
+  ],
+  "subtitle": [
+   "Social Movements, the Attention Economy, and Microcelebrity Networked Activism"
+  ],
+  "container-title": [
+   "American Behavioral Scientist"
+  ],
+  "volume": "57",
+  "issue": "7",
+  "page": "848-870",
+  "author": [
+   {
+    "given": "Zeynep",
+    "family": "Tufekci",
+    "sequence": "first"
+   }
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2013,
+     7
+    ]
+   ]
+  },
+  "issued": {
+   "date-parts": [
+    [
+     2013,
+     3,
+     26
+    ]
+   ]
+  },
+  "ISSN": [
+   "0002-7642",
+   "1552-3381"
+  ],
+  "URL": "https://doi.org/10.1177/0002764213479369"
+ }
+}

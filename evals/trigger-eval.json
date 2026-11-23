@@ -1,0 +1,122 @@
+[
+  {
+    "query": "I have 12 papers on digital literacy for my thesis. Can you build a literature review matrix with intro, methodology, results and discussion columns?",
+    "should_trigger": true
+  },
+  {
+    "query": "make me an LRM from these DOIs, sorted alphabetically with the journal quartile",
+    "should_trigger": true
+  },
+  {
+    "query": "Please create a review matrix of these articles for my dissertation lit review chapter",
+    "should_trigger": true
+  },
+  {
+    "query": "Saya ada 8 jurnal untuk proposal PhD, boleh buat literature review matrix?",
+    "should_trigger": true
+  },
+  {
+    "query": "build a literature matrix for my systematic review, I need theory and methodology per paper",
+    "should_trigger": true
+  },
+  {
+    "query": "turn these PDFs into a literature review matrix and check the quartiles on scimago",
+    "should_trigger": true
+  },
+  {
+    "query": "I need a synthesis matrix for my literature review, themes down the side and my sources across the top",
+    "should_trigger": true
+  },
+  {
+    "query": "my lecturer wants a synthesis matrix of my 10 articles for chapter 2",
+    "should_trigger": true
+  },
+  {
+    "query": "create a concept matrix for my scoping review, papers versus concepts",
+    "should_trigger": true
+  },
+  {
+    "query": "can you do a Webster and Watson style concept matrix of these papers",
+    "should_trigger": true
+  },
+  {
+    "query": "classify my included studies into a matrix with author, title, method, findings and quartile",
+    "should_trigger": true
+  },
+  {
+    "query": "put the papers from my PRISMA screening into a literature review matrix",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm writing a proposal and need a table summarising each paper's aim, method, theory and findings with APA 7 citations",
+    "should_trigger": true
+  },
+  {
+    "query": "check these citations against crossref and put the papers in a lit review matrix",
+    "should_trigger": true
+  },
+  {
+    "query": "make a SWOT analysis matrix for my coffee shop",
+    "should_trigger": false
+  },
+  {
+    "query": "build a competitor comparison matrix for our SaaS product vs three rivals",
+    "should_trigger": false
+  },
+  {
+    "query": "create a risk assessment matrix for the project with likelihood and impact",
+    "should_trigger": false
+  },
+  {
+    "query": "I need an Eisenhower matrix for my to-do list",
+    "should_trigger": false
+  },
+  {
+    "query": "make a decision matrix to choose between three laptops",
+    "should_trigger": false
+  },
+  {
+    "query": "draw a BCG growth-share matrix for our product portfolio",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a confusion matrix for my classifier results",
+    "should_trigger": false
+  },
+  {
+    "query": "make a RACI matrix for the launch team",
+    "should_trigger": false
+  },
+  {
+    "query": "marketing channel comparison matrix with cost and reach",
+    "should_trigger": false
+  },
+  {
+    "query": "find me 20 papers on digital literacy and give me the Scopus search strings",
+    "should_trigger": false
+  },
+  {
+    "query": "write the literature review chapter for my thesis on digital literacy",
+    "should_trigger": false
+  },
+  {
+    "query": "download the PDFs for these 15 papers from my university library",
+    "should_trigger": false
+  },
+  {
+    "query": "build a feature comparison matrix for project management tools",
+    "should_trigger": false
+  },
+  {
+    "query": "make a pricing comparison table for cloud providers",
+    "should_trigger": false
+  },
+  {
+    "query": "summarise this single paper for me",
+    "should_trigger": false
+  },
+  {
+    "query": "design a PRISMA flow diagram from my screening counts",
+    "should_trigger": false
+  }
+]
