@@ -1,122 +1,187 @@
 [
   {
-    "query": "I have 12 papers on digital literacy for my thesis. Can you build a literature review matrix with intro, methodology, results and discussion columns?",
-    "should_trigger": true
+    "query": "I've got 14 papers for my thesis on digital literacy in rural schools. Can you put them into a literature review matrix?",
+    "should_trigger": true,
+    "part": "LRM"
   },
   {
-    "query": "make me an LRM from these DOIs, sorted alphabetically with the journal quartile",
-    "should_trigger": true
+    "query": "Here are 8 DOIs. Make me an LRM with intro, methodology, theory, results and discussion for each, in Excel.",
+    "should_trigger": true,
+    "part": "LRM"
   },
   {
-    "query": "Please create a review matrix of these articles for my dissertation lit review chapter",
-    "should_trigger": true
+    "query": "Saya tengah buat proposal PhD, boleh tolong buatkan literature review matrix untuk 10 jurnal ni?",
+    "should_trigger": true,
+    "part": "LRM"
   },
   {
-    "query": "Saya ada 8 jurnal untuk proposal PhD, boleh buat literature review matrix?",
-    "should_trigger": true
+    "query": "turn these PDFs into a review matrix sorted alphabetically with APA 7 citations and the journal quartile",
+    "should_trigger": true,
+    "part": "LRM"
   },
   {
-    "query": "build a literature matrix for my systematic review, I need theory and methodology per paper",
-    "should_trigger": true
+    "query": "Can you build a lit review matrix for my systematic review? I need each paper's theory and methodology laid out in a table.",
+    "should_trigger": true,
+    "part": "LRM"
   },
   {
-    "query": "turn these PDFs into a literature review matrix and check the quartiles on scimago",
-    "should_trigger": true
+    "query": "my supervisor wants a literature matrix of the articles I've read. Authors, title, method, findings, Q1-Q4.",
+    "should_trigger": true,
+    "part": "LRM"
   },
   {
-    "query": "I need a synthesis matrix for my literature review, themes down the side and my sources across the top",
-    "should_trigger": true
+    "query": "check these citations on crossref and then summarise each paper into a matrix row for my chapter 2",
+    "should_trigger": true,
+    "part": "LRM"
   },
   {
-    "query": "my lecturer wants a synthesis matrix of my 10 articles for chapter 2",
-    "should_trigger": true
+    "query": "I need a table where each row is a paper and the columns are introduction, method, results, discussion for my dissertation lit review",
+    "should_trigger": true,
+    "part": "LRM"
+  },
+  {
+    "query": "put the included studies from my PRISMA screening into an LRM spreadsheet",
+    "should_trigger": true,
+    "part": "LRM"
+  },
+  {
+    "query": "classify my 20 papers by journal quartile and method in a literature review matrix",
+    "should_trigger": true,
+    "part": "LRM"
+  },
+  {
+    "query": "I need a synthesis matrix for my literature review: themes down the side and my 9 sources across the top.",
+    "should_trigger": true,
+    "part": "SYNTHESIS"
+  },
+  {
+    "query": "my lecturer asked for a synthesis matrix for chapter 2, can you make one from these articles?",
+    "should_trigger": true,
+    "part": "SYNTHESIS"
+  },
+  {
+    "query": "build a synthesis matrix showing what each author says about teacher training, parental support and internet access",
+    "should_trigger": true,
+    "part": "SYNTHESIS"
+  },
+  {
+    "query": "make a synthesis matrix in Excel so I can see where the sources agree and disagree by theme",
+    "should_trigger": true,
+    "part": "SYNTHESIS"
+  },
+  {
+    "query": "Buatkan synthesis matrix untuk 6 artikel ini mengikut tema.",
+    "should_trigger": true,
+    "part": "SYNTHESIS"
   },
   {
     "query": "create a concept matrix for my scoping review, papers versus concepts",
-    "should_trigger": true
+    "should_trigger": true,
+    "part": "CONCEPT"
   },
   {
-    "query": "can you do a Webster and Watson style concept matrix of these papers",
-    "should_trigger": true
+    "query": "can you do a Webster and Watson style concept matrix of these 12 articles?",
+    "should_trigger": true,
+    "part": "CONCEPT"
   },
   {
-    "query": "classify my included studies into a matrix with author, title, method, findings and quartile",
-    "should_trigger": true
+    "query": "I want a concept matrix to see which concepts my literature has covered and where the research gaps are",
+    "should_trigger": true,
+    "part": "CONCEPT"
   },
   {
-    "query": "put the papers from my PRISMA screening into a literature review matrix",
-    "should_trigger": true
+    "query": "make a concept matrix with a unit of analysis (individual, group, organisation) for my review papers",
+    "should_trigger": true,
+    "part": "CONCEPT"
   },
   {
-    "query": "I'm writing a proposal and need a table summarising each paper's aim, method, theory and findings with APA 7 citations",
-    "should_trigger": true
-  },
-  {
-    "query": "check these citations against crossref and put the papers in a lit review matrix",
-    "should_trigger": true
+    "query": "papers on the rows, my constructs on the columns, X where a paper covers the construct. Concept matrix please",
+    "should_trigger": true,
+    "part": "CONCEPT"
   },
   {
     "query": "make a SWOT analysis matrix for my coffee shop",
-    "should_trigger": false
+    "should_trigger": false,
+    "part": "NON_ACADEMIC"
   },
   {
-    "query": "build a competitor comparison matrix for our SaaS product vs three rivals",
-    "should_trigger": false
+    "query": "build a competitor comparison matrix for our SaaS product against three rivals",
+    "should_trigger": false,
+    "part": "NON_ACADEMIC"
   },
   {
     "query": "create a risk assessment matrix for the project with likelihood and impact",
-    "should_trigger": false
+    "should_trigger": false,
+    "part": "NON_ACADEMIC"
   },
   {
     "query": "I need an Eisenhower matrix for my to-do list",
-    "should_trigger": false
+    "should_trigger": false,
+    "part": "NON_ACADEMIC"
   },
   {
     "query": "make a decision matrix to choose between three laptops",
-    "should_trigger": false
+    "should_trigger": false,
+    "part": "NON_ACADEMIC"
   },
   {
     "query": "draw a BCG growth-share matrix for our product portfolio",
-    "should_trigger": false
+    "should_trigger": false,
+    "part": "NON_ACADEMIC"
   },
   {
     "query": "generate a confusion matrix for my classifier results",
-    "should_trigger": false
+    "should_trigger": false,
+    "part": "NON_ACADEMIC"
   },
   {
-    "query": "make a RACI matrix for the launch team",
-    "should_trigger": false
+    "query": "make a RACI matrix for the product launch team",
+    "should_trigger": false,
+    "part": "NON_ACADEMIC"
   },
   {
-    "query": "marketing channel comparison matrix with cost and reach",
-    "should_trigger": false
+    "query": "build a requirements traceability matrix for our software project",
+    "should_trigger": false,
+    "part": "NON_ACADEMIC"
+  },
+  {
+    "query": "make a skills gap matrix for my team's training plan",
+    "should_trigger": false,
+    "part": "NON_ACADEMIC"
   },
   {
     "query": "find me 20 papers on digital literacy and give me the Scopus search strings",
-    "should_trigger": false
+    "should_trigger": false,
+    "part": "ADJACENT_ACADEMIC"
   },
   {
-    "query": "write the literature review chapter for my thesis on digital literacy",
-    "should_trigger": false
+    "query": "run a PRISMA systematic search for my review and make the flow diagram",
+    "should_trigger": false,
+    "part": "ADJACENT_ACADEMIC"
   },
   {
     "query": "download the PDFs for these 15 papers from my university library",
-    "should_trigger": false
+    "should_trigger": false,
+    "part": "ADJACENT_ACADEMIC"
   },
   {
-    "query": "build a feature comparison matrix for project management tools",
-    "should_trigger": false
+    "query": "write the literature review chapter for my thesis on digital literacy",
+    "should_trigger": false,
+    "part": "ADJACENT_ACADEMIC"
   },
   {
-    "query": "make a pricing comparison table for cloud providers",
-    "should_trigger": false
+    "query": "summarise this one paper for me in plain language",
+    "should_trigger": false,
+    "part": "ADJACENT_ACADEMIC"
   },
   {
-    "query": "summarise this single paper for me",
-    "should_trigger": false
+    "query": "format my reference list in APA 7",
+    "should_trigger": false,
+    "part": "ADJACENT_ACADEMIC"
   },
   {
-    "query": "design a PRISMA flow diagram from my screening counts",
-    "should_trigger": false
+    "query": "paraphrase this paragraph from my thesis so it passes the plagiarism check",
+    "should_trigger": false,
+    "part": "ADJACENT_ACADEMIC"
   }
 ]
