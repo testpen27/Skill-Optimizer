@@ -26,7 +26,9 @@ Offer it only when the user's topic spans levels.
 2. Agree the **concepts** with the user: the constructs in their title and
    research question, plus any that recur in the papers. Use the user's own
    words for them. Draft the list in chat first.
-3. Mark each paper for the concepts it actually deals with, from the paper
+3. Key each paper by its `id` or DOI as written in `lrm.json`, never by its
+   P-code (the codes renumber when the paper list changes). Mark each paper
+   for the concepts it actually deals with, from the paper
    itself (title, abstract, full text), not from the title alone. A paper that
    only mentions a concept in passing is not marked.
 4. Write `concept.json` (format at the top of `scripts/build_concept.py`), then:

@@ -16,15 +16,17 @@ concept.json:
   "concepts": ["Digital literacy", "Parental support", "Rural schools"],
   "units": ["Individual", "Group", "Organisation"],        # optional
   "papers": [
-    {"code": "P01", "label": "Abdullah (2021)", "concepts": ["Digital literacy", "Parental support"]},
-    {"code": "P02", "label": "Chen (2020)",
+    {"id": "abdullah2021", "concepts": ["Digital literacy", "Parental support"]},
+    {"id": "chen2020",
      "concepts": {"Digital literacy": ["Individual"], "Parental support": ["Group"]}}
   ]
 }
 With "units", write each paper's concepts as a map from concept to the units of
 analysis it was studied at (the second paper above); the matrix then has one
 column per concept and unit. Without "units", a plain list is enough.
---lrm lrm.json takes the codes and labels from the LRM. Needs openpyxl.
+--lrm lrm.json takes the codes and labels from the LRM. Key each paper by its "id"
+or DOI as written in lrm.json (not its P-code: codes renumber when papers change).
+Without --lrm, list each paper with its "code" and "label". Needs openpyxl.
 """
 
 import os as _os
@@ -37,7 +39,8 @@ import json
 import sys
 
 from build_synthesis import labels_from_lrm
-from common import print_setup, AMBER_FILL, FONT, fresh_sheet, open_workbook, save, set_widths, style_body, style_header
+from common import (AMBER_FILL, FONT, fresh_sheet, is_pcode, open_workbook, print_setup, protect_text,
+                    resolve_paper, save, scrub, set_widths, style_body, style_header)
 
 SHEET = "Concept matrix"
 
@@ -59,22 +62,47 @@ def problems_in(data, papers):
         out.append('the file needs a non-empty "concepts" list')
     if not papers:
         out.append('no papers: list them in "papers" or pass --lrm')
+    for label, items in (("concept", concepts), ("unit", units)):
+        low = [str(x).strip().lower() for x in items]
+        for x in {v for v in low if low.count(v) > 1}:
+            out.append(f'{label} "{x}" is listed twice')
+    for i, p in enumerate(papers, 1):
+        if not p.get("code") or p.get("label") is None:
+            out.append(f'paper {i}: each paper needs a "code" and a "label"')
+    if out:
+        return out
     known = set(concepts)
+    seen = {}
     for p in data.get("papers") or []:
+        key = p.get("code") or p.get("id") or p.get("doi")
+        code = resolve_paper(key, papers)
+        if code is None:
+            out.append(f'paper "{key}" is not in the LRM (use the paper\'s "id" or DOI); '
+                       f'its marks would be dropped and show as a false gap')
+            continue
+        if code in seen:
+            out.append(f'"{key}" and "{seen[code]}" are the same paper')
+        seen[code] = key
         c = p.get("concepts")
         c = [] if c is None else c
         if units and not isinstance(c, dict):
-            out.append(f'{p.get("code")}: with "units", "concepts" must map each concept to its units')
+            out.append(f'{key}: with "units", "concepts" must map each concept to its units')
         names = c.keys() if isinstance(c, dict) else c
         for n in names:
             if n not in known:
-                out.append(f'{p.get("code")}: concept "{n}" is not in the "concepts" list')
+                out.append(f'{key}: concept "{n}" is not in the "concepts" list')
         if isinstance(c, dict):
             for n, us in c.items():
                 for u in us or []:
                     if u not in units:
-                        out.append(f'{p.get("code")}: unit "{u}" is not in the "units" list')
+                        out.append(f'{key}: unit "{u}" is not in the "units" list')
     return out
+
+
+def pcode_warnings(data):
+    bad = sorted(p.get("code") for p in data.get("papers") or [] if is_pcode(p.get("code")))
+    return ([f"papers are keyed by position codes ({', '.join(bad[:4])}...). These renumber when papers "
+             f"change; key by the paper's id or DOI instead."] if bad else [])
 
 
 def add_sheet(wb, data, papers):
@@ -84,7 +112,8 @@ def add_sheet(wb, data, papers):
 
     concepts, units = data["concepts"], data.get("units") or []
     cols = [(c, u) for c in concepts for u in (units or [None])]
-    by_code = {p["code"]: marks(p) for p in data.get("papers") or []}
+    by_code = {resolve_paper(p.get("code") or p.get("id") or p.get("doi"), papers): marks(p)
+               for p in data.get("papers") or []}
     npap, ncol = len(papers), len(cols)
     ws = fresh_sheet(wb, SHEET)
     ws.append(["Paper"] + [c + (f"\n({u})" if u else "") for c, u in cols])
@@ -125,6 +154,8 @@ def add_sheet(wb, data, papers):
     style_body(ws, top + 1, top + len(concepts), 3)
     ws.conditional_formatting.add(f"B{top + 1}:C{top + len(concepts)}",
                                   FormulaRule(formula=[f"$B{top + 1}<=1"], fill=PatternFill("solid", bgColor=AMBER_FILL)))
+    skip = {(cnt, j) for j in range(2, ncol + 2)} | {(r, k) for r in range(top + 1, top + len(concepts) + 1) for k in (2, 3)}
+    protect_text(ws, skip=skip)
     set_widths(ws, [34] + [14] * ncol)
     print_setup(ws)
     ws.column_dimensions["C"].width = max(ws.column_dimensions["C"].width or 14, 24)
@@ -146,9 +177,9 @@ def main(argv=None):
     ap.add_argument("--check", action="store_true")
     a = ap.parse_args(argv)
     try:
-        data = json.load(open(a.concept, encoding="utf-8"))
+        data = scrub(json.load(open(a.concept, encoding="utf-8")))
         papers = labels_from_lrm(a.lrm) if a.lrm else [
-            {"code": p["code"], "label": p.get("label", "")} for p in data.get("papers") or []]
+            {"code": p.get("code"), "label": p.get("label", ""), "id": p.get("id", "")} for p in data.get("papers") or []]
     except (OSError, json.JSONDecodeError, KeyError) as e:
         print(f"Error: {e}", file=sys.stderr)
         return 1
@@ -156,6 +187,8 @@ def main(argv=None):
     if probs:
         print("Fix these before building:\n- " + "\n- ".join(probs), file=sys.stderr)
         return 1
+    for w in pcode_warnings(data):
+        print("Warning: " + w, file=sys.stderr)
     if a.check:
         print(f"OK: {len(papers)} papers x {len(data['concepts'])} concepts")
         return 0

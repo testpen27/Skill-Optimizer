@@ -1,6 +1,6 @@
 ---
 name: research-matrix
-description: Build an academic literature review matrix (LRM) from scholarly papers the user already has, with one row per paper (APA 7 authors and title, introduction, methodology, theory, results, discussion, journal quartile checked on Scimago, citation checked against Crossref, retractions flagged), sorted A-Z and delivered as an Excel workbook (.xlsx). Use for a literature review matrix, review matrix or literature matrix for a thesis, dissertation, proposal or academic review. Build a synthesis matrix (themes by sources) or a concept matrix (papers by concepts) only when the user asks for that exact matrix. Academic research only; never for SWOT, competitor, marketing, product, risk or decision matrices.
+description: Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.
 ---
 
 # research-matrix
@@ -22,6 +22,12 @@ is a different job (search strings, PRISMA, downloads); say so if asked.
 - Synthesis and concept matrices reuse the LRM's paper codes (P01, P02, ...),
   so build or load the LRM first when both are wanted. They are added as
   extra sheets to the same workbook, never as separate files.
+- Give every paper in `lrm.json` a short stable `id` (for example `tufekci2013`)
+  and key synthesis and concept content by that `id` or the DOI, **never by a
+  P-code**: the codes renumber whenever a paper is added or removed, and
+  content keyed by a code would silently move to a different paper. If the LRM
+  is rebuilt after the paper list changes, rebuild the synthesis and concept
+  sheets from their JSON too.
 - Anything that is not academic literature review work (SWOT, competitor or
   marketing comparison, risk, decision, feature or pricing matrices): say it
   is outside this skill and stop.
@@ -32,7 +38,9 @@ Say in one line what you understood. Ask only what blocks you, in one short
 message: the user's field (it picks the Scimago subject area for quartiles),
 the papers (if none are attached), and the year range if they want papers
 flagged outside it. If the user brings a template from their lecturer or
-supervisor, show it back and follow its headings where the scripts allow.
+supervisor, show it back and say how it maps: the LRM columns are fixed, so a
+template's extra columns can only become themes in a synthesis matrix, and only
+if the user asks for one.
 
 ## Rules that hold for every matrix
 

@@ -42,18 +42,24 @@ import sys as _sys
 
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 
-from common import author_string, clean_doi, dash, fold, load_json_loose, read_text
+from common import author_string, clean_doi, dash, fold, load_json_loose, read_text, strip_markup
 
 UA = "research-matrix/1.0 (academic citation check)"
 
 
 def offline_path(directory, doi):
-    stem = doi.replace("/", "_")
-    for name in (stem, stem.lower()):
-        for ext in (".json", ".md", ".txt"):
-            path = os.path.join(directory, name + ext)
-            if os.path.exists(path):
-                return path
+    """Find the saved response for a DOI. DOIs are case-insensitive, so the file
+    name is matched without regard to case."""
+    stem = fold(doi.replace("/", "_"))
+    try:
+        names = os.listdir(directory)
+    except OSError:
+        return None
+    for ext in (".json", ".md", ".txt"):
+        for name in names:
+            base, e = os.path.splitext(name)
+            if e.lower() == ext and fold(base) == stem:
+                return os.path.join(directory, name)
     return None
 
 
@@ -100,15 +106,15 @@ def crossref_authors(msg):
     out = []
     for a in msg.get("author") or []:
         if a.get("family"):
-            out.append(author_string(a["family"], a.get("given")))
+            out.append(author_string(strip_markup(a["family"]), strip_markup(a.get("given") or "")))
         elif a.get("name"):
-            out.append(a["name"])
+            out.append(strip_markup(a["name"]))
     return out
 
 
 def crossref_title(msg):
-    title = (msg.get("title") or [""])[0].strip()
-    sub = (msg.get("subtitle") or [""])[0].strip()
+    title = strip_markup((msg.get("title") or [""])[0])
+    sub = strip_markup((msg.get("subtitle") or [""])[0])
     return title, (f"{title}: {sub}" if sub else title)
 
 
@@ -138,7 +144,7 @@ def compare(paper, msg):
     mine = fold(re.sub(r"^\s*retracted\s*[:\-]?\s*", "", paper.get("title") or "", flags=re.I))
     if mine and short and mine not in {fold(short), fold(full)}:
         diffs.append(("title", paper.get("title"), full))
-    journal = (msg.get("container-title") or [""])[0]
+    journal = strip_markup((msg.get("container-title") or [""])[0])
     if journal and fold(paper.get("journal")).replace(" and ", " ") != fold(journal).replace(" and ", " "):
         diffs.append(("journal", paper.get("journal"), journal))
     for field, key in (("volume", "volume"), ("issue", "issue")):
@@ -158,7 +164,7 @@ def apply_record(paper, msg):
     new = {
         "authors": crossref_authors(msg) or None,
         "year": year,
-        "journal": (msg.get("container-title") or [None])[0],
+        "journal": strip_markup((msg.get("container-title") or [""])[0]) or None,
         "volume": msg.get("volume"),
         "issue": msg.get("issue"),
         "pages": dash(msg["page"]) if msg.get("page") else None,

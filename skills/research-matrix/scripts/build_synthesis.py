@@ -14,14 +14,16 @@ theme few sources cover reads as a gap.
 synthesis.json:
 {
   "title": "Synthesis matrix: <topic>",
-  "sources": [{"code": "P01", "label": "Abdullah (2021)"}],   # optional with --lrm
+  "sources": [{"code": "P01", "label": "Abdullah (2021)"}],   # only without --lrm
   "themes": [
-    {"name": "Theme text", "cells": {"P01": "what this source says about the theme"},
+    {"name": "Theme text", "cells": {"abdullah2021": "what this source says about the theme"},
      "across": "optional: one or two sentences on how the sources agree or differ"}
   ]
 }
 --lrm lrm.json takes the codes and "Surname (year)" labels from the LRM, so the
-matrices use the same P01, P02 ... codes. Needs openpyxl.
+matrices use the same P01, P02 ... codes. Key each cell by the paper's "id" or DOI
+as written in lrm.json, NOT by its P-code: the codes renumber whenever a paper is
+added or removed, and a cell keyed by a code would silently move to another paper. Needs openpyxl.
 """
 
 import os as _os
@@ -34,19 +36,20 @@ import json
 import sys
 
 from build_lrm import ordered
-from common import (print_setup, AMBER_FILL, FONT, first_family, fresh_sheet, open_workbook, save, set_widths,
-                    style_body, style_header, xl)
+from common import (AMBER_FILL, FONT, clean_doi, first_family, fresh_sheet, is_pcode, open_workbook, print_setup,
+                    protect_text, resolve_paper, save, scrub, set_widths, style_body, style_header, xl)
 
 SHEET = "Synthesis matrix"
 
 
 def labels_from_lrm(path):
-    data = json.load(open(path, encoding="utf-8"))
+    data = scrub(json.load(open(path, encoding="utf-8")))
     out = []
     for code, p in ordered(data):
         fam = [first_family(a) for a in p.get("authors") or []]
         who = fam[0] if len(fam) == 1 else (f"{fam[0]} & {fam[1]}" if len(fam) == 2 else f"{fam[0]} et al.")
-        out.append({"code": code, "label": f"{who} ({p.get('year') or 'n.d.'})"})
+        out.append({"code": code, "label": f"{who} ({p.get('year') or 'n.d.'}{p.get('_ysuffix', '')})",
+                    "id": p.get("id") or "", "doi": clean_doi(p.get("doi"))})
     return out
 
 
@@ -54,17 +57,38 @@ def problems_in(data, sources):
     out = []
     if not sources:
         out.append('no sources: list them in "sources" or pass --lrm')
+    for i, s in enumerate(sources, 1):
+        if not s.get("code") or not s.get("label"):
+            out.append(f'source {i}: each source needs a "code" and a "label"')
+    if out:
+        return out
     if not isinstance(data.get("themes"), list) or not data["themes"]:
         out.append('the file needs a non-empty "themes" list')
         return out
-    codes = {s["code"] for s in sources}
+    names = [str(t.get("name") or "").strip().lower() for t in data["themes"]]
+    for n in {x for x in names if x and names.count(x) > 1}:
+        out.append(f'theme "{n}" appears twice')
     for i, t in enumerate(data["themes"], 1):
         if not t.get("name"):
             out.append(f"theme {i}: no name")
-        for c in (t.get("cells") or {}):
-            if c not in codes:
-                out.append(f'theme {i}: cell for unknown source "{c}"')
+        seen = {}
+        for key in (t.get("cells") or {}):
+            code = resolve_paper(key, sources)
+            if code is None:
+                out.append(f'theme {i}: cell for "{key}", which is not a paper in the LRM '
+                           f'(use the paper\'s "id" or DOI)')
+            elif code in seen:
+                out.append(f'theme {i}: "{key}" and "{seen[code]}" are the same paper')
+            else:
+                seen[code] = key
     return out
+
+
+def pcode_warnings(data):
+    keys = {k for t in data.get("themes") or [] for k in (t.get("cells") or {})}
+    bad = sorted(k for k in keys if is_pcode(k))
+    return ([f"cells are keyed by position codes ({', '.join(bad[:4])}...). These renumber when papers "
+             f"change; key by the paper's id or DOI instead."] if bad else [])
 
 
 def add_sheet(wb, data, sources):
@@ -79,7 +103,7 @@ def add_sheet(wb, data, sources):
     cov_col, across_col = last_src + 1, last_src + 2
     ws.append(["Theme"] + [f"{s['code']}\n{s['label']}" for s in sources] + ["Sources covering", "Across the sources"])
     for t in themes:
-        cells = t.get("cells") or {}
+        cells = {resolve_paper(k, sources): v for k, v in (t.get("cells") or {}).items()}
         ws.append([t["name"]] + [(cells.get(s["code"]) or "").strip() or None for s in sources] + [None, t.get("across") or None])
     ncols = across_col
     style_header(ws, 1, ncols, height=34)
@@ -96,6 +120,7 @@ def add_sheet(wb, data, sources):
                          "'Sources covering' counts the filled cells; 0 or 1 is shaded as a gap.")
     note.font = Font(name=FONT, size=9, italic=True)
     set_widths(ws, [28] + [30] * ns + [11, 40])
+    protect_text(ws, skip={(r, cov_col) for r in range(2, nt + 2)})
     ws.freeze_panes = "B2"
     print_setup(ws)
     return ws
@@ -115,7 +140,7 @@ def main(argv=None):
     ap.add_argument("--check", action="store_true")
     a = ap.parse_args(argv)
     try:
-        data = json.load(open(a.synthesis, encoding="utf-8"))
+        data = scrub(json.load(open(a.synthesis, encoding="utf-8")))
         sources = labels_from_lrm(a.lrm) if a.lrm else data.get("sources") or []
     except (OSError, json.JSONDecodeError) as e:
         print(f"Error: {e}", file=sys.stderr)
@@ -124,6 +149,8 @@ def main(argv=None):
     if probs:
         print("Fix these before building:\n- " + "\n- ".join(probs), file=sys.stderr)
         return 1
+    for w in pcode_warnings(data):
+        print("Warning: " + w, file=sys.stderr)
     if a.check:
         print(f"OK: {len(data['themes'])} themes x {len(sources)} sources")
         return 0

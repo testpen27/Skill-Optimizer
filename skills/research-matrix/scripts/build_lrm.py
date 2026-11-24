@@ -16,7 +16,7 @@ lrm.json:
 {
   "title": "Research title", "field": "Education", "years": "2021-2026",
   "papers": [
-    {"authors": ["Tan, A. B.", "Lee, C. D."], "year": 2024,
+    {"id": "tan2024", "authors": ["Tan, A. B.", "Lee, C. D."], "year": 2024,
      "title": "Paper title in sentence case",
      "journal": "Journal of Examples", "volume": "12", "issue": "3",
      "pages": "101-118", "doi": "10.1000/xyz123", "issn": "1234-5678",
@@ -29,6 +29,10 @@ lrm.json:
   ],
   "synthesis": "A few sentences: recurring theories, dominant methods, quartile balance, gaps."
 }
+
+"id" is optional but recommended: a short stable key (the DOI is used if there is
+none). Synthesis and concept JSON refer to papers by id or DOI, never by P-code,
+because the P-codes renumber whenever a paper is added or removed.
 
 Every cell must come from something actually retrieved. Empty cells print as
 "Not retrieved"; a missing theory prints as "Not explicitly stated".
@@ -48,8 +52,8 @@ import json
 import re
 import sys
 
-from common import (print_setup, FONT, NAVY, RED, apa_authors, clean_doi, dash, fresh_sheet, open_workbook, save,
-                    set_widths, sort_key, style_body, style_header, xl)
+from common import (FONT, NAVY, RED, apa_authors, clean_doi, dash, fold, fresh_sheet, open_workbook,
+                    print_setup, protect_text, save, scrub, set_widths, sort_key, style_body, style_header, xl)
 
 # A note in brackets may itself hold one bracket pair: "Social Sciences (miscellaneous)".
 _NOTE = r"\((?:[^()]|\([^()]*\))*\)"
@@ -65,7 +69,8 @@ WIDTHS = [7, 13, 22, 42, 34, 36, 22, 36, 36, 22, 9]
 # Soft length limits (words). Over the limit is a warning, not an error: the
 # aim is cells a person can read, not a wall of text.
 WORD_LIMITS = {"introduction": 40, "methodology": 50, "theory": 25, "results": 60, "discussion": 60}
-FIRST_PERSON = re.compile(r"\b(I|my|me|we|our|us)\b")
+FIRST_PERSON = re.compile(r"\b(?:[Ww]e|[Oo]ur|[Oo]urs|[Mm]y|[Mm]e|us)\b"
+                          r"|\bI (?:found|argue|think|believe|show|suggest|propose|examine|conclude|used|did)\b")
 RETRACTED = {"retraction", "withdrawal", "removal"}
 CONCERN = {"expression_of_concern", "expression of concern"}
 AMBER_TEXT = "9C5700"
@@ -119,6 +124,9 @@ def problems_in(data):
             out.append(f"{tag}: access must be Free, Paid or Unclear")
         if p.get("crossref", "unchecked") not in CROSSREF:
             out.append(f"{tag}: crossref must be one of {sorted(CROSSREF)}")
+    ids = [fold(p.get("id") or clean_doi(p.get("doi"))) for p in data["papers"]]
+    for k in {x for x in ids if x and ids.count(x) > 1}:
+        out.append(f'two papers share the id/DOI "{k}"; give each paper its own "id"')
     return out
 
 
@@ -152,8 +160,24 @@ def warnings_in(data):
     return out
 
 
+def _title_key(p):
+    t = fold(p.get("title") or "")
+    return re.sub(r"^(a|an|the) ", "", t)
+
+
 def ordered(data):
+    """[(code, paper)] in APA 7 order. Papers with the same authors and year get
+    the a, b, c year suffix (p["_ysuffix"], in memory only)."""
     papers = sorted(data["papers"], key=sort_key)
+    groups = {}
+    for p in papers:
+        groups.setdefault((tuple(fold(a) for a in p.get("authors") or []), str(p.get("year"))), []).append(p)
+    for g in groups.values():
+        for p in g:
+            p.pop("_ysuffix", None)
+        if len(g) > 1:
+            for letter, p in zip("abcdefghijklmnopqrstuvwxyz", sorted(g, key=_title_key)):
+                p["_ysuffix"] = letter
     return [(f"P{i:02d}", p) for i, p in enumerate(papers, 1)]
 
 
@@ -163,7 +187,7 @@ def doi_url(p):
 
 
 def authors_text(p):
-    return f"{apa_authors(p.get('authors') or [])} ({p.get('year') or 'n.d.'})"
+    return f"{apa_authors(p.get('authors') or [])} ({p.get('year') or 'n.d.'}{p.get('_ysuffix', '')})"
 
 
 def title_cell(p):
@@ -219,6 +243,7 @@ def add_sheets(wb, data):
             code_cell.font = Font(name=FONT, size=9, bold=True, color="FFFFFF")
         else:
             code_cell.font = Font(name=FONT, size=9, bold=True)
+    protect_text(ws)
     set_widths(ws, WIDTHS)
     ws.freeze_panes = "D2"
     print_setup(ws)
@@ -263,6 +288,7 @@ def add_sheets(wb, data):
         c.font = Font(name=FONT, size=10)
         c.alignment = Alignment(wrap_text=True, vertical="top")
         sm.row_dimensions[row + 1].height = max(60, 15 * (len(data["synthesis"]) // 100 + 1))
+    protect_text(sm, skip={(5, 2), (7, 2), (8, 2)})  # the three count formulas
     set_widths(sm, [24, 24, 24, 44])
     print_setup(sm)
     sm.print_title_rows = None
@@ -271,6 +297,11 @@ def add_sheets(wb, data):
 
 def build(data, out):
     wb = open_workbook(out)
+    stale = [n for n in ("Synthesis matrix", "Concept matrix") if n in wb.sheetnames]
+    if stale:
+        print(f"WARNING: {', '.join(stale)} was built from the previous LRM's codes (P01, P02 ...). "
+              f"Codes renumber when papers change, so rebuild {'it' if len(stale) == 1 else 'them'} "
+              f"from the same JSON with --lrm.", file=sys.stderr)
     add_sheets(wb, data)
     save(wb, out, order=["Summary", "LRM"])
 
@@ -289,6 +320,7 @@ def main(argv=None):
     except json.JSONDecodeError as e:
         print(f"Error: {a.lrm} is not valid JSON ({e})", file=sys.stderr)
         return 1
+    data = scrub(data)  # drop control characters that PDF text brings
     probs = problems_in(data)
     if probs:
         print("Fix these before building:\n- " + "\n- ".join(probs), file=sys.stderr)

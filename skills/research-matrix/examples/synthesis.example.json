@@ -1,11 +1,23 @@
 {
   "title": "ILLUSTRATIVE EXAMPLE ONLY: synthesis matrix",
   "themes": [
-    {"name": "Attention as a resource",
-     "cells": {"P02": "Treats attention as a distinct resource that movements compete for."},
-     "across": "Illustrative: only one source addresses this theme, so it is a gap."},
-    {"name": "Survey evidence (made up)",
-     "cells": {"P01": "Placeholder survey finding.", "P03": "Placeholder review finding."}},
-    {"name": "A theme nobody covers", "cells": {}}
+    {
+      "name": "Attention as a resource",
+      "cells": {
+        "tufekci2013": "Treats attention as a distinct resource that movements compete for."
+      },
+      "across": "Illustrative: only one source addresses this theme, so it is a gap."
+    },
+    {
+      "name": "Survey evidence (made up)",
+      "cells": {
+        "abdullah2021": "Placeholder survey finding.",
+        "zulkifli2024": "Placeholder review finding."
+      }
+    },
+    {
+      "name": "A theme nobody covers",
+      "cells": {}
+    }
   ]
 }

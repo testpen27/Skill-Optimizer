@@ -13,7 +13,12 @@ from xml.sax.saxutils import escape  # noqa: F401  (re-exported)
 def initials(given):
     """'Zeynep' -> 'Z.'   'Jean-Pierre' -> 'J.-P.'   'Anna B.' -> 'A. B.'"""
     out = []
-    for word in (given or "").replace(".", ". ").split():
+    # A dot before a hyphen stays attached ("J.-P."); any other dot ends the initial.
+    for word in re.sub(r"\.(?!-)", ". ", given or "").split():
+        # Crossref often gives bare initials as one capitalised token ("AJ", "SH"): one initial per letter.
+        if word.isalpha() and word.isupper() and 2 <= len(word) <= 3:
+            out.extend(ch + "." for ch in word)
+            continue
         parts = [p for p in word.split("-") if p.strip(". ")]
         if not parts:
             continue
@@ -54,9 +59,23 @@ def first_family(author):
     return (author or "").split(",")[0].strip()
 
 
+def given_part(author):
+    return (author or "").partition(",")[2].strip()
+
+
+def year_num(paper):
+    """Year for ordering: APA 7 puts 'n.d.' works first."""
+    y = str(paper.get("year") or "").strip()
+    return int(y) if y.isdigit() else -1
+
+
 def sort_key(paper):
-    a = (paper.get("authors") or [""])[0]
-    return (fold(first_family(a)), str(paper.get("year") or ""), fold(paper.get("title") or ""))
+    """APA 7 reference-list order: first author's family name, then initials;
+    a single-author work before multi-author works with the same first author;
+    then the remaining authors, the year (n.d. first) and the title."""
+    au = paper.get("authors") or [""]
+    return (fold(first_family(au[0])), fold(given_part(au[0])), len(au) > 1,
+            fold(" ".join(au[1:])), year_num(paper), fold(paper.get("title") or ""))
 
 
 def dash(pages):
@@ -66,8 +85,67 @@ def dash(pages):
 
 def clean_doi(doi):
     d = (doi or "").strip()
-    d = re.sub(r"^(https?://(dx\.)?doi\.org/|doi:\s*)", "", d, flags=re.I)
+    d = re.sub(r"^(?:https?://)?(?:www\.|dx\.)?doi\.org/|^doi:\s*", "", d, flags=re.I)
     return d
+
+
+def resolve_paper(key, sources):
+    """Match a synthesis/concept key to a source by P-code, id or DOI. -> code or None.
+    P-codes renumber when the LRM changes, so ids and DOIs are the safe keys."""
+    k = str(key or "").strip()
+    for s in sources:
+        if k.upper() == s["code"].upper():
+            return s["code"]
+    kd = fold(clean_doi(k))
+    for s in sources:
+        for ident in (s.get("id"), s.get("doi")):
+            if ident and (k == ident or kd == fold(clean_doi(ident))):
+                return s["code"]
+    return None
+
+
+def is_pcode(key):
+    return bool(re.fullmatch(r"[Pp]\d{2,}", str(key or "").strip()))
+
+
+# --------------------------------------------- text from PDFs and the web -----
+
+_ILLEGAL = re.compile("[\x00-\x08\x0b\x0c\x0e-\x1f]")
+_TAG = re.compile(r"<[^>]+>")
+
+
+def clean_text(s):
+    """Drop control characters that PDF text brings and Excel cannot store."""
+    return _ILLEGAL.sub("", s) if isinstance(s, str) else s
+
+
+def scrub(obj):
+    """clean_text applied to every string in a loaded JSON structure."""
+    if isinstance(obj, str):
+        return clean_text(obj)
+    if isinstance(obj, list):
+        return [scrub(x) for x in obj]
+    if isinstance(obj, dict):
+        return {k: scrub(v) for k, v in obj.items()}
+    return obj
+
+
+def strip_markup(s):
+    """Crossref titles carry JATS/HTML tags and entities ('<i>Drosophila</i>', '&amp;')."""
+    import html
+    return html.unescape(_TAG.sub("", s or "")).strip()
+
+
+def protect_text(ws, skip=()):
+    """Make sure text that starts with '=' stays text. openpyxl would store it as a
+    live formula, so text pasted from a paper could run in the user's Excel.
+    `skip` holds (row, column) cells that are deliberate formulas."""
+    for row in ws.iter_rows():
+        for c in row:
+            if (c.row, c.column) in skip:
+                continue
+            if isinstance(c.value, str) and c.value.startswith("="):
+                c.data_type = "s"
 
 
 # ------------------------------------------------- saved web responses ------

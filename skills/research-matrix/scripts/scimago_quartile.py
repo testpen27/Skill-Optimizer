@@ -64,14 +64,16 @@ def parse_journal(text):
 
 def cell_text(table, year, category=None):
     """Return (cell, note). note says when the year had to be adjusted."""
+    latest = max((max(ys) for ys in table.values() if ys), default=None)
+    if latest is None:
+        return "Unranked/Unavailable", "the page holds no quartile data"
     cats = {c: ys for c, ys in table.items() if not category or fold(category) in fold(c)}
     if not cats:
         return "Unranked/Unavailable", (f"no category containing {category!r}; "
                                         f"categories are: {', '.join(sorted(table))}")
-    latest = max(max(ys) for ys in cats.values())
     use = year if isinstance(year, int) else latest
     note = None
-    if use > latest:
+    if use > latest:  # newer than anything Scimago has for this journal in any category
         note, use = f"{year} is newer than Scimago's data; used {latest}", latest
     parts = []
     for cat in sorted(cats, key=lambda c: (cats[c].get(use, "Q9"), c)):
