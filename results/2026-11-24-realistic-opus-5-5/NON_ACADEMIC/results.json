@@ -1,0 +1,193 @@
+{
+  "exit_reason": "all_passed (iteration 1)",
+  "original_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "best_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "best_score": "10/10",
+  "best_train_score": "10/10",
+  "best_test_score": null,
+  "final_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "iterations_run": 1,
+  "holdout": 0.0,
+  "train_size": 10,
+  "test_size": 0,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+      "train_passed": 10,
+      "train_failed": 0,
+      "train_total": 10,
+      "train_results": [
+        {
+          "query": "make a SWOT analysis matrix for my coffee shop",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "build a competitor comparison matrix for our SaaS product against three rivals",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "create a risk assessment matrix for the project with likelihood and impact",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I need an Eisenhower matrix for my to-do list",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "make a decision matrix to choose between three laptops",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "draw a BCG growth-share matrix for our product portfolio",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "generate a confusion matrix for my classifier results",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "make a RACI matrix for the product launch team",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "build a requirements traceability matrix for our software project",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "make a skills gap matrix for my team's training plan",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        }
+      ],
+      "test_passed": null,
+      "test_failed": null,
+      "test_total": null,
+      "test_results": null,
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "results": [
+        {
+          "query": "make a SWOT analysis matrix for my coffee shop",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "build a competitor comparison matrix for our SaaS product against three rivals",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "create a risk assessment matrix for the project with likelihood and impact",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I need an Eisenhower matrix for my to-do list",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "make a decision matrix to choose between three laptops",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "draw a BCG growth-share matrix for our product portfolio",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "generate a confusion matrix for my classifier results",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "make a RACI matrix for the product launch team",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "build a requirements traceability matrix for our software project",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "make a skills gap matrix for my team's training plan",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

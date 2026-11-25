@@ -1,0 +1,164 @@
+
+============================================================
+Iteration 1/1
+Description: Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.
+============================================================
+Train: 35/35 correct, precision=100% recall=100% accuracy=100% (447.8s)
+  [PASS] rate=0/5 expected=False: find me 20 papers on digital literacy and give me the Scopus
+  [PASS] rate=0/5 expected=False: run a PRISMA systematic search for my review and make the fl
+  [PASS] rate=0/5 expected=False: download the PDFs for these 15 papers from my university lib
+  [PASS] rate=0/5 expected=False: write the literature review chapter for my thesis on digital
+  [PASS] rate=0/5 expected=False: summarise this one paper for me in plain language
+  [PASS] rate=0/5 expected=False: format my reference list in APA 7
+  [PASS] rate=0/5 expected=False: paraphrase this paragraph from my thesis so it passes the pl
+
+All train queries passed on iteration 1!
+
+Exit reason: all_passed (iteration 1)
+Best score: 7/7 (iteration 1)
+{
+  "exit_reason": "all_passed (iteration 1)",
+  "original_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "best_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "best_score": "7/7",
+  "best_train_score": "7/7",
+  "best_test_score": null,
+  "final_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "iterations_run": 1,
+  "holdout": 0.0,
+  "train_size": 7,
+  "test_size": 0,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+      "train_passed": 7,
+      "train_failed": 0,
+      "train_total": 7,
+      "train_results": [
+        {
+          "query": "find me 20 papers on digital literacy and give me the Scopus search strings",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "run a PRISMA systematic search for my review and make the flow diagram",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "download the PDFs for these 15 papers from my university library",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "write the literature review chapter for my thesis on digital literacy",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "summarise this one paper for me in plain language",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "format my reference list in APA 7",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "paraphrase this paragraph from my thesis so it passes the plagiarism check",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        }
+      ],
+      "test_passed": null,
+      "test_failed": null,
+      "test_total": null,
+      "test_results": null,
+      "passed": 7,
+      "failed": 0,
+      "total": 7,
+      "results": [
+        {
+          "query": "find me 20 papers on digital literacy and give me the Scopus search strings",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "run a PRISMA systematic search for my review and make the flow diagram",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "download the PDFs for these 15 papers from my university library",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "write the literature review chapter for my thesis on digital literacy",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "summarise this one paper for me in plain language",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "format my reference list in APA 7",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "paraphrase this paragraph from my thesis so it passes the plagiarism check",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 5,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
+Results saved to: /tmp/claude-0/-home-user-Skill-Optimizer/32faaa39-f790-5f14-83c0-16c82a453572/scratchpad/batches/res-ADJACENT_ACADEMIC/2026-11-25_160809

@@ -1,0 +1,215 @@
+
+============================================================
+Iteration 1/1
+Description: Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.
+============================================================
+Train: 50/50 correct, precision=100% recall=100% accuracy=100% (202.8s)
+  [PASS] rate=5/5 expected=True: I've got 14 papers for my thesis on digital literacy in rura
+  [PASS] rate=5/5 expected=True: Here are 8 DOIs. Make me an LRM with intro, methodology, the
+  [PASS] rate=5/5 expected=True: Saya tengah buat proposal PhD, boleh tolong buatkan literatu
+  [PASS] rate=5/5 expected=True: turn these PDFs into a review matrix sorted alphabetically w
+  [PASS] rate=5/5 expected=True: Can you build a lit review matrix for my systematic review? 
+  [PASS] rate=5/5 expected=True: my supervisor wants a literature matrix of the articles I've
+  [PASS] rate=5/5 expected=True: check these citations on crossref and then summarise each pa
+  [PASS] rate=5/5 expected=True: I need a table where each row is a paper and the columns are
+  [PASS] rate=5/5 expected=True: put the included studies from my PRISMA screening into an LR
+  [PASS] rate=5/5 expected=True: classify my 20 papers by journal quartile and method in a li
+
+All train queries passed on iteration 1!
+
+Exit reason: all_passed (iteration 1)
+Best score: 10/10 (iteration 1)
+{
+  "exit_reason": "all_passed (iteration 1)",
+  "original_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "best_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "best_score": "10/10",
+  "best_train_score": "10/10",
+  "best_test_score": null,
+  "final_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "iterations_run": 1,
+  "holdout": 0.0,
+  "train_size": 10,
+  "test_size": 0,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+      "train_passed": 10,
+      "train_failed": 0,
+      "train_total": 10,
+      "train_results": [
+        {
+          "query": "I've got 14 papers for my thesis on digital literacy in rural schools. Can you put them into a literature review matrix?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "Here are 8 DOIs. Make me an LRM with intro, methodology, theory, results and discussion for each, in Excel.",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "Saya tengah buat proposal PhD, boleh tolong buatkan literature review matrix untuk 10 jurnal ni?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "turn these PDFs into a review matrix sorted alphabetically with APA 7 citations and the journal quartile",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "Can you build a lit review matrix for my systematic review? I need each paper's theory and methodology laid out in a table.",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "my supervisor wants a literature matrix of the articles I've read. Authors, title, method, findings, Q1-Q4.",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "check these citations on crossref and then summarise each paper into a matrix row for my chapter 2",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I need a table where each row is a paper and the columns are introduction, method, results, discussion for my dissertation lit review",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "put the included studies from my PRISMA screening into an LRM spreadsheet",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "classify my 20 papers by journal quartile and method in a literature review matrix",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        }
+      ],
+      "test_passed": null,
+      "test_failed": null,
+      "test_total": null,
+      "test_results": null,
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "results": [
+        {
+          "query": "I've got 14 papers for my thesis on digital literacy in rural schools. Can you put them into a literature review matrix?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "Here are 8 DOIs. Make me an LRM with intro, methodology, theory, results and discussion for each, in Excel.",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "Saya tengah buat proposal PhD, boleh tolong buatkan literature review matrix untuk 10 jurnal ni?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "turn these PDFs into a review matrix sorted alphabetically with APA 7 citations and the journal quartile",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "Can you build a lit review matrix for my systematic review? I need each paper's theory and methodology laid out in a table.",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "my supervisor wants a literature matrix of the articles I've read. Authors, title, method, findings, Q1-Q4.",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "check these citations on crossref and then summarise each paper into a matrix row for my chapter 2",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I need a table where each row is a paper and the columns are introduction, method, results, discussion for my dissertation lit review",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "put the included studies from my PRISMA screening into an LRM spreadsheet",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "classify my 20 papers by journal quartile and method in a literature review matrix",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
+Results saved to: /tmp/claude-0/-home-user-Skill-Optimizer/32faaa39-f790-5f14-83c0-16c82a453572/scratchpad/batches/res-LRM/2026-11-24_203225

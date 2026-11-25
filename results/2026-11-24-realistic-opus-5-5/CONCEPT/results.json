@@ -1,0 +1,113 @@
+{
+  "exit_reason": "all_passed (iteration 1)",
+  "original_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "best_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "best_score": "5/5",
+  "best_train_score": "5/5",
+  "best_test_score": null,
+  "final_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "iterations_run": 1,
+  "holdout": 0.0,
+  "train_size": 5,
+  "test_size": 0,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+      "train_passed": 5,
+      "train_failed": 0,
+      "train_total": 5,
+      "train_results": [
+        {
+          "query": "create a concept matrix for my scoping review, papers versus concepts",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "can you do a Webster and Watson style concept matrix of these 12 articles?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I want a concept matrix to see which concepts my literature has covered and where the research gaps are",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "make a concept matrix with a unit of analysis (individual, group, organisation) for my review papers",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "papers on the rows, my constructs on the columns, X where a paper covers the construct. Concept matrix please",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        }
+      ],
+      "test_passed": null,
+      "test_failed": null,
+      "test_total": null,
+      "test_results": null,
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "results": [
+        {
+          "query": "create a concept matrix for my scoping review, papers versus concepts",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "can you do a Webster and Watson style concept matrix of these 12 articles?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "I want a concept matrix to see which concepts my literature has covered and where the research gaps are",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "make a concept matrix with a unit of analysis (individual, group, organisation) for my review papers",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "papers on the rows, my constructs on the columns, X where a paper covers the construct. Concept matrix please",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

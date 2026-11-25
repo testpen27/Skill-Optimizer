@@ -1,0 +1,130 @@
+
+============================================================
+Iteration 1/1
+Description: Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.
+============================================================
+Train: 25/25 correct, precision=100% recall=100% accuracy=100% (83.1s)
+  [PASS] rate=5/5 expected=True: I need a synthesis matrix for my literature review: themes d
+  [PASS] rate=5/5 expected=True: my lecturer asked for a synthesis matrix for chapter 2, can 
+  [PASS] rate=5/5 expected=True: build a synthesis matrix showing what each author says about
+  [PASS] rate=5/5 expected=True: make a synthesis matrix in Excel so I can see where the sour
+  [PASS] rate=5/5 expected=True: Buatkan synthesis matrix untuk 6 artikel ini mengikut tema.
+
+All train queries passed on iteration 1!
+
+Exit reason: all_passed (iteration 1)
+Best score: 5/5 (iteration 1)
+{
+  "exit_reason": "all_passed (iteration 1)",
+  "original_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "best_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "best_score": "5/5",
+  "best_train_score": "5/5",
+  "best_test_score": null,
+  "final_description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+  "iterations_run": 1,
+  "holdout": 0.0,
+  "train_size": 5,
+  "test_size": 0,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Build an academic literature review matrix (LRM, review matrix, literature matrix, RRL or IMRAD table) in Excel from scholarly papers the user already has, with one row per paper and an APA 7 citation checked against Crossref (retractions flagged), introduction, methodology, theory, results, discussion and Scimago (SJR) journal quartile, sorted A-Z. Also tabulates the user's papers by quartile or method. Builds a synthesis matrix (themes by sources) or a Webster and Watson concept matrix only when the user asks for that exact matrix. Not for finding papers (search strings, PRISMA, database searches, downloads), writing the review chapter, summarising one paper or formatting references; never for SWOT, competitor, risk, decision or other non-academic matrices.",
+      "train_passed": 5,
+      "train_failed": 0,
+      "train_total": 5,
+      "train_results": [
+        {
+          "query": "I need a synthesis matrix for my literature review: themes down the side and my 9 sources across the top.",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "my lecturer asked for a synthesis matrix for chapter 2, can you make one from these articles?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "build a synthesis matrix showing what each author says about teacher training, parental support and internet access",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "make a synthesis matrix in Excel so I can see where the sources agree and disagree by theme",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "Buatkan synthesis matrix untuk 6 artikel ini mengikut tema.",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        }
+      ],
+      "test_passed": null,
+      "test_failed": null,
+      "test_total": null,
+      "test_results": null,
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "results": [
+        {
+          "query": "I need a synthesis matrix for my literature review: themes down the side and my 9 sources across the top.",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "my lecturer asked for a synthesis matrix for chapter 2, can you make one from these articles?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "build a synthesis matrix showing what each author says about teacher training, parental support and internet access",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "make a synthesis matrix in Excel so I can see where the sources agree and disagree by theme",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        },
+        {
+          "query": "Buatkan synthesis matrix untuk 6 artikel ini mengikut tema.",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 5,
+          "runs": 5,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
+Results saved to: /tmp/claude-0/-home-user-Skill-Optimizer/32faaa39-f790-5f14-83c0-16c82a453572/scratchpad/batches/res-SYNTHESIS/2026-11-24_203548
