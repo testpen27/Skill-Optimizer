@@ -62,3 +62,62 @@ Not yet done:
 
 Proposed, not built (awaiting the user's decision): gap map, quality appraisal,
 TCCM, scoping-review charting, PICO.
+
+## Test round 2026-11-24/25 (Opus 5.5)
+
+### Independent review
+An Opus 5.5 reviewer read the whole skill and reported 11 defects. Six were
+reproduced directly, the rest by the regression tests; all 11 are fixed:
+
+1. Synthesis/concept content was keyed by P-code, which renumbers when papers
+   change, so text could land on the wrong paper. Now keyed by `id` or DOI;
+   rebuilding the LRM warns that those sheets need rebuilding.
+2. Text starting with `=` became a live Excel formula. Now forced to text.
+3. PDF control characters passed `--check` and then crashed the build. Now
+   stripped on load.
+4. A concept-matrix paper missing from the LRM was dropped silently (a false
+   gap); duplicate concepts were accepted. Both now rejected.
+5. The first-person warning missed "We", "Our" and flagged "Phase I". Fixed.
+6. Crossref JATS tags and HTML entities caused permanent mismatches and were
+   copied into lrm.json by `--apply`. Now stripped.
+7. Hyphenated initials (J.-P.) were split. Fixed; bare Crossref initials
+   ("AJ") now give "A. J.".
+8. DOI prefixes such as `doi.org/` and DOI case broke offline lookups. Fixed.
+9. A-Z order ignored initials and put n.d. last; same-author same-year works
+   had no a/b suffix. Now APA 7 order with suffixes.
+10. Scimago fell back to an older year when a journal had left the user's
+    category. Now reports Unranked/Unavailable.
+11. A synthesis source without a code crashed with a traceback. Now a clear error.
+
+Also fixed while testing: the rewritten description contained ": ", which is
+invalid YAML in an unquoted value; the packager caught it.
+
+`scripts/research_matrix_tests.py`: 29/29 checks pass.
+
+### Trigger test
+Probe model claude-opus-5-5, 5 runs per query, competing skills installed
+(pre-research, xlsx, docx, pdf, deep-research). Scored with
+`scripts/score_trigger_parts.py`; raw results in `results/`.
+
+| Part | Queries | Runs correct |
+|---|---|---|
+| LRM (should trigger) | 10/10 | 50/50 (100%) |
+| Synthesis matrix (should trigger) | 5/5 | 25/25 (100%) |
+| Concept matrix (should trigger) | 5/5 | 25/25 (100%) |
+| Non-academic matrices (should not) | 10/10 | 50/50 (100%) |
+| Adjacent academic jobs (should not) | 7/7 | 35/35 (100%) |
+
+Notes:
+- Control run first: an "always use" description triggered 3/4 with no
+  competitors, so the harness works. With pre-research installed the same
+  control lost to pre-research, which also claims LRMs; the final description
+  wins all LRM runs against it.
+- Several passes aborted on the account's 5-hour usage limit; the harness
+  records nothing for an aborted pass, so the parts were run as separate
+  batches. One adjacent-job query ran past 240 s (another skill doing real
+  work); that batch was re-run with a 600 s timeout.
+- 5 runs per query rather than the README's 10, to stay inside the usage
+  limit. All 185 runs went the right way.
+- Isolated check (no competing skills, so nothing else could take the job):
+  adjacent academic jobs 7/7 queries, 35/35 runs not triggered (100%).
+  Results in `results/2026-11-25-isolated-opus-5-5/`.
