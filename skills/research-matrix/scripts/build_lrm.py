@@ -25,7 +25,9 @@ lrm.json:
      "introduction": "...", "methodology": "...", "theory": "...",
      "results": "...", "discussion": "...",
      "crossref": "verified",
-     "notices": [{"type": "correction", "date": "2004-03-06"}]}
+     "notices": [{"type": "correction", "date": "2004-03-06"}],
+     "source_basis": "full text",
+     "evidence": {"results": [{"q": "verbatim quote from the paper", "loc": "Results, p. 7"}]}}
   ],
   "synthesis": "A few sentences: recurring theories, dominant methods, quartile balance, gaps."
 }
@@ -36,6 +38,10 @@ because the P-codes renumber whenever a paper is added or removed.
 
 Every cell must come from something actually retrieved. Empty cells print as
 "Not retrieved"; a missing theory prints as "Not explicitly stated".
+"source_basis" is "full text" | "partial" | "abstract only" and "evidence" holds,
+per column, the verbatim quotes the cell was written from (checked by
+check_evidence.py; see references/reading-and-writing.md). Neither is shown in
+the LRM sheet; source_basis is listed on the Summary sheet.
 "crossref" is "verified" | "mismatch" | "unchecked" and "notices" lists
 retractions and corrections; both are written by crossref_check.py.
 --check validates the file and prints problems and style warnings without
@@ -62,6 +68,7 @@ QUARTILE_OK = re.compile(rf"^(Q[1-4](\s*{_NOTE})?(\s*/\s*Q[1-4](\s*{_NOTE})?)*"
 TYPES = {"Quantitative", "Qualitative", "Mixed-methods", "Theoretical/Review"}
 ACCESS = {"Free", "Paid", "Unclear"}
 CROSSREF = {"verified", "mismatch", "unchecked"}
+BASES = {"full text", "partial", "abstract only"}
 TEXT_FIELDS = ["introduction", "methodology", "theory", "results", "discussion"]
 COLUMNS = ["Code", "Type", "Authors", "Title", "Introduction", "Methodology", "Theory",
            "Results", "Discussion", "Quartile", "Access"]
@@ -124,6 +131,8 @@ def problems_in(data):
             out.append(f"{tag}: access must be Free, Paid or Unclear")
         if p.get("crossref", "unchecked") not in CROSSREF:
             out.append(f"{tag}: crossref must be one of {sorted(CROSSREF)}")
+        if p.get("source_basis") is not None and p["source_basis"] not in BASES:
+            out.append(f"{tag}: source_basis must be one of {sorted(BASES)}")
     ids = [fold(p.get("id") or clean_doi(p.get("doi"))) for p in data["papers"]]
     for k in {x for x in ids if x and ids.count(x) > 1}:
         out.append(f'two papers share the id/DOI "{k}"; give each paper its own "id"')
@@ -144,6 +153,8 @@ def warnings_in(data):
                 out.append(f"{tag}: {f} uses first person; write about what the authors report")
         if p.get("crossref", "unchecked") == "mismatch":
             out.append(f"{tag}: citation does not match Crossref; run crossref_check.py")
+        if any((p.get(f) or "").strip() for f in TEXT_FIELDS) and not p.get("evidence"):
+            out.append(f"{tag}: cells have no evidence quotes; run check_evidence.py before sharing")
         if (p.get("quartile") or "").startswith("Q") and not p.get("issn"):
             out.append(f"{tag}: has a quartile but no issn on record to trace it to")
         level, text = status_of(p)
@@ -263,7 +274,7 @@ def add_sheets(wb, data):
     for r, k, v in labels:
         sm.cell(row=r, column=1, value=k).font = Font(name=FONT, size=10, bold=True)
         sm.cell(row=r, column=2, value=v).font = Font(name=FONT, size=10)
-    hdr = ["Code", "Crossref check", "Quartile source", "Retraction / correction notice"]
+    hdr = ["Code", "Crossref check", "Quartile source", "Retraction / correction notice", "Read from"]
     for j, h in enumerate(hdr, 1):
         sm.cell(row=11, column=j, value=h)
     style_header(sm, 11, len(hdr))
@@ -274,6 +285,7 @@ def add_sheets(wb, data):
         sm.cell(row=i, column=2, value=p.get("crossref", "unchecked"))
         sm.cell(row=i, column=3, value="Scimago (SJR)" if q.startswith("Q") else q)
         sm.cell(row=i, column=4, value=text)
+        sm.cell(row=i, column=5, value=p.get("source_basis") or "not recorded")
     style_body(sm, first, last, len(hdr))
     for i, (code, p) in enumerate(rows, first):
         level, _ = status_of(p)
@@ -283,13 +295,13 @@ def add_sheets(wb, data):
     if data.get("synthesis"):
         row = last + 2
         sm.cell(row=row, column=1, value="Synthesis").font = Font(name=FONT, size=11, bold=True, color=NAVY)
-        sm.merge_cells(start_row=row + 1, start_column=1, end_row=row + 1, end_column=4)
+        sm.merge_cells(start_row=row + 1, start_column=1, end_row=row + 1, end_column=5)
         c = sm.cell(row=row + 1, column=1, value=data["synthesis"])
         c.font = Font(name=FONT, size=10)
         c.alignment = Alignment(wrap_text=True, vertical="top")
         sm.row_dimensions[row + 1].height = max(60, 15 * (len(data["synthesis"]) // 100 + 1))
     protect_text(sm, skip={(5, 2), (7, 2), (8, 2)})  # the three count formulas
-    set_widths(sm, [24, 24, 24, 44])
+    set_widths(sm, [24, 24, 24, 44, 16])
     print_setup(sm)
     sm.print_title_rows = None
     return rows

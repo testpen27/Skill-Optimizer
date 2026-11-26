@@ -26,7 +26,9 @@ Offer it only when the user's topic spans levels.
 2. Agree the **concepts** with the user: the constructs in their title and
    research question, plus any that recur in the papers. Use the user's own
    words for them. Draft the list in chat first.
-3. Key each paper by its `id` or DOI as written in `lrm.json`, never by its
+3. Follow `reading-and-writing.md`: every X needs one quote showing the paper
+   actually deals with the concept, and an `opus` reader verifies the marks
+   (`model-routing.md`). Key each paper by its `id` or DOI as written in `lrm.json`, never by its
    P-code (the codes renumber when the paper list changes). Mark each paper
    for the concepts it actually deals with, from the paper
    itself (title, abstract, full text), not from the title alone. A paper that

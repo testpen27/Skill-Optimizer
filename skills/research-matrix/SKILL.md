@@ -44,6 +44,14 @@ if the user asks for one.
 
 ## Rules that hold for every matrix
 
+- **Quote, then write; never complete the pattern.** Every cell is written
+  only from verbatim quotes of that paper, checked by
+  `scripts/check_evidence.py` and then by a second reader. If the paper says
+  A and B, the cell says A and B, not the C that usually comes with them.
+  Read `references/reading-and-writing.md` before reading any paper.
+- **Run each step on its planned model** (`references/model-routing.md`):
+  scripts for anything with one right answer, `haiku` to fetch, `sonnet` to
+  read, `opus` to verify and synthesise.
 - **Never invent.** A cell traces to something actually retrieved: a PDF, a
   fetched page, a real record. If it cannot be traced, write "Not retrieved",
   "Not explicitly stated" or "Unranked/Unavailable".
@@ -61,7 +69,10 @@ if the user asks for one.
 
 ## Files
 
-- `scripts/build_lrm.py`, `crossref_check.py`, `scimago_quartile.py`
+- `references/reading-and-writing.md`, `references/model-routing.md`: read
+  first for any matrix
+- `scripts/build_lrm.py`, `crossref_check.py`, `scimago_quartile.py`,
+  `check_evidence.py`
 - `scripts/build_synthesis.py`, `build_concept.py` (only on request)
 - `examples/`: illustrative inputs. The made-up rows are labelled as such;
   never copy them into a user's matrix.

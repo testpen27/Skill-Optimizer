@@ -166,6 +166,41 @@ import scimago_quartile as S  # noqa: E402
 cell, note = S.cell_text(tbl, 2020, "Arts")
 ok("scimago: category left the year -> Unavailable, not a wrong year", cell == "Unranked/Unavailable" and note and "2019" not in cell, (cell, note))
 
+# ---- evidence check: the "paper says AB, cell says ABC" cases
+pdir = f"{T}/papers"
+os.makedirs(pdir, exist_ok=True)
+open(f"{pdir}/app2022.txt", "w").write(
+    "Methods\nWe surveyed 120 teachers in one dis-\ntrict using a short questionnaire.\n"
+    "Results\nUse of the app may be associated with higher scores (r = .21, p = .04).\n")
+good = paper(["Lim, K."], 2022, "App use and scores", id="app2022", source_basis="full text",
+             methodology="A survey of 120 teachers in one district, using a short questionnaire.",
+             results="App use may be associated with higher scores (r = .21, p = .04).",
+             evidence={"methodology": [{"q": "We surveyed 120 teachers in one district using a short questionnaire", "loc": "Methods"}],
+                       "results": [{"q": "Use of the app may be associated with higher scores (r = .21, p = .04)", "loc": "Results"}]})
+rc, out = run("check_evidence.py", wj("ev_good.json", {"papers": [good]}), "--papers", pdir)
+ok("evidence: faithful cells pass (hyphenated line break matched)", rc == 0 and "WARN" not in out, out)
+abc = json.loads(json.dumps(good))
+abc["results"] = "Using the app leads to higher scores among 300 Malaysian secondary teachers (r = .21)."
+rc, out = run("check_evidence.py", wj("ev_abc.json", {"papers": [abc]}), "--papers", pdir)
+ok("evidence: added number caught", rc == 1 and "300" in out, out)
+ok("evidence: dropped hedge warned", "hedged" in out, out)
+ok("evidence: causal wording warned", "leads to" in out, out)
+fake = json.loads(json.dumps(good))
+fake["evidence"]["results"] = [{"q": "App use caused a large improvement in scores", "loc": "Results"}]
+rc, out = run("check_evidence.py", wj("ev_fake.json", {"papers": [fake]}), "--papers", pdir)
+ok("evidence: invented quote caught", rc == 1 and "quote not found" in out, out)
+noev = json.loads(json.dumps(good))
+noev["evidence"] = {"methodology": noev["evidence"]["methodology"]}
+rc, out = run("check_evidence.py", wj("ev_noev.json", {"papers": [noev]}), "--papers", pdir)
+ok("evidence: filled cell without quotes caught", rc == 1 and "no quotes" in out, out)
+nofile = json.loads(json.dumps(good)); nofile["id"] = "ghost2022"
+rc, out = run("check_evidence.py", wj("ev_nofile.json", {"papers": [nofile]}), "--papers", pdir)
+ok("evidence: missing saved text caught", rc == 1 and "no saved text" in out, out)
+rc, out = run("build_lrm.py", wj("ev_build.json", {"title": "T", "papers": [good]}), "--out", f"{T}/ev.xlsx")
+smx = openpyxl.load_workbook(f"{T}/ev.xlsx")["Summary"]
+ok("Summary shows what each row was read from", rc == 0 and smx["E11"].value == "Read from" and smx["E12"].value == "full text",
+   (rc, smx["E11"].value, smx["E12"].value))
+
 # ---- end to end + recalc
 full = EX + "/lrm.example.json"
 Xf = f"{T}/full.xlsx"

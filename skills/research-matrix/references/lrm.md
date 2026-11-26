@@ -62,15 +62,24 @@ named after the topic). Columns, left to right:
    `--journal-page`. If no category contains the user's field, the script says
    which categories exist: pick the closest only with the user's agreement, or
    list all. "Unranked/Unavailable" is a valid answer.
-5. **Read each paper** for its introduction, methodology, theory, results and
-   discussion: the full text where you have it, not only the abstract. If you
-   only have an abstract, fill what it supports and leave the rest "Not
-   retrieved" (leave the cell empty in the JSON).
-6. **Draft in chat first** as a markdown table with the same columns, so the
-   user can correct it. A table in chat is cheap to redo; a built workbook is slower to correct.
-7. **Synthesis paragraph** after the table: recurring theories, dominant
-   methods, quartile balance (flag a set that is mostly Q3/Q4), gaps the
-   user's study could fill. Write it from the rows, not from memory.
+5. **Read each paper, quotes first.** Follow `reading-and-writing.md`: save
+   the text you read to `papers/<id>.txt`, record `source_basis`, collect
+   verbatim quotes per column into `evidence`, then write each cell only from
+   its quotes. Models per step are in `model-routing.md` (readers on
+   `sonnet`, 3 papers each).
+6. **Check, then verify.**
+   ```
+   python3 scripts/check_evidence.py lrm.json --papers papers
+   ```
+   Fix every ERROR by cutting or narrowing the cell. Then a second reader
+   (`opus`) checks every sentence against its quotes and returns keep / cut /
+   narrow; apply the verdicts and rerun the script. Only then draft the table
+   in chat for the user (same columns), so they can correct it before the
+   workbook is built.
+7. **Synthesis paragraph** after the table (`opus`): recurring theories,
+   dominant methods, quartile balance (flag a set that is mostly Q3/Q4), gaps
+   the user's study could fill. Write it from the verified rows, not from
+   memory, and word it as the reviewer's synthesis, not as any paper's claim.
 8. **Build and look.**
    ```
    python3 scripts/build_lrm.py lrm.json --check
@@ -89,32 +98,19 @@ named after the topic). Columns, left to right:
 
 ## Writing the cells
 
-The reader is a student reading other people's research. The cells must be
-short enough to scan and never read like a copy of the abstract.
-
-- Say what the authors report, in your own words, in the third person. Rotate
-  the subject: the authors, the researchers, the study, the team, or lead with
-  the finding itself ("Attention is treated as...", "A survey of 312 teachers
-  found..."). Do not start every cell the same way.
-- Length: introduction up to about 40 words, methodology 50, theory 25,
-  results 60, discussion 60. Over that is a warning from `--check`.
-- **Introduction**: the problem and the aim. **Methodology**: design, sample
-  size and setting, instruments or data, analysis. **Theory**: the named
-  theory or framework as the paper states it; leave empty if there is none.
-  **Results**: the main findings with the real numbers the paper gives.
-- **Discussion**: for long discussions, give the authors' conclusion and what
-  they say it implies, condensed in your own academic words, including a
-  stated limitation if the paper makes one. This is the authors' view, not
-  your evaluation.
-- No page numbers, except a short direct quote kept in quotation marks with
-  its page, e.g. "pivotal step" (p. 112).
-- Numbers only as the paper reports them. A result that looks too clean, or a
-  quartile that does not fit the journal, gets a second look at the source.
+`reading-and-writing.md` is the authority: what each column takes, where to
+look in the paper, and the "compress, never complete" rules. In short: every
+sentence traces to a quote; nothing is added that the quotes do not state
+(no cause, scope, population, property, number or theory); hedges are kept;
+numbers are copied, never computed; thin evidence means a shorter cell.
+Style comes second: third person with a varied subject, about 40 words for
+introduction, 50 methodology, 25 theory, 60 results and discussion.
 
 ## What the workbook states about itself
 
 The `Summary` sheet says how many citations were checked against Crossref and
-which were not, lists any retraction or correction notices, and says that
+which were not, lists any retraction or correction notices, shows what each
+row was read from (full text, partial or abstract only), and says that
 quartiles are SJR quartiles for the year and subject area shown. Do not edit
 the numbers by hand; fix `lrm.json` and rebuild. The DOI is shown as text in
 the Title cell (a cell hyperlink would flatten the italic journal name).

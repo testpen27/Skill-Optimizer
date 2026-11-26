@@ -21,7 +21,9 @@ literature says about each idea).
    question or the recurring ideas in the LRM rows. Draft the list in chat and
    let them change it. If the user brings their lecturer's or supervisor's
    template, use its themes and wording.
-3. Key each cell by the paper's `id` or DOI as written in `lrm.json`, never by
+3. Follow `reading-and-writing.md`: collect that paper's quotes about the
+   theme first and write the cell only from them; an `opus` reader then
+   verifies each cell against its quotes (`model-routing.md`). Key each cell by the paper's `id` or DOI as written in `lrm.json`, never by
    its P-code (the codes renumber when the paper list changes). Fill each cell
    from what the paper actually says, paraphrased, in the
    third person, one or two short sentences. Leave a cell empty when the paper
