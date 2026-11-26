@@ -260,6 +260,46 @@ web = paper(["Wu, X."], 2024, "Web text", id="web2024", source_basis="full text"
 rc, out = run("check_evidence.py", wj("ev_web.json", {"papers": [web]}), "--papers", pdir)
 ok("evidence: markdown emphasis and escapes in the page text do not fail an honest quote", rc == 0, out)
 
+# ---- apply_overclaims: pairing reply -> coloured sentence, notes, dropped fakes
+open(f"{pdir}/pair2025.txt", "w").write(
+    "Abstract\nThe programme dramatically improved reading for all pupils.\n"
+    "Results\nFluency rose by 12 words per minute. Comprehension scores did not change. "
+    "Gains were observed only among Year 4 pupils (n = 38).\n")
+pp = paper(["Roy, T."], 2025, "Pairing test", id="pair2025", source_basis="full text",
+           results="Fluency rose by 12 words per minute. Comprehension did not change. Gains were seen only among Year 4 pupils (n = 38).",
+           evidence={"results": [{"q": "Fluency rose by 12 words per minute", "loc": "Results"}]},
+           abstract_claims=[{"q": "The programme dramatically improved reading for all pupils", "loc": "Abstract"}],
+           caveats=[{"q": "Gains were observed only among Year 4 pupils (n = 38)", "loc": "Results"}])
+fp = wj("pair_lrm.json", {"title": "T", "papers": [pp]})
+rc, out = run("check_evidence.py", fp, "--papers", pdir)
+ok("evidence: the reader's abstract_claims and caveats are checked against the text", "ERROR" not in out and rc in (0,), out)
+badcav = json.loads(json.dumps(pp)); badcav["caveats"].append({"q": "Effects vanished after six months", "loc": "Discussion"})
+rc, out = run("check_evidence.py", wj("pair_badcav.json", {"papers": [badcav]}), "--papers", pdir)
+ok("evidence: an invented caveat quote is caught", rc == 1 and "quote not found" in out, out)
+po = f"{T}/pairing_out"; os.makedirs(po, exist_ok=True)
+good = {"abstract": "The programme dramatically improved reading for all pupils", "body": "Gains were observed only among Year 4 pupils (n = 38)",
+        "body_loc": "Results", "cell_sentence_id": "results.3", "why": "only Year 4"}
+fake = {"abstract": "The programme dramatically improved reading for all pupils", "body": "Gains vanished after six months",
+        "cell_sentence_id": "results.2"}
+loose = {"abstract": "The programme dramatically improved reading for all pupils", "body": "Comprehension scores did not change",
+         "cell_sentence_id": None, "body_loc": "Results"}
+open(f"{po}/pair2025.json", "w").write("Here is my answer:\n" + json.dumps({"overclaims": [fake], "unsettled": []}) +
+    "\n\nCorrection: that entry is invalid. Corrected output:\n" +
+    json.dumps({"overclaims": [good, fake, loose], "unsettled": ["The programme dramatically improved reading for all pupils"]}))
+rc, out = run("apply_overclaims.py", fp, "--from", po, "--papers", pdir)
+dp = json.load(open(fp))["papers"][0]
+ok("apply: last JSON object used; 1 coloured, 1 noted, fake dropped, 1 unsettled",
+   rc == 0 and "1 coloured, 1 noted, 1 dropped, 1 unsettled" in out and len(dp["overclaims"]) == 1
+   and dp["overclaims"][0]["text"] == "Gains were seen only among Year 4 pupils (n = 38).", out)
+rc, out = run("build_lrm.py", fp, "--out", f"{T}/pair.xlsx")
+wbp = openpyxl.load_workbook(f"{T}/pair.xlsx", rich_text=True)
+cl = wbp["LRM"]["H2"]
+ok("apply: the placed sentence is coloured with a hover note", cl.comment is not None and "Year 4" in cl.comment.text
+   and any(getattr(getattr(b, "font", None), "color", None) is not None for b in cl.value if not isinstance(b, str)), None)
+sm_ = wbp["Summary"]
+ok("apply: noted and unsettled items appear on the Summary sheet", sm_["F11"].value is not None and "Comprehension scores did not change" in (sm_["F12"].value or "")
+   and "To check" in (sm_["F12"].value or ""), sm_["F12"].value)
+
 # ---- end to end + recalc
 full = EX + "/lrm.example.json"
 Xf = f"{T}/full.xlsx"

@@ -65,9 +65,12 @@ named after the topic). Columns, left to right:
 5. **Read each paper, quotes first.** Follow `reading-and-writing.md`: save
    the text you read to `papers/<id>.txt`, record `source_basis`, collect
    verbatim quotes per column into `evidence`, then write each cell only from
-   its quotes. Models per step are in `model-routing.md` (readers on
-   `sonnet`, 3 papers each, writing `helper_out/<id>.json`); merge them with
-   `python3 scripts/merge_papers.py lrm.json --from helper_out/`.
+   its quotes. Models per step are in `model-routing.md`: readers on `haiku`,
+   3 papers each, writing `helper_out/<id>.json` (with the exhaustive
+   `abstract_claims` and `caveats` lists); merge them with
+   `python3 scripts/merge_papers.py lrm.json --from helper_out/`. Then the
+   overclaim pairing (`overclaim-pairing.md`, `sonnet`) and
+   `apply_overclaims.py`. With one paper the chat does all of this itself.
 6. **Check, then verify.**
    ```
    python3 scripts/check_evidence.py lrm.json --papers papers

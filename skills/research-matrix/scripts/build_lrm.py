@@ -337,11 +337,14 @@ def add_sheets(wb, data):
         sm.cell(row=r, column=1, value=k).font = Font(name=FONT, size=10, bold=True)
         sm.cell(row=r, column=2, value=v).font = Font(name=FONT, size=10)
     n_over = sum(1 for _, p in rows if p.get("overclaims"))
+    n_side = sum(1 for _, p in rows if p.get("overclaims_unplaced") or p.get("overclaims_unsettled"))
     sm.cell(row=10, column=1, value="Yellow text").font = Font(name=FONT, size=10, bold=True, color=OVERCLAIM_TEXT)
     sm.cell(row=10, column=2, value=f"{n_over} paper(s): the abstract claims more than the body reports; the cell "
-                                    f"follows the body. Hover over the cell for both quotes.").font = \
+                                    f"follows the body. Hover over the cell for both quotes."
+                                    + (f" {n_side} paper(s) have further abstract-vs-body notes in the last column below." if n_side else "")).font = \
         Font(name=FONT, size=10, color=OVERCLAIM_TEXT)
-    hdr = ["Code", "Crossref check", "Quartile source", "Retraction / correction notice", "Read from"]
+    hdr = ["Code", "Crossref check", "Quartile source", "Retraction / correction notice", "Read from",
+           "Abstract vs body, not shown in the LRM"]
     for j, h in enumerate(hdr, 1):
         sm.cell(row=11, column=j, value=h)
     style_header(sm, 11, len(hdr))
@@ -353,6 +356,9 @@ def add_sheets(wb, data):
         sm.cell(row=i, column=3, value="Scimago (SJR)" if q.startswith("Q") else q)
         sm.cell(row=i, column=4, value=text)
         sm.cell(row=i, column=5, value=p.get("source_basis") or "not recorded")
+        side = [f'Abstract: "{o["abstract"]}" / Body: "{o["body"]}"' for o in p.get("overclaims_unplaced") or []]
+        side += [f'To check (no quote settles it): "{u}"' for u in p.get("overclaims_unsettled") or []]
+        sm.cell(row=i, column=6, value="\n".join(side) or None)
     style_body(sm, first, last, len(hdr))
     for i, (code, p) in enumerate(rows, first):
         level, _ = status_of(p)
@@ -362,13 +368,13 @@ def add_sheets(wb, data):
     if data.get("synthesis"):
         row = last + 2
         sm.cell(row=row, column=1, value="Synthesis").font = Font(name=FONT, size=11, bold=True, color=NAVY)
-        sm.merge_cells(start_row=row + 1, start_column=1, end_row=row + 1, end_column=5)
+        sm.merge_cells(start_row=row + 1, start_column=1, end_row=row + 1, end_column=6)
         c = sm.cell(row=row + 1, column=1, value=data["synthesis"])
         c.font = Font(name=FONT, size=10)
         c.alignment = Alignment(wrap_text=True, vertical="top")
         sm.row_dimensions[row + 1].height = max(60, 15 * (len(data["synthesis"]) // 100 + 1))
     protect_text(sm, skip={(5, 2), (7, 2), (8, 2)})  # the three count formulas
-    set_widths(sm, [24, 24, 24, 44, 16])
+    set_widths(sm, [24, 24, 24, 44, 16, 70])
     print_setup(sm)
     sm.print_title_rows = None
     return rows

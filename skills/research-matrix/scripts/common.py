@@ -108,6 +108,12 @@ def is_pcode(key):
     return bool(re.fullmatch(r"[Pp]\d{2,}", str(key or "").strip()))
 
 
+def split_sentences(text):
+    """Split a cell into sentences. Every piece is an exact substring of `text`, so a sentence
+    can be found again (and coloured) in the cell it came from."""
+    return [x.strip() for x in re.split(r"(?<=[.!?])\s+(?=[A-Z\"'\u201c(])", text or "") if x.strip()]
+
+
 # --------------------------------------------- text from PDFs and the web -----
 
 _ILLEGAL = re.compile("[\x00-\x08\x0b\x0c\x0e-\x1f]")

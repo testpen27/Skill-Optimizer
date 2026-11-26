@@ -128,6 +128,9 @@ def check(data, papers_dir):
         for f in TEXT_FIELDS:
             for item in ev.get(f) or []:
                 quotes_all.append((f, item.get("q") if isinstance(item, dict) else str(item)))
+        for kind in ("abstract_claims", "caveats"):          # the reader's exhaustive quote lists
+            for item in p.get(kind) or []:
+                quotes_all.append(("_" + kind, item.get("q") if isinstance(item, dict) else str(item)))
         over = p.get("overclaims") or []
         for oc in over:
             if oc.get("body") and oc.get("field") in TEXT_FIELDS:
@@ -139,7 +142,8 @@ def check(data, papers_dir):
         text_n = squash(text) if text else None
         all_nums = set()
         for f, q in quotes_all:
-            all_nums |= numbers(q)
+            if f != "_abstract_claims":      # body quotes (columns and caveats) back a cell's numbers; the abstract's claims never do
+                all_nums |= numbers(q)
             if text_n is not None and not quote_found(q, text_n):
                 errors.append(f"{tag} {f}: quote not found in {os.path.basename(path)}: \"{q[:90]}\"")
         for oc in over:

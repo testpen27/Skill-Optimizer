@@ -46,16 +46,22 @@ one passage. Where to look:
 Rules while reading:
 - **Absence is a finding.** If the paper does not report a sample size, a
   setting or a theory, record that it is not reported. Do not infer it.
-- **The body beats the abstract.** Read the abstract's claims against the
-  Results and Discussion. When the abstract claims more than the body reports
-  (a bigger or more general effect, causal wording for an association,
-  significance the body does not show, a finding the body does not contain)
-  or says something different, write the cell from the body and record it in
-  `overclaims`: the exact words of the cell written from the body, the
-  abstract's verbatim claim and the body's verbatim finding with its
-  location. The workbook shows those words in dark-yellow text, with a hover
-  note quoting both; the rest of the cell stays black. Mention each one in the
-  chat draft too.
+- **The body beats the abstract. Write every cell from the body, and quote
+  for the overclaim check.** Besides the column quotes, collect two more lists
+  of verbatim quotes, exhaustively, because the next step sees only these and
+  can use only what you quote:
+  - `abstract_claims`: every abstract sentence that states a finding, effect,
+    conclusion or recommendation;
+  - `caveats`: every sentence anywhere in the body that restricts or weakens a
+    claim: limitations, null or non-significant results, partial or mixed
+    effects, scope restrictions (a subgroup, a time point, "only"), "cannot",
+    "not", "although", "albeit", "however", differences from what the abstract
+    or aims say (another age range, sample size or number of sites), and
+    statements that an effect cannot be attributed to the intervention alone.
+  Do not judge overclaims yourself and leave `overclaims` out: a separate
+  pairing step (`overclaim-pairing.md`) matches each abstract claim to a body
+  quote that shows the gap, and the workbook then shows the matching sentence
+  of the cell in dark-yellow text with a hover note quoting both.
 - **Keep the paper's words for claims.** Quote "associated with", not your
   reading of it as "caused".
 - One paper at a time. Never carry a detail from one paper into another's row.

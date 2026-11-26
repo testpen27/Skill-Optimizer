@@ -2,6 +2,34 @@ Parameters: {'paper': 20000, 'instr': 6600, 'read_out': 3000, 'read_keep': 1700,
 Calibration: predicted vs measured cost of ONE paper read by ONE helper (8 real runs)
    haiku: predicted $0.0174  measured $0.0182  (-4%)
   sonnet: predicted $0.1949  measured $0.1956  (-0%)
+Calibration of pipeline D, one paper (measured: stage 1 $0.0263, stage 2 $0.0455)
+  stage 1 predicted $0.0257 | stage 2 predicted $0.0367 (start-up shared, as in the consecutive runs)
+
+=== Pipeline D (Haiku reads, Sonnet pairs overclaims, Opus verifies) vs the chat reading itself
+
+  helper start-up billed in full (cautious); 20,000-token papers
+  papers | chat reads (Sonnet) | chat reads (Opus) | chat reads (Fable) | pipeline D (chat on Sonnet)
+       1 |               0.60$ |             0.84$ |              1.24$ |                       0.59$
+       2 |               0.79$ |             1.19$ |              1.85$ |                       0.68$
+       3 |               0.99$ |             1.55$ |              2.46$ |                       0.78$
+       4 |               1.20$ |             1.93$ |              3.07$ |                       0.96$
+       6 |               1.62$ |             2.69$ |              4.34$ |                       1.15$
+       8 |               2.06$ |             3.50$ |              5.64$ |                       1.43$
+      10 |               2.52$ |             4.34$ |              6.98$ |                       1.70$
+      20 |               5.31$ |             9.42$ |             14.55$ |                       3.06$
+  first paper count where pipeline D helpers are cheaper than the chat reading itself: {'sonnet': 1, 'opus': 1, 'fable': 1}
+
+  helper start-up shared via the cache; 20,000-token papers
+  papers | chat reads (Sonnet) | chat reads (Opus) | chat reads (Fable) | pipeline D (chat on Sonnet)
+       1 |               0.33$ |             0.58$ |              0.98$ |                       0.25$
+       2 |               0.53$ |             0.93$ |              1.58$ |                       0.35$
+       3 |               0.73$ |             1.29$ |              2.19$ |                       0.44$
+       4 |               0.93$ |             1.66$ |              2.81$ |                       0.55$
+       6 |               1.35$ |             2.43$ |              4.07$ |                       0.75$
+       8 |               1.79$ |             3.23$ |              5.38$ |                       0.95$
+      10 |               2.25$ |             4.07$ |              6.71$ |                       1.16$
+      20 |               4.91$ |             9.02$ |             14.15$ |                       2.18$
+  first paper count where pipeline D helpers are cheaper than the chat reading itself: {'sonnet': 1, 'opus': 1, 'fable': 1}
 
 === helper overhead billed in full (measured claude -p, pessimistic); 20,000-token papers; Opus checks and synthesises in every plan
 papers | chat reads, Sonnet chat | chat reads, Opus chat | Sonnet helpers | Haiku helpers

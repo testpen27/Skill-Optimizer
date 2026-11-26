@@ -179,6 +179,105 @@ def reading_breakeven(session, a=A):
     return next((n for n in range(1, 61) if helpers(n, session=session, a=a) < hybrid(n, session, a)), None)
 
 
+# ---- pipeline D: Haiku reads with exhaustive quoting, Sonnet pairs overclaims from quotes only ----
+# Measured (4 papers): Haiku stage 1 output 34,500 tokens per paper (reasoning included);
+# Sonnet stage 2 costs $0.0455 per paper.
+D = dict(
+    haiku_out=34_500,        # stage 1 output tokens per paper
+    stage1_keep=5_200,       # cells + quotes + abstract claims + caveats that stay in the helper's context
+    pair_in=5_000,           # stage 2 input per paper: abstract claims + caveats + results/discussion quotes
+    pair_out=1_500,          # stage 2 output per paper (reasoning + JSON)
+    chat_extra_out=800,      # a chat reading the paper itself also checks the overclaims: a little more output
+)
+
+
+def helpers_D(n, session="sonnet", a=A, d=D, batch=3):
+    """Reading on Haiku helpers (exhaustive quoting), overclaim pairing on Sonnet helpers,
+    Opus verification and synthesis helpers. The chat on `session` only coordinates."""
+    s = Conv(session)
+    s.turn(a["instr"], 0)
+    total = 0.0
+    shared = a["shared_overhead"]
+    ovh = a["helper_overhead"]
+    done = 0
+    while done < n:                                   # stage 1: Haiku readers
+        k = min(batch, n - done)
+        h = Conv("haiku")
+        h.turn(ovh, 0, cached_new=ovh if shared else 0)
+        for _ in range(k):
+            h.turn(200, a["tool_call"])
+            h.turn(a["paper"] + a["tool_call"], d["haiku_out"], d["stage1_keep"])
+        h.turn(100, 300)
+        total += h.cost
+        s.turn(300, 250, 250); s.turn(a["status"], 0)
+        done += k
+    done = 0
+    while done < n:                                   # stage 2: Sonnet pairing from quotes only
+        k = min(batch, n - done)
+        h = Conv("sonnet")
+        h.turn(ovh + k * d["pair_in"], k * d["pair_out"], cached_new=ovh if shared else 0)
+        total += h.cost
+        s.turn(300, 250, 250); s.turn(a["status"], 0)
+        done += k
+    done = 0
+    while done < n:                                   # Opus verification (always)
+        k = min(a["verify_batch"], n - done)
+        h = Conv("opus")
+        h.turn(ovh + k * a["read_keep"], k * a["verify_out"], cached_new=ovh if shared else 0)
+        total += h.cost
+        s.turn(300, 250, 250); s.turn(a["status"], 0)
+        done += k
+    h = Conv("opus")                                  # synthesis
+    h.turn(ovh + n * a["cells_per_paper"], a["synth_out"], cached_new=ovh if shared else 0)
+    total += h.cost
+    s.turn(300, 250, 250); s.turn(800, 0)
+    for _ in range(a["close_turns"]):
+        s.turn(500, 300)
+    return total + s.cost
+
+
+def chat_reads(n, session, a=A, d=D):
+    """No reading helpers: the chat on `session` reads each paper itself (cells and the overclaim
+    check in one go); Opus verification and synthesis helpers are kept."""
+    s = Conv(session)
+    s.turn(a["instr"], 0)
+    for _ in range(n):
+        s.turn(200, a["tool_call"])
+        s.turn(a["paper"] + a["tool_call"], READ_OUT[session] + d["chat_extra_out"], a["read_keep"] + 600)
+    total = 0.0
+    shared = a["shared_overhead"]
+    ovh = a["helper_overhead"]
+    done = 0
+    while done < n:
+        k = min(a["verify_batch"], n - done)
+        h = Conv("opus")
+        h.turn(ovh + k * a["read_keep"], k * a["verify_out"], cached_new=ovh if shared else 0)
+        total += h.cost
+        s.turn(300, 250, 250); s.turn(a["status"], 0)
+        done += k
+    h = Conv("opus")
+    h.turn(ovh + n * a["cells_per_paper"], a["synth_out"], cached_new=ovh if shared else 0)
+    total += h.cost
+    s.turn(300, 250, 250); s.turn(800, 0)
+    for _ in range(a["close_turns"]):
+        s.turn(500, 300)
+    return total + s.cost
+
+
+def breakeven_D(session, a=A):
+    return next((n for n in range(1, 61) if helpers_D(n, session, a) < chat_reads(n, session, a)), None)
+
+
+def calibration_D():
+    """Pipeline D reading cost per paper, one paper at a time, vs the measured runs."""
+    a = A
+    h = Conv("haiku"); h.turn(a["helper_overhead"], 0); h.turn(200, a["tool_call"])
+    h.turn(a["paper"] + a["tool_call"], D["haiku_out"], D["stage1_keep"]); h.turn(100, 300)
+    g = Conv("sonnet"); g.turn(a["helper_overhead"] + D["pair_in"], D["pair_out"], cached_new=a["helper_overhead"])
+    print("Calibration of pipeline D, one paper (measured: stage 1 $0.0263, stage 2 $0.0455)")
+    print(f"  stage 1 predicted ${h.cost:.4f} | stage 2 predicted ${g.cost:.4f} (start-up shared, as in the consecutive runs)")
+
+
 def calibration():
     """One reader helper, one paper, compared with the measured claude -p runs."""
     a = A
@@ -201,6 +300,17 @@ def reading_breakeven(session, reader, a=A):
 def main():
     print("Parameters:", {k: v for k, v in A.items()})
     calibration()
+    calibration_D()
+    print("\n=== Pipeline D (Haiku reads, Sonnet pairs overclaims, Opus verifies) vs the chat reading itself")
+    for shared in (False, True):
+        a = {**A, "shared_overhead": shared}
+        print(f"\n  helper start-up {'shared via the cache' if shared else 'billed in full (cautious)'}; 20,000-token papers")
+        print(f"  {'papers':>6} | {'chat reads (Sonnet)':>19} | {'chat reads (Opus)':>17} | {'chat reads (Fable)':>18} | {'pipeline D (chat on Sonnet)':>27}")
+        for n in (1, 2, 3, 4, 6, 8, 10, 20):
+            print(f"  {n:>6} | {chat_reads(n, 'sonnet', a):>18.2f}$ | {chat_reads(n, 'opus', a):>16.2f}$ | {chat_reads(n, 'fable', a):>17.2f}$ | {helpers_D(n, 'sonnet', a):>26.2f}$")
+        print("  first paper count where pipeline D helpers are cheaper than the chat reading itself:",
+              {m: breakeven_D(m, a) for m in ("sonnet", "opus", "fable")})
+
     for shared in (False, True):
         a = {**A, "shared_overhead": shared}
         label = ("helper overhead billed in full (measured claude -p, pessimistic)" if not shared

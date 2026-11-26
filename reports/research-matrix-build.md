@@ -275,3 +275,47 @@ Sonnet's flags and added 3 new ones.
 Not measured: the cells of pipeline D were not re-graded claim by claim, only
 script-checked; the verification costs are single-paper runs dominated by helper
 start-up, so batches of 10 cost much less per paper; one run per setup.
+
+## Pipeline D built into the skill; when helpers pay off (2026-11-26)
+
+Approved by the user. Added: `references/overclaim-pairing.md` (the Sonnet pairing
+prompt), `scripts/apply_overclaims.py`, the exhaustive `abstract_claims` and
+`caveats` quote lists in `reading-and-writing.md`, new routing in
+`model-routing.md`, a Summary-sheet column for abstract-vs-body notes, and
+`check_evidence.py` now also verifies those two lists (body caveats back a
+cell's numbers; the abstract's claims never do). 50 of 50 tests pass.
+
+The pairing helper now also returns `cell_sentence_id`, so the workbook knows
+which sentence to colour (`split_sentences` in `common.py`). Tested on the four
+papers (`results/.../pipeline_D/stage2_v2/`, $0.049 per paper): it flagged all 5
+real overclaims the grader had found (the first version found 3 and listed the
+other 2 as unsettled), plus real extra discrepancies, and about 5 of 14 flags
+were doubtful (an abstract that already hedges). Fed through
+`apply_overclaims.py` and `build_lrm.py`: 13 flags placed, 0 dropped (every
+quote verified in the paper text), 5 unsettled claims and 1 unplaced pair on the
+Summary sheet.
+
+### When reading helpers pay off, pipeline D
+Cost model extended (`helpers_D`, `chat_reads`), calibrated: stage 1 predicted
+$0.0257 vs measured $0.0263; stage 2 predicted $0.0367 vs measured $0.0455
+(-19 percent, which flatters helpers by about $0.01 per paper, small against
+the gaps below). Chat on Sonnet, 20,000-token papers, helper start-up billed in
+full (cautious), Opus verification and synthesis in both:
+| Papers | Chat reads | Pipeline D helpers |
+|---|---|---|
+| 1 | $0.60 | $0.59 |
+| 2 | $0.79 | $0.68 |
+| 4 | $1.20 | $0.96 |
+| 8 | $2.06 | $1.43 |
+| 20 | $5.31 | $3.06 |
+A chat on Opus or Fable saves more. The break-even is 1 paper (a tie), so the
+rule is: 1 paper, the chat reads and checks overclaims itself; 2 or more,
+helpers. This supersedes the earlier "6 papers on a Sonnet chat" rule, which
+assumed Sonnet reading helpers.
+
+A chat set to Haiku reading the papers itself: $0.02 (1 paper) to $0.67 (8
+papers), cheaper than helpers up to about 9 papers, because Haiku is the
+cheapest model; its context passes 100,000 tokens at about 5 papers, where
+Haiku's price rises fivefold. Not recommended: the whole conversation and the
+instruction-following would run on Haiku (untested), and the check would not be
+independent.

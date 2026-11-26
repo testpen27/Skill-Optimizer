@@ -50,9 +50,10 @@ if the user asks for one.
   A and B, the cell says A and B, not the C that usually comes with them.
   Read `references/reading-and-writing.md` before reading any paper.
 - **Run each step on its planned model** (`references/model-routing.md`):
-  scripts for anything with one right answer, `haiku` to fetch, `sonnet` to
-  read, `opus` to verify and synthesise. Reading helpers pay off from the first paper when the
-  chat runs on Opus or Fable, from 6 papers on Sonnet, and never on Haiku. **If this session has no `Agent` tool, tell the user in one line
+  scripts for anything with one right answer, `haiku` to read, `sonnet` to pair
+  abstract claims with the body, `opus` to verify and synthesise. From 2
+  papers the reading and pairing run as helpers; with 1 paper the chat does
+  them itself. The `opus` verification always runs separately from the reader. **If this session has no `Agent` tool, tell the user in one line
   that no helpers or per-step models are available here and that every step
   runs on their chat's model**, then run the same steps in the session.
 - **Never invent.** A cell traces to something actually retrieved: a PDF, a
@@ -73,9 +74,10 @@ if the user asks for one.
 ## Files
 
 - `references/reading-and-writing.md`, `references/model-routing.md`: read
-  first for any matrix
+  first for any matrix; `references/overclaim-pairing.md` for the abstract-vs-body
+  check
 - `scripts/build_lrm.py`, `crossref_check.py`, `scimago_quartile.py`,
-  `check_evidence.py`, `merge_papers.py`
+  `check_evidence.py`, `merge_papers.py`, `apply_overclaims.py`
 - `scripts/build_synthesis.py`, `build_concept.py` (only on request)
 - `examples/`: illustrative inputs. The made-up rows are labelled as such;
   never copy them into a user's matrix.
