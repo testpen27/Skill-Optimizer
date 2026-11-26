@@ -431,3 +431,11 @@ Found and fixed:
 Two regression tests were added (both fail on the old `retrieve.py`, pass on the new): 80 checks, 0 failures.
 
 Left as is: when `robots.txt` cannot be fetched at all (timeout, DNS), the site is treated as unrestricted, which is the usual convention; 401/403 on `robots.txt` still means stay out.
+
+## LRM removed (November 2026)
+
+The owner replaced the LRM function with a separate skill, so the LRM branch was removed: `references/lrm.md`, `scripts/build_lrm.py`, the LRM and quartile instructions in `SKILL.md`, the four LRM rows in the model plan and the LRM tests. The description (now 915 characters) lists literature review matrices, synthesis matrices, RRL tables and journal quartile lookups under "Not for". Tests: 80 checks pass; three new checks replace the LRM ones (every file the instructions name exists, the LRM files are gone, no reference file is orphaned).
+
+Eval sets: in `trigger-eval-v4.json` and `trigger-holdout-v4.json` the clear LRM and quartile requests were relabelled "should not trigger" and one mixed request (find 15 Q1 papers and build an LRM) was dropped as ambiguous. Two understanding cases were rewritten: "make the literature review matrix" with no files became "run the PRISMA screening" with no export, and the "no PRISMA, 15 Q1 papers" case now asks for papers from the last five years because quartiles can no longer be honoured.
+
+Trigger run (`results/lrm-removal/`): 53 queries, 5 runs each, Sonnet 5.5, with nine of the owner's installed skills as competitors (a stricter set than earlier rounds, which used stand-ins for some). The control passed first. Result: no LRM request triggered the skill. Two queries missed by majority, and both score the same with the pre-removal description under this competitor set (`diagnostic.txt`), so they reflect the competitors, not the removal: a search-strategy-into-Word request (`docx` competes; the skill produces PDFs only) and a download-through-EZproxy request labelled "should not trigger". The understanding test was not re-run.

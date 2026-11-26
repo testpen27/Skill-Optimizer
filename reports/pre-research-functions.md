@@ -289,7 +289,8 @@ Numbers are from this repository's test files and result folders.
 - **Scripts**: 80 automated checks pass (string building and linting, OpenAlex parsing, screening and PRISMA arithmetic, safe downloading, report building, key storage).
 - **Understanding test** (12 requests, including unclear goals, ambiguous terms, conflicting years, "no PRISMA", out-of-scope asks): 71 of 77 checks before the fix, 77 of 77 after.
 - **Skill audit** (November 2026): three problems found and fixed (a `file://` link could copy a local file, a record with no authors crashed a download run, and the skill told Claude to edit its own files).
-- **When to trigger**: see section 14 for the latest run after LRM was removed.
+- **When to trigger, after LRM was removed** (53 queries, 5 runs each, Sonnet 5.5, with nine of your real installed skills competing, e.g. `docx`, `deep-research`, `firecrawl`): the 7 LRM and quartile requests (35 runs; one appears in both eval sets) never triggered the skill, while "RRL sources for my thesis", a find-papers request, still did (4 of 5), and all other requests were handled correctly by majority except two. A request to put the search strategy into a Word document fired only 2 of 5 times (the skill makes PDFs, and `docx` competes for it), and a request to download DOIs through EZproxy fired 3 of 5 times though it was labelled "should not trigger". The old description scored the same on those two (3/5 and 2/5) under these competitors, so the removal did not cause them. The description was not tuned further.
+- **Not re-run after the removal**: the understanding test (12 requests). Two of its cases were rewritten because they depended on LRM and quartiles.
 
 ---
 

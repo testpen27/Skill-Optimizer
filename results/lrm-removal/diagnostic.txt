@@ -1,0 +1,6 @@
+Old description (before LRM removal) vs new, same competitors, 5 runs each, claude-sonnet-5-5.
+Competitors: deep-research, docx, xlsx, pdf, learn, docs, ai-audit, firecrawl, notebooklm-manager (the user's real installed skills).
+
+old 3/5  new 2/5 | Can you put the search strategy for my review on e-wallet adoption into a word document? ...
+old 5/5  new 4/5 | i need RRL sources for my thesis on parental involvement and reading literacy ...
+old 2/5  new 2/5 | download this list of 20 DOIs as PDFs using my university's EZproxy login ...   (labelled should NOT trigger)
