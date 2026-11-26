@@ -57,11 +57,11 @@
  },
  {
   "query": "can you build me a synthesis matrix for my proposal on teacher burnout in rural schools? i need around 15 recent studies with method, findings and theory columns",
-  "should_trigger": true
+  "should_trigger": false
  },
  {
   "query": "which of these journals are Q1 in scimago for education: Computers & Education, Education and Information Technologies, Journal of Educational Computing Research? rank my 6 papers accordingly",
-  "should_trigger": true
+  "should_trigger": false
  },
  {
   "query": "for my scoping review on mental health apps for university students, can you find papers, keep the free ones in a folder, and make the literature table",

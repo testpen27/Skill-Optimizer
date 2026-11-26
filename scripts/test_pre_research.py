@@ -391,23 +391,17 @@ with tempfile.TemporaryDirectory() as tmp:
         check("report: states the reviewer screened", "made by the reviewer" in text and "Eligibility criteria" in text and "Other searches" in text)
         check("report: PRISMA screening numbers", "Records excluded (n = 2)" in text and "wrong outcome (n = 2)" in text and "Reports not retrieved (n = 1)" in text)
 
-# ---------------------------------------------------------------- LRM
-with tempfile.TemporaryDirectory() as tmp:
-    good = {"title": "T", "papers": [{"title": "A", "authors_year": "Tan (2024)", "quartile": "Unranked/Unavailable",
-                                      "method": "Quantitative", "access": "Free", "introduction": "aim",
-                                      "methodology": "", "results": "r", "discussion": "d"}]}
-    gp, bp = Path(tmp) / "g.json", Path(tmp) / "b.json"
-    gp.write_text(json.dumps(good))
-    bad = json.loads(json.dumps(good)); bad["papers"][0].update(quartile="Q1-ish guess", method="Survey", access="Open")
-    bp.write_text(json.dumps(bad))
-    p = subprocess.run([sys.executable, str(SCRIPTS / "build_lrm.py"), str(bp), "--check"], capture_output=True, text=True)
-    check("lrm: invalid labels refused", p.returncode == 1 and "quartile" in p.stderr and "method" in p.stderr and "access" in p.stderr)
-    out_pdf = Path(tmp) / "lrm.pdf"
-    p = subprocess.run([sys.executable, str(SCRIPTS / "build_lrm.py"), str(gp), "--out", str(out_pdf)], capture_output=True, text=True)
-    text = " ".join(subprocess.run(["pdftotext", str(out_pdf), "-"], capture_output=True, text=True).stdout.split()) if p.returncode == 0 and shutil.which("pdftotext") else ""
-    check("lrm: PDF built", p.returncode == 0, p.stderr[-200:])
-    if text:
-        check("lrm: empty cells say Not retrieved / Not explicitly stated", "Not retrieved" in text and "Not explicitly stated" in text)
+# ---------------------------------------------------------------- the skill's own files
+import re as _re
+SKILL = SCRIPTS.parent
+docs = [SKILL / "SKILL.md"] + sorted((SKILL / "references").glob("*.md"))
+missing = sorted({m for d in docs for m in _re.findall(r"(?:references|scripts|examples)/[A-Za-z0-9_.-]+\.(?:md|py|json|js)\b", d.read_text(encoding="utf-8"))
+                  if not (SKILL / m).exists()})
+check("every file the instructions mention exists", not missing, ", ".join(missing))
+check("the LRM branch is gone", not (SKILL / "references" / "lrm.md").exists() and not (SKILL / "scripts" / "build_lrm.py").exists())
+unused = sorted(f.name for f in (SKILL / "references").glob("*.md")
+                if f.name != "SKILL.md" and not any(f.name in d.read_text(encoding="utf-8") for d in docs if d != f))
+check("every reference file is pointed to by something", not unused, ", ".join(unused))
 
 rc, out, _ = run("check", 'TITLE-ABS-KEY(("AB testing" OR LA OR TI) AND xyzz*) AND PUBYEAR > 2019', "scopus")
 check("check: short terms like LA or TI are not mistaken for field codes", "None." in out, out[-150:])

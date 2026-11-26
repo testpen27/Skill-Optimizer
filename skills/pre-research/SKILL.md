@@ -1,11 +1,11 @@
 ---
 name: pre-research
-description: 'Pre-research for literature reviews, from topic to papers. Use it when someone gives a research title, topic or question and wants literature found or organised: Boolean search strings for Scopus (users may say "Opus"), Web of Science or Google Scholar; a systematic search run with hit counts; a PRISMA 2020 flow diagram, screening record or search strategy report; the papers downloaded (open access or via their library) into a folder; or a Literature Review Matrix (LRM, synthesis matrix, RRL) with IMRAD columns. Also use it whenever someone pastes a search string and asks about it (invalid query, syntax error, too long for Scholar, zero or too many results, convert to another database), or asks to classify, rank or tabulate papers they already have by journal quartile (Q1-Q4) or method. Covers field tags, AND/OR/NOT, truncation, country niches, year ranges and local-language strings. Not for writing the review, summarising one paper, citation formatting, or general Boolean, regex or SQL help.'
+description: 'Pre-research for literature reviews, from topic to papers. Use it when someone gives a research title, topic or question and wants literature found: Boolean search strings for Scopus (users may say "Opus"), Web of Science or Google Scholar; a systematic search run with hit counts; a PRISMA 2020 flow diagram, screening record or search strategy report; or the papers downloaded (open access or via their library) into a folder. Also use it whenever someone pastes a search string and asks about it (invalid query, syntax error, too long for Scholar, zero or too many results, convert to another database). Covers field tags, AND/OR/NOT, truncation, country niches, year ranges and local-language strings. Not for literature review matrices, synthesis matrices or RRL tables, journal quartile lookups or ranking, writing the review, summarising one paper, citation formatting, or general Boolean, regex or SQL help.'
 ---
 
 # pre-research
 
-Everything a researcher does before writing the review starts the same way: find the papers that matter for their topic and field. From there the request branches: some want search strings, some want a PRISMA systematic search conducted, some want the papers downloaded, some want a Literature Review Matrix (LRM). This skill does the shared start once and then runs whichever branches the user asked for, keeping everything in one project folder so the branches can feed each other.
+Everything a researcher does before writing the review starts the same way: find the papers that matter for their topic and field. From there the request branches: some want search strings, some want a PRISMA systematic search conducted, some want the papers downloaded. This skill does the shared start once and then runs whichever branches the user asked for, keeping everything in one project folder so the branches can feed each other.
 
 "Opus" almost always means Scopus. Use Scopus without correcting the user.
 
@@ -24,9 +24,9 @@ Check once, at the start, and say plainly what will not be possible.
 
 Most failures here come from doing the wrong job well: dropping a word from the title, adding a database the user excluded, running a PRISMA search when they said no PRISMA. So before any question or any work, read the message for three things:
 
-- **The job or jobs** (strings, fixing a string, PRISMA, download, LRM, quick search), and anything the user says they do **not** want.
+- **The job or jobs** (strings, fixing a string, PRISMA, download, quick search), and anything the user says they do **not** want.
 - **The topic keywords**, every concept in their title or topic, in their own words. Do not drop one, merge two, or swap in a synonym yet; synonyms come later, inside the strings.
-- **The constraints**: years, databases (and ones they excluded), document types ("no conference papers"), languages, counts ("15 papers"), quartiles ("Q1 only"), where to save.
+- **The constraints**: years, databases (and ones they excluded), document types ("no conference papers"), languages, counts ("15 papers"), where to save.
 
 Open your first reply with one line that says what you understood, in the user's language, so a misreading is caught before it costs anything: *"You want Scopus-only strings for digital literacy, Orang Asli and children, 2019 to 2025, excluding conference papers, plus a Malay string."* What the user states always overrides this skill's defaults: if they name databases, build only those (`"databases"` in the spec); if they limit document types or languages, put that in the spec (`"doctypes"`, `"languages"`) so the strings carry it.
 
@@ -38,7 +38,7 @@ Open your first reply with one line that says what you understood, in the user's
 - the topic is too broad to search ("AI", "social media"): ask for the angle;
 - two instructions conflict ("2010 to 2015, but only the last five years"): name the conflict and ask which, or offer both as separate ranges;
 - something the user refers to is not there (attached files, an export, a string);
-- part of the request is outside this skill (writing the chapter, formatting references): say what is not covered, propose what the skill can do instead, and ask only whether to go ahead with that. Leave the intake questions until they say yes, because they may not want the substitute at all.
+- part of the request is outside this skill (writing the chapter, formatting references, a literature review matrix, journal quartiles): say what is not covered, propose what the skill can do instead, and ask only whether to go ahead with that. Leave the intake questions until they say yes, because they may not want the substitute at all.
 
 Put any clarifying question first and keep the whole message to three questions or fewer; the intake below can follow once the blocker is answered. When nothing is unclear, do not ask: restate, then go to the intake or straight to work.
 
@@ -48,14 +48,14 @@ Ask only the questions the job needs, in one short message. Anything their messa
 
 The questions:
 
-- **A. Field or discipline.** The field name filters out same-word-different-discipline papers, and it picks the subject category for journal quartiles.
+- **A. Field or discipline.** The field name filters out same-word-different-discipline papers.
 - **B. Working title or research question.**
 - **C. Population or context.**
 - **D. Niche**: country, region, sector or platform, if any.
 - **E. Year range or ranges.** Several are fine (for example 2016 to 2020 and 2021 to 2026). If they have no preference, suggest the last five calendar years including the current one and say which years.
 - **F. Review type**: systematic, scoping, bibliometric, narrative, or background for a proposal.
 - **G. Databases** their university gives them: Scopus, Web of Science, or neither.
-- **H. What they want at the end**, if it is not clear: strings, a PRISMA search, the papers downloaded, an LRM, or several.
+- **H. What they want at the end**, if it is not clear: strings, a PRISMA search, the papers downloaded, or several.
 - **I. Where to save** (on their computer only): a folder they name, or Downloads.
 
 What each job needs:
@@ -66,8 +66,6 @@ What each job needs:
 | New search strings | A, B, C, D, E, and G only if they want the strings run |
 | A PRISMA search | A to G and I |
 | Papers downloaded from a list or export they already have | I |
-| An LRM of papers they already have | A, E (to flag papers outside it, not to search) and I |
-| An LRM from a new search | A to E and I |
 | Unclear | H first, on its own |
 
 When several jobs are chained, ask the union once, at the start.
@@ -78,7 +76,7 @@ Make a project folder named after the topic (for example `pre-research/ott-adopt
 
 Pick the depth from what they want, and say which you chose:
 
-- **Quick** (about 15 to 20 strong papers from open web and paper search): enough for an LRM, a proposal or background reading. Read `references/quick-search.md`.
+- **Quick** (about 15 to 20 strong papers from open web and paper search): enough for a proposal or background reading. Read `references/quick-search.md`.
 - **Systematic** (database strings run in Scopus and Web of Science, full exports, duplicates removed): needed for PRISMA, a systematic or scoping review, or when they ask for hit counts. Read `references/strings.md`, then `references/systematic-search.md`.
 
 ## 5. Branches
@@ -90,21 +88,18 @@ Run the ones the user asked for, in this order when several apply. Read each bra
 | Search strings, keywords, a concept table, or a broken string fixed | Strings | `references/strings.md` |
 | A PRISMA systematic search conducted, with screening and the flow diagram | PRISMA | `references/prisma.md` |
 | The papers' full text, free or through their library | Access and download | `references/access-download.md` |
-| A Literature Review Matrix, quartiles, or their papers classified | LRM | `references/lrm.md` |
 
-Common chains: PRISMA, then download the included papers, then an LRM of them. Quick search, then download, then LRM. When one branch finishes, offer the next one that fits instead of stopping.
+Common chains: PRISMA, then download the included papers. Quick search, then download. When one branch finishes, offer the next one that fits instead of stopping.
 
 ## 6. Deliver
 
-Every PDF goes into the project folder and is shared:
-- **Search report** (strings, hit counts, how and when each was recorded, PRISMA 2020 diagram, retrieval list): `scripts/build_report.py`, described in `references/prisma.md`. Also useful after a quick search, as a record of what was searched.
-- **LRM**: `scripts/build_lrm.py`, described in `references/lrm.md`.
+The search report goes into the project folder and is shared. It holds the strings, hit counts, how and when each was recorded, the PRISMA 2020 diagram and the retrieval list: `scripts/build_report.py`, described in `references/prisma.md`. It is also useful after a quick search, as a record of what was searched.
 
 End with what is done, what is still missing (with the list), and where the folder is.
 
 ## Rules that hold in every branch
 
-- **Never invent a number.** A hit count nobody read, a quartile nobody looked up, a result the paper did not report: leave it as "not recorded", "Unranked/Unavailable" or "Not retrieved".
+- **Never invent a number.** A hit count nobody read, a download that did not happen: leave it as "not recorded" or "Not retrieved".
 - **Screening decisions are the reviewer's.** Claude shows records and records decisions; it never decides inclusion or exclusion.
 - **Stop at bot checks.** Never get past a CAPTCHA, "unusual traffic" page or paywall.
 - **Respect publisher terms.** Free copies are downloaded automatically; paywalled ones follow `references/publisher-terms.md` (Elsevier: the user clicks). Never use Sci-Hub, LibGen, Anna's Archive or similar sites.

@@ -40,10 +40,6 @@
   "should_trigger": true
  },
  {
-  "query": "find me 15 Q1 journal papers on microfinance and women's empowerment, split them into qualitative vs quantitative and put them in a literature review matrix for my phd",
-  "should_trigger": true
- },
- {
   "query": "here's a pdf of a paper on telemedicine in rural clinics. summarise the methodology and limitations and tell me if the sample size is big enough",
   "should_trigger": false
  },
@@ -109,7 +105,7 @@
  },
  {
   "query": "I have 14 papers on telemedicine adoption already downloaded. build a literature review matrix with intro, methodology, results, discussion columns for each",
-  "should_trigger": true
+  "should_trigger": false
  },
  {
   "query": "write the methodology section of my SLR describing the PRISMA process, inclusion and exclusion criteria and quality appraisal, about 600 words",
@@ -121,7 +117,7 @@
  },
  {
   "query": "here are 10 papers i already have (titles below). classify each by journal quartile and whether it is qualitative, quantitative or mixed methods, put it in a table\n1. Smith 2023 Computers & Education ...\n2. ...",
-  "should_trigger": true
+  "should_trigger": false
  },
  {
   "query": "format these 25 references in APA 7th edition, some are missing DOIs",

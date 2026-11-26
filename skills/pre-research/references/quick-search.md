@@ -1,6 +1,6 @@
 # Quick search: 15 to 20 strong papers without database access
 
-The fast way to gather literature, used for the LRM when nobody needs a full database search. It reaches Scopus, Web of Science and Google Scholar only through open web search, so tell the user once, near the start, that it cannot confirm a paper is indexed in Scopus or Web of Science; that needs their own login and the systematic search.
+The fast way to gather literature, used when nobody needs a full database search. It reaches Scopus, Web of Science and Google Scholar only through open web search, so tell the user once, near the start, that it cannot confirm a paper is indexed in Scopus or Web of Science; that needs their own login and the systematic search.
 
 ## Keywords
 
@@ -30,5 +30,5 @@ Run the queries through helpers on `haiku`, in parallel, one per source or batch
 
 ## Write it down as you go
 
-- Save the candidates as `records.json` (format in `references/access-download.md`) in the project folder, so the download and LRM branches can use them.
+- Save the candidates as `records.json` (format in `references/access-download.md`) in the project folder, so the download branch can use them.
 - Log every query in `search_log.json` under `"runs"`: `{"database": "Google Scholar (web search)", "string": "<exact query>", "hits": <results returned>, "source": "web search", "date": "YYYY-MM-DD", "note": "phrase, Boolean, truncation used: ..."}`. Be literal: Firecrawl's semantic search gets "none" for every technique. This log becomes the search section of the report.

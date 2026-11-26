@@ -47,7 +47,7 @@
   "jobs": [],
   "should_ask": true,
   "ask_about": [
-   "string|search|prisma|matrix|lrm|download|what (do|would) you (want|need|like)|end up|which"
+   "string|search|prisma|download|what (do|would) you (want|need|like)|end up|which"
   ],
   "keywords": [
    [
@@ -114,21 +114,17 @@
  },
  {
   "id": "missing-files",
-  "prompt": "attached are 6 pdfs of my papers, make the literature review matrix please",
+  "prompt": "attached is my scopus export, run the PRISMA screening for me please",
   "jobs": [
-   "lrm"
+   "prisma"
   ],
   "should_ask": true,
   "ask_about": [
-   "attach|upload|pdf|files|can't see|cannot see|don't see|do not see|not (see|find)|share"
+   "attach|upload|export|csv|file|can't see|cannot see|don't see|do not see|not (see|find)|share"
   ],
   "keywords": [],
-  "constraints": [
-   [
-    "6"
-   ]
-  ],
-  "note": "No files actually attached: say so and ask for them"
+  "constraints": [],
+  "note": "No export actually attached: say so and ask for it"
  },
  {
   "id": "fix-string",
@@ -184,7 +180,7 @@
  },
  {
   "id": "negation",
-  "prompt": "I don't want a PRISMA, just find me 15 recent Q1 papers on telework and burnout among nurses and put them in a table",
+  "prompt": "I don't want a PRISMA, just find me 15 papers from the last five years on telework and burnout among nurses and put them in a table",
   "jobs": [
    "quick-search"
   ],
@@ -207,7 +203,11 @@
     "15"
    ],
    [
-    "q1"
+    "five years",
+    "5 years",
+    "last 5",
+    "2021",
+    "2022"
    ]
   ],
   "must_not_plan": [
@@ -215,7 +215,7 @@
    "prisma diagram",
    "screening"
   ],
-  "note": "Must respect 'no PRISMA'; keep Q1 and 15 (a plain table or an LRM are both fair readings of 'a table')",
+  "note": "Must respect 'no PRISMA'; keep 15 and the five-year limit",
   "must_not_ask": "prisma|systematic review|screen",
   "must_not_plan_jobs": [
    "prisma"
@@ -304,7 +304,7 @@
   ],
   "should_ask": true,
   "ask_about": [
-   "writ|chapter|matrix|lrm|instead|go ahead|can('|no)t|not (write|cover)"
+   "writ|chapter|instead|go ahead|can('|no)t|not (write|cover)"
   ],
   "keywords": [
    [
