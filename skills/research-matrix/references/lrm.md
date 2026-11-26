@@ -76,14 +76,21 @@ record. Do not add one.
    `abstract_claims` and `caveats` lists and the `limitations` quotes); merge them with
    `python3 scripts/merge_papers.py lrm.json --from helper_out/`. Then the
    overclaim pairing (`overclaim-pairing.md`, `sonnet`) and
-   `apply_overclaims.py`. With one paper, or abstracts only, the chat does all of this itself.
+   `apply_overclaims.py`. Build the pairing helper's inputs with
+   `python3 scripts/prepare_helper_inputs.py lrm.json --kind pairing --out pairing_in/`
+   (the chat never types them). `merge_papers.py` updates only the reading fields,
+   so the Crossref-checked citation and the quartile survive. With one paper, or abstracts only, the chat does all of this itself.
 6. **Check, then verify.**
    ```
    python3 scripts/check_evidence.py lrm.json --papers papers
    ```
    Fix every ERROR by cutting or narrowing the cell. Then a second reader
    (`opus`, `verifier-prompt.md`: it checks every sentence against its quotes,
-   then tries to break its own keeps) returns keep / cut / narrow; apply the verdicts and rerun the script. Only then draft the table
+   then tries to break its own keeps) returns keep / cut / narrow; build the verifier's inputs with
+   `prepare_helper_inputs.py --kind verify`, apply the verdicts with
+   `python3 scripts/apply_verdicts.py lrm.json --from verify_out/ --narrow trim`
+   (cuts remove the sentence; a narrow removes only the words the verifier named,
+   and lists each trimmed sentence to reread) and rerun the script. Only then draft the table
    in chat for the user (same columns), so they can correct it before the
    workbook is built.
 7. **Synthesis paragraph** after the table (`opus`): recurring theories,
@@ -91,7 +98,8 @@ record. Do not add one.
    from the verified rows, not from memory, and word it as the reviewer's
    synthesis, not as any paper's claim. Gaps are not in this paragraph.
    **Gap list** (`gap-list.md`): a `sonnet` helper writes 3 to 8 gaps from the
-   verified limitation and methodology cells (never the papers), a separate
+   verified limitation and methodology cells (never the papers; inputs from
+   `prepare_helper_inputs.py --kind gaps`), a separate
    `opus` helper keeps, narrows or cuts each, and `apply_gaps.py` writes them
    into `lrm.json`. The `Summary` sheet shows them as the reviewer's reading
    of this set of papers.

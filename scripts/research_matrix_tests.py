@@ -338,6 +338,7 @@ rc, out = run("build_lrm.py", wj("gap_ok.json", gp), "--out", f"{T}/gap_ok.xlsx"
 wg = openpyxl.load_workbook(f"{T}/gap_ok.xlsx")["Summary"]
 cells = {c.value: c for row in wg.iter_rows() for c in row if isinstance(c.value, str)}
 rows_g = [r for r in wg.iter_rows(values_only=True) if r[0] in ("Stated by authors", "Across papers")]
+ok("gap list: ids in the gap text are shown as short citations", rows_g[0][1].startswith("Among these 2 papers, the authors of Adams (2020)") and "lim1" not in rows_g[0][1], rows_g[0][1])
 ok("gap list: appears on the Summary sheet with P-codes and a live count formula",
    rc == 0 and len(rows_g) == 2 and rows_g[0][3] == "P01" and rows_g[1][3] == "P01, P02" and "Research gaps" in cells
    and str(rows_g[1][4]).startswith("=IF("), rows_g)

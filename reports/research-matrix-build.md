@@ -452,3 +452,71 @@ required, a warning for wording that claims something about the whole field).
   cell's "F(1, 204)" can be flagged when the quote is the table's "1,204". Loosening
   it would let a real error through ("1,204 pupils" written as "204"), so the
   false alarm stays and the fix is to re-quote.
+
+
+## Full pipeline run: 12 papers, 3 matrices, real helpers (2026-11-26)
+
+`results/` holds the prompts and scripts; the working files (papers, helper
+outputs, workbooks) were kept in the session scratchpad. Three matrices of 4
+papers each (run 1: the four earlier papers; run 2: four quantitative papers;
+run 3: two mixed-methods and two qualitative papers; eight new open-access
+full texts), built by following the skill: helpers launched through the
+`Agent` tool with the model set per the routing table (Haiku fetching and
+reading, Sonnet pairing and gap writing, Opus verification, gap checking and
+synthesis), scripts for everything else.
+
+**Steps that worked as designed**
+- Crossref check: 12 of 12 verified. Planted citation errors (a wrong year, a
+  misspelt author, a wrong journal) were all repaired from Crossref.
+- Haiku readers: 12 of 12 files written, valid JSON. First pass, the script found
+  5 number errors in 4 papers (run 3 was clean). In all 5 the cell was true and
+  the number was in the paper; the reader had not quoted it.
+- Pairing (Sonnet): 12 of 12 replies usable; 50 abstract claims; 9 flags
+  coloured, 4 noted; Opus then kept 6 and cut 3 of the 9 recorded flags.
+- Opus verification: 20 of 20 planted errors flagged (9 added details, 8 changed
+  numbers, 3 dropped hedges); 30 of 157 untouched sentences flagged (19 percent,
+  mostly quote-coverage gaps).
+- After `apply_verdicts.py --narrow trim`, the script, and nothing else: 19 of 20
+  planted errors gone from the final cells (the survivor: the verifier flagged the
+  sentence but named different words than the planted one); 167 of 177 sentences
+  kept (the earlier "drop the whole sentence" approach would have lost 17 percent).
+- Workbooks: 3 built, 0 formula errors after LibreOffice recalculation, rendered
+  and looked at.
+
+**Defects the run exposed, fixed**
+- `merge_papers.py` replaced a whole paper by id, which deleted the Crossref-checked
+  authors, year, title, quartile and status the moment the reading output was
+  merged. Now it updates reading fields only.
+- Both helper inputs were typed by hand in the skill; new `prepare_helper_inputs.py`
+  builds them; new `apply_verdicts.py` applies the verifier's verdicts (cut, trim,
+  or drop). A first version of its trim mode silently wrote nothing when the
+  sentence count was unchanged; found by the run, fixed, tested.
+- Fixing a "number not in the quotes" error by cutting the sentence removed true
+  content, including a whole sample-size sentence. The doc now says to add the
+  missing verbatim quote when the paper states it.
+- The Summary gap table showed raw ids ("jian2025"); it now shows short citations.
+
+**Problems that are not fixed, for the user's decision**
+- Quartiles: for 7 of 12 papers the result is "Unranked/Unavailable": six
+  journals (PLOS Digital Health, Frontiers in Psychology, IJERPH, PLOS ONE,
+  Sustainability) have no Scimago category containing "Education", and one
+  journal's page (Education and Information Technologies) was not fetched. The
+  skill's rule (pick the closest category only with the user's agreement) is
+  safe but leaves most of a mixed set unranked.
+- A Haiku fetch helper retyped one Scimago page instead of saving it unedited,
+  against its instruction; a 5-hour usage limit stopped all four reading helpers
+  once (nothing was written; rerun was clean); one helper refused to proceed when
+  I had forgotten to copy three paper texts into its folder, which is the
+  behaviour wanted.
+- Haiku ignores the word limits (cells over 50 or 60 words) and starts most
+  Discussion cells with "The authors": only warnings today.
+- The Opus self-check of gaps: see below.
+
+**Gap list: Sonnet writes then Opus checks, against Opus writing and checking its own list**
+- Sonnet then Opus check: 12 gaps in 3 runs, Opus narrowed 2 (17 percent).
+- Opus writes with a self-check pass, then an independent Opus check: 15 gaps,
+  the independent check still narrowed 2 (13 percent).
+- So the self-check does not remove the need for the separate check, and the
+  second route costs more. Kept: Sonnet writes, Opus checks.
+- Limits: 3 runs, one try each; costs are not measured because helpers started
+  through the `Agent` tool do not report dollars (the earlier measured costs stand).

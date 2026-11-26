@@ -264,6 +264,21 @@ def ordered(data):
     return [(f"P{i:02d}", p) for i, p in enumerate(papers, 1)]
 
 
+def short_cite(p):
+    """Family name(s) and year as in running text: 'Tan (2024)', 'Tan & Lee (2024)', 'Tan et al. (2024)'."""
+    fam = [(a.split(",")[0].strip() or a) for a in p.get("authors") or []]
+    who = fam[0] if len(fam) == 1 else f"{fam[0]} & {fam[1]}" if len(fam) == 2 else f"{fam[0]} et al." if fam else "Unknown"
+    return f"{who} ({p.get('year') or 'n.d.'}{p.get('_ysuffix', '')})"
+
+
+def cite_ids(text, rows):
+    """Show paper ids and DOIs written in a gap's text as short citations (display only)."""
+    for code, p in rows:
+        for ident in sorted([i for i in (p.get("id"), p.get("doi")) if i], key=len, reverse=True):
+            text = re.sub(rf"(?<![\w.-]){re.escape(ident)}(?![\w-])", short_cite(p), text)
+    return text
+
+
 def doi_url(p):
     d = clean_doi(p.get("doi"))
     return f"https://doi.org/{d}" if d else ""
@@ -453,12 +468,12 @@ def add_sheets(wb, data):
                 if c and c not in cs:
                     cs.append(c)
             sm.cell(row=k, column=1, value=(g.get("kind") or "").capitalize())
-            sm.cell(row=k, column=2, value=g["gap"].strip())
+            sm.cell(row=k, column=2, value=cite_ids(g["gap"].strip(), rows))
             sm.merge_cells(start_row=k, start_column=2, end_row=k, end_column=3)
             sm.cell(row=k, column=4, value=", ".join(sorted(cs)))
             sm.cell(row=k, column=5, value=f'=IF(D{k}="",0,LEN(D{k})-LEN(SUBSTITUTE(D{k},",",""))+1)')
             gap_formula_cells.add((k, 5))
-            sm.cell(row=k, column=6, value=(g.get("basis") or "").strip() or None)
+            sm.cell(row=k, column=6, value=cite_ids((g.get("basis") or "").strip(), rows) or None)
             sm.row_dimensions[k].height = max(32, 15 * (len(g["gap"]) // 55 + 1))
         style_body(sm, row + 3, row + 2 + len(gaps), 6)
     protect_text(sm, skip={(5, 2), (7, 2), (8, 2)} | gap_formula_cells)  # the count formulas

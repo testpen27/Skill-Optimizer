@@ -114,7 +114,10 @@ an invented quote), when a cell contains a number that none of the paper's
 quotes contains, or when a filled cell has no quotes at all. It warns when a
 quote is hedged and the cell is not, and when a cell uses causal wording
 ("leads to", "improves", "impact on") that the quotes do not. Fix every
-failure by cutting or narrowing the cell, never by adding.
+failure by cutting or narrowing the cell. When the paper really does state the
+number or the passage and the reader only left it out of its quotes, add the
+missing verbatim quote to `evidence` instead of cutting a true sentence (look it
+up in the saved text). Never fix by adding to the cell.
 
 ## 5. Verifying: a second reader checks every sentence
 
