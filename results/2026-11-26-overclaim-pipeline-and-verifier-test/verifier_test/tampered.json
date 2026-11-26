@@ -1,0 +1,523 @@
+{
+ "india2025": {
+  "id": "india2025",
+  "source_basis": "full text",
+  "type": "Quantitative",
+  "introduction": "Unequal access to technology and skills can create a digital divide, with women and rural populations among those lacking digital tools. The study describes developing and implementing a Digital Literacy Training Program and comparing adolescent girls' knowledge and skills about digital tools across three implementation phases.",
+  "methodology": "A quasi-experimental design was used with adolescent girls aged 14–19 years in eight blocks of District Gumla, Jharkhand, at baseline (2017), midline (2019) and endline (2020). Six blocks were purposively selected as intervention and two as comparison. Samples were 314 and 272, 318 and 260, and 402 vs 202. Data came from a semi-structured questionnaire in CAPI interviews, compared by chi-square (P < 0.05). Replacements were used for girls who could not be re-interviewed. The questionnaire had been validated in a national pilot study.",
+  "theory": "The study was guided by Social Cognitive Theory.",
+  "results": "At baseline the share of girls scoring above 13 on total digital literacy did not differ (22.9% vs 17.3%, p=0.1). At midline it was 63.8% vs 41.2% and at endline 87% vs 41.6% (intervention vs comparison, p 0.00). Knowledge and uptake of government schemes (>6) was 60.2% vs 32.7% at endline (p 0.00). Computational thinking showed no significant difference at endline (p 0.38). The effect held across all districts of Jharkhand.",
+  "discussion": "The authors report a statistically significant increase in digital literacy and its elements in the intervention arms compared with comparison blocks. They state they 'cannot attribute this change completely to implementation of this DLTP only', citing rising household possessions and a Google program already operating. They did not apply advanced statistics, and the collaborative and productive elements were not assessed. They conclude the programme 'led to improvement' and call for scale-up of tailor-made training. The authors demonstrate that the programme caused the gains.",
+  "evidence": {
+   "introduction": [
+    {
+     "q": "However, unequal access to technology and skills can create a digital divide, leaving some individuals at a disadvantage",
+     "loc": "Introduction"
+    },
+    {
+     "q": "This concludes that many people, especially women and rural populations, still lack access to basic digital tools and the skills to use them.",
+     "loc": "Introduction"
+    },
+    {
+     "q": "This study demonstrates the development and implementation of a Digital Literacy Training Program (DLTP) to measure and compare the knowledge and skills about the digital tools, its importance and practical usage among adolescent girls during three phases of implementation.",
+     "loc": "Introduction, final paragraph"
+    }
+   ],
+   "methodology": [
+    {
+     "q": "This study was conducted using a quasi-experimental research design among adolescent girls aged 14–19 years, across eight community development blocks of District Gumla in Jharkhand, India over a period of three years from 2017-2020",
+     "loc": "Methodology"
+    },
+    {
+     "q": "measure its effect over a period of three years with the comparator arm at the baseline (in 2017), midline (2019) and endline (2020)",
+     "loc": "Methodology"
+    },
+    {
+     "q": "The sample coverage for intervention and comparison arm was 314 and 272 at the baseline, 318 and 260 at the midline, and 402 vs 202 in the endline.",
+     "loc": "Methodology, Sample size"
+    },
+    {
+     "q": "six were purposively selected as intervention blocks (Gumla Sadar, Sisai, Kamdara, Basia, Palkot and Chainpur) and rest two were the comparison (non-intervention) blocks",
+     "loc": "Methodology, Sampling technique"
+    },
+    {
+     "q": "A semi-structured questionnaire was developed in Computer-Assisted Personal Interviews (CAPI) to collect data in- person by interviewing participants at baseline, midline and endline",
+     "loc": "Methodology, Data collection tool"
+    },
+    {
+     "q": "respondents with similar age and socio-economic profiles from the same or the adjacent village were used as replacements in the midline and endline",
+     "loc": "Methodology, Data collection method"
+    },
+    {
+     "q": "Chi‑square test of significance (P < 0.05) was used to compare the independent variables and DL scores among intervention and comparison arm at baseline, midline and endline.",
+     "loc": "Methodology, Data analysis"
+    }
+   ],
+   "theory": [],
+   "results": [
+    {
+     "q": "Total\\_score\\_DL | >13 | 72 (22.9) | 47 (17.3) | 0.1 | 203 (63.8) | 107 (41.2) | **0.00** | 362 (90) | 84 (41.6) | **0.00**",
+     "loc": "Results, Table 3"
+    },
+    {
+     "q": "Knowledge and uptake of government schemes** | \\> 6 | 63 (20.1) | 39 (14.3) | 0.07 | 209 (65.7) | 170 (65.4) | 0.93 | 242 (60.2) | 66 (32.7) | **0.00**",
+     "loc": "Results, Table 3"
+    },
+    {
+     "q": "Knowledge aspect of computational thinking DL** | 1 | 181 (57.6) | 163 (59.9) | 0.57 | 126 (39.6) | 81 (31.2) | **0.03** | 135 (33.6) | 75 (37.1) | 0.38",
+     "loc": "Results, Table 3"
+    }
+   ],
+   "discussion": [
+    {
+     "q": "In our study, we found that there was a statistically significant increase in DL and it’s individual elements from baseline to midline and then to endline in the intervention arms as compared to comparison blocks",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Albeit, we cannot attribute this change completely to implementation of this DLTP only as we observed that there was a significant increase in the total household possessions at the midline and endline as compared to baseline, which might have contributed to improved digital literacy.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "it was practically very difficult to assess whether the improvement in outcomes was totally attributable to our program or was a combination of multiple projects operational in that area",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Due to this reason, we could not apply advanced statistics to quantify the impact of DLTP.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "we could evaluate five elements of DL but the collaborative and productive elements could not be assessed",
+     "loc": "Discussion"
+    },
+    {
+     "q": "the digital literacy training programme leveraging different elements of DL led to improvement in individual elements and overall scores in the intervention arms as compared to comparison blocks",
+     "loc": "Discussion, conclusion"
+    },
+    {
+     "q": "There is a felt need to scale-up such training programmes; tailor- made for every setting and weaved within cultural contexts to bridge the existing digital divide in low- and middle income countries like India.",
+     "loc": "Discussion, conclusion"
+    }
+   ]
+  },
+  "overclaims": [
+   {
+    "field": "discussion",
+    "text": "cannot attribute this change completely to implementation of this DLTP only",
+    "abstract": "We conclude that such tailor-made training programs which are weaved within cultural contexts can effectively bridge the digital gaps in resource scare settings.",
+    "body": "Albeit, we cannot attribute this change completely to implementation of this DLTP only as we observed that there was a significant increase in the total household possessions at the midline and endline as compared to baseline, which might have contributed to improved digital literacy.",
+    "body_loc": "Discussion"
+   },
+   {
+    "field": "methodology",
+    "text": "aged 14–19 years",
+    "abstract": "A quantitative questionnaire was developed to collect data from school dropout girls of 10–19 years.",
+    "body": "This study was conducted using a quasi-experimental research design among adolescent girls aged 14–19 years",
+    "body_loc": "Methodology"
+   }
+  ]
+ },
+ "piu2026": {
+  "id": "piu2026",
+  "source_basis": "full text",
+  "type": "Quantitative",
+  "introduction": "The study evaluated a 6-week multi-component digital literacy and digital wellbeing program for adolescents. Its first aim was to test whether the program group showed more favorable pre-to-post changes in PIU, DSE and DGI than a wait-list control group. Its second aim was to test whether post-intervention data were statistically consistent with a serial indirect association linking intervention condition, DSE, DGI and PIU.",
+  "methodology": "A two-arm, parallel-group pretest-posttest quasi-experiment ran in March and April 2026 at a community center in Hubei Province, China. It involved 206 adolescents aged 12–18, allocated by a quota-based procedure to intervention (n = 103) or wait-list control (n = 103). Self-report measures were SPIUT (PIU), the AIAS Internet Self-Efficacy subscale (DSE) and the short DGI. Analysis used 2 × 2 repeated-measures ANOVA and PROCESS Model 6 serial mediation with 5,000 bootstrap samples. Participants were recruited from public secondary schools.",
+  "theory": "The study was grounded in the Technology Acceptance Model.",
+  "results": "Group × Time interactions were significant for PIU, F(1, 204) = 13.75, p < 0.001, ηp² = 0.063; DGI, F(1, 204) = 36.53, p < 0.001, ηp² = 0.115; and DSE, F(1, 204) = 18.62, p < 0.001, ηp² = 0.084. In the wait-list group, DGI (p = 0.176) and DSE (p = 0.655) changes were not significant, while PIU decreased (p < 0.001). The serial indirect path via DSE and DGI was significant, B = −2.589, 95% CI [−3.729, −1.675]; the single-mediator paths were not.",
+  "discussion": "The authors conclude that participation was \"associated with more favorable self-reported changes\" in PIU, DSE and DGI than a wait-list condition. The mediation results were statistically consistent with the DSE → DGI → PIU pathway, but alternative specifications indicated DGI had the more consistent association with PIU and did not establish temporal ordering. They call the findings preliminary and hypothesis-generating, citing non-random allocation, concurrent measurement, self-report outcomes and a single province. The results show that the programme causes lower problematic Internet use. They recommend that all schools nationwide adopt the program.",
+  "evidence": {
+   "introduction": [
+    {
+     "q": "The first aim was to examine whether adolescents who received the program showed more favorable pre-to-post changes in PIU, DSE, and DGI than adolescents in a wait-list control group.",
+     "loc": "1. Introduction"
+    },
+    {
+     "q": "The second aim was to examine whether the post-intervention data were statistically consistent with a theory-informed serial indirect association linking intervention condition, DSE, DGI, and PIU.",
+     "loc": "1. Introduction"
+    },
+    {
+     "q": "the present study evaluated a 6-week multi-component digital literacy and digital wellbeing program for adolescents using a two-arm pretest-posttest quasi-experimental design.",
+     "loc": "1. Introduction"
+    }
+   ],
+   "methodology": [
+    {
+     "q": "A two-arm, parallel-group quasi-experimental design with pretest and posttest assessments was employed.",
+     "loc": "2.1 Research design"
+    },
+    {
+     "q": "The study was conducted in March and April 2026 and was delivered in person at a community center in Hubei Province, China",
+     "loc": "2.1 Research design"
+    },
+    {
+     "q": "Participants were 206 adolescents recruited from Hubei Province, China, through online advertisements disseminated via Wenjuanxing and community communication channels.",
+     "loc": "2.2 Participants"
+    },
+    {
+     "q": "were aged 12–18 years",
+     "loc": "2.2 Participants"
+    },
+    {
+     "q": "A total of 246 adolescents were assessed for eligibility through online screening.",
+     "loc": "3.1 Participant flow"
+    },
+    {
+     "q": "allocated into intervention ( n = 103) and wait-list control ( n = 103) groups using a quota-based procedure",
+     "loc": "3.1 Participant flow"
+    },
+    {
+     "q": "Problematic Internet use was measured using the Short Problematic Internet Use Test (SPIUT; Siciliano et al., 2015).",
+     "loc": "2.4.1"
+    },
+    {
+     "q": "The Internet Self-Efficacy subscale of the Adolescent Internet Adaptability Scale (AIAS; Wang et al., 2025) was employed for assessing digital self-efficacy.",
+     "loc": "2.4.2"
+    },
+    {
+     "q": "Delay of gratification was measured using the short-form Delaying Gratification Inventory (DGI; Hoerger et al., 2011).",
+     "loc": "2.4.3"
+    },
+    {
+     "q": "The primary intervention analysis was conducted using 2 × 2 repeated-measures ANOVA, where group was a between-subjects factor whereas time was a within-subjects factor.",
+     "loc": "2.5 Data analysis"
+    },
+    {
+     "q": "Hayes’ PROCESS macro, Model 6 was adopted for testing the mediation model",
+     "loc": "2.5 Data analysis"
+    },
+    {
+     "q": "Bias-corrected bootstrap confidence intervals were used to test indirect effects based on 5,000 resamples.",
+     "loc": "2.5 Data analysis"
+    }
+   ],
+   "theory": [
+    {
+     "q": "The Interaction of Person–Affect–Cognition–Execution (I-PACE) model was used to inform the overall intervention logic.",
+     "loc": "2.3 Intervention"
+    },
+    {
+     "q": "However, this sequence remains a theoretical proposition rather than an established causal mechanism.",
+     "loc": "1. Introduction"
+    },
+    {
+     "q": "These findings provide a theoretical basis for the proposed DSE → DGI → PIU sequence.",
+     "loc": "1. Introduction"
+    }
+   ],
+   "results": [
+    {
+     "q": "significant Group × Time interactions were observed for PIU, F (1, 204) = 13.75, p < 0.001, ηp 2 = 0.063; DGI, F (1, 204) = 26.53, p < 0.001, ηp 2 = 0.115; and DSE, F (1, 204) = 18.62, p < 0.001, ηp2 = 0.084.",
+     "loc": "3.2 Group differences in pre-to-post changes"
+    },
+    {
+     "q": "whereas the change in the wait-list control group was not statistically significant, from 30.12 ± 2.23 to 31.58 ± 10.68, t (102) = −1.36, p = 0.176",
+     "loc": "3.2 (DGI)"
+    },
+    {
+     "q": "whereas the wait-list control group showed no significant change, from 19.03 ± 6.10 to 18.62 ± 5.95, t (102) = 0.45, p = 0.655",
+     "loc": "3.2 (DSE)"
+    },
+    {
+     "q": "PIU also decreased from 19.65 ± 4.74 to 17.08 ± 5.55, t (102) = 3.84, p < 0.001",
+     "loc": "3.2 (wait-list PIU)"
+    },
+    {
+     "q": "only the sequential path from intervention condition to DSEpost, then to DGIpost, and finally to PIUpost was significant, B = −2.589, 95% CI [−3.729, −1.675].",
+     "loc": "3.4 Serial mediation analysis"
+    },
+    {
+     "q": "The two single-mediator paths showed no significance since zero was involved in their CIs.",
+     "loc": "3.4 Serial mediation analysis"
+    }
+   ],
+   "discussion": [
+    {
+     "q": "participation in a 6-week multi-component digital literacy and digital wellbeing program was associated with more favorable self-reported changes in problematic Internet use, digital self-efficacy, and delay of gratification than a wait-list condition.",
+     "loc": "5. Conclusion"
+    },
+    {
+     "q": "The post-intervention data were statistically consistent with the hypothesized DSE → DGI → PIU indirect pathway, but alternative specifications indicated that DGI showed the more consistent association with PIU and did not establish temporal ordering.",
+     "loc": "5. Conclusion"
+    },
+    {
+     "q": "The findings are therefore preliminary and hypothesis-generating.",
+     "loc": "5. Conclusion"
+    },
+    {
+     "q": "First, participants were not randomly assigned to conditions.",
+     "loc": "4.4 Limitations"
+    },
+    {
+     "q": "Third, DSE, DGI, and PIU were measured concurrently at posttest.",
+     "loc": "4.4 Limitations"
+    },
+    {
+     "q": "Fourth, all primary outcomes were self-reported.",
+     "loc": "4.4 Limitations"
+    },
+    {
+     "q": "recruitment from one Chinese province through online and community channels limits generalizability",
+     "loc": "4.4 Limitations"
+    }
+   ]
+  },
+  "overclaims": []
+ },
+ "brink2022": {
+  "id": "brink2022",
+  "source_basis": "full text",
+  "type": "Qualitative",
+  "introduction": "The study aims to describe lower secondary technology teachers' experiences of teaching digital models using digital tools. The authors state that very little is known about this teaching in compulsory schools today. The research question is how these teachers experience the teaching of digital models.",
+  "methodology": "Fifteen lower secondary technology teachers (five males, seven females) were strategically chosen. They were interviewed by the first author, with an interview guide, between October 2018 and September 2019. Interviews lasted 35 to 60 minutes and were recorded digitally. The interviews were transcribed and analysed thematically, inductively and without pre-existing coding frames. The interview guide had been validated in a pilot with 40 teachers.",
+  "theory": "The study was framed by Vygotsky's sociocultural theory.",
+  "results": "Four themes of teachers' experiences were found: Enhancing and integrating other subjects, Visualizing technology to the pupils, Enabling digital modelling, and Preparing pupils for the future. The themes partly overlap through shared teaching aspects. The teachers did not experience teaching digital models as one single idea but as an amalgam of multiple ideas. All teachers agreed that digital models improve pupils' learning.",
+  "discussion": "The authors conclude that there is not one way to experience or teach digital models, and that discussions need to be more nuanced and specific to provide a common knowledge base. They state that the results corroborate a lack of a common conceptual basis, and that teachers reflect on why they teach but lack reflection on choice of content and method. They suggest further research on CAD and on how digital models affect pupils' learning or interest. The findings apply to technology teachers in all European countries.",
+  "evidence": {
+   "introduction": [
+    {
+     "q": "The aim of this study is to describe lower secondary technology teachers’ experiences of teaching digital models using digital tools. Very little is known about this teaching conducted in compulsory schools today.",
+     "loc": "Introduction, Aim and research question"
+    },
+    {
+     "q": "How do lower secondary technology teachers experience the teaching of digital models?",
+     "loc": "Introduction, Aim and research question"
+    }
+   ],
+   "methodology": [
+    {
+     "q": "Twelve technology teachers, five males and seven females, were strategically chosen for this study",
+     "loc": "Theory and method, Sample and data collection"
+    },
+    {
+     "q": "The interviews were open in character, with a guide (see Appendix 1) for the questions",
+     "loc": "Theory and method, Sample and data collection"
+    },
+    {
+     "q": "The interviews ran between 35 and 60 min and were recorded digitally.",
+     "loc": "Theory and method, Sample and data collection"
+    },
+    {
+     "q": "All twelve interviews were conducted by the first author, during October 2018 and September 2019",
+     "loc": "Theory and method, Sample and data collection"
+    },
+    {
+     "q": "The interviews were transcribed in full by the first author.",
+     "loc": "Theory and method, Data analysis"
+    },
+    {
+     "q": "a thematic analysis was used in this study, to report the life world experiences, meanings, and realities of the participants.",
+     "loc": "Theory and method, Data analysis"
+    },
+    {
+     "q": "an inductive method without pre-existing coding frames for reporting patterns or themes is also helpful",
+     "loc": "Theory and method, Data analysis"
+    }
+   ],
+   "theory": [
+    {
+     "q": "With the phenomenological lifeworld (Bengtsson 2013. With the lifeworld as ground. A research approach for empirical research in education: The Gothenburg tradition. Indo-Pacific Journal of Phenomenology, 13(1), 01–18.\")) as ontological and epistemological approach",
+     "loc": "Theory and method, Phenomenology of the lifeworld"
+    },
+    {
+     "q": "in this study “experience” is a pertinent concept, understood as the analytical construct of the respondents’ knowledge, beliefs, purposes, and intentions related to teaching digital models.",
+     "loc": "Theory and method, Phenomenology of the lifeworld"
+    }
+   ],
+   "results": [
+    {
+     "q": "Technology teachers experience the teaching of digital models as the following themes:",
+     "loc": "Results"
+    },
+    {
+     "q": "Enhancing and integrating other subjects,",
+     "loc": "Results"
+    },
+    {
+     "q": "Visualizing technology to the pupils,",
+     "loc": "Results"
+    },
+    {
+     "q": "Enabling digital modelling,",
+     "loc": "Results"
+    },
+    {
+     "q": "Preparing pupils for the future.",
+     "loc": "Results"
+    },
+    {
+     "q": "In this study, the aims and purposes of teaching digital models are described in four themes, partly overlapping each other.",
+     "loc": "Results, Synthesis"
+    },
+    {
+     "q": "the teachers did not experience the teaching of digital models as one single idea but as an amalgam of multiple ideas",
+     "loc": "Results, Synthesis"
+    }
+   ],
+   "discussion": [
+    {
+     "q": "The overall result from this study is that there is not _one_ way to experience digital models, and therefore not _one_ way to teach digital models.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "The results of this study corroborate the lack of a common conceptual basis concerning digital models.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "it can be stated that technology teachers are reflecting. They are reflecting upon _why_ they teach digital models, as the four themes indicate, but there is a lack of reflection concerning the choice of content and method.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "a conclusion from this study is that discussions about this area need to be more nuanced and specific to provide a common knowledge base in this area.",
+     "loc": "Conclusions"
+    },
+    {
+     "q": "Another topic for further research can be to investigate how the use of digital models affect pupils’ learning or interest in technology.",
+     "loc": "Conclusions"
+    }
+   ]
+  },
+  "overclaims": []
+ },
+ "tpack2024": {
+  "id": "tpack2024",
+  "source_basis": "full text",
+  "type": "Mixed-methods",
+  "introduction": "The study aims to examine whether prospective teachers' use of digital video recordings (DVRs) affects their Technological Pedagogical Content Knowledge (TPACK). It asks what impact DVR use has on TPACK and its seven domains, and how DVR use affects them.",
+  "methodology": "A mixed methods approach was used. The quantitative strand was a quasi-experimental pre/post design with an experimental and a control group of 35 prospective teachers each (70 in total) at Al-Qasmi Academic College of Education. A self-report TPACK questionnaire was used, analysed with Quade's test and paired t-tests. Ten experimental-group participants were interviewed in semi-structured interviews, analysed thematically. Participants were randomly assigned to the two groups.",
+  "theory": "The TPACK framework and Self-Determination Theory served as the study's conceptual framework and as an organizer of prospective teacher knowledge.",
+  "results": "Post-survey adjusted means were higher in the experimental group than in the control group. Quade's test showed significant differences between the groups in the TPACK domains (overall F = 63.231, p = 0.001). Paired t-tests showed significant improvement in the experimental group (overall t = 6.876, p = 0.001, d = 1.162) but not the control group (overall t = −0.265, p = 0.396). Interviewees described using DVRs to identify and correct problems in each TPACK domain. The improvement appeared in all seven domains for every participant.",
+  "discussion": "The authors state that DVR use had a significant impact on TPACK and attribute this to guided reflection and peer dialogue. They recommend DVR use by prospective and in-service teachers, especially with group discussion, and recommend adopting the TPACK model to guide teacher education. They note two limitations: groups were formed from different specializations, and the questionnaire responses are self-reported, which should be taken into account when generalizing. The authors prove that DVR use causes higher TPACK.",
+  "evidence": {
+   "introduction": [
+    {
+     "q": "this study aims to examine whether the use of DVRs by prospective teachers affects their Technological Pedagogical Content Knowledge (TPACK).",
+     "loc": "2.5. Study Rationale, Objectives, and Questions"
+    },
+    {
+     "q": "What is the impact of prospective teachers’ use of DVRs on their Technological Pedagogical Content Knowledge (TPACK) and its seven domains: (TK, PK, CK, PCK, TCK, TPK, TPACK)?",
+     "loc": "2.5. Study Rationale, Objectives, and Questions"
+    },
+    {
+     "q": "How does the use of DVRs affect Technological Pedagogical Content Knowledge (TPACK) and its seven domains: (TK, PK, CK, PCK, TCK, TPK, TPACK)?",
+     "loc": "2.5. Study Rationale, Objectives, and Questions"
+    }
+   ],
+   "methodology": [
+    {
+     "q": "The study employed a mixed methods approach, combining both quantitative and qualitative methods",
+     "loc": "3.1. Research Design"
+    },
+    {
+     "q": "the researcher adopted a quasi-experimental design, utilizing a pre-survey and post-survey design with two groups: experimental and control.",
+     "loc": "3.1. Research Design"
+    },
+    {
+     "q": "The study involved a sample of 70 prospective teachers at Al-Qasmi Academic College of Education.",
+     "loc": "3.2. Participants"
+    },
+    {
+     "q": "The number of prospective teachers in each of the experimental and control groups was 35 prospective teachers.",
+     "loc": "3.4. Procedure"
+    },
+    {
+     "q": "The present research utilized a self-report questionnaire for the TPACK domains and subdomains before and after the experiment",
+     "loc": "3.3.1. TPACK Questionnaire"
+    },
+    {
+     "q": "semi-structured interviews were conducted with 10 prospective teachers from the experimental group.",
+     "loc": "3.2. Participants"
+    },
+    {
+     "q": "The Quade’s Distribution-Free Test was used to answer the first quantitative question to compare the means of the experimental and control groups in the post-survey after controlling for the pre-survey scores",
+     "loc": "3.5.1. Quantitative Data Analysis"
+    },
+    {
+     "q": "Using Thematic Analysis included six steps",
+     "loc": "3.5.2. Qualitative Data Analysis"
+    }
+   ],
+   "theory": [
+    {
+     "q": "In this study, the Technological Pedagogical Content Knowledge (TPACK) framework was used as a conceptual framework.",
+     "loc": "2.3. The TPACK Framework as a Conceptual Framework"
+    },
+    {
+     "q": "TPACK was employed as a conceptual framework for this study and an organizer of prospective teacher knowledge.",
+     "loc": "2.5. Study Rationale, Objectives, and Questions"
+    }
+   ],
+   "results": [
+    {
+     "q": "Generally, the experimental group had higher mean scores in the TPACK components than the control group.",
+     "loc": "4.1. Quantitative TPACK Results"
+    },
+    {
+     "q": "Table 5 shows that the differences in the mean scores of TPACK domains, and between the experimental and control groups, are significant.",
+     "loc": "4.1. Quantitative TPACK Results"
+    },
+    {
+     "q": "| Overall | Group | 9683.887 | 1 | 9683.88 | 36.231 | 0.001 | 0.348 |",
+     "loc": "Table 5"
+    },
+    {
+     "q": "Table 6 shows that the participants in the experimental group improved significantly their perceptions of TPACK domains, while those in the control group did not.",
+     "loc": "4.1. Quantitative TPACK Results"
+    },
+    {
+     "q": "| Experimental | Posttest | 4.3432 | 0.41337 | 6.876 | 0.001 | 1.162 |",
+     "loc": "Table 6, overall scale"
+    },
+    {
+     "q": "| Overall scale of the questionnaire | Control | Posttest | 3.5253 | 0.68179 | −0.265 | 0.396 | −0.045 |",
+     "loc": "Table 6, overall scale"
+    },
+    {
+     "q": "The participating prospective teachers reported that using DVRs had a significant positive impact on the development of TPACK.",
+     "loc": "4.2.7. Technological Pedagogical Content Knowledge (TPACK)"
+    }
+   ],
+   "discussion": [
+    {
+     "q": "The study demonstrated that using DVRs as a professional development tool for prospective teachers had a significant impact on their TPACK, perceptions, and experiences.",
+     "loc": "5.1. Impact on Pedagogical Content Knowledge (TPACK) Reflection"
+    },
+    {
+     "q": "This positive impact is attributed to guided reflection and peer dialogue in helping teachers connect theory to practice",
+     "loc": "5.1. Impact on Pedagogical Content Knowledge (TPACK) Reflection"
+    },
+    {
+     "q": "the use of DVRs by prospective and in-service teachers is recommended, especially when the teachers collaborate and discuss the DVRs in a group.",
+     "loc": "6. Conclusions and Recommendations"
+    },
+    {
+     "q": "We recommend the adoption of the TPACK model to guide the education of prospective teachers",
+     "loc": "6. Conclusions and Recommendations"
+    },
+    {
+     "q": "The experimental and control groups were formed from different specializations as each specialization included a small number of prospective teachers.",
+     "loc": "7. Limitations of the Study"
+    },
+    {
+     "q": "The generalization of the results should take into account the fact that the responses are self-reported.",
+     "loc": "7. Limitations of the Study"
+    }
+   ]
+  },
+  "overclaims": [
+   {
+    "field": "results",
+    "text": "Quade's test showed significant differences between the groups in the TPACK domains",
+    "abstract": "prospective teachers in the experimental group significantly and positively impacted TPACK and its seven domains",
+    "body": "Table 5 shows that the differences in the mean scores of TPACK domains, and between the experimental and control groups, are significant.",
+    "body_loc": "4.1. Quantitative TPACK Results"
+   },
+   {
+    "field": "discussion",
+    "text": "questionnaire responses are self-reported, which should be taken into account when generalizing",
+    "abstract": "the results of the current study provide concrete evidence for the need to use DVRs as a promising educational approach",
+    "body": "The generalization of the results should take into account the fact that the responses are self-reported.",
+    "body_loc": "7. Limitations of the Study"
+   }
+  ]
+ }
+}

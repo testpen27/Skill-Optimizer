@@ -1,0 +1,402 @@
+{
+ "id": "piu2026",
+ "source_basis": "full text",
+ "type": "Quantitative",
+ "introduction": "The study aimed to test whether a 6-week digital literacy and digital wellbeing program was associated with more favorable pre-to-post changes in PIU, DSE and DGI than a wait-list control. A second aim tested whether post-intervention data were statistically consistent with a serial pathway from condition through DSE and DGI to PIU.",
+ "methodology": "Two-arm pretest-posttest quasi-experimental design with 206 adolescents aged 12–18 in Hubei Province, China, allocated by quota to an intervention group (n = 103) or a wait-list control group (n = 103). Delivered in person at a community center in March and April 2026. Measures were the SPIUT, the Internet Self-Efficacy subscale of the AIAS, and the short-form DGI. Analysis used 2 × 2 repeated-measures ANOVA and PROCESS Model 6 with 5,000 bootstrap resamples.",
+ "theory": "The I-PACE model was used to inform the intervention logic. The DSE, DGI and PIU sequence is described as theory-informed, yet still a theoretical proposition.",
+ "results": "Group × Time interactions were significant for PIU, DSE and DGI (DGI: F(1, 204) = 26.53, p < 0.001, ηp2 = 0.115). PIU decreased in both groups, more in the intervention group. DGI findings warrant caution: DGI dispersion increased markedly, particularly in the wait-list group, and its source cannot be determined. The standardized serial indirect effect was significant (β = −0.478); the direct effect on PIU was not significant.",
+ "discussion": "The authors conclude that the program was associated with more favorable self-reported changes in PIU, DSE and DGI than a wait-list condition, and call the findings preliminary and hypothesis-generating. They name non-random allocation, a wait-list that did not control for attention or expectancy, and self-reported outcomes as limitations. They suggest digital literacy education may benefit from moving beyond one-time informational sessions.",
+ "evidence": {
+  "introduction": [
+   {
+    "q": "The first aim was to examine whether adolescents who received the program showed more favorable pre-to-post changes in PIU, DSE, and DGI than adolescents in a wait-list control group.",
+    "loc": "1. Introduction"
+   },
+   {
+    "q": "The second aim was to examine whether the post-intervention data were statistically consistent with a theory-informed serial indirect association linking intervention condition, DSE, DGI, and PIU.",
+    "loc": "1. Introduction"
+   }
+  ],
+  "methodology": [
+   {
+    "q": "A two-arm, parallel-group quasi-experimental design with pretest and posttest assessments was employed.",
+    "loc": "2.1 Research design"
+   },
+   {
+    "q": "The study was conducted in March and April 2026 and was delivered in person at a community center in Hubei Province, China",
+    "loc": "2.1 Research design"
+   },
+   {
+    "q": "Participants were 206 adolescents recruited from Hubei Province, China",
+    "loc": "2.2 Participants"
+   },
+   {
+    "q": "(a) were aged 12–18 years",
+    "loc": "2.2 Participants"
+   },
+   {
+    "q": "allocated into intervention ( _n_ = 103) and wait-list control ( _n_ = 103) groups using a quota-based procedure",
+    "loc": "3.1 Participant flow and basic features"
+   },
+   {
+    "q": "Problematic Internet use was measured using the Short Problematic Internet Use Test (SPIUT; Siciliano et al., 2015).",
+    "loc": "2.4.1 Problematic Internet use"
+   },
+   {
+    "q": "The Internet Self-Efficacy subscale of the Adolescent Internet Adaptability Scale (AIAS; Wang et al., 2025) was employed for assessing digital self-efficacy.",
+    "loc": "2.4.2 Digital self-efficacy"
+   },
+   {
+    "q": "the short-form Delaying Gratification Inventory (DGI; Hoerger et al., 2011)",
+    "loc": "2.4.3 Delay of gratification"
+   },
+   {
+    "q": "The primary intervention analysis was conducted using 2 × 2 repeated-measures ANOVA",
+    "loc": "2.5 Data analysis"
+   },
+   {
+    "q": "Model 6 was adopted for testing the mediation model",
+    "loc": "2.5 Data analysis"
+   },
+   {
+    "q": "Bias-corrected bootstrap confidence intervals were used to test indirect effects based on 5,000 resamples.",
+    "loc": "2.5 Data analysis"
+   }
+  ],
+  "theory": [
+   {
+    "q": "The Interaction of Person–Affect–Cognition–Execution (I-PACE) model was used to inform the overall intervention logic.",
+    "loc": "2.3 Intervention"
+   },
+   {
+    "q": "The present study further proposes that DSE and DGI may be connected in a theory-informed sequence rather than functioning only as separate predictors.",
+    "loc": "1. Introduction"
+   },
+   {
+    "q": "However, this sequence remains a theoretical proposition rather than an established causal mechanism.",
+    "loc": "1. Introduction"
+   }
+  ],
+  "results": [
+   {
+    "q": "significant Group × Time interactions were observed for PIU, _F_(1, 204) = 13.75, _p_ < 0.001, _ηp_ 2 = 0.063",
+    "loc": "3.2 Group differences in pre-to-post changes"
+   },
+   {
+    "q": "DGI, _F_(1, 204) = 26.53, _p_ < 0.001, _ηp_ 2 = 0.115",
+    "loc": "3.2 Group differences in pre-to-post changes"
+   },
+   {
+    "q": "DSE, _F_(1, 204) = 18.62, _p_ < 0.001, ηp2 = 0.084",
+    "loc": "3.2 Group differences in pre-to-post changes"
+   },
+   {
+    "q": "PIU decreased in both groups, but the reduction was larger in the intervention group.",
+    "loc": "3.2 Group differences in pre-to-post changes"
+   },
+   {
+    "q": "DGI dispersion increased markedly from pretest to posttest, particularly in the wait-list group",
+    "loc": "3.2 Group differences in pre-to-post changes"
+   },
+   {
+    "q": "its source cannot be determined from the available data and the DGI findings warrant corresponding caution",
+    "loc": "3.2 Group differences in pre-to-post changes"
+   },
+   {
+    "q": "The standardized serial indirect effect was significant",
+    "loc": "3.4 Serial mediation analysis"
+   },
+   {
+    "q": "_β_ = −0.478",
+    "loc": "3.4 Serial mediation analysis"
+   },
+   {
+    "q": "whereas the direct effect was not statistically significant",
+    "loc": "3.4 Serial mediation analysis"
+   }
+  ],
+  "discussion": [
+   {
+    "q": "This pretest-posttest quasi-experimental study found that participation in a 6-week multi-component digital literacy and digital wellbeing program was associated with more favorable self-reported changes in problematic Internet use, digital self-efficacy, and delay of gratification than a wait-list condition.",
+    "loc": "5. Conclusion"
+   },
+   {
+    "q": "First, participants were not randomly assigned to conditions.",
+    "loc": "4.4 Limitations and future research"
+   },
+   {
+    "q": "Second, the wait-list condition did not control for attention, expectancy, facilitator contact, or general self-monitoring.",
+    "loc": "4.4 Limitations and future research"
+   },
+   {
+    "q": "Fourth, all primary outcomes were self-reported.",
+    "loc": "4.4 Limitations and future research"
+   },
+   {
+    "q": "First, digital literacy education may benefit from moving beyond one-time informational sessions about the risks of excessive Internet use.",
+    "loc": "4.3 Implications for digital literacy education"
+   },
+   {
+    "q": "The findings are therefore preliminary and hypothesis-generating.",
+    "loc": "5. Conclusion"
+   }
+  ]
+ },
+ "overclaims": [
+  {
+   "field": "results",
+   "text": "PIU decreased in both groups, more in the intervention group.",
+   "abstract": "These findings provide preliminary quasi-experimental evidence that participation in a multi-component digital literacy and digital wellbeing program is associated with healthier self-reported Internet use, stronger perceived digital competence, and greater delay of gratification.",
+   "body": "PIU decreased in both groups, but the reduction was larger in the intervention group.",
+   "body_loc": "3.2 Group differences in pre-to-post changes"
+  },
+  {
+   "field": "results",
+   "text": "DGI findings warrant caution: DGI dispersion increased markedly, particularly in the wait-list group, and its source cannot be determined.",
+   "abstract": "These findings provide preliminary quasi-experimental evidence that participation in a multi-component digital literacy and digital wellbeing program is associated with healthier self-reported Internet use, stronger perceived digital competence, and greater delay of gratification.",
+   "body": "its source cannot be determined from the available data and the DGI findings warrant corresponding caution",
+   "body_loc": "3.2 Group differences in pre-to-post changes"
+  }
+ ],
+ "abstract_claims": [
+  {
+   "q": "Significant Group × Time interactions were observed for PIU, DSE, and DGI, indicating more favorable self-reported pre-to-post changes in the intervention group than in the wait-list control group.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "The post-intervention data were statistically consistent with the hypothesized DSE → DGI → PIU indirect pathway; however, alternative-model analyses indicated that DGI showed the more consistent association with PIU across specifications.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "These findings provide preliminary quasi-experimental evidence that participation in a multi-component digital literacy and digital wellbeing program is associated with healthier self-reported Internet use, stronger perceived digital competence, and greater delay of gratification.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "Because participants were not randomly assigned and the mediators and outcome were measured concurrently at posttest, the indirect associations should be regarded as hypothesis-generating rather than as evidence of a causal or temporal sequence.",
+   "loc": "Abstract"
+  }
+ ],
+ "caveats": [
+  {
+   "q": "However, this sequence remains a theoretical proposition rather than an established causal mechanism.",
+   "loc": "1. Introduction"
+  },
+  {
+   "q": "When mediators and outcomes are measured at the same post-intervention wave, mediation analysis can examine whether the observed data are statistically consistent with the proposed ordering, but it cannot by itself establish definitive temporal or causal mediation.",
+   "loc": "1. Introduction"
+  },
+  {
+   "q": "DGI is conceptualized as a generalized regulatory tendency across various life domains (e.g., food, money, social interaction) rather than a digital-specific skill.",
+   "loc": "1. Introduction"
+  },
+  {
+   "q": "Because participants were not randomly assigned to conditions, the study should be interpreted as a quasi-experimental study rather than a randomized controlled trial.",
+   "loc": "2.1 Research design"
+  },
+  {
+   "q": "This allocation procedure was intended to reduce imbalance in observable characteristics between groups; however, because allocation was not randomized, unmeasured confounding cannot be ruled out.",
+   "loc": "2.2 Participants"
+  },
+  {
+   "q": "Regarding assessor blinding, due to the logistical constraints of in-person delivery, research assistants supervising the posttests were aware of group allocation, so blind assessment was not achieved.",
+   "loc": "2.2 Participants"
+  },
+  {
+   "q": "Nevertheless, the mediation analysis should be interpreted cautiously because the study was not originally powered specifically for detecting indirect effects.",
+   "loc": "2.2 Participants"
+  },
+  {
+   "q": "Although no independent external fidelity rating was conducted, these procedures were used to improve implementation consistency.",
+   "loc": "2.3 Intervention"
+  },
+  {
+   "q": "although daily Internet use time was assessed at baseline, objective behavioral measures (e.g., app-use logs or device screen-time records) were not collected at posttest",
+   "loc": "2.4 Measures"
+  },
+  {
+   "q": "Consequently, the primary outcomes were based solely on self-report.",
+   "loc": "2.4 Measures"
+  },
+  {
+   "q": "However, we acknowledge that the DGI items are not specific to digital behavior, capturing generalized self-regulation rather than digital-specific delay.",
+   "loc": "2.4.3 Delay of gratification"
+  },
+  {
+   "q": "Because the mediators and outcome were measured at the same post-intervention wave, the mediation model was interpreted as a test of statistical consistency with the proposed theoretical pathway rather than as definitive evidence of temporal or causal mediation.",
+   "loc": "2.5 Data analysis"
+  },
+  {
+   "q": "These supplementary analyses were treated as robustness checks and did not replace the primary assigned-group analysis.",
+   "loc": "2.5 Data analysis"
+  },
+  {
+   "q": "Because attendance was not randomly determined, these estimates are descriptive and may reflect motivation, family support, or other adherence-related differences; they complement but do not replace the primary assigned-group findings.",
+   "loc": "3.2 Group differences in pre-to-post changes"
+  },
+  {
+   "q": "nevertheless, its source cannot be determined from the available data and the DGI findings warrant corresponding caution.",
+   "loc": "3.2 Group differences in pre-to-post changes"
+  },
+  {
+   "q": "Thus, the evidence for differential DGI change was retained under analyses less sensitive to unequal variances, although the unusual increase in wait-list dispersion remains a limitation.",
+   "loc": "3.2 Group differences in pre-to-post changes"
+  },
+  {
+   "q": "Because all primary variables were evaluated by self-report measures, it was impossible to fully eliminate common-method bias.",
+   "loc": "3.3 Assumption checks and correlations"
+  },
+  {
+   "q": "This result was used only as a descriptive diagnostic and should not be interpreted as definitive evidence that common-method bias was absent.",
+   "loc": "3.3 Assumption checks and correlations"
+  },
+  {
+   "q": "These correlations provided preliminary support for testing the proposed mediation model, while not establishing causal or temporal ordering across all variables.",
+   "loc": "3.3 Assumption checks and correlations"
+  },
+  {
+   "q": "whereas the direct associations of intervention condition and DSEpost with PIUpost were not statistically significant",
+   "loc": "3.4 Serial mediation analysis"
+  },
+  {
+   "q": "whereas the direct effect was not statistically significant",
+   "loc": "3.4 Serial mediation analysis"
+  },
+  {
+   "q": "The two single-mediator paths showed no significance since zero was involved in their CIs.",
+   "loc": "3.4 Serial mediation analysis"
+  },
+  {
+   "q": "However, because the mediators and outcome were measured at the same post-intervention wave, this model should be interpreted as evidence of statistical consistency with the proposed theoretical pathway rather than as definitive evidence of temporal or causal mediation.",
+   "loc": "3.4 Serial mediation analysis"
+  },
+  {
+   "q": "whereas those direct paths from intervention condition to DGIpost, from DSEpost to PIUpost, and from intervention condition to PIUpost were not statistically significant.",
+   "loc": "3.4 Serial mediation analysis"
+  },
+  {
+   "q": "the sequential indirect association was not statistically significant",
+   "loc": "3.4 Serial mediation analysis"
+  },
+  {
+   "q": "These alternative specifications do not establish temporal priority between DSE and DGI.",
+   "loc": "3.4 Serial mediation analysis"
+  },
+  {
+   "q": "The hypothesized DSE → DGI ordering should therefore be regarded as one theory-informed representation that requires longitudinal verification.",
+   "loc": "3.4 Serial mediation analysis"
+  },
+  {
+   "q": "Such pattern may reflect assessment participation, expectancy, increased self-monitoring, or natural fluctuation during the study period.",
+   "loc": "4.1 Principal findings"
+  },
+  {
+   "q": "At the same time, the findings should be interpreted with appropriate caution.",
+   "loc": "4.1 Principal findings"
+  },
+  {
+   "q": "However, because DSE, DGI, and PIU were measured at the same post-intervention wave, the mediation findings should be understood as evidence of statistical consistency with a theory-informed pathway, not as definitive evidence that changes in DSE temporally preceded changes in DGI or that DGI causally reduced PIU.",
+   "loc": "4.1 Principal findings"
+  },
+  {
+   "q": "Importantly, the present findings do not prove that digital self-efficacy and delay of gratification operate in a fixed causal order.",
+   "loc": "4.2 Theoretical contributions"
+  },
+  {
+   "q": "Because digital literacy knowledge was not directly measured in this study, we cannot determine whether knowledge changed or whether such change contributed to the outcomes.",
+   "loc": "4.2 Theoretical contributions"
+  },
+  {
+   "q": "Social Cognitive Theory provides a rationale for considering DSE before self-regulatory behavior, but the present concurrent data cannot determine whether DSE preceded DGI, whether DGI preceded DSE, or whether they reflected overlapping processes.",
+   "loc": "4.2 Theoretical contributions"
+  },
+  {
+   "q": "Given that the intervention included direct training on these skills (Sessions 3 and 5), the observed changes in DGI may reflect both direct instructional effects and the hypothesized indirect effect through DSE.",
+   "loc": "4.2 Theoretical contributions"
+  },
+  {
+   "q": "However, because this study did not experimentally manipulate the sequence of curriculum components, this specific ordering remains a testable hypothesis rather than an established instructional principle.",
+   "loc": "4.3 Implications for digital literacy education"
+  },
+  {
+   "q": "However, scalability should not be assumed without further testing.",
+   "loc": "4.3 Implications for digital literacy education"
+  },
+  {
+   "q": "First, participants were not randomly assigned to conditions.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "Although quota-based allocation improved comparability in age, gender, and baseline Internet-use duration, unmeasured differences in motivation, family supervision, personality, prior concern about Internet use, or scheduling availability may have influenced the findings.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "Second, the wait-list condition did not control for attention, expectancy, facilitator contact, or general self-monitoring.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "Active-control comparisons are needed to distinguish program-specific associations from these nonspecific influences.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "Third, DSE, DGI, and PIU were measured concurrently at posttest.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "The significant serial indirect association therefore does not establish that DSE changed before DGI or that DGI subsequently reduced PIU.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "Fourth, all primary outcomes were self-reported.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "The short posttest interval and absence of assessor blinding may have amplified this differential response reactivity.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "Neither the decline in PIU in the wait-list group nor the significant Group × Time interactions can rule out this explanation.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "Without device-based measures or independent informant reports, the relative contributions of behavioral change and intervention-related reporting change cannot be determined.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "nevertheless, the source of the increased dispersion remains unexplained and warrants caution.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "Sixth, digital literacy itself was not measured.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "The study therefore cannot determine whether the program improved digital literacy per se or whether any such improvement accounted for the observed outcomes.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "Seventh, the DGI measure assessed a generalized tendency across several life domains rather than digital-specific self-regulation.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "Eighth, full attendance was not randomly determined; consequently, the per-protocol findings may reflect adherence-related selection and are descriptive only.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "Ninth, recruitment from one Chinese province through online and community channels limits generalizability, and participating families may have been particularly interested in digital wellbeing.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "Finally, only an immediate posttest was conducted, and the durability of the observed associations is unknown.",
+   "loc": "4.4 Limitations and future research"
+  },
+  {
+   "q": "The findings are therefore preliminary and hypothesis-generating.",
+   "loc": "5. Conclusion"
+  },
+  {
+   "q": "alternative specifications indicated that DGI showed the more consistent association with PIU and did not establish temporal ordering.",
+   "loc": "5. Conclusion"
+  }
+ ]
+}

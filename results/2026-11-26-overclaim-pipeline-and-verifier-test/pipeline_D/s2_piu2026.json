@@ -1,0 +1,19 @@
+{
+ "overclaims": [
+  {
+   "abstract": "These findings provide preliminary quasi-experimental evidence that participation in a multi-component digital literacy and digital wellbeing program is associated with healthier self-reported Internet use, stronger perceived digital competence, and greater delay of gratification.",
+   "body": "Neither the decline in PIU in the wait-list group nor the significant Group × Time interactions can rule out this explanation.",
+   "body_loc": "",
+   "why": "The body states the significant interactions cannot rule out reporting reactivity as an explanation, so the claim of healthier Internet use and stronger competence is weaker than the abstract implies."
+  },
+  {
+   "abstract": "The post-intervention data were statistically consistent with the hypothesized DSE → DGI → PIU indirect pathway; however, alternative-model analyses indicated that DGI showed the more consistent association with PIU across specifications.",
+   "body": "whereas the direct associations of intervention condition and DSEpost with PIUpost were not statistically significant",
+   "body_loc": "",
+   "why": "The body reports that the direct associations of intervention condition and DSE with PIU were not significant, and that the two single-mediator paths were non-significant, which narrows the pathway support the abstract describes."
+  }
+ ],
+ "unsettled": [
+  "Significant Group × Time interactions were observed for PIU, DSE, and DGI, indicating more favorable self-reported pre-to-post changes in the intervention group than in the wait-list control group."
+ ]
+}

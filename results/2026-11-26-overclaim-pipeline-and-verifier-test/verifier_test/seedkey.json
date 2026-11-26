@@ -1,0 +1,182 @@
+[
+ {
+  "id": "india2025",
+  "type": "ADDED",
+  "column": "methodology",
+  "marker": "The questionnaire had been validated in a national pilot study.",
+  "sentence_ids": [
+   "methodology.6"
+  ]
+ },
+ {
+  "id": "india2025",
+  "type": "NUMBER",
+  "column": "results",
+  "marker": "87% vs 41.6%",
+  "sentence_ids": [
+   "results.2"
+  ]
+ },
+ {
+  "id": "india2025",
+  "type": "STRENGTHENED",
+  "column": "discussion",
+  "marker": "The authors demonstrate that the programme caused the gains.",
+  "sentence_ids": [
+   "discussion.5"
+  ]
+ },
+ {
+  "id": "india2025",
+  "type": "THEORY",
+  "column": "theory",
+  "marker": "The study was guided by Social Cognitive Theory.",
+  "sentence_ids": [
+   "theory.1"
+  ]
+ },
+ {
+  "id": "india2025",
+  "type": "SCOPE",
+  "column": "results",
+  "marker": "The effect held across all districts of Jharkhand.",
+  "sentence_ids": [
+   "results.5"
+  ]
+ },
+ {
+  "id": "piu2026",
+  "type": "ADDED",
+  "column": "methodology",
+  "marker": "Participants were recruited from public secondary schools.",
+  "sentence_ids": [
+   "methodology.5"
+  ]
+ },
+ {
+  "id": "piu2026",
+  "type": "NUMBER",
+  "column": "results",
+  "marker": "F(1, 204) = 36.53",
+  "sentence_ids": [
+   "results.1"
+  ]
+ },
+ {
+  "id": "piu2026",
+  "type": "STRENGTHENED",
+  "column": "discussion",
+  "marker": "The results show that the programme causes lower problematic Internet use.",
+  "sentence_ids": [
+   "discussion.4"
+  ]
+ },
+ {
+  "id": "piu2026",
+  "type": "THEORY",
+  "column": "theory",
+  "marker": "The study was grounded in the Technology Acceptance Model.",
+  "sentence_ids": [
+   "theory.1"
+  ]
+ },
+ {
+  "id": "piu2026",
+  "type": "IMPLICATION",
+  "column": "discussion",
+  "marker": "They recommend that all schools nationwide adopt the program.",
+  "sentence_ids": [
+   "discussion.5"
+  ]
+ },
+ {
+  "id": "brink2022",
+  "type": "ADDED",
+  "column": "methodology",
+  "marker": "The interview guide had been validated in a pilot with 40 teachers.",
+  "sentence_ids": [
+   "methodology.5"
+  ]
+ },
+ {
+  "id": "brink2022",
+  "type": "NUMBER",
+  "column": "methodology",
+  "marker": "Fifteen lower secondary",
+  "sentence_ids": [
+   "methodology.1"
+  ]
+ },
+ {
+  "id": "brink2022",
+  "type": "STRENGTHENED",
+  "column": "results",
+  "marker": "All teachers agreed that digital models improve pupils' learning.",
+  "sentence_ids": [
+   "results.4"
+  ]
+ },
+ {
+  "id": "brink2022",
+  "type": "THEORY",
+  "column": "theory",
+  "marker": "The study was framed by Vygotsky's sociocultural theory.",
+  "sentence_ids": [
+   "theory.1"
+  ]
+ },
+ {
+  "id": "brink2022",
+  "type": "SCOPE",
+  "column": "discussion",
+  "marker": "The findings apply to technology teachers in all European countries.",
+  "sentence_ids": [
+   "discussion.4"
+  ]
+ },
+ {
+  "id": "tpack2024",
+  "type": "ADDED",
+  "column": "methodology",
+  "marker": "Participants were randomly assigned to the two groups.",
+  "sentence_ids": [
+   "methodology.5"
+  ]
+ },
+ {
+  "id": "tpack2024",
+  "type": "NUMBER",
+  "column": "results",
+  "marker": "overall F = 63.231",
+  "sentence_ids": [
+   "results.2"
+  ]
+ },
+ {
+  "id": "tpack2024",
+  "type": "STRENGTHENED",
+  "column": "discussion",
+  "marker": "The authors prove that DVR use causes higher TPACK.",
+  "sentence_ids": [
+   "discussion.4"
+  ]
+ },
+ {
+  "id": "tpack2024",
+  "type": "THEORY",
+  "column": "theory",
+  "marker": "The TPACK framework and Self-Determination Theory served",
+  "sentence_ids": [
+   "theory.1"
+  ]
+ },
+ {
+  "id": "tpack2024",
+  "type": "SCOPE",
+  "column": "results",
+  "marker": "The improvement appeared in all seven domains for every participant.",
+  "sentence_ids": [
+   "results.5"
+  ]
+ }
+]

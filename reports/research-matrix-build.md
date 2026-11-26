@@ -223,3 +223,55 @@ grading $1.73).
 
 Open decision for the user: keep Sonnet as the reading helper (current), or
 switch to Haiku. See the chat summary for the recommendation.
+
+## Overclaim pipeline D and a test of the verification step (2026-11-26)
+
+Raw prompts, outputs and per-run costs:
+`results/2026-11-26-overclaim-pipeline-and-verifier-test/`. Same four papers.
+
+### Pipeline D: Haiku reads with exhaustive quoting, Sonnet pairs overclaims from quotes only
+Stage 1 (Haiku, measured): reads the paper, writes the cells and also quotes
+every abstract claim and every caveat, null result or scope restriction:
+$0.021 to $0.032 per paper (mean $0.026), 89 to 173 s. Its cells: 0
+`check_evidence.py` errors, 2 warnings, 0 of 50 numbers missing from the paper.
+Stage 2 (Sonnet, measured): given only those quotes (never the paper), pairs
+each abstract claim with the body quote that shows the gap: $0.041 to $0.056
+per paper (mean $0.045), 5 to 12 s. D total $0.072 per paper before
+verification, against $0.196 for Sonnet reading the whole paper.
+
+Overclaims, against the 5 real cases the blind grader found (3 India, 2 tpack):
+| | Real cases | Extra flags |
+|---|---|---|
+| Haiku alone | 2 clean, 2 wrong body pairing, 1 missed | |
+| Sonnet reading the paper | 4 clean, 1 missed | |
+| D | 3 flagged correctly (all 3 India, including the one both earlier runs missed); the 2 tpack cases were listed as "unsettled" (Haiku had quoted the right passages, Sonnet declined to pair them) | 2 further India discrepancies that are real (abstract says 8 blocks, body 6 intervention blocks; "bridge economic gaps" vs "could not verify"), and 3 doubtful flags on papers where the grader found none (piu 2 where the abstract already hedges, brink 1 "differ" vs "may differ") |
+Sonnet once answered, then wrote "Correction: that entry is invalid" and a
+second JSON object: parse the last valid object, not the first.
+
+### Does the verification step miss things? Planted-error test
+20 errors planted into the Sonnet cells (5 per paper: added property or
+setting, changed number, strengthened claim, theory not the paper's, widened
+scope), 50 untouched sentences. Verifiers saw only the quotes and the
+sentences, as in the skill.
+| Setup | Planted caught | Untouched sentences flagged | Cost per paper |
+|---|---|---|---|
+| Free script (`check_evidence.py`) | 9 of 20 (numbers, causal wording, unquoted theory) | n/a | 0 |
+| Sonnet verifier | 20 of 20 | 14 of 50 | $0.056 |
+| Opus verifier | 20 of 20 | 10 of 50 | $0.122 |
+| Sonnet verifier, then Opus challenges it | 20 of 20 | 11 of 50 | $0.171 |
+All three model setups caught every planted error, so recall cannot be
+separated on blatant errors (20 of 20 means at least about 86 percent with
+95 percent confidence). The planted errors were obvious by design; subtler ones
+might separate them.
+Flags on untouched sentences are mostly quote-coverage gaps: the content is
+true to the paper but no quote backs it (checked: tpack "paired t-tests" is in
+the paper's methods; piu wait-list PIU decrease is true). One was a real find:
+the challenger flagged India's "Computational thinking ... p 0.38" because
+0.38 belongs only to the knowledge aspect of computational thinking (the
+midline result was significant, p = 0.03). Neither the Opus verifier nor the
+blind full-paper grader had flagged it. The challenger also overturned 5 of
+Sonnet's flags and added 3 new ones.
+
+Not measured: the cells of pipeline D were not re-graded claim by claim, only
+script-checked; the verification costs are single-paper runs dominated by helper
+start-up, so batches of 10 cost much less per paper; one run per setup.

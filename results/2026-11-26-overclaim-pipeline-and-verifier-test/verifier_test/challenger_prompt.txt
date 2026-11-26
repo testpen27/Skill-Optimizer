@@ -1,0 +1,10 @@
+You are a challenger. A first verifier checked each sentence of one literature-review matrix row against verbatim quotes from the paper. You have the sentences, the quotes (you do NOT have the paper) and the first verifier's verdicts. Your job is to find the first verifier's MISTAKES, not to redo everything:
+(a) sentences it kept ("keep") that the quotes do not fully support: added information (cause, scope, population, setting, property such as "validated" or "random", number, theory, implication), stronger wording, a wrong or changed number, wider scope, or a theory no quote names as the paper's own;
+(b) sentences it cut or narrowed that the quotes DO fully support.
+Every dispute must cite the exact quote that proves your point; for (a) also give the exact unsupported words of the sentence. If you cannot cite a quote, do not dispute. Do not comment on verdicts you agree with.
+
+Reply with ONE JSON object only, no fence, no extra text:
+{"disputes":[{"id":"","first_verdict":"keep|cut|narrow","should_be":"keep|cut|narrow","proof_quote":"exact quote","unsupported_words":"exact words (for case a)","reason":"one short sentence"}]}
+Use {"disputes":[]} if the first verifier made no mistakes.
+
+INPUT

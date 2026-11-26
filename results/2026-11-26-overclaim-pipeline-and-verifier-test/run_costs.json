@@ -1,0 +1,122 @@
+[
+ {
+  "run": "s1-brink2022",
+  "cost_usd": 0.02078829,
+  "seconds": 89.2,
+  "output_tokens": 23533
+ },
+ {
+  "run": "s1-india2025",
+  "cost_usd": 0.03170643,
+  "seconds": 172.9,
+  "output_tokens": 45708
+ },
+ {
+  "run": "s1-piu2026",
+  "cost_usd": 0.02631894,
+  "seconds": 127.0,
+  "output_tokens": 35017
+ },
+ {
+  "run": "s1-tpack2024",
+  "cost_usd": 0.02582075,
+  "seconds": 129.2,
+  "output_tokens": 33695
+ },
+ {
+  "run": "s2-brink2022",
+  "cost_usd": 0.0406527,
+  "seconds": 7.2,
+  "output_tokens": 520
+ },
+ {
+  "run": "s2-india2025",
+  "cost_usd": 0.0556587,
+  "seconds": 11.6,
+  "output_tokens": 1573
+ },
+ {
+  "run": "s2-piu2026",
+  "cost_usd": 0.0471667,
+  "seconds": 5.8,
+  "output_tokens": 473
+ },
+ {
+  "run": "s2-tpack2024",
+  "cost_usd": 0.0382507,
+  "seconds": 5.0,
+  "output_tokens": 383
+ },
+ {
+  "run": "opusChallengesSonnet-brink2022",
+  "cost_usd": 0.0934326,
+  "seconds": 7.0,
+  "output_tokens": 408
+ },
+ {
+  "run": "opusChallengesSonnet-india2025",
+  "cost_usd": 0.12442059999999999,
+  "seconds": 14.8,
+  "output_tokens": 1501
+ },
+ {
+  "run": "opusChallengesSonnet-piu2026",
+  "cost_usd": 0.11817659999999999,
+  "seconds": 12.8,
+  "output_tokens": 996
+ },
+ {
+  "run": "opusChallengesSonnet-tpack2024",
+  "cost_usd": 0.1226286,
+  "seconds": 17.2,
+  "output_tokens": 1551
+ },
+ {
+  "run": "opusV-brink2022",
+  "cost_usd": 0.10029660000000001,
+  "seconds": 13.4,
+  "output_tokens": 1358
+ },
+ {
+  "run": "opusV-india2025",
+  "cost_usd": 0.1270846,
+  "seconds": 23.5,
+  "output_tokens": 2485
+ },
+ {
+  "run": "opusV-piu2026",
+  "cost_usd": 0.14039659999999998,
+  "seconds": 29.6,
+  "output_tokens": 2997
+ },
+ {
+  "run": "opusV-tpack2024",
+  "cost_usd": 0.1216806,
+  "seconds": 21.9,
+  "output_tokens": 2272
+ },
+ {
+  "run": "sonnetV-brink2022",
+  "cost_usd": 0.0496707,
+  "seconds": 9.8,
+  "output_tokens": 1307
+ },
+ {
+  "run": "sonnetV-india2025",
+  "cost_usd": 0.0574927,
+  "seconds": 13.5,
+  "output_tokens": 1876
+ },
+ {
+  "run": "sonnetV-piu2026",
+  "cost_usd": 0.0603747,
+  "seconds": 12.9,
+  "output_tokens": 2011
+ },
+ {
+  "run": "sonnetV-tpack2024",
+  "cost_usd": 0.0552387,
+  "seconds": 11.8,
+  "output_tokens": 1709
+ }
+]

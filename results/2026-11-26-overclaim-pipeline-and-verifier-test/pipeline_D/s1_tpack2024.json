@@ -1,0 +1,250 @@
+{
+ "id": "tpack2024",
+ "source_basis": "full text",
+ "type": "Mixed-methods",
+ "introduction": "The study aims to examine whether prospective teachers’ use of DVRs affects their TPACK. It asks about the impact on TPACK and its seven domains (TK, PK, CK, PCK, TCK, TPK, TPACK).",
+ "methodology": "Quasi-experimental pre- and post-survey design with experimental and control groups, plus a descriptive qualitative strand. Sample: 70 prospective teachers, 35 per group, at Al-Qasmi Academic College of Education in Baqa, Israel; sampling was purposive. Instruments: a 53-item self-report TPACK questionnaire and semi-structured interviews with 10 experimental-group teachers. Analysis: Quade’s test, paired-sample t-test, thematic analysis.",
+ "theory": "The study uses the TPACK framework as both a conceptual foundation and an analytical tool for exploring prospective teacher knowledge in a digital recording environment.",
+ "results": "Experimental group generally had higher mean scores than the control group on the TPACK components. Quade’s test found group differences significant in all domains, p = 0.001 (TK: F = 23.144, n2 = 0.254). Paired t-tests showed the experimental group improved significantly, while the control group did not. Interviewees reported that DVRs had a significant positive impact on TPACK.",
+ "discussion": "The authors conclude that DVR use had a significant and positive impact on TPACK in favor of the experimental group. The interviews showed the recordings allowed prospective teachers to reflect and ponder on their teaching skills and content delivery. The authors recommend DVR use by prospective and in-service teachers and adoption of the TPACK model. Stated limitations: no unified control or experimental group; self-reported responses.",
+ "evidence": {
+  "introduction": [
+   {
+    "q": "The current study aims to answer the following research questions:",
+    "loc": "2.5. Study Rationale, Objectives, and Questions"
+   },
+   {
+    "q": "this study aims to examine whether the use of DVRs by prospective teachers affects their Technological Pedagogical Content Knowledge (TPACK)",
+    "loc": "2.5. Study Rationale, Objectives, and Questions"
+   },
+   {
+    "q": "What is the impact of prospective teachers’ use of DVRs on their Technological Pedagogical Content Knowledge (TPACK) and its seven domains: (TK, PK, CK, PCK, TCK, TPK, TPACK)?",
+    "loc": "2.5. Study Rationale, Objectives, and Questions"
+   }
+  ],
+  "methodology": [
+   {
+    "q": "the researcher adopted a quasi-experimental design, utilizing a pre-survey and post-survey design with two groups: experimental and control",
+    "loc": "3.1. Research Design"
+   },
+   {
+    "q": "For the qualitative strand, a descriptive approach was employed for data collection and analysis.",
+    "loc": "3.1. Research Design"
+   },
+   {
+    "q": "The study involved a sample of 70 prospective teachers at Al-Qasmi Academic College of Education.",
+    "loc": "3.2. Participants"
+   },
+   {
+    "q": "The college is in Baqa, Israel",
+    "loc": "3.2. Participants"
+   },
+   {
+    "q": "The sampling was purposive.",
+    "loc": "3.4. Procedure"
+   },
+   {
+    "q": "The number of prospective teachers in each of the experimental and control groups was 35 prospective teachers.",
+    "loc": "3.4. Procedure"
+   },
+   {
+    "q": "The present research utilized a self-report questionnaire for the TPACK domains and subdomains",
+    "loc": "3.3.1. TPACK Questionnaire"
+   },
+   {
+    "q": "The questionnaire consisted of 53 items",
+    "loc": "3.3.1. TPACK Questionnaire"
+   },
+   {
+    "q": "semi-structured interviews were conducted with 10 prospective teachers from the experimental group",
+    "loc": "3.2. Participants"
+   },
+   {
+    "q": "Quade’s Distribution-Free Test was used",
+    "loc": "3.5.1. Quantitative Data Analysis"
+   },
+   {
+    "q": "a paired-sample t-test was used",
+    "loc": "3.5.1. Quantitative Data Analysis"
+   },
+   {
+    "q": "Using Thematic Analysis included six steps",
+    "loc": "3.5.2. Qualitative Data Analysis"
+   }
+  ],
+  "theory": [
+   {
+    "q": "This study employed the TPACK framework as both a conceptual foundation and an analytical tool for exploring prospective teacher knowledge within the context of a digital recording environment.",
+    "loc": "1. Introduction"
+   },
+   {
+    "q": "In this study, the Technological Pedagogical Content Knowledge (TPACK) framework was used as a conceptual framework.",
+    "loc": "2.3. The TPACK Framework as a Conceptual Framework"
+   }
+  ],
+  "results": [
+   {
+    "q": "Generally, the experimental group had higher mean scores in the TPACK components than the control group.",
+    "loc": "4.1. Quantitative TPACK Results"
+   },
+   {
+    "q": "Table 5 shows that the differences in the mean scores of TPACK domains, and between the experimental and control groups, are significant.",
+    "loc": "4.1. Quantitative TPACK Results"
+   },
+   {
+    "q": "| TK | Group | 6974.109 | 1 | 6974.10 | 23.144 | 0.001 | 0.254 |",
+    "loc": "Table 5"
+   },
+   {
+    "q": "Table 6 shows that the participants in the experimental group improved significantly their perceptions of TPACK domains, while those in the control group did not.",
+    "loc": "4.1. Quantitative TPACK Results"
+   },
+   {
+    "q": "The participating prospective teachers reported that using DVRs had a significant positive impact on the development of TPACK.",
+    "loc": "4.2.7. Technological Pedagogical Content Knowledge (TPACK)"
+   }
+  ],
+  "discussion": [
+   {
+    "q": "the use of DVRs by teachers had a significant and positive impact on TPACK in favor of the experimental group",
+    "loc": "6. Conclusions and Recommendations"
+   },
+   {
+    "q": "The interviews showed that the recordings allowed the prospective teachers to reflect and ponder on their teaching skills and content delivery.",
+    "loc": "6. Conclusions and Recommendations"
+   },
+   {
+    "q": "The quantitative and qualitative results indicate that the use of DVRs by prospective and in-service teachers is recommended",
+    "loc": "6. Conclusions and Recommendations"
+   },
+   {
+    "q": "We recommend the adoption of the TPACK model to guide the education of prospective teachers",
+    "loc": "6. Conclusions and Recommendations"
+   },
+   {
+    "q": "The main limitation was the inability to provide a unified control group and a unified experimental group, especially since practical training groups are small groups.",
+    "loc": "7. Limitations of the Study"
+   },
+   {
+    "q": "Another limitation is the self-reported responses on the questionnaire related to the TPACK domains.",
+    "loc": "7. Limitations of the Study"
+   }
+  ]
+ },
+ "overclaims": [
+  {
+   "field": "discussion",
+   "text": "The authors recommend DVR use by prospective and in-service teachers",
+   "abstract": "Therefore, the results of the current study provide concrete evidence for the need to use DVRs as a promising educational approach in future professional preparation and to develop prospective teachers’ technological pedagogical content knowledge (TPACK).",
+   "body": "The quantitative and qualitative results indicate that the use of DVRs by prospective and in-service teachers is recommended",
+   "body_loc": "6. Conclusions and Recommendations"
+  },
+  {
+   "field": "discussion",
+   "text": "reflect and ponder on their teaching skills and content delivery",
+   "abstract": "The results of the study indicated that digital video recordings allowed prospective teachers to reflect and ponder on their teaching skills, content delivery, and the appropriate use of technology and its relevant tools in the educational process",
+   "body": "The interviews showed that the recordings allowed the prospective teachers to reflect and ponder on their teaching skills and content delivery.",
+   "body_loc": "6. Conclusions and Recommendations"
+  }
+ ],
+ "abstract_claims": [
+  {
+   "q": "Analyzing digital video recordings (DVRs) is an effective instructional strategy for professionally preparing and developing prospective teachers.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "The quantitative and qualitative results showed that prospective teachers in the experimental group significantly and positively impacted TPACK and its seven domains.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "The results of the study indicated that digital video recordings allowed prospective teachers to reflect and ponder on their teaching skills, content delivery, and the appropriate use of technology and its relevant tools in the educational process to identify strengths for development and weaknesses for improvement.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "Therefore, the results of the current study provide concrete evidence for the need to use DVRs as a promising educational approach in future professional preparation and to develop prospective teachers’ technological pedagogical content knowledge (TPACK).",
+   "loc": "Abstract"
+  }
+ ],
+ "caveats": [
+  {
+   "q": "The sampling was purposive.",
+   "loc": "3.4. Procedure"
+  },
+  {
+   "q": "Ten prospective teachers were selected purposively for the interview from the experimental group",
+   "loc": "3.4. Procedure"
+  },
+  {
+   "q": "While the rest of the domains do not have homogeneity because their significance value is (p < 0.05).",
+   "loc": "3.5.1. Quantitative Data Analysis"
+  },
+  {
+   "q": "all TPACK domains and the total scale do not follow the normal distribution",
+   "loc": "3.5.1. Quantitative Data Analysis"
+  },
+  {
+   "q": "Based on the results of the previous assumptions, especially the results of the normal distribution, Quade’s Distribution-Free Test was used instead of ANCOVA for all TPACK domains as well as the total scale.",
+   "loc": "3.5.1. Quantitative Data Analysis"
+  },
+  {
+   "q": "The overall reliability value of the questionnaire was 0.918, for the total 53 items.",
+   "loc": "3.3.1. TPACK Questionnaire"
+  },
+  {
+   "q": "Overall questionnaire reliability |  | 0.838",
+   "loc": "Table 2"
+  },
+  {
+   "q": "While some studies have reported no significant differences in the reflections of teachers who used video editing to support their written reflections and those who wrote reflections without video editing",
+   "loc": "2.2. Digital Video Recordings (DVRs) Enhance Prospective Teacher Preparation"
+  },
+  {
+   "q": "showed a significant positive impact of using DVRs on the development of TPACK domains, except for content knowledge (CK), which was lower.",
+   "loc": "2.4. Using DVRs to Analyze TPACK Domains"
+  },
+  {
+   "q": "the use of DVRs had a significant impact on all TPACK domains except for technological knowledge (TK)",
+   "loc": "2.4. Using DVRs to Analyze TPACK Domains"
+  },
+  {
+   "q": "While one study found no difference between prospective teachers’ reflections embedded in DVRs of lessons and written reflections without using DVRs",
+   "loc": "5.1. Impact on Pedagogical Content Knowledge (TPACK) Reflection"
+  },
+  {
+   "q": "While one study confirmed that the impact of using digital video recordings on TPACK was less",
+   "loc": "5.2. Impact on Technological Knowledge (TK)"
+  },
+  {
+   "q": "A study by Jang and Lei showed that self-video analysis had a less significant impact on CK",
+   "loc": "5.4. Impact on Content Knowledge (CK)"
+  },
+  {
+   "q": "a study by Jang and Lei indicated that the impact of using DVRs on PCK was moderate",
+   "loc": "5.5. Impact on Pedagogical Content Knowledge (PCK)"
+  },
+  {
+   "q": "Table 6 shows that the participants in the experimental group improved significantly their perceptions of TPACK domains, while those in the control group did not.",
+   "loc": "4.1. Quantitative TPACK Results"
+  },
+  {
+   "q": "The main limitation was the inability to provide a unified control group and a unified experimental group, especially since practical training groups are small groups.",
+   "loc": "7. Limitations of the Study"
+  },
+  {
+   "q": "The experimental and control groups were formed from different specializations as each specialization included a small number of prospective teachers.",
+   "loc": "7. Limitations of the Study"
+  },
+  {
+   "q": "Another limitation is the self-reported responses on the questionnaire related to the TPACK domains.",
+   "loc": "7. Limitations of the Study"
+  },
+  {
+   "q": "The generalization of the results should take into account the fact that the responses are self-reported.",
+   "loc": "7. Limitations of the Study"
+  },
+  {
+   "q": "The data are not publicly available due to privacy concerns.",
+   "loc": "Data Availability Statement"
+  }
+ ]
+}

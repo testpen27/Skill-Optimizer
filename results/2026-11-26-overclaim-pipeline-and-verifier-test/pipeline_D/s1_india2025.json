@@ -1,0 +1,367 @@
+{
+ "id": "india2025",
+ "source_basis": "full text",
+ "type": "Quantitative",
+ "introduction": "The study describes developing and implementing a DLTP to measure and compare adolescent girls' knowledge and skills about digital tools, their importance and practical use, across three phases.",
+ "methodology": "Quasi-experimental design with adolescent girls aged 14–19 years in eight blocks of District Gumla, Jharkhand (six intervention, two comparison), 2017-2020. Intervention vs comparison samples were 314 vs 272 at baseline, 318 vs 260 at midline and 402 vs 202 at endline. Villages were chosen by proportional random sampling, and girls by systematic random sampling. In-person semi-structured questionnaire (CAPI); face and content validity were established by experts. Univariate analysis and chi-square tests (P < 0.05) were used.",
+ "theory": "The study uses a five-element digital literacy framework to group questions and score digital literacy, and to design the curriculum.",
+ "results": "The share above the median did not differ by arm at baseline. It was higher in intervention girls at midline (63.8%, n=203 vs 41.2%, n=107) and endline (90%, n=362 vs 41.6%, n=84), p=0.00 in both. Knowledge and uptake of government schemes was 60.2% (n=242) vs 32.7% (n=66) at endline (p=0.00). Perceived physical security and mass media exposure did not differ significantly at baseline or midline.",
+ "discussion": "Authors conclude the programme led to improved digital literacy scores in intervention blocks versus comparison blocks, which in turn led to greater awareness and uptake of government schemes. They say the change cannot be attributed completely to the programme, as household possessions also rose, and could not verify links to scheme uptake or economic conditions. They note loss to follow-up. A felt need exists to scale up tailor-made programmes to bridge the digital divide.",
+ "evidence": {
+  "introduction": [
+   {
+    "q": "This study demonstrates the development and implementation of a Digital Literacy Training Program (DLTP) to measure and compare the knowledge and skills about the digital tools, its importance and practical usage among adolescent girls during three phases of implementation.",
+    "loc": "Introduction (final paragraph)"
+   }
+  ],
+  "methodology": [
+   {
+    "q": "This study was conducted using a quasi-experimental research design among adolescent girls aged 14–19 years, across eight community development blocks of District Gumla in Jharkhand, India over a period of three years from 2017-2020",
+    "loc": "Methodology (opening paragraph)"
+   },
+   {
+    "q": "Of the eight community development blocks in District Gumla, six were purposively selected as intervention blocks",
+    "loc": "Methodology, Sampling technique"
+   },
+   {
+    "q": "The sample coverage for intervention and comparison arm was 314 and 272 at the baseline, 318 and 260 at the midline, and 402 vs 202 in the endline.",
+    "loc": "Methodology, Sample size"
+   },
+   {
+    "q": "the villages were selected by proportional random sampling based on population of the block and village",
+    "loc": "Methodology, Sampling technique"
+   },
+   {
+    "q": "all the adolescent girls from each selected village were listed alphabetically and were selected using systematic random sampling",
+    "loc": "Methodology, Sampling technique"
+   },
+   {
+    "q": "A semi-structured questionnaire was developed in Computer-Assisted Personal Interviews (CAPI) to collect data in- person by interviewing participants at baseline, midline and endline",
+    "loc": "Methodology, Data collection tool"
+   },
+   {
+    "q": "the face and content validity of these questionnaires was established by the experts",
+    "loc": "Methodology, Data collection tool"
+   },
+   {
+    "q": "Univariate analysis was used to describe the independent variables (sociodemographic and socioeconomic characteristics) as their numbers and percentages.",
+    "loc": "Methodology, Data analysis"
+   },
+   {
+    "q": "Chi‑square test of significance (P < 0.05) was used to compare the independent variables and DL scores among intervention and comparison arm at baseline, midline and endline.",
+    "loc": "Methodology, Data analysis"
+   }
+  ],
+  "theory": [
+   {
+    "q": "the questions assessing DL among the participants were combined according to elements of digital literacy framework for calculating DL scores",
+    "loc": "Methodology, Data analysis"
+   },
+   {
+    "q": "we incorporated all five elements of digital literacy (DL) into the training curriculum",
+    "loc": "Discussion"
+   }
+  ],
+  "results": [
+   {
+    "q": "The proportion of adolescent girls having overall digital literacy more than the median score were same in both the arms at the baseline.",
+    "loc": "Results, Comparison of DL (item 7)"
+   },
+   {
+    "q": ">13 | 72 (22.9) | 47 (17.3) | 0.1 | 203 (63.8) | 107 (41.2) | **0.00** | 362 (90) | 84 (41.6) | **0.00**",
+    "loc": "Results, Table 3 (Total_score_DL row)"
+   },
+   {
+    "q": "\\> 6 | 63 (20.1) | 39 (14.3) | 0.07 | 209 (65.7) | 170 (65.4) | 0.93 | 242 (60.2) | 66 (32.7) | **0.00**",
+    "loc": "Results, Table 3 (Knowledge and uptake of government schemes row)"
+   },
+   {
+    "q": "The distribution of perceived physical security and exposure to mass media scores of adolescent girls in the intervention and comparison arms was not significantly different in baseline and midline.",
+    "loc": "Results, Comparison of DL (after item 7)"
+   }
+  ],
+  "discussion": [
+   {
+    "q": "led to improvement in individual elements and overall scores in the intervention arms as compared to comparison blocks",
+    "loc": "Discussion, final paragraph"
+   },
+   {
+    "q": "this improvement in DL in turn led to a significant improvement in raising awareness and uptake of government schemes",
+    "loc": "Discussion, final paragraph"
+   },
+   {
+    "q": "Albeit, we cannot attribute this change completely to implementation of this DLTP only as we observed that there was a significant increase in the total household possessions at the midline and endline as compared to baseline",
+    "loc": "Discussion, paragraph 2"
+   },
+   {
+    "q": "We could not verify in the community that the increase in household possessions could be due to improved uptake of government schemes which might have resulted in a improving economic conditions of the families.",
+    "loc": "Discussion, paragraph 2"
+   },
+   {
+    "q": "Hence, there was loss-to-follow-up in the project.",
+    "loc": "Discussion, paragraph 4"
+   },
+   {
+    "q": "There is a felt need to scale-up such training programmes; tailor- made for every setting and weaved within cultural contexts to bridge the existing digital divide in low- and middle income countries like India.",
+    "loc": "Discussion, final paragraph"
+   }
+  ]
+ },
+ "overclaims": [
+  {
+   "field": "methodology",
+   "text": "adolescent girls aged 14–19 years",
+   "abstract": "A quantitative questionnaire was developed to collect data from school dropout girls of 10–19 years.",
+   "body": "This study was conducted using a quasi-experimental research design among adolescent girls aged 14–19 years",
+   "body_loc": "Methodology (opening paragraph)"
+  },
+  {
+   "field": "methodology",
+   "text": "eight blocks of District Gumla, Jharkhand (six intervention, two comparison)",
+   "abstract": "The project was implemented in eight blocks of District Gumla of Jharkhand for three years from 2017-2020.",
+   "body": "six were purposively selected as intervention blocks",
+   "body_loc": "Methodology, Sampling technique"
+  },
+  {
+   "field": "results",
+   "text": "Perceived physical security and mass media exposure did not differ significantly at baseline or midline.",
+   "abstract": "The proportion of girls continuing education, physical access to ICT devices at home, exposure to mass media and perceived physical security increased in the intervention arm at the midline and endline as compared to comparison arm in the baseline.",
+   "body": "The distribution of perceived physical security and exposure to mass media scores of adolescent girls in the intervention and comparison arms was not significantly different in baseline and midline.",
+   "body_loc": "Results, Comparison of DL (after item 7)"
+  },
+  {
+   "field": "discussion",
+   "text": "A felt need exists to scale up tailor-made programmes to bridge the digital divide",
+   "abstract": "We conclude that such tailor-made training programs which are weaved within cultural contexts can effectively bridge the digital gaps in resource scare settings.",
+   "body": "There is a felt need to scale-up such training programmes; tailor- made for every setting and weaved within cultural contexts to bridge the existing digital divide in low- and middle income countries like India.",
+   "body_loc": "Discussion, final paragraph"
+  },
+  {
+   "field": "discussion",
+   "text": "could not verify links to scheme uptake or economic conditions",
+   "abstract": "Along with this, they have the potential to bridge the literacy and economic gaps also within the community.",
+   "body": "We could not verify in the community that the increase in household possessions could be due to improved uptake of government schemes which might have resulted in a improving economic conditions of the families.",
+   "body_loc": "Discussion, paragraph 2"
+  }
+ ],
+ "abstract_claims": [
+  {
+   "q": "For bridging this gap, the physical access to information and communications technology (ICT) along with training to harness these skills is important.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "This would empower the girls to gain more control over their health, finances, and safety, and can more freely assert their voice and agency.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "The project was implemented in eight blocks of District Gumla of Jharkhand for three years from 2017-2020.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "A quantitative questionnaire was developed to collect data from school dropout girls of 10–19 years.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "Majority of the participants were unmarried, lived along their parents and had ever attended school in both intervention and comparison arm.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "There was no significant difference in the proportion of girls having digital literacy score above median between intervention and comparison arm at the baseline.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "At the midline, the proportion of these girls with above median score was significantly higher in the intervention arm",
+   "loc": "Abstract"
+  },
+  {
+   "q": "Similarly, at the endline, the proportion of girls with higher median score for digital literacy increased significantly in the intervention arm",
+   "loc": "Abstract"
+  },
+  {
+   "q": "The proportion of girls continuing education, physical access to ICT devices at home, exposure to mass media and perceived physical security increased in the intervention arm at the midline and endline as compared to comparison arm in the baseline.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "A significantly higher proportion of girls had knowledge about government schemes in the intervention arm as compared to comparison arm at the endline (p<0.05).",
+   "loc": "Abstract"
+  },
+  {
+   "q": "We conclude that such tailor-made training programs which are weaved within cultural contexts can effectively bridge the digital gaps in resource scare settings.",
+   "loc": "Abstract"
+  },
+  {
+   "q": "Along with this, they have the potential to bridge the literacy and economic gaps also within the community.",
+   "loc": "Abstract"
+  }
+ ],
+ "caveats": [
+  {
+   "q": "While the study aimed to interview the same adolescent girls during the baseline and end line evaluations, this was challenging due existing socio-cultural factors in the region.",
+   "loc": "Methodology, Data collection method"
+  },
+  {
+   "q": "In both, the intervention and comparison groups, many of the girls interviewed during the baseline study had either migrated or got married and moved away.",
+   "loc": "Methodology, Data collection method"
+  },
+  {
+   "q": "Others were unavailable because they were traveling or had long work or study hours.",
+   "loc": "Methodology, Data collection method"
+  },
+  {
+   "q": "In such cases respondents with similar age and socio-economic profiles from the same or the adjacent village were used as replacements in the midline and endline.",
+   "loc": "Methodology, Data collection method"
+  },
+  {
+   "q": "Of the eight community development blocks in District Gumla, six were purposively selected as intervention blocks",
+   "loc": "Methodology, Sampling technique"
+  },
+  {
+   "q": "Univariate analysis was used to describe the independent variables (sociodemographic and socioeconomic characteristics) as their numbers and percentages.",
+   "loc": "Methodology, Data analysis"
+  },
+  {
+   "q": "The number of girls aged 14–19 years covered in the intervention and comparison arm corresponded to 314 and 272 at the baseline, 318 and 260 at the midline, and 402 vs 202 in the endline, respectively",
+   "loc": "Results, Socio-demographic and socio-economic characteristics"
+  },
+  {
+   "q": "305 (97.1) | 251 (92.3) | **0.01**",
+   "loc": "Results, Table 1 (Marital status row)"
+  },
+  {
+   "q": "273 (86.9) | 213 (78.3) | **0.01**",
+   "loc": "Results, Table 1 (Household possessions related to ICT row)"
+  },
+  {
+   "q": "230 (73.7) | 181 (66.5) | 0.06",
+   "loc": "Results, Table 4 (Education continued row)"
+  },
+  {
+   "q": "194 (61.8) | 180 (66.2) | 0.27",
+   "loc": "Results, Table 4 (Financial Independence row)"
+  },
+  {
+   "q": "146 (45.9) | 106 (40.8) | 0.21",
+   "loc": "Results, Table 4 (Perceived physical security row)"
+  },
+  {
+   "q": "262 (82.4) | 222 (85.4) | 0.33",
+   "loc": "Results, Table 4 (Intensity of exposure to mass media row)"
+  },
+  {
+   "q": "In the comparison arm the median score was 4 (3–6) at the baseline, which increased to 7(5–7) in the midline; however, it decreased to 5(4–7) at the endline.",
+   "loc": "Results, Comparison of DL (item 1 to 7 text, government schemes paragraph)"
+  },
+  {
+   "q": "In both the intervention and comparison arm there was a decrease in the median score in of knowledge aspect of computational thinking element of DL from 1(0–1) at baseline to 0(0–1) in the midline and endline",
+   "loc": "Results, Comparison of DL (item 5)"
+  },
+  {
+   "q": "Only 14% and 19% of the adolescent girls obtained a score of 1 at the baseline in both the arms, respectively(p=0.12).",
+   "loc": "Results, Comparison of DL (item 6)"
+  },
+  {
+   "q": "\\> 1 | 131 (41.7) | 70 (25.7) | **0.00**",
+   "loc": "Results, Table 3 (Knowledge aspect of technical DL row)"
+  },
+  {
+   "q": "18 (5.7) | 15 (5.5) | 0.9",
+   "loc": "Results, Table 3 (Knowledge aspect of civic DL row)"
+  },
+  {
+   "q": "22 (7) | 16 (5.9) | 0.58",
+   "loc": "Results, Table 3 (Knowledge aspect of communicative DL row)"
+  },
+  {
+   "q": "47 (15) | 35 (12.9) | 0.46",
+   "loc": "Results, Table 3 (Practice aspect of communicative DL row)"
+  },
+  {
+   "q": "72 (22.9) | 47 (17.3) | 0.1",
+   "loc": "Results, Table 3 (Total_score_DL row)"
+  },
+  {
+   "q": "135 (33.6) | 75 (37.1) | 0.38",
+   "loc": "Results, Table 3 (Knowledge aspect of computational thinking DL row)"
+  },
+  {
+   "q": "209 (65.7) | 170 (65.4) | 0.93",
+   "loc": "Results, Table 3 (Knowledge and uptake of government schemes row)"
+  },
+  {
+   "q": "The distribution of perceived physical security and exposure to mass media scores of adolescent girls in the intervention and comparison arms was not significantly different in baseline and midline.",
+   "loc": "Results, Comparison of DL (after item 7)"
+  },
+  {
+   "q": "Around 29% of girls scored >10 in the intervention arm as opposed to 9% in the comparison arm for the perceived physical security parameter.",
+   "loc": "Results, Comparison of DL (after item 7)"
+  },
+  {
+   "q": "Albeit, we cannot attribute this change completely to implementation of this DLTP only as we observed that there was a significant increase in the total household possessions at the midline and endline as compared to baseline, which might have contributed to improved digital literacy.",
+   "loc": "Discussion, paragraph 2"
+  },
+  {
+   "q": "We could not verify in the community that the increase in household possessions could be due to improved uptake of government schemes which might have resulted in a improving economic conditions of the families.",
+   "loc": "Discussion, paragraph 2"
+  },
+  {
+   "q": "Since it was a social sector intervention study, so sample coverage and distribution got different across rounds for intervention and comparison arms which are an integral part of any community-based research.",
+   "loc": "Discussion, paragraph 3"
+  },
+  {
+   "q": "It was difficult for us to assign the intervention randomly in the chosen area of District Gumla in Jharkhand- most of the population is tribal and represent marginalized caste groups.",
+   "loc": "Discussion, paragraph 3"
+  },
+  {
+   "q": "In the initial phase of the project, it was extremely difficult to convince the families to send their school dropout girls to be a part of this DLTP.",
+   "loc": "Discussion, paragraph 3"
+  },
+  {
+   "q": "Hence, there was loss-to-follow-up in the project.",
+   "loc": "Discussion, paragraph 3"
+  },
+  {
+   "q": "Also, the girls got married off which further led to change in population across midline and endline.",
+   "loc": "Discussion, paragraph 3"
+  },
+  {
+   "q": "Hence, we tried our best to keep the background characteristics similar in the intervention and control arm across the baseline, midline and endline.",
+   "loc": "Discussion, paragraph 3"
+  },
+  {
+   "q": "When we started this project, a digital literacy program was already in place by Google.",
+   "loc": "Discussion, paragraph 4"
+  },
+  {
+   "q": "Some of the school going girls became school dropouts and got enrolled in our program by the time we rolled out the intervention.",
+   "loc": "Discussion, paragraph 4"
+  },
+  {
+   "q": "So, it was practically very difficult to assess whether the improvement in outcomes was totally attributable to our program or was a combination of multiple projects operational in that area.",
+   "loc": "Discussion, paragraph 4"
+  },
+  {
+   "q": "These can be considered limitations of the current study but controlling strict conditions in such scenarios is not possible owing to social ethics of not depriving anyone of the benefits of training program.",
+   "loc": "Discussion, paragraph 4"
+  },
+  {
+   "q": "Due to this reason, we could not apply advanced statistics to quantify the impact of DLTP.",
+   "loc": "Discussion, paragraph 4"
+  },
+  {
+   "q": "Another limitation could be that we could evaluate five elements of DL but the collaborative and productive elements could not be assessed.",
+   "loc": "Discussion, paragraph 4"
+  },
+  {
+   "q": "So for evaluating these components, a study with long follow up period may be designed to see the impact of DLTP on these two elements.",
+   "loc": "Discussion, paragraph 4"
+  },
+  {
+   "q": "A lot of programmatic and functional challenges along with sustainability issues were encountered while rolling out DLTP.",
+   "loc": "Discussion, paragraph 5"
+  },
+  {
+   "q": "Hence, they faced extreme difficulty in practically applying the knowledge they were gaining from their digital literacy classes.",
+   "loc": "Discussion, paragraph 5"
+  }
+ ]
+}
