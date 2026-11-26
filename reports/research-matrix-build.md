@@ -422,3 +422,33 @@ required, a warning for wording that claims something about the whole field).
 - **Limits:** four papers, one run; the gap list is only as good as the cells
   it reads; the checker can narrow or cut but never add, so a gap the writer
   missed stays missed.
+
+### Gap-list simulations (2026-11-26)
+`results/.../limitations_and_gaps_test/` (`gap_simulations.json`, `gap_simulations_v2.json`).
+- **Checker on seeded flaws:** 8 flawed gaps (a whole-field claim, a wrong count,
+  a wrong paper cited, an added cause, a wrong kind, a "none" contradicted by an
+  uncited paper, an outside-knowledge claim, an unsupported conclusion) and 4
+  believed-sound gaps, Opus checker run 3 times. All 8 flawed gaps were cut in
+  all 3 runs (24 of 24). Three sound gaps were kept in all 3 runs; the fourth
+  ("digital literacy was not fully assessed") was narrowed in all 3 runs, and the
+  checker was right: it merged two different limitations.
+- **Writer stability, first prompt:** Sonnet wrote 5 to 6 gaps in each of 5
+  runs; Opus narrowed 11 of 29 (38 percent), cut none. Same errors each time:
+  calling a paper "self-reported" when its cell does not say; "only", "single",
+  "all" contradicted by an uncited paper; an added "which/since/as" clause;
+  two limitations merged into one gap.
+- **After rules 6 to 9 in the writer prompt** (use the cell's own words, no
+  sweeping words unless every paper supports them, one point per gap, no
+  explaining clause, "call for" needs a call): 3 to 6 gaps per run; Opus
+  narrowed 7 of 25 (28 percent), cut none. The same two paper-sets recurred in
+  5 of 5 runs (india2025 with piu2026; piu2026 with tpack2024), so the topics are
+  stable even though the wording varies. The remaining narrowings are small
+  precision slips, not wrong gaps.
+- **Cost:** writer $0.033 to $0.045 per run; checker $0.10 to $0.11 per run (single
+  runs, no batching).
+- **Added:** a build warning for a gap that explains with "because", "since",
+  "so that", "therefore" (65 of 65 tests).
+- **Not changed:** the script's number check still reads "1,204" as 1204, so a
+  cell's "F(1, 204)" can be flagged when the quote is the table's "1,204". Loosening
+  it would let a real error through ("1,204 pupils" written as "204"), so the
+  false alarm stays and the fix is to re-quote.

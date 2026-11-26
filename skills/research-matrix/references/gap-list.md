@@ -63,6 +63,16 @@ Rules:
    that matter for the user's title, but only when the cells show the link. Do not
    invent relevance.
 5. Plain academic wording, no "I", no "we".
+6. Describe a paper with the words its own cell uses. Do not relabel it: do not
+   call a study "self-reported", "quasi-experimental" or "single-site" unless
+   its cell says so.
+7. Do not use "only", "single", "all", "each", "every" or "none" unless every
+   paper in the input supports it. If unsure, name the papers instead.
+8. One limitation or one direction per gap. Do not join two different
+   limitations into one statement, and add no clause that explains or draws a
+   consequence ("because", "since", "which", "so").
+9. "Call for" needs a call in the cell ("future studies should", "is needed").
+   A limitation alone is not a call for anything.
 
 Reply with ONE JSON object only, no fence:
 {"gaps":[{"gap":"","kind":"stated by authors|across papers","papers":["id"],"basis":""}]}

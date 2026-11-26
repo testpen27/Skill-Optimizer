@@ -351,6 +351,9 @@ for name, mut, needle in [
 g3 = json.loads(json.dumps(gp)); g3["gaps"][0]["gap"] = "Nobody has studied pupils beyond one year."
 rc, out = run("build_lrm.py", wj("gap_abs.json", g3), "--check")
 ok("gap list: a claim about the whole field draws a warning", rc == 0 and "whole field" in out, out)
+g4 = json.loads(json.dumps(gp)); g4["gaps"][0]["gap"] = "Among these 2 papers, the authors of lim1 call for longer follow-up because the effect may fade."
+rc, out = run("build_lrm.py", wj("gap_why.json", g4), "--check")
+ok("gap list: a gap that explains with 'because' draws a warning", rc == 0 and '"because"' in out, out)
 gpath = wj("gaps_w.json", {"gaps": [
     {"gap": "Among these 2 papers, the authors of lim1 call for following pupils for two years.", "kind": "stated by authors", "papers": ["lim1"], "basis": "b"},
     {"gap": "Among these 2 papers, every sample is one school.", "kind": "across papers", "papers": ["lim1", "lim2"], "basis": "b"},

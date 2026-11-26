@@ -1,0 +1,785 @@
+{
+ "A": [
+  {
+   "run": 1,
+   "gaps": [
+    {
+     "gap": "Among these 4 papers, the authors of india2025 and piu2026 each call for longer-term follow-up, noting that india2025 proposes a long follow-up study and piu2026 had only an immediate posttest.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, three quasi-experimental studies (india2025, piu2026, tpack2024) report non-random or non-unified group allocation, with comparison groups that differ from intervention groups.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "limitation cells of india2025, piu2026 and tpack2024"
+    },
+    {
+     "gap": "Among these 4 papers, the two quantitative studies and the mixed-methods study (piu2026, tpack2024, india2025) rely on self-reported measures, with the authors of piu2026 and tpack2024 stating this limits the findings.",
+     "kind": "across papers",
+     "papers": [
+      "india2025",
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "methodology cells of india2025, piu2026 and tpack2024, and limitation cells of piu2026 and tpack2024"
+    },
+    {
+     "gap": "Among these 4 papers, the authors of india2025 and piu2026 note that digital literacy was not fully assessed, as collaborative and productive elements went unmeasured in india2025 and no digital literacy measure was used in piu2026.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, the intervention studies with participants (india2025, piu2026, tpack2024) each draw samples from a single place or institution, namely one district, one province and one college, and the authors of piu2026 name this as a limitation.",
+     "kind": "across papers",
+     "papers": [
+      "india2025",
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "methodology cells of india2025, piu2026 and tpack2024, and limitation cell of piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, the authors of brink2022 call for future studies on how digital models affect pupils' learning or interest in technology, which their teacher-interview data could not address.",
+     "kind": "stated by authors",
+     "papers": [
+      "brink2022"
+     ],
+     "basis": "limitation cell of brink2022"
+    }
+   ],
+   "verdicts": [
+    {
+     "id": "gap.1",
+     "verdict": "keep",
+     "reason": "india2025's limitations cell suggests a long follow-up study, and piu2026's cites only an immediate posttest and calls for longitudinal studies.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.2",
+     "verdict": "narrow",
+     "reason": "All three cells report non-random or non-unified allocation, but only tpack2024's cell says its groups differ (different specializations).",
+     "narrowed": "Among these 4 papers, three quasi-experimental studies (india2025, piu2026, tpack2024) report non-random or non-unified group allocation, with tpack2024 noting its groups came from different specializations."
+    },
+    {
+     "id": "gap.3",
+     "verdict": "narrow",
+     "reason": "Only piu2026 and tpack2024 cells state self-report; india2025's cell shows an in-person questionnaire but does not call it self-reported.",
+     "narrowed": "Among these 4 papers, piu2026 and tpack2024 rely on self-reported measures, which their authors name as a limitation, and india2025 collected data by in-person semi-structured questionnaire."
+    },
+    {
+     "id": "gap.4",
+     "verdict": "keep",
+     "reason": "india2025 says collaborative and productive DL elements were not assessed, and piu2026 says it had no measure of digital literacy.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.5",
+     "verdict": "keep",
+     "reason": "The cells show one district, one province and one college, piu2026 names one-province recruitment as a limitation, and brink2022 is not an intervention study, so it does not contradict the claim.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.6",
+     "verdict": "narrow",
+     "reason": "The phrase 'which their teacher-interview data could not address' adds a causal link; the cell only says the study is limited to teachers' experiences.",
+     "narrowed": "Among these 4 papers, the authors of brink2022 say their study is limited to teachers' experiences and call for future studies on how digital models affect pupils' learning or interest in technology."
+    }
+   ],
+   "cost_write": 0.0331201,
+   "cost_check": 0.1053646
+  },
+  {
+   "run": 2,
+   "gaps": [
+    {
+     "gap": "Among these 4 papers, allocation to intervention and comparison groups was not random, or the groups could not be unified, in india2025, piu2026 and tpack2024, as their authors report.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "limitation cells of india2025, piu2026 and tpack2024"
+    },
+    {
+     "gap": "The authors of piu2026 and tpack2024 note that their outcomes were self-reported, which they list as a limitation.",
+     "kind": "stated by authors",
+     "papers": [
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "limitation cells of piu2026 and tpack2024"
+    },
+    {
+     "gap": "The authors of india2025 and piu2026 call for longer follow-up: india2025 suggests a long follow-up study, and piu2026 had only an immediate posttest.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "The authors of india2025 and piu2026 report that digital literacy was not fully assessed: collaborative and productive elements in india2025, and no digital literacy measure in piu2026.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, the intervention samples of india2025, piu2026 and tpack2024 each come from a single district, province or college.",
+     "kind": "across papers",
+     "papers": [
+      "india2025",
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "methodology cells of india2025, piu2026 and tpack2024, and the limitation cell of piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, adolescents are studied in india2025 and piu2026 and teachers in brink2022 and tpack2024, and no paper covers both groups.",
+     "kind": "across papers",
+     "papers": [
+      "brink2022",
+      "india2025",
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "methodology cells of all four papers"
+    }
+   ],
+   "verdicts": [
+    {
+     "id": "gap.1",
+     "verdict": "keep",
+     "reason": "The limitations cells for india2025 (random assignment was difficult), piu2026 (non-random allocation) and tpack2024 (groups could not be unified) each show this in the authors' own words, and brink2022 has no comparison groups.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.2",
+     "verdict": "keep",
+     "reason": "The limitations cells for piu2026 and tpack2024 both list self-reported outcomes or responses as a limitation, and the gap makes no claim of 'only' or 'all'.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.3",
+     "verdict": "narrow",
+     "reason": "Having only an immediate posttest is not a call for follow-up; the call in piu2026's cell is for longitudinal studies.",
+     "narrowed": "The authors of india2025 and piu2026 call for longer follow-up: india2025 suggests a long follow-up study, and piu2026 notes only an immediate posttest and says longitudinal studies are needed."
+    },
+    {
+     "id": "gap.4",
+     "verdict": "keep",
+     "reason": "The india2025 cell says collaborative and productive DL elements were not assessed, and the piu2026 cell says digital literacy was not measured.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.5",
+     "verdict": "keep",
+     "reason": "The methodology cells show one district (Gumla), one province (Hubei) and one college (Al-Qasmi), and the gap makes no claim about brink2022.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.6",
+     "verdict": "keep",
+     "reason": "The methodology cells show adolescents in india2025 and piu2026 and teachers or prospective teachers in brink2022 and tpack2024, and none of the four covers both groups.",
+     "narrowed": ""
+    }
+   ],
+   "cost_write": 0.0453001,
+   "cost_check": 0.1006446
+  },
+  {
+   "run": 3,
+   "gaps": [
+    {
+     "gap": "Among these 4 papers, the authors of india2025, piu2026 and tpack2024 report that their quasi-experimental designs lacked random assignment or comparable intervention and control groups.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "limitation cells of india2025, piu2026 and tpack2024"
+    },
+    {
+     "gap": "Among these 4 papers, the authors of piu2026 and tpack2024 note that outcomes were measured by self-report only, which limits generalisation of the findings.",
+     "kind": "stated by authors",
+     "papers": [
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "limitation cells of piu2026 and tpack2024"
+    },
+    {
+     "gap": "The authors of india2025 and piu2026 call for longer follow-up, as india2025 suggests a long follow-up study and piu2026 had only an immediate posttest and asks for longitudinal work.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, the authors of piu2026 report no measure of digital literacy and those of india2025 report that collaborative and productive digital literacy elements were not assessed.",
+     "kind": "stated by authors",
+     "papers": [
+      "piu2026",
+      "india2025"
+     ],
+     "basis": "limitation cells of piu2026 and india2025"
+    },
+    {
+     "gap": "Among these 4 papers, each sample comes from a single setting: Swedish schools (brink2022), District Gumla (india2025), Hubei Province (piu2026) and one Israeli college (tpack2024).",
+     "kind": "across papers",
+     "papers": [
+      "brink2022",
+      "india2025",
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "methodology cells of brink2022, india2025, piu2026 and tpack2024"
+    }
+   ],
+   "verdicts": [
+    {
+     "id": "gap.1",
+     "verdict": "keep",
+     "reason": "india2025 (random assignment difficult), piu2026 (non-random allocation) and tpack2024 (could not provide unified control and experimental groups) each state this in their limitation cells.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.2",
+     "verdict": "narrow",
+     "reason": "tpack2024 also used interviews, so its outcomes were not self-report only, and only tpack2024 links self-report to generalising.",
+     "narrowed": "Among these 4 papers, the authors of piu2026 and tpack2024 name self-reported outcomes as a limitation, and tpack2024 says this should be considered when generalizing."
+    },
+    {
+     "id": "gap.3",
+     "verdict": "keep",
+     "reason": "india2025 suggests a long follow-up study, and piu2026 cites only an immediate posttest and calls for longitudinal studies.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.4",
+     "verdict": "keep",
+     "reason": "Both limitation cells say this directly: piu2026 had no measure of digital literacy, and india2025 did not assess collaborative and productive DL elements.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.5",
+     "verdict": "narrow",
+     "reason": "brink2022 drew on several Swedish schools and india2025 on eight blocks, so 'single setting' overstates it; what the cells show is one country or region per paper.",
+     "narrowed": "Among these 4 papers, each sample comes from one country or region: Swedish schools (brink2022), District Gumla, Jharkhand (india2025), Hubei Province, China (piu2026) and one Israeli college (tpack2024)."
+    }
+   ],
+   "cost_write": 0.0400321,
+   "cost_check": 0.0975606
+  },
+  {
+   "run": 4,
+   "gaps": [
+    {
+     "gap": "Among these 4 papers, the authors of india2025 and piu2026 each report non-random allocation or difficulty randomising, and piu2026 calls for randomized studies, so effects of the training are not yet shown under random assignment.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, the authors of piu2026 and tpack2024 both name self-reported outcomes as a limitation, and india2025 collected outcomes by self-reported questionnaire, so all three intervention studies rest on self-report.",
+     "kind": "across papers",
+     "papers": [
+      "piu2026",
+      "tpack2024",
+      "india2025"
+     ],
+     "basis": "limitation cells of piu2026 and tpack2024; methodology cell of india2025"
+    },
+    {
+     "gap": "Among these 4 papers, the authors of india2025 and piu2026 call for longer follow-up, as india2025 suggests a long follow-up study and piu2026 had only an immediate posttest and asks for longitudinal studies.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, the authors of piu2026 and india2025 note that digital literacy itself was not measured or not fully assessed, with piu2026 lacking any digital literacy measure and india2025 not assessing collaborative and productive elements.",
+     "kind": "stated by authors",
+     "papers": [
+      "piu2026",
+      "india2025"
+     ],
+     "basis": "limitation cells of piu2026 and india2025"
+    },
+    {
+     "gap": "Among these 4 papers, the training samples of india2025 (girls in one district of Jharkhand) and piu2026 (adolescents from one province in China) each come from a single local area, while teacher samples come from Sweden and one Israeli college.",
+     "kind": "across papers",
+     "papers": [
+      "india2025",
+      "piu2026",
+      "brink2022",
+      "tpack2024"
+     ],
+     "basis": "methodology cells of all four papers, and the recruitment limitation in piu2026"
+    },
+    {
+     "gap": "The authors of brink2022 call for future studies on how digital models affect pupils' learning or interest in technology, which the teacher-interview data of that paper did not address.",
+     "kind": "stated by authors",
+     "papers": [
+      "brink2022"
+     ],
+     "basis": "limitation cell of brink2022"
+    }
+   ],
+   "verdicts": [
+    {
+     "id": "gap.1",
+     "verdict": "keep",
+     "reason": "The limitation cells of india2025 and piu2026 support it: random assignment was difficult, allocation was non-random and piu2026 calls for randomized studies. No uncited paper reports random assignment.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.2",
+     "verdict": "narrow",
+     "reason": "The india2025 cell says only that outcomes came from an in-person questionnaire, not that they were self-reported, so 'all three rest on self-report' goes beyond the cells.",
+     "narrowed": "Among these 4 papers, the authors of piu2026 and tpack2024 both name self-reported outcomes as a limitation, and india2025 collected outcomes by in-person semi-structured questionnaire."
+    },
+    {
+     "id": "gap.3",
+     "verdict": "keep",
+     "reason": "india2025 suggests a long follow-up study, and piu2026 cites an immediate posttest only and calls for longitudinal studies.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.4",
+     "verdict": "keep",
+     "reason": "piu2026 cites no measure of digital literacy, and india2025 did not assess the collaborative and productive DL elements. Both points are stated by the authors.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.5",
+     "verdict": "narrow",
+     "reason": "The cells give one district and one province, and 'single local area' overstates how local a province sample is.",
+     "narrowed": "Among these 4 papers, the training samples of india2025 (girls in eight blocks of one district of Jharkhand) and piu2026 (adolescents recruited from one province in China) each come from a single district or province, while teacher samples come from Swedish schools and one Israeli college."
+    },
+    {
+     "id": "gap.6",
+     "verdict": "keep",
+     "reason": "brink2022's authors say their study is limited to teachers' experiences and that further research can look at effects on pupils' learning or interest.",
+     "narrowed": ""
+    }
+   ],
+   "cost_write": 0.032972100000000004,
+   "cost_check": 0.1063686
+  },
+  {
+   "run": 5,
+   "gaps": [
+    {
+     "gap": "Among these 4 papers, the authors of brink2022, india2025 and piu2026 each call for further study of aspects their own design left out, including creating and designing in digital environments, collaborative and productive elements, and a measure of digital literacy.",
+     "kind": "stated by authors",
+     "papers": [
+      "brink2022",
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of brink2022, india2025 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, the three quasi-experimental studies (india2025, piu2026, tpack2024) report no random allocation to groups, and the authors of india2025 and piu2026 call for randomized or more rigorous designs.",
+     "kind": "across papers",
+     "papers": [
+      "india2025",
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "methodology cells of india2025, piu2026 and tpack2024; limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, the outcomes of piu2026 and the survey of tpack2024 are self-reported, and the authors of both name self-report as a limitation.",
+     "kind": "stated by authors",
+     "papers": [
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "limitation cells of piu2026 and tpack2024"
+    },
+    {
+     "gap": "The authors of india2025 and piu2026 call for longer follow-up, since india2025 suggests a long follow-up study and piu2026 measured only an immediate posttest.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, the intervention studies sample single localities (Gumla district in india2025, Hubei Province in piu2026, one Israeli college in tpack2024), and the authors of piu2026 name single-province recruitment as a limitation.",
+     "kind": "across papers",
+     "papers": [
+      "india2025",
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "methodology cells of india2025, piu2026 and tpack2024; limitation cell of piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, only brink2022 studies teachers' experiences of teaching approaches by interview, and its authors call for research on how digital models affect pupils' learning or interest in technology.",
+     "kind": "stated by authors",
+     "papers": [
+      "brink2022"
+     ],
+     "basis": "methodology and limitation cells of brink2022"
+    }
+   ],
+   "verdicts": [
+    {
+     "id": "gap.1",
+     "verdict": "narrow",
+     "reason": "Only brink2022 calls for further study of the omitted aspect; india2025 suggests programmes covering all seven elements, not more study, and piu2026 lists the missing digital literacy measure as a limitation without calling for study of it.",
+     "narrowed": "Among these 4 papers, the authors of brink2022, india2025 and piu2026 each name aspects their own design left out: brink2022 says creating and designing in digital environments needs elaborating in future studies, india2025 did not assess collaborative and productive elements and suggests programmes covering all seven elements, and piu2026 cites no measure of digital literacy."
+    },
+    {
+     "id": "gap.2",
+     "verdict": "narrow",
+     "reason": "tpack2024 does not say 'no random allocation'; it reports purposive sampling and groups it could not unify. Only piu2026 calls for randomized studies, since india2025 calls for a long follow-up instead.",
+     "narrowed": "Among these 4 papers, the three quasi-experimental studies (india2025, piu2026, tpack2024) did not randomly allocate participants: india2025 reports random assignment was difficult, piu2026 notes non-random allocation, and tpack2024 used purposive sampling and could not provide unified groups. The authors of piu2026 call for randomized studies."
+    },
+    {
+     "id": "gap.3",
+     "verdict": "keep",
+     "reason": "The limitation cells of both piu2026 and tpack2024 name self-reported responses as a limitation.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.4",
+     "verdict": "keep",
+     "reason": "india2025 suggests a long follow-up study, and piu2026 names its immediate-only posttest as a limitation and calls for longitudinal studies.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.5",
+     "verdict": "keep",
+     "reason": "The methodology cells show one district, one province and one college, and piu2026's authors name single-province recruitment as a limitation.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.6",
+     "verdict": "narrow",
+     "reason": "The word 'only' is contradicted by tpack2024, which also interviewed 10 teachers, and brink2022's cells describe teaching digital models, not teaching approaches in general.",
+     "narrowed": "Among these 4 papers, brink2022 studies teachers' experiences of teaching digital models by interview, and its authors call for research on how digital models affect pupils' learning or interest in technology."
+    }
+   ],
+   "cost_write": 0.0329481,
+   "cost_check": 0.1130006
+  }
+ ],
+ "B": {
+  "seeds": [
+   {
+    "label": "SOUND",
+    "gap": "Among these 4 papers, the authors of piu2026, india2025 and tpack2024 report limits on group allocation."
+   },
+   {
+    "label": "F-field",
+    "gap": "No study has examined adolescents' digital literacy beyond one year."
+   },
+   {
+    "label": "SOUND",
+    "gap": "Among these 4 papers, the authors of india2025 and piu2026 call for longer follow-up."
+   },
+   {
+    "label": "F-count",
+    "gap": "Among these 4 papers, all four used control or comparison groups."
+   },
+   {
+    "label": "F-wrongpaper",
+    "gap": "Among these 4 papers, the authors of brink2022 and tpack2024 call for longer follow-up."
+   },
+   {
+    "label": "SOUND",
+    "gap": "Among these 4 papers, the authors of piu2026 and tpack2024 name self-reported outcomes as a limitation."
+   },
+   {
+    "label": "F-cause",
+    "gap": "Among these 4 papers, piu2026 and india2025 found smaller effects because they lacked randomisation."
+   },
+   {
+    "label": "F-kind",
+    "gap": "Among these 4 papers, the samples come from four different countries."
+   },
+   {
+    "label": "F-contradicted",
+    "gap": "Among these 4 papers, none used interviews."
+   },
+   {
+    "label": "SOUND",
+    "gap": "Among these 4 papers, the authors of india2025 and piu2026 state that digital literacy was not fully assessed."
+   },
+   {
+    "label": "F-outside",
+    "gap": "Among these 4 papers, TPACK-based training remains under-researched in Asia."
+   },
+   {
+    "label": "F-claim",
+    "gap": "Among these 4 papers, the findings show that digital literacy training improves wellbeing."
+   }
+  ],
+  "runs": [
+   {
+    "run": 1,
+    "verdicts": [
+     {
+      "id": "gap.1",
+      "verdict": "keep",
+      "reason": "piu2026 (non-random allocation), india2025 (random assignment difficult) and tpack2024 (could not provide unified control and experimental groups) each state an allocation limit.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.2",
+      "verdict": "cut",
+      "reason": "It is a claim about the whole field, and india2025's 2017–2020 baseline-to-endline design does not support the 'beyond one year' point.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.3",
+      "verdict": "keep",
+      "reason": "india2025 suggests a long follow-up study, and piu2026 cites only an immediate posttest and calls for longitudinal studies.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.4",
+      "verdict": "cut",
+      "reason": "brink2022 used interviews only and had no control or comparison group, so 'all four' is false.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.5",
+      "verdict": "cut",
+      "reason": "Neither the brink2022 cells nor the tpack2024 cells call for longer follow-up.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.6",
+      "verdict": "keep",
+      "reason": "piu2026 lists self-reported outcomes and tpack2024 lists self-reported questionnaire responses as limitations.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.7",
+      "verdict": "cut",
+      "reason": "The cells report no effect sizes, and the claim adds a cause they do not show.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.8",
+      "verdict": "cut",
+      "reason": "The four countries (Sweden, India, China, Israel) do differ, but no authors state this, so 'stated by authors' is wrong and kind cannot be changed.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.9",
+      "verdict": "cut",
+      "reason": "brink2022 and tpack2024, which it does not cite, both used semi-structured interviews.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.10",
+      "verdict": "narrow",
+      "reason": "india2025 says some DL elements were not assessed, but piu2026 says digital literacy was not measured at all, not that it was partly assessed.",
+      "narrowed": "Among these 4 papers, the authors of india2025 state that collaborative and productive DL elements were not assessed, and the authors of piu2026 state that digital literacy was not measured."
+     },
+     {
+      "id": "gap.11",
+      "verdict": "cut",
+      "reason": "It adds a claim about regional research coverage that the cells do not show, and one paper cannot show that across papers.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.12",
+      "verdict": "cut",
+      "reason": "The cells report no findings, and none of them shows improved wellbeing.",
+      "narrowed": ""
+     }
+    ],
+    "cost": 0.1093206
+   },
+   {
+    "run": 2,
+    "verdicts": [
+     {
+      "id": "gap.1",
+      "verdict": "keep",
+      "reason": "The limitations cells of piu2026 (non-random allocation), india2025 (random assignment was difficult) and tpack2024 (could not provide unified control and experimental groups) each state this.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.2",
+      "verdict": "cut",
+      "reason": "This is a claim about the whole field, and india2025 collected data from 2017 to 2020, which may go past one year.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.3",
+      "verdict": "keep",
+      "reason": "india2025 suggests a long follow-up study, and piu2026 notes only an immediate posttest and calls for longitudinal studies.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.4",
+      "verdict": "cut",
+      "reason": "brink2022 used only interviews and had no control or comparison group, so 'all four' is false.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.5",
+      "verdict": "cut",
+      "reason": "Neither the brink2022 cells nor the tpack2024 cells call for longer follow-up.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.6",
+      "verdict": "keep",
+      "reason": "Both piu2026 and tpack2024 name self-reported outcomes or responses as a limitation.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.7",
+      "verdict": "cut",
+      "reason": "The cells report no effect sizes and give no cause linking a lack of randomisation to smaller effects.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.8",
+      "verdict": "cut",
+      "reason": "The countries (Sweden, India, China, Israel) come from the methodology cells and no author states this, so 'stated by authors' is wrong, and it is not a gap.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.9",
+      "verdict": "cut",
+      "reason": "brink2022 and tpack2024, which the gap does not cite, both used interviews, so 'none' is false.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.10",
+      "verdict": "narrow",
+      "reason": "india2025 did not assess two digital literacy elements, but piu2026 did not measure digital literacy at all, so 'not fully assessed' blurs the two.",
+      "narrowed": "Among these 4 papers, the authors of india2025 state that collaborative and productive digital literacy elements were not assessed, and the authors of piu2026 state that digital literacy was not measured."
+     },
+     {
+      "id": "gap.11",
+      "verdict": "cut",
+      "reason": "The cells do not show this regional claim about TPACK research, and it goes beyond these papers.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.12",
+      "verdict": "cut",
+      "reason": "The cells contain no findings on wellbeing or any other outcome, and this is a finding, not a gap.",
+      "narrowed": ""
+     }
+    ],
+    "cost": 0.0827274
+   },
+   {
+    "run": 3,
+    "verdicts": [
+     {
+      "id": "gap.1",
+      "verdict": "keep",
+      "reason": "All three cited papers' limitations name allocation problems: piu2026 non-random allocation, india2025 difficult random assignment, tpack2024 no unified control and experimental groups.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.2",
+      "verdict": "cut",
+      "reason": "It makes a claim about the whole field, and india2025 ran from 2017 to 2020 with baseline, midline and endline, so the cells do not show the claim.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.3",
+      "verdict": "keep",
+      "reason": "india2025 suggests a long follow-up study, and piu2026 cites an immediate posttest only and calls for longitudinal studies.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.4",
+      "verdict": "cut",
+      "reason": "brink2022 used only teacher interviews, with no control or comparison group, so 'all four' is false.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.5",
+      "verdict": "cut",
+      "reason": "Neither the brink2022 cells nor the tpack2024 cells call for longer follow-up.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.6",
+      "verdict": "keep",
+      "reason": "Both piu2026 and tpack2024 list self-reported outcomes or responses among their limitations.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.7",
+      "verdict": "cut",
+      "reason": "The cells report no effect sizes, and the gap adds a cause the cells do not support.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.8",
+      "verdict": "cut",
+      "reason": "The countries come from the methodology cells, not from anything the authors state, so 'stated by authors' is the wrong kind and it cannot be changed here.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.9",
+      "verdict": "cut",
+      "reason": "brink2022 and tpack2024 both used semi-structured interviews, so 'none' is false.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.10",
+      "verdict": "narrow",
+      "reason": "india2025 says only that its collaborative and productive DL elements were not assessed, while piu2026 says it did not measure digital literacy at all.",
+      "narrowed": "Among these 4 papers, the authors of india2025 state that collaborative and productive digital literacy elements were not assessed, and the authors of piu2026 state that digital literacy was not measured."
+     },
+     {
+      "id": "gap.11",
+      "verdict": "cut",
+      "reason": "No cell says anything about TPACK research in Asia, so the gap adds a regional relevance claim the cells do not show.",
+      "narrowed": ""
+     },
+     {
+      "id": "gap.12",
+      "verdict": "cut",
+      "reason": "The cells report no findings, and none of them mentions wellbeing.",
+      "narrowed": ""
+     }
+    ],
+    "cost": 0.0814594
+   }
+  ]
+ }
+}

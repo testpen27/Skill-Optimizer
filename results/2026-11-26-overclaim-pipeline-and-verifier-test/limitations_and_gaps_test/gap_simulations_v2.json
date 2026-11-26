@@ -1,0 +1,423 @@
+{
+ "C": [
+  {
+   "run": 1,
+   "gaps": [
+    {
+     "gap": "The authors of piu2026 and india2025 both report non-random allocation or difficulty with random assignment, and piu2026 calls for randomized studies.",
+     "kind": "stated by authors",
+     "papers": [
+      "piu2026",
+      "india2025"
+     ],
+     "basis": "limitation cells of piu2026 and india2025"
+    },
+    {
+     "gap": "Among these 4 papers, the authors of india2025 and piu2026 call for longer follow-up, with india2025 suggesting a long follow-up study and piu2026 calling for longitudinal studies.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, the authors of piu2026 and tpack2024 state that their questionnaire or outcome data were self-reported.",
+     "kind": "stated by authors",
+     "papers": [
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "limitation cells of piu2026 and tpack2024"
+    },
+    {
+     "gap": "Among these 4 papers, the authors of tpack2024 and india2025 report that control and comparison groups were hard to establish, with tpack2024 citing small groups from different specializations and india2025 citing difficult random assignment.",
+     "kind": "stated by authors",
+     "papers": [
+      "tpack2024",
+      "india2025"
+     ],
+     "basis": "limitation cells of tpack2024 and india2025"
+    },
+    {
+     "gap": "The authors of brink2022 call for future studies on how digital models affect pupils' learning or interest in technology, a direction relevant to effects of teaching approaches.",
+     "kind": "stated by authors",
+     "papers": [
+      "brink2022"
+     ],
+     "basis": "limitation cell of brink2022"
+    },
+    {
+     "gap": "Among these 4 papers, the interviews in brink2022 and tpack2024 involved teachers or prospective teachers, while the quantitative samples in india2025 and piu2026 involved adolescents aged 14–19 and 12–18 years.",
+     "kind": "across papers",
+     "papers": [
+      "brink2022",
+      "tpack2024",
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "methodology cells of brink2022, tpack2024, india2025 and piu2026"
+    }
+   ],
+   "verdicts": [
+    {
+     "id": "gap.1",
+     "verdict": "keep",
+     "reason": "piu2026's cell says non-random allocation and calls for randomized studies, and india2025's cell says random assignment was difficult.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.2",
+     "verdict": "keep",
+     "reason": "india2025's cell suggests a long follow-up study, and piu2026's cell notes only an immediate posttest and calls for longitudinal studies.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.3",
+     "verdict": "keep",
+     "reason": "Both cited limitation cells say the outcomes or questionnaire responses were self-reported, and the gap makes no claim about the uncited papers.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.4",
+     "verdict": "narrow",
+     "reason": "india2025's cell says only that random assignment was difficult, not that comparison groups were hard to establish.",
+     "narrowed": "Among these 4 papers, the authors of tpack2024 report being unable to provide unified control and experimental groups because practical training groups are small and came from different specializations, and the authors of india2025 report that random assignment was difficult."
+    },
+    {
+     "id": "gap.5",
+     "verdict": "narrow",
+     "reason": "The added relevance to effects of teaching approaches is not in brink2022's cell.",
+     "narrowed": "The authors of brink2022 call for future studies on how digital models affect pupils' learning or interest in technology."
+    },
+    {
+     "id": "gap.6",
+     "verdict": "keep",
+     "reason": "The methodology cells show teacher or prospective-teacher interviewees in brink2022 and tpack2024 and adolescent samples aged 14–19 and 12–18 in india2025 and piu2026.",
+     "narrowed": ""
+    }
+   ],
+   "cost_write": 0.0426707,
+   "cost_check": 0.0991606
+  },
+  {
+   "run": 2,
+   "gaps": [
+    {
+     "gap": "The authors of brink2022 and piu2026 each describe their sample as coming from one place or one reality: brink2022 says its findings are limited to teachers' experiences, and piu2026 cites recruitment from one province.",
+     "kind": "across papers",
+     "papers": [
+      "brink2022",
+      "piu2026"
+     ],
+     "basis": "limitation cells of brink2022 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, india2025 and piu2026 report quasi-experimental designs without random assignment, and the authors of piu2026 state that randomized studies are needed.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "methodology cells of india2025 and piu2026; limitation cell of piu2026"
+    },
+    {
+     "gap": "The authors of india2025 and piu2026 call for longer follow-up, with india2025 suggesting a long follow-up study and piu2026 citing only an immediate posttest and calling for longitudinal studies.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, the authors of piu2026 and tpack2024 note self-reported outcomes or questionnaire responses as a limitation.",
+     "kind": "stated by authors",
+     "papers": [
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "limitation cells of piu2026 and tpack2024"
+    },
+    {
+     "gap": "The authors of brink2022 say future studies could investigate how digital models affect pupils' learning or interest in technology.",
+     "kind": "stated by authors",
+     "papers": [
+      "brink2022"
+     ],
+     "basis": "limitation cell of brink2022"
+    }
+   ],
+   "verdicts": [
+    {
+     "id": "gap.1",
+     "verdict": "narrow",
+     "reason": "brink2022's cell says its investigation is limited to one reality, teachers' experiences, not that its sample comes from one place.",
+     "narrowed": "The authors of brink2022 say investigating teaching digital models is limited to one particular reality, teachers' experiences, and the authors of piu2026 cite recruitment from one province."
+    },
+    {
+     "id": "gap.2",
+     "verdict": "narrow",
+     "reason": "tpack2024, which the gap does not cite, is also quasi-experimental with purposive sampling, so the wording wrongly implies only india2025 and piu2026 lack random assignment.",
+     "narrowed": "The authors of india2025 say random assignment was difficult, and the authors of piu2026 note non-random allocation and state that randomized studies are needed."
+    },
+    {
+     "id": "gap.3",
+     "verdict": "keep",
+     "reason": "Both limitation cells support it: india2025 suggests a long follow-up study, and piu2026 cites only an immediate posttest and calls for longitudinal studies.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.4",
+     "verdict": "keep",
+     "reason": "Both limitation cells name self-reported outcomes or responses, and neither uncited paper lists this as a limitation.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.5",
+     "verdict": "keep",
+     "reason": "It closely matches brink2022's limitation cell.",
+     "narrowed": ""
+    }
+   ],
+   "cost_write": 0.041204700000000004,
+   "cost_check": 0.0952446
+  },
+  {
+   "run": 3,
+   "gaps": [
+    {
+     "gap": "Among these four papers, the authors of india2025 and piu2026 report in their limitation cells that random assignment or random allocation to groups was not achieved.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "Among these four papers, the authors of piu2026 and tpack2024 name self-reported outcomes or questionnaire responses as a limitation of their studies.",
+     "kind": "stated by authors",
+     "papers": [
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "limitation cells of piu2026 and tpack2024"
+    },
+    {
+     "gap": "The authors of india2025 and piu2026 call for longer-term follow-up, suggesting a long follow-up study and stating that longitudinal studies are needed.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation and future-research cells of india2025 and piu2026"
+    }
+   ],
+   "verdicts": [
+    {
+     "id": "gap.1",
+     "verdict": "narrow",
+     "reason": "The india2025 cell says random assignment was difficult, not that it was never achieved; the piu2026 cell does state non-random allocation.",
+     "narrowed": "Among these four papers, the authors of india2025 report that random assignment was difficult, and the authors of piu2026 report non-random allocation, in their limitation cells."
+    },
+    {
+     "id": "gap.2",
+     "verdict": "keep",
+     "reason": "The piu2026 cell names self-reported outcomes and the tpack2024 cell names self-reported questionnaire responses as limitations; the claim stays within these papers.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.3",
+     "verdict": "keep",
+     "reason": "The india2025 cell suggests a long follow-up study, and the piu2026 cell notes only an immediate posttest and says longitudinal studies are needed.",
+     "narrowed": ""
+    }
+   ],
+   "cost_write": 0.050344700000000006,
+   "cost_check": 0.0832326
+  },
+  {
+   "run": 4,
+   "gaps": [
+    {
+     "gap": "Among these 4 papers, the authors of brink2022 and piu2026 each state that future studies are needed on topics beyond their own samples, but only piu2026 calls for randomized, longitudinal, multi-method studies.",
+     "kind": "stated by authors",
+     "papers": [
+      "piu2026"
+     ],
+     "basis": "limitation cell of piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, the authors of india2025 suggest a long follow-up study, and the authors of piu2026 note an immediate posttest and call for longitudinal studies.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, india2025, piu2026 and tpack2024 use quasi-experimental designs, and their authors name difficulty with random assignment, non-random allocation, or non-unified control and experimental groups.",
+     "kind": "across papers",
+     "papers": [
+      "india2025",
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "methodology and limitation cells of india2025, piu2026 and tpack2024"
+    },
+    {
+     "gap": "Among these 4 papers, the authors of piu2026 and tpack2024 note self-reported outcomes or questionnaire responses as a limitation.",
+     "kind": "stated by authors",
+     "papers": [
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "limitation cells of piu2026 and tpack2024"
+    },
+    {
+     "gap": "The authors of brink2022 say further research can investigate how digital models affect pupils' learning or interest in technology.",
+     "kind": "stated by authors",
+     "papers": [
+      "brink2022"
+     ],
+     "basis": "limitation cell of brink2022"
+    },
+    {
+     "gap": "The authors of piu2026 note that digital literacy was not measured, and the authors of india2025 note that collaborative and productive DL elements were not assessed.",
+     "kind": "stated by authors",
+     "papers": [
+      "piu2026",
+      "india2025"
+     ],
+     "basis": "limitation cells of piu2026 and india2025"
+    }
+   ],
+   "verdicts": [
+    {
+     "id": "gap.1",
+     "verdict": "narrow",
+     "reason": "The gap brings in brink2022, which it does not cite, and its 'topics beyond their own samples' wording does not match brink2022's cell; only the piu2026 call is supported.",
+     "narrowed": "Among these 4 papers, the authors of piu2026 call for randomized, longitudinal, multi-method studies."
+    },
+    {
+     "id": "gap.2",
+     "verdict": "keep",
+     "reason": "The india2025 cell suggests a long follow-up study, and the piu2026 cell notes an immediate posttest only and calls for longitudinal studies.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.3",
+     "verdict": "keep",
+     "reason": "All three cited papers are quasi-experimental and name difficult random assignment, non-random allocation or non-unified groups; brink2022 is qualitative, so it does not contradict this.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.4",
+     "verdict": "keep",
+     "reason": "The piu2026 and tpack2024 authors both list self-reported outcomes or responses as a limitation; india2025 uses a questionnaire but does not list self-report as a limitation.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.5",
+     "verdict": "keep",
+     "reason": "This matches what the brink2022 authors say in their limitations cell.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.6",
+     "verdict": "keep",
+     "reason": "The piu2026 cell cites no measure of digital literacy, and the india2025 cell says collaborative and productive DL elements were not assessed.",
+     "narrowed": ""
+    }
+   ],
+   "cost_write": 0.0317023,
+   "cost_check": 0.0942046
+  },
+  {
+   "run": 5,
+   "gaps": [
+    {
+     "gap": "Among these 4 papers, the authors of india2025 and piu2026 call for long follow-up or longitudinal study, after india2025 suggests a long follow-up study and piu2026 states that longitudinal studies are needed.",
+     "kind": "stated by authors",
+     "papers": [
+      "india2025",
+      "piu2026"
+     ],
+     "basis": "limitation cells of india2025 and piu2026"
+    },
+    {
+     "gap": "Among these 4 papers, piu2026 and tpack2024 report self-reported questionnaire outcomes among their limitations, as the cells of both papers name self-reported responses or outcomes.",
+     "kind": "stated by authors",
+     "papers": [
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "limitation cells of piu2026 and tpack2024"
+    },
+    {
+     "gap": "Among these 4 papers, india2025, piu2026 and tpack2024 are described as quasi-experimental, and their limitation cells note difficulty with random assignment, non-random allocation, or non-unified control and experimental groups.",
+     "kind": "across papers",
+     "papers": [
+      "india2025",
+      "piu2026",
+      "tpack2024"
+     ],
+     "basis": "methodology and limitation cells of india2025, piu2026 and tpack2024"
+    },
+    {
+     "gap": "The authors of brink2022 call for future studies to elaborate on aspects of creating and designing in digital environments.",
+     "kind": "stated by authors",
+     "papers": [
+      "brink2022"
+     ],
+     "basis": "limitation cell of brink2022"
+    },
+    {
+     "gap": "The authors of brink2022 say further research can investigate how digital models affect pupils' learning or interest in technology.",
+     "kind": "stated by authors",
+     "papers": [
+      "brink2022"
+     ],
+     "basis": "limitation cell of brink2022"
+    }
+   ],
+   "verdicts": [
+    {
+     "id": "gap.1",
+     "verdict": "keep",
+     "reason": "india2025's limitations cell suggests a long follow-up study and piu2026's says longitudinal studies are needed, both in the authors' own words.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.2",
+     "verdict": "narrow",
+     "reason": "tpack2024's cell names self-reported questionnaire responses, but piu2026's cell says only 'self-reported outcomes' and does not mention a questionnaire.",
+     "narrowed": "Among these 4 papers, piu2026 and tpack2024 name self-reported outcomes or responses among their limitations: self-reported outcomes in piu2026 and self-reported questionnaire responses in tpack2024."
+    },
+    {
+     "id": "gap.3",
+     "verdict": "keep",
+     "reason": "All three methodology cells say quasi-experimental, and the limitations cells name difficulty with random assignment, non-random allocation and no unified control and experimental groups.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.4",
+     "verdict": "keep",
+     "reason": "brink2022's limitations cell says creating and designing in digital environments needs to be elaborated on in future studies.",
+     "narrowed": ""
+    },
+    {
+     "id": "gap.5",
+     "verdict": "keep",
+     "reason": "brink2022's limitations cell says further research can investigate how digital models affect pupils' learning or interest in technology.",
+     "narrowed": ""
+    }
+   ],
+   "cost_write": 0.0306303,
+   "cost_check": 0.0915326
+  }
+ ],
+ "B": {}
+}

@@ -125,6 +125,7 @@ def status_of(paper):
 
 
 GAP_KINDS = {"stated by authors", "across papers"}
+EXPLAINS = re.compile(r"\b(because|since|so that|which means|as a result|therefore|thus)\b", re.I)
 ABSOLUTE = re.compile(r"\b(no|none|nobody|never|nothing|all|every|always)\b|\blacks?\b|has not been|have not been", re.I)
 SCOPED = re.compile(r"\b(among|within|in) (these|this|the) (\d+ )?(papers|studies|set|sample)|\bof these\b|\bthe authors?\b", re.I)
 
@@ -227,6 +228,10 @@ def warnings_in(data):
                            f'("Among these N papers, ...") because absence here is not absence in the literature')
             if FIRST_PERSON.search(t):
                 out.append(f"gap {i}: uses first person")
+            m = EXPLAINS.search(t)
+            if m:
+                out.append(f'gap {i}: "{m.group(0)}" explains or draws a consequence the cells may not state; '
+                           f"state the limitation or the call for future work and stop")
     if len(papers) >= 4:
         for f in TEXT_FIELDS:
             starts = [" ".join((p.get(f) or "").split()[:2]).lower() for p in papers if p.get(f)]
