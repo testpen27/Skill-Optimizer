@@ -240,15 +240,17 @@ ok("overclaim: abstract's number cannot leak into the cell", rc == 1 and "come f
 # ---- merge helper output
 ho = f"{T}/helper_out"
 os.makedirs(ho, exist_ok=True)
-json.dump(paper(["Aaa, A."], 2020, "First", id="aaa2020"), open(f"{ho}/aaa2020.json", "w"))
+json.dump(paper(["Aaa, A."], 2020, "First", id="aaa2020", results="Read result.", quartile="Q4 (SJR 1999, Wrong)"), open(f"{ho}/aaa2020.json", "w"))
 json.dump([paper(["Bbb, B."], 2021, "Second", id="bbb2021")], open(f"{ho}/bbb2021.json", "w"))
 open(f"{ho}/broken.json", "w").write("{not json")
-json.dump({"title": "T", "papers": [paper(["Aaa, A."], 2020, "OLD TITLE", id="aaa2020")]}, open(f"{T}/m.json", "w"))
+json.dump({"title": "T", "papers": [paper(["Aaa, A."], 2020, "OLD TITLE", id="aaa2020", quartile="Q1 (SJR 2020, Education)", crossref="verified")]}, open(f"{T}/m.json", "w"))
 rc, out = run("merge_papers.py", f"{T}/m.json", "--from", ho)
 dm = json.load(open(f"{T}/m.json"))
-ok("merge: adds, replaces by id, skips broken file, keeps top-level fields",
-   rc == 1 and "1 added, 1 replaced, 1 skipped" in out and len(dm["papers"]) == 2 and dm["title"] == "T"
-   and next(p for p in dm["papers"] if p["id"] == "aaa2020")["title"] == "First", out)
+pa = next(p for p in dm["papers"] if p["id"] == "aaa2020")
+ok("merge: adds, updates by id, skips broken file, keeps top-level fields",
+   rc == 1 and "1 added, 1 replaced, 1 skipped" in out and len(dm["papers"]) == 2 and dm["title"] == "T" and pa["results"] == "Read result.", out)
+ok("merge: an existing paper keeps its checked title, quartile and Crossref status (the reading file cannot overwrite them)",
+   pa["title"] == "OLD TITLE" and pa["quartile"] == "Q1 (SJR 2020, Education)" and pa["crossref"] == "verified", pa)
 rc, out = run("merge_papers.py", f"{T}/new.json", "--from", ho)
 ok("merge: creates lrm.json when missing", os.path.exists(f"{T}/new.json"), out)
 

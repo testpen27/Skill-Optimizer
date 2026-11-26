@@ -5,7 +5,9 @@
 
 Each helper writes one JSON file per paper into the folder (one paper object,
 or a list of them), in the lrm.json paper format. This adds each to the "papers"
-list of lrm.json, replacing a paper that has the same "id" (or DOI), and creates
+list of lrm.json. A paper that has the same "id" (or DOI) is UPDATED with the reading
+fields only (cells, evidence, quote lists, type, source_basis); its authors, year, title, journal,
+volume, issue, pages, DOI, ISSN, quartile, Crossref status and notices are kept. Creates
 lrm.json if it does not exist. It exists so the chat never has to re-type
 the helpers' output: that costs output tokens and is a chance to change a word.
 
@@ -24,6 +26,11 @@ import os
 import sys
 
 from common import clean_doi, fold, scrub
+
+
+# Fields a reading helper's file must never overwrite on a paper that is already in lrm.json.
+KEEP = {"authors", "year", "title", "journal", "volume", "issue", "pages", "doi", "issn", "quartile",
+        "crossref", "notices", "id"}
 
 
 def key(p):
@@ -64,7 +71,10 @@ def main(argv=None):
                 print(f'SKIPPED {name}: a paper has no "id" or DOI', file=sys.stderr)
                 bad += 1
             elif k in index:
-                data["papers"][index[k]] = p
+                # Update, never replace: the paper already carries its Crossref-checked citation,
+                # quartile and notices, and a reading helper's file does not hold those.
+                cur = data["papers"][index[k]]
+                cur.update({f: v for f, v in p.items() if f not in KEEP})
                 replaced += 1
             else:
                 index[k] = len(data["papers"])
