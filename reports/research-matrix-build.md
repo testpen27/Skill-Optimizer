@@ -121,3 +121,32 @@ Notes:
 - Isolated check (no competing skills, so nothing else could take the job):
   adjacent academic jobs 7/7 queries, 35/35 runs not triggered (100%).
   Results in `results/2026-11-25-isolated-opus-5-5/`.
+
+## Cost model: when reading helpers pay off (2026-11-26)
+
+`scripts/helper_cost_model.py`, output in `results/2026-11-26-cost-model/`.
+Anthropic list prices per million tokens (cached 2026-11-03): Haiku 5.5
+$0.10/$0.50 (over 100K prompt tokens $0.50/$2.50), Sonnet 5.5 $2/$10, Opus 5.5
+$4/$20, Fable 5.2 $8/$40; cache reads $0.10 / $0.20 / $0.20 for the last
+three. ASSUMED, not measured: Haiku cache reads at 5% of input, cache writes
+at 1.25x input, a 12,000-token paper (8,000 and 25,000 also run), 3,000 output
+tokens per paper while reading, 5,000 tokens of fixed overhead per helper,
+3 papers per reading helper, 10 per verifier. The skill's own instructions
+measure about 6,600 tokens.
+
+Findings (12,000-token papers, chat on the model shown):
+
+| Chat on | Reading helpers vs reading in the chat |
+|---|---|
+| Opus / Fable | cheaper from the first paper (36 percent at 3 papers, 45 percent at 20 with Opus) |
+| Sonnet | within a few percent up to 3 papers; cheaper from 4; about 23 percent cheaper at 20 |
+| Haiku | never cheaper |
+
+Against running the whole job on one model with no helpers: helpers (Sonnet
+reads, Opus checks and synthesises) cost less than Opus-only from 1 paper and
+less than Sonnet-only from about 17 papers (9 for 25,000-token papers); they
+cost more than Haiku-only always. The Sonnet-only comparison buys the
+independent Opus check, so the extra cost is for quality, not waste.
+A typical 4-10 paper job costs roughly $0.60 to $1.25 with helpers.
+To replace the estimates with measurements, run one real job both ways and
+compare `usage` totals.

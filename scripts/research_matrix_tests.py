@@ -237,6 +237,21 @@ open(f"{pdir}/read2023.txt", "a").write("Abstract2\nThe programme raised reading
 rc, out = run("check_evidence.py", wj("oc_leak.json", {"papers": [leak]}), "--papers", pdir)
 ok("overclaim: abstract's number cannot leak into the cell", rc == 1 and "come from the abstract" in out, out)
 
+# ---- merge helper output
+ho = f"{T}/helper_out"
+os.makedirs(ho, exist_ok=True)
+json.dump(paper(["Aaa, A."], 2020, "First", id="aaa2020"), open(f"{ho}/aaa2020.json", "w"))
+json.dump([paper(["Bbb, B."], 2021, "Second", id="bbb2021")], open(f"{ho}/bbb2021.json", "w"))
+open(f"{ho}/broken.json", "w").write("{not json")
+json.dump({"title": "T", "papers": [paper(["Aaa, A."], 2020, "OLD TITLE", id="aaa2020")]}, open(f"{T}/m.json", "w"))
+rc, out = run("merge_papers.py", f"{T}/m.json", "--from", ho)
+dm = json.load(open(f"{T}/m.json"))
+ok("merge: adds, replaces by id, skips broken file, keeps top-level fields",
+   rc == 1 and "1 added, 1 replaced, 1 skipped" in out and len(dm["papers"]) == 2 and dm["title"] == "T"
+   and next(p for p in dm["papers"] if p["id"] == "aaa2020")["title"] == "First", out)
+rc, out = run("merge_papers.py", f"{T}/new.json", "--from", ho)
+ok("merge: creates lrm.json when missing", os.path.exists(f"{T}/new.json"), out)
+
 # ---- end to end + recalc
 full = EX + "/lrm.example.json"
 Xf = f"{T}/full.xlsx"

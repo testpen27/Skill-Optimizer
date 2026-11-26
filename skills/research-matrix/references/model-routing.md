@@ -57,25 +57,39 @@ A helper cannot see the conversation. Give it everything in its prompt:
   discussed"), or the quotes and cells to verify;
 - the rules for its step, copied from `reading-and-writing.md` (readers get
   "Reading" and "Writing"; verifiers get "Verifying");
-- the exact shape to return: for readers, one JSON object per paper with
-  `evidence` (quotes with locations, per column), the drafted cells, `type`
-  and `source_basis`; for verifiers, one verdict per sentence.
+- the exact shape of the output: for readers, one JSON file per paper in
+  `helper_out/<id>.json` (with `evidence`, the drafted cells, `overclaims`,
+  `type` and `source_basis`), and a one-line status as the reply; for
+  verifiers, one verdict per sentence, written to a file the same way.
 
 Never pass a reader's draft to the verifier together with the reader's
 reasoning; pass only the quotes and the cells, so the check is independent.
 Run independent batches in parallel. When a helper fails or returns nothing,
 retry once on the same model, then do that batch in the session and say so.
 
-## Small jobs: 3 papers or fewer
+## When reading helpers are worth it
 
-Every helper has a fixed start-up cost: it must be handed its instructions,
-the rules for its step and its files before it reads anything. With 3 papers
-or fewer, read them in the session instead of starting reading helpers. Keep
-the separate verification (an `opus` helper, or a separate pass where there
-are no helpers), because the independent check is the point, not the cost.
-From 4 papers up, use the reading helpers as in the table. The line at 3 is
-an estimate, not a measurement; change it here if a measured run shows
-otherwise.
+A reading helper costs a fixed start-up (its instructions and rules, about
+5,000 tokens) but reads on Sonnet, keeps paper text out of the chat's context,
+and the chat then re-reads far less on every later turn. Whether that pays
+depends on the model the chat itself runs on. A cost model (list prices, my
+assumed token counts; see `reports/research-matrix-build.md`) gives:
+
+| Chat runs on | Rule |
+|---|---|
+| Opus or Fable | Use reading helpers from the first paper (about 15 to 40 percent cheaper, more with more papers) |
+| Sonnet | Use reading helpers from 4 papers up. Up to 3 papers the cost is within a few percent either way, so reading in the chat is fine; at 20 papers helpers are about 20 percent cheaper |
+| Haiku | Read in the chat (helpers cost more). This job is better on Sonnet or Opus |
+
+These are estimates, not measurements of a real run; paper length shifts them
+a little (longer papers favour helpers sooner). Whatever the rule says, the
+separate Opus verification always runs.
+
+Helpers write their output themselves: each reading helper saves one JSON file
+per paper into `helper_out/` and returns only a one-line status. The session
+merges them with `python3 scripts/merge_papers.py lrm.json --from helper_out/`
+and never re-types a helper's cells (that costs output tokens and is a chance
+to change a word).
 
 ## Check for helpers first, and tell the user if there are none
 
