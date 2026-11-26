@@ -78,7 +78,8 @@ if the user asks for one.
   check; `references/verifier-prompt.md` for the verification helper;
   `references/gap-list.md` for the Limitations column and the gap list
 - `scripts/build_lrm.py`, `crossref_check.py`, `scimago_quartile.py`,
-  `check_evidence.py`, `merge_papers.py`, `apply_overclaims.py`, `apply_gaps.py`
+  `check_evidence.py`, `merge_papers.py`, `apply_overclaims.py`, `apply_gaps.py`,
+  `prepare_helper_inputs.py`, `apply_verdicts.py`
 - `scripts/build_synthesis.py`, `build_concept.py` (only on request)
 - `examples/`: illustrative inputs. The made-up rows are labelled as such;
   never copy them into a user's matrix.

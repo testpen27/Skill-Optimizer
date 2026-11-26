@@ -376,6 +376,43 @@ ok("apply_gaps: last verdict object used; keep, narrow (new text), cut, unknown 
 rc, out = run("build_lrm.py", lg, "--check")
 ok("apply_gaps: the written gaps pass the build check", rc == 0, out)
 
+
+# ---- helper inputs and verdicts
+hp = paper(["Adams, A. B."], 2020, "First", id="h1", doi="10.1/h1", methodology="Pupils at one school were taught. They were tested twice. The sample was random.",
+           results="Fluency rose. Comprehension did not change.", limitations="Only one school took part.",
+           evidence={"methodology": [{"q": "Pupils at one school were taught", "loc": "M"}], "results": [{"q": "Fluency rose", "loc": "R"}],
+                     "limitations": ["only one school took part"]},
+           abstract_claims=[{"q": "The programme improved reading for all pupils", "loc": "Abstract"}], caveats=[{"q": "Comprehension did not change", "loc": "R"}],
+           overclaims=[{"field": "results", "text": "Fluency rose.", "abstract": "The programme improved reading for all pupils", "body": "Comprehension did not change"}])
+hl = wj("help.json", {"title": "T", "papers": [hp]})
+pin = f"{T}/pairing_in"; vin_ = f"{T}/verify_in"; gin = f"{T}/gaps_in"
+rc1, o1 = run("prepare_helper_inputs.py", hl, "--kind", "pairing", "--out", pin)
+rc2, o2 = run("prepare_helper_inputs.py", hl, "--kind", "verify", "--out", vin_)
+rc3, o3 = run("prepare_helper_inputs.py", hl, "--kind", "gaps", "--out", gin, "--title", "My title")
+pj, vj, gj = (json.load(open(f"{pin}/h1.json")), json.load(open(f"{vin_}/h1.json")), json.load(open(f"{gin}/gap_input.json")))
+ok("helper inputs: pairing has abstract claims, body quotes and cell sentences with ids",
+   rc1 == 0 and pj["abstract_claims"] == ["The programme improved reading for all pupils"] and pj["body_quotes"]["caveats"] == ["Comprehension did not change"]
+   and {"id": "results.2", "sentence": "Comprehension did not change."} in pj["cell_sentences"], pj)
+ok("helper inputs: verify has every column's sentences, quotes and the overclaim",
+   rc2 == 0 and any(s["id"] == "limitations.1" for s in vj["sentences"]) and vj["quotes"]["limitations"] == ["only one school took part"]
+   and vj["overclaims"][0]["id"] == "overclaim.1", vj)
+ok("helper inputs: gaps file carries title and the two cells per paper", rc3 == 0 and gj["title"] == "My title" and gj["papers"][0]["limitations"] == "Only one school took part.", gj)
+vo = f"{T}/verify_out"; os.makedirs(vo, exist_ok=True)
+open(f"{vo}/h1.json", "w").write("note\n" + json.dumps({"verdicts": [
+    {"id": "methodology.1", "verdict": "keep"}, {"id": "methodology.2", "verdict": "narrow", "reason": "twice not quoted", "support": "twice"},
+    {"id": "methodology.3", "verdict": "cut", "reason": "random is not quoted"}, {"id": "results.1", "verdict": "keep"},
+    {"id": "results.2", "verdict": "keep"}, {"id": "overclaim.1", "verdict": "cut"}]}))
+hl2 = wj("help2.json", json.load(open(hl)))
+rc, out = run("apply_verdicts.py", hl2, "--from", vo)
+d2 = json.load(open(hl2))["papers"][0]
+ok("verdicts: cut removes the sentence, narrow is only listed, an unverified sentence is listed, a cut overclaim is removed",
+   rc == 0 and d2["methodology"] == "Pupils at one school were taught. They were tested twice." and "NARROW" in out and "limitations.1: no verdict" in out
+   and d2["overclaims"] == [], (out, d2["methodology"]))
+hl3 = wj("help3.json", json.load(open(hl)))
+rc, out = run("apply_verdicts.py", hl3, "--from", vo, "--narrow", "drop")
+ok("verdicts: --narrow drop removes the narrowed sentence too, and adds no words",
+   json.load(open(hl3))["papers"][0]["methodology"] == "Pupils at one school were taught.", out)
+
 # ---- end to end + recalc
 full = EX + "/lrm.example.json"
 Xf = f"{T}/full.xlsx"
