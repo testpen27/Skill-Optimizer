@@ -69,21 +69,22 @@ retry once on the same model, then do that batch in the session and say so.
 
 ## When reading helpers are worth it
 
-A reading helper costs a fixed start-up (its instructions and rules, about
-5,000 tokens) but reads on Sonnet, keeps paper text out of the chat's context,
-and the chat then re-reads far less on every later turn. Whether that pays
-depends on the model the chat itself runs on. A cost model (list prices, my
-assumed token counts; see `reports/research-matrix-build.md`) gives:
+A reading helper starts with about 17,000 tokens of its own overhead (system
+prompt, tools, rules), but it reads on a cheaper model and keeps paper text out
+of the chat's context, so the chat re-reads far less on every later turn. The
+break-even depends on the model the chat runs on. Measured on real papers
+(about 20,000 tokens each) and a cost model calibrated to within 4 percent of
+those runs (`reports/research-matrix-build.md`, `scripts/helper_cost_model.py`):
 
-| Chat runs on | Rule |
-|---|---|
-| Opus or Fable | Use reading helpers from the first paper (about 15 to 40 percent cheaper, more with more papers) |
-| Sonnet | Use reading helpers from 4 papers up. Up to 3 papers the cost is within a few percent either way, so reading in the chat is fine; at 20 papers helpers are about 20 percent cheaper |
-| Haiku | Read in the chat (helpers cost more). This job is better on Sonnet or Opus |
+| Chat runs on | Sonnet reading helpers | Haiku reading helpers |
+|---|---|---|
+| Opus or Fable | Cheaper from the first paper | Cheaper from the first paper |
+| Sonnet | A tie up to 5 papers (within about 10 percent either way), cheaper from 6 | Cheaper from the first paper |
+| Haiku | Read in the chat: helpers cost more. This job is better on Sonnet or Opus | |
 
-These are estimates, not measurements of a real run; paper length shifts them
-a little (longer papers favour helpers sooner). Whatever the rule says, the
-separate Opus verification always runs.
+Whichever the chat runs on, the separate Opus verification always runs. A
+reading helper's start-up is cheaper when several helpers run in one session
+(the shared system prompt is cached), so the table is the cautious case.
 
 Helpers write their output themselves: each reading helper saves one JSON file
 per paper into `helper_out/` and returns only a one-line status. The session

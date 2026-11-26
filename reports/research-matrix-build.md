@@ -122,7 +122,7 @@ Notes:
   adjacent academic jobs 7/7 queries, 35/35 runs not triggered (100%).
   Results in `results/2026-11-25-isolated-opus-5-5/`.
 
-## Cost model: when reading helpers pay off (2026-11-26)
+## Cost model, first version (2026-11-26) - SUPERSEDED by the measured version below
 
 `scripts/helper_cost_model.py`, output in `results/2026-11-26-cost-model/`.
 Anthropic list prices per million tokens (cached 2026-11-03): Haiku 5.5
@@ -150,3 +150,76 @@ independent Opus check, so the extra cost is for quality, not waste.
 A typical 4-10 paper job costs roughly $0.60 to $1.25 with helpers.
 To replace the estimates with measurements, run one real job both ways and
 compare `usage` totals.
+
+## Reading helper comparison: Haiku 5.5 vs Sonnet 5.5 (2026-11-26)
+
+Raw outputs, prompts and per-run costs: `results/2026-11-26-reading-comparison/`.
+
+Papers (open access, full text): PMC11984724 (10.1371/journal.pdig.0000617,
+quasi-experiment, rural India), 10.3389/fpsyg.2026.1934152 (quasi-experiment,
+problematic internet use), 10.1007/s10798-021-09659-5 (phenomenological
+interviews), 10.3390/ejihpe14090162 (mixed methods). 18,000 to 22,000 tokens
+each, not the 12,000 first assumed. Each model read each paper once (4 papers,
+one run each) with the skill's Reading and Writing rules, through `claude -p`.
+
+### Measured cost (billed, one paper per run)
+| | Haiku 5.5 | Sonnet 5.5 |
+|---|---|---|
+| Cost per paper | $0.018 (0.015 to 0.021) | $0.196 (0.175 to 0.210) |
+| Time per paper | 72 s | 22 s |
+| Output tokens (incl. reasoning) | 18,461 | 3,362 |
+Sonnet cost 10.8 times as much. Haiku writes five times the output but at a
+twentieth of the price, and takes about three times as long.
+
+### Accuracy
+| | Haiku | Sonnet |
+|---|---|---|
+| Blind Opus grader: claims supported (of all claims audited) | 90 of 91 | 98 of 98 |
+| Added / strengthened / wrong claims | 0 / 0 / 0 | 0 / 0 / 0 |
+| `check_evidence.py` errors | 1 (two numbers in a cell, in the paper's table, not in its quotes) | 0 (1 warning: hedge) |
+| Numbers in cells that appear nowhere in the paper | 0 of 69 | 0 of 61 |
+| Key findings covered (grader's 5 per paper) | 15 of 20 | 16 of 20 |
+| Study type correct / theory correct | 4 of 4 / 4 of 4 | 4 of 4 / 3 of 4 |
+| Overclaims: abstract sentence found, body passage that shows the gap paired with it (my reading of 5 real cases) | 2 clean, 2 right abstract but wrong body quote, 1 missed | 4 clean, 1 missed |
+
+Both missed the same real overclaim (abstract says several outcomes increased,
+the body says some were not significant at midline). Sonnet left one theory cell
+empty where the paper names its guiding framework; Haiku named it.
+
+### Reading of the results
+- Faithfulness: no difference measurable on this sample. Zero added,
+  strengthened or wrong claims in about 90 claims each means the error rate is
+  below about 3 percent per claim (rule of three, 95 percent) for both; the
+  sample cannot separate the models below that.
+- Haiku's weak spot was pairing an abstract overclaim with the body text that
+  actually contradicts it. The Opus verifier would cut such a flag, which turns
+  it into a silently missed overclaim, not a wrong yellow flag.
+- Limits: 4 papers, one run each, one judge (Opus) that I spot-checked against
+  the paper text, education and social-science papers only. The overclaim
+  difference rests on 5 real cases.
+
+### Corrected cost model
+Calibration against the 8 measured runs gave two corrections: cache writes cost
+2 times the input price (not 1.25), and Haiku cache reads cost $0.01 per million.
+The model now reproduces the measured per-paper cost to -4 percent (Haiku) and
+0 percent (Sonnet). With 20,000-token papers and 17,000 tokens of helper
+overhead (measured), Opus checking and synthesising in every plan:
+
+| Papers | Chat reads (Sonnet chat) | Chat reads (Opus chat) | Sonnet helpers | Haiku helpers |
+|---|---|---|---|---|
+| 4 | $1.16 | $1.85 | $1.22 | $0.64 |
+| 8 | $1.99 | $3.35 | $1.95 | $0.85 |
+| 20 | $5.11 | $9.02 | $4.39 | $1.66 |
+(cautious case: the helper start-up billed in full. If later helpers share the
+cached system prompt, Sonnet helpers are cheaper than reading in the chat from
+the first paper, e.g. $1.49 vs $1.72 for 8 papers, and Haiku helpers cost $0.58.)
+
+So: Haiku helpers cut a whole job's cost by 45 to 70 percent against Sonnet
+helpers (8 papers: $0.85 vs $1.95), because reading is most of the spend and
+the Opus verification is a fixed cost. Sonnet helpers beat the chat reading for
+itself from the first paper on an Opus or Fable chat, and from about 6 papers
+on a Sonnet chat. The experiment itself cost about $2.6 (readers $0.85, Opus
+grading $1.73).
+
+Open decision for the user: keep Sonnet as the reading helper (current), or
+switch to Haiku. See the chat summary for the recommendation.

@@ -1,0 +1,110 @@
+[
+ {
+  "run": "grade-brink2022",
+  "cost_usd": 0.4131458,
+  "seconds": 35.3,
+  "turns": 5,
+  "output_tokens": 2191,
+  "cache_write_tokens": 40587,
+  "cache_read_tokens": 222949
+ },
+ {
+  "run": "grade-india2025",
+  "cost_usd": 0.46583480000000005,
+  "seconds": 46.0,
+  "turns": 6,
+  "output_tokens": 4191,
+  "cache_write_tokens": 43871,
+  "cache_read_tokens": 155074
+ },
+ {
+  "run": "grade-piu2026",
+  "cost_usd": 0.3966928,
+  "seconds": 38.7,
+  "turns": 4,
+  "output_tokens": 2725,
+  "cache_write_tokens": 38780,
+  "cache_read_tokens": 159604
+ },
+ {
+  "run": "grade-tpack2024",
+  "cost_usd": 0.45854039999999996,
+  "seconds": 49.2,
+  "turns": 6,
+  "output_tokens": 4138,
+  "cache_write_tokens": 43167,
+  "cache_read_tokens": 152062
+ },
+ {
+  "run": "haiku-brink2022",
+  "cost_usd": 0.01487889,
+  "seconds": 47.7,
+  "turns": 3,
+  "output_tokens": 11860,
+  "cache_write_tokens": 38534,
+  "cache_read_tokens": 124149
+ },
+ {
+  "run": "haiku-india2025",
+  "cost_usd": 0.01924084,
+  "seconds": 82.0,
+  "turns": 3,
+  "output_tokens": 20202,
+  "cache_write_tokens": 39553,
+  "cache_read_tokens": 122864
+ },
+ {
+  "run": "haiku-piu2026",
+  "cost_usd": 0.01765932,
+  "seconds": 65.9,
+  "turns": 3,
+  "output_tokens": 17844,
+  "cache_write_tokens": 37356,
+  "cache_read_tokens": 126552
+ },
+ {
+  "run": "haiku-tpack2024",
+  "cost_usd": 0.02086883,
+  "seconds": 91.8,
+  "turns": 3,
+  "output_tokens": 23937,
+  "cache_write_tokens": 38551,
+  "cache_read_tokens": 118953
+ },
+ {
+  "run": "sonnet-brink2022",
+  "cost_usd": 0.17525310000000002,
+  "seconds": 14.1,
+  "turns": 3,
+  "output_tokens": 2146,
+  "cache_write_tokens": 35403,
+  "cache_read_tokens": 121691
+ },
+ {
+  "run": "sonnet-india2025",
+  "cost_usd": 0.20975970000000002,
+  "seconds": 26.7,
+  "turns": 3,
+  "output_tokens": 4274,
+  "cache_write_tokens": 38722,
+  "cache_read_tokens": 121197
+ },
+ {
+  "run": "sonnet-piu2026",
+  "cost_usd": 0.1964782,
+  "seconds": 22.0,
+  "turns": 3,
+  "output_tokens": 3489,
+  "cache_write_tokens": 37292,
+  "cache_read_tokens": 124082
+ },
+ {
+  "run": "sonnet-tpack2024",
+  "cost_usd": 0.2009652,
+  "seconds": 26.0,
+  "turns": 3,
+  "output_tokens": 3541,
+  "cache_write_tokens": 38474,
+  "cache_read_tokens": 116472
+ }
+]

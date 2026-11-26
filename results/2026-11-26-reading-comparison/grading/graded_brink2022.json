@@ -1,0 +1,52 @@
+{
+ "truth": {
+  "type": "Qualitative",
+  "theory": "Phenomenology of the lifeworld (Bengtsson 2013), which the paper states is the ontological and epistemological approach of this study. 'Experience' is defined within it as the analytical construct of respondents' knowledge, beliefs, purposes and intentions.",
+  "key_findings": [
+   "Theme (a): teachers teach digital models to enhance and integrate other subjects, mainly mathematics (concepts, data for calculations) and crafts (3D-printed models used for molding).",
+   "Theme (b): teachers use digital models to visualize technology to the pupils. Ready-made models (films, clips, simulations) make abstract technical systems concrete and start class discussions of advantages and disadvantages.",
+   "Theme (c): teachers teach digital models to enable digital modelling (CAD, block programming, 3D printing). The learning content is handling the software and the iterative process, not the designed object.",
+   "Theme (d): teachers teach digital models to prepare pupils for the future: higher education, technological professions, interest in technology, and general citizen knowledge of programmed systems.",
+   "Synthesis: the four themes partly overlap through shared teaching aspects (a+c, b+c, c+d, b+d, b+c+d). Teachers did not experience digital models as one single idea but as an amalgam of multiple ideas."
+  ],
+  "real_overclaims": []
+ },
+ "X": {
+  "counts": {
+   "supported": 20,
+   "added": 0,
+   "strengthened": 0,
+   "wrong": 0,
+   "imprecise": 1
+  },
+  "key_findings_covered": 5,
+  "type_correct": true,
+  "theory_correct": true,
+  "overclaims_caught": 0,
+  "false_overclaim_flags": 0,
+  "problems": [
+   {
+    "column": "methodology",
+    "claim": "used an open interview guide",
+    "label": "IMPRECISE",
+    "why": "The paper calls the interviews open in character, not the guide. The guide was used to keep the open interview focused.",
+    "paper_says": "The interviews were open in character, with a guide (see Appendix 1) for the questions"
+   }
+  ]
+ },
+ "Y": {
+  "counts": {
+   "supported": 23,
+   "added": 0,
+   "strengthened": 0,
+   "wrong": 0,
+   "imprecise": 0
+  },
+  "key_findings_covered": 5,
+  "type_correct": true,
+  "theory_correct": true,
+  "overclaims_caught": 0,
+  "false_overclaim_flags": 0,
+  "problems": []
+ }
+}

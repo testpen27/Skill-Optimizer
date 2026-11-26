@@ -14,14 +14,19 @@ import itertools
 import sys
 
 # model: (in, out, cache_read, cache_write)
+# Calibrated on 8 measured claude -p reading runs (2026-11-26): cache writes cost
+# 2x the input price (1-hour cache), and Haiku cache reads $0.01/M. With these the
+# model reproduces the measured cost per paper (see calibration() below).
 PRICE = {
-    "haiku":  (0.10, 0.50, 0.005, 0.125),
-    "sonnet": (2.00, 10.00, 0.10, 2.50),
-    "opus":   (4.00, 20.00, 0.20, 5.00),
-    "fable":  (8.00, 40.00, 0.20, 10.00),
+    "haiku":  (0.10, 0.50, 0.01, 0.20),
+    "sonnet": (2.00, 10.00, 0.10, 4.00),
+    "opus":   (4.00, 20.00, 0.20, 8.00),
+    "fable":  (8.00, 40.00, 0.20, 16.00),
 }
 # Haiku 5.5 is $0.50/$2.50 for prompts over 100K tokens
-HAIKU_BIG = (0.50, 2.50, 0.025, 0.625)
+HAIKU_BIG = (0.50, 2.50, 0.05, 1.00)
+# Output tokens (incl. reasoning) per paper while reading: measured Haiku 18,461, Sonnet 3,362
+READ_OUT = {"haiku": 18_000, "sonnet": 3_400, "opus": 3_400, "fable": 3_400}
 
 
 def rates(model, ctx):
@@ -36,20 +41,23 @@ class Conv:
     def __init__(self, model):
         self.model, self.ctx, self.cost = model, 0, 0.0
 
-    def turn(self, new_in, out, keep_out=None):
+    def turn(self, new_in, out, keep_out=None, cached_new=0):
+        """cached_new: part of new_in already in the cache (a shared system prompt),
+        billed as a cache read instead of a cache write."""
         pin, pout, pread, pwrite = rates(self.model, self.ctx + new_in)
-        self.cost += (self.ctx * pread + new_in * pwrite + out * pout) / 1e6
+        self.cost += (self.ctx * pread + cached_new * pread + (new_in - cached_new) * pwrite + out * pout) / 1e6
         self.ctx += new_in + (out if keep_out is None else keep_out)
 
 
 # ---- assumptions (tokens) ----
 A = dict(
-    paper=12_000,       # full text of one paper (varied below)
+    paper=20_000,       # full text of one paper (measured: 18,282 to 22,189 tokens)
     instr=6_600,        # skill files loaded in the session (measured: 26,313 chars / 4)
     read_out=3_000,     # output per paper incl. reasoning: quotes + cells
     read_keep=1_700,    # of which stays in context (quotes + cells JSON)
     tool_call=100,
-    helper_overhead=5_000,   # a helper's system prompt + task prompt + rules
+    helper_overhead=17_000,  # a helper's system prompt + tools + task prompt (measured: ~17K)
+    shared_overhead=False,   # True: later helpers in a session reuse the cached system prompt
     batch=3,            # papers per reading helper
     verify_batch=10,    # papers per verifier helper
     verify_out=1_000,   # per paper: verdict + reasoning
@@ -67,7 +75,7 @@ def in_session(model, n, a=A):
     c.turn(a["instr"], 0)                       # skill instructions loaded
     for _ in range(n):
         c.turn(200, a["tool_call"])             # decide to read the file
-        c.turn(a["paper"] + a["tool_call"], a["read_out"], a["read_keep"])
+        c.turn(a["paper"] + a["tool_call"], READ_OUT[model], a["read_keep"])
     for _ in range(-(-n // a["verify_batch"])):  # separate verification pass (same model)
         k = min(a["verify_batch"], n)
         c.turn(300, k * a["verify_out"], k * a["verify_keep"])
@@ -86,10 +94,10 @@ def helpers(n, session="sonnet", reader="sonnet", verifier="opus", synth="opus",
     while done < n:                              # reading helpers
         k = min(a["batch"], n - done)
         h = Conv(reader)
-        h.turn(a["helper_overhead"], 0)
+        h.turn(a["helper_overhead"], 0, cached_new=a["helper_overhead"] if a["shared_overhead"] else 0)
         for _ in range(k):
             h.turn(200, a["tool_call"])
-            h.turn(a["paper"] + a["tool_call"], a["read_out"], a["read_keep"])
+            h.turn(a["paper"] + a["tool_call"], READ_OUT[reader], a["read_keep"])
         h.turn(100, 300)                         # writes its file, reports
         total += h.cost
         s.turn(300, 250, 250)                    # session starts the helper
@@ -99,13 +107,15 @@ def helpers(n, session="sonnet", reader="sonnet", verifier="opus", synth="opus",
     while done < n:                              # verifier helpers
         k = min(a["verify_batch"], n - done)
         h = Conv(verifier)
-        h.turn(a["helper_overhead"] + k * a["read_keep"], k * a["verify_out"])
+        h.turn(a["helper_overhead"] + k * a["read_keep"], k * a["verify_out"],
+               cached_new=a["helper_overhead"] if a["shared_overhead"] else 0)
         total += h.cost
         s.turn(300, 250, 250)
         s.turn(a["status"], 0)
         done += k
     h = Conv(synth)                              # synthesis helper
-    h.turn(a["helper_overhead"] + n * a["cells_per_paper"], a["synth_out"])
+    h.turn(a["helper_overhead"] + n * a["cells_per_paper"], a["synth_out"],
+           cached_new=a["helper_overhead"] if a["shared_overhead"] else 0)
     total += h.cost
     s.turn(300, 250, 250)
     s.turn(800, 0)
@@ -134,18 +144,6 @@ def table(a, label):
     return be
 
 
-if __name__ == "__main__":
-    print("Assumptions:", {k: v for k, v in A.items()})
-    for p in (8_000, 12_000, 25_000):
-        table({**A, "paper": p}, "size")
-    # session on Opus orchestrating the helpers
-    a = {**A}
-    print("\n### helpers plan when the chat itself runs on Opus (12k-token papers)")
-    for n in (3, 4, 5, 8, 10, 20):
-        print(f"{n:>3} papers: helpers (Opus chat) ${helpers(n, session='opus', a=a):.2f} | opus-only ${in_session('opus', n, a=a):.2f}"
-              f" | helpers (Sonnet chat) ${helpers(n, a=a):.2f}")
-
-
 def hybrid(n, session, a=A):
     """No reading helpers: the chat (model `session`) reads every paper itself; the
     Opus verification and synthesis helpers are kept."""
@@ -153,19 +151,21 @@ def hybrid(n, session, a=A):
     s.turn(a["instr"], 0)
     for _ in range(n):
         s.turn(200, a["tool_call"])
-        s.turn(a["paper"] + a["tool_call"], a["read_out"], a["read_keep"])
+        s.turn(a["paper"] + a["tool_call"], READ_OUT[session], a["read_keep"])
     total = 0.0
     done = 0
     while done < n:
         k = min(a["verify_batch"], n - done)
         h = Conv("opus")
-        h.turn(a["helper_overhead"] + k * a["read_keep"], k * a["verify_out"])
+        h.turn(a["helper_overhead"] + k * a["read_keep"], k * a["verify_out"],
+               cached_new=a["helper_overhead"] if a["shared_overhead"] else 0)
         total += h.cost
         s.turn(300, 250, 250)
         s.turn(a["status"], 0)
         done += k
     h = Conv("opus")
-    h.turn(a["helper_overhead"] + n * a["cells_per_paper"], a["synth_out"])
+    h.turn(a["helper_overhead"] + n * a["cells_per_paper"], a["synth_out"],
+           cached_new=a["helper_overhead"] if a["shared_overhead"] else 0)
     total += h.cost
     s.turn(300, 250, 250)
     s.turn(800, 0)
@@ -179,8 +179,42 @@ def reading_breakeven(session, a=A):
     return next((n for n in range(1, 61) if helpers(n, session=session, a=a) < hybrid(n, session, a)), None)
 
 
+def calibration():
+    """One reader helper, one paper, compared with the measured claude -p runs."""
+    a = A
+    print("Calibration: predicted vs measured cost of ONE paper read by ONE helper (8 real runs)")
+    for m, measured in (("haiku", 0.0182), ("sonnet", 0.1956)):
+        h = Conv(m)
+        h.turn(a["helper_overhead"], 0)
+        h.turn(200, a["tool_call"])
+        h.turn(a["paper"] + a["tool_call"], READ_OUT[m], a["read_keep"])
+        h.turn(100, 300)
+        print(f"  {m:>6}: predicted ${h.cost:.4f}  measured ${measured:.4f}  ({h.cost / measured - 1:+.0%})")
+
+
+def reading_breakeven(session, reader, a=A):
+    """First paper count where reading helpers on `reader` beat the chat (on `session`) reading itself."""
+    return next((n for n in range(1, 61)
+                 if helpers(n, session=session, reader=reader, a=a) < hybrid(n, session, a)), None)
+
+
+def main():
+    print("Parameters:", {k: v for k, v in A.items()})
+    calibration()
+    for shared in (False, True):
+        a = {**A, "shared_overhead": shared}
+        label = ("helper overhead billed in full (measured claude -p, pessimistic)" if not shared
+                 else "helper overhead shared via the cache (later helpers in one session)")
+        print(f"\n=== {label}; 20,000-token papers; Opus checks and synthesises in every plan")
+        print(f"{'papers':>6} | {'chat reads, Sonnet chat':>23} | {'chat reads, Opus chat':>21} | {'Sonnet helpers':>14} | {'Haiku helpers':>13}")
+        for n in (1, 2, 3, 4, 5, 8, 10, 20):
+            print(f"{n:>6} | {hybrid(n, 'sonnet', a):>22.2f}$ | {hybrid(n, 'opus', a):>20.2f}$ |"
+                  f" {helpers(n, session='sonnet', reader='sonnet', a=a):>13.2f}$ | {helpers(n, session='sonnet', reader='haiku', a=a):>12.2f}$")
+        print("  first paper count where helpers beat the chat reading itself:")
+        for sess in ("sonnet", "opus", "fable"):
+            print(f"    chat on {sess:>6}: Sonnet helpers from {reading_breakeven(sess, 'sonnet', a)}, "
+                  f"Haiku helpers from {reading_breakeven(sess, 'haiku', a)}")
+
+
 if __name__ == "__main__":
-    print("\nReading helpers vs the chat reading itself (Opus checks in both): first N where helpers are cheaper")
-    for sess in PRICE:
-        row = {p: reading_breakeven(sess, {**A, "paper": p}) for p in (8_000, 12_000, 25_000)}
-        print(f"  chat on {sess:>6}: " + ", ".join(f"{p // 1000}k-token papers: {v if v else 'never'}" for p, v in row.items()))
+    main()

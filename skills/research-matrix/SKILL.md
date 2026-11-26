@@ -52,7 +52,7 @@ if the user asks for one.
 - **Run each step on its planned model** (`references/model-routing.md`):
   scripts for anything with one right answer, `haiku` to fetch, `sonnet` to
   read, `opus` to verify and synthesise. Reading helpers pay off from the first paper when the
-  chat runs on Opus or Fable, from 4 papers on Sonnet, never on Haiku. **If this session has no `Agent` tool, tell the user in one line
+  chat runs on Opus or Fable, from 6 papers on Sonnet, and never on Haiku. **If this session has no `Agent` tool, tell the user in one line
   that no helpers or per-step models are available here and that every step
   runs on their chat's model**, then run the same steps in the session.
 - **Never invent.** A cell traces to something actually retrieved: a PDF, a

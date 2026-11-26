@@ -1,0 +1,44 @@
+{
+ "truth": {
+  "type": "Quantitative",
+  "theory": "I-PACE model (Brand et al., 2019), which the authors say informed the overall intervention logic; Gross's emotion regulation theory guided the Session 4 content. The DSE → DGI → PIU sequence is called a theory-informed proposition. Social Cognitive Theory appears only in the Discussion as an interpretive rationale.",
+  "key_findings": [
+   "Significant Group × Time interactions for PIU (F(1,204)=13.75, p<0.001, ηp²=0.063), DGI (F=26.53, ηp²=0.115) and DSE (F=18.62, ηp²=0.084)",
+   "PIU decreased significantly in both groups (intervention 19.35→13.50, dz=1.01; wait-list 19.65→17.08, p<0.001, dz=0.38), with a larger reduction in the intervention group",
+   "DGI and DSE increased significantly in the intervention group (dz=1.23 and 0.80), while the wait-list changes were not significant (DGI p=0.176; DSE p=0.655)",
+   "Serial mediation: only the Group → DSEpost → DGIpost → PIUpost indirect path was significant (B=−2.589, 95% CI [−3.729, −1.675]); the single-mediator paths and the direct effect (B=−1.024, CI [−2.059, 0.011]) were not",
+   "Alternative models: the reverse serial path (Group → DGI → DSE → PIU) was not significant, and in the parallel model only the DGI indirect path was significant (B=−2.688), so DGI had the more consistent association with PIU"
+  ],
+  "real_overclaims": []
+ },
+ "X": {
+  "counts": {
+   "supported": 28,
+   "added": 0,
+   "strengthened": 0,
+   "wrong": 0,
+   "imprecise": 0
+  },
+  "key_findings_covered": 4,
+  "type_correct": true,
+  "theory_correct": true,
+  "overclaims_caught": 0,
+  "false_overclaim_flags": 0,
+  "problems": []
+ },
+ "Y": {
+  "counts": {
+   "supported": 25,
+   "added": 0,
+   "strengthened": 0,
+   "wrong": 0,
+   "imprecise": 0
+  },
+  "key_findings_covered": 3,
+  "type_correct": true,
+  "theory_correct": true,
+  "overclaims_caught": 0,
+  "false_overclaim_flags": 0,
+  "problems": []
+ }
+}

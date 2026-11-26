@@ -69,14 +69,23 @@ def norm(s):
     return re.sub(r"\s+", " ", s).strip().lower()
 
 
-def quote_found(quote, text_n):
-    """Every '...'-separated piece of the quote appears in the text, in order."""
+def squash(s):
+    """The comparison form of a text: normalised, then with whitespace, markdown
+    emphasis marks (_ and *) and backslash escapes removed. Text taken from a web
+    page keeps '_n_' and '\\[' where a reader quotes 'n' and '['; a PDF has line
+    and column breaks. None of that is a wrong quote."""
+    return re.sub(r"[\s_*\\]", "", norm(s))
+
+
+def quote_found(quote, text_sq):
+    """Every '...'-separated piece of the quote appears in the text, in order.
+    text_sq must be squash(text)."""
     pos = 0
-    for piece in re.split(r"\s*(?:\.\.\.|…)\s*", norm(quote)):
-        piece = piece.strip(" .,;:")
+    for piece in re.split(r"\s*(?:\.\.\.|\u2026)\s*", norm(quote)):
+        piece = squash(piece.strip(" .,;:"))
         if not piece:
             continue
-        i = text_n.find(piece, pos)
+        i = text_sq.find(piece, pos)
         if i < 0:
             return False
         pos = i + len(piece)
@@ -127,7 +136,7 @@ def check(data, papers_dir):
         if quotes_all and text is None:
             errors.append(f"{tag}: no saved text in {papers_dir} named after its id or DOI; "
                           f"save the text that was read as <id>.txt")
-        text_n = norm(text) if text else None
+        text_n = squash(text) if text else None
         all_nums = set()
         for f, q in quotes_all:
             all_nums |= numbers(q)

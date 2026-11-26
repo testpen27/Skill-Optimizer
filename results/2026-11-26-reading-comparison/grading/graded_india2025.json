@@ -1,0 +1,65 @@
+{
+ "truth": {
+  "type": "Quantitative",
+  "theory": "The digital literacy elements framework (Harris, 'Seven Elements of Digital Literacy', ref 18). The study used it to group questions into DL scores and assessed five of its elements: technical, civic, communicative, computational thinking and information/investigative.",
+  "key_findings": [
+   "Above-median total DL (>13): no difference at baseline (22.9% vs 17.3%, p=0.1). It was significantly higher in the intervention arm at midline (63.8% vs 41.2%) and at endline (90% vs 41.6%), p=0.00.",
+   "Median total DL score at endline was 27 (20–33) in the intervention arm vs 12 (9–17) in the comparison arm. Both arms were 10 at baseline.",
+   "Technical DL score >1 rose from 41.7% to 94% in the intervention arm and stayed around 24% in the comparison arm. The difference was significant at all three rounds. Civic, communicative and investigative elements were significantly higher at midline and endline.",
+   "Knowledge and uptake of government schemes (>6): 60.2% vs 32.7% at endline (p=0.00). No difference at baseline (p=0.07) or midline (65.7% vs 65.4%, p=0.93).",
+   "At endline the intervention arm was significantly higher on continued education (96% vs 86.1%), physical access to IT devices >1 (83.1% vs 63.9%), mass media exposure >2 (34.8% vs 18.3%) and perceived physical security >10 (28.9% vs 9.9%). Computational thinking did not differ at endline (p=0.38)."
+  ],
+  "real_overclaims": [
+   {
+    "abstract": "A quantitative questionnaire was developed to collect data from school dropout girls of 10–19 years.",
+    "body": "This study was conducted using a quasi-experimental research design among adolescent girls aged 14–19 years"
+   },
+   {
+    "abstract": "The proportion of girls continuing education, physical access to ICT devices at home, exposure to mass media and perceived physical security increased in the intervention arm at the midline and endline as compared to comparison arm in the baseline.",
+    "body": "The distribution of perceived physical security and exposure to mass media scores ... was not significantly different in baseline and midline. (Table 4: intervention perceived security >10 fell from 61.8% at BL to 28.9% at EL; physical access >1 fell from 33.8% at BL to 27% at ML)"
+   },
+   {
+    "abstract": "We conclude that such tailor-made training programs which are weaved within cultural contexts can effectively bridge the digital gaps in resource scare settings. Along with this, they have the potential to bridge the literacy and economic gaps also within the community.",
+    "body": "Albeit, we cannot attribute this change completely to implementation of this DLTP only ... it was practically very difficult to assess whether the improvement in outcomes was totally attributable to our program ... we could not apply advanced statistics to quantify the impact of DLTP."
+   }
+  ]
+ },
+ "X": {
+  "counts": {
+   "supported": 19,
+   "added": 0,
+   "strengthened": 0,
+   "wrong": 0,
+   "imprecise": 0
+  },
+  "key_findings_covered": 3,
+  "type_correct": true,
+  "theory_correct": true,
+  "overclaims_caught": 1,
+  "false_overclaim_flags": 1,
+  "problems": []
+ },
+ "Y": {
+  "counts": {
+   "supported": 22,
+   "added": 0,
+   "strengthened": 0,
+   "wrong": 0,
+   "imprecise": 0
+  },
+  "key_findings_covered": 2,
+  "type_correct": true,
+  "theory_correct": false,
+  "overclaims_caught": 2,
+  "false_overclaim_flags": 0,
+  "problems": [
+   {
+    "column": "theory",
+    "claim": "(empty)",
+    "label": "IMPRECISE",
+    "why": "The theory cell is left empty, but the paper states that this study's DL scores were built on a digital literacy elements framework.",
+    "paper_says": "the questions assessing DL among the participants were combined according to elements of digital literacy framework for calculating DL scores. The five basic elements of this framework were evaluated"
+   }
+  ]
+ }
+}

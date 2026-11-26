@@ -252,6 +252,14 @@ ok("merge: adds, replaces by id, skips broken file, keeps top-level fields",
 rc, out = run("merge_papers.py", f"{T}/new.json", "--from", ho)
 ok("merge: creates lrm.json when missing", os.path.exists(f"{T}/new.json"), out)
 
+# ---- evidence check: text from a web page keeps markdown marks the reader does not type
+open(f"{pdir}/web2024.txt", "w").write("The sample ( _n_ = 103) had a mean of 3.2 \\[SD 0.4\\], and **p** < .001.\n")
+web = paper(["Wu, X."], 2024, "Web text", id="web2024", source_basis="full text",
+            results="The sample (n = 103) had a mean of 3.2.",
+            evidence={"results": [{"q": "The sample (n = 103) had a mean of 3.2 [SD 0.4], and p < .001", "loc": "Results"}]})
+rc, out = run("check_evidence.py", wj("ev_web.json", {"papers": [web]}), "--papers", pdir)
+ok("evidence: markdown emphasis and escapes in the page text do not fail an honest quote", rc == 0, out)
+
 # ---- end to end + recalc
 full = EX + "/lrm.example.json"
 Xf = f"{T}/full.xlsx"

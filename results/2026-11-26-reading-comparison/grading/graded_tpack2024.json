@@ -1,0 +1,53 @@
+{
+ "truth": {
+  "type": "Mixed-methods",
+  "theory": "The TPACK framework (Technological Pedagogical Content Knowledge, building on Shulman's PCK). The paper names it as this study's conceptual framework, its analytical tool and the organizer of prospective-teacher knowledge.",
+  "key_findings": [
+   "On the post-survey, the experimental group had higher adjusted mean scores than the control group in all seven TPACK domains and on the overall scale (overall 47.56 vs 23.43; e.g., TCK 47.37 vs 23.63).",
+   "Quade's distribution-free test showed significant group differences after controlling for pre-survey scores in every domain and overall (p = 0.001; F from 12.059 for PK to 36.356 for TCK; overall F = 36.231, n2 = 0.348).",
+   "Paired t-tests showed that the experimental group's perceptions improved significantly from pre- to post-survey in all domains and overall (overall t = 6.876, p = 0.001, d = 1.162).",
+   "The control group showed no significant pre-post change in any domain or overall (p from 0.198 to 0.475; overall t = -0.265, p = 0.396).",
+   "In interviews, the 10 experimental-group participants said that reflecting on DVRs helped them find and correct weaknesses in each TPACK domain, for example by replacing ineffective technological tools, changing teaching methods and fixing content errors."
+  ],
+  "real_overclaims": [
+   {
+    "abstract": "The quantitative and qualitative results showed that prospective teachers in the experimental group significantly and positively impacted TPACK and its seven domains.",
+    "body": "Table 6 shows that the participants in the experimental group improved significantly their perceptions of TPACK domains, while those in the control group did not. / Another limitation is the self-reported responses on the questionnaire related to the TPACK domains."
+   },
+   {
+    "abstract": "Therefore, the results of the current study provide concrete evidence for the need to use DVRs as a promising educational approach in future professional preparation",
+    "body": "The generalization of the results should take into account the fact that the responses are self-reported. / The main limitation was the inability to provide a unified control group and a unified experimental group (purposive, quasi-experimental sample)."
+   }
+  ]
+ },
+ "X": {
+  "counts": {
+   "supported": 25,
+   "added": 0,
+   "strengthened": 0,
+   "wrong": 0,
+   "imprecise": 0
+  },
+  "key_findings_covered": 5,
+  "type_correct": true,
+  "theory_correct": true,
+  "overclaims_caught": 1,
+  "false_overclaim_flags": 1,
+  "problems": []
+ },
+ "Y": {
+  "counts": {
+   "supported": 26,
+   "added": 0,
+   "strengthened": 0,
+   "wrong": 0,
+   "imprecise": 0
+  },
+  "key_findings_covered": 4,
+  "type_correct": true,
+  "theory_correct": true,
+  "overclaims_caught": 2,
+  "false_overclaim_flags": 0,
+  "problems": []
+ }
+}
