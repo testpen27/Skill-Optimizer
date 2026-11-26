@@ -7,7 +7,7 @@
 and every other sheet (synthesis, concept ...) is kept; otherwise it is created.
 
 Sheet "LRM", columns left to right: Code | Type | Authors | Title |
-Introduction | Methodology | Theory | Results | Discussion | Quartile | Access.
+Introduction | Methodology | Theory | Results | Discussion | Quartile.
 Rows are sorted A-Z by the first author's family name and coded P01, P02 ...
 in that order (add a paper and the codes renumber). The header row is filtered
 and frozen so the matrix can be sorted and filtered in Excel.
@@ -20,7 +20,7 @@ lrm.json:
      "title": "Paper title in sentence case",
      "journal": "Journal of Examples", "volume": "12", "issue": "3",
      "pages": "101-118", "doi": "10.1000/xyz123", "issn": "1234-5678",
-     "type": "Quantitative", "access": "Free",
+     "type": "Quantitative",
      "quartile": "Q1 (SJR 2024, Education)",
      "introduction": "...", "methodology": "...", "theory": "...",
      "results": "...", "discussion": "...",
@@ -72,13 +72,12 @@ _NOTE = r"\((?:[^()]|\([^()]*\))*\)"
 QUARTILE_OK = re.compile(rf"^(Q[1-4](\s*{_NOTE})?(\s*/\s*Q[1-4](\s*{_NOTE})?)*"
                          r"|N/A \(thesis/preprint/conference\)|Unranked/Unavailable)$")
 TYPES = {"Quantitative", "Qualitative", "Mixed-methods", "Theoretical/Review"}
-ACCESS = {"Free", "Paid", "Unclear"}
 CROSSREF = {"verified", "mismatch", "unchecked"}
 BASES = {"full text", "partial", "abstract only"}
 TEXT_FIELDS = ["introduction", "methodology", "theory", "results", "discussion"]
 COLUMNS = ["Code", "Type", "Authors", "Title", "Introduction", "Methodology", "Theory",
-           "Results", "Discussion", "Quartile", "Access"]
-WIDTHS = [7, 13, 22, 42, 34, 36, 22, 36, 36, 22, 9]
+           "Results", "Discussion", "Quartile"]
+WIDTHS = [7, 13, 22, 42, 34, 36, 22, 36, 36, 22]
 # Soft length limits (words). Over the limit is a warning, not an error: the
 # aim is cells a person can read, not a wall of text.
 WORD_LIMITS = {"introduction": 40, "methodology": 50, "theory": 25, "results": 60, "discussion": 60}
@@ -136,8 +135,6 @@ def problems_in(data):
                        f"'N/A (thesis/preprint/conference)' or 'Unranked/Unavailable'")
         if p.get("type") not in TYPES:
             out.append(f"{tag}: type must be one of {sorted(TYPES)}")
-        if p.get("access") not in ACCESS:
-            out.append(f"{tag}: access must be Free, Paid or Unclear")
         if p.get("crossref", "unchecked") not in CROSSREF:
             out.append(f"{tag}: crossref must be one of {sorted(CROSSREF)}")
         for k, oc in enumerate(p.get("overclaims") or [], 1):
@@ -293,7 +290,7 @@ def add_sheets(wb, data):
         for f in TEXT_FIELDS:
             empty = "Not explicitly stated" if f == "theory" else "Not retrieved"
             vals.append((p.get(f) or "").strip() or empty)
-        vals += [p.get("quartile") or "", p.get("access") or ""]
+        vals.append(p.get("quartile") or "")
         ws.append(vals)
     style_header(ws, 1, len(COLUMNS), height=22)
     style_body(ws, 2, n + 1, len(COLUMNS))
@@ -320,7 +317,7 @@ def add_sheets(wb, data):
     set_widths(ws, WIDTHS)
     ws.freeze_panes = "D2"
     print_setup(ws)
-    ws.auto_filter.ref = f"A1:K{n + 1}"
+    ws.auto_filter.ref = f"A1:{chr(64 + len(COLUMNS))}{n + 1}"
 
     # ---- Summary sheet --------------------------------------------------
     sm = fresh_sheet(wb, "Summary", 0)

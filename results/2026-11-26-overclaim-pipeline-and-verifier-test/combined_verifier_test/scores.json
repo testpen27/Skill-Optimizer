@@ -1,0 +1,222 @@
+[
+ {
+  "tag": "opusV",
+  "caught": 20,
+  "missed": 0,
+  "untouched_flagged": 10,
+  "real_find_india_results4": false,
+  "cost": 0.489,
+  "per_paper": 0.122,
+  "flagged": [
+   [
+    "india2025",
+    "methodology.5"
+   ],
+   [
+    "india2025",
+    "discussion.2"
+   ],
+   [
+    "piu2026",
+    "results.2"
+   ],
+   [
+    "brink2022",
+    "results.2"
+   ],
+   [
+    "brink2022",
+    "discussion.1"
+   ],
+   [
+    "brink2022",
+    "discussion.3"
+   ],
+   [
+    "tpack2024",
+    "methodology.3"
+   ],
+   [
+    "tpack2024",
+    "results.1"
+   ],
+   [
+    "tpack2024",
+    "results.3"
+   ],
+   [
+    "tpack2024",
+    "results.4"
+   ]
+  ]
+ },
+ {
+  "tag": "combo1",
+  "caught": 20,
+  "missed": 0,
+  "untouched_flagged": 11,
+  "real_find_india_results4": true,
+  "cost": 0.548,
+  "per_paper": 0.137,
+  "flagged": [
+   [
+    "india2025",
+    "methodology.5"
+   ],
+   [
+    "india2025",
+    "results.4"
+   ],
+   [
+    "india2025",
+    "discussion.2"
+   ],
+   [
+    "piu2026",
+    "results.2"
+   ],
+   [
+    "brink2022",
+    "methodology.4"
+   ],
+   [
+    "brink2022",
+    "results.2"
+   ],
+   [
+    "brink2022",
+    "discussion.3"
+   ],
+   [
+    "tpack2024",
+    "methodology.3"
+   ],
+   [
+    "tpack2024",
+    "results.1"
+   ],
+   [
+    "tpack2024",
+    "results.3"
+   ],
+   [
+    "tpack2024",
+    "results.4"
+   ]
+  ]
+ },
+ {
+  "tag": "combo2",
+  "caught": 20,
+  "missed": 0,
+  "untouched_flagged": 11,
+  "real_find_india_results4": true,
+  "cost": 0.446,
+  "per_paper": 0.112,
+  "flagged": [
+   [
+    "india2025",
+    "methodology.5"
+   ],
+   [
+    "india2025",
+    "results.4"
+   ],
+   [
+    "india2025",
+    "discussion.2"
+   ],
+   [
+    "piu2026",
+    "results.2"
+   ],
+   [
+    "brink2022",
+    "methodology.4"
+   ],
+   [
+    "brink2022",
+    "results.2"
+   ],
+   [
+    "brink2022",
+    "discussion.3"
+   ],
+   [
+    "tpack2024",
+    "methodology.3"
+   ],
+   [
+    "tpack2024",
+    "results.1"
+   ],
+   [
+    "tpack2024",
+    "results.3"
+   ],
+   [
+    "tpack2024",
+    "results.4"
+   ]
+  ]
+ },
+ {
+  "tag": "opusChallengesOpus",
+  "caught": 20,
+  "missed": 0,
+  "untouched_flagged": 12,
+  "real_find_india_results4": true,
+  "cost": 0.425,
+  "per_paper": 0.106,
+  "flagged": [
+   [
+    "india2025",
+    "methodology.5"
+   ],
+   [
+    "india2025",
+    "results.4"
+   ],
+   [
+    "india2025",
+    "discussion.2"
+   ],
+   [
+    "piu2026",
+    "results.2"
+   ],
+   [
+    "brink2022",
+    "methodology.4"
+   ],
+   [
+    "brink2022",
+    "results.2"
+   ],
+   [
+    "brink2022",
+    "discussion.3"
+   ],
+   [
+    "tpack2024",
+    "methodology.3"
+   ],
+   [
+    "tpack2024",
+    "results.1"
+   ],
+   [
+    "tpack2024",
+    "results.3"
+   ],
+   [
+    "tpack2024",
+    "results.4"
+   ],
+   [
+    "tpack2024",
+    "discussion.2"
+   ]
+  ]
+ }
+]

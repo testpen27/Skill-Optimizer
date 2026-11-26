@@ -1,0 +1,4 @@
+combo1 [('combo1', 'india2025', 0), ('combo1', 'piu2026', 0), ('combo1', 'brink2022', 0), ('combo1', 'tpack2024', 0)]
+opusChallengesOpus [('opusChallengesOpus', 'india2025', 0), ('opusChallengesOpus', 'piu2026', 0), ('opusChallengesOpus', 'brink2022', 0), ('opusChallengesOpus', 'tpack2024', 0)]
+combo2 [('combo2', 'india2025', 0), ('combo2', 'piu2026', 0), ('combo2', 'brink2022', 0), ('combo2', 'tpack2024', 0)]
+ALLDONE

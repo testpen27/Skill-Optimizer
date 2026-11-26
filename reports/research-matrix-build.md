@@ -319,3 +319,34 @@ cheapest model; its context passes 100,000 tokens at about 5 papers, where
 Haiku's price rises fivefold. Not recommended: the whole conversation and the
 instruction-following would run on Haiku (untested), and the check would not be
 independent.
+
+## Access column removed; one-call verification; fixed helper rule (2026-11-26)
+
+- **Access column removed** at the user's request (how a paper was obtained is
+  not an academic finding; the pre-research skill keeps the search record). The
+  LRM now has 10 columns ending in Quartile; old JSON with an `access` field is
+  ignored. 52 of 52 tests pass.
+- **Prices removed from the skill's reference files.** The skill does not need
+  them to decide; they stay in this report and `scripts/helper_cost_model.py`.
+- **Helper rule is a fixed paper count**, no token counting: 1 full-text paper
+  or abstracts only, the chat reads; 2 or more full-text papers, helpers. Cost
+  model by paper length (chat on Sonnet, break-even paper count): 5,000-token
+  papers 12; 10,000 tokens 2; 20,000 and 40,000 tokens 1. On Opus the break-even
+  is 1 to 2 at every length. A line at 2 is right for full texts; short or
+  abstract-only text needs the exception.
+- **Strict mode merged into the Opus verifier** (`references/verifier-prompt.md`):
+  one call, pass 1 verifies, pass 2 attacks its own "keep" verdicts. Same four
+  papers and 20 planted errors (`results/.../combined_verifier_test/`):
+
+| Setup | Planted caught | Untouched flagged | Real India error (p 0.38) | Cost per paper |
+|---|---|---|---|---|
+| Opus verifier alone | 20 of 20 | 10 of 50 | missed | $0.122 |
+| Opus verifier, then Opus challenger (two calls) | 20 of 20 | 12 of 50 | found | $0.228 ($0.122 + $0.106) |
+| Combined, one call, run 1 | 20 of 20 | 11 of 50 | found | $0.137 |
+| Combined, one call, run 2 | 20 of 20 | 11 of 50 | found | $0.112 |
+
+  Single-paper costs vary with prompt-cache state (run 2 hit a warmer cache), so
+  the robust figure is output tokens: about 2,300 for the plain verifier against
+  2,900 to 3,100 for the combined call (+30 percent), while a second call pays a
+  whole new start-up. Not measured: subtler planted errors, the overclaim-pair
+  check inside the combined prompt, batches of 10 papers.

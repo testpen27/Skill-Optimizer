@@ -52,8 +52,8 @@ if the user asks for one.
 - **Run each step on its planned model** (`references/model-routing.md`):
   scripts for anything with one right answer, `haiku` to read, `sonnet` to pair
   abstract claims with the body, `opus` to verify and synthesise. From 2
-  papers the reading and pairing run as helpers; with 1 paper the chat does
-  them itself. The `opus` verification always runs separately from the reader. **If this session has no `Agent` tool, tell the user in one line
+  full-text papers the reading and pairing run as helpers; with 1 paper, or
+  abstracts only, the chat does them itself. The `opus` verification always runs separately from the reader. **If this session has no `Agent` tool, tell the user in one line
   that no helpers or per-step models are available here and that every step
   runs on their chat's model**, then run the same steps in the session.
 - **Never invent.** A cell traces to something actually retrieved: a PDF, a
@@ -75,7 +75,7 @@ if the user asks for one.
 
 - `references/reading-and-writing.md`, `references/model-routing.md`: read
   first for any matrix; `references/overclaim-pairing.md` for the abstract-vs-body
-  check
+  check; `references/verifier-prompt.md` for the verification helper
 - `scripts/build_lrm.py`, `crossref_check.py`, `scimago_quartile.py`,
   `check_evidence.py`, `merge_papers.py`, `apply_overclaims.py`
 - `scripts/build_synthesis.py`, `build_concept.py` (only on request)

@@ -3,8 +3,8 @@
 One row per paper, on the `LRM` sheet of the project workbook (`Matrix.xlsx`,
 named after the topic). Columns, left to right:
 
-| Code | Type | Authors | Title | Introduction | Methodology | Theory | Results | Discussion | Quartile | Access |
-|---|---|---|---|---|---|---|---|---|---|---|
+| Code | Type | Authors | Title | Introduction | Methodology | Theory | Results | Discussion | Quartile |
+|---|---|---|---|---|---|---|---|---|---|
 
 - **Code**: P01, P02 ... assigned by the script after sorting in APA 7 order
   (first author's family name, then initials; a single-author work before
@@ -19,8 +19,10 @@ named after the topic). Columns, left to right:
   colon, keep proper nouns and acronyms); Crossref keeps the publisher's
   capitals, so do not copy a Title Case title as it is.
 - **Quartile**: the Scimago (SJR) quartile, with year and subject area.
-- **Access**: Free if you opened the full text without paying, Paid if it sat
-  behind a paywall, otherwise Unclear.
+
+There is no column for how a paper was obtained (free, paid, database): the
+user already has the papers and tracks where they came from in their search
+record. Do not add one.
 
 ## Steps
 
@@ -70,14 +72,14 @@ named after the topic). Columns, left to right:
    `abstract_claims` and `caveats` lists); merge them with
    `python3 scripts/merge_papers.py lrm.json --from helper_out/`. Then the
    overclaim pairing (`overclaim-pairing.md`, `sonnet`) and
-   `apply_overclaims.py`. With one paper the chat does all of this itself.
+   `apply_overclaims.py`. With one paper, or abstracts only, the chat does all of this itself.
 6. **Check, then verify.**
    ```
    python3 scripts/check_evidence.py lrm.json --papers papers
    ```
    Fix every ERROR by cutting or narrowing the cell. Then a second reader
-   (`opus`) checks every sentence against its quotes and returns keep / cut /
-   narrow; apply the verdicts and rerun the script. Only then draft the table
+   (`opus`, `verifier-prompt.md`: it checks every sentence against its quotes,
+   then tries to break its own keeps) returns keep / cut / narrow; apply the verdicts and rerun the script. Only then draft the table
    in chat for the user (same columns), so they can correct it before the
    workbook is built.
 7. **Synthesis paragraph** after the table (`opus`): recurring theories,
@@ -89,7 +91,7 @@ named after the topic). Columns, left to right:
    python3 scripts/build_lrm.py lrm.json --check
    python3 scripts/build_lrm.py lrm.json --out "<folder>/Matrix.xlsx"
    ```
-   `--check` refuses a bad quartile, type or access label and warns about long
+   `--check` refuses a bad quartile or type label and warns about long
    cells, first-person wording, repeated openers and retracted papers. The
    workbook has a `Summary` sheet (field, years, counts, the Crossref status of
    each paper, retraction notices and the synthesis paragraph) and the `LRM`

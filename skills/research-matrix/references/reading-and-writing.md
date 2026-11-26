@@ -118,8 +118,9 @@ failure by cutting or narrowing the cell, never by adding.
 ## 5. Verifying: a second reader checks every sentence
 
 After the script passes, a second reader (a different model, see
-`model-routing.md`) gets only the quotes and the cells, never the drafter's
-reasoning, and checks each sentence:
+`model-routing.md`; prompt in `verifier-prompt.md`) gets only the quotes and the
+cells, never the drafter's reasoning, and checks each sentence. It does this
+in two passes in one call: verify, then try to break its own "keep" verdicts.
 
 1. Is every part of it stated in the cited quotes?
 2. Does it add anything (cause, scope, population, property, number, theory)?

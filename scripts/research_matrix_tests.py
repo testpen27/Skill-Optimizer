@@ -45,7 +45,7 @@ def wj(name, obj):
 
 def paper(authors, year, title, **kw):
     d = {"authors": authors, "year": year, "title": title, "journal": "J Test", "volume": "1", "pages": "1-2",
-         "type": "Quantitative", "access": "Free", "quartile": "Unranked/Unavailable"}
+         "type": "Quantitative", "quartile": "Unranked/Unavailable"}
     d.update(kw)
     return d
 
@@ -299,6 +299,15 @@ ok("apply: the placed sentence is coloured with a hover note", cl.comment is not
 sm_ = wbp["Summary"]
 ok("apply: noted and unsettled items appear on the Summary sheet", sm_["F11"].value is not None and "Comprehension scores did not change" in (sm_["F12"].value or "")
    and "To check" in (sm_["F12"].value or ""), sm_["F12"].value)
+
+# ---- no Access column
+rc, out = run("build_lrm.py", EX + "/lrm.example.json", "--out", f"{T}/noaccess.xlsx")
+wsn = openpyxl.load_workbook(f"{T}/noaccess.xlsx")["LRM"]
+hdr = [c.value for c in wsn[1]]
+ok("LRM has 10 columns ending in Quartile, no Access; filter covers A:J",
+   rc == 0 and hdr[-1] == "Quartile" and "Access" not in hdr and len(hdr) == 10 and wsn.auto_filter.ref.startswith("A1:J"), hdr)
+rc, out = run("build_lrm.py", wj("oldaccess.json", {"papers": [dict(paper(["Tan, A."], 2020, "T"), access="Free", doi="10.1/x")]}), "--check")
+ok("a leftover access field in old JSON is ignored, not an error", rc == 0 and "access" not in out.lower(), out)
 
 # ---- end to end + recalc
 full = EX + "/lrm.example.json"

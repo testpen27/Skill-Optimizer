@@ -19,22 +19,19 @@ papers.
 | Intake, choosing the matrix, agreeing themes or concepts with the user | Session | — | A dialogue with the user |
 | Fetching what the scripts cannot reach (full texts, Crossref records, Scimago pages) and saving it **unedited** to files | Helpers, `haiku`, about 10 items each, in parallel | low | Mechanical. The helper only saves; scripts parse, so a weak summary can never reach the matrix |
 | Crossref check, retraction notices, Scimago quartile, quote and number checks, building the workbook | Scripts | — | Deterministic; no model |
-| Reading each paper: verbatim quotes per column, the cells written from them, and the exhaustive `abstract_claims` and `caveats` lists (`reading-and-writing.md`) | Helpers, `haiku`, 3 papers each, in parallel; helpers write `helper_out/<id>.json` | medium | The bulk of the tokens at the lowest price. Measured: $0.026 per paper (20,000-token papers); in a test on four papers its cells had no added, strengthened or wrong claims. Quotes and numbers are machine-checked against the saved text |
-| Pairing overclaims: each abstract claim matched to a body quote that shows the paper reports less or something different, and the cell sentence to colour (`overclaim-pairing.md`) | Helpers, `sonnet`, 3 papers each; they see only the quotes and the cells, never the paper; helpers write `pairing_out/<id>.json` | high | Judgment on short input. Measured: $0.045 per paper. Found all 5 real overclaims in the four-paper test, against 2 clean matches when Haiku paired them itself |
+| Reading each paper: verbatim quotes per column, the cells written from them, and the exhaustive `abstract_claims` and `caveats` lists (`reading-and-writing.md`) | Helpers, `haiku`, 3 papers each, in parallel; helpers write `helper_out/<id>.json` | medium | The bulk of the tokens, so the cheapest model. In a test on four papers its cells had no added, strengthened or wrong claims. Quotes and numbers are machine-checked against the saved text |
+| Pairing overclaims: each abstract claim matched to a body quote that shows the paper reports less or something different, and the cell sentence to colour (`overclaim-pairing.md`) | Helpers, `sonnet`, 3 papers each; they see only the quotes and the cells, never the paper; helpers write `pairing_out/<id>.json` | high | Judgment on short input. Found all 5 real overclaims in the four-paper test, against 2 clean matches when Haiku paired them itself |
 | Placing the flags and checking their quotes | Script `apply_overclaims.py` | — | A pair whose quote is not in the paper is dropped |
-| Verifying every drafted cell and every overclaim pair against the quotes (the ABC check) | Helper, `opus`, about 10 papers each | high | Entailment judgment (hedges, scope, causal wording, added detail) is subtle. A different model from the drafter does not share its blind spots. Input is short (quotes + cells), so it stays cheap. It also removes doubtful overclaim flags |
-| Optional strict mode: a second Opus helper argues with the first verifier's verdicts, or only the "keep" verdicts on sentences with statistics or sweeping words ("all", "every", "only", "across") | Helper, `opus` | high | Caught one real error the first verifier missed (a sub-result stretched to a whole), at +$0.115 per paper. Off by default; offer it for a thesis chapter or when the user asks for the strictest check |
+| Verifying every drafted cell and every overclaim pair against the quotes (the ABC check), in one call with two passes: verify, then argue against its own "keep" verdicts (`verifier-prompt.md`) | Helper, `opus`, about 10 papers each | high | Entailment judgment (hedges, scope, causal wording, added detail) is subtle. A different model from the drafter does not share its blind spots. Input is short (quotes + cells), so it stays cheap. The self-attack pass found a real error a plain verifier missed, and it removes doubtful overclaim flags |
 | Synthesis paragraph; proposing themes (synthesis matrix) or concepts (concept matrix) | Helper, `opus` | high | Cross-paper judgment; short output; where quality shows most |
 | Synthesis-matrix cells and concept-matrix marks | Helpers, `sonnet`, 3 papers each | high | Same reading discipline: every cell or X carries a quote |
 | Verifying synthesis cells / concept marks | Helper, `opus` | high | Same ABC check as the LRM |
 | Looking at the built workbook, final report to the user | Session | — | The session owns what the user sees |
 
-Relative price per million tokens (input/output, Anthropic list prices noted
-2026-11): Haiku 5.5 $0.10/$0.50, Sonnet 5.5 $2/$10, Opus 5.5 $4/$20,
-Fable 5.2 $8/$40. Reading is the bulk of the tokens, which is why it runs on
-Haiku; matching, verification and synthesis are short, which is why Sonnet and
-Opus are affordable there. No step uses Fable by default: Opus at high effort is enough for a
-review matrix, and Fable costs twice as much.
+Reading is the bulk of the tokens, which is why it runs on the cheapest model;
+matching, verification and synthesis are short, which is why Sonnet and Opus are
+affordable there. No step uses Fable by default: Opus at high effort is enough
+for a review matrix.
 
 ## The plan is fixed
 
@@ -80,36 +77,27 @@ effect on the chat's model or context: a chat on Sonnet, Opus or Fable can
 start a Haiku helper to read, so the reading is cheap and the conversation and
 coordination stay on a stronger model, and the paper text never fills the chat.
 
-Cost of the reading-and-pairing pipeline above against the chat reading the
-papers itself (20,000-token papers; Opus verification and synthesis in both;
-start-up of each helper billed in full, the cautious case; measured runs and a
-model calibrated to them, `scripts/helper_cost_model.py`):
-
-| Papers | Chat on Sonnet reads | Haiku and Sonnet helpers | Saving |
-|---|---|---|---|
-| 1 | $0.60 | $0.59 | none (a tie) |
-| 2 | $0.79 | $0.68 | 14 percent |
-| 4 | $1.20 | $0.96 | 20 percent |
-| 8 | $2.06 | $1.43 | 31 percent |
-| 20 | $5.31 | $3.06 | 42 percent |
-
-A chat on Opus or Fable saves more (a chat on Opus reading 8 papers costs
-$3.50). So:
+**The rule is fixed and needs no calculation. Count the papers and look at each
+paper's `source_basis`; never count tokens or prices.**
 
 | Papers | What runs |
 |---|---|
-| 1 | The chat reads the paper itself and checks the overclaims in the same pass (a tie on cost, and two helper waits are avoided). The `opus` verification still runs as a helper |
-| 2 or more | Reading helpers on `haiku`, pairing helpers on `sonnet`, then the `opus` verification helper (and synthesis) |
+| 1 full-text paper | The chat reads it itself and checks the overclaims in the same pass (a helper's start-up costs about as much as the reading, so there is nothing to gain, and two helper waits are avoided). The `opus` verification still runs as a helper |
+| 2 or more full-text papers | Reading helpers on `haiku`, pairing helpers on `sonnet`, then the `opus` verification helper (and synthesis) |
+| Abstract-only papers, any number | The chat reads them itself: an abstract is too short to repay a helper's start-up |
+
+Why the line sits at 2 and not higher: a helper costs a fixed start-up, and
+reading on Haiku then costs far less than the chat reading. From the second
+full-text paper that saving is larger than the start-up, and the longer the
+papers and the stronger the chat's model, the sooner. The cost model and the
+measured runs are in `reports/research-matrix-build.md`, not here: the skill
+does not need them to decide.
 
 Verification never depends on the paper count: it always runs separately from
 the reader, as a helper where there are helpers and as a separate pass where
-there are none. A chat set to Haiku is cheapest in raw dollars up to about 9
-papers (its context grows past 100,000 tokens, where Haiku's price rises
-fivefold), but then Haiku also runs the whole conversation and follows this
-skill's instructions, which has not been tested; recommend Sonnet or Opus for
-the chat. Whichever the chat runs on, helpers start-up is cheaper when several
-run in one session (the shared start-up is cached), so the table is the
-cautious case.
+there are none. A chat set to Haiku reads cheaply too, but then Haiku also runs
+the whole conversation and follows this skill's instructions, which has not
+been tested; recommend Sonnet or Opus for the chat.
 
 Helpers write their output themselves: each reading helper saves one JSON file
 per paper into `helper_out/` and returns only a one-line status. The session
