@@ -412,6 +412,15 @@ ok("verdicts: cut removes the sentence, narrow is only listed, an unverified sen
    and d2["overclaims"] == [], (out, d2["methodology"]))
 hl3 = wj("help3.json", json.load(open(hl)))
 rc, out = run("apply_verdicts.py", hl3, "--from", vo, "--narrow", "drop")
+hl4 = wj("help4.json", json.load(open(hl)))
+rc, out = run("apply_verdicts.py", hl4, "--from", vo, "--narrow", "trim")
+ok("verdicts: --narrow trim removes only the named unsupported words, and lists the sentence to reread",
+   json.load(open(hl4))["papers"][0]["methodology"] == "Pupils at one school were taught. They were tested." and "TRIMMED" in out, (out, json.load(open(hl4))["papers"][0]["methodology"]))
+hl5 = wj("help5.json", {"title": "T", "papers": [paper(["Adams, A. B."], 2020, "First", id="h5", doi="10.1/h5", methodology="They were tested twice by trained staff.")]})
+open(f"{vo}/h5.json", "w").write(json.dumps({"verdicts": [{"id": "methodology.1", "verdict": "narrow", "support": "by trained staff"}]}))
+rc, out = run("apply_verdicts.py", hl5, "--from", vo, "--narrow", "trim")
+ok("verdicts: a trim that keeps the sentence count is still written to the cell",
+   json.load(open(hl5))["papers"][0]["methodology"] == "They were tested twice.", json.load(open(hl5))["papers"][0]["methodology"])
 ok("verdicts: --narrow drop removes the narrowed sentence too, and adds no words",
    json.load(open(hl3))["papers"][0]["methodology"] == "Pupils at one school were taught.", out)
 
