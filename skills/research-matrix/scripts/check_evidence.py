@@ -17,6 +17,10 @@ was written from:
 and PAPERS_DIR holds the text that was read, one file per paper named after
 its "id" (or its DOI with "/" replaced by "_"): <id>.txt or <id>.md.
 
+"overclaims" (abstract claims more than the body) are checked too: both quotes
+must be in the saved text, and no number may reach the cell from the abstract's
+claim alone.
+
 ERROR (exit 1), fix by cutting or narrowing the cell, never by adding:
   - a filled cell with no quotes;
   - a quote that is not in the paper's saved text (misquoted or invented);
@@ -115,7 +119,11 @@ def check(data, papers_dir):
         for f in TEXT_FIELDS:
             for item in ev.get(f) or []:
                 quotes_all.append((f, item.get("q") if isinstance(item, dict) else str(item)))
-        text, path = paper_text(papers_dir, p) if quotes_all else (None, None)
+        over = p.get("overclaims") or []
+        for oc in over:
+            if oc.get("body") and oc.get("field") in TEXT_FIELDS:
+                quotes_all.append((oc["field"], oc["body"]))
+        text, path = paper_text(papers_dir, p) if (quotes_all or over) else (None, None)
         if quotes_all and text is None:
             errors.append(f"{tag}: no saved text in {papers_dir} named after its id or DOI; "
                           f"save the text that was read as <id>.txt")
@@ -125,6 +133,16 @@ def check(data, papers_dir):
             all_nums |= numbers(q)
             if text_n is not None and not quote_found(q, text_n):
                 errors.append(f"{tag} {f}: quote not found in {os.path.basename(path)}: \"{q[:90]}\"")
+        for oc in over:
+            a = oc.get("abstract") or ""
+            if text_n is not None and a and not quote_found(a, text_n):
+                errors.append(f"{tag}: overclaim's abstract quote not found in {os.path.basename(path)}: \"{a[:90]}\"")
+            stray = numbers(a) - all_nums
+            cell = p.get(oc.get("field")) or ""
+            leaked = sorted(stray & numbers(cell))
+            if leaked:
+                errors.append(f"{tag} {oc.get('field')}: number(s) {', '.join(leaked)} come from the abstract's "
+                              f"overclaim, not the body; write the body's figure")
         for f in TEXT_FIELDS:
             cell = (p.get(f) or "").strip()
             if not cell:

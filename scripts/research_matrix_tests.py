@@ -201,6 +201,42 @@ smx = openpyxl.load_workbook(f"{T}/ev.xlsx")["Summary"]
 ok("Summary shows what each row was read from", rc == 0 and smx["E11"].value == "Read from" and smx["E12"].value == "full text",
    (rc, smx["E11"].value, smx["E12"].value))
 
+# ---- abstract overclaims: only that finding is coloured, both quotes checked
+open(f"{pdir}/read2023.txt", "w").write(
+    "Abstract\nThe programme dramatically improved reading for all pupils.\n"
+    "Results\nFluency rose by 12 words per minute. Comprehension scores did not change. "
+    "Gains were observed only among Year 4 pupils (n = 38).\n")
+f3 = "Gains were seen only among Year 4 pupils (n = 38)."
+oc_p = paper(["Ng, S."], 2023, "Reading programme", id="read2023", source_basis="full text",
+             results=f"Fluency rose by 12 words per minute. Comprehension did not change. {f3}",
+             evidence={"results": [{"q": "Fluency rose by 12 words per minute", "loc": "Results"},
+                                   {"q": "Comprehension scores did not change", "loc": "Results"}]},
+             overclaims=[{"field": "results", "text": f3,
+                          "abstract": "The programme dramatically improved reading for all pupils",
+                          "body": "Gains were observed only among Year 4 pupils (n = 38)", "body_loc": "Results"}])
+fo = wj("oc.json", {"title": "T", "papers": [oc_p]})
+rc, out = run("check_evidence.py", fo, "--papers", pdir)
+ok("overclaim: body and abstract quotes verified", rc == 0, out)
+rc, out = run("build_lrm.py", fo, "--out", f"{T}/oc.xlsx")
+wsx = openpyxl.load_workbook(f"{T}/oc.xlsx", rich_text=True)["LRM"]
+cellx = wsx["H2"]
+runs = [(str(b.text) if hasattr(b, "text") else str(b), getattr(getattr(b, "font", None), "color", None)) for b in cellx.value]
+coloured = [t for t, c in runs if c is not None and "BF9000" in str(c.rgb if hasattr(c, "rgb") else c)]
+plain = [t for t, c in runs if t not in coloured]
+ok("overclaim: only finding 3 is yellow", coloured == [f3] and any("Fluency" in t for t in plain), runs)
+ok("overclaim: hover note quotes abstract and body", cellx.comment is not None and "dramatically" in cellx.comment.text
+   and "Year 4" in cellx.comment.text, cellx.comment.text if cellx.comment else None)
+bad = json.loads(json.dumps(oc_p)); bad["overclaims"][0]["text"] = "words not in the cell"
+rc, out = run("build_lrm.py", wj("oc_bad.json", {"title": "T", "papers": [bad]}), "--check")
+ok("overclaim: text must be in the cell", rc == 1 and "exact words" in out, out)
+leak = json.loads(json.dumps(oc_p))
+leak["overclaims"][0]["abstract"] = "The programme raised reading scores by 40 points for all pupils"
+leak["results"] = leak["results"].replace("(n = 38).", "(n = 38), by 40 points.")
+leak["overclaims"][0]["text"] = leak["results"].split(" Comprehension did not change. ")[1]
+open(f"{pdir}/read2023.txt", "a").write("Abstract2\nThe programme raised reading scores by 40 points for all pupils.\n")
+rc, out = run("check_evidence.py", wj("oc_leak.json", {"papers": [leak]}), "--papers", pdir)
+ok("overclaim: abstract's number cannot leak into the cell", rc == 1 and "come from the abstract" in out, out)
+
 # ---- end to end + recalc
 full = EX + "/lrm.example.json"
 Xf = f"{T}/full.xlsx"

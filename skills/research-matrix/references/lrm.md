@@ -110,7 +110,9 @@ introduction, 50 methodology, 25 theory, 60 results and discussion.
 
 The `Summary` sheet says how many citations were checked against Crossref and
 which were not, lists any retraction or correction notices, shows what each
-row was read from (full text, partial or abstract only), and says that
+row was read from (full text, partial or abstract only), counts the papers
+whose abstract claims more than their body (those words appear in dark-yellow
+text in the LRM, with a hover note quoting both), and says that
 quartiles are SJR quartiles for the year and subject area shown. Do not edit
 the numbers by hand; fix `lrm.json` and rebuild. The DOI is shown as text in
 the Title cell (a cell hyperlink would flatten the italic journal name).

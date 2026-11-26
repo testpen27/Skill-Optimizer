@@ -46,8 +46,16 @@ one passage. Where to look:
 Rules while reading:
 - **Absence is a finding.** If the paper does not report a sample size, a
   setting or a theory, record that it is not reported. Do not infer it.
-- **The body beats the abstract.** If they disagree (abstracts often round or
-  overstate), quote the body and mention the disagreement in the chat draft.
+- **The body beats the abstract.** Read the abstract's claims against the
+  Results and Discussion. When the abstract claims more than the body reports
+  (a bigger or more general effect, causal wording for an association,
+  significance the body does not show, a finding the body does not contain)
+  or says something different, write the cell from the body and record it in
+  `overclaims`: the exact words of the cell written from the body, the
+  abstract's verbatim claim and the body's verbatim finding with its
+  location. The workbook shows those words in dark-yellow text, with a hover
+  note quoting both; the rest of the cell stays black. Mention each one in the
+  chat draft too.
 - **Keep the paper's words for claims.** Quote "associated with", not your
   reading of it as "caused".
 - One paper at a time. Never carry a detail from one paper into another's row.
@@ -114,7 +122,9 @@ reasoning, and checks each sentence:
 5. Is the scope the same (sample, setting, time)?
 
 Verdict per sentence: **keep**, **cut**, or **narrow** (rewrite closer to the
-quote's own wording). The fix is always to remove or narrow, never to add.
+quote's own wording). The verifier also checks each recorded overclaim: the
+abstract's quote really claims more than the body's quote, and the cell's
+yellow words follow the body. An overclaim that is not one is removed. The fix is always to remove or narrow, never to add.
 The session applies the verdicts, reruns `check_evidence.py`, then drafts the
 chat table for the user.
 

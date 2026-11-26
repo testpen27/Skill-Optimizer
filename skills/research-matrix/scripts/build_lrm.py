@@ -27,6 +27,9 @@ lrm.json:
      "crossref": "verified",
      "notices": [{"type": "correction", "date": "2004-03-06"}],
      "source_basis": "full text",
+     "overclaims": [{"field": "results", "text": "the exact words in the cell written from the body",
+                     "abstract": "the abstract's verbatim claim", "body": "the body's verbatim finding",
+                     "body_loc": "Results, p. 7"}],
      "evidence": {"results": [{"q": "verbatim quote from the paper", "loc": "Results, p. 7"}]}}
   ],
   "synthesis": "A few sentences: recurring theories, dominant methods, quartile balance, gaps."
@@ -38,6 +41,9 @@ because the P-codes renumber whenever a paper is added or removed.
 
 Every cell must come from something actually retrieved. Empty cells print as
 "Not retrieved"; a missing theory prints as "Not explicitly stated".
+"overclaims" marks a finding where the abstract claims more than (or differently
+from) the body: the cell is written from the body, and those words are shown in
+dark-yellow text with a hover note quoting both. Other words stay black.
 "source_basis" is "full text" | "partial" | "abstract only" and "evidence" holds,
 per column, the verbatim quotes the cell was written from (checked by
 check_evidence.py; see references/reading-and-writing.md). Neither is shown in
@@ -81,6 +87,9 @@ FIRST_PERSON = re.compile(r"\b(?:[Ww]e|[Oo]ur|[Oo]urs|[Mm]y|[Mm]e|us)\b"
 RETRACTED = {"retraction", "withdrawal", "removal"}
 CONCERN = {"expression_of_concern", "expression of concern"}
 AMBER_TEXT = "9C5700"
+# Text colour for a finding where the abstract claims more than the body reports.
+# A dark gold: pure yellow (FFFF00) is close to invisible on white and grey rows.
+OVERCLAIM_TEXT = "BF9000"
 
 
 def status_of(paper):
@@ -131,6 +140,14 @@ def problems_in(data):
             out.append(f"{tag}: access must be Free, Paid or Unclear")
         if p.get("crossref", "unchecked") not in CROSSREF:
             out.append(f"{tag}: crossref must be one of {sorted(CROSSREF)}")
+        for k, oc in enumerate(p.get("overclaims") or [], 1):
+            f, txt = oc.get("field"), (oc.get("text") or "").strip()
+            if f not in TEXT_FIELDS:
+                out.append(f"{tag}: overclaim {k}: field must be one of {TEXT_FIELDS}")
+            elif not txt or txt not in (p.get(f) or ""):
+                out.append(f"{tag}: overclaim {k}: \"text\" must be the exact words of the {f} cell to colour")
+            if not (oc.get("abstract") or "").strip() or not (oc.get("body") or "").strip():
+                out.append(f"{tag}: overclaim {k}: needs both the abstract's quote and the body's quote")
         if p.get("source_basis") is not None and p["source_basis"] not in BASES:
             out.append(f"{tag}: source_basis must be one of {sorted(BASES)}")
     ids = [fold(p.get("id") or clean_doi(p.get("doi"))) for p in data["papers"]]
@@ -227,6 +244,42 @@ def title_cell(p):
     return CellRichText(*parts)
 
 
+def overclaim_cell(text, spans):
+    """Rich text: the overclaimed spans in OVERCLAIM_TEXT colour, the rest plain."""
+    from openpyxl.cell.rich_text import CellRichText, TextBlock
+    from openpyxl.cell.text import InlineFont
+    marks = []
+    for sp in spans:
+        i = text.find(sp)
+        if i >= 0:
+            marks.append((i, i + len(sp)))
+    marks.sort()
+    merged = []
+    for a, b in marks:
+        if merged and a <= merged[-1][1]:
+            merged[-1] = (merged[-1][0], max(b, merged[-1][1]))
+        else:
+            merged.append((a, b))
+    plain, flagged = InlineFont(rFont=FONT, sz=9), InlineFont(rFont=FONT, sz=9, color=OVERCLAIM_TEXT)
+    parts, pos = [], 0
+    for a, b in merged:
+        if a > pos:
+            parts.append(TextBlock(plain, text[pos:a]))
+        parts.append(TextBlock(flagged, text[a:b]))
+        pos = b
+    if pos < len(text):
+        parts.append(TextBlock(plain, text[pos:]))
+    return CellRichText(*parts)
+
+
+def overclaim_note(ocs):
+    lines = ["The abstract claims more than the body reports. The cell follows the body."]
+    for oc in ocs:
+        lines.append(f'\nAbstract: "{oc["abstract"].strip()}"')
+        lines.append(f'Body{" (" + oc["body_loc"] + ")" if oc.get("body_loc") else ""}: "{oc["body"].strip()}"')
+    return "\n".join(lines)
+
+
 def add_sheets(wb, data):
     _, Alignment, Border, Font, PatternFill, Side = xl()
     rows = ordered(data)
@@ -254,6 +307,15 @@ def add_sheets(wb, data):
             code_cell.font = Font(name=FONT, size=9, bold=True, color="FFFFFF")
         else:
             code_cell.font = Font(name=FONT, size=9, bold=True)
+        for j, f in enumerate(TEXT_FIELDS, 5):
+            ocs = [oc for oc in p.get("overclaims") or [] if oc.get("field") == f]
+            if ocs and (p.get(f) or "").strip():
+                from openpyxl.comments import Comment
+                c = ws.cell(row=r, column=j)
+                c.value = overclaim_cell(p[f].strip(), [oc["text"].strip() for oc in ocs])
+                note = Comment(overclaim_note(ocs), "research-matrix")
+                note.width, note.height = 320, 160
+                c.comment = note
     protect_text(ws)
     set_widths(ws, WIDTHS)
     ws.freeze_panes = "D2"
@@ -274,6 +336,11 @@ def add_sheets(wb, data):
     for r, k, v in labels:
         sm.cell(row=r, column=1, value=k).font = Font(name=FONT, size=10, bold=True)
         sm.cell(row=r, column=2, value=v).font = Font(name=FONT, size=10)
+    n_over = sum(1 for _, p in rows if p.get("overclaims"))
+    sm.cell(row=10, column=1, value="Yellow text").font = Font(name=FONT, size=10, bold=True, color=OVERCLAIM_TEXT)
+    sm.cell(row=10, column=2, value=f"{n_over} paper(s): the abstract claims more than the body reports; the cell "
+                                    f"follows the body. Hover over the cell for both quotes.").font = \
+        Font(name=FONT, size=10, color=OVERCLAIM_TEXT)
     hdr = ["Code", "Crossref check", "Quartile source", "Retraction / correction notice", "Read from"]
     for j, h in enumerate(hdr, 1):
         sm.cell(row=11, column=j, value=h)
