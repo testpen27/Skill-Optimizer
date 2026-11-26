@@ -1,0 +1,107 @@
+{
+ "sentences": [
+  {
+   "id": "introduction.1",
+   "sentence": "The study evaluated a 6-week multi-component digital literacy and digital wellbeing program for adolescents."
+  },
+  {
+   "id": "introduction.2",
+   "sentence": "Its first aim was to test whether the program group showed more favorable pre-to-post changes in PIU, DSE and DGI than an active control group."
+  },
+  {
+   "id": "introduction.3",
+   "sentence": "Its second aim was to test whether post-intervention data were statistically consistent with a serial indirect association linking intervention condition, DSE, DGI and PIU."
+  },
+  {
+   "id": "methodology.1",
+   "sentence": "A two-arm, parallel-group pretest-posttest quasi-experiment ran in March and April 2026 at a school in Hubei Province, China."
+  },
+  {
+   "id": "methodology.2",
+   "sentence": "It involved 206 adolescents aged 12–18, allocated by a quota-based procedure to intervention (n = 103) or wait-list control (n = 103)."
+  },
+  {
+   "id": "methodology.3",
+   "sentence": "Self-report measures were SPIUT (PIU), the AIAS Internet Self-Efficacy subscale (DSE) and the short DGI."
+  },
+  {
+   "id": "methodology.4",
+   "sentence": "Analysis used 2 × 2 repeated-measures ANOVA and PROCESS Model 6 serial mediation with 10,000 bootstrap samples."
+  },
+  {
+   "id": "theory.1",
+   "sentence": "The I-PACE model was used to explain the intervention effects."
+  },
+  {
+   "id": "theory.2",
+   "sentence": "The DSE → DGI → PIU sequence is described as theory-informed, yet \"a theoretical proposition rather than an established causal mechanism\"."
+  },
+  {
+   "id": "results.1",
+   "sentence": "Group × Time interactions were significant for PIU, F(1, 204) = 13.75, p < 0.001, ηp² = 0.063; DGI, F(1, 204) = 26.53, p < 0.001, ηp² = 0.084; and DSE, F(1, 204) = 18.62, p < 0.001, ηp² = 0.115."
+  },
+  {
+   "id": "results.2",
+   "sentence": "In the wait-list group, DGI (p = 0.176) and DSE (p = 0.655) changes were not significant, while PIU decreased (p < 0.001)."
+  },
+  {
+   "id": "results.3",
+   "sentence": "The serial indirect path via DSE and DGI was significant, B = −2.589, 95% CI [−3.729, −1.675]; the single-mediator paths were not."
+  },
+  {
+   "id": "discussion.1",
+   "sentence": "The authors conclude that participation was \"associated with more favorable self-reported changes\" in PIU, DSE and DGI than a wait-list condition."
+  },
+  {
+   "id": "discussion.2",
+   "sentence": "The mediation results were statistically consistent with the DSE → DGI → PIU pathway, but alternative specifications indicated DSE had the more consistent association with PIU and did not establish temporal ordering."
+  },
+  {
+   "id": "discussion.3",
+   "sentence": "They call the findings preliminary and hypothesis-generating, citing non-random allocation, concurrent measurement, self-report outcomes and a single province."
+  }
+ ],
+ "quotes": {
+  "introduction": [
+   "The first aim was to examine whether adolescents who received the program showed more favorable pre-to-post changes in PIU, DSE, and DGI than adolescents in a wait-list control group.",
+   "The second aim was to examine whether the post-intervention data were statistically consistent with a theory-informed serial indirect association linking intervention condition, DSE, DGI, and PIU.",
+   "the present study evaluated a 6-week multi-component digital literacy and digital wellbeing program for adolescents using a two-arm pretest-posttest quasi-experimental design."
+  ],
+  "methodology": [
+   "A two-arm, parallel-group quasi-experimental design with pretest and posttest assessments was employed.",
+   "The study was conducted in March and April 2026 and was delivered in person at a community center in Hubei Province, China",
+   "Participants were 206 adolescents recruited from Hubei Province, China, through online advertisements disseminated via Wenjuanxing and community communication channels.",
+   "were aged 12–18 years",
+   "A total of 246 adolescents were assessed for eligibility through online screening.",
+   "allocated into intervention ( n = 103) and wait-list control ( n = 103) groups using a quota-based procedure",
+   "Problematic Internet use was measured using the Short Problematic Internet Use Test (SPIUT; Siciliano et al., 2015).",
+   "The Internet Self-Efficacy subscale of the Adolescent Internet Adaptability Scale (AIAS; Wang et al., 2025) was employed for assessing digital self-efficacy.",
+   "Delay of gratification was measured using the short-form Delaying Gratification Inventory (DGI; Hoerger et al., 2011).",
+   "The primary intervention analysis was conducted using 2 × 2 repeated-measures ANOVA, where group was a between-subjects factor whereas time was a within-subjects factor.",
+   "Hayes’ PROCESS macro, Model 6 was adopted for testing the mediation model",
+   "Bias-corrected bootstrap confidence intervals were used to test indirect effects based on 5,000 resamples."
+  ],
+  "theory": [
+   "The Interaction of Person–Affect–Cognition–Execution (I-PACE) model was used to inform the overall intervention logic.",
+   "However, this sequence remains a theoretical proposition rather than an established causal mechanism.",
+   "These findings provide a theoretical basis for the proposed DSE → DGI → PIU sequence."
+  ],
+  "results": [
+   "significant Group × Time interactions were observed for PIU, F (1, 204) = 13.75, p < 0.001, ηp 2 = 0.063; DGI, F (1, 204) = 26.53, p < 0.001, ηp 2 = 0.115; and DSE, F (1, 204) = 18.62, p < 0.001, ηp2 = 0.084.",
+   "whereas the change in the wait-list control group was not statistically significant, from 30.12 ± 2.23 to 31.58 ± 10.68, t (102) = −1.36, p = 0.176",
+   "whereas the wait-list control group showed no significant change, from 19.03 ± 6.10 to 18.62 ± 5.95, t (102) = 0.45, p = 0.655",
+   "PIU also decreased from 19.65 ± 4.74 to 17.08 ± 5.55, t (102) = 3.84, p < 0.001",
+   "only the sequential path from intervention condition to DSEpost, then to DGIpost, and finally to PIUpost was significant, B = −2.589, 95% CI [−3.729, −1.675].",
+   "The two single-mediator paths showed no significance since zero was involved in their CIs."
+  ],
+  "discussion": [
+   "participation in a 6-week multi-component digital literacy and digital wellbeing program was associated with more favorable self-reported changes in problematic Internet use, digital self-efficacy, and delay of gratification than a wait-list condition.",
+   "The post-intervention data were statistically consistent with the hypothesized DSE → DGI → PIU indirect pathway, but alternative specifications indicated that DGI showed the more consistent association with PIU and did not establish temporal ordering.",
+   "The findings are therefore preliminary and hypothesis-generating.",
+   "First, participants were not randomly assigned to conditions.",
+   "Third, DSE, DGI, and PIU were measured concurrently at posttest.",
+   "Fourth, all primary outcomes were self-reported.",
+   "recruitment from one Chinese province through online and community channels limits generalizability"
+  ]
+ }
+}

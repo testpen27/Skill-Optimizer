@@ -350,3 +350,31 @@ independent.
   2,900 to 3,100 for the combined call (+30 percent), while a second call pays a
   whole new start-up. Not measured: subtler planted errors, the overclaim-pair
   check inside the combined prompt, batches of 10 papers.
+
+### Subtle planted-error test of the combined verifier (2026-11-26)
+`results/2026-11-26-overclaim-pipeline-and-verifier-test/subtle_error_test/`.
+48 subtle errors (6 per file, 8 files: four papers, versions A and B with
+different errors; types: dropped hedge or qualifier, quantifier or scope shift,
+a number moved to the wrong group or time point, an added property or setting,
+an added cause, a swapped word), each setup run twice (32 Opus runs, about $3.50).
+
+| Setup | Planted caught (per run) | Pooled | Untouched flagged | Output tokens per file |
+|---|---|---|---|---|
+| Plain Opus verifier, run 1 / run 2 | 47 / 48, 47 / 48 | 94 of 96 | 21 / 68, 20 / 68 | 1,975 |
+| Combined one-call verifier, run 1 / run 2 | 47 / 48, 47 / 48 | 94 of 96 | 23 / 68, 22 / 68 | 2,540 |
+
+- The two setups caught exactly the same errors, so recall on planted errors
+  cannot separate them (95 percent confidence interval for 47 of 48: 89 to 100
+  percent). The one miss, in all four runs: tpack theory sentence with
+  "prospective" dropped.
+- The real India error (p 0.38 belongs to the knowledge part of computational
+  thinking only) appears in two of the files as an untouched sentence: the
+  plain verifier found it in 1 of 4 new runs (1 of 5 with the earlier run), the
+  combined call in 4 of 4 (6 of 6 with the earlier runs). Fisher exact, one-sided
+  p about 0.015. Caveat: it is one error, tested repeatedly, so it is suggestive,
+  not proof. More such errors need more papers.
+- Untouched sentences flagged: 20 to 23 of 68 in every run, almost the same
+  sentences (quote-coverage gaps, mostly); the combined call added two flags,
+  one of them the real error.
+- Limits: I wrote the planted errors; all four papers are the same ones as
+  before; the overclaim-pair check inside the combined prompt is still untested.

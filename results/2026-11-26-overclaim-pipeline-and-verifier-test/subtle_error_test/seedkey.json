@@ -1,0 +1,386 @@
+[
+ {
+  "file": "india2025_A",
+  "pid": "india2025",
+  "id": "introduction.1",
+  "type": "HEDGE",
+  "old": "can create",
+  "new": "creates"
+ },
+ {
+  "file": "india2025_A",
+  "pid": "india2025",
+  "id": "methodology.1",
+  "type": "ADD",
+  "old": "eight blocks",
+  "new": "eight rural blocks"
+ },
+ {
+  "file": "india2025_A",
+  "pid": "india2025",
+  "id": "methodology.2",
+  "type": "ADD",
+  "old": "two as comparison",
+  "new": "two as matched comparison"
+ },
+ {
+  "file": "india2025_A",
+  "pid": "india2025",
+  "id": "results.3",
+  "type": "NUMBER",
+  "old": "at endline",
+  "new": "at midline"
+ },
+ {
+  "file": "india2025_A",
+  "pid": "india2025",
+  "id": "discussion.3",
+  "type": "CAUSE",
+  "old": "They did not apply advanced statistics,",
+  "new": "They did not apply advanced statistics because of the small sample,"
+ },
+ {
+  "file": "india2025_A",
+  "pid": "india2025",
+  "id": "discussion.4",
+  "type": "QUANT",
+  "old": "scale-up of tailor-made training.",
+  "new": "scale-up of tailor-made training in all low- and middle-income countries."
+ },
+ {
+  "file": "india2025_B",
+  "pid": "india2025",
+  "id": "introduction.2",
+  "type": "NUMBER",
+  "old": "three implementation phases",
+  "new": "two implementation phases"
+ },
+ {
+  "file": "india2025_B",
+  "pid": "india2025",
+  "id": "methodology.3",
+  "type": "NUMBER",
+  "old": "402 vs 202",
+  "new": "402 vs 220"
+ },
+ {
+  "file": "india2025_B",
+  "pid": "india2025",
+  "id": "methodology.4",
+  "type": "ADD",
+  "old": "compared by chi-square (P < 0.05)",
+  "new": "compared by chi-square tests and logistic regression (P < 0.05)"
+ },
+ {
+  "file": "india2025_B",
+  "pid": "india2025",
+  "id": "results.1",
+  "type": "HEDGE",
+  "old": "did not differ",
+  "new": "was significantly higher in the intervention arm"
+ },
+ {
+  "file": "india2025_B",
+  "pid": "india2025",
+  "id": "results.2",
+  "type": "NUMBER",
+  "old": "63.8% vs 41.2%",
+  "new": "63.8% vs 47.2%"
+ },
+ {
+  "file": "india2025_B",
+  "pid": "india2025",
+  "id": "discussion.1",
+  "type": "QUANT",
+  "old": "digital literacy and its elements",
+  "new": "digital literacy and all its elements"
+ },
+ {
+  "file": "brink2022_A",
+  "pid": "brink2022",
+  "id": "introduction.2",
+  "type": "HEDGE",
+  "old": "very little is known",
+  "new": "nothing is known"
+ },
+ {
+  "file": "brink2022_A",
+  "pid": "brink2022",
+  "id": "methodology.1",
+  "type": "NUMBER",
+  "old": "(five males, seven females)",
+  "new": "(seven males, five females)"
+ },
+ {
+  "file": "brink2022_A",
+  "pid": "brink2022",
+  "id": "methodology.3",
+  "type": "ADD",
+  "old": "were recorded digitally.",
+  "new": "were recorded digitally and transcribed in full by an external service."
+ },
+ {
+  "file": "brink2022_A",
+  "pid": "brink2022",
+  "id": "results.1",
+  "type": "SWAP",
+  "old": "to the pupils",
+  "new": "to the teachers"
+ },
+ {
+  "file": "brink2022_A",
+  "pid": "brink2022",
+  "id": "results.3",
+  "type": "QUANT",
+  "old": "The teachers did not experience",
+  "new": "Most teachers did not experience"
+ },
+ {
+  "file": "brink2022_A",
+  "pid": "brink2022",
+  "id": "discussion.2",
+  "type": "CAUSE",
+  "old": "choice of content and method.",
+  "new": "choice of content and method, a gap they link to teacher education."
+ },
+ {
+  "file": "brink2022_B",
+  "pid": "brink2022",
+  "id": "introduction.1",
+  "type": "SWAP",
+  "old": "to describe lower",
+  "new": "to explain lower"
+ },
+ {
+  "file": "brink2022_B",
+  "pid": "brink2022",
+  "id": "introduction.3",
+  "type": "ADD",
+  "old": "experience the teaching",
+  "new": "experience and evaluate the teaching"
+ },
+ {
+  "file": "brink2022_B",
+  "pid": "brink2022",
+  "id": "methodology.1",
+  "type": "ADD",
+  "old": "were strategically chosen.",
+  "new": "were strategically chosen from schools across the country."
+ },
+ {
+  "file": "brink2022_B",
+  "pid": "brink2022",
+  "id": "methodology.2",
+  "type": "NUMBER",
+  "old": "September 2019",
+  "new": "September 2020"
+ },
+ {
+  "file": "brink2022_B",
+  "pid": "brink2022",
+  "id": "theory.1",
+  "type": "ADD",
+  "old": "knowledge, beliefs, purposes",
+  "new": "knowledge, beliefs, emotions, purposes"
+ },
+ {
+  "file": "brink2022_B",
+  "pid": "brink2022",
+  "id": "discussion.1",
+  "type": "SWAP",
+  "old": "a common knowledge base",
+  "new": "a common curriculum"
+ },
+ {
+  "file": "tpack2024_A",
+  "pid": "tpack2024",
+  "id": "introduction.1",
+  "type": "CAUSE",
+  "old": "affects their",
+  "new": "improves their"
+ },
+ {
+  "file": "tpack2024_A",
+  "pid": "tpack2024",
+  "id": "methodology.2",
+  "type": "ADD",
+  "old": "at Al-Qasmi Academic College of Education.",
+  "new": "at Al-Qasmi Academic College of Education, in their final year of study."
+ },
+ {
+  "file": "tpack2024_A",
+  "pid": "tpack2024",
+  "id": "methodology.4",
+  "type": "QUANT",
+  "old": "Ten experimental-group participants were interviewed",
+  "new": "Ten participants from each group were interviewed"
+ },
+ {
+  "file": "tpack2024_A",
+  "pid": "tpack2024",
+  "id": "results.2",
+  "type": "NUMBER",
+  "old": "p = 0.001)",
+  "new": "p = 0.01)"
+ },
+ {
+  "file": "tpack2024_A",
+  "pid": "tpack2024",
+  "id": "discussion.1",
+  "type": "CAUSE",
+  "old": "guided reflection and peer dialogue",
+  "new": "guided reflection, peer dialogue and teaching experience"
+ },
+ {
+  "file": "tpack2024_A",
+  "pid": "tpack2024",
+  "id": "discussion.3",
+  "type": "ADD",
+  "old": "are self-reported,",
+  "new": "are self-reported and unvalidated,"
+ },
+ {
+  "file": "tpack2024_B",
+  "pid": "tpack2024",
+  "id": "introduction.2",
+  "type": "SWAP",
+  "old": "and how DVR use affects them",
+  "new": "and why DVR use affects them"
+ },
+ {
+  "file": "tpack2024_B",
+  "pid": "tpack2024",
+  "id": "methodology.1",
+  "type": "ADD",
+  "old": "A mixed methods approach was used.",
+  "new": "A mixed methods approach combining a survey, interviews and classroom observation was used."
+ },
+ {
+  "file": "tpack2024_B",
+  "pid": "tpack2024",
+  "id": "methodology.2",
+  "type": "ADD",
+  "old": "pre/post design",
+  "new": "pre/post/delayed post design"
+ },
+ {
+  "file": "tpack2024_B",
+  "pid": "tpack2024",
+  "id": "results.2",
+  "type": "QUANT",
+  "old": "in the TPACK domains",
+  "new": "in all seven TPACK domains"
+ },
+ {
+  "file": "tpack2024_B",
+  "pid": "tpack2024",
+  "id": "discussion.2",
+  "type": "QUANT",
+  "old": "by prospective and in-service teachers",
+  "new": "by all teachers"
+ },
+ {
+  "file": "tpack2024_B",
+  "pid": "tpack2024",
+  "id": "theory.1",
+  "type": "QUANT",
+  "old": "prospective teacher knowledge",
+  "new": "teacher knowledge"
+ },
+ {
+  "file": "piu2026_A",
+  "pid": "piu2026",
+  "id": "introduction.1",
+  "type": "NUMBER",
+  "old": "6-week",
+  "new": "8-week"
+ },
+ {
+  "file": "piu2026_A",
+  "pid": "piu2026",
+  "id": "methodology.2",
+  "type": "NUMBER",
+  "old": "aged 12–18",
+  "new": "aged 12–17"
+ },
+ {
+  "file": "piu2026_A",
+  "pid": "piu2026",
+  "id": "methodology.3",
+  "type": "ADD",
+  "old": "and the short DGI.",
+  "new": "and the short DGI, all with established reliability."
+ },
+ {
+  "file": "piu2026_A",
+  "pid": "piu2026",
+  "id": "results.3",
+  "type": "NUMBER",
+  "old": "−1.675]",
+  "new": "−1.575]"
+ },
+ {
+  "file": "piu2026_A",
+  "pid": "piu2026",
+  "id": "discussion.1",
+  "type": "HEDGE",
+  "old": "self-reported changes",
+  "new": "changes"
+ },
+ {
+  "file": "piu2026_A",
+  "pid": "piu2026",
+  "id": "discussion.3",
+  "type": "ADD",
+  "old": "and a single province.",
+  "new": "a single province and a short follow-up."
+ },
+ {
+  "file": "piu2026_B",
+  "pid": "piu2026",
+  "id": "introduction.2",
+  "type": "SWAP",
+  "old": "than a wait-list control group",
+  "new": "than an active control group"
+ },
+ {
+  "file": "piu2026_B",
+  "pid": "piu2026",
+  "id": "methodology.1",
+  "type": "SWAP",
+  "old": "at a community center",
+  "new": "at a school"
+ },
+ {
+  "file": "piu2026_B",
+  "pid": "piu2026",
+  "id": "methodology.4",
+  "type": "NUMBER",
+  "old": "5,000 bootstrap",
+  "new": "10,000 bootstrap"
+ },
+ {
+  "file": "piu2026_B",
+  "pid": "piu2026",
+  "id": "theory.1",
+  "type": "CAUSE",
+  "old": "to inform the intervention logic",
+  "new": "to explain the intervention effects"
+ },
+ {
+  "file": "piu2026_B",
+  "pid": "piu2026",
+  "id": "results.1",
+  "type": "NUMBER",
+  "old": "DGI, F(1, 204) = 26.53, p < 0.001, ηp² = 0.115; and DSE, F(1, 204) = 18.62, p < 0.001, ηp² = 0.084",
+  "new": "DGI, F(1, 204) = 26.53, p < 0.001, ηp² = 0.084; and DSE, F(1, 204) = 18.62, p < 0.001, ηp² = 0.115"
+ },
+ {
+  "file": "piu2026_B",
+  "pid": "piu2026",
+  "id": "discussion.2",
+  "type": "SWAP",
+  "old": "indicated DGI had",
+  "new": "indicated DSE had"
+ }
+]

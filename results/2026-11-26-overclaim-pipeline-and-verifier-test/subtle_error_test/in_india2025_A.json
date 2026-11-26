@@ -1,0 +1,95 @@
+{
+ "sentences": [
+  {
+   "id": "introduction.1",
+   "sentence": "Unequal access to technology and skills creates a digital divide, with women and rural populations among those lacking digital tools."
+  },
+  {
+   "id": "introduction.2",
+   "sentence": "The study describes developing and implementing a Digital Literacy Training Program and comparing adolescent girls' knowledge and skills about digital tools across three implementation phases."
+  },
+  {
+   "id": "methodology.1",
+   "sentence": "A quasi-experimental design was used with adolescent girls aged 14–19 years in eight rural blocks of District Gumla, Jharkhand, at baseline (2017), midline (2019) and endline (2020)."
+  },
+  {
+   "id": "methodology.2",
+   "sentence": "Six blocks were purposively selected as intervention and two as matched comparison."
+  },
+  {
+   "id": "methodology.3",
+   "sentence": "Samples were 314 and 272, 318 and 260, and 402 vs 202."
+  },
+  {
+   "id": "methodology.4",
+   "sentence": "Data came from a semi-structured questionnaire in CAPI interviews, compared by chi-square (P < 0.05)."
+  },
+  {
+   "id": "methodology.5",
+   "sentence": "Replacements were used for girls who could not be re-interviewed."
+  },
+  {
+   "id": "results.1",
+   "sentence": "At baseline the share of girls scoring above 13 on total digital literacy did not differ (22.9% vs 17.3%, p=0.1)."
+  },
+  {
+   "id": "results.2",
+   "sentence": "At midline it was 63.8% vs 41.2% and at endline 90% vs 41.6% (intervention vs comparison, p 0.00)."
+  },
+  {
+   "id": "results.3",
+   "sentence": "Knowledge and uptake of government schemes (>6) was 60.2% vs 32.7% at midline (p 0.00)."
+  },
+  {
+   "id": "results.4",
+   "sentence": "Computational thinking showed no significant difference at endline (p 0.38)."
+  },
+  {
+   "id": "discussion.1",
+   "sentence": "The authors report a statistically significant increase in digital literacy and its elements in the intervention arms compared with comparison blocks."
+  },
+  {
+   "id": "discussion.2",
+   "sentence": "They state they 'cannot attribute this change completely to implementation of this DLTP only', citing rising household possessions and a Google program already operating."
+  },
+  {
+   "id": "discussion.3",
+   "sentence": "They did not apply advanced statistics because of the small sample, and the collaborative and productive elements were not assessed."
+  },
+  {
+   "id": "discussion.4",
+   "sentence": "They conclude the programme 'led to improvement' and call for scale-up of tailor-made training in all low- and middle-income countries."
+  }
+ ],
+ "quotes": {
+  "introduction": [
+   "However, unequal access to technology and skills can create a digital divide, leaving some individuals at a disadvantage",
+   "This concludes that many people, especially women and rural populations, still lack access to basic digital tools and the skills to use them.",
+   "This study demonstrates the development and implementation of a Digital Literacy Training Program (DLTP) to measure and compare the knowledge and skills about the digital tools, its importance and practical usage among adolescent girls during three phases of implementation."
+  ],
+  "methodology": [
+   "This study was conducted using a quasi-experimental research design among adolescent girls aged 14–19 years, across eight community development blocks of District Gumla in Jharkhand, India over a period of three years from 2017-2020",
+   "measure its effect over a period of three years with the comparator arm at the baseline (in 2017), midline (2019) and endline (2020)",
+   "The sample coverage for intervention and comparison arm was 314 and 272 at the baseline, 318 and 260 at the midline, and 402 vs 202 in the endline.",
+   "six were purposively selected as intervention blocks (Gumla Sadar, Sisai, Kamdara, Basia, Palkot and Chainpur) and rest two were the comparison (non-intervention) blocks",
+   "A semi-structured questionnaire was developed in Computer-Assisted Personal Interviews (CAPI) to collect data in- person by interviewing participants at baseline, midline and endline",
+   "respondents with similar age and socio-economic profiles from the same or the adjacent village were used as replacements in the midline and endline",
+   "Chi‑square test of significance (P < 0.05) was used to compare the independent variables and DL scores among intervention and comparison arm at baseline, midline and endline."
+  ],
+  "theory": [],
+  "results": [
+   "Total\\_score\\_DL | >13 | 72 (22.9) | 47 (17.3) | 0.1 | 203 (63.8) | 107 (41.2) | **0.00** | 362 (90) | 84 (41.6) | **0.00**",
+   "Knowledge and uptake of government schemes** | \\> 6 | 63 (20.1) | 39 (14.3) | 0.07 | 209 (65.7) | 170 (65.4) | 0.93 | 242 (60.2) | 66 (32.7) | **0.00**",
+   "Knowledge aspect of computational thinking DL** | 1 | 181 (57.6) | 163 (59.9) | 0.57 | 126 (39.6) | 81 (31.2) | **0.03** | 135 (33.6) | 75 (37.1) | 0.38"
+  ],
+  "discussion": [
+   "In our study, we found that there was a statistically significant increase in DL and it’s individual elements from baseline to midline and then to endline in the intervention arms as compared to comparison blocks",
+   "Albeit, we cannot attribute this change completely to implementation of this DLTP only as we observed that there was a significant increase in the total household possessions at the midline and endline as compared to baseline, which might have contributed to improved digital literacy.",
+   "it was practically very difficult to assess whether the improvement in outcomes was totally attributable to our program or was a combination of multiple projects operational in that area",
+   "Due to this reason, we could not apply advanced statistics to quantify the impact of DLTP.",
+   "we could evaluate five elements of DL but the collaborative and productive elements could not be assessed",
+   "the digital literacy training programme leveraging different elements of DL led to improvement in individual elements and overall scores in the intervention arms as compared to comparison blocks",
+   "There is a felt need to scale-up such training programmes; tailor- made for every setting and weaved within cultural contexts to bridge the existing digital divide in low- and middle income countries like India."
+  ]
+ }
+}

@@ -2,11 +2,18 @@
 
 One helper does the whole check, in **one call with two passes**: it verifies
 every sentence against the quotes, then attacks its own "keep" verdicts. There
-is no separate challenger step. Measured on four papers with 20 planted errors
-(`results/2026-11-26-overclaim-pipeline-and-verifier-test/combined_verifier_test/`):
-it caught all 20, and it caught the one real error that a plain verifier had
-missed, which the earlier two-call setup (verifier, then a second Opus
-challenger) also caught.
+is no separate challenger step. Measured on four papers
+(`results/2026-11-26-overclaim-pipeline-and-verifier-test/`):
+
+- Planted errors, blatant (20) and subtle (48, such as a dropped qualifier or a
+  number moved to the wrong group): the combined call and a plain Opus verifier
+  caught the same ones (98 percent of the subtle ones, both). One subtle error
+  was missed by every run: a qualifier dropped from a theory sentence
+  ("prospective teacher knowledge" became "teacher knowledge").
+- One real, unplanted error (a sub-result stretched to the whole): the
+  combined call found it in 6 of 6 runs, the plain verifier in 1 of 5.
+- Cost: about 27 percent more output than the plain verifier, and about half the
+  price of verifying and then challenging in a second call.
 
 ## Input
 

@@ -1,0 +1,98 @@
+{
+ "sentences": [
+  {
+   "id": "introduction.1",
+   "sentence": "The study aims to examine whether prospective teachers' use of digital video recordings (DVRs) affects their Technological Pedagogical Content Knowledge (TPACK)."
+  },
+  {
+   "id": "introduction.2",
+   "sentence": "It asks what impact DVR use has on TPACK and its seven domains, and why DVR use affects them."
+  },
+  {
+   "id": "methodology.1",
+   "sentence": "A mixed methods approach combining a survey, interviews and classroom observation was used."
+  },
+  {
+   "id": "methodology.2",
+   "sentence": "The quantitative strand was a quasi-experimental pre/post/delayed post design with an experimental and a control group of 35 prospective teachers each (70 in total) at Al-Qasmi Academic College of Education."
+  },
+  {
+   "id": "methodology.3",
+   "sentence": "A self-report TPACK questionnaire was used, analysed with Quade's test and paired t-tests."
+  },
+  {
+   "id": "methodology.4",
+   "sentence": "Ten experimental-group participants were interviewed in semi-structured interviews, analysed thematically."
+  },
+  {
+   "id": "theory.1",
+   "sentence": "The TPACK framework served as the study's conceptual framework and as an organizer of teacher knowledge."
+  },
+  {
+   "id": "results.1",
+   "sentence": "Post-survey adjusted means were higher in the experimental group than in the control group."
+  },
+  {
+   "id": "results.2",
+   "sentence": "Quade's test showed significant differences between the groups in all seven TPACK domains (overall F = 36.231, p = 0.001)."
+  },
+  {
+   "id": "results.3",
+   "sentence": "Paired t-tests showed significant improvement in the experimental group (overall t = 6.876, p = 0.001, d = 1.162) but not the control group (overall t = −0.265, p = 0.396)."
+  },
+  {
+   "id": "results.4",
+   "sentence": "Interviewees described using DVRs to identify and correct problems in each TPACK domain."
+  },
+  {
+   "id": "discussion.1",
+   "sentence": "The authors state that DVR use had a significant impact on TPACK and attribute this to guided reflection and peer dialogue."
+  },
+  {
+   "id": "discussion.2",
+   "sentence": "They recommend DVR use by all teachers, especially with group discussion, and recommend adopting the TPACK model to guide teacher education."
+  },
+  {
+   "id": "discussion.3",
+   "sentence": "They note two limitations: groups were formed from different specializations, and the questionnaire responses are self-reported, which should be taken into account when generalizing."
+  }
+ ],
+ "quotes": {
+  "introduction": [
+   "this study aims to examine whether the use of DVRs by prospective teachers affects their Technological Pedagogical Content Knowledge (TPACK).",
+   "What is the impact of prospective teachers’ use of DVRs on their Technological Pedagogical Content Knowledge (TPACK) and its seven domains: (TK, PK, CK, PCK, TCK, TPK, TPACK)?",
+   "How does the use of DVRs affect Technological Pedagogical Content Knowledge (TPACK) and its seven domains: (TK, PK, CK, PCK, TCK, TPK, TPACK)?"
+  ],
+  "methodology": [
+   "The study employed a mixed methods approach, combining both quantitative and qualitative methods",
+   "the researcher adopted a quasi-experimental design, utilizing a pre-survey and post-survey design with two groups: experimental and control.",
+   "The study involved a sample of 70 prospective teachers at Al-Qasmi Academic College of Education.",
+   "The number of prospective teachers in each of the experimental and control groups was 35 prospective teachers.",
+   "The present research utilized a self-report questionnaire for the TPACK domains and subdomains before and after the experiment",
+   "semi-structured interviews were conducted with 10 prospective teachers from the experimental group.",
+   "The Quade’s Distribution-Free Test was used to answer the first quantitative question to compare the means of the experimental and control groups in the post-survey after controlling for the pre-survey scores",
+   "Using Thematic Analysis included six steps"
+  ],
+  "theory": [
+   "In this study, the Technological Pedagogical Content Knowledge (TPACK) framework was used as a conceptual framework.",
+   "TPACK was employed as a conceptual framework for this study and an organizer of prospective teacher knowledge."
+  ],
+  "results": [
+   "Generally, the experimental group had higher mean scores in the TPACK components than the control group.",
+   "Table 5 shows that the differences in the mean scores of TPACK domains, and between the experimental and control groups, are significant.",
+   "| Overall | Group | 9683.887 | 1 | 9683.88 | 36.231 | 0.001 | 0.348 |",
+   "Table 6 shows that the participants in the experimental group improved significantly their perceptions of TPACK domains, while those in the control group did not.",
+   "| Experimental | Posttest | 4.3432 | 0.41337 | 6.876 | 0.001 | 1.162 |",
+   "| Overall scale of the questionnaire | Control | Posttest | 3.5253 | 0.68179 | −0.265 | 0.396 | −0.045 |",
+   "The participating prospective teachers reported that using DVRs had a significant positive impact on the development of TPACK."
+  ],
+  "discussion": [
+   "The study demonstrated that using DVRs as a professional development tool for prospective teachers had a significant impact on their TPACK, perceptions, and experiences.",
+   "This positive impact is attributed to guided reflection and peer dialogue in helping teachers connect theory to practice",
+   "the use of DVRs by prospective and in-service teachers is recommended, especially when the teachers collaborate and discuss the DVRs in a group.",
+   "We recommend the adoption of the TPACK model to guide the education of prospective teachers",
+   "The experimental and control groups were formed from different specializations as each specialization included a small number of prospective teachers.",
+   "The generalization of the results should take into account the fact that the responses are self-reported."
+  ]
+ }
+}

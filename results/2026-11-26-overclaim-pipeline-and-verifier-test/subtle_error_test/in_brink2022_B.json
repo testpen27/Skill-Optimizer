@@ -1,0 +1,95 @@
+{
+ "sentences": [
+  {
+   "id": "introduction.1",
+   "sentence": "The study aims to explain lower secondary technology teachers' experiences of teaching digital models using digital tools."
+  },
+  {
+   "id": "introduction.2",
+   "sentence": "The authors state that very little is known about this teaching in compulsory schools today."
+  },
+  {
+   "id": "introduction.3",
+   "sentence": "The research question is how these teachers experience and evaluate the teaching of digital models."
+  },
+  {
+   "id": "methodology.1",
+   "sentence": "Twelve lower secondary technology teachers (five males, seven females) were strategically chosen from schools across the country."
+  },
+  {
+   "id": "methodology.2",
+   "sentence": "They were interviewed by the first author, with an interview guide, between October 2018 and September 2020."
+  },
+  {
+   "id": "methodology.3",
+   "sentence": "Interviews lasted 35 to 60 minutes and were recorded digitally."
+  },
+  {
+   "id": "methodology.4",
+   "sentence": "The interviews were transcribed and analysed thematically, inductively and without pre-existing coding frames."
+  },
+  {
+   "id": "theory.1",
+   "sentence": "The study takes the phenomenology of the lifeworld as its ontological and epistemological approach, with \"experience\" understood as the respondents' knowledge, beliefs, emotions, purposes and intentions related to teaching digital models."
+  },
+  {
+   "id": "results.1",
+   "sentence": "Four themes of teachers' experiences were found: Enhancing and integrating other subjects, Visualizing technology to the pupils, Enabling digital modelling, and Preparing pupils for the future."
+  },
+  {
+   "id": "results.2",
+   "sentence": "The themes partly overlap through shared teaching aspects."
+  },
+  {
+   "id": "results.3",
+   "sentence": "The teachers did not experience teaching digital models as one single idea but as an amalgam of multiple ideas."
+  },
+  {
+   "id": "discussion.1",
+   "sentence": "The authors conclude that there is not one way to experience or teach digital models, and that discussions need to be more nuanced and specific to provide a common curriculum."
+  },
+  {
+   "id": "discussion.2",
+   "sentence": "They state that the results corroborate a lack of a common conceptual basis, and that teachers reflect on why they teach but lack reflection on choice of content and method."
+  },
+  {
+   "id": "discussion.3",
+   "sentence": "They suggest further research on CAD and on how digital models affect pupils' learning or interest."
+  }
+ ],
+ "quotes": {
+  "introduction": [
+   "The aim of this study is to describe lower secondary technology teachers’ experiences of teaching digital models using digital tools. Very little is known about this teaching conducted in compulsory schools today.",
+   "How do lower secondary technology teachers experience the teaching of digital models?"
+  ],
+  "methodology": [
+   "Twelve technology teachers, five males and seven females, were strategically chosen for this study",
+   "The interviews were open in character, with a guide (see Appendix 1) for the questions",
+   "The interviews ran between 35 and 60 min and were recorded digitally.",
+   "All twelve interviews were conducted by the first author, during October 2018 and September 2019",
+   "The interviews were transcribed in full by the first author.",
+   "a thematic analysis was used in this study, to report the life world experiences, meanings, and realities of the participants.",
+   "an inductive method without pre-existing coding frames for reporting patterns or themes is also helpful"
+  ],
+  "theory": [
+   "With the phenomenological lifeworld (Bengtsson 2013. With the lifeworld as ground. A research approach for empirical research in education: The Gothenburg tradition. Indo-Pacific Journal of Phenomenology, 13(1), 01–18.\")) as ontological and epistemological approach",
+   "in this study “experience” is a pertinent concept, understood as the analytical construct of the respondents’ knowledge, beliefs, purposes, and intentions related to teaching digital models."
+  ],
+  "results": [
+   "Technology teachers experience the teaching of digital models as the following themes:",
+   "Enhancing and integrating other subjects,",
+   "Visualizing technology to the pupils,",
+   "Enabling digital modelling,",
+   "Preparing pupils for the future.",
+   "In this study, the aims and purposes of teaching digital models are described in four themes, partly overlapping each other.",
+   "the teachers did not experience the teaching of digital models as one single idea but as an amalgam of multiple ideas"
+  ],
+  "discussion": [
+   "The overall result from this study is that there is not _one_ way to experience digital models, and therefore not _one_ way to teach digital models.",
+   "The results of this study corroborate the lack of a common conceptual basis concerning digital models.",
+   "it can be stated that technology teachers are reflecting. They are reflecting upon _why_ they teach digital models, as the four themes indicate, but there is a lack of reflection concerning the choice of content and method.",
+   "a conclusion from this study is that discussions about this area need to be more nuanced and specific to provide a common knowledge base in this area.",
+   "Another topic for further research can be to investigate how the use of digital models affect pupils’ learning or interest in technology."
+  ]
+ }
+}
