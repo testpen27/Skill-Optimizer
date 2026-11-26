@@ -48,7 +48,7 @@ import unicodedata
 
 from common import clean_doi, scrub
 
-TEXT_FIELDS = ["introduction", "methodology", "theory", "results", "discussion"]
+TEXT_FIELDS = ["introduction", "methodology", "theory", "results", "discussion", "limitations"]
 BASES = {"full text", "partial", "abstract only"}
 HEDGES = re.compile(r"\b(may|might|could|suggests?|suggested|appears?|appeared|possibly|"
                     r"likely|tentative(?:ly)?|preliminary|seems?)\b", re.I)

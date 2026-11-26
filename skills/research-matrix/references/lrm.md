@@ -3,8 +3,8 @@
 One row per paper, on the `LRM` sheet of the project workbook (`Matrix.xlsx`,
 named after the topic). Columns, left to right:
 
-| Code | Type | Authors | Title | Introduction | Methodology | Theory | Results | Discussion | Quartile |
-|---|---|---|---|---|---|---|---|---|---|
+| Code | Type | Authors | Title | Introduction | Methodology | Theory | Results | Discussion | Limitations and future research | Quartile |
+|---|---|---|---|---|---|---|---|---|---|---|
 
 - **Code**: P01, P02 ... assigned by the script after sorting in APA 7 order
   (first author's family name, then initials; a single-author work before
@@ -18,6 +18,10 @@ named after the topic). Columns, left to right:
   link, in APA 7 form. Write the title in sentence case (capital after a
   colon, keep proper nouns and acronyms); Crossref keeps the publisher's
   capitals, so do not copy a Title Case title as it is.
+- **Limitations and future research**: only what the authors themselves state
+  (their limitations and the future work they propose). "Not explicitly stated"
+  if the paper says neither. The reviewer's own idea of what is missing goes in
+  the gap list on the `Summary` sheet, never here.
 - **Quartile**: the Scimago (SJR) quartile, with year and subject area.
 
 There is no column for how a paper was obtained (free, paid, database): the
@@ -69,7 +73,7 @@ record. Do not add one.
    verbatim quotes per column into `evidence`, then write each cell only from
    its quotes. Models per step are in `model-routing.md`: readers on `haiku`,
    3 papers each, writing `helper_out/<id>.json` (with the exhaustive
-   `abstract_claims` and `caveats` lists); merge them with
+   `abstract_claims` and `caveats` lists and the `limitations` quotes); merge them with
    `python3 scripts/merge_papers.py lrm.json --from helper_out/`. Then the
    overclaim pairing (`overclaim-pairing.md`, `sonnet`) and
    `apply_overclaims.py`. With one paper, or abstracts only, the chat does all of this itself.
@@ -83,9 +87,14 @@ record. Do not add one.
    in chat for the user (same columns), so they can correct it before the
    workbook is built.
 7. **Synthesis paragraph** after the table (`opus`): recurring theories,
-   dominant methods, quartile balance (flag a set that is mostly Q3/Q4), gaps
-   the user's study could fill. Write it from the verified rows, not from
-   memory, and word it as the reviewer's synthesis, not as any paper's claim.
+   dominant methods, quartile balance (flag a set that is mostly Q3/Q4). Write it
+   from the verified rows, not from memory, and word it as the reviewer's
+   synthesis, not as any paper's claim. Gaps are not in this paragraph.
+   **Gap list** (`gap-list.md`): a `sonnet` helper writes 3 to 8 gaps from the
+   verified limitation and methodology cells (never the papers), a separate
+   `opus` helper keeps, narrows or cuts each, and `apply_gaps.py` writes them
+   into `lrm.json`. The `Summary` sheet shows them as the reviewer's reading
+   of this set of papers.
 8. **Build and look.**
    ```
    python3 scripts/build_lrm.py lrm.json --check
@@ -94,7 +103,7 @@ record. Do not add one.
    `--check` refuses a bad quartile or type label and warns about long
    cells, first-person wording, repeated openers and retracted papers. The
    workbook has a `Summary` sheet (field, years, counts, the Crossref status of
-   each paper, retraction notices and the synthesis paragraph) and the `LRM`
+   each paper, retraction notices, the synthesis paragraph and the gap list) and the `LRM`
    sheet, with a frozen header and filters so the user can sort and filter. If
    the `xlsx` skill's `recalc.py` is available, run it on the file so the
    formula cells (the counts on `Summary`) carry values for previewers. Render

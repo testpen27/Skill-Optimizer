@@ -1,0 +1,33 @@
+{
+ "title": "Digital literacy training programmes for adolescents and teachers: effects and teaching approaches",
+ "papers": [
+  {
+   "id": "brink2022",
+   "year": null,
+   "type": "Qualitative",
+   "methodology": "Twelve semi-structured interviews with lower secondary technology teachers in Swedish schools were the empirical data. Five males and seven females, strategically chosen, in service between 1 and 19 years. Interviews ran 35 to 60 min, were held at the teachers' schools, were recorded digitally, and were conducted by the first author in October 2018 to September 2019. Data were analyzed thematically in two steps.",
+   "limitations": "The authors say investigating teaching digital models is limited to one particular reality, teachers' experiences. They say aspects of creating and designing in digital environments need to be elaborated on in future studies, and that further research can investigate how digital models affect pupils' learning or interest in technology."
+  },
+  {
+   "id": "india2025",
+   "year": null,
+   "type": "Quantitative",
+   "methodology": "Quasi-experimental design with girls aged 14–19 years in eight blocks of District Gumla, Jharkhand, 2017–2020, measured at baseline, midline and endline. Sample: 314 intervention and 272 comparison at baseline, 318 and 260 at midline, 402 and 202 at endline. Data collected by in-person semi-structured questionnaire (CAPI); analysed with univariate descriptions and chi-square tests (P < 0.05) in SPSS 23.0.",
+   "limitations": "Random assignment was difficult, girls were lost to follow-up, and many migrated or got married. Advanced statistics could not be applied. Collaborative and productive DL elements were not assessed; the authors suggest a long follow-up study and programmes covering all seven elements."
+  },
+  {
+   "id": "piu2026",
+   "year": null,
+   "type": "Quantitative",
+   "methodology": "A two-arm, parallel-group quasi-experimental design with pretest and posttest was used. Eligibility was age 12–18 years. Participants were 206 adolescents recruited via online advertisements in Hubei Province, China. The study ran in March and April 2026 and was delivered in person at a community center. The intervention was six weekly 45–60 min group sessions. Intervention attendance averaged 5.64 of 6 sessions. Consequently, outcomes were self-reported only. Analysis used 2 × 2 repeated-measures ANOVA and PROCESS Model 6 mediation.",
+   "limitations": "The authors note non-random allocation, a wait-list control that did not control for attention or expectancy, concurrent posttest measurement of DSE, DGI and PIU, and self-reported outcomes. They also cite recruitment from one province, no measure of digital literacy, and only an immediate posttest. Randomized, longitudinal, multi-method studies are needed."
+  },
+  {
+   "id": "tpack2024",
+   "year": null,
+   "type": "Mixed-methods",
+   "methodology": "Quasi-experimental pre-post survey with experimental and control groups, plus semi-structured interviews. Sample: 70 prospective teachers at Al-Qasmi Academic College of Education, Baqa, Israel, 35 per group; 10 experimental-group teachers were interviewed. Sampling was purposive. Tools: a 53-item, five-point self-report TPACK questionnaire. The experimental group used DVRs via IRIS Connect in the second semester of 2022/2023.",
+   "limitations": "The authors name two limitations: the inability to provide unified control and experimental groups, since practical training groups are small and the groups came from different specializations; and self-reported questionnaire responses, which should be considered when generalizing."
+  }
+ ]
+}

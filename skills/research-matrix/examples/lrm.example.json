@@ -21,7 +21,8 @@
       "theory": "",
       "results": "No real findings; placeholder text only.",
       "discussion": "Placeholder; nothing here is a claim about the literature.",
-      "id": "zulkifli2024"
+      "id": "zulkifli2024",
+      "limitations": "Placeholder: invented limitation and invented future-work sentence."
     },
     {
       "authors": [
@@ -60,8 +61,19 @@
       "theory": "Placeholder theory.",
       "results": "Placeholder results.",
       "discussion": "Placeholder discussion.",
-      "id": "abdullah2021"
+      "id": "abdullah2021",
+      "limitations": "Placeholder: nothing here is a claim about the literature."
     }
   ],
-  "synthesis": "Illustrative only. In a real matrix this paragraph names recurring theories, dominant methods, the quartile balance and the gaps the user's study could fill."
+  "synthesis": "Illustrative only. In a real matrix this paragraph names recurring theories, dominant methods, the quartile balance and the gaps the user's study could fill.",
+  "gaps": [
+    {
+      "gap": "Among these 3 papers, the authors of zulkifli2024 name one invented direction for future work (placeholder, ILLUSTRATIVE ONLY).",
+      "kind": "stated by authors",
+      "papers": [
+        "zulkifli2024"
+      ],
+      "basis": "limitation cell of zulkifli2024 (made up)"
+    }
+  ]
 }

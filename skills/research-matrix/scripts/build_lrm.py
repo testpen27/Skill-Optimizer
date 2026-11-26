@@ -7,7 +7,8 @@
 and every other sheet (synthesis, concept ...) is kept; otherwise it is created.
 
 Sheet "LRM", columns left to right: Code | Type | Authors | Title |
-Introduction | Methodology | Theory | Results | Discussion | Quartile.
+Introduction | Methodology | Theory | Results | Discussion | Limitations and future
+research | Quartile.
 Rows are sorted A-Z by the first author's family name and coded P01, P02 ...
 in that order (add a paper and the codes renumber). The header row is filtered
 and frozen so the matrix can be sorted and filtered in Excel.
@@ -23,7 +24,7 @@ lrm.json:
      "type": "Quantitative",
      "quartile": "Q1 (SJR 2024, Education)",
      "introduction": "...", "methodology": "...", "theory": "...",
-     "results": "...", "discussion": "...",
+     "results": "...", "discussion": "...", "limitations": "...",
      "crossref": "verified",
      "notices": [{"type": "correction", "date": "2004-03-06"}],
      "source_basis": "full text",
@@ -32,7 +33,10 @@ lrm.json:
                      "body_loc": "Results, p. 7"}],
      "evidence": {"results": [{"q": "verbatim quote from the paper", "loc": "Results, p. 7"}]}}
   ],
-  "synthesis": "A few sentences: recurring theories, dominant methods, quartile balance, gaps."
+  "synthesis": "A few sentences: recurring theories, dominant methods, quartile balance.",
+  "gaps": [{"gap": "Among these 12 papers, none follows pupils beyond one school year.",
+            "kind": "across papers", "papers": ["tan2024", "10.1000/abc"],
+            "basis": "the limitation cells of both papers"}]
 }
 
 "id" is optional but recommended: a short stable key (the DOI is used if there is
@@ -40,7 +44,11 @@ none). Synthesis and concept JSON refer to papers by id or DOI, never by P-code,
 because the P-codes renumber whenever a paper is added or removed.
 
 Every cell must come from something actually retrieved. Empty cells print as
-"Not retrieved"; a missing theory prints as "Not explicitly stated".
+"Not retrieved"; a missing theory or a paper that states no limitation prints as
+"Not explicitly stated". "limitations" holds only what the authors themselves say
+limits the study or should be done next. "gaps" (Summary sheet) are the
+reviewer's reading across the papers, each tied to the papers it rests on by id or
+DOI (never a P-code); see references/gap-list.md.
 "overclaims" marks a finding where the abstract claims more than (or differently
 from) the body: the cell is written from the body, and those words are shown in
 dark-yellow text with a hover note quoting both. Other words stay black.
@@ -64,7 +72,7 @@ import json
 import re
 import sys
 
-from common import (FONT, NAVY, RED, apa_authors, clean_doi, dash, fold, fresh_sheet, open_workbook,
+from common import (FONT, NAVY, RED, apa_authors, is_pcode, resolve_paper, clean_doi, dash, fold, fresh_sheet, open_workbook,
                     print_setup, protect_text, save, scrub, set_widths, sort_key, style_body, style_header, xl)
 
 # A note in brackets may itself hold one bracket pair: "Social Sciences (miscellaneous)".
@@ -74,13 +82,13 @@ QUARTILE_OK = re.compile(rf"^(Q[1-4](\s*{_NOTE})?(\s*/\s*Q[1-4](\s*{_NOTE})?)*"
 TYPES = {"Quantitative", "Qualitative", "Mixed-methods", "Theoretical/Review"}
 CROSSREF = {"verified", "mismatch", "unchecked"}
 BASES = {"full text", "partial", "abstract only"}
-TEXT_FIELDS = ["introduction", "methodology", "theory", "results", "discussion"]
+TEXT_FIELDS = ["introduction", "methodology", "theory", "results", "discussion", "limitations"]
 COLUMNS = ["Code", "Type", "Authors", "Title", "Introduction", "Methodology", "Theory",
-           "Results", "Discussion", "Quartile"]
-WIDTHS = [7, 13, 22, 42, 34, 36, 22, 36, 36, 22]
+           "Results", "Discussion", "Limitations and future research", "Quartile"]
+WIDTHS = [7, 13, 22, 42, 34, 36, 22, 36, 36, 36, 22]
 # Soft length limits (words). Over the limit is a warning, not an error: the
 # aim is cells a person can read, not a wall of text.
-WORD_LIMITS = {"introduction": 40, "methodology": 50, "theory": 25, "results": 60, "discussion": 60}
+WORD_LIMITS = {"introduction": 40, "methodology": 50, "theory": 25, "results": 60, "discussion": 60, "limitations": 60}
 FIRST_PERSON = re.compile(r"\b(?:[Ww]e|[Oo]ur|[Oo]urs|[Mm]y|[Mm]e|us)\b"
                           r"|\bI (?:found|argue|think|believe|show|suggest|propose|examine|conclude|used|did)\b")
 RETRACTED = {"retraction", "withdrawal", "removal"}
@@ -114,6 +122,42 @@ def status_of(paper):
         d = corr[-1].get("date")
         return "amber", "Correction issued" + (f" {d[:10]}" if d else "")
     return None, ""
+
+
+GAP_KINDS = {"stated by authors", "across papers"}
+ABSOLUTE = re.compile(r"\b(no|none|nobody|never|nothing|all|every|always)\b|\blacks?\b|has not been|have not been", re.I)
+SCOPED = re.compile(r"\b(among|within|in) (these|this|the) (\d+ )?(papers|studies|set|sample)|\bof these\b|\bthe authors?\b", re.I)
+
+
+def gap_problems(data):
+    """Errors in data["gaps"]: each must say what it is, name papers by id or DOI, and resolve."""
+    gaps = data.get("gaps")
+    if gaps is None:
+        return []
+    if not isinstance(gaps, list):
+        return ['"gaps" must be a list of {"gap", "kind", "papers", "basis"}']
+    out = []
+    try:
+        sources = [{"code": c, "id": p.get("id"), "doi": p.get("doi")} for c, p in ordered(data)]
+    except Exception:
+        sources = []
+    for i, g in enumerate(gaps, 1):
+        tag = f"gap {i}"
+        if not isinstance(g, dict) or not (g.get("gap") or "").strip():
+            out.append(f"{tag}: needs a non-empty \"gap\" text")
+            continue
+        if g.get("kind") not in GAP_KINDS:
+            out.append(f"{tag}: kind must be one of {sorted(GAP_KINDS)}")
+        keys = g.get("papers")
+        if not isinstance(keys, list) or not keys:
+            out.append(f"{tag}: must name the papers it rests on (ids or DOIs)")
+            continue
+        for k in keys:
+            if is_pcode(k):
+                out.append(f"{tag}: {k!r} is a P-code; refer to papers by id or DOI, because codes renumber")
+            elif not resolve_paper(k, sources):
+                out.append(f"{tag}: {k!r} is not the id or DOI of any paper in the file")
+    return out
 
 
 def problems_in(data):
@@ -150,6 +194,7 @@ def problems_in(data):
     ids = [fold(p.get("id") or clean_doi(p.get("doi"))) for p in data["papers"]]
     for k in {x for x in ids if x and ids.count(x) > 1}:
         out.append(f'two papers share the id/DOI "{k}"; give each paper its own "id"')
+    out += gap_problems(data)
     return out
 
 
@@ -174,6 +219,14 @@ def warnings_in(data):
         level, text = status_of(p)
         if level == "red":
             out.append(f"{tag}: {text}; do not cite it as sound evidence without saying so")
+    for i, g in enumerate(data.get("gaps") or [], 1):
+        if isinstance(g, dict):
+            t = g.get("gap") or ""
+            if ABSOLUTE.search(t) and not SCOPED.search(t):
+                out.append(f"gap {i}: sounds like a claim about the whole field; scope it to these papers "
+                           f'("Among these N papers, ...") because absence here is not absence in the literature')
+            if FIRST_PERSON.search(t):
+                out.append(f"gap {i}: uses first person")
     if len(papers) >= 4:
         for f in TEXT_FIELDS:
             starts = [" ".join((p.get(f) or "").split()[:2]).lower() for p in papers if p.get(f)]
@@ -288,7 +341,7 @@ def add_sheets(wb, data):
     for code, p in rows:
         vals = [code, p.get("type") or "", authors_text(p), None]
         for f in TEXT_FIELDS:
-            empty = "Not explicitly stated" if f == "theory" else "Not retrieved"
+            empty = "Not explicitly stated" if f in ("theory", "limitations") else "Not retrieved"
             vals.append((p.get(f) or "").strip() or empty)
         vals.append(p.get("quartile") or "")
         ws.append(vals)
@@ -370,7 +423,40 @@ def add_sheets(wb, data):
         c.font = Font(name=FONT, size=10)
         c.alignment = Alignment(wrap_text=True, vertical="top")
         sm.row_dimensions[row + 1].height = max(60, 15 * (len(data["synthesis"]) // 100 + 1))
-    protect_text(sm, skip={(5, 2), (7, 2), (8, 2)})  # the three count formulas
+    gaps = [g for g in data.get("gaps") or [] if isinstance(g, dict) and (g.get("gap") or "").strip()]
+    gap_formula_cells = set()
+    if gaps:
+        src = [{"code": c, "id": p.get("id"), "doi": p.get("doi")} for c, p in rows]
+        row = (last + 2 + (3 if data.get("synthesis") else 0))
+        sm.cell(row=row, column=1, value="Research gaps").font = Font(name=FONT, size=11, bold=True, color=NAVY)
+        sm.merge_cells(start_row=row + 1, start_column=1, end_row=row + 1, end_column=6)
+        note = sm.cell(row=row + 1, column=1, value=(
+            "The reviewer's reading of these papers, not claims of the papers themselves: absence among "
+            f"these {n} papers is not absence in the literature. 'Stated by authors' gaps come from the "
+            "limitation and future-research cells."))
+        note.font = Font(name=FONT, size=9, italic=True)
+        note.alignment = Alignment(wrap_text=True, vertical="top")
+        sm.row_dimensions[row + 1].height = 28
+        for j, h in enumerate(["Kind", "Gap", None, "Papers", "How many", "Basis"], 1):
+            sm.cell(row=row + 2, column=j, value=h)
+        sm.merge_cells(start_row=row + 2, start_column=2, end_row=row + 2, end_column=3)
+        style_header(sm, row + 2, 6)
+        for k, g in enumerate(gaps, row + 3):
+            cs = []
+            for key in g.get("papers") or []:
+                c = resolve_paper(key, src)
+                if c and c not in cs:
+                    cs.append(c)
+            sm.cell(row=k, column=1, value=(g.get("kind") or "").capitalize())
+            sm.cell(row=k, column=2, value=g["gap"].strip())
+            sm.merge_cells(start_row=k, start_column=2, end_row=k, end_column=3)
+            sm.cell(row=k, column=4, value=", ".join(sorted(cs)))
+            sm.cell(row=k, column=5, value=f'=IF(D{k}="",0,LEN(D{k})-LEN(SUBSTITUTE(D{k},",",""))+1)')
+            gap_formula_cells.add((k, 5))
+            sm.cell(row=k, column=6, value=(g.get("basis") or "").strip() or None)
+            sm.row_dimensions[k].height = max(32, 15 * (len(g["gap"]) // 55 + 1))
+        style_body(sm, row + 3, row + 2 + len(gaps), 6)
+    protect_text(sm, skip={(5, 2), (7, 2), (8, 2)} | gap_formula_cells)  # the count formulas
     set_widths(sm, [24, 24, 24, 44, 16, 70])
     print_setup(sm)
     sm.print_title_rows = None

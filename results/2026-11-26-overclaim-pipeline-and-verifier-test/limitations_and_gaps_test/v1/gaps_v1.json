@@ -1,0 +1,65 @@
+{
+ "gaps": [
+  {
+   "gap": "Among these 4 papers, the authors of piu2026 and india2025 call for longer-term follow-up, since piu2026 had only an immediate posttest and india2025 suggests a long follow-up study.",
+   "kind": "stated by authors",
+   "papers": [
+    "piu2026",
+    "india2025"
+   ],
+   "basis": "limitation cells of piu2026 and india2025"
+  },
+  {
+   "gap": "Among these 4 papers, the authors of piu2026, india2025 and tpack2024 report non-randomized or non-unified comparison groups, and piu2026 calls for randomized studies.",
+   "kind": "stated by authors",
+   "papers": [
+    "piu2026",
+    "india2025",
+    "tpack2024"
+   ],
+   "basis": "limitation cells of piu2026, india2025 and tpack2024"
+  },
+  {
+   "gap": "Among these 4 papers, the authors of piu2026 and tpack2024 note that outcomes were self-reported, and piu2026 calls for multi-method studies.",
+   "kind": "stated by authors",
+   "papers": [
+    "piu2026",
+    "tpack2024"
+   ],
+   "basis": "limitation cells of piu2026 and tpack2024"
+  },
+  {
+   "gap": "The authors of india2025 note that collaborative and productive digital literacy elements were not assessed, and they suggest programmes covering all seven elements.",
+   "kind": "stated by authors",
+   "papers": [
+    "india2025"
+   ],
+   "basis": "limitation cell of india2025"
+  },
+  {
+   "gap": "The authors of piu2026 note that digital literacy itself was not measured, so the programme's effect on digital literacy cannot be read from that study.",
+   "kind": "stated by authors",
+   "papers": [
+    "piu2026"
+   ],
+   "basis": "limitation cell of piu2026"
+  },
+  {
+   "gap": "The authors of brink2022 call for future studies on how digital models affect pupils' learning or interest in technology, since their data came only from teachers' experiences.",
+   "kind": "stated by authors",
+   "papers": [
+    "brink2022"
+   ],
+   "basis": "limitation cell of brink2022"
+  },
+  {
+   "gap": "Among these 4 papers, the two quantitative studies with adolescent or girl samples draw participants from a single region, Hubei Province and District Gumla, so findings are tied to one location each.",
+   "kind": "across papers",
+   "papers": [
+    "piu2026",
+    "india2025"
+   ],
+   "basis": "methodology cells of piu2026 and india2025"
+  }
+ ]
+}

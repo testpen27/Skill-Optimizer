@@ -378,3 +378,47 @@ an added cause, a swapped word), each setup run twice (32 Opus runs, about $3.50
   one of them the real error.
 - Limits: I wrote the planted errors; all four papers are the same ones as
   before; the overclaim-pair check inside the combined prompt is still untested.
+
+## Limitations and future research column; gap list on the Summary sheet (2026-11-26)
+
+Built at the user's request. Design: the LRM gets a column **Limitations and
+future research** (what the authors state, read by the Haiku reader, written
+only from quotes, verified by the Opus verifier like every other column). The
+research gap itself is a separate, labelled interpretation on the Summary sheet:
+a `sonnet` helper writes 3 to 8 gaps from the verified cells only (never the
+papers), a separate `opus` helper keeps, narrows or cuts each, and
+`apply_gaps.py` writes only what survived. Each gap names the papers it rests
+on by id or DOI, and the workbook counts them with a live formula. The
+synthesis and concept matrices are unchanged (no source gives the synthesis
+matrix a gap column; its gaps are its thin or empty cells).
+New: `references/gap-list.md` (both prompts), `scripts/apply_gaps.py`, gap
+validation in `build_lrm.py` (P-codes refused, unknown ids refused, kind
+required, a warning for wording that claims something about the whole field).
+64 of 64 tests pass.
+
+### Test on the same four papers (`results/.../limitations_and_gaps_test/`)
+- **Haiku reading with the new column:** the four limitation cells were
+  quote-grounded (0 quote errors in that column). The fresh run produced 2
+  `check_evidence.py` errors in the Results column (a number in none of the
+  quotes for piu2026, a garbled table row quoted for tpack2024), against 0
+  errors in the earlier run: the script caught both, which is why it exists.
+  Haiku cost $0.024 to $0.029 per paper for three papers and $0.145 for piu2026
+  (72,000 output tokens against about 30,000), so a single run can cost five
+  times the usual.
+- **Opus verification of the limitation sentences:** 9 of 10 kept; one narrowed
+  (India: "household possessions also rose" is in the discussion, not in the
+  limitation quotes).
+- **Gap list, first prompt:** Sonnet wrote 7 gaps, 3 of them only restating one
+  paper's own limitation. Opus narrowed 3 of 7, each time because Sonnet had
+  added an inference ("so the effect on digital literacy cannot be read", "since
+  their data came only from teachers", "so findings are tied to one location").
+- **After asking for gaps backed by two or more papers:** 6 gaps (4 across two
+  or three papers); Opus narrowed 2 of 6: one factual slip (calling two studies
+  "the two quasi-experimental studies" when a third is too) and one causal link
+  ("as their data came only from teachers"). Written to the workbook with
+  `apply_gaps.py` (4 kept, 2 narrowed) and rendered.
+- **Cost of this test (single runs, no batching):** limitation verification
+  $0.33 for four papers, gap writing $0.04, gap check $0.10.
+- **Limits:** four papers, one run; the gap list is only as good as the cells
+  it reads; the checker can narrow or cut but never add, so a gap the writer
+  missed stays missed.

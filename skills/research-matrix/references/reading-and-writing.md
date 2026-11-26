@@ -40,7 +40,8 @@ one passage. Where to look:
 | Methodology | Methods: design, participants (who, how many, where, when), instruments, procedure, analysis | Each of those the paper reports |
 | Theory | Where the paper says what frames or guides **this** study ("drawing on", "guided by", "our framework") | The sentence naming the framework. A theory only cited in the literature review is **not** the paper's theory |
 | Results | The Results section and its tables, not the abstract or the discussion | Findings with the statistic exactly as printed (n, %, M, SD, β, r, OR, p, CI), including null results that are main findings |
-| Discussion | Discussion and conclusion: the authors' interpretation, stated limitations, stated implications | The authors' own claims |
+| Discussion | Discussion and conclusion: the authors' interpretation and stated implications (not the limitations: they go in the next column) | The authors' own claims |
+| Limitations and future research | Limitations section, the discussion's limitation passages, the conclusion's "future research" or "further studies" sentences | Each limitation the authors state and each direction for future work they propose, in their words. Nothing the reviewer thinks is missing: that belongs to the gap list (`gap-list.md`) |
 | Type | Methods | The sentence that shows the design; "Mixed-methods" only if both strands are reported |
 
 Rules while reading:
@@ -96,10 +97,10 @@ passive; rotating the subject ("the authors", "the researchers", "the study",
 
 When the quotes are thin, **write less**. A short true cell beats a full
 guessed one; an empty cell prints as "Not retrieved" (or "Not explicitly
-stated" for theory), which is a correct answer.
+stated" for theory and for limitations), which is a correct answer.
 
 Style, after accuracy: third person; about 40 words for introduction, 50 for
-methodology, 25 for theory, 60 for results and discussion; no page numbers
+methodology, 25 for theory, 60 for results, discussion and limitations; no page numbers
 except a short direct quote kept in quotation marks with its page.
 
 ## 4. Checking by script

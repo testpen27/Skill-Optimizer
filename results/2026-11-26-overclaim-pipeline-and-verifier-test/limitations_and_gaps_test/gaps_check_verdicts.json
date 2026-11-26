@@ -1,0 +1,40 @@
+{
+ "verdicts": [
+  {
+   "id": "gap.1",
+   "verdict": "keep",
+   "reason": "All three limitation cells report allocation problems: piu2026 has non-random allocation, india2025 says random assignment was difficult and tpack2024 could not form unified groups.",
+   "narrowed": ""
+  },
+  {
+   "id": "gap.2",
+   "verdict": "narrow",
+   "reason": "india2025 is also quasi-experimental, so calling piu2026 and tpack2024 'the two quasi-experimental studies' is wrong.",
+   "narrowed": "Among these 4 papers, the authors of piu2026 and tpack2024 name self-reported outcomes as a limitation, with tpack2024 saying this should be considered when generalising."
+  },
+  {
+   "id": "gap.3",
+   "verdict": "keep",
+   "reason": "india2025 suggests a long follow-up study, and piu2026 notes it had only an immediate posttest and calls for longitudinal studies.",
+   "narrowed": ""
+  },
+  {
+   "id": "gap.4",
+   "verdict": "keep",
+   "reason": "india2025 says collaborative and productive elements were not assessed, and piu2026 says it had no measure of digital literacy.",
+   "narrowed": ""
+  },
+  {
+   "id": "gap.5",
+   "verdict": "keep",
+   "reason": "The methodology cells place india2025 in Gumla, Jharkhand and piu2026 in Hubei Province, and both are adolescent intervention studies.",
+   "narrowed": ""
+  },
+  {
+   "id": "gap.6",
+   "verdict": "narrow",
+   "reason": "The cell gives the teachers-only limitation and the call for research on pupils as two separate points, so 'as' adds a causal link the cell does not show.",
+   "narrowed": "Among these 4 papers, the authors of brink2022 say further research can investigate how digital models affect pupils' learning or interest in technology, and note their study is limited to teachers' experiences."
+  }
+ ]
+}

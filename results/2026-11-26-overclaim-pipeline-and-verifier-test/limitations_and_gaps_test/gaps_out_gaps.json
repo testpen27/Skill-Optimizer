@@ -1,0 +1,58 @@
+{
+ "gaps": [
+  {
+   "gap": "Among these 4 papers, the authors of piu2026, india2025 and tpack2024 each report limits on group allocation, as piu2026 and india2025 note non-random allocation or difficulty randomising, and tpack2024 could not form unified groups.",
+   "kind": "stated by authors",
+   "papers": [
+    "piu2026",
+    "india2025",
+    "tpack2024"
+   ],
+   "basis": "limitation cells of piu2026, india2025 and tpack2024"
+  },
+  {
+   "gap": "Among these 4 papers, the two quasi-experimental studies piu2026 and tpack2024 rely on self-reported outcomes, and their authors note this limits the results, with tpack2024 citing generalisation.",
+   "kind": "stated by authors",
+   "papers": [
+    "piu2026",
+    "tpack2024"
+   ],
+   "basis": "limitation cells of piu2026 and tpack2024"
+  },
+  {
+   "gap": "Among these 4 papers, the authors of india2025 and piu2026 call for longer follow-up, as india2025 suggests a long follow-up study and piu2026 reports only an immediate posttest and asks for longitudinal studies.",
+   "kind": "stated by authors",
+   "papers": [
+    "india2025",
+    "piu2026"
+   ],
+   "basis": "limitation cells of india2025 and piu2026"
+  },
+  {
+   "gap": "Among these 4 papers, the authors of india2025 and piu2026 state that digital literacy was not fully assessed, with collaborative and productive elements unassessed in india2025 and no digital literacy measure in piu2026.",
+   "kind": "stated by authors",
+   "papers": [
+    "india2025",
+    "piu2026"
+   ],
+   "basis": "limitation cells of india2025 and piu2026"
+  },
+  {
+   "gap": "Among these 4 papers, the samples of the two intervention studies on adolescents, india2025 and piu2026, each come from one region of one country, Jharkhand in India and Hubei Province in China.",
+   "kind": "across papers",
+   "papers": [
+    "india2025",
+    "piu2026"
+   ],
+   "basis": "methodology cells of india2025 and piu2026"
+  },
+  {
+   "gap": "Among these 4 papers, the authors of brink2022 call for future studies on how digital models affect pupils' learning or interest, as their data came only from teachers' experiences.",
+   "kind": "stated by authors",
+   "papers": [
+    "brink2022"
+   ],
+   "basis": "limitation cell of brink2022"
+  }
+ ]
+}

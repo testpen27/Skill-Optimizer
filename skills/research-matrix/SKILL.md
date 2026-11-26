@@ -75,9 +75,10 @@ if the user asks for one.
 
 - `references/reading-and-writing.md`, `references/model-routing.md`: read
   first for any matrix; `references/overclaim-pairing.md` for the abstract-vs-body
-  check; `references/verifier-prompt.md` for the verification helper
+  check; `references/verifier-prompt.md` for the verification helper;
+  `references/gap-list.md` for the Limitations column and the gap list
 - `scripts/build_lrm.py`, `crossref_check.py`, `scimago_quartile.py`,
-  `check_evidence.py`, `merge_papers.py`, `apply_overclaims.py`
+  `check_evidence.py`, `merge_papers.py`, `apply_overclaims.py`, `apply_gaps.py`
 - `scripts/build_synthesis.py`, `build_concept.py` (only on request)
 - `examples/`: illustrative inputs. The made-up rows are labelled as such;
   never copy them into a user's matrix.

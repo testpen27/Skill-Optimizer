@@ -304,10 +304,74 @@ ok("apply: noted and unsettled items appear on the Summary sheet", sm_["F11"].va
 rc, out = run("build_lrm.py", EX + "/lrm.example.json", "--out", f"{T}/noaccess.xlsx")
 wsn = openpyxl.load_workbook(f"{T}/noaccess.xlsx")["LRM"]
 hdr = [c.value for c in wsn[1]]
-ok("LRM has 10 columns ending in Quartile, no Access; filter covers A:J",
-   rc == 0 and hdr[-1] == "Quartile" and "Access" not in hdr and len(hdr) == 10 and wsn.auto_filter.ref.startswith("A1:J"), hdr)
+ok("LRM has 11 columns: Limitations and future research before Quartile, no Access; filter covers A:K",
+   rc == 0 and hdr[-1] == "Quartile" and hdr[-2] == "Limitations and future research" and "Access" not in hdr
+   and len(hdr) == 11 and wsn.auto_filter.ref.startswith("A1:K"), hdr)
+lim_col = [wsn.cell(row=r, column=10).value for r in range(2, wsn.max_row + 1)]
+ok("an unfilled limitations cell prints Not explicitly stated", "Not explicitly stated" in lim_col and any(v and v.startswith("Placeholder") for v in lim_col), lim_col)
 rc, out = run("build_lrm.py", wj("oldaccess.json", {"papers": [dict(paper(["Tan, A."], 2020, "T"), access="Free", doi="10.1/x")]}), "--check")
 ok("a leftover access field in old JSON is ignored, not an error", rc == 0 and "access" not in out.lower(), out)
+
+
+# ---- limitations column and the gap list
+lim_dir = f"{T}/limpapers"; os.makedirs(lim_dir, exist_ok=True)
+open(f"{lim_dir}/lim1.txt", "w").write("Results were clear. A limitation is that only one school took part. Future studies should follow pupils for two years.")
+lp1 = paper(["Adams, A. B."], 2020, "First paper", id="lim1", doi="10.1/lim1", methodology="Pupils at one school were taught.",
+            limitations="Only one school took part, and the authors call for following pupils for two years.",
+            evidence={"methodology": [{"q": "only one school took part", "loc": "Limits"}],
+                      "limitations": [{"q": "only one school took part", "loc": "Limits"},
+                                      {"q": "Future studies should follow pupils for two years", "loc": "Limits"}]})
+lp2 = paper(["Brown, C. D."], 2021, "Second paper", id="lim2", doi="10.1/lim2", limitations="Self-report measures were used.")
+lj = wj("lim.json", {"title": "T", "papers": [lp1, lp2]})
+rc, out = run("check_evidence.py", lj, "--papers", lim_dir)
+ok("evidence: the limitations cell is checked like the others (lim2 has none: error)", rc == 1 and "limitations: filled cell has no quotes" in out and "lim1" not in out.split("ERROR")[1] if "ERROR" in out else False, out)
+bad_l = json.loads(json.dumps(lp1)); bad_l["limitations"] = "Only one school took part. The sample had 250 pupils."
+rc, out = run("check_evidence.py", wj("lim_bad.json", {"papers": [bad_l]}), "--papers", lim_dir)
+ok("evidence: a number in the limitations cell that no quote has is an error", rc == 1 and "250" in out, out)
+gp = {"title": "T", "papers": [lp1, lp2],
+      "gaps": [{"gap": "Among these 2 papers, the authors of lim1 call for following pupils for two years.", "kind": "stated by authors",
+                "papers": ["lim1"], "basis": "limitations cell of lim1"},
+               {"gap": "Among these 2 papers, only self-report measures appear in lim2.", "kind": "across papers", "papers": ["10.1/lim2", "lim1"]}]}
+rc, out = run("build_lrm.py", wj("gap_ok.json", gp), "--out", f"{T}/gap_ok.xlsx")
+wg = openpyxl.load_workbook(f"{T}/gap_ok.xlsx")["Summary"]
+cells = {c.value: c for row in wg.iter_rows() for c in row if isinstance(c.value, str)}
+rows_g = [r for r in wg.iter_rows(values_only=True) if r[0] in ("Stated by authors", "Across papers")]
+ok("gap list: appears on the Summary sheet with P-codes and a live count formula",
+   rc == 0 and len(rows_g) == 2 and rows_g[0][3] == "P01" and rows_g[1][3] == "P01, P02" and "Research gaps" in cells
+   and str(rows_g[1][4]).startswith("=IF("), rows_g)
+for name, mut, needle in [
+    ("a P-code is refused", {"papers": ["P01"]}, "P-code"),
+    ("an unknown paper is refused", {"papers": ["nobody1999"]}, "not the id or DOI"),
+    ("a gap with no papers is refused", {"papers": []}, "must name the papers"),
+    ("a bad kind is refused", {"kind": "my opinion"}, "kind must be"),
+]:
+    g2 = json.loads(json.dumps(gp)); g2["gaps"][0].update(mut)
+    rc, out = run("build_lrm.py", wj("gap_bad.json", g2), "--check")
+    ok("gap list: " + name, rc != 0 and needle in out, out)
+g3 = json.loads(json.dumps(gp)); g3["gaps"][0]["gap"] = "Nobody has studied pupils beyond one year."
+rc, out = run("build_lrm.py", wj("gap_abs.json", g3), "--check")
+ok("gap list: a claim about the whole field draws a warning", rc == 0 and "whole field" in out, out)
+gpath = wj("gaps_w.json", {"gaps": [
+    {"gap": "Among these 2 papers, the authors of lim1 call for following pupils for two years.", "kind": "stated by authors", "papers": ["lim1"], "basis": "b"},
+    {"gap": "Among these 2 papers, every sample is one school.", "kind": "across papers", "papers": ["lim1", "lim2"], "basis": "b"},
+    {"gap": "Nobody has ever tested this.", "kind": "across papers", "papers": ["lim2"], "basis": "b"},
+    {"gap": "Among these 2 papers, lim2 is a thesis.", "kind": "across papers", "papers": ["ghost"], "basis": "b"},
+    {"gap": "Among these 2 papers, unchecked one.", "kind": "across papers", "papers": ["lim1"], "basis": "b"}]})
+vpath = f"{T}/gaps_v.json"
+open(vpath, "w").write("thinking...\n" + json.dumps({"verdicts": [{"id": "gap.1", "verdict": "cut"}]}) + "\nCorrected: " + json.dumps({"verdicts": [
+    {"id": "gap.1", "verdict": "keep", "reason": "ok"},
+    {"id": "gap.2", "verdict": "narrow", "narrowed": "Among these 2 papers, lim1 is from one school.", "reason": "lim2 says nothing"},
+    {"id": "gap.3", "verdict": "cut", "reason": "field claim"},
+    {"id": "gap.4", "verdict": "keep"}]}))
+lg = wj("lim_apply.json", {"title": "T", "papers": [lp1, lp2]})
+rc, out = run("apply_gaps.py", lg, "--gaps", gpath)
+ok("apply_gaps: refuses to write without verdicts", rc == 1 and "no --verdicts" in out and "gaps" not in json.load(open(lg)), out)
+rc, out = run("apply_gaps.py", lg, "--gaps", gpath, "--verdicts", vpath)
+gw = json.load(open(lg)).get("gaps", [])
+ok("apply_gaps: last verdict object used; keep, narrow (new text), cut, unknown paper and unchecked dropped",
+   rc == 0 and len(gw) == 2 and gw[1]["gap"] == "Among these 2 papers, lim1 is from one school." and "kept 1, narrowed 1, cut 1, unchecked 1, no paper left 1" in out, out)
+rc, out = run("build_lrm.py", lg, "--check")
+ok("apply_gaps: the written gaps pass the build check", rc == 0, out)
 
 # ---- end to end + recalc
 full = EX + "/lrm.example.json"

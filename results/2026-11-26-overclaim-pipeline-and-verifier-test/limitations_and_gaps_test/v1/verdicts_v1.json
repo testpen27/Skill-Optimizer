@@ -1,0 +1,46 @@
+{
+ "verdicts": [
+  {
+   "id": "gap.1",
+   "verdict": "keep",
+   "reason": "piu2026 cites only an immediate posttest and calls for longitudinal studies, and india2025 suggests a long follow-up study.",
+   "narrowed": ""
+  },
+  {
+   "id": "gap.2",
+   "verdict": "keep",
+   "reason": "All three limitation cells state the comparison-group problem (non-random allocation, random assignment difficult, groups not unified), and piu2026 calls for randomized studies.",
+   "narrowed": ""
+  },
+  {
+   "id": "gap.3",
+   "verdict": "keep",
+   "reason": "Both cited limitation cells name self-reported outcomes, and piu2026 calls for multi-method studies; neither uncited cell lists self-report as a limitation.",
+   "narrowed": ""
+  },
+  {
+   "id": "gap.4",
+   "verdict": "keep",
+   "reason": "It matches the india2025 limitation cell word for word in substance.",
+   "narrowed": ""
+  },
+  {
+   "id": "gap.5",
+   "verdict": "narrow",
+   "reason": "The cell says only that digital literacy was not measured; the point about what the study cannot show is an added inference.",
+   "narrowed": "The authors of piu2026 note that digital literacy itself was not measured."
+  },
+  {
+   "id": "gap.6",
+   "verdict": "narrow",
+   "reason": "The cell gives the teacher-only limit and the pupil-focused future research as two separate points, and says research 'can investigate', so 'call for' and the causal 'since' are added.",
+   "narrowed": "The authors of brink2022 note that their investigation is limited to teachers' experiences, and say further research can investigate how digital models affect pupils' learning or interest in technology."
+  },
+  {
+   "id": "gap.7",
+   "verdict": "narrow",
+   "reason": "The single-region samples are in both methodology cells, but 'findings are tied to one location each' adds a consequence the cells do not state.",
+   "narrowed": "Among these 4 papers, the two quantitative studies with adolescent or girl samples draw participants from a single region, Hubei Province and District Gumla."
+  }
+ ]
+}
