@@ -51,7 +51,10 @@ if the user asks for one.
   Read `references/reading-and-writing.md` before reading any paper.
 - **Run each step on its planned model** (`references/model-routing.md`):
   scripts for anything with one right answer, `haiku` to fetch, `sonnet` to
-  read, `opus` to verify and synthesise.
+  read, `opus` to verify and synthesise. With 3 papers or fewer, read in the
+  session. **If this session has no `Agent` tool, tell the user in one line
+  that no helpers or per-step models are available here and that every step
+  runs on their chat's model**, then run the same steps in the session.
 - **Never invent.** A cell traces to something actually retrieved: a PDF, a
   fetched page, a real record. If it cannot be traced, write "Not retrieved",
   "Not explicitly stated" or "Unranked/Unavailable".

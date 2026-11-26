@@ -66,11 +66,36 @@ reasoning; pass only the quotes and the cells, so the check is independent.
 Run independent batches in parallel. When a helper fails or returns nothing,
 retry once on the same model, then do that batch in the session and say so.
 
-## Where there are no helpers
+## Small jobs: 3 papers or fewer
 
-claude.ai on the web has no `Agent` tool. There every step runs in the
-session on the model the user picked, with the same order: fetch and save,
+Every helper has a fixed start-up cost: it must be handed its instructions,
+the rules for its step and its files before it reads anything. With 3 papers
+or fewer, read them in the session instead of starting reading helpers. Keep
+the separate verification (an `opus` helper, or a separate pass where there
+are no helpers), because the independent check is the point, not the cost.
+From 4 papers up, use the reading helpers as in the table. The line at 3 is
+an estimate, not a measurement; change it here if a measured run shows
+otherwise.
+
+## Check for helpers first, and tell the user if there are none
+
+Before the first step, look at the tools this session has. Helpers need the
+`Agent` tool (the tool that starts a subagent). If it is not there, or a first
+helper call fails because helpers are unavailable, say this once, in one line,
+before starting:
+
+> This chat can't start helper agents, so every step runs on the model you
+> picked for this chat, and the per-step models in this skill don't apply.
+> The checks still run, as separate passes.
+
+Then run every step in the session, in the same order: fetch and save,
 collect quotes, draft, run `check_evidence.py`, then verify each cell against
 its quotes as a **separate pass after all cells are drafted**, reading the
-quotes again rather than recalling the paper. Tell the user once that the
-per-step models apply only in the Claude desktop app, Claude Code and Cowork.
+quotes again rather than recalling the paper.
+
+Where helpers are known to work (Claude Code documentation, and tested in a
+cloud session): Claude Code in a terminal, and Claude Code cloud sessions on
+claude.ai/code, including one started or followed from the Claude mobile app.
+The desktop app's Code area shows helpers too. For ordinary claude.ai chat (in
+a browser or the mobile apps' chat) and for Cowork, the documentation does not
+say, which is why the skill checks its tools instead of guessing from the app.
