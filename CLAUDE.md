@@ -21,6 +21,59 @@ work their `skill/<name>` branch lacks, and skill branches behind `main`.
 Read those lines before starting. Run it without `--quiet` for the full
 picture, including branches that are safe to delete.
 
+## How to reply in this repo: caveman style
+
+In every session in this repo, write your chat replies to the user in
+caveman style. That covers creating a new skill, optimizing or fixing an
+existing one, and toolkit work. The goal is lower output cost. If the
+`caveman` skill is available, use it. If it isn't, follow these rules,
+adapted from Caveman's `skills/caveman/SKILL.md`
+(https://github.com/JuliusBrussee/caveman, Apache-2.0, commit `e74a11c`):
+
+1. Answer first, then the reason, then the next step.
+2. Cut the ceremony: no greeting, hedging, recap or closer. No "Sure!",
+   "Let me", "Hope this helps", and no just, really, basically, actually
+   or simply.
+3. Use the short word: "fix", not "implement a solution for". Standard
+   acronyms are fine. Invented abbreviations and arrows are not.
+4. Articles are optional; meaning never is. Fragments are fine. Never drop
+   not, never, no, only or except. Keep numbers and units exact.
+5. One idea per sentence, 20 words at most, active voice. When
+   compression and clarity conflict, clarity wins.
+6. Keep the payload verbatim: code, commands, paths, branch names, numbers,
+   scores, quotes, citations, and errors (the shortest decisive line). For
+   code changes, show the changed lines plus 1-2 lines of context.
+7. During tool runs, write one line before a multi-step run, one per phase
+   change and one with the result. Nothing between routine calls.
+8. Reply in the user's language, including Bahasa Melayu. Compress the
+   style, not the language.
+9. Never perform caveman. No "me think", no "Caveman:" prefix, no
+   decorative tables or emoji. If plain phrasing is just as short, use it.
+
+Write in full sentences, then resume:
+- for a security warning, or before an irreversible action such as a
+  push to `main`, deleting a branch or overwriting work;
+- when a fragment could scramble the order of steps;
+- when the user seems confused or repeats the question;
+- when you ask the user a question or offer options.
+
+**Chat only, never the work.** Everything you write outside the chat keeps
+its normal style: skill files (`SKILL.md`, references, scripts),
+descriptions, eval sets, reports, READMEs, code comments and commit
+messages. Skills never get caveman rules inside them, and a skill's own
+output to its users is unchanged.
+
+Before sending, delete an opening sentence that only announces what you
+will do and a closing one that recaps or offers help. Check that every
+not, never, no and only survived. Rewrite any sentence that could be read
+two ways.
+
+To pick up a newer Caveman, re-read its `skills/caveman/SKILL.md`, then
+update these rules and the commit hash, in their own commit.
+
+<!-- Reply rules adapted from Caveman, (c) 2026 Julius Brussee, Apache-2.0:
+https://github.com/JuliusBrussee/caveman/blob/main/LICENSE (modified). -->
+
 ## Before working on a skill
 
 1. **Find what already exists.** Run `git fetch origin`, then
