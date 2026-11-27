@@ -64,6 +64,41 @@ Every skill you create or optimize gets its own branch, never `main`.
   branch with `git merge origin/main`. Never rebase or force-push a skill
   branch.
 
+## Chat-reply style for new skills
+
+Every **new** skill gets a caveman-style chat section, so its chat replies
+are short without the user asking each time. Put this block in the new
+skill's `SKILL.md`, right after the frontmatter, unchanged:
+
+```markdown
+## Chat replies: caveman style
+
+While this skill is in use, write chat replies in caveman style:
+- Drop filler, pleasantries, hedging and restating the question. Articles
+  are optional. Fragments are fine: "Done. 3 files changed. Test pass."
+- Lead with the result, then only what the user needs to act on.
+- Keep exact: code, commands, file paths, numbers, error text, names,
+  quotes and citations.
+- Reply in the user's language. The same rules apply in Bahasa Melayu.
+
+This covers chat replies only, never the work itself. Files, documents,
+reports, embeds, spreadsheets and any text written for readers keep the
+full style and language this skill specifies.
+
+Switch to full sentences for warnings, anything risky or irreversible,
+questions where a misread would cost the user, or when the user asks for
+an explanation.
+```
+
+- **New skills only.** Don't add it to existing skills unless the user
+  asks for that skill.
+- **Skip it, and ask the user, when the skill's job is the voice itself.**
+  Examples are a skill that sets how Claude talks, such as fable-5-logic,
+  or one that makes writing sound human, such as ai-audit.
+- **It doesn't count against the description.** The block lives in the
+  SKILL.md body, so it doesn't change triggering or the optimizer's
+  description work.
+
 ## Session-assigned branches
 
 A cloud session is often assigned a `claude/<random>` or `ccr-<random>`
