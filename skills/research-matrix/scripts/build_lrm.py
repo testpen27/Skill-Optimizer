@@ -78,7 +78,8 @@ from common import (FONT, NAVY, RED, apa_authors, is_pcode, resolve_paper, clean
 # A note in brackets may itself hold one bracket pair: "Social Sciences (miscellaneous)".
 _NOTE = r"\((?:[^()]|\([^()]*\))*\)"
 QUARTILE_OK = re.compile(rf"^(Q[1-4](\s*{_NOTE})?(\s*/\s*Q[1-4](\s*{_NOTE})?)*"
-                         r"|N/A \(thesis/preprint/conference\)|Unranked/Unavailable)$")
+                         r"|N/A \(thesis/preprint/conference\)|Unranked/Unavailable"
+                         r"|Unavailable \(Scimago page not retrieved\))$")
 TYPES = {"Quantitative", "Qualitative", "Mixed-methods", "Theoretical/Review"}
 CROSSREF = {"verified", "mismatch", "unchecked"}
 BASES = {"full text", "partial", "abstract only"}
@@ -177,7 +178,8 @@ def problems_in(data):
         q = (p.get("quartile") or "").strip()
         if not QUARTILE_OK.match(q):
             out.append(f"{tag}: quartile {q!r} must be Q1-Q4 from a real Scimago (SJR) lookup, "
-                       f"'N/A (thesis/preprint/conference)' or 'Unranked/Unavailable'")
+                       f"'N/A (thesis/preprint/conference)', 'Unranked/Unavailable' or "
+                       f"'Unavailable (Scimago page not retrieved)'")
         if p.get("type") not in TYPES:
             out.append(f"{tag}: type must be one of {sorted(TYPES)}")
         if p.get("crossref", "unchecked") not in CROSSREF:

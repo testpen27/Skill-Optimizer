@@ -160,11 +160,24 @@ ok("scimago education 2013 Q2", out.startswith("Q2 (SJR 2013, Education)"), out)
 rc, out = run("scimago_quartile.py", "--journal-page", pg, "--year", "2030")
 ok("scimago future year clamps with note", "used 2025" in out and out.startswith("Q1"), out)
 rc, out = run("scimago_quartile.py", "--journal-page", pg, "--year", "2013", "--category", "Physics")
-ok("scimago unknown category", out.startswith("Unranked/Unavailable"), out)
+ok("scimago: no category for the field -> the journal's best quartile, named, with 'not in <field>'",
+   out.startswith("Q1 (SJR 2013, Cultural Studies; 2 other categories also Q1; not in Physics)"), out)
 tbl = {"Arts": {2018: "Q1", 2019: "Q1"}, "Education": {2018: "Q2", 2019: "Q2", 2020: "Q2"}}
 import scimago_quartile as S  # noqa: E402
 cell, note = S.cell_text(tbl, 2020, "Arts")
-ok("scimago: category left the year -> Unavailable, not a wrong year", cell == "Unranked/Unavailable" and note and "2019" not in cell, (cell, note))
+ok("scimago: the field's category left the year -> best quartile that year, named, never a wrong year",
+   cell == "Q2 (SJR 2020, Education; Arts not ranked in 2020)" and "2019" not in cell, (cell, note))
+cell, note = S.cell_text({"A": {2020: "Q2"}, "B": {2020: "Q2"}, "C": {2020: "Q3"}}, 2020, "Education")
+ok("scimago: tied best quartiles are reported once, the others counted", cell == "Q2 (SJR 2020, A; 1 other category also Q2; not in Education)", cell)
+cell, note = S.cell_text({"A": {2018: "Q2"}, "B": {2020: "Q1"}}, 2019, "A")
+ok("scimago: a journal with no quartile that year at all is Unranked/Unavailable, not guessed", cell == "Unranked/Unavailable", (cell, note))
+empty = f"{T}/scimago_empty.md"; open(empty, "w").write("# Some Journal\n\nno table here\n")
+rc, out = run("scimago_quartile.py", "--journal-page", empty, "--year", "2020", "--category", "Education")
+ok("scimago: a page without the quartile table is a failed lookup, labelled as such",
+   out.startswith("Unavailable (Scimago page not retrieved)"), out)
+rc, out = run("build_lrm.py", wj("q_ok.json", {"papers": [dict(paper(["Aaa, A."], 2020, "T"), quartile="Q1 (SJR 2025, Geography, Planning and Development; 2 other categories also Q1; not in Education)", doi="10.1/q"),
+                                                          dict(paper(["Bbb, B."], 2020, "U"), quartile="Unavailable (Scimago page not retrieved)", doi="10.1/r")]}), "--check")
+ok("the build accepts the best-quartile wording and the failed-lookup label", rc == 0, out)
 
 # ---- evidence check: the "paper says AB, cell says ABC" cases
 pdir = f"{T}/papers"

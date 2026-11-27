@@ -65,9 +65,16 @@ record. Do not add one.
    `https://www.scimagojr.com/journalsearch.php?q=<issn without hyphen>&tip=iss`
    to find the journal id, scrape the journal page it links to
    (`journalsearch.php?q=<id>&tip=sid&clean=0`), save it, and pass it with
-   `--journal-page`. If no category contains the user's field, the script says
-   which categories exist: pick the closest only with the user's agreement, or
-   list all. "Unranked/Unavailable" is a valid answer.
+   `--journal-page`. The answer follows this order: (1) the category that matches the user's
+   field, as it is; (2) if the journal has none for that year, the journal's
+   **best quartile that year with its category named and "not in <field>"**,
+   for example `Q1 (SJR 2025, Health Informatics; not in Education)`, so a
+   reader sees at once that it is not the user's field; (3) `Unranked/Unavailable`
+   only when Scimago has no such journal or no quartile that year; (4)
+   `Unavailable (Scimago page not retrieved)` when the page could not be
+   fetched: a failed lookup, never a ranking. Save a fetched page by copying the
+   stored tool result with a script, never by retyping it, and check that
+   `scimago_quartile.py --json` parses it.
 5. **Read each paper, quotes first.** Follow `reading-and-writing.md`: save
    the text you read to `papers/<id>.txt`, record `source_basis`, collect
    verbatim quotes per column into `evidence`, then write each cell only from

@@ -18,8 +18,15 @@ year available is used, and said so, if the paper is newer than the data).
   --category     only report categories whose name contains this text
                  (the user's field, e.g. Education).
 
-Nothing is guessed. If the journal, year or category is not found it prints
-"Unranked/Unavailable" and says why on stderr.
+Nothing is guessed. Order of answers:
+  1. a category that matches --category (the user's field), as it is;
+  2. if there is none for that year, the journal's best quartile that year with its
+     category named and "not in <field>", for example
+     "Q1 (SJR 2025, Health Informatics; not in Education)";
+  3. "Unranked/Unavailable" if Scimago has no such journal or no quartile that year;
+  4. "Unavailable (Scimago page not retrieved)" if the page could not be fetched or has
+     no quartile table: that is a failed lookup, not a ranking.
+Each case says why on stderr.
 """
 
 import argparse
@@ -63,26 +70,38 @@ def parse_journal(text):
 
 
 def cell_text(table, year, category=None):
-    """Return (cell, note). note says when the year had to be adjusted."""
+    """Return (cell, note). note says when the year had to be adjusted or the field did not match.
+
+    1. A category that matches the user's field is reported as it is (the most defensible answer).
+    2. If the journal has no such category, or none with a quartile in that year, the journal's
+       BEST quartile that year is reported with its category named and "not in <field>".
+    3. "Unranked/Unavailable" only when the journal has no quartile at all in that year."""
     latest = max((max(ys) for ys in table.values() if ys), default=None)
     if latest is None:
         return "Unranked/Unavailable", "the page holds no quartile data"
-    cats = {c: ys for c, ys in table.items() if not category or fold(category) in fold(c)}
-    if not cats:
-        return "Unranked/Unavailable", (f"no category containing {category!r}; "
-                                        f"categories are: {', '.join(sorted(table))}")
     use = year if isinstance(year, int) else latest
     note = None
     if use > latest:  # newer than anything Scimago has for this journal in any category
         note, use = f"{year} is newer than Scimago's data; used {latest}", latest
+    cats = {c: ys for c, ys in table.items() if not category or fold(category) in fold(c)}
     parts = []
     for cat in sorted(cats, key=lambda c: (cats[c].get(use, "Q9"), c)):
         q = cats[cat].get(use)
         if q:
             parts.append(f"{q} (SJR {use}, {cat})")
-    if not parts:
-        return "Unranked/Unavailable", f"no quartile for {use} in {', '.join(sorted(cats))}"
-    return " / ".join(parts), note
+    if parts:
+        return " / ".join(parts), note
+    # The field did not match: fall back to the journal's best quartile that year, named.
+    ranked = {c: ys[use] for c, ys in table.items() if ys.get(use)}
+    if not ranked:
+        return "Unranked/Unavailable", f"no quartile for {use} in any category of this journal"
+    best = min(ranked.values())
+    names = sorted(c for c, q in ranked.items() if q == best)
+    why = (f"not in {category}" if not cats else f"{category} not ranked in {use}")
+    extra = f"; {len(names) - 1} other categor{'y' if len(names) == 2 else 'ies'} also {best}" if len(names) > 1 else ""
+    n = (f"no category containing {category!r} had a quartile for {use}; reported the journal's best quartile, "
+         f"in {names[0]}") + (f". Categories: {', '.join(sorted(table))}" if not cats else "")
+    return f"{best} (SJR {use}, {names[0]}{extra}; {why})", (note + "; " if note else "") + n
 
 
 def main(argv=None):
@@ -112,14 +131,14 @@ def main(argv=None):
                 return 0
             text = get(f"{BASE}?q={found}&tip=sid&clean=0")
         except (urllib.error.URLError, TimeoutError, OSError) as e:
-            print("Unranked/Unavailable")
+            print("Unavailable (Scimago page not retrieved)")
             print(f"cannot reach Scimago ({e}); scrape the page another way and pass --journal-page",
                   file=sys.stderr)
             return 0
 
     title, table = parse_journal(text)
     if not table:
-        print("Unranked/Unavailable")
+        print("Unavailable (Scimago page not retrieved)")
         print("no Category / Year / Quartile table found on that page", file=sys.stderr)
         return 0
     if a.json:

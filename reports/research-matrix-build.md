@@ -520,3 +520,21 @@ synthesis), scripts for everything else.
   second route costs more. Kept: Sonnet writes, Opus checks.
 - Limits: 3 runs, one try each; costs are not measured because helpers started
   through the `Agent` tool do not report dollars (the earlier measured costs stand).
+
+## Quartile rule: the user's field first, then the journal's best quartile, named (2026-11-26)
+
+Found in the 12-paper run: for 7 of 12 papers the skill printed "Unranked/Unavailable",
+but six of those journals are ranked by Scimago, only under other subject areas
+(PLOS Digital Health Q1 Health Informatics; Frontiers in Psychology Q1 Psychology
+(miscellaneous); IJERPH Q2 in three health categories; PLOS ONE Q1 Multidisciplinary;
+Sustainability Q1 Geography, Planning and Development). One journal's page was never
+fetched (Education and Information Technologies), which is a failed lookup, not a ranking.
+New rule in `scimago_quartile.py`: (1) the category that matches the user's field, as before;
+(2) if there is none that year, the journal's best quartile that year with its category named
+and "not in <field>" (ties are counted: "2 other categories also Q2"); (3) "Unranked/Unavailable"
+only when Scimago has no quartile for the journal that year; (4) "Unavailable (Scimago page not
+retrieved)" for a failed lookup. The build accepts the new wording and label. Rerun on the 12
+papers: 5 now show the user's field, 6 show a named best quartile outside it, 1 is a failed
+lookup. A Haiku fetch helper retyped one saved page instead of copying the stored result: the
+live page was compared and the quartile table matched; the skill now says to copy by script and
+check that the saved page parses. 78 of 78 tests pass.
