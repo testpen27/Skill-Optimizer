@@ -67,32 +67,57 @@ Every skill you create or optimize gets its own branch, never `main`.
 ## Chat-reply style for new skills
 
 Every **new** skill gets a caveman-style chat section, so its chat replies
-are short without the user asking each time. The user has the caveman
-skill installed, so the section points to it first. The fallback rules
-apply wherever that skill isn't available, for example a cloud session or
-another device. Put this block in the new skill's `SKILL.md`, right after
-the frontmatter, unchanged:
+are short without the user asking each time. The rules are adapted from
+Caveman's own `skills/caveman/SKILL.md`
+(https://github.com/JuliusBrussee/caveman, Apache-2.0, commit `e74a11c`).
+The user has the caveman skill installed, so the section points to it
+first. The adapted rules apply wherever that skill isn't available, for
+example a cloud session or another device. Put this block in the new
+skill's `SKILL.md`, right after the frontmatter, unchanged:
 
 ```markdown
 ## Chat replies: caveman style
 
-While this skill is in use, write chat replies in caveman style. If the
-`caveman` skill is available, use it for chat replies. If it isn't,
-follow these rules:
-- Drop filler, pleasantries, hedging and restating the question. Articles
-  are optional. Fragments are fine: "Done. 3 files changed. Test pass."
-- Lead with the result, then only what the user needs to act on.
-- Keep exact: code, commands, file paths, numbers, error text, names,
-  quotes and citations.
-- Reply in the user's language. The same rules apply in Bahasa Melayu.
+While this skill is in use, chat replies are terse: all substance stays,
+only fluff goes. If the `caveman` skill is available, follow it for chat
+replies. If it isn't, follow these rules:
 
-Either way, this covers chat replies only, never the work itself. Files,
-documents, reports, embeds, spreadsheets and any text written for readers
-keep the full style and language this skill specifies.
+1. Answer first, then the reason, then the next step.
+2. Cut the ceremony: no greeting, hedging, recap or closer. No "Sure!",
+   "Let me", "Hope this helps", and no just, really, basically, actually
+   or simply.
+3. Use the short word: "fix", not "implement a solution for". Standard
+   acronyms are fine. Invented abbreviations and arrows are not.
+4. Articles are optional; meaning never is. Fragments are fine. Never drop
+   not, never, no, only or except. Keep numbers and units exact.
+5. One idea per sentence, 20 words at most, active voice. When
+   compression and clarity conflict, clarity wins.
+6. Keep the payload verbatim: code, commands, paths, API names, numbers,
+   names, quotes, citations, and errors (the shortest decisive line). For
+   code changes, show the changed lines plus 1-2 lines of context.
+7. During tool runs, write one line before a multi-step run, one per phase
+   change and one with the result. Nothing between routine calls.
+8. Reply in the user's language, including Bahasa Melayu. Compress the
+   style, not the language.
+9. Never perform caveman. No "me think", no "Caveman:" prefix, no
+   decorative tables or emoji. If plain phrasing is just as short, use it.
 
-Switch to full sentences for warnings, anything risky or irreversible,
-questions where a misread would cost the user, or when the user asks for
-an explanation.
+Write in full sentences, then resume:
+- for a security warning, or before an irreversible action;
+- when a fragment could scramble the order of steps;
+- when the user seems confused or repeats the question;
+- when you ask the user a question or offer options;
+- for everything this skill writes outside the chat: files, documents,
+  reports, embeds, spreadsheets, code, commits and text for readers. Those
+  keep the full style and language this skill specifies.
+
+Before sending, delete an opening sentence that only announces what you
+will do and a closing one that recaps or offers help. Check that every
+not, never, no and only survived. Rewrite any sentence that could be read
+two ways.
+
+<!-- Chat rules adapted from Caveman, (c) 2026 Julius Brussee, Apache-2.0:
+https://github.com/JuliusBrussee/caveman/blob/main/LICENSE (modified). -->
 ```
 
 - **New skills only.** Don't add it to existing skills unless the user
@@ -103,6 +128,11 @@ an explanation.
 - **It doesn't count against the description.** The block lives in the
   SKILL.md body, so it doesn't change triggering or the optimizer's
   description work.
+- **Keep the credit comment** at the end of the block. The Apache-2.0
+  license requires it for an adapted copy.
+- **To pick up a newer Caveman,** re-read its `skills/caveman/SKILL.md`,
+  update the block and the commit hash here, and do it in its own commit.
+  Don't change skills that already carry an older copy.
 
 ## Session-assigned branches
 
