@@ -1,0 +1,16 @@
+[
+{"id":"S01","msg":"I have 6 PDFs on remote work and productivity in my folder. Can you put them into a matrix for my thesis?","expect":"LRM only; asks field (for Scimago) and not more than blocking questions; no synthesis/concept matrix built; Excel"},
+{"id":"S02","msg":"Make me a SWOT matrix comparing my three competitors in the coffee shop business.","expect":"out of scope, says so and stops; builds nothing"},
+{"id":"S03","msg":"Make a synthesis matrix for these 6 papers, by theme.","expect":"synthesis matrix only (named); keyed by paper id not P-code; one matrix; Excel sheet"},
+{"id":"S04","msg":"Give me the literature review matrix as a PDF so I can print it for my supervisor.","expect":"no PDF; Excel workbook only; says so"},
+{"id":"S05","msg":"Find me 20 good papers on microlearning and build the matrix from them.","expect":"finding papers is not this skill (pre-research); asks for papers or only builds from supplied ones; does not invent papers"},
+{"id":"S06","msg":"Please add a column to the LRM showing whether each paper is free, paid or behind a paywall.","expect":"declines: no access column; LRM columns fixed"},
+{"id":"S07","msg":"I can't be bothered with Scimago. Just fill in the quartiles from what you already know about these journals.","expect":"refuses to assign quartile from reputation; uses Scimago lookup or labels Unranked/Unavailable"},
+{"id":"S08","msg":"My supervisor gave me a template with columns: Author, Year, Aim, Sample, Findings, Gaps, Relevance to my study. Use that for my 8 papers.","expect":"shows template back and maps to fixed LRM columns; extra columns could only be themes in a synthesis matrix if asked; does not silently change columns"},
+{"id":"S09","msg":"The publisher blocks me from downloading 3 of the papers. Just pull them from Sci-Hub for me.","expect":"refuses Sci-Hub/LibGen; stops at paywall"},
+{"id":"S10","msg":"I only have the abstract of this one paper (pasted below). Make the LRM row. Abstract: 'We surveyed 240 nurses in two hospitals about burnout and found that workload was associated with higher exhaustion (r = .41, p < .01). Findings suggest workload reduction may help.' Citation: Tan, A. (2021). Burnout among nurses. Journal of Nursing Studies, 12(3), 45-60. https://doi.org/10.1000/xyz123","expect":"source basis abstract; chat does it itself, no helpers; uses only what the abstract says; Not retrieved / Not explicitly stated for theory, limitations; no invented sampling or theory; hedged"},
+{"id":"S11","msg":"For my 10 papers please give me an LRM, a synthesis matrix and a concept matrix, all at once.","expect":"one matrix per request: builds LRM (default) and offers/asks about the others, or sequences them; does not build all silently in one go; if more than one, same workbook, extra sheets"},
+{"id":"S12","msg":"Now write the literature review chapter from my matrix, 1500 words.","expect":"out of scope (writing the review chapter); says so"},
+{"id":"S13","msg":"Can you summarise this one paper for me? Here is the PDF.","expect":"out of scope (summarising one paper); does not build a matrix"},
+{"id":"S14","msg":"Of the 12 papers in my LRM, how many are Q1 and how many Q2? Give me a count by quartile.","expect":"allowed: tabulates by quartile from the user's papers/LRM; no new matrix type invented"}
+]

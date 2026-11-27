@@ -1,0 +1,93 @@
+{
+  "id": "coletta2024",
+  "source_basis": "full text",
+  "type": "Mixed-methods",
+  "introduction": "The primary aim was to test the preliminary effectiveness of a live online exercise program led by qualified instructors on older adults’ physical activity levels, compared with a waitlist control group.",
+  "methodology": "Pilot convergent parallel mixed-methods RCT. Community-dwelling women and men aged 65 to 80 were randomized to an 8-week live online exercise program delivered on Zoom (ACTIVE) or a waitlist control (CON). Data came from an accelerometer, questionnaires and interviews. Pre-to-post changes were analyzed with a two-way repeated measures ANOVA; interviews were thematically analyzed in Dedoose.",
+  "theory": "Guided by the CONSORT 2010 statement: extension for pilot and feasibility trials. No theory is named.",
+  "results": "In the ACTIVE group, depressive symptoms decreased pre to post intervention (interaction p = 0.012) and life-space mobility increased (interaction p = 0.014). There were no significant between- or within-group differences for anxiety or loneliness, and no between-group differences in daily steps or nutrition risk. Attendance was 97% in the ACTIVE group.",
+  "discussion": "The authors report that the program did not affect habitual physical activity but reduced depressive symptoms and improved life-space mobility, with excellent adherence and acceptability. They describe online exercise programs as viable service-delivery options, particularly when in-person programming is unavailable.",
+  "limitations": "The authors acknowledge a small sample, which left the pilot underpowered for its primary outcome, and a lack of blinding of assessors and participants. They note the sample included only English-speaking people with home internet access. They suggest future studies include marginalized populations and different language options, including subtitles.",
+  "evidence": {
+    "introduction": [
+      {"q": "The primary objective of this pilot randomized controlled trial (RCT) was to determine the preliminary effectiveness of a live online exercise program from qualified instructors on older adults’ levels of PA compared to a waitlist control group.", "loc": "Introduction"}
+    ],
+    "methodology": [
+      {"q": "This pilot convergent parallel mixed-methods RCT was guided by the CONSORT 2010 statement: extension for pilot and feasibility trials", "loc": "Materials and methods, Study design"},
+      {"q": "Older community-dwelling women and men between the ages of 65 and 80 were recruited from Hamilton, Ontario, and the surrounding area.", "loc": "Materials and methods, Participants"},
+      {"q": "A convenience sample size of 32 participants is aligned with previous online exercise pilot studies", "loc": "Materials and methods, Sample size"},
+      {"q": "Thirty-three older women and men participated in this study.", "loc": "Results, Participants’ characteristics"},
+      {"q": "Participants underwent an 8-week intervention consisting of thrice-weekly 60-minute online exercise classes (totalling 24 exercise classes) delivered online via Zoom.", "loc": "Materials and methods, Intervention"},
+      {"q": "Habitual PA levels were the primary outcomes and were assessed using the armband BodyMedia Sensewear Pro II accelerometer", "loc": "Materials and methods, Quantitative data collection, Physical activity"},
+      {"q": "Questionnaires were administered online using LimeSurvey", "loc": "Materials and methods, Outcome measures"},
+      {"q": "The Geriatric Depression Scale Short Form (GDS-SF) assesses depressive symptoms using 15 questions", "loc": "Materials and methods, Mental health"},
+      {"q": "Pre-to-post-intervention changes in quantitative outcome measures were analyzed using a two-way repeated measures ANOVA", "loc": "Materials and methods, Analysis, Quantitative"},
+      {"q": "Semi-structured, open-ended 1:1 interviews were conducted and audio recorded via Zoom", "loc": "Materials and methods, Qualitative data collection"},
+      {"q": "Semi-structured interviews were thematically analyzed using the computer software Dedoose Version 9.0.17", "loc": "Materials and methods, Analysis, Qualitative"}
+    ],
+    "theory": [
+      {"q": "This pilot convergent parallel mixed-methods RCT was guided by the CONSORT 2010 statement: extension for pilot and feasibility trials", "loc": "Materials and methods, Study design"}
+    ],
+    "results": [
+      {"q": "We observed an interaction (p = 0.012) for the Geriatric Depression Scale where the ACTIVE group decreased from pre-to-post intervention", "loc": "Results, Mental health"},
+      {"q": "We observed an interaction (p = 0.014) for life-space mobility where the ACTIVE group increased from pre-to-post intervention", "loc": "Results, Life-space mobility"},
+      {"q": "There were no differences between groups for daily steps and daily active energy expenditure measured by the accelerometer following the intervention compared to the CON", "loc": "Results, Habitual physical activity levels"},
+      {"q": "There were no significant between or within-group differences for symptoms of anxiety and loneliness", "loc": "Results, Mental health"},
+      {"q": "There were no between-group differences in nutrition risk", "loc": "Results, Nutrition risk"},
+      {"q": "Attendance rates were 97% in the ACTIVE group", "loc": "Results, Feasibility"},
+      {"q": "Overall, participants reported being either satisfied or very satisfied with the intervention 98% of the time.", "loc": "Results, Feasibility"},
+      {"q": "Five overarching themes and eight sub-themes were identified related to perceptions, experiences, and feasibility of the program.", "loc": "Results, Qualitative"}
+    ],
+    "discussion": [
+      {"q": "The program did not affect participants’ habitual PA levels but reduced depressive symptoms, improved life-space mobility, and had excellent adherence and acceptability.", "loc": "Discussion"},
+      {"q": "Online exercise programs are viable service-delivery options, particularly when in-person programming is unavailable due to physical distance, space limitations, and/or public health measures encouraging reduced mobility to slow viral spread.", "loc": "Discussion"}
+    ],
+    "limitations": [
+      {"q": "There are several limitations with our study; however, primarily, we acknowledge the small sample size.", "loc": "Discussion"},
+      {"q": "The study was a pilot and, therefore, underpowered to determine if there was an interaction for our primary outcome.", "loc": "Discussion"},
+      {"q": "Another limitation of the study includes a lack of blinding for our assessors and participants to group allocation.", "loc": "Discussion"},
+      {"q": "Our study only included English-speaking individuals with internet access at home with a tablet, computer, or phone.", "loc": "Discussion"},
+      {"q": "Future studies should attempt to include marginalized populations to improve generalizability with different language options, including subtitles.", "loc": "Discussion"}
+    ]
+  },
+  "abstract_claims": [
+    {"q": "Exercise reduces these risks, but older adults have low levels of participation in physical activity and exercise.", "loc": "Abstract, Background"},
+    {"q": "participants in the ACTIVE group reported reduced symptoms of depression", "loc": "Abstract, Results"},
+    {"q": "improved life-space mobility", "loc": "Abstract, Results"},
+    {"q": "The ACTIVE group had good adherence (97%) and acceptability (98%).", "loc": "Abstract, Results"},
+    {"q": "Five themes were identified, including (1) Feasibility of the online exercise program; (2) Perceived health benefits and improvements; (3) Registered Kinesiologists and Physiotherapists contributed to perceived safety; (4) Social connectivity associated with synchronous/live delivery; and (5) Growing old gracefully and preventing disability.", "loc": "Abstract, Results"},
+    {"q": "Our online exercise program was acceptable to older adults, had good adherence, reduced depression, and increased life space.", "loc": "Abstract, Conclusions"},
+    {"q": "Participants reported improved functional and mental health benefits.", "loc": "Abstract, Conclusions"},
+    {"q": "Further research is warranted to expand on these findings.", "loc": "Abstract, Conclusions"}
+  ],
+  "caveats": [
+    {"q": "There were no differences between groups for daily steps and daily active energy expenditure measured by the accelerometer following the intervention compared to the CON", "loc": "Results, Habitual physical activity levels"},
+    {"q": "However, a main effect of time was observed from pre-to-post intervention for daily steps and active energy expenditure (p < 0.05).", "loc": "Results, Habitual physical activity levels"},
+    {"q": "One participant in the ACTIVE group withdrew from the intervention due to an injury not attributed to the intervention.", "loc": "Results, Participants’ characteristics"},
+    {"q": "One participant in the CON group exceeded the 150 moderate-to-vigorous PA per week at baseline and, therefore, did not meet the eligibility criteria and was removed from the analysis.", "loc": "Results, Participants’ characteristics"},
+    {"q": "Linear regression was used to impute missing data", "loc": "Results, Participants’ characteristics"},
+    {"q": "At the two-month follow-up, the ACTIVE group showed no significant differences from post-intervention", "loc": "Results, Habitual physical activity levels"},
+    {"q": "There were no significant between or within-group differences for symptoms of anxiety and loneliness", "loc": "Results, Mental health"},
+    {"q": "There were no between-group differences in nutrition risk", "loc": "Results, Nutrition risk"},
+    {"q": "However, a main effect of time was observed from pre-to-post intervention (p = 0.014).", "loc": "Results, Nutrition risk"},
+    {"q": "indicating that our participants were at high nutrition risk at study entry", "loc": "Results, Nutrition risk"},
+    {"q": "At the two-month follow-up, the ACTIVE group showed no significant differences in the SCREENII", "loc": "Results, Nutrition risk"},
+    {"q": "Four participants reported being ‘somewhat satisfied’ between 1–4 times.", "loc": "Results, Feasibility"},
+    {"q": "The qualitative data contradicted our quantitative findings", "loc": "Results, Perceived health benefits and improvements"},
+    {"q": "Given the nature of the study, it was impossible to blind the participants or investigators to the intervention.", "loc": "Materials and methods, Randomization, allocation concealment, and blinding"},
+    {"q": "A convenience sample size of 32 participants is aligned with previous online exercise pilot studies", "loc": "Materials and methods, Sample size"},
+    {"q": "which had periods during which Public Health advised limiting close in-person interactions (stay home/lockdown) potentially affecting older persons mobility", "loc": "Materials and methods, Study design"},
+    {"q": "Habitual PA did not change pre- to post-intervention or at the 2-month follow-up for the ACTIVE group.", "loc": "Discussion"},
+    {"q": "The program did not affect participants’ habitual PA levels", "loc": "Discussion"},
+    {"q": "Daily steps and daily active energy expenditure may not have changed due to the decreased level of PA in older adults during the quarantine period of COVID-19", "loc": "Discussion"},
+    {"q": "Most participants scored below five on the GAI-SF at pre-intervention, indicating the absence of clinically significant anxiety, which may have resulted in a floor effect.", "loc": "Discussion"},
+    {"q": "there were no between-group differences in these outcomes", "loc": "Discussion"},
+    {"q": "However, participants’ SCREENII scores were categorized as high nutrition risk.", "loc": "Discussion"},
+    {"q": "In contrast, a few participants preferred to refrain from engaging in socialization", "loc": "Discussion"},
+    {"q": "There are several limitations with our study; however, primarily, we acknowledge the small sample size.", "loc": "Discussion"},
+    {"q": "The study was a pilot and, therefore, underpowered to determine if there was an interaction for our primary outcome.", "loc": "Discussion"},
+    {"q": "Another limitation of the study includes a lack of blinding for our assessors and participants to group allocation.", "loc": "Discussion"},
+    {"q": "Our study only included English-speaking individuals with internet access at home with a tablet, computer, or phone.", "loc": "Discussion"},
+    {"q": "We did not see an effect of the intervention in the ACTIVE group on accelerometry-derived outcomes.", "loc": "Conclusions"}
+  ]
+}

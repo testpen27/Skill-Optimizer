@@ -1,0 +1,15 @@
+{
+ "overclaims": [
+  {
+   "abstract": "A decrease in the severity of depression was observed with increasing physical activity.",
+   "body": "However, because the differences in depression severity between groups with varying levels of physical activity were not statistically significant, the preceding observation should be regarded as a hypothesis for further research rather than a definitive conclusion.",
+   "body_loc": "",
+   "cell_sentence_id": "discussion.1",
+   "why": "The body says the group differences were not statistically significant and the observation is only a hypothesis, not a definitive conclusion."
+  }
+ ],
+ "unsettled": [
+  "In both countries, walking more often had the strongest effect on reducing depression scores.",
+  "The continued and alarming prevalence of depressive disorders among university students in the year after the pandemic began had a significant impact on this population—further research on the impact of physical activity on mental health in different populations should be conducted to adjust the optimal level of physical activity for alleviating negative psychiatric symptoms."
+ ]
+}

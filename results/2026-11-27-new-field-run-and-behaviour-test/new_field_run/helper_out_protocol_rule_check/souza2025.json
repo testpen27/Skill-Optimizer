@@ -1,0 +1,66 @@
+{"id": "souza2025",
+ "source_basis": "full text",
+ "type": "Theoretical/Review",
+ "introduction": "The protocol aims to guide a future systematic review asking what the effects of aerobic exercise are on reducing depression levels in adults. It is meant to give researchers and healthcare professionals a rigorous and transparent methodological foundation.",
+ "methodology": "The paper is a protocol for a systematic review and meta-analysis of randomized clinical trials, following PRISMA-P 2020. Six databases will be searched with MeSH-based descriptors. Two researchers will select studies independently. Quality will be assessed with TESTEX and RoB 2.0, and certainty with GRADE. Participants will be adults with depression.",
+ "theory": "The protocol says it will follow the PRISMA-P guidelines; no theory is named.",
+ "results": "The paper is a protocol and reports no results.",
+ "discussion": "The authors expect the review to identify the most effective dose-response for reducing depression levels. They also expect it to offer in-depth understanding of the mechanisms through which aerobic exercise influences depression.",
+ "limitations": "The authors list anticipated limitations: small sample sizes, lack of clarity about the mechanisms of exercise's effect on depression, and varied intensity protocols. They expect high heterogeneity among the studies to be included.",
+ "evidence": {
+  "introduction": [
+   {"q": "This protocol proposal aims to guide a future systematic review that will seek to answer the following question: what are the effects of aerobic exercise on reducing depression levels in adults?", "loc": "Introduction"},
+   {"q": "we intend to provide researchers and healthcare professionals with a rigorous and transparent methodological foundation for conducting a systematic review and meta-analysis of randomized clinical trials on the topic.", "loc": "Introduction"}
+  ],
+  "methodology": [
+   {"q": "This is a systematic review protocol, which will follow the PRISMA-P 2020 guidelines and has been registered in PROSPERO (no. CRD42024592700).", "loc": "Abstract, Methods"},
+   {"q": "The study search will be conducted in six databases: BVS, Cochrane library, Embase, Epistemonikos, PubMed and SPORTDiscus, using MeSH-based descriptors.", "loc": "Abstract, Methods"},
+   {"q": "Studies will be selected independently by two researchers", "loc": "Abstract, Methods"},
+   {"q": "Participants will include adults (>18 years) diagnosed with depression", "loc": "Methods, Eligibility criteria"},
+   {"q": "the risk of bias will be evaluated using the Cochrane RoB 2.0 method", "loc": "Abstract, Methods"},
+   {"q": "the methodological quality of studies on physical exercise will be assessed with the TESTEX tool", "loc": "Abstract, Methods"},
+   {"q": "The certainty of evidence will be evaluated through the Grading of Recommendations Assessment, Development, and Evaluation (GRADE).", "loc": "Abstract, Methods"},
+   {"q": "The effect models (fixed or random) will be used to estimate the treatment effect (aerobic exercise) for depression in adults.", "loc": "Methods, Data synthesis"}
+  ],
+  "theory": [
+   {"q": "The study is a protocol for a systematic review, which will follow the guidelines developed by Page et al. known as the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA-P) for systematic reviews", "loc": "Methods"}
+  ],
+  "results": [
+   {"q": "This is a systematic review protocol, which will follow the PRISMA-P 2020 guidelines", "loc": "Abstract, Methods"}
+  ],
+  "discussion": [
+   {"q": "to identify the most effective dose-response for this reduction", "loc": "Conclusion"},
+   {"q": "the review is expected to offer in-depth understanding of the biological and psychological mechanisms through which aerobic exercise influences depression levels", "loc": "Conclusion"}
+  ],
+  "limitations": [
+   {"q": "Anticipated limitations and challenges include the following issues: the use of small sample sizes, lack of clarity regarding the specific mechanisms through which exercise contributes to the improvement of depression, and variations in the intensity protocols adopted.", "loc": "Discussion"},
+   {"q": "one of the main methodological challenges expected in the conduction of this review is the high heterogeneity among the studies to be included", "loc": "Discussion"},
+   {"q": "The systematic review studies conducted so far, although following rigorous methodologies and providing relevant contributions to the scientific field, present some methodological limitations.", "loc": "Discussion"}
+  ]
+ },
+ "abstract_claims": [
+  {"q": "Studies suggest that aerobic exercise can improve mental health and reduce depression symptoms, despite variations in exercise type and intensity.", "loc": "Abstract, Background"},
+  {"q": "It is expected that the systematic review following this protocol will identify the effective dose-response to reduce depression levels and provide an understanding of the mechanisms through which aerobic exercise influences depression.", "loc": "Abstract, Conclusions"}
+ ],
+ "caveats": [
+  {"q": "Although the benefits of aerobic exercise in improving depressive symptoms are well documented, the existing literature shows high variability in terms of modality, intensity, frequency, and duration of exercise.", "loc": "Introduction"},
+  {"q": "Furthermore, the underlying mechanisms of these effects are still not fully understood", "loc": "Introduction"},
+  {"q": "However, the analysis of these exercises should not be based solely on perceived effort or heart rate", "loc": "Introduction"},
+  {"q": "However, these guidelines do not provide clear and consistent recommendations regarding the dose or modality of exercise", "loc": "Introduction"},
+  {"q": "However, many existing systematic reviews and meta-analyses have methodological limitations that prevent definitive conclusions.", "loc": "Introduction"},
+  {"q": "However, the findings did not allow for the precise establishment of a dose-response relationship due to variability in the study protocols analyzed", "loc": "Introduction"},
+  {"q": "Only studies utilizing validated depression assessment scales will be included", "loc": "Methods, Eligibility criteria"},
+  {"q": "excluding individuals with chronic degenerative diseases or other associated severe psychiatric disorders", "loc": "Methods, Eligibility criteria"},
+  {"q": "while ongoing clinical trials with preliminary results will be excluded", "loc": "Methods, Eligibility criteria"},
+  {"q": "observational studies will not be considered for inclusion", "loc": "Methods, Eligibility criteria"},
+  {"q": "which will be generated only if at least 10 studies are included in the meta-analysis", "loc": "Methods, Data synthesis"},
+  {"q": "although more intense activities may offer additional benefits, the potential gains for reducing depressive symptoms are not limited to high-intensity levels", "loc": "Discussion"},
+  {"q": "with no significant differences between groups of varying intensities", "loc": "Discussion"},
+  {"q": "with no statistically relevant differences between intensities", "loc": "Discussion"},
+  {"q": "found difficulties in maintaining high levels of participation, which may have limited the results", "loc": "Discussion"},
+  {"q": "Although exercise is not yet considered an essential component on its own", "loc": "Discussion"},
+  {"q": "The systematic review studies conducted so far, although following rigorous methodologies and providing relevant contributions to the scientific field, present some methodological limitations.", "loc": "Discussion"},
+  {"q": "one of the main methodological challenges expected in the conduction of this review is the high heterogeneity among the studies to be included", "loc": "Discussion"},
+  {"q": "However, this review aims precisely to highlight these issues", "loc": "Discussion"}
+ ]
+}

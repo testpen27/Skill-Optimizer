@@ -1,0 +1,78 @@
+{"id": "zalewska2023",
+ "source_basis": "full text",
+ "type": "Quantitative",
+ "introduction": "The study aimed to make a preliminary assessment of depression rates, physical activity levels and the link between them among students in Poland and Portugal in the further year of the COVID-19 pandemic. It notes that restrictions during the pandemic have largely led to a decline in daily physical activity.",
+ "methodology": "Online cross-sectional survey in October 2022 of 398 students (229 from Poland, 169 from Portugal) aged 17 to 26, distributed through a Google form link on e-learning platforms and Facebook groups. Depression was measured with the Beck Depression Inventory and physical activity with an abbreviated IPAQ, each in Polish and Portuguese. Analysis used Mann–Whitney, chi-square, Spearman correlation and Kruskal–Wallis tests.",
+ "theory": "",
+ "results": "Moderate depression affected 20–35% of respondents, and depression classification did not differ between countries. BDI scores did not differ significantly between the two countries for men or women. Portuguese women showed significantly lower intensive-effort activity (p = 0.0039). Among Polish women, the only significant correlation with depression was very weak, for walking (rS = −0.21, p = 0.0155).",
+ "discussion": "The authors report a tendency for depression severity to fall as physical activity rises, with a stronger effect in men. They state that there are not many statistically significant differences in depression and physical activity between Polish and Portuguese students, and call for further research on the optimal activity level.",
+ "limitations": "The authors note that the cross-sectional design does not give robust causal evidence, that the sample was small and the findings preliminary, that the online format means respondents' identity is unknown, that social media may attract stressed individuals and affect representativeness, and that self-report may bias responses. Future studies should target a larger sample and use more objective methods.",
+ "evidence": {
+   "introduction": [
+     {"q": "The aim of the study was to make a preliminary assessment of depression rates and levels of physical activity as well as relationship between physical activity and depression among Polish and Portuguese students in the further year of the COVID-19 pandemic.", "loc": "1. Introduction (final paragraph)"},
+     {"q": "Restrictions on exercise, and bans on gyms, swimming pools, and health clubs have largely led to a decline in daily physical activity", "loc": "1. Introduction"}
+   ],
+   "methodology": [
+     {"q": "In October 2022, students from Poland and Portugal participated in an online cross-sectional survey.", "loc": "2.1. Participants and Procedure"},
+     {"q": "The researchers distributed the survey by providing links to a Google form that asked students to participate in the survey on online e-learning platforms and on social media (Facebook) in private groups.", "loc": "2.1. Participants and Procedure"},
+     {"q": "A total of 398 questionnaires were correctly completed and this group was analyzed. The study included 229 questionnaires from Poland and 169 from Portugal. The students polled ranged in age from 17 to 26 years.", "loc": "2.1. Participants and Procedure"},
+     {"q": "The level of depression was assessed using the Beck Depression Inventory (BDI) in Polish and in Portuguese.", "loc": "2.2.1. Beck Depression Inventory"},
+     {"q": "The level of physical activity was assessed using an abbreviated version of the International Physical Activity Questionnaire (IPAQ) in Polish and Portuguese", "loc": "2.2.2. International Physical Activity Questionnaire"},
+     {"q": "The Mann–Whitney test was used to determine the significance of differences in depression severity (BDI) and physical activity level (IPAQ) between groups of Portuguese and Polish students, while the chi-square test of independence was used", "loc": "2.3. Statistical Methods"},
+     {"q": "Spearman’s rank correlation coefficient was used to calculate correlations between depression severity and physical activity. The Kruskal–Wallis test was used to determine the significance of differences in depression severity (BDI) versus activity level classification.", "loc": "2.3. Statistical Methods"}
+   ],
+   "theory": [],
+   "results": [
+     {"q": "Moderate depression affected 20–35% of the respondents", "loc": "3.2. Comparison of Depression among Students in Both Countries by Gender"},
+     {"q": "there is no statistically significant difference in BDI values between the two countries—neither for men nor for women", "loc": "3.2. Comparison of Depression among Students in Both Countries by Gender"},
+     {"q": "there is a significantly lower level of activity among Portuguese female students on the intensive effort measure (p = 0.0039 *)", "loc": "3.3. Comparison of Activities by Student Gender"},
+     {"q": "in Polish women the only statistically significant (p = 0.0155 *) but very weak correlation (rS = −0.21) was between walking intensity and depression.", "loc": "3.4. Depression and Physical Activity"},
+     {"q": "In both countries, more frequent walking had the strongest effect on reducing BDI (in Poland, rS = −0.42; in Portugal, rS = −0.28).", "loc": "3.4. Depression and Physical Activity"}
+   ],
+   "discussion": [
+     {"q": "Our study also shows a tendency for depression severity to decrease with increased physical activity. A stronger effect of physical activity on reducing depression was observed in men.", "loc": "4. Discussion"},
+     {"q": "Pilot studies have shown that there are not many statistically significant differences in depression and physical activity levels between students in Poland and Portugal.", "loc": "5. Conclusions"},
+     {"q": "Further research should be conducted on the impact of physical activity on mental health in different populations, with the aim of adjusting the optimal level of physical activity for the alleviation of negative mental symptoms.", "loc": "5. Conclusions"}
+   ],
+   "limitations": [
+     {"q": "First, the cross-sectional nature of the study does not provide robust and causal evidence for the observed associations.", "loc": "4. Discussion (limitations paragraph)"},
+     {"q": "The second limitation was the small sample group and preliminary findings.", "loc": "4. Discussion (limitations paragraph)"},
+     {"q": "The study was also conducted in an online survey format and the identity of those who responded is not known", "loc": "4. Discussion (limitations paragraph)"},
+     {"q": "Social media particularly attracts stressed individuals looking for support, which may distort the data and affect the representativeness of the sample.", "loc": "4. Discussion (limitations paragraph)"},
+     {"q": "All data were collected using self-report questionnaires, which may bias responses", "loc": "4. Discussion (limitations paragraph)"},
+     {"q": "Future studies should target a larger sample and use more objective methods to assess the parameters studied.", "loc": "4. Discussion (limitations paragraph)"}
+   ]
+ },
+ "abstract_claims": [
+   {"q": "Overall, 20–35% of respondents suffered from moderate depression, with a lower proportion among men.", "loc": "Abstract (Results)"},
+   {"q": "There were no differences in the percentage distribution of depression classification between Polish and Portuguese students.", "loc": "Abstract (Results)"},
+   {"q": "A decrease in the severity of depression was observed with increasing physical activity.", "loc": "Abstract (Results)"},
+   {"q": "In both countries, walking more often had the strongest effect on reducing depression scores.", "loc": "Abstract (Results)"},
+   {"q": "The continued and alarming prevalence of depressive disorders among university students in the year after the pandemic began had a significant impact on this population—further research on the impact of physical activity on mental health in different populations should be conducted to adjust the optimal level of physical activity for alleviating negative psychiatric symptoms.", "loc": "Abstract (Conclusions)"}
+ ],
+ "caveats": [
+   {"q": "There were also no differences between Polish and Portuguese students in the percentage distribution of depression classifications.", "loc": "3.2. Comparison of Depression among Students in Both Countries by Gender"},
+   {"q": "there is no statistically significant difference in BDI values between the two countries—neither for men nor for women", "loc": "3.2. Comparison of Depression among Students in Both Countries by Gender"},
+   {"q": "No statistically significant differences were found in the physical activity levels of young people from the two countries, either for women or for men.", "loc": "3.3. Comparison of Activities by Student Gender"},
+   {"q": "although there are no differences between countries on the overall measure, there is a significantly lower level of activity among Portuguese female students on the intensive effort measure (p = 0.0039 *) and to a lesser extent on the moderate effort measure (p = 0.0801).", "loc": "3.3. Comparison of Activities by Student Gender"},
+   {"q": "the differences between the two countries are not statistically significant", "loc": "3.3. Comparison of Activities by Student Gender"},
+   {"q": "In Portuguese women, there was no statistically significant correlation between activity and depression", "loc": "3.4. Depression and Physical Activity"},
+   {"q": "in Polish women the only statistically significant (p = 0.0155 *) but very weak correlation (rS = −0.21) was between walking intensity and depression.", "loc": "3.4. Depression and Physical Activity"},
+   {"q": "resulting in a minimal reduction in the severity of depression.", "loc": "3.4. Depression and Physical Activity"},
+   {"q": "When the IPAQ is split into groups, some information is lost, and it is therefore more difficult to obtain a statistically significant relationship.", "loc": "3.4. Depression and Physical Activity"},
+   {"q": "In general, however, a weak trend toward a decrease in depression severity with increasing activity can be seen in the Polish group.", "loc": "3.4. Depression and Physical Activity"},
+   {"q": "However, because the differences in depression severity between groups with varying levels of physical activity were not statistically significant, the preceding observation should be regarded as a hypothesis for further research rather than a definitive conclusion.", "loc": "3.4. Depression and Physical Activity"},
+   {"q": "The p-value was less than 0.1 only for male students from Poland, indicating a difference close to statistical significance.", "loc": "3.4. Depression and Physical Activity"},
+   {"q": "Our study also shows a tendency for depression severity to decrease with increased physical activity.", "loc": "4. Discussion"},
+   {"q": "The correlations are slightly stronger in the Polish population, but it is difficult to clearly explain this difference.", "loc": "4. Discussion"},
+   {"q": "In our study, a subgroup analysis showed that physical activity at a certain intensity could reduce students’ depressiveness.", "loc": "4. Discussion"},
+   {"q": "In our study, we found that depression rates were generally lower in men, while there was no statistically significant difference in BDI scores between the two countries.", "loc": "4. Discussion"},
+   {"q": "Despite the geographical location, there are no differences in the percentage distribution of depression classifications between Polish and Portuguese students", "loc": "4. Discussion"},
+   {"q": "First, the cross-sectional nature of the study does not provide robust and causal evidence for the observed associations.", "loc": "4. Discussion (limitations paragraph)"},
+   {"q": "The second limitation was the small sample group and preliminary findings.", "loc": "4. Discussion (limitations paragraph)"},
+   {"q": "The study was also conducted in an online survey format and the identity of those who responded is not known", "loc": "4. Discussion (limitations paragraph)"},
+   {"q": "Social media particularly attracts stressed individuals looking for support, which may distort the data and affect the representativeness of the sample.", "loc": "4. Discussion (limitations paragraph)"},
+   {"q": "All data were collected using self-report questionnaires, which may bias responses", "loc": "4. Discussion (limitations paragraph)"},
+   {"q": "Pilot studies have shown that there are not many statistically significant differences in depression and physical activity levels between students in Poland and Portugal.", "loc": "5. Conclusions"}
+ ]
+}

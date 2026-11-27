@@ -1,0 +1,65 @@
+{
+  "id": "souza2025",
+  "source_basis": "full text",
+  "type": "Theoretical/Review",
+  "introduction": "The paper presents a protocol for a systematic review with meta-analysis. It aims to guide a future review of the effects of aerobic exercise on reducing depression levels in adults.",
+  "methodology": "Protocol for a systematic review and meta-analysis of randomized clinical trials in adults (>18 years) with depression, following PRISMA-P and registered in PROSPERO. The search will cover BVS, Cochrane Library, Embase, Epistemonikos, PubMed and SPORTDiscus, with no restriction on date or language. Two reviewers will select studies independently, and a third reviewer will decide disagreements. Risk of bias will use TESTEX and RoB 2.0; certainty will be rated with GRADE.",
+  "theory": "",
+  "results": "",
+  "discussion": "The authors say aerobic exercise has been shown to be a potential depression treatment, comparable to various therapeutic approaches, including medication, psychotherapy and other exercise-based therapies. They expect high heterogeneity among the studies to be included.",
+  "limitations": "The authors anticipate small sample sizes, unclear mechanisms, varied intensity protocols and high heterogeneity among included studies as challenges for the future review.",
+  "evidence": {
+    "introduction": [
+      {"q": "This protocol proposal aims to guide a future systematic review that will seek to answer the following question: what are the effects of aerobic exercise on reducing depression levels in adults?", "loc": "Introduction"}
+    ],
+    "methodology": [
+      {"q": "The study is a protocol for a systematic review, which will follow the guidelines developed by Page et al.", "loc": "Methods"},
+      {"q": "registered in the International Prospective Register of Systematic Reviews - PROSPERO, number: CRD42024592700", "loc": "Methods"},
+      {"q": "Participants will include adults (>18 years) diagnosed with depression", "loc": "Methods, Eligibility criteria"},
+      {"q": "Eligible study types will be randomized clinical trials (RCTs), no restriction of language", "loc": "Methods, Eligibility criteria"},
+      {"q": "The intervention will focus on aerobic exercise (e.g., walking, running), with comparators including other interventions or control groups.", "loc": "Methods, Eligibility criteria"},
+      {"q": "The primary outcome will be depressive symptoms", "loc": "Methods, Eligibility criteria"},
+      {"q": "The search will be conducted in the following databases: BVS, Cochrane library, Embase, Epistemonikos, PubMed and SPORTDiscus.", "loc": "Methods, Search strategy"},
+      {"q": "There will be no restrictions on publication date or language.", "loc": "Methods, Search strategy"},
+      {"q": "After collecting the described data", "loc": "Methods, Data extraction"},
+      {"q": "Studies will be selected independently by two researchers using the Rayyan ‘QCRI’ software.", "loc": "Abstract, Methods"},
+      {"q": "A third senior and expert reviewer (I.K.S) will review any articles in case of disagreement", "loc": "Methods, Eligibility criteria"},
+      {"q": "The methodological quality assessment of the included studies will be carried out by two independent reviewers (L.N.S; M.I.K) using the TESTEX tool", "loc": "Methods, Risk of bias assessment"},
+      {"q": "the Cochrane Risk of Bias 2.0 tool (RoB 2.0) will be used to assess the risk of bias in the included studies", "loc": "Methods, Risk of bias assessment"},
+      {"q": "The meta-analysis will be conducted using fixed-effect or random-effects models, depending on the heterogeneity among the included studies.", "loc": "Methods, Data synthesis"},
+      {"q": "RevMan version 5.3.5 will be used for all analyses, including meta-analysis if feasible", "loc": "Methods, Data synthesis"}
+    ],
+    "theory": [],
+    "results": [],
+    "discussion": [
+      {"q": "Aerobic exercise has been shown to be a potential strategy for treating depression in different populations, being comparable to various therapeutic approaches, including medication, psychotherapy, and other exercise-based therapies.", "loc": "Discussion"},
+      {"q": "one of the main methodological challenges expected in the conduction of this review is the high heterogeneity among the studies to be included", "loc": "Discussion"}
+    ],
+    "limitations": [
+      {"q": "Anticipated limitations and challenges include the following issues: the use of small sample sizes, lack of clarity regarding the specific mechanisms through which exercise contributes to the improvement of depression, and variations in the intensity protocols adopted.", "loc": "Discussion"}
+    ]
+  },
+  "abstract_claims": [
+    {"q": "Studies suggest that aerobic exercise can improve mental health and reduce depression symptoms, despite variations in exercise type and intensity.", "loc": "Abstract, Background"},
+    {"q": "It is expected that the systematic review following this protocol will identify the effective dose-response to reduce depression levels and provide an understanding of the mechanisms through which aerobic exercise influences depression.", "loc": "Abstract, Conclusions"}
+  ],
+  "caveats": [
+    {"q": "Although the benefits of aerobic exercise in improving depressive symptoms are well documented, the existing literature shows high variability in terms of modality, intensity, frequency, and duration of exercise.", "loc": "Introduction"},
+    {"q": "Furthermore, the underlying mechanisms of these effects are still not fully understood", "loc": "Introduction"},
+    {"q": "However, many existing systematic reviews and meta-analyses have methodological limitations that prevent definitive conclusions.", "loc": "Introduction"},
+    {"q": "However, the findings did not allow for the precise establishment of a dose-response relationship due to variability in the study protocols analyzed, particularly regarding frequency, duration, and weekly volume of activity", "loc": "Introduction"},
+    {"q": "However, the analysis of these exercises should not be based solely on perceived effort or heart rate", "loc": "Introduction"},
+    {"q": "An analysis of exercise intensity in studies indicated that although more intense activities may offer additional benefits, the potential gains for reducing depressive symptoms are not limited to high-intensity levels.", "loc": "Discussion"},
+    {"q": "Given the gaps in the literature that have yet to establish an optimal dose-response of physical exercise in the management of depression", "loc": "Discussion"},
+    {"q": "Although exercise is not yet considered an essential component on its own", "loc": "Discussion"},
+    {"q": "The systematic review studies conducted so far, although following rigorous methodologies and providing relevant contributions to the scientific field, present some methodological limitations.", "loc": "Discussion"},
+    {"q": "In addition, one of the main methodological challenges expected in the conduction of this review is the high heterogeneity among the studies to be included.", "loc": "Discussion"},
+    {"q": "Anticipated limitations and challenges include the following issues: the use of small sample sizes, lack of clarity regarding the specific mechanisms through which exercise contributes to the improvement of depression, and variations in the intensity protocols adopted.", "loc": "Discussion"},
+    {"q": "Only studies utilizing validated depression assessment scales will be included", "loc": "Methods, Eligibility criteria"},
+    {"q": "excluding individuals with chronic degenerative diseases or other associated severe psychiatric disorders", "loc": "Methods, Eligibility criteria"},
+    {"q": "ongoing clinical trials with preliminary results will be excluded", "loc": "Methods, Eligibility criteria"},
+    {"q": "studies involving populations with non-communicable chronic diseases (e.g., hypertension, diabetes), case reports, preprints, narrative and systematic reviews, and observational studies will not be considered for inclusion", "loc": "Methods, Eligibility criteria"},
+    {"q": "a funnel plot, which will be generated only if at least 10 studies are included in the meta-analysis", "loc": "Methods, Data synthesis"},
+    {"q": "excluding blinding domains due to the nature of physical exercise interventions", "loc": "Methods, Sensitivity analysis"}
+  ]
+}

@@ -47,6 +47,13 @@ one passage. Where to look:
 Rules while reading:
 - **Absence is a finding.** If the paper does not report a sample size, a
   setting or a theory, record that it is not reported. Do not infer it.
+- **A protocol has no results, and the Results cell says so.** For a
+  protocol, registered report or study plan, write "The paper is a protocol and
+  reports no results." in the Results cell and quote the sentence in which the
+  paper calls itself a protocol. An empty Results cell prints as "Not
+  retrieved", which reads as a failed retrieval, not as "nothing to report".
+  The other cells describe what the paper plans, in the future tense, and the
+  Discussion keeps its "expected" and "anticipated" hedges.
 - **The body beats the abstract. Write every cell from the body, and quote
   for the overclaim check.** Besides the column quotes, collect two more lists
   of verbatim quotes, exhaustively, because the next step sees only these and

@@ -1,0 +1,137 @@
+[
+ {
+  "id": "coletta2024",
+  "doi": "10.1371/journal.pone.0312992",
+  "authors_meta": [
+   "Giulia Coletta",
+   "Kenneth S. Noguchi",
+   "Kayla D. Beaudoin"
+  ],
+  "n_authors": 8,
+  "year": 2024,
+  "journal": "PLOS ONE",
+  "issn": "1932-6203",
+  "chars": 52990,
+  "full": 85963,
+  "cut": true,
+  "src": "mcp-Firecrawl-firecrawl_scrape-1795773072073-wohh65.txt"
+ },
+ {
+  "id": "xiao2026",
+  "doi": "10.1371/journal.pone.0352173",
+  "authors_meta": [
+   "Yan Xiao",
+   "Jinghui Zhong",
+   "Kebao Zhang"
+  ],
+  "n_authors": 4,
+  "year": 2026,
+  "journal": "PLOS ONE",
+  "issn": "1932-6203",
+  "chars": 48295,
+  "full": 75422,
+  "cut": true,
+  "src": "mcp-Firecrawl-firecrawl_scrape-1795773078525-q9lx8e.txt"
+ },
+ {
+  "id": "souza2025",
+  "doi": "10.1371/journal.pone.0314846",
+  "authors_meta": [
+   "Larissa Nayara de Souza",
+   "Silvana Medeiros de Ara\u00fajo",
+   "Eva da Silva Paiva"
+  ],
+  "n_authors": 11,
+  "year": 2025,
+  "journal": "PLOS ONE",
+  "issn": "1932-6203",
+  "chars": 36712,
+  "full": 57519,
+  "cut": true,
+  "src": "mcp-Firecrawl-firecrawl_scrape-1795773080679-5vd90u.txt"
+ },
+ {
+  "id": "chen2026",
+  "doi": "10.3389/fpsyg.2026.1704433",
+  "authors_meta": [
+   "Chen, Yizhou ",
+   "Zhang, Jie "
+  ],
+  "n_authors": 2,
+  "year": 2026,
+  "journal": "Frontiers in Psychology",
+  "issn": "1664-1078",
+  "chars": 53435,
+  "full": 153469,
+  "cut": true,
+  "src": "mcp-Firecrawl-firecrawl_scrape-1795773080686-012air.txt"
+ },
+ {
+  "id": "zalewska2023",
+  "doi": "10.3390/jcm12072541",
+  "authors_meta": [
+   "Zalewska, Anna",
+   "Ga\u0142czyk, Monika",
+   "Sobolewski, Marek"
+  ],
+  "n_authors": 4,
+  "year": 2023,
+  "journal": "Journal of Clinical Medicine",
+  "issn": "2077-0383",
+  "chars": 28372,
+  "full": 83534,
+  "cut": true,
+  "src": "mcp-Firecrawl-firecrawl_scrape-1795773081757-i9p40p.txt"
+ },
+ {
+  "id": "bystad2026",
+  "doi": "10.3389/fpsyt.2026.1907931",
+  "authors_meta": [
+   "Martin Bystad",
+   "Anna Lodewijks",
+   "Sveinung Rydland"
+  ],
+  "n_authors": 7,
+  "year": 2026,
+  "journal": "Frontiers in Psychiatry",
+  "issn": null,
+  "chars": 53692,
+  "full": 80438,
+  "cut": true,
+  "src": "mcp-Firecrawl-firecrawl_scrape-1795773082013-maxmzr.txt"
+ },
+ {
+  "id": "welcomechamberlain2025",
+  "doi": "10.3389/fdgth.2025.1394647",
+  "authors_meta": [
+   "Welcome Chamberlain, Camille E. ",
+   "Lindsay, Shannon ",
+   "Smith, Brooke J. "
+  ],
+  "n_authors": 6,
+  "year": 2025,
+  "journal": "Frontiers in Digital Health",
+  "issn": "2673-253X",
+  "chars": 54807,
+  "full": 104311,
+  "cut": true,
+  "src": "mcp-Firecrawl-firecrawl_scrape-1795773082655-n0ttdb.txt"
+ },
+ {
+  "id": "mack2024",
+  "doi": "10.1371/journal.pone.0297348",
+  "authors_meta": [
+   "Melanie Mack",
+   "Andreea Badache",
+   "Arzu Erden"
+  ],
+  "n_authors": 13,
+  "year": 2024,
+  "journal": "PLOS ONE",
+  "issn": "1932-6203",
+  "chars": 75931,
+  "full": 134162,
+  "cut": true,
+  "src": "mcp-Firecrawl-firecrawl_scrape-1795773083960-fth7db.txt"
+ }
+]

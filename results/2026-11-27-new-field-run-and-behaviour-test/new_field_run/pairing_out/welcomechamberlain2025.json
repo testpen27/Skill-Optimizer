@@ -1,0 +1,29 @@
+{
+ "overclaims": [
+  {
+   "abstract": "Depression scores significantly improved, with 66.9% of adults at risk of depression improving or recovering",
+   "body": "These levels of improvement in depression were statistically significant but potentially not clinically significant given the average change was less than the 5 points deemed clinically meaningful change on the PHQ-9.",
+   "body_loc": "",
+   "cell_sentence_id": "results.5",
+   "why": "The body states the depression improvement was statistically significant but potentially not clinically significant, with an average change under the 5-point threshold."
+  },
+  {
+   "abstract": "Adults with access to a multi-modal digital mental health platform reported significant beneficial changes in depression symptoms and physical activity participation.",
+   "body": "reported no statistically significant change in their activity at follow-up",
+   "body_loc": "",
+   "cell_sentence_id": "results.5",
+   "why": "The body shows the baseline-active group had no significant change in physical activity, so the significant activity gain was limited to the underactive subsample."
+  },
+  {
+   "abstract": "Digital mental health tools may have the potential to elicit positive change in physical health domains, as well as mental health.",
+   "body": "This study was observational in nature, meaning that while we were able to observe that depression symptoms and MVPA improved over time, we were unable to determine the temporal sequence of the changes.",
+   "body_loc": "",
+   "cell_sentence_id": "discussion.2",
+   "why": "The body says the observational design cannot establish the sequence or cause of the changes, so they cannot be attributed to the digital tools."
+  }
+ ],
+ "unsettled": [
+  "Older adults reported fewer depression symptoms than younger adults",
+  "Physical activity participation improved by 117% among individuals deemed underactive at baseline"
+ ]
+}

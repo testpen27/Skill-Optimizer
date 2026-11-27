@@ -1,0 +1,2397 @@
+{
+ "title": "Physical activity and depression",
+ "field": "Psychiatry and Mental Health",
+ "years": "2019-2026",
+ "papers": [
+  {
+   "id": "coletta2024",
+   "doi": "10.1371/journal.pone.0312992",
+   "title": "A live online exercise program for older adults improves depression and life-space mobility: A mixed-methods pilot randomized controlled trial",
+   "authors": [
+    "Coletta, G.",
+    "Noguchi, K. S.",
+    "Beaudoin, K. D.",
+    "McQuarrie, A.",
+    "Tang, A.",
+    "Griffin, M.",
+    "Ganann, R.",
+    "Phillips, S. M."
+   ],
+   "year": 2024,
+   "notices": [],
+   "journal": "PLOS ONE",
+   "volume": "19",
+   "issue": "11",
+   "pages": "e0312992",
+   "issn": "1932-6203",
+   "crossref": "verified",
+   "quartile": "Q1 (SJR 2024, Multidisciplinary; not in Psychiatry and Mental Health)",
+   "source_basis": "full text",
+   "type": "Mixed-methods",
+   "introduction": "The primary aim was to test the preliminary effectiveness of a live online exercise program led by qualified instructors on older adults’ physical activity levels, compared with a waitlist control group.",
+   "methodology": "Pilot convergent parallel mixed-methods RCT. Community-dwelling women and men aged 65 to 80 were randomized to an 8-week live online exercise program delivered on Zoom (ACTIVE) or a waitlist control (CON). Data came from an accelerometer, questionnaires and interviews. Pre-to-post changes were analyzed with a two-way repeated measures ANOVA; interviews were thematically analyzed in Dedoose.",
+   "theory": "Guided by the CONSORT 2010 statement: extension for pilot and feasibility trials. No theory is named.",
+   "results": "In the ACTIVE group, depressive symptoms decreased pre to post intervention (interaction p = 0.012) and life-space mobility increased (interaction p = 0.014). There were no significant between- or within-group differences for anxiety or loneliness, and no between-group differences in daily steps or nutrition risk. Attendance was 97% in the ACTIVE group.",
+   "discussion": "The authors report that the program did not affect habitual physical activity but reduced depressive symptoms and improved life-space mobility, with excellent adherence and acceptability. They describe online exercise programs as viable service-delivery options, particularly when in-person programming is unavailable.",
+   "limitations": "The authors acknowledge a small sample, and a lack of blinding of assessors and participants. They note the sample included only English-speaking people with home internet access. They suggest future studies include marginalized populations and different language options, including subtitles.",
+   "evidence": {
+    "introduction": [
+     {
+      "q": "The primary objective of this pilot randomized controlled trial (RCT) was to determine the preliminary effectiveness of a live online exercise program from qualified instructors on older adults’ levels of PA compared to a waitlist control group.",
+      "loc": "Introduction"
+     }
+    ],
+    "methodology": [
+     {
+      "q": "This pilot convergent parallel mixed-methods RCT was guided by the CONSORT 2010 statement: extension for pilot and feasibility trials",
+      "loc": "Materials and methods, Study design"
+     },
+     {
+      "q": "Older community-dwelling women and men between the ages of 65 and 80 were recruited from Hamilton, Ontario, and the surrounding area.",
+      "loc": "Materials and methods, Participants"
+     },
+     {
+      "q": "A convenience sample size of 32 participants is aligned with previous online exercise pilot studies",
+      "loc": "Materials and methods, Sample size"
+     },
+     {
+      "q": "Thirty-three older women and men participated in this study.",
+      "loc": "Results, Participants’ characteristics"
+     },
+     {
+      "q": "Participants underwent an 8-week intervention consisting of thrice-weekly 60-minute online exercise classes (totalling 24 exercise classes) delivered online via Zoom.",
+      "loc": "Materials and methods, Intervention"
+     },
+     {
+      "q": "Habitual PA levels were the primary outcomes and were assessed using the armband BodyMedia Sensewear Pro II accelerometer",
+      "loc": "Materials and methods, Quantitative data collection, Physical activity"
+     },
+     {
+      "q": "Questionnaires were administered online using LimeSurvey",
+      "loc": "Materials and methods, Outcome measures"
+     },
+     {
+      "q": "The Geriatric Depression Scale Short Form (GDS-SF) assesses depressive symptoms using 15 questions",
+      "loc": "Materials and methods, Mental health"
+     },
+     {
+      "q": "Pre-to-post-intervention changes in quantitative outcome measures were analyzed using a two-way repeated measures ANOVA",
+      "loc": "Materials and methods, Analysis, Quantitative"
+     },
+     {
+      "q": "Semi-structured, open-ended 1:1 interviews were conducted and audio recorded via Zoom",
+      "loc": "Materials and methods, Qualitative data collection"
+     },
+     {
+      "q": "Semi-structured interviews were thematically analyzed using the computer software Dedoose Version 9.0.17",
+      "loc": "Materials and methods, Analysis, Qualitative"
+     }
+    ],
+    "theory": [
+     {
+      "q": "This pilot convergent parallel mixed-methods RCT was guided by the CONSORT 2010 statement: extension for pilot and feasibility trials",
+      "loc": "Materials and methods, Study design"
+     }
+    ],
+    "results": [
+     {
+      "q": "We observed an interaction (p = 0.012) for the Geriatric Depression Scale where the ACTIVE group decreased from pre-to-post intervention",
+      "loc": "Results, Mental health"
+     },
+     {
+      "q": "We observed an interaction (p = 0.014) for life-space mobility where the ACTIVE group increased from pre-to-post intervention",
+      "loc": "Results, Life-space mobility"
+     },
+     {
+      "q": "There were no differences between groups for daily steps and daily active energy expenditure measured by the accelerometer following the intervention compared to the CON",
+      "loc": "Results, Habitual physical activity levels"
+     },
+     {
+      "q": "There were no significant between or within-group differences for symptoms of anxiety and loneliness",
+      "loc": "Results, Mental health"
+     },
+     {
+      "q": "There were no between-group differences in nutrition risk",
+      "loc": "Results, Nutrition risk"
+     },
+     {
+      "q": "Attendance rates were 97% in the ACTIVE group",
+      "loc": "Results, Feasibility"
+     },
+     {
+      "q": "Overall, participants reported being either satisfied or very satisfied with the intervention 98% of the time.",
+      "loc": "Results, Feasibility"
+     },
+     {
+      "q": "Five overarching themes and eight sub-themes were identified related to perceptions, experiences, and feasibility of the program.",
+      "loc": "Results, Qualitative"
+     }
+    ],
+    "discussion": [
+     {
+      "q": "The program did not affect participants’ habitual PA levels but reduced depressive symptoms, improved life-space mobility, and had excellent adherence and acceptability.",
+      "loc": "Discussion"
+     },
+     {
+      "q": "Online exercise programs are viable service-delivery options, particularly when in-person programming is unavailable due to physical distance, space limitations, and/or public health measures encouraging reduced mobility to slow viral spread.",
+      "loc": "Discussion"
+     }
+    ],
+    "limitations": [
+     {
+      "q": "There are several limitations with our study; however, primarily, we acknowledge the small sample size.",
+      "loc": "Discussion"
+     },
+     {
+      "q": "The study was a pilot and, therefore, underpowered to determine if there was an interaction for our primary outcome.",
+      "loc": "Discussion"
+     },
+     {
+      "q": "Another limitation of the study includes a lack of blinding for our assessors and participants to group allocation.",
+      "loc": "Discussion"
+     },
+     {
+      "q": "Our study only included English-speaking individuals with internet access at home with a tablet, computer, or phone.",
+      "loc": "Discussion"
+     },
+     {
+      "q": "Future studies should attempt to include marginalized populations to improve generalizability with different language options, including subtitles.",
+      "loc": "Discussion"
+     }
+    ]
+   },
+   "abstract_claims": [
+    {
+     "q": "Exercise reduces these risks, but older adults have low levels of participation in physical activity and exercise.",
+     "loc": "Abstract, Background"
+    },
+    {
+     "q": "participants in the ACTIVE group reported reduced symptoms of depression",
+     "loc": "Abstract, Results"
+    },
+    {
+     "q": "improved life-space mobility",
+     "loc": "Abstract, Results"
+    },
+    {
+     "q": "The ACTIVE group had good adherence (97%) and acceptability (98%).",
+     "loc": "Abstract, Results"
+    },
+    {
+     "q": "Five themes were identified, including (1) Feasibility of the online exercise program; (2) Perceived health benefits and improvements; (3) Registered Kinesiologists and Physiotherapists contributed to perceived safety; (4) Social connectivity associated with synchronous/live delivery; and (5) Growing old gracefully and preventing disability.",
+     "loc": "Abstract, Results"
+    },
+    {
+     "q": "Our online exercise program was acceptable to older adults, had good adherence, reduced depression, and increased life space.",
+     "loc": "Abstract, Conclusions"
+    },
+    {
+     "q": "Participants reported improved functional and mental health benefits.",
+     "loc": "Abstract, Conclusions"
+    },
+    {
+     "q": "Further research is warranted to expand on these findings.",
+     "loc": "Abstract, Conclusions"
+    }
+   ],
+   "caveats": [
+    {
+     "q": "There were no differences between groups for daily steps and daily active energy expenditure measured by the accelerometer following the intervention compared to the CON",
+     "loc": "Results, Habitual physical activity levels"
+    },
+    {
+     "q": "However, a main effect of time was observed from pre-to-post intervention for daily steps and active energy expenditure (p < 0.05).",
+     "loc": "Results, Habitual physical activity levels"
+    },
+    {
+     "q": "One participant in the ACTIVE group withdrew from the intervention due to an injury not attributed to the intervention.",
+     "loc": "Results, Participants’ characteristics"
+    },
+    {
+     "q": "One participant in the CON group exceeded the 150 moderate-to-vigorous PA per week at baseline and, therefore, did not meet the eligibility criteria and was removed from the analysis.",
+     "loc": "Results, Participants’ characteristics"
+    },
+    {
+     "q": "Linear regression was used to impute missing data",
+     "loc": "Results, Participants’ characteristics"
+    },
+    {
+     "q": "At the two-month follow-up, the ACTIVE group showed no significant differences from post-intervention",
+     "loc": "Results, Habitual physical activity levels"
+    },
+    {
+     "q": "There were no significant between or within-group differences for symptoms of anxiety and loneliness",
+     "loc": "Results, Mental health"
+    },
+    {
+     "q": "There were no between-group differences in nutrition risk",
+     "loc": "Results, Nutrition risk"
+    },
+    {
+     "q": "However, a main effect of time was observed from pre-to-post intervention (p = 0.014).",
+     "loc": "Results, Nutrition risk"
+    },
+    {
+     "q": "indicating that our participants were at high nutrition risk at study entry",
+     "loc": "Results, Nutrition risk"
+    },
+    {
+     "q": "At the two-month follow-up, the ACTIVE group showed no significant differences in the SCREENII",
+     "loc": "Results, Nutrition risk"
+    },
+    {
+     "q": "Four participants reported being ‘somewhat satisfied’ between 1–4 times.",
+     "loc": "Results, Feasibility"
+    },
+    {
+     "q": "The qualitative data contradicted our quantitative findings",
+     "loc": "Results, Perceived health benefits and improvements"
+    },
+    {
+     "q": "Given the nature of the study, it was impossible to blind the participants or investigators to the intervention.",
+     "loc": "Materials and methods, Randomization, allocation concealment, and blinding"
+    },
+    {
+     "q": "A convenience sample size of 32 participants is aligned with previous online exercise pilot studies",
+     "loc": "Materials and methods, Sample size"
+    },
+    {
+     "q": "which had periods during which Public Health advised limiting close in-person interactions (stay home/lockdown) potentially affecting older persons mobility",
+     "loc": "Materials and methods, Study design"
+    },
+    {
+     "q": "Habitual PA did not change pre- to post-intervention or at the 2-month follow-up for the ACTIVE group.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "The program did not affect participants’ habitual PA levels",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Daily steps and daily active energy expenditure may not have changed due to the decreased level of PA in older adults during the quarantine period of COVID-19",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Most participants scored below five on the GAI-SF at pre-intervention, indicating the absence of clinically significant anxiety, which may have resulted in a floor effect.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "there were no between-group differences in these outcomes",
+     "loc": "Discussion"
+    },
+    {
+     "q": "However, participants’ SCREENII scores were categorized as high nutrition risk.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "In contrast, a few participants preferred to refrain from engaging in socialization",
+     "loc": "Discussion"
+    },
+    {
+     "q": "There are several limitations with our study; however, primarily, we acknowledge the small sample size.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "The study was a pilot and, therefore, underpowered to determine if there was an interaction for our primary outcome.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Another limitation of the study includes a lack of blinding for our assessors and participants to group allocation.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Our study only included English-speaking individuals with internet access at home with a tablet, computer, or phone.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "We did not see an effect of the intervention in the ACTIVE group on accelerometry-derived outcomes.",
+     "loc": "Conclusions"
+    }
+   ],
+   "overclaims": [],
+   "overclaims_unplaced": [],
+   "overclaims_unsettled": [
+    "Participants reported improved functional and mental health benefits."
+   ]
+  },
+  {
+   "id": "xiao2026",
+   "doi": "10.1371/journal.pone.0352173",
+   "title": "Effectiveness of exercise-based rehabilitation for depressive symptoms, anxiety, and health-related quality of life in adults with rheumatoid arthritis: A systematic review and meta-analysis of randomized controlled trials",
+   "volume": "21",
+   "journal": "PLOS One",
+   "notices": [],
+   "authors": [
+    "Xiao, Y.",
+    "Zhong, J.",
+    "Zhang, K.",
+    "Yang, X."
+   ],
+   "year": 2026,
+   "issue": "7",
+   "pages": "e0352173",
+   "issn": "1932-6203",
+   "crossref": "verified",
+   "quartile": "Q1 (SJR 2025, Multidisciplinary; not in Psychiatry and Mental Health)",
+   "source_basis": "full text",
+   "type": "Theoretical/Review",
+   "introduction": "The review aimed to evaluate the effects of structured exercise on depressive symptoms, anxiety and health-related quality of life in adults with rheumatoid arthritis. Where sufficient data were available, it also examined whether effects differed between conventional and mind-body exercise.",
+   "methodology": "Systematic review and meta-analysis of randomized controlled trials of adults with rheumatoid arthritis, conducted in accordance with PRISMA 2020. Two reviewers independently screened studies and extracted data. Searches ran to 26 November 2025, and only English-language articles were eligible. Random-effects meta-analyses used Hedges’ g in RevMan 5.4; risk of bias was assessed with RoB 2 and certainty of evidence with GRADE.",
+   "theory": "",
+   "results": "Fifteen trials with 1652 participants were included. Structured exercise was associated with lower depressive symptom scores (SMD = −0.49; P < 0.001), lower anxiety scores (SMD = −0.45; P < 0.001) and better QoL/HRQoL (SMD = 0.45; P = 0.001). Certainty was rated moderate for depressive symptoms and low for anxiety and HRQoL.",
+   "discussion": "The authors conclude that structured exercise is a reasonable adjunct to comprehensive RA care for depressive symptoms, anxiety and perceived health status. They state that it should not replace pharmacologic disease control or formal mental-health care when these are indicated, and that the evidence is promising but not definitive.",
+   "limitations": "The authors note that the trials were generally small and varied in intervention, comparator and outcome instruments, and that most outcomes were self-reported with blinding usually infeasible. Few studies per outcome limited subgroup precision and publication-bias assessment. Most analyses used immediate post-intervention outcomes, so durability is uncertain. Only English-language articles were included, which may have introduced language bias.",
+   "evidence": {
+    "introduction": [
+     {
+      "q": "Accordingly, this systematic review and meta-analysis aimed to evaluate the effects of structured exercise interventions on depressive symptoms, anxiety, and HRQoL in adults with RA.",
+      "loc": "Introduction"
+     },
+     {
+      "q": "Where sufficient data were available, we further examined whether these effects differed between conventional exercise and mind-body exercise interventions.",
+      "loc": "Introduction"
+     }
+    ],
+    "methodology": [
+     {
+      "q": "This systematic review and meta-analysis was conducted and reported in accordance with the PRISMA 2020 statement",
+      "loc": "Methods, Protocol and reporting"
+     },
+     {
+      "q": "(1) randomized controlled trials; (2) adults aged 18 years or older with RA",
+      "loc": "Methods, Eligibility criteria"
+     },
+     {
+      "q": "We systematically searched PubMed, Embase, the Cochrane Central Register of Controlled Trials (CENTRAL), Web of Science Core Collection, Scopus, PsycINFO, and an additional EBSCOhost search from database inception to 26 November 2025.",
+      "loc": "Methods, Search strategy"
+     },
+     {
+      "q": "Only articles published in English were eligible for inclusion.",
+      "loc": "Methods, Search strategy"
+     },
+     {
+      "q": "Two reviewers independently screened titles and abstracts, assessed full texts for eligibility, and extracted data using predefined forms.",
+      "loc": "Methods, Study selection and data extraction"
+     },
+     {
+      "q": "Risk of bias was assessed at the outcome level using the Cochrane Risk of Bias 2 tool (RoB 2) for randomized trials",
+      "loc": "Methods, Risk of bias and certainty of evidence"
+     },
+     {
+      "q": "The certainty of evidence for each pooled outcome was assessed using the GRADE framework",
+      "loc": "Methods, Risk of bias and certainty of evidence"
+     },
+     {
+      "q": "Random-effects meta-analyses were conducted using Review Manager software (RevMan, version 5.4)",
+      "loc": "Methods, Statistical analysis"
+     }
+    ],
+    "theory": [],
+    "results": [
+     {
+      "q": "The 15 included trials involved 1652 participants",
+      "loc": "Results, Study and participant characteristics"
+     },
+     {
+      "q": "In a random-effects meta-analysis, exercise was associated with lower depressive symptom scores than non-exercise control conditions, expressed as Hedges’g standardized mean difference (SMD = −0.49; 95% CI, −0.70 to −0.28; P < 0.001).",
+      "loc": "Results, Effects on depressive symptoms"
+     },
+     {
+      "q": "with no statistically significant subgroup difference (Chi² = 0.24; P = 0.62)",
+      "loc": "Results, Effects on depressive symptoms"
+     },
+     {
+      "q": "exercise was associated with lower anxiety scores than control conditions, expressed as Hedges’g standardized mean difference (SMD = −0.45; 95% CI, −0.65 to −0.25; P < 0.001).",
+      "loc": "Results, Effects on anxiety"
+     },
+     {
+      "q": "exercise was associated with significantly improved QoL/HRQoL compared with control conditions, expressed as Hedges’g standardized mean difference (SMD = 0.45; 95% CI, 0.18 to 0.71; P = 0.001).",
+      "loc": "Results, Effects on health-related quality of life"
+     },
+     {
+      "q": "No statistically significant subgroup difference was observed between conventional exercise and mind-body exercise for QoL/HRQoL (Chi² = 0.26; P = 0.61)",
+      "loc": "Results, Effects on health-related quality of life"
+     },
+     {
+      "q": "the certainty of evidence was rated as moderate for depressive symptoms and low for anxiety and HRQoL",
+      "loc": "Results, Small-study effects, adverse events, and certainty of evidence"
+     }
+    ],
+    "discussion": [
+     {
+      "q": "Exercise should be integrated into comprehensive RA care where appropriate, rather than viewed as a substitute for pharmacologic disease control or formal mental-health care when these are indicated.",
+      "loc": "Discussion"
+     },
+     {
+      "q": "Taken together, these findings support structured exercise as a reasonable adjunctive strategy for improving depressive symptoms, anxiety, and perceived health status in adults with RA.",
+      "loc": "Discussion"
+     },
+     {
+      "q": "The evidence is promising but not definitive.",
+      "loc": "Discussion"
+     }
+    ],
+    "limitations": [
+     {
+      "q": "The included trials were generally small and varied substantially in intervention characteristics, comparator conditions, and outcome instruments.",
+      "loc": "Discussion, Limitations"
+     },
+     {
+      "q": "Most psychological and HRQoL outcomes were self-reported, and participant blinding was usually infeasible",
+      "loc": "Discussion, Limitations"
+     },
+     {
+      "q": "The number of studies contributing to each outcome was limited, reducing the precision of subgroup analyses and limiting the ability to assess publication bias, particularly for anxiety and HRQoL.",
+      "loc": "Discussion, Limitations"
+     },
+     {
+      "q": "Most analyses used immediate post-intervention outcomes because long-term follow-up data were limited; therefore, the durability of benefit remains uncertain.",
+      "loc": "Discussion, Limitations"
+     },
+     {
+      "q": "This restriction may have introduced language bias and is acknowledged as a limitation.",
+      "loc": "Methods, Protocol and reporting"
+     },
+     {
+      "q": "Future RA exercise trials should prespecify psychological and HRQoL outcomes, enroll samples large enough to detect clinically meaningful differences, report complete arm-level data at each time point, and include longer follow-up.",
+      "loc": "Discussion"
+     },
+     {
+      "q": "Future studies should also measure potential mediators, such as self-efficacy, fear of movement, sleep, fatigue, and activity participation, to clarify how exercise may influence psychological and quality-of-life outcomes in RA.",
+      "loc": "Discussion"
+     }
+    ]
+   },
+   "abstract_claims": [
+    {
+     "q": "Compared with non-exercise controls, structured exercise reduced depressive symptoms",
+     "loc": "Abstract, Results"
+    },
+    {
+     "q": "Low-certainty evidence suggested reductions in anxiety",
+     "loc": "Abstract, Results"
+    },
+    {
+     "q": "improvements in quality of life or health-related quality of life",
+     "loc": "Abstract, Results"
+    },
+    {
+     "q": "Subgroup analyses showed no statistically significant difference between conventional exercise and mind-body exercise.",
+     "loc": "Abstract, Results"
+    },
+    {
+     "q": "Structured exercise probably reduces depressive symptoms and may reduce anxiety and improve quality of life in adults with rheumatoid arthritis, supporting its use as an adjunct to comprehensive care.",
+     "loc": "Abstract, Conclusions"
+    },
+    {
+     "q": "Larger, better-reported trials with longer follow-up are needed to clarify durability, clinical importance, and optimal delivery.",
+     "loc": "Abstract, Conclusions"
+    }
+   ],
+   "caveats": [
+    {
+     "q": "Although back-translation and minimal clinically important difference or minimally important difference thresholds can aid clinical interpretation, such interpretation was limited in this review",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Although the pooled effects were generally favorable, their clinical interpretation depends on the measurement instruments used and the availability of clinically meaningful thresholds.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Moreover, most trials did not report the proportion of participants achieving clinically meaningful improvement.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "However, current evidence is insufficient to identify the most effective exercise modality, dose, supervision strategy, or delivery format.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Depression outcomes were measured using different instruments, and minimally important change thresholds were not consistently reported in the primary trials.",
+     "loc": "Results, Effects on depressive symptoms"
+    },
+    {
+     "q": "Statistical heterogeneity was moderate (I² = 42%).",
+     "loc": "Results, Effects on depressive symptoms"
+    },
+    {
+     "q": "However, small-study effects and publication bias could not be excluded because only 11 trials contributed to this outcome, limiting the reliability of visual assessment and the power of formal asymmetry testing.",
+     "loc": "Results, Small-study effects, adverse events, and certainty of evidence"
+    },
+    {
+     "q": "Funnel plots for anxiety and HRQoL were presented descriptively only, as fewer than 10 studies contributed to these outcomes.",
+     "loc": "Results, Small-study effects, adverse events, and certainty of evidence"
+    },
+    {
+     "q": "Formal tests for funnel plot asymmetry were not performed because the number of studies remained small",
+     "loc": "Methods, Statistical analysis"
+    },
+    {
+     "q": "Several trials were small, with six trials enrolling fewer than 60 participants in total, which should be considered when interpreting the precision and robustness of the pooled estimates.",
+     "loc": "Results, Study and participant characteristics"
+    },
+    {
+     "q": "Adverse-event information was available for 11 trials, although the level of reporting detail varied.",
+     "loc": "Results, Small-study effects, adverse events, and certainty of evidence"
+    },
+    {
+     "q": "The main reasons for downgrading were risk of bias related to deviations from intended interventions and self-reported outcome measurement, imprecision due to small sample sizes and few contributing trials, and limited ability to assess publication bias.",
+     "loc": "Results, Small-study effects, adverse events, and certainty of evidence"
+    },
+    {
+     "q": "Only seven studies provided global or summary HRQoL data suitable for quantitative pooling, and these studies used heterogeneous measures",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Interpretation of the HRQoL findings is influenced by the limited number of contributing studies and heterogeneity in measurement instruments.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Thus, the HRQoL findings are best understood as supportive evidence that structured exercise may improve perceived health status, rather than definitive evidence that all quality-of-life domains improve consistently.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Accordingly, the pooled estimates should be understood as average effects of structured exercise programs rather than evidence for a single optimal prescription.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "The absence of statistically significant subgroup differences between conventional and mind-body exercise should not be interpreted as evidence of equivalence.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Both categories included diverse interventions, and subgroup analyses were limited by small study numbers and within-category heterogeneity.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "These findings support flexibility in exercise selection but do not establish that all exercise formats are interchangeable.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Planned subgroup analyses compared intervention modality, categorized as conventional exercise or mind-body exercise, and were performed only when at least two studies were available in each subgroup.",
+     "loc": "Methods, Statistical analysis"
+    },
+    {
+     "q": "Meta-regression was not conducted because the number of studies per outcome was insufficient and relevant covariates were inconsistently reported.",
+     "loc": "Methods, Statistical analysis"
+    },
+    {
+     "q": "Because exercise interventions are behavioral in nature, blinding of participants and intervention personnel was generally infeasible.",
+     "loc": "Results, Risk of bias"
+    },
+    {
+     "q": "In several studies, reporting detail was insufficient to fully judge allocation procedures or prespecification of outcomes.",
+     "loc": "Results, Risk of bias"
+    },
+    {
+     "q": "Incomplete reporting of participant flow, adverse events, arm-level outcome data, and predefined or protocol-specified outcomes in the primary trials also limited verification and quantitative synthesis for some outcomes.",
+     "loc": "Discussion, Limitations"
+    },
+    {
+     "q": "However, mechanistic variables were rarely measured directly in the included trials.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "These explanations should therefore be regarded as hypotheses rather than confirmed causal pathways.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "The review protocol was retrospectively registered with INPLASY (INPLASY202610082) after completion of the database search",
+     "loc": "Methods, Protocol and reporting"
+    },
+    {
+     "q": "Two deviations from the registered protocol should be noted.",
+     "loc": "Methods, Protocol and reporting"
+    },
+    {
+     "q": "Grey literature sources were not systematically searched.",
+     "loc": "Methods, Search strategy"
+    },
+    {
+     "q": "Exercise should not be viewed as a substitute for pharmacologic disease control or formal mental-health care when these are indicated.",
+     "loc": "Conclusions"
+    },
+    {
+     "q": "Current evidence does not establish the superiority of any specific exercise modality or delivery format.",
+     "loc": "Conclusions"
+    }
+   ],
+   "overclaims": [],
+   "overclaims_unplaced": [],
+   "overclaims_unsettled": []
+  },
+  {
+   "id": "souza2025",
+   "doi": "10.1371/journal.pone.0314846",
+   "title": "Effectiveness of aerobic physical exercise on depression symptoms in adults: A protocol for developing a systematic review and meta-analysis of randomized clinical trials",
+   "notices": [],
+   "authors": [
+    "de Souza, L. N.",
+    "de Araújo, S. M.",
+    "da Silva Paiva, E.",
+    "Eliege da Silva, A.",
+    "da Costa Neto, J. F.",
+    "Lima de Assis, J. C.",
+    "dos Santos, I. K.",
+    "Mesquita Soares, T. C.",
+    "Pinto, E. F.",
+    "da Silva Júnior, R. R.",
+    "Knackfuss, M. I."
+   ],
+   "year": 2025,
+   "journal": "PLOS One",
+   "volume": "20",
+   "issue": "6",
+   "pages": "e0314846",
+   "issn": "1932-6203",
+   "crossref": "verified",
+   "quartile": "Q1 (SJR 2025, Multidisciplinary; not in Psychiatry and Mental Health)",
+   "source_basis": "full text",
+   "type": "Theoretical/Review",
+   "introduction": "The paper presents a protocol for a systematic review with meta-analysis. It aims to guide a future review of the effects of aerobic exercise on reducing depression levels in adults.",
+   "methodology": "Protocol for a systematic review and meta-analysis of randomized clinical trials in adults (>18 years) with depression, and registered in PROSPERO. The search will cover BVS, Cochrane Library, Embase, Epistemonikos, PubMed and SPORTDiscus, with no restriction on date or language. Two reviewers will select studies independently.",
+   "theory": "",
+   "results": "",
+   "discussion": "The authors say aerobic exercise has been shown to be a potential depression treatment, comparable to various therapeutic approaches, including medication, psychotherapy and other exercise-based therapies. They expect high heterogeneity among the studies to be included.",
+   "limitations": "The authors anticipate small sample sizes, unclear mechanisms, varied intensity protocols and high heterogeneity among included studies as challenges for the future review.",
+   "evidence": {
+    "introduction": [
+     {
+      "q": "This protocol proposal aims to guide a future systematic review that will seek to answer the following question: what are the effects of aerobic exercise on reducing depression levels in adults?",
+      "loc": "Introduction"
+     }
+    ],
+    "methodology": [
+     {
+      "q": "The study is a protocol for a systematic review, which will follow the guidelines developed by Page et al.",
+      "loc": "Methods"
+     },
+     {
+      "q": "registered in the International Prospective Register of Systematic Reviews - PROSPERO, number: CRD42024592700",
+      "loc": "Methods"
+     },
+     {
+      "q": "Participants will include adults (>18 years) diagnosed with depression",
+      "loc": "Methods, Eligibility criteria"
+     },
+     {
+      "q": "Eligible study types will be randomized clinical trials (RCTs), no restriction of language",
+      "loc": "Methods, Eligibility criteria"
+     },
+     {
+      "q": "The intervention will focus on aerobic exercise (e.g., walking, running), with comparators including other interventions or control groups.",
+      "loc": "Methods, Eligibility criteria"
+     },
+     {
+      "q": "The primary outcome will be depressive symptoms",
+      "loc": "Methods, Eligibility criteria"
+     },
+     {
+      "q": "The search will be conducted in the following databases: BVS, Cochrane library, Embase, Epistemonikos, PubMed and SPORTDiscus.",
+      "loc": "Methods, Search strategy"
+     },
+     {
+      "q": "There will be no restrictions on publication date or language.",
+      "loc": "Methods, Search strategy"
+     },
+     {
+      "q": "After collecting the described data",
+      "loc": "Methods, Data extraction"
+     },
+     {
+      "q": "Studies will be selected independently by two researchers using the Rayyan ‘QCRI’ software.",
+      "loc": "Abstract, Methods"
+     },
+     {
+      "q": "A third senior and expert reviewer (I.K.S) will review any articles in case of disagreement",
+      "loc": "Methods, Eligibility criteria"
+     },
+     {
+      "q": "The methodological quality assessment of the included studies will be carried out by two independent reviewers (L.N.S; M.I.K) using the TESTEX tool",
+      "loc": "Methods, Risk of bias assessment"
+     },
+     {
+      "q": "the Cochrane Risk of Bias 2.0 tool (RoB 2.0) will be used to assess the risk of bias in the included studies",
+      "loc": "Methods, Risk of bias assessment"
+     },
+     {
+      "q": "The meta-analysis will be conducted using fixed-effect or random-effects models, depending on the heterogeneity among the included studies.",
+      "loc": "Methods, Data synthesis"
+     },
+     {
+      "q": "RevMan version 5.3.5 will be used for all analyses, including meta-analysis if feasible",
+      "loc": "Methods, Data synthesis"
+     }
+    ],
+    "theory": [],
+    "results": [],
+    "discussion": [
+     {
+      "q": "Aerobic exercise has been shown to be a potential strategy for treating depression in different populations, being comparable to various therapeutic approaches, including medication, psychotherapy, and other exercise-based therapies.",
+      "loc": "Discussion"
+     },
+     {
+      "q": "one of the main methodological challenges expected in the conduction of this review is the high heterogeneity among the studies to be included",
+      "loc": "Discussion"
+     }
+    ],
+    "limitations": [
+     {
+      "q": "Anticipated limitations and challenges include the following issues: the use of small sample sizes, lack of clarity regarding the specific mechanisms through which exercise contributes to the improvement of depression, and variations in the intensity protocols adopted.",
+      "loc": "Discussion"
+     }
+    ]
+   },
+   "abstract_claims": [
+    {
+     "q": "Studies suggest that aerobic exercise can improve mental health and reduce depression symptoms, despite variations in exercise type and intensity.",
+     "loc": "Abstract, Background"
+    },
+    {
+     "q": "It is expected that the systematic review following this protocol will identify the effective dose-response to reduce depression levels and provide an understanding of the mechanisms through which aerobic exercise influences depression.",
+     "loc": "Abstract, Conclusions"
+    }
+   ],
+   "caveats": [
+    {
+     "q": "Although the benefits of aerobic exercise in improving depressive symptoms are well documented, the existing literature shows high variability in terms of modality, intensity, frequency, and duration of exercise.",
+     "loc": "Introduction"
+    },
+    {
+     "q": "Furthermore, the underlying mechanisms of these effects are still not fully understood",
+     "loc": "Introduction"
+    },
+    {
+     "q": "However, many existing systematic reviews and meta-analyses have methodological limitations that prevent definitive conclusions.",
+     "loc": "Introduction"
+    },
+    {
+     "q": "However, the findings did not allow for the precise establishment of a dose-response relationship due to variability in the study protocols analyzed, particularly regarding frequency, duration, and weekly volume of activity",
+     "loc": "Introduction"
+    },
+    {
+     "q": "However, the analysis of these exercises should not be based solely on perceived effort or heart rate",
+     "loc": "Introduction"
+    },
+    {
+     "q": "An analysis of exercise intensity in studies indicated that although more intense activities may offer additional benefits, the potential gains for reducing depressive symptoms are not limited to high-intensity levels.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Given the gaps in the literature that have yet to establish an optimal dose-response of physical exercise in the management of depression",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Although exercise is not yet considered an essential component on its own",
+     "loc": "Discussion"
+    },
+    {
+     "q": "The systematic review studies conducted so far, although following rigorous methodologies and providing relevant contributions to the scientific field, present some methodological limitations.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "In addition, one of the main methodological challenges expected in the conduction of this review is the high heterogeneity among the studies to be included.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Anticipated limitations and challenges include the following issues: the use of small sample sizes, lack of clarity regarding the specific mechanisms through which exercise contributes to the improvement of depression, and variations in the intensity protocols adopted.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Only studies utilizing validated depression assessment scales will be included",
+     "loc": "Methods, Eligibility criteria"
+    },
+    {
+     "q": "excluding individuals with chronic degenerative diseases or other associated severe psychiatric disorders",
+     "loc": "Methods, Eligibility criteria"
+    },
+    {
+     "q": "ongoing clinical trials with preliminary results will be excluded",
+     "loc": "Methods, Eligibility criteria"
+    },
+    {
+     "q": "studies involving populations with non-communicable chronic diseases (e.g., hypertension, diabetes), case reports, preprints, narrative and systematic reviews, and observational studies will not be considered for inclusion",
+     "loc": "Methods, Eligibility criteria"
+    },
+    {
+     "q": "a funnel plot, which will be generated only if at least 10 studies are included in the meta-analysis",
+     "loc": "Methods, Data synthesis"
+    },
+    {
+     "q": "excluding blinding domains due to the nature of physical exercise interventions",
+     "loc": "Methods, Sensitivity analysis"
+    }
+   ],
+   "overclaims": [],
+   "overclaims_unplaced": [],
+   "overclaims_unsettled": [
+    "It is expected that the systematic review following this protocol will identify the effective dose-response to reduce depression levels and provide an understanding of the mechanisms through which aerobic exercise influences depression."
+   ]
+  },
+  {
+   "id": "chen2026",
+   "doi": "10.3389/fpsyg.2026.1704433",
+   "title": "Physical activity and depressive symptoms among college students: positive mental health as a mediator",
+   "journal": "Frontiers in Psychology",
+   "year": 2026,
+   "notices": [],
+   "authors": [
+    "Chen, Y.",
+    "Zhang, J."
+   ],
+   "volume": "17",
+   "issn": "1664-1078",
+   "crossref": "verified",
+   "quartile": "Q1 (SJR 2025, Psychology (miscellaneous); not in Psychiatry and Mental Health)",
+   "source_basis": "full text",
+   "type": "Quantitative",
+   "introduction": "The study tests whether positive mental health mediates the link between physical activity and depressive symptoms among college students. Depressive symptoms are described as a pressing global public health challenge and the most prevalent mental health disorder among college students.",
+   "methodology": "Cross-sectional online survey of 3,140 Chinese college students, recruited by convenience sampling between May and June 2025 and aged 18–27. Measures were the PARS-3 (α = 0.634). Analysis used PROCESS Model 4 with 5,000 bootstrap resamples, controlling for age, gender, grade and educational level.",
+   "theory": "The study is anchored in Self-Determination Theory, which names autonomy, competence and relatedness as three innate psychological needs critical to high-quality motivation and psychological well-being.",
+   "results": "Physical activity was significantly associated with depressive symptoms in total (c = −0.015, p < 0.01). The indirect effect through positive mental health was significant (ab = −0.007, 95% CI [−0.010, −0.004]), while the direct effect was not significant (c' = −0.008, p = 0.080). Positive mental health was negatively associated with depressive symptoms (b = −0.250, p < 0.001).",
+   "discussion": "The authors read the results as a small indirect association consistent with a mediation pattern, with positive mental health as a possible mediator. They propose positive mental health as a useful conceptual focus for future research and a multi-tiered strategy for colleges to integrate physical activity into mental health promotion.",
+   "limitations": "The authors note that the cross-sectional design prevents confirmation of causal sequences, that self-reported positive mental health may not capture culturally distinct well-being, that PARS-3 reliability was modest (α = 0.634), that convenience sampling limits generalizability. Suggested directions include cross-cultural validation.",
+   "evidence": {
+    "introduction": [
+     {
+      "q": "This study aimed to explore whether positive mental health mediates the relationship between physical activity and depressive symptoms.",
+      "loc": "Abstract (Introduction) and Introduction"
+     },
+     {
+      "q": "Depressive symptoms constitute a pressing global public health challenge and stand as the most prevalent mental health disorder among college students",
+      "loc": "Introduction"
+     },
+     {
+      "q": "Hypothesis 1: Physical activity is negatively correlated with depressive symptoms among college students.",
+      "loc": "Theoretical background and hypotheses > Physical activity and depressive symptoms"
+     },
+     {
+      "q": "Hypothesis 2: Positive mental health mediates the relationship between physical activity and depressive symptoms.",
+      "loc": "Theoretical background and hypotheses > Positive mental health as a mediator"
+     }
+    ],
+    "methodology": [
+     {
+      "q": "This cross-sectional study employed a convenience sampling method to collect data from Chinese college students via the Wenjuanxing online survey platform",
+      "loc": "Methods > Participants and procedures"
+     },
+     {
+      "q": "between May and June 2025",
+      "loc": "Methods > Participants and procedures"
+     },
+     {
+      "q": "Participants were aged 18–27 years",
+      "loc": "Methods > Participants and procedures"
+     },
+     {
+      "q": "The final analytic sample comprised 3,140 participants from 22 provinces in China",
+      "loc": "Methods > Participants and procedures"
+     },
+     {
+      "q": "The current study found the measure to be highly consistent (α = 0.935).",
+      "loc": "Methods > Measures > Depressive symptoms"
+     },
+     {
+      "q": "The scale demonstrated excellent reliability in this study (α = 0.95)",
+      "loc": "Methods > Measures > Positive mental health"
+     },
+     {
+      "q": "In the present study, the PARS-3 demonstrated a Cronbach’s alpha coefficient of α = 0.634.",
+      "loc": "Methods > Measures > Physical activity"
+     },
+     {
+      "q": "A mediation analysis was conducted using Model 4 from the PROCESS macro (Hayes, 2018) in SPSS 29.0",
+      "loc": "Results > Positive mental health as a mediator"
+     },
+     {
+      "q": "The significance of indirect effects was tested using a bias-corrected bootstrap approach with 5,000 resamples.",
+      "loc": "Methods > Statistical analysis"
+     },
+     {
+      "q": "This analysis controlled for age, gender, grade, and educational level",
+      "loc": "Methods > Statistical analysis"
+     },
+     {
+      "q": "The Patient Health Questionnaire-9 (PHQ-9), developed by Kroenke",
+      "loc": "Methods, Depressive symptoms (added by reviewer step: true number in cell, quote was missing)"
+     }
+    ],
+    "theory": [
+     {
+      "q": "the relationship between physical activity, positive mental health, and depressive symptoms among college students is anchored in Self-Determination Theory (SDT), a macro-theory of motivation and personality that identifies autonomy, competence, and relatedness as three innate psychological needs critical to high-quality motivation and psychological well-being",
+      "loc": "Theoretical background and hypotheses > Theoretical framework"
+     }
+    ],
+    "results": [
+     {
+      "q": "The total effect of physical activity on depressive symptoms (the c path) was significant, c = −0.015, p < 0.01, 95% CI [−0.024, −0.006].",
+      "loc": "Results > Positive mental health as a mediator"
+     },
+     {
+      "q": "The direct effect of physical activity on depressive symptoms (the c’ path) became non-significant, c’ = −0.008, p = 0.080",
+      "loc": "Results > Positive mental health as a mediator"
+     },
+     {
+      "q": "The indirect effect (a × b) through positive mental health was significant, ab = −0.007, 95% CI [−0.010, −0.004].",
+      "loc": "Results > Positive mental health as a mediator"
+     },
+     {
+      "q": "Positive mental health, in turn, was negatively associated with depressive symptoms (the b path), b = −0.250, p < 0.001, 95% CI [−0.284, −0.216].",
+      "loc": "Results > Positive mental health as a mediator"
+     },
+     {
+      "q": "604 students (19.24%) were identified as having depressive symptoms.",
+      "loc": "Results > Preliminary analyses"
+     }
+    ],
+    "discussion": [
+     {
+      "q": "The results suggest a small indirect association consistent with a mediation pattern, where positive mental health may function as a mediator between physical activity and depressive symptoms.",
+      "loc": "Discussion (opening paragraph)"
+     },
+     {
+      "q": "Consequently, our primary theoretical contribution lies in proposing positive mental health as a useful conceptual focus for future research.",
+      "loc": "Discussion"
+     },
+     {
+      "q": "Therefore, we propose a multi-tiered strategy for colleges to integrate physical activity into mental health promotion",
+      "loc": "Discussion"
+     }
+    ],
+    "limitations": [
+     {
+      "q": "the cross-sectional design introduces temporal ambiguity in the mediation pathways, as it prevents confirmation of causal sequences.",
+      "loc": "Limitations and future research"
+     },
+     {
+      "q": "self-reported positive mental health measures may not fully capture culturally distinct manifestations of well-being in Chinese students",
+      "loc": "Limitations and future research"
+     },
+     {
+      "q": "the internal consistency of the PARS-3 scale was modest (α = 0.634), potentially affecting measurement precision.",
+      "loc": "Limitations and future research"
+     },
+     {
+      "q": "the use of a convenience sampling frame limits the generalizability of the results",
+      "loc": "Limitations and future research"
+     },
+     {
+      "q": "the variance in positive mental health explained by physical activity and the covariates in our model was low",
+      "loc": "Limitations and future research"
+     },
+     {
+      "q": "Future research should therefore prioritize cross-cultural validation.",
+      "loc": "Limitations and future research"
+     },
+     {
+      "q": "R 2 = 0.014 for positive mental health",
+      "loc": "Discussion (added by reviewer step: true number in cell, quote was missing)"
+     }
+    ]
+   },
+   "abstract_claims": [
+    {
+     "q": "Numerous studies confirm that physical activity alleviates depressive symptoms in college students, but the underlying mechanisms remain unclear.",
+     "loc": "Abstract (Introduction)"
+    },
+    {
+     "q": "Results showed 69.39% of participants had low physical activity, and 19.24% reported clinically significant depressive symptoms.",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "The findings showed significant correlations among the three variables, with positive mental health strongly associated with reduced depressive symptoms.",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "Bootstrap mediation analysis (5,000 iterations) confirmed a mediating role of positive mental health.",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "This study advances theoretical understanding by identifying positive mental health as one possible pathway linking physical activity to better mental health outcomes.",
+     "loc": "Abstract (Discussion)"
+    },
+    {
+     "q": "Due to the effect is small, the results should be interpreted cautiously.",
+     "loc": "Abstract (Discussion)"
+    },
+    {
+     "q": "The findings provide conceptual support for integrating positive mental health promotion into physical activity-based interventions targeting college students’ depressive symptoms, with no causal inferences implied due to the cross-sectional design.",
+     "loc": "Abstract (Discussion)"
+    }
+   ],
+   "caveats": [
+    {
+     "q": "While this value falls below the conventional threshold of 0.7 for confirmatory research",
+     "loc": "Methods > Measures > Physical activity"
+    },
+    {
+     "q": "This level of internal consistency could potentially attenuate observed correlations and mediation effects, possibly leading to an underestimation of the true relationships under investigation.",
+     "loc": "Methods > Measures > Physical activity"
+    },
+    {
+     "q": "Alternatively, the measurement error introduced might act as a source of noise, complicating the interpretation of smaller effect sizes.",
+     "loc": "Methods > Measures > Physical activity"
+    },
+    {
+     "q": "It is noteworthy that this significant a path was identified within a model that explains a limited portion of variance in the mediator",
+     "loc": "Results > Positive mental health as a mediator"
+    },
+    {
+     "q": "The direct effect of physical activity on depressive symptoms (the c’ path) became non-significant",
+     "loc": "Results > Positive mental health as a mediator"
+    },
+    {
+     "q": "Although the unstandardized effect size appears numerically small, it represents a meaningful relationship when considered in context",
+     "loc": "Results > Positive mental health as a mediator"
+    },
+    {
+     "q": "this indirect effect is small in magnitude",
+     "loc": "Results > Sensitivity analysis"
+    },
+    {
+     "q": "The results suggest a small indirect association consistent with a mediation pattern, where positive mental health may function as a mediator",
+     "loc": "Discussion (opening paragraph)"
+    },
+    {
+     "q": "Furthermore, this study suggests a small indirect association consistent with a mediation pattern between physical activity and depressive symptoms via positive mental health, and this indirect effect is small in magnitude",
+     "loc": "Discussion"
+    },
+    {
+     "q": "The results of the mediation analysis indicated that physical activity was not directly associated with depressive symptoms.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Positive mental health plays a modest mediating role in this process, although the indirect effect size is relatively small.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "They reveal a weak indirect association consistent with the existence of a mediating relationship between physical activity and depressive symptoms among college students.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Although the effect is statistically significant, the indirect effect size",
+     "loc": "Discussion"
+    },
+    {
+     "q": "is small and likely of limited clinical relevance at the individual level; any population-level claims are speculative and require dedicated intervention and longitudinal studies in the future.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "While the unstandardized indirect effect",
+     "loc": "Discussion"
+    },
+    {
+     "q": "may appear modest at the individual level, its public health implications warrant consideration.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "For instance, assuming a linear relationship, if a campus-wide intervention increased physical activity levels across the student population, the mediated effect through positive mental health could contribute to a measurable decrease",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Although the data were collected from Chinese college students, the findings hold broader practical implications",
+     "loc": "Discussion"
+    },
+    {
+     "q": "the cross-sectional design introduces temporal ambiguity in the mediation pathways, as it prevents confirmation of causal sequences.",
+     "loc": "Limitations and future research"
+    },
+    {
+     "q": "self-reported positive mental health measures may not fully capture culturally distinct manifestations of well-being in Chinese students",
+     "loc": "Limitations and future research"
+    },
+    {
+     "q": "Third, the internal consistency of the PARS-3 scale was modest (α = 0.634), potentially affecting measurement precision.",
+     "loc": "Limitations and future research"
+    },
+    {
+     "q": "Fourth, the use of a convenience sampling frame limits the generalizability of the results",
+     "loc": "Limitations and future research"
+    },
+    {
+     "q": "the variance in positive mental health explained by physical activity and the covariates in our model was low",
+     "loc": "Limitations and future research"
+    },
+    {
+     "q": "The applicability of the proposed mediation model to other populations requires verification.",
+     "loc": "Limitations and future research"
+    },
+    {
+     "q": "as the sample consisted exclusively of Chinese university students, the cultural specificity of the findings must be considered.",
+     "loc": "Limitations and future research"
+    },
+    {
+     "q": "This study provides evidence consistent with a mediating role of positive mental health between physical activity and depressive symptoms among college students.",
+     "loc": "Conclusion"
+    },
+    {
+     "q": "While the mediated effect is modest in magnitude, this finding holds both theoretical and preventive significance.",
+     "loc": "Conclusion"
+    },
+    {
+     "q": "Future experimental and longitudinal research is needed to establish causality",
+     "loc": "Conclusion"
+    },
+    {
+     "q": "Due to the limitations of this study, the research results should be interpreted with caution.",
+     "loc": "Conclusion"
+    }
+   ],
+   "overclaims": [
+    {
+     "field": "discussion",
+     "text": "The authors read the results as a small indirect association consistent with a mediation pattern, with positive mental health as a possible mediator.",
+     "abstract": "Bootstrap mediation analysis (5,000 iterations) confirmed a mediating role of positive mental health.",
+     "body": "The results suggest a small indirect association consistent with a mediation pattern, where positive mental health may function as a mediator between physical activity and depressive symptoms.",
+     "body_loc": ""
+    }
+   ],
+   "overclaims_unplaced": [],
+   "overclaims_unsettled": [
+    "The findings showed significant correlations among the three variables, with positive mental health strongly associated with reduced depressive symptoms.",
+    "The findings provide conceptual support for integrating positive mental health promotion into physical activity-based interventions targeting college students’ depressive symptoms, with no causal inferences implied due to the cross-sectional design."
+   ]
+  },
+  {
+   "id": "zalewska2023",
+   "doi": "10.3390/jcm12072541",
+   "title": "A Pilot Cross-Sectional Study on the Level of Depression and Physical Activity among Students in Poland and Portugal in the Second Year of the COVID-19 Pandemic",
+   "notices": [],
+   "authors": [
+    "Zalewska, A.",
+    "Gałczyk, M.",
+    "Sobolewski, M.",
+    "Fernandes, H."
+   ],
+   "year": 2023,
+   "journal": "Journal of Clinical Medicine",
+   "volume": "12",
+   "issue": "7",
+   "pages": "2541",
+   "issn": "2077-0383",
+   "crossref": "verified",
+   "quartile": "Q1 (SJR 2023, Medicine (miscellaneous); not in Psychiatry and Mental Health)",
+   "source_basis": "full text",
+   "type": "Quantitative",
+   "introduction": "The study aimed to make a preliminary assessment of depression rates, physical activity levels and the link between them among students in Poland and Portugal in the further year of the COVID-19 pandemic. It notes that restrictions have largely led to a decline in daily physical activity.",
+   "methodology": "Online cross-sectional survey in October 2022 of 398 students (229 from Poland, 169 from Portugal) aged 17 to 26, distributed through a Google form link on e-learning platforms and Facebook groups. Depression was measured with the Beck Depression Inventory and physical activity with an abbreviated IPAQ, each in Polish and Portuguese. Analysis used Mann–Whitney, chi-square, Spearman correlation and Kruskal–Wallis tests.",
+   "theory": "",
+   "results": "Moderate depression affected 20–35% of respondents. BDI scores did not differ significantly between the two countries for men or women. Portuguese women showed significantly lower intensive-effort activity (p = 0.0039). Among Polish women, the only significant correlation with depression was very weak, for walking (rS = −0.21, p = 0.0155).",
+   "discussion": "The authors report a tendency for depression severity to fall as physical activity rises, with a stronger effect in men. They state that there are not many statistically significant differences in depression and physical activity between Polish and Portuguese students, and call for further research on the optimal activity level.",
+   "limitations": "The authors note that the cross-sectional design does not give robust causal evidence, that the sample was small and the findings preliminary, that the online format means respondents' identity is unknown, that social media may attract stressed individuals and affect representativeness, and that self-report may bias responses. Future studies should target a larger sample and use more objective methods.",
+   "evidence": {
+    "introduction": [
+     {
+      "q": "The aim of the study was to make a preliminary assessment of depression rates and levels of physical activity as well as relationship between physical activity and depression among Polish and Portuguese students in the further year of the COVID-19 pandemic.",
+      "loc": "1. Introduction (final paragraph)"
+     },
+     {
+      "q": "Restrictions on exercise, and bans on gyms, swimming pools, and health clubs have largely led to a decline in daily physical activity",
+      "loc": "1. Introduction"
+     }
+    ],
+    "methodology": [
+     {
+      "q": "In October 2022, students from Poland and Portugal participated in an online cross-sectional survey.",
+      "loc": "2.1. Participants and Procedure"
+     },
+     {
+      "q": "The researchers distributed the survey by providing links to a Google form that asked students to participate in the survey on online e-learning platforms and on social media (Facebook) in private groups.",
+      "loc": "2.1. Participants and Procedure"
+     },
+     {
+      "q": "A total of 398 questionnaires were correctly completed and this group was analyzed. The study included 229 questionnaires from Poland and 169 from Portugal. The students polled ranged in age from 17 to 26 years.",
+      "loc": "2.1. Participants and Procedure"
+     },
+     {
+      "q": "The level of depression was assessed using the Beck Depression Inventory (BDI) in Polish and in Portuguese.",
+      "loc": "2.2.1. Beck Depression Inventory"
+     },
+     {
+      "q": "The level of physical activity was assessed using an abbreviated version of the International Physical Activity Questionnaire (IPAQ) in Polish and Portuguese",
+      "loc": "2.2.2. International Physical Activity Questionnaire"
+     },
+     {
+      "q": "The Mann–Whitney test was used to determine the significance of differences in depression severity (BDI) and physical activity level (IPAQ) between groups of Portuguese and Polish students, while the chi-square test of independence was used",
+      "loc": "2.3. Statistical Methods"
+     },
+     {
+      "q": "Spearman’s rank correlation coefficient was used to calculate correlations between depression severity and physical activity. The Kruskal–Wallis test was used to determine the significance of differences in depression severity (BDI) versus activity level classification.",
+      "loc": "2.3. Statistical Methods"
+     }
+    ],
+    "theory": [],
+    "results": [
+     {
+      "q": "Moderate depression affected 20–35% of the respondents",
+      "loc": "3.2. Comparison of Depression among Students in Both Countries by Gender"
+     },
+     {
+      "q": "there is no statistically significant difference in BDI values between the two countries—neither for men nor for women",
+      "loc": "3.2. Comparison of Depression among Students in Both Countries by Gender"
+     },
+     {
+      "q": "there is a significantly lower level of activity among Portuguese female students on the intensive effort measure (p = 0.0039 *)",
+      "loc": "3.3. Comparison of Activities by Student Gender"
+     },
+     {
+      "q": "in Polish women the only statistically significant (p = 0.0155 *) but very weak correlation (rS = −0.21) was between walking intensity and depression.",
+      "loc": "3.4. Depression and Physical Activity"
+     },
+     {
+      "q": "In both countries, more frequent walking had the strongest effect on reducing BDI (in Poland, rS = −0.42; in Portugal, rS = −0.28).",
+      "loc": "3.4. Depression and Physical Activity"
+     }
+    ],
+    "discussion": [
+     {
+      "q": "Our study also shows a tendency for depression severity to decrease with increased physical activity. A stronger effect of physical activity on reducing depression was observed in men.",
+      "loc": "4. Discussion"
+     },
+     {
+      "q": "Pilot studies have shown that there are not many statistically significant differences in depression and physical activity levels between students in Poland and Portugal.",
+      "loc": "5. Conclusions"
+     },
+     {
+      "q": "Further research should be conducted on the impact of physical activity on mental health in different populations, with the aim of adjusting the optimal level of physical activity for the alleviation of negative mental symptoms.",
+      "loc": "5. Conclusions"
+     }
+    ],
+    "limitations": [
+     {
+      "q": "First, the cross-sectional nature of the study does not provide robust and causal evidence for the observed associations.",
+      "loc": "4. Discussion (limitations paragraph)"
+     },
+     {
+      "q": "The second limitation was the small sample group and preliminary findings.",
+      "loc": "4. Discussion (limitations paragraph)"
+     },
+     {
+      "q": "The study was also conducted in an online survey format and the identity of those who responded is not known",
+      "loc": "4. Discussion (limitations paragraph)"
+     },
+     {
+      "q": "Social media particularly attracts stressed individuals looking for support, which may distort the data and affect the representativeness of the sample.",
+      "loc": "4. Discussion (limitations paragraph)"
+     },
+     {
+      "q": "All data were collected using self-report questionnaires, which may bias responses",
+      "loc": "4. Discussion (limitations paragraph)"
+     },
+     {
+      "q": "Future studies should target a larger sample and use more objective methods to assess the parameters studied.",
+      "loc": "4. Discussion (limitations paragraph)"
+     }
+    ]
+   },
+   "abstract_claims": [
+    {
+     "q": "Overall, 20–35% of respondents suffered from moderate depression, with a lower proportion among men.",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "There were no differences in the percentage distribution of depression classification between Polish and Portuguese students.",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "A decrease in the severity of depression was observed with increasing physical activity.",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "In both countries, walking more often had the strongest effect on reducing depression scores.",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "The continued and alarming prevalence of depressive disorders among university students in the year after the pandemic began had a significant impact on this population—further research on the impact of physical activity on mental health in different populations should be conducted to adjust the optimal level of physical activity for alleviating negative psychiatric symptoms.",
+     "loc": "Abstract (Conclusions)"
+    }
+   ],
+   "caveats": [
+    {
+     "q": "There were also no differences between Polish and Portuguese students in the percentage distribution of depression classifications.",
+     "loc": "3.2. Comparison of Depression among Students in Both Countries by Gender"
+    },
+    {
+     "q": "there is no statistically significant difference in BDI values between the two countries—neither for men nor for women",
+     "loc": "3.2. Comparison of Depression among Students in Both Countries by Gender"
+    },
+    {
+     "q": "No statistically significant differences were found in the physical activity levels of young people from the two countries, either for women or for men.",
+     "loc": "3.3. Comparison of Activities by Student Gender"
+    },
+    {
+     "q": "although there are no differences between countries on the overall measure, there is a significantly lower level of activity among Portuguese female students on the intensive effort measure (p = 0.0039 *) and to a lesser extent on the moderate effort measure (p = 0.0801).",
+     "loc": "3.3. Comparison of Activities by Student Gender"
+    },
+    {
+     "q": "the differences between the two countries are not statistically significant",
+     "loc": "3.3. Comparison of Activities by Student Gender"
+    },
+    {
+     "q": "In Portuguese women, there was no statistically significant correlation between activity and depression",
+     "loc": "3.4. Depression and Physical Activity"
+    },
+    {
+     "q": "in Polish women the only statistically significant (p = 0.0155 *) but very weak correlation (rS = −0.21) was between walking intensity and depression.",
+     "loc": "3.4. Depression and Physical Activity"
+    },
+    {
+     "q": "resulting in a minimal reduction in the severity of depression.",
+     "loc": "3.4. Depression and Physical Activity"
+    },
+    {
+     "q": "When the IPAQ is split into groups, some information is lost, and it is therefore more difficult to obtain a statistically significant relationship.",
+     "loc": "3.4. Depression and Physical Activity"
+    },
+    {
+     "q": "In general, however, a weak trend toward a decrease in depression severity with increasing activity can be seen in the Polish group.",
+     "loc": "3.4. Depression and Physical Activity"
+    },
+    {
+     "q": "However, because the differences in depression severity between groups with varying levels of physical activity were not statistically significant, the preceding observation should be regarded as a hypothesis for further research rather than a definitive conclusion.",
+     "loc": "3.4. Depression and Physical Activity"
+    },
+    {
+     "q": "The p-value was less than 0.1 only for male students from Poland, indicating a difference close to statistical significance.",
+     "loc": "3.4. Depression and Physical Activity"
+    },
+    {
+     "q": "Our study also shows a tendency for depression severity to decrease with increased physical activity.",
+     "loc": "4. Discussion"
+    },
+    {
+     "q": "The correlations are slightly stronger in the Polish population, but it is difficult to clearly explain this difference.",
+     "loc": "4. Discussion"
+    },
+    {
+     "q": "In our study, a subgroup analysis showed that physical activity at a certain intensity could reduce students’ depressiveness.",
+     "loc": "4. Discussion"
+    },
+    {
+     "q": "In our study, we found that depression rates were generally lower in men, while there was no statistically significant difference in BDI scores between the two countries.",
+     "loc": "4. Discussion"
+    },
+    {
+     "q": "Despite the geographical location, there are no differences in the percentage distribution of depression classifications between Polish and Portuguese students",
+     "loc": "4. Discussion"
+    },
+    {
+     "q": "First, the cross-sectional nature of the study does not provide robust and causal evidence for the observed associations.",
+     "loc": "4. Discussion (limitations paragraph)"
+    },
+    {
+     "q": "The second limitation was the small sample group and preliminary findings.",
+     "loc": "4. Discussion (limitations paragraph)"
+    },
+    {
+     "q": "The study was also conducted in an online survey format and the identity of those who responded is not known",
+     "loc": "4. Discussion (limitations paragraph)"
+    },
+    {
+     "q": "Social media particularly attracts stressed individuals looking for support, which may distort the data and affect the representativeness of the sample.",
+     "loc": "4. Discussion (limitations paragraph)"
+    },
+    {
+     "q": "All data were collected using self-report questionnaires, which may bias responses",
+     "loc": "4. Discussion (limitations paragraph)"
+    },
+    {
+     "q": "Pilot studies have shown that there are not many statistically significant differences in depression and physical activity levels between students in Poland and Portugal.",
+     "loc": "5. Conclusions"
+    }
+   ],
+   "overclaims": [
+    {
+     "field": "discussion",
+     "text": "The authors report a tendency for depression severity to fall as physical activity rises, with a stronger effect in men.",
+     "abstract": "A decrease in the severity of depression was observed with increasing physical activity.",
+     "body": "However, because the differences in depression severity between groups with varying levels of physical activity were not statistically significant, the preceding observation should be regarded as a hypothesis for further research rather than a definitive conclusion.",
+     "body_loc": ""
+    }
+   ],
+   "overclaims_unplaced": [],
+   "overclaims_unsettled": [
+    "In both countries, walking more often had the strongest effect on reducing depression scores.",
+    "The continued and alarming prevalence of depressive disorders among university students in the year after the pandemic began had a significant impact on this population—further research on the impact of physical activity on mental health in different populations should be conducted to adjust the optimal level of physical activity for alleviating negative psychiatric symptoms."
+   ]
+  },
+  {
+   "id": "bystad2026",
+   "doi": "10.3389/fpsyt.2026.1907931",
+   "title": "Experiences of exercise and mental well-being among psychiatric inpatients: a qualitative study",
+   "notices": [],
+   "authors": [
+    "Bystad, M.",
+    "Lodewijks, A.",
+    "Rydland, S.",
+    "Pettersen, G.",
+    "García-Fernández, L.",
+    "Rodriguez-Jimenez, R.",
+    "Wynn, R."
+   ],
+   "year": 2026,
+   "journal": "Frontiers in Psychiatry",
+   "volume": "17",
+   "issn": "1664-0640",
+   "crossref": "verified",
+   "quartile": "Q1 (SJR 2025, Psychiatry and Mental Health)",
+   "source_basis": "full text",
+   "type": "Qualitative",
+   "introduction": "The study explores how psychiatric inpatients experience exercise and its perceived impact on mental well-being during hospitalization. Research on exercise specifically among psychiatric inpatients is described as limited.",
+   "methodology": "Qualitative study of eight inpatients (five male, three female; mean age 53.9, range 31 to 84), recruited by purposive sampling after completing at least two supported exercise sessions. Each took part in a telephone interview of about 30 minutes, audio-recorded and transcribed verbatim. Transcripts were analysed with reflexive thematic analysis using a six-step approach.",
+   "theory": "The analysis took a contextualist perspective. Behavioral activation is offered as one possible interpretation of the findings.",
+   "results": "Four themes were identified: follow-up support, symptom reduction, sense of mastery and activation during hospitalization. Participants described improvements in mood after exercise and said the exercise physiologist was a crucial source of support. The perceived effects were not uniformly strong, and some participants were uncertain about effects on sleep or energy.",
+   "discussion": "The authors describe exercise as having a positive role in participants' perceived mental state, while stating that the findings reflect subjective experiences and are not evidence of treatment efficacy or causal effects. They suggest that more inpatients may need the opportunity to exercise regularly.",
+   "limitations": "The authors note the small sample of eight, a possible selection and social desirability bias, the lack of a comparator that would separate exercise from other treatment, the heterogeneity of diagnoses, telephone interviews that limit non-verbal cues, and a single Norwegian centre. Future research is to examine efficacy, identify active components and use broader, more diverse samples.",
+   "evidence": {
+    "introduction": [
+     {
+      "q": "The aim of this study was to explore how psychiatric inpatients experience exercise, in particular with respect to their mental well-being.",
+      "loc": "Abstract (Background)"
+     },
+     {
+      "q": "Research focusing specifically on physical exercise among psychiatric inpatients remains limited",
+      "loc": "1. Introduction"
+     },
+     {
+      "q": "The present study therefore aimed to explore psychiatric inpatients’ experiences of exercise and its perceived impact on mental well-being during hospitalization.",
+      "loc": "1. Introduction"
+     }
+    ],
+    "methodology": [
+     {
+      "q": "This was a qualitative study, based on a purposive sample of eight inpatients who had participated in individualized physical exercise sessions supported by exercise physiologists.",
+      "loc": "2.1. Study design"
+     },
+     {
+      "q": "The participants had a mean age of 53.9 (range from 31 to 84). Five were male and three were female.",
+      "loc": "2.2. Participants"
+     },
+     {
+      "q": "In order to participate in the study, we required that the patient had completed at least two supported exercise sessions.",
+      "loc": "2.2. Participants"
+     },
+     {
+      "q": "The participants suffered from schizoaffective disorder/schizophrenia",
+      "loc": "2.2. Participants"
+     },
+     {
+      "q": "Each participant took part in a telephone interview lasting approximately 30 minutes (range 20–60 minutes).",
+      "loc": "2.3. Interviews"
+     },
+     {
+      "q": "All interviews were audio-recorded and transcribed verbatim.",
+      "loc": "2.3. Interviews"
+     },
+     {
+      "q": "This study employed reflexive thematic analysis as described by Clarke and Braun",
+      "loc": "2.4. Analysis"
+     },
+     {
+      "q": "We relied on a six-step approach, according to the thematic analysis model",
+      "loc": "2.4. Analysis"
+     }
+    ],
+    "theory": [
+     {
+      "q": "The analysis was carried out with a contextualist perspective.",
+      "loc": "2.4. Analysis"
+     },
+     {
+      "q": "Our findings may also be understood within a behavioral activation framework.",
+      "loc": "4.1. General discussion"
+     }
+    ],
+    "results": [
+     {
+      "q": "The participants’ responses were divided into four main themes: 1) ‘Follow-up support’, 2) ‘Symptom reduction’, 3) ‘Sense of mastery’ and 4) ‘Activation during hospitalization’.",
+      "loc": "3. Results"
+     },
+     {
+      "q": "The participants stated that they experienced that exercising led to improvements in mood and emotional balance.",
+      "loc": "3.2. Symptom reduction"
+     },
+     {
+      "q": "Support from the exercise physiologists was highlighted as a crucial factor for initiating and maintaining exercise.",
+      "loc": "3.1. Follow-up support"
+     },
+     {
+      "q": "However, the perceived effects were not uniformly strong.",
+      "loc": "3.2. Symptom reduction"
+     },
+     {
+      "q": "Some participants were uncertain whether exercise affected specific symptoms such as sleep or energy, and one participant reported little noticeable change in some areas.",
+      "loc": "3.2. Symptom reduction"
+     }
+    ],
+    "discussion": [
+     {
+      "q": "Overall, participants described exercise as having a positive role in their perceived mental state. These findings reflect participants’ subjective experiences and should not be interpreted as evidence of treatment efficacy or causal effects of exercise.",
+      "loc": "4.1. General discussion"
+     },
+     {
+      "q": "The results may suggest that more inpatients should be given the opportunity to participate in regular physical exercise.",
+      "loc": "4.2. Clinical implications"
+     },
+     {
+      "q": "Our results suggest that adequate support and follow-up are key to successfully implementing physical exercise interventions for inpatients in psychiatric care.",
+      "loc": "4.1. General discussion"
+     }
+    ],
+    "limitations": [
+     {
+      "q": "the sample size of eight participants is relatively small.",
+      "loc": "4.3. Strengths and limitations"
+     },
+     {
+      "q": "A second limitation is a possible selection bias, as those who chose to participate may have been more positively inclined toward exercise.",
+      "loc": "4.3. Strengths and limitations"
+     },
+     {
+      "q": "This may have introduced selection and social desirability bias",
+      "loc": "4.3. Strengths and limitations"
+     },
+     {
+      "q": "As exercise was provided within ongoing inpatient treatment and the study had no comparator, it is difficult to distinguish the perceived effects of exercise from those of other aspects of inpatient treatment.",
+      "loc": "4.3. Strengths and limitations"
+     },
+     {
+      "q": "The heterogeneity of psychiatric diagnoses and variation in exercise exposure may have influenced participants’ experiences.",
+      "loc": "4.3. Strengths and limitations"
+     },
+     {
+      "q": "telephone-based interviews limited access to non-verbal cues, and the single-center Norwegian setting may limit the transferability of the findings to other inpatient settings.",
+      "loc": "4.3. Strengths and limitations"
+     },
+     {
+      "q": "Future studies should aim to include a broader and more diverse sample to capture a wider range of experiences.",
+      "loc": "4.2. Clinical implications"
+     },
+     {
+      "q": "Further research is needed to examine efficacy, identify active components of the exercise intervention, and understand how exercise can be effectively integrated into inpatient treatment and sustained beyond discharge.",
+      "loc": "5. Conclusions"
+     }
+    ]
+   },
+   "abstract_claims": [
+    {
+     "q": "A particularly notable finding was that participants reported immediate improvements in mood and perceived mental well-being following exercise.",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "The presence of an exercise physiologist was described as a crucial source of motivation and support.",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "We identified four key themes: follow-up support, symptom reduction, sense of mastery, and activation during hospitalization.",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "Overall, the study suggests that structured opportunities for exercise with individualized professional support may be a valuable component of psychiatric inpatient care.",
+     "loc": "Abstract (Conclusion)"
+    }
+   ],
+   "caveats": [
+    {
+     "q": "Given the small and heterogeneous sample, subgroup analyses were not performed.",
+     "loc": "2.2. Participants"
+    },
+    {
+     "q": "The total number of exercise sessions completed varied between participants; however, exact participant-level session counts were not available for the present analysis.",
+     "loc": "2.2. Participants"
+    },
+    {
+     "q": "However, the perceived effects were not uniformly strong.",
+     "loc": "3.2. Symptom reduction"
+    },
+    {
+     "q": "Some participants were uncertain whether exercise affected specific symptoms such as sleep or energy, and one participant reported little noticeable change in some areas.",
+     "loc": "3.2. Symptom reduction"
+    },
+    {
+     "q": "Another emphasized that exercise did not remove depressive thoughts, but rather helped make difficult days more manageable",
+     "loc": "3.2. Symptom reduction"
+    },
+    {
+     "q": "These findings reflect participants’ subjective experiences and should not be interpreted as evidence of treatment efficacy or causal effects of exercise.",
+     "loc": "4.1. General discussion"
+    },
+    {
+     "q": "However, the present qualitative design does not allow us to determine whether these perceived changes were caused by exercise itself.",
+     "loc": "4.1. General discussion"
+    },
+    {
+     "q": "However, as behavioral mechanisms were not directly examined, this interpretation remains theoretical.",
+     "loc": "4.1. General discussion"
+    },
+    {
+     "q": "Importantly, the perceived improvements cannot necessarily be explained by exercise alone.",
+     "loc": "4.1. General discussion"
+    },
+    {
+     "q": "As the study did not include a comparison condition, their relative contributions cannot be determined.",
+     "loc": "4.1. General discussion"
+    },
+    {
+     "q": "Thus, the findings should be understood as reflecting participants’ experiences of professionally supported exercise rather than effects specific to exercise itself.",
+     "loc": "4.1. General discussion"
+    },
+    {
+     "q": "However, the present qualitative study was not designed to examine treatment efficacy or optimal exercise dose, or to make comparisons with other interventions.",
+     "loc": "4.2. Clinical implications"
+    },
+    {
+     "q": "the sample size of eight participants is relatively small.",
+     "loc": "4.3. Strengths and limitations"
+    },
+    {
+     "q": "This criterion inherently limits the pool of eligible participants.",
+     "loc": "4.3. Strengths and limitations"
+    },
+    {
+     "q": "Caution is required when considering the transferability of our findings to other settings or populations.",
+     "loc": "4.3. Strengths and limitations"
+    },
+    {
+     "q": "A second limitation is a possible selection bias, as those who chose to participate may have been more positively inclined toward exercise.",
+     "loc": "4.3. Strengths and limitations"
+    },
+    {
+     "q": "This may have introduced selection and social desirability bias, as patients with more positive experiences could have been more willing to participate or to offer a positive evaluation.",
+     "loc": "4.3. Strengths and limitations"
+    },
+    {
+     "q": "The results may not fully represent the experiences of all psychiatric inpatients.",
+     "loc": "4.3. Strengths and limitations"
+    },
+    {
+     "q": "The heterogeneity of psychiatric diagnoses and variation in exercise exposure may have influenced participants’ experiences.",
+     "loc": "4.3. Strengths and limitations"
+    },
+    {
+     "q": "As exercise was provided within ongoing inpatient treatment and the study had no comparator, it is difficult to distinguish the perceived effects of exercise from those of other aspects of inpatient treatment.",
+     "loc": "4.3. Strengths and limitations"
+    },
+    {
+     "q": "The timing of interviews relative to exercise sessions may also have influenced participants’ accounts.",
+     "loc": "4.3. Strengths and limitations"
+    },
+    {
+     "q": "Finally, telephone-based interviews limited access to non-verbal cues, and the single-center Norwegian setting may limit the transferability of the findings to other inpatient settings.",
+     "loc": "4.3. Strengths and limitations"
+    },
+    {
+     "q": "Further research is needed to examine efficacy, identify active components of the exercise intervention",
+     "loc": "5. Conclusions"
+    }
+   ],
+   "overclaims": [],
+   "overclaims_unplaced": [],
+   "overclaims_unsettled": [
+    "A particularly notable finding was that participants reported immediate improvements in mood and perceived mental well-being following exercise.",
+    "Overall, the study suggests that structured opportunities for exercise with individualized professional support may be a valuable component of psychiatric inpatient care."
+   ]
+  },
+  {
+   "id": "welcomechamberlain2025",
+   "doi": "10.3389/fdgth.2025.1394647",
+   "title": "Improvements in physical activity and depression symptoms: an observational study of users of a multi-modal digital mental health platform",
+   "notices": [
+    {
+     "type": "correction",
+     "date": "2025-12-09",
+     "source": "publisher",
+     "doi": "10.3389/fdgth.2025.1755165"
+    }
+   ],
+   "authors": [
+    "Welcome Chamberlain, C. E.",
+    "Lindsay, S.",
+    "Smith, B. J.",
+    "Sagui Henson, S.",
+    "Castro Sweet, C.",
+    "Levens, S. M."
+   ],
+   "year": 2025,
+   "journal": "Frontiers in Digital Health",
+   "volume": "7",
+   "issn": "2673-253X",
+   "crossref": "verified",
+   "quartile": "Q1 (SJR 2025, Biomedical Engineering; 3 other categories also Q1; not in Psychiatry and Mental Health)",
+   "source_basis": "full text",
+   "type": "Quantitative",
+   "introduction": "The study examined depression and physical activity among employees using an employer-sponsored digital mental health platform.",
+   "methodology": "Prospective observational study of individuals who recently sought services through an employer-sponsored digital mental health platform, conducted September 2021 to May 2022. Adults aged 18 or older living in the United States; 755 at baseline and 480 in longitudinal analyses. Physical activity was measured with the IPAQ-Short Form, depression with the PHQ-9, and perceived mental health impact with one self-report item. Analyses used R and paired t-tests.",
+   "theory": "",
+   "results": "47.3% of the 755 baseline adults were underactive. Men reported more physical activity than women. Women and non-binary adults reported higher PHQ-9 scores than men, a difference the authors call statistically but not clinically significant. Among underactive participants, MVPA rose by an average of 60 min per week and PHQ-9 fell by 2.8 points.",
+   "discussion": "The authors report that participants with elevated depression improved significantly, while nearly all with low baseline symptoms stayed asymptomatic. They suggest digital mental health platforms can support both symptom improvement and maintenance, and that multi-modal support may have reinforced physical activity.",
+   "limitations": "The authors note the observational design could not determine the temporal sequence of changes or causality, and call for an experimental design. They also flag an unvalidated single-item measure, the PHQ-9 cut-off, unexamined industry differences, missing implementation factors, and limited generalizability. They suggest follow-up of perhaps 6 or 12 months.",
+   "evidence": {
+    "introduction": [
+     {
+      "q": "we examined levels of depression and physical activity in a real-world sample of employees with access to this digital mental health platform",
+      "loc": "Introduction"
+     },
+     {
+      "q": "Investigate changes in physical activity and depression over time to determine the impact of a digital mental health platform offering multi-modal care across several domains of health",
+      "loc": "Introduction (aims)"
+     }
+    ],
+    "methodology": [
+     {
+      "q": "This investigation was a prospective, observational study of individuals who recently sought services through an employer-sponsored, multi-modal digital mental health benefits platform",
+      "loc": "Method: Design and participants"
+     },
+     {
+      "q": "The study was conducted between September 2021 and May 2022.",
+      "loc": "Method: Design and participants"
+     },
+     {
+      "q": "Eligible participants were 18 years or older, lived in the United States",
+      "loc": "Method: Design and participants"
+     },
+     {
+      "q": "Baseline analyses were conducted using the sample of 755 adults, while longitudinal analyses were conducted using the sample of 480 adults.",
+      "loc": "Results: Study participants"
+     },
+     {
+      "q": "The International Physical Activity Questionnaire—Short Form (IPAQ) (35) measured volume of physical activity",
+      "loc": "Method: Measures"
+     },
+     {
+      "q": "The Patient Health Questionnaire (PHQ-9) (38) assessed the presence and severity of depression symptoms over the past two weeks.",
+      "loc": "Method: Measures"
+     },
+     {
+      "q": "We constructed a single-item self-report measure to assess the perceived impact of one's mental health on their ability to participate in physical activity.",
+      "loc": "Method: Measures"
+     },
+     {
+      "q": "we first used paired t-tests to evaluate changes in MVPA, depression symptoms, and the self-reported impact of mental health on physical activity",
+      "loc": "Method: Data analysis"
+     },
+     {
+      "q": "We conducted analyses using R, version 4.2.0",
+      "loc": "Method: Data analysis"
+     }
+    ],
+    "theory": [],
+    "results": [
+     {
+      "q": "Men participated in more physical activity than women",
+      "loc": "Abstract"
+     },
+     {
+      "q": "Of the 755 with valid baseline data, 47.3%",
+      "loc": "Results: Aim 1"
+     },
+     {
+      "q": "were deemed “underactive” according to U.S. guidelines",
+      "loc": "Results: Aim 1"
+     },
+     {
+      "q": "men engaged in an average of 49 more minutes of MVPA per week than women",
+      "loc": "Results: Aim 1"
+     },
+     {
+      "q": "with both women and adults identifying as gender non-binary reporting higher PHQ-9 scores than men",
+      "loc": "Results: Aim 1"
+     },
+     {
+      "q": "statistically—but not clinically—significant difference",
+      "loc": "Results: Aim 1"
+     },
+     {
+      "q": "Physical activity was negatively correlated with baseline PHQ-9 scores",
+      "loc": "Results: Aim 2"
+     },
+     {
+      "q": "MVPA significantly increased among the underactive subsample (by an average of 60 min/week)",
+      "loc": "Results: Aim 3"
+     },
+     {
+      "q": "Depression scores decreased across the full sample and both active and underactive subsamples (though to a greater degree for the underactive subsample—reduction of 2.8 points)",
+      "loc": "Results: Aim 3"
+     }
+    ],
+    "discussion": [
+     {
+      "q": "Participants with elevated depression reported significant improvements in depression symptoms, while nearly all with low baseline symptoms remained asymptomatic.",
+      "loc": "Discussion"
+     },
+     {
+      "q": "digital mental health platforms can support both symptom improvement and maintenance of positive mental health outcomes",
+      "loc": "Discussion"
+     },
+     {
+      "q": "suggesting that tailored, multi-modal support may have reinforced physical activity behaviors",
+      "loc": "Discussion"
+     }
+    ],
+    "limitations": [
+     {
+      "q": "This study was observational in nature, meaning that while we were able to observe that depression symptoms and MVPA improved over time, we were unable to determine the temporal sequence of the changes.",
+      "loc": "Limitations"
+     },
+     {
+      "q": "A prospective, experimental design and random assignment to treatment conditions is needed to test the directionality and causality of these improvements.",
+      "loc": "Limitations"
+     },
+     {
+      "q": "this item has yet to be validated and may be inaccurately measuring the barrier that mental health may pose to participation in physical activity",
+      "loc": "Limitations"
+     },
+     {
+      "q": "future research could examine whether results differ when alternative cut-off thresholds or severity categories are applied",
+      "loc": "Limitations"
+     },
+     {
+      "q": "we did not examine whether outcomes varied by industry sector",
+      "loc": "Limitations"
+     },
+     {
+      "q": "We also did not assess implementation-related factors",
+      "loc": "Limitations"
+     },
+     {
+      "q": "This, paired with the fact that platform access was gated by employer-sponsorship, limits the generalizability of our findings.",
+      "loc": "Limitations"
+     },
+     {
+      "q": "future investigations should utilize a longer-term follow-up period (perhaps 6 or 12 months)",
+      "loc": "Conclusions"
+     }
+    ]
+   },
+   "abstract_claims": [
+    {
+     "q": "Approximately 47% of participants were physically underactive at baseline",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "Men participated in more physical activity than women",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "while women and individuals identifying as gender non-binary reported more depression symptoms than men",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "Older adults reported fewer depression symptoms than younger adults",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "Baseline MVPA baseline was negatively correlated with depression symptoms",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "Depression scores significantly improved, with 66.9% of adults at risk of depression improving or recovering",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "94% of adults with low depression symptoms maintaining this status over time",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "Physical activity participation improved by 117% among individuals deemed underactive at baseline",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "while individuals who were active at baseline maintained high levels of physical activity",
+     "loc": "Abstract (Results)"
+    },
+    {
+     "q": "Adults with access to a multi-modal digital mental health platform reported significant beneficial changes in depression symptoms and physical activity participation.",
+     "loc": "Abstract (Conclusions)"
+    },
+    {
+     "q": "Digital mental health tools may have the potential to elicit positive change in physical health domains, as well as mental health.",
+     "loc": "Abstract (Conclusions)"
+    }
+   ],
+   "caveats": [
+    {
+     "q": "Information about mental health diagnoses was not available.",
+     "loc": "Method: Procedures"
+    },
+    {
+     "q": "Data were not available for engagement in the group psychoeducational sessions as registration for those was anonymous.",
+     "loc": "Method: Measures (Platform engagement)"
+    },
+    {
+     "q": "leaving a final sample of 755 adults (79.5%) at baseline",
+     "loc": "Results: Study participants"
+    },
+    {
+     "q": "Baseline analyses were conducted using the sample of 755 adults, while longitudinal analyses were conducted using the sample of 480 adults.",
+     "loc": "Results: Study participants"
+    },
+    {
+     "q": "found significant differences across 2 variables: PHQ-9 score and race/ethnicity",
+     "loc": "Results: Study participants"
+    },
+    {
+     "q": "we observed a higher proportion of White-identifying participants among completers compared to non-completers",
+     "loc": "Results: Study participants"
+    },
+    {
+     "q": "There were no significant differences in PHQ-9 score across races and ethnicities",
+     "loc": "Results: Aim 1"
+    },
+    {
+     "q": "There were no significant differences in MVPA based on other gender identities or races and ethnicities",
+     "loc": "Results: Aim 1"
+    },
+    {
+     "q": "and no significant correlation between MVPA and age",
+     "loc": "Results: Aim 1"
+    },
+    {
+     "q": "the standard deviation within each group indicated substantial heterogeneity",
+     "loc": "Results: Aim 1"
+    },
+    {
+     "q": "though the standard deviations indicate substantial heterogeneity in the sample",
+     "loc": "Results: Aim 2"
+    },
+    {
+     "q": "These levels of improvement in depression were statistically significant but potentially not clinically significant given the average change was less than the 5 points deemed clinically meaningful change on the PHQ-9.",
+     "loc": "Results: Aim 3"
+    },
+    {
+     "q": "reported no statistically significant change in their activity at follow-up",
+     "loc": "Results: Aim 3"
+    },
+    {
+     "q": "This group reported a small, but significant, decrease in their PHQ-9 scores",
+     "loc": "Results: Aim 3"
+    },
+    {
+     "q": "There were no significant differences in baseline physical activity participation across ages or races/ethnicities.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Although we observed a slight, non-significant decrease of 28 min per week",
+     "loc": "Discussion"
+    },
+    {
+     "q": "Although these improvements are promising, the group's average activity at follow-up remained below the recommended 150 min of MVPA per week, likely because the platform was not explicitly designed to promote physical activity.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "which may have supported continued activity",
+     "loc": "Discussion"
+    },
+    {
+     "q": "This change may reflect improvements in psychological factors relevant to physical activity, potentially driven by engagement in teletherapy, telecoaching, psychoeducation, and/or self-guided care.",
+     "loc": "Discussion"
+    },
+    {
+     "q": "This study was observational in nature, meaning that while we were able to observe that depression symptoms and MVPA improved over time, we were unable to determine the temporal sequence of the changes.",
+     "loc": "Limitations"
+    },
+    {
+     "q": "A prospective, experimental design and random assignment to treatment conditions is needed to test the directionality and causality of these improvements.",
+     "loc": "Limitations"
+    },
+    {
+     "q": "this item has yet to be validated and may be inaccurately measuring the barrier that mental health may pose to participation in physical activity",
+     "loc": "Limitations"
+    },
+    {
+     "q": "future research could examine whether results differ when alternative cut-off thresholds or severity categories are applied",
+     "loc": "Limitations"
+    },
+    {
+     "q": "we did not examine whether outcomes varied by industry sector",
+     "loc": "Limitations"
+    },
+    {
+     "q": "We also did not assess implementation-related factors",
+     "loc": "Limitations"
+    },
+    {
+     "q": "This, paired with the fact that platform access was gated by employer-sponsorship, limits the generalizability of our findings.",
+     "loc": "Limitations"
+    },
+    {
+     "q": "approaching clinical significance",
+     "loc": "Conclusions"
+    },
+    {
+     "q": "Given the observational nature of the present study, future investigations should incorporate an experimental design to determine the causality of improvement in physical activity engagement and depressive symptoms.",
+     "loc": "Conclusions"
+    },
+    {
+     "q": "given the relatively short duration of the present study",
+     "loc": "Conclusions"
+    }
+   ],
+   "overclaims": [
+    {
+     "field": "results",
+     "text": "Among underactive participants, MVPA rose by an average of 60 min per week and PHQ-9 fell by 2.8 points.",
+     "abstract": "Depression scores significantly improved, with 66.9% of adults at risk of depression improving or recovering",
+     "body": "These levels of improvement in depression were statistically significant but potentially not clinically significant given the average change was less than the 5 points deemed clinically meaningful change on the PHQ-9.",
+     "body_loc": ""
+    },
+    {
+     "field": "results",
+     "text": "Among underactive participants, MVPA rose by an average of 60 min per week and PHQ-9 fell by 2.8 points.",
+     "abstract": "Adults with access to a multi-modal digital mental health platform reported significant beneficial changes in depression symptoms and physical activity participation.",
+     "body": "reported no statistically significant change in their activity at follow-up",
+     "body_loc": ""
+    }
+   ],
+   "overclaims_unplaced": [],
+   "overclaims_unsettled": [
+    "Older adults reported fewer depression symptoms than younger adults",
+    "Physical activity participation improved by 117% among individuals deemed underactive at baseline"
+   ]
+  },
+  {
+   "id": "mack2024",
+   "doi": "10.1371/journal.pone.0297348",
+   "title": "Chronic exercise effects on overall depression severity and distinct depressive symptoms in older adults: A protocol of a systematic and meta-analytic review",
+   "notices": [
+    {
+     "type": "correction",
+     "date": "2025-11-17",
+     "source": "publisher",
+     "doi": "10.1371/journal.pone.0337031"
+    }
+   ],
+   "authors": [
+    "Mack, M.",
+    "Badache, A.",
+    "Erden, A.",
+    "Giannaki, C. D.",
+    "Haider, S.",
+    "Kaltsatou, A.",
+    "Kömürcü Akik, B.",
+    "Netz, Y.",
+    "Pavlova, I.",
+    "Stavrinou, P. S.",
+    "Voelcker-Rehage, C.",
+    "Audiffren, M.",
+    "on behalf of the PhysAgeNet"
+   ],
+   "year": 2024,
+   "journal": "PLOS ONE",
+   "volume": "19",
+   "issue": "5",
+   "pages": "e0297348",
+   "issn": "1932-6203",
+   "crossref": "verified",
+   "quartile": "Q1 (SJR 2024, Multidisciplinary; not in Psychiatry and Mental Health)",
+   "source_basis": "full text",
+   "type": "Theoretical/Review",
+   "introduction": "The proposed review aims to investigate the effects of chronic exercise on overall depression severity and on different depressive symptoms in older adults with a mean age of at least 60, in randomized controlled trials. It will also consider how intervention and individual characteristics moderate these effects.",
+   "methodology": "Protocol for a systematic review and meta-analysis of randomized controlled trials, following PRISMA-P. Several electronic databases will be searched from inception. Pairs of reviewers will select studies, extract data and assess quality. A random-effects model will be used, with Hedges’ g as the summary effect.",
+   "theory": "",
+   "results": "",
+   "discussion": "The authors expect a moderate exercise effect on depression, in line with earlier meta-analyses. They say the review may be the first to examine effects on different depressive symptoms. Its conclusions may support individualized exercise recommendations and reveal research gaps.",
+   "limitations": "The authors plan to exclude RCTs testing pharmacological treatment and/or psychotherapy, so no conclusions can be drawn for add-on treatment; they acknowledge possibly missing relevant insights. They anticipate heterogeneous data and varied reporting of exercise.",
+   "evidence": {
+    "introduction": [
+     {
+      "q": "the objective of the proposed review is to investigate the effects of chronic exercise on overall depression severity and on different symptoms of depression in randomized controlled trials (RCTs) including older adults with a mean age of at least 60 years",
+      "loc": "Abstract (Introduction)"
+     },
+     {
+      "q": "by considering the moderating effects of intervention characteristics and individual characteristics",
+      "loc": "Abstract (Introduction)"
+     }
+    ],
+    "methodology": [
+     {
+      "q": "follows the Preferred Reporting Items for Systematic Reviews and Meta-Analyses Protocol (PRISMA-P) statement",
+      "loc": "Method"
+     },
+     {
+      "q": "The following electronic databases will be searched from inception to shortly before publishing the meta-analysis",
+      "loc": "Method: Information sources and search strategy"
+     },
+     {
+      "q": "Pairs of two reviewers will be involved in the study selection process.",
+      "loc": "Method: Study selection"
+     },
+     {
+      "q": "Pairs of two reviewers will be involved in the data extraction process.",
+      "loc": "Method: Data extraction and management"
+     },
+     {
+      "q": "Pairs of two reviewers will be involved in the quality assessment.",
+      "loc": "Method: Assessment of evidence and study quality"
+     },
+     {
+      "q": "a random-effects model will be used for the meta-analysis",
+      "loc": "Method: Data synthesis"
+     },
+     {
+      "q": "Summary effects will be calculated as Hedges’ g using random-effects weights.",
+      "loc": "Method: Data synthesis"
+     }
+    ],
+    "theory": [
+     {
+      "q": "we will extract information on the key components of the FITT principles",
+      "loc": "Method: Moderators"
+     },
+     {
+      "q": "‘Frequency’, ‘Intensity’, ‘Time’, and ‘Type of exercise’",
+      "loc": "Introduction: Intervention characteristics"
+     }
+    ],
+    "results": [],
+    "discussion": [
+     {
+      "q": "In line with the already published meta-analyses, we expect to find a moderate effect of exercise on depression",
+      "loc": "Discussion and conclusion"
+     },
+     {
+      "q": "Our meta-analytical review will be the first that examines the effects of chronic exercise on different symptoms of depression in older adults",
+      "loc": "Discussion and conclusion"
+     },
+     {
+      "q": "the conclusions drawn from this review may serve as a basis for developing evidence-based recommendations for individualized exercise programs that can help alleviate depression in older adults",
+      "loc": "Discussion and conclusion"
+     },
+     {
+      "q": "the review results may reveal research gaps",
+      "loc": "Discussion and conclusion"
+     }
+    ],
+    "limitations": [
+     {
+      "q": "We plan to exclude RCTs with tested effects of pharmacological treatment and / or psychotherapy. Therefore, no conclusions can be drawn for exercise interventions as add-on treatment.",
+      "loc": "Discussion and conclusion (limitations)"
+     },
+     {
+      "q": "We are aware that by that we might miss some clinically relevant insights.",
+      "loc": "Discussion and conclusion (limitations)"
+     },
+     {
+      "q": "We further anticipate limitations in form of heterogenous data and a wide variance in the reporting of the exercise characteristics",
+      "loc": "Discussion and conclusion (limitations)"
+     }
+    ]
+   },
+   "abstract_claims": [
+    {
+     "q": "There is high evidence that chronic exercise benefits overall depression severity in older adults.",
+     "loc": "Abstract (Introduction)"
+    },
+    {
+     "q": "The results of the proposed review are anticipated to have a substantial impact on research and clinical practice.",
+     "loc": "Abstract (Conclusion)"
+    },
+    {
+     "q": "On the one hand, the review’s conclusions could form the foundation for developing evidence-based recommendations for individualized exercise programs that alleviate depression in older adults",
+     "loc": "Abstract (Conclusion)"
+    },
+    {
+     "q": "by revealing research gaps, the review results could encourage the formulation of research questions for further RCTs",
+     "loc": "Abstract (Conclusion)"
+    }
+   ],
+   "caveats": [
+    {
+     "q": "However, the heterogeneity of the effects is high, which might be caused by variations between exercise interventions.",
+     "loc": "Introduction: Intervention characteristics"
+    },
+    {
+     "q": "Meaningful responses may be only visible when the exercises are conducted with a certain frequency and duration",
+     "loc": "Introduction: Intervention characteristics"
+    },
+    {
+     "q": "However, for exercise interventions with psychosocial or behavioral components, it is difficult to identify appropriate control groups",
+     "loc": "Introduction: Intervention characteristics"
+    },
+    {
+     "q": "This might lead to methodological issues in the choice of the control group that might influence the results",
+     "loc": "Introduction: Intervention characteristics"
+    },
+    {
+     "q": "These precautions might imply that the impact of exercise is insufficient for reducing depression.",
+     "loc": "Introduction: Individual characteristics"
+    },
+    {
+     "q": "Although these connections have not been investigated yet, they hold significance in the context of geriatric depression.",
+     "loc": "Introduction: Individual characteristics"
+    },
+    {
+     "q": "Nevertheless, one single score provides only limited information on the severity of the specific symptoms",
+     "loc": "Introduction: Individual characteristics"
+    },
+    {
+     "q": "Although there are quite many RCTs examining the effects of chronic exercise on specific symptoms of depression",
+     "loc": "Introduction: State of research"
+    },
+    {
+     "q": "Most of those overview articles on the effects of exercise on late-life depression target only overall depression severity as an outcome variable of interest",
+     "loc": "Introduction: State of research"
+    },
+    {
+     "q": "The results show, on the one hand, a high degree of heterogeneity for the exercise characteristics and, on the other hand, partly different results for the individual characteristics.",
+     "loc": "Introduction: State of research"
+    },
+    {
+     "q": "the overview articles mentioned above differ in the type of exercises included",
+     "loc": "Introduction: State of research"
+    },
+    {
+     "q": "and a third study found no moderating effect of age",
+     "loc": "Introduction: State of research"
+    },
+    {
+     "q": "only one of the twelve included reviews was considered to be of high methodological quality",
+     "loc": "Introduction: State of research"
+    },
+    {
+     "q": "In addition, there are numerous sources of bias that might threaten the validity of meta-analyses",
+     "loc": "Introduction: State of research"
+    },
+    {
+     "q": "Since publication bias is seldom calculated, further evidence is needed to strengthen the evidence.",
+     "loc": "Introduction: State of research"
+    },
+    {
+     "q": "Intervention arms comprising a chronic exercise component additionally to other intervention components, such as nutrition, cognitive behavioral therapy, or pharmacotherapy, are not eligible.",
+     "loc": "Method: Intervention"
+    },
+    {
+     "q": "Furthermore, we will only include studies in which frequency of exercise sessions, duration of exercise sessions, duration of the intervention and type of exercise are reported.",
+     "loc": "Method: Intervention"
+    },
+    {
+     "q": "Eligible studies only include RCTs with either a parallel-group design",
+     "loc": "Method: Study design"
+    },
+    {
+     "q": "Abstracts from congresses and study protocols are not considered.",
+     "loc": "Method: Article type"
+    },
+    {
+     "q": "written in English language",
+     "loc": "Method: Article type"
+    },
+    {
+     "q": "We are aware that regular exercise might influence BMI changes and that this variable carries the potential for misinterpretation",
+     "loc": "Method: Outcomes (secondary)"
+    },
+    {
+     "q": "If not enough studies (less than three out of a total of approximately 100 studies) report a valid measure for a particular symptom, we will not assess that symptom as secondary outcome.",
+     "loc": "Method: Secondary outcomes"
+    },
+    {
+     "q": "If data cannot be pooled between intervention studies (e.g., an insufficient number of RCTs investigating the respective outcome) findings will be reported in narrative syntheses for each outcome variable.",
+     "loc": "Method: Data synthesis"
+    },
+    {
+     "q": "We plan to exclude RCTs with tested effects of pharmacological treatment and / or psychotherapy. Therefore, no conclusions can be drawn for exercise interventions as add-on treatment.",
+     "loc": "Discussion and conclusion (limitations)"
+    },
+    {
+     "q": "We are aware that by that we might miss some clinically relevant insights.",
+     "loc": "Discussion and conclusion (limitations)"
+    },
+    {
+     "q": "We aim to deal with those limitations by being cautious in interpreting the results.",
+     "loc": "Discussion and conclusion (limitations)"
+    }
+   ],
+   "overclaims": [],
+   "overclaims_unplaced": [
+    {
+     "abstract": "There is high evidence that chronic exercise benefits overall depression severity in older adults.",
+     "body": "only one of the twelve included reviews was considered to be of high methodological quality",
+     "body_loc": ""
+    }
+   ],
+   "overclaims_unsettled": [
+    "The results of the proposed review are anticipated to have a substantial impact on research and clinical practice."
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "gap": "Among these 8 papers, the authors of chen2026, zalewska2023 and welcomechamberlain2025 state that their cross-sectional or observational designs limit causal or temporal conclusions.",
+   "kind": "stated by authors",
+   "papers": [
+    "chen2026",
+    "zalewska2023",
+    "welcomechamberlain2025"
+   ],
+   "basis": "limitation cells of chen2026, zalewska2023 and welcomechamberlain2025"
+  },
+  {
+   "gap": "Among these 8 papers, the authors of coletta2024, zalewska2023, bystad2026 and xiao2026 note small samples or small trials, and the authors of souza2025 anticipate small sample sizes among included studies.",
+   "kind": "stated by authors",
+   "papers": [
+    "coletta2024",
+    "zalewska2023",
+    "bystad2026",
+    "xiao2026",
+    "souza2025"
+   ],
+   "basis": "limitation cells of coletta2024, zalewska2023, bystad2026, xiao2026 and souza2025"
+  },
+  {
+   "gap": "Among these 8 papers, the authors of xiao2026, chen2026 and zalewska2023 note self-reported outcomes or responses as a limitation.",
+   "kind": "stated by authors",
+   "papers": [
+    "xiao2026",
+    "chen2026",
+    "zalewska2023"
+   ],
+   "basis": "limitation cells of xiao2026, chen2026 and zalewska2023"
+  },
+  {
+   "gap": "Among these 8 papers, the authors of xiao2026 note variation across the trials in their review, and the authors of souza2025 and mack2024 anticipate heterogeneity across the studies in their planned reviews.",
+   "kind": "stated by authors",
+   "papers": [
+    "xiao2026",
+    "souza2025",
+    "mack2024"
+   ],
+   "basis": "limitation cells of xiao2026, souza2025 and mack2024"
+  },
+  {
+   "gap": "Among these 8 papers, the authors of chen2026, welcomechamberlain2025 and zalewska2023 note limited generalizability or representativeness of their samples.",
+   "kind": "stated by authors",
+   "papers": [
+    "chen2026",
+    "welcomechamberlain2025",
+    "zalewska2023"
+   ],
+   "basis": "limitation cells of chen2026, welcomechamberlain2025 and zalewska2023"
+  },
+  {
+   "gap": "Among these 8 papers, the authors of coletta2024 and xiao2026 note English-language restrictions, in the participants and in the eligible articles respectively.",
+   "kind": "stated by authors",
+   "papers": [
+    "coletta2024",
+    "xiao2026"
+   ],
+   "basis": "limitation cells of coletta2024 and xiao2026"
+  },
+  {
+   "gap": "The authors of coletta2024 and bystad2026 call for future studies with more diverse or broader samples.",
+   "kind": "stated by authors",
+   "papers": [
+    "coletta2024",
+    "bystad2026"
+   ],
+   "basis": "future research statements in the limitation cells of coletta2024 and bystad2026"
+  },
+  {
+   "gap": "Among these 8 papers, xiao2026 notes uncertain durability beyond immediate post-intervention outcomes, and welcomechamberlain2025 suggests follow-up of perhaps 6 or 12 months.",
+   "kind": "stated by authors",
+   "papers": [
+    "xiao2026",
+    "welcomechamberlain2025"
+   ],
+   "basis": "limitation cells of xiao2026 and welcomechamberlain2025"
+  }
+ ],
+ "synthesis": "Across the eight papers reviewed on physical activity and depression, explicit theoretical grounding is sparse: only Self-Determination Theory is named as an anchoring framework, in one cross-sectional student survey, while one qualitative study offers behavioral activation as a possible interpretation of its findings, and the remaining papers name no theory, relying instead on reporting guidelines such as CONSORT, PRISMA 2020 and PRISMA-P. Methodologically the set is varied, comprising three systematic reviews and meta-analyses of randomized trials (two of them still protocols without results), two cross-sectional online surveys and one prospective observational study using self-report instruments such as the IPAQ, PHQ-9 and Beck Depression Inventory, one pilot mixed-methods randomized trial of an online exercise program and one reflexive thematic analysis of inpatient interviews. All eight papers appear in Q1 journals, although only one is ranked in the Psychiatry and Mental Health category, with the others placed as Q1 in multidisciplinary, psychology, medicine or biomedical engineering categories, so no paper in the set is Unranked/Unavailable. The findings broadly agree that greater physical activity or structured exercise accompanies fewer depressive symptoms, as seen in the pooled reduction in rheumatoid arthritis trials, the pre-to-post decrease after online exercise, the PHQ-9 improvement among underactive platform users and the mood improvements inpatients described. They differ in the strength and directness of that link, however, since the student surveys report only very weak or small indirect associations, the pilot trial found no change in habitual activity, anxiety or loneliness, and the qualitative and review authors stress that their evidence reflects subjective experience or is promising but not definitive."
+}

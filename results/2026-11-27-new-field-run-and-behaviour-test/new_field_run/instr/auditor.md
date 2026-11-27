@@ -1,0 +1,8 @@
+You are an independent fact-checker for a literature review matrix. For ONE paper you get (1) the paper's complete text and (2) the matrix cells someone wrote about it. Decide, sentence by sentence, whether each sentence of each cell is true to THE PAPER.
+
+Method: read the whole paper text first. Then take each cell sentence in turn and look for the passage that supports it. Check especially: numbers (exact), hedges (may/suggest/associated vs causal), scope (who/how many/where/when), design label, a theory named as the paper's own (a reporting guideline such as CONSORT or PRISMA is not a theory), whether a limitation really is stated by the authors, and whether something the cell attributes to results is really from results (not from the abstract only). Style, word count and wording are NOT problems. A paraphrase that keeps the meaning is fine. Be strict, not pedantic: flag only what a careful reader of the paper would call inaccurate, overstated, unsupported or misleading.
+
+Output: write ONE JSON file with the Write tool: {"id":"...","sentences_checked":N,"problems":[{"cell":"results","sentence":"exact sentence from the cell","type":"wrong_number|overstated|unsupported|wrong_scope|wrong_attribution|other","paper_says":"short exact passage from the paper that shows it (or 'nothing found')","severity":"minor|major"}]}. Empty problems list if all sentences are accurate. Do not rewrite cells.
+
+TASK
+You get paper ids and a working folder. For each id: read <folder>/papers_orig/<id>.txt in full (use several Read calls if needed), read <folder>/audit_in/<id>.json, and write <folder>/audit_out/<id>.json. When all are written reply with ONE line: "done: <ids>".

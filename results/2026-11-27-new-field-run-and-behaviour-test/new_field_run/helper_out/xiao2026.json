@@ -1,0 +1,92 @@
+{
+  "id": "xiao2026",
+  "source_basis": "full text",
+  "type": "Theoretical/Review",
+  "introduction": "The review aimed to evaluate the effects of structured exercise on depressive symptoms, anxiety and health-related quality of life in adults with rheumatoid arthritis. Where sufficient data were available, it also examined whether effects differed between conventional and mind-body exercise.",
+  "methodology": "Systematic review and meta-analysis of randomized controlled trials of adults with rheumatoid arthritis, conducted in accordance with PRISMA 2020. Two reviewers independently screened studies and extracted data. Searches ran to 26 November 2025, and only English-language articles were eligible. Random-effects meta-analyses used Hedges’ g in RevMan 5.4; risk of bias was assessed with RoB 2 and certainty of evidence with GRADE.",
+  "theory": "",
+  "results": "Fifteen trials with 1652 participants were included. Structured exercise was associated with lower depressive symptom scores (SMD = −0.49; P < 0.001), lower anxiety scores (SMD = −0.45; P < 0.001) and better QoL/HRQoL (SMD = 0.45; P = 0.001). Certainty was rated moderate for depressive symptoms and low for anxiety and HRQoL. Conventional and mind-body exercise did not differ significantly.",
+  "discussion": "The authors conclude that structured exercise is a reasonable adjunct to comprehensive RA care for depressive symptoms, anxiety and perceived health status. They state that it should not replace pharmacologic disease control or formal mental-health care when these are indicated, and that the evidence is promising but not definitive.",
+  "limitations": "The authors note that the trials were generally small and varied in intervention, comparator and outcome instruments, and that most outcomes were self-reported with blinding usually infeasible. Few studies per outcome limited subgroup precision and publication-bias assessment. Most analyses used immediate post-intervention outcomes, so durability is uncertain. Only English-language articles were included, which may have introduced language bias.",
+  "evidence": {
+    "introduction": [
+      {"q": "Accordingly, this systematic review and meta-analysis aimed to evaluate the effects of structured exercise interventions on depressive symptoms, anxiety, and HRQoL in adults with RA.", "loc": "Introduction"},
+      {"q": "Where sufficient data were available, we further examined whether these effects differed between conventional exercise and mind-body exercise interventions.", "loc": "Introduction"}
+    ],
+    "methodology": [
+      {"q": "This systematic review and meta-analysis was conducted and reported in accordance with the PRISMA 2020 statement", "loc": "Methods, Protocol and reporting"},
+      {"q": "(1) randomized controlled trials; (2) adults aged 18 years or older with RA", "loc": "Methods, Eligibility criteria"},
+      {"q": "We systematically searched PubMed, Embase, the Cochrane Central Register of Controlled Trials (CENTRAL), Web of Science Core Collection, Scopus, PsycINFO, and an additional EBSCOhost search from database inception to 26 November 2025.", "loc": "Methods, Search strategy"},
+      {"q": "Only articles published in English were eligible for inclusion.", "loc": "Methods, Search strategy"},
+      {"q": "Two reviewers independently screened titles and abstracts, assessed full texts for eligibility, and extracted data using predefined forms.", "loc": "Methods, Study selection and data extraction"},
+      {"q": "Risk of bias was assessed at the outcome level using the Cochrane Risk of Bias 2 tool (RoB 2) for randomized trials", "loc": "Methods, Risk of bias and certainty of evidence"},
+      {"q": "The certainty of evidence for each pooled outcome was assessed using the GRADE framework", "loc": "Methods, Risk of bias and certainty of evidence"},
+      {"q": "Random-effects meta-analyses were conducted using Review Manager software (RevMan, version 5.4)", "loc": "Methods, Statistical analysis"}
+    ],
+    "theory": [],
+    "results": [
+      {"q": "The 15 included trials involved 1652 participants", "loc": "Results, Study and participant characteristics"},
+      {"q": "In a random-effects meta-analysis, exercise was associated with lower depressive symptom scores than non-exercise control conditions, expressed as Hedges’g standardized mean difference (SMD = −0.49; 95% CI, −0.70 to −0.28; P < 0.001).", "loc": "Results, Effects on depressive symptoms"},
+      {"q": "with no statistically significant subgroup difference (Chi² = 0.24; P = 0.62)", "loc": "Results, Effects on depressive symptoms"},
+      {"q": "exercise was associated with lower anxiety scores than control conditions, expressed as Hedges’g standardized mean difference (SMD = −0.45; 95% CI, −0.65 to −0.25; P < 0.001).", "loc": "Results, Effects on anxiety"},
+      {"q": "exercise was associated with significantly improved QoL/HRQoL compared with control conditions, expressed as Hedges’g standardized mean difference (SMD = 0.45; 95% CI, 0.18 to 0.71; P = 0.001).", "loc": "Results, Effects on health-related quality of life"},
+      {"q": "No statistically significant subgroup difference was observed between conventional exercise and mind-body exercise for QoL/HRQoL (Chi² = 0.26; P = 0.61)", "loc": "Results, Effects on health-related quality of life"},
+      {"q": "the certainty of evidence was rated as moderate for depressive symptoms and low for anxiety and HRQoL", "loc": "Results, Small-study effects, adverse events, and certainty of evidence"}
+    ],
+    "discussion": [
+      {"q": "Exercise should be integrated into comprehensive RA care where appropriate, rather than viewed as a substitute for pharmacologic disease control or formal mental-health care when these are indicated.", "loc": "Discussion"},
+      {"q": "Taken together, these findings support structured exercise as a reasonable adjunctive strategy for improving depressive symptoms, anxiety, and perceived health status in adults with RA.", "loc": "Discussion"},
+      {"q": "The evidence is promising but not definitive.", "loc": "Discussion"}
+    ],
+    "limitations": [
+      {"q": "The included trials were generally small and varied substantially in intervention characteristics, comparator conditions, and outcome instruments.", "loc": "Discussion, Limitations"},
+      {"q": "Most psychological and HRQoL outcomes were self-reported, and participant blinding was usually infeasible", "loc": "Discussion, Limitations"},
+      {"q": "The number of studies contributing to each outcome was limited, reducing the precision of subgroup analyses and limiting the ability to assess publication bias, particularly for anxiety and HRQoL.", "loc": "Discussion, Limitations"},
+      {"q": "Most analyses used immediate post-intervention outcomes because long-term follow-up data were limited; therefore, the durability of benefit remains uncertain.", "loc": "Discussion, Limitations"},
+      {"q": "This restriction may have introduced language bias and is acknowledged as a limitation.", "loc": "Methods, Protocol and reporting"},
+      {"q": "Future RA exercise trials should prespecify psychological and HRQoL outcomes, enroll samples large enough to detect clinically meaningful differences, report complete arm-level data at each time point, and include longer follow-up.", "loc": "Discussion"},
+      {"q": "Future studies should also measure potential mediators, such as self-efficacy, fear of movement, sleep, fatigue, and activity participation, to clarify how exercise may influence psychological and quality-of-life outcomes in RA.", "loc": "Discussion"}
+    ]
+  },
+  "abstract_claims": [
+    {"q": "Compared with non-exercise controls, structured exercise reduced depressive symptoms", "loc": "Abstract, Results"},
+    {"q": "Low-certainty evidence suggested reductions in anxiety", "loc": "Abstract, Results"},
+    {"q": "improvements in quality of life or health-related quality of life", "loc": "Abstract, Results"},
+    {"q": "Subgroup analyses showed no statistically significant difference between conventional exercise and mind-body exercise.", "loc": "Abstract, Results"},
+    {"q": "Structured exercise probably reduces depressive symptoms and may reduce anxiety and improve quality of life in adults with rheumatoid arthritis, supporting its use as an adjunct to comprehensive care.", "loc": "Abstract, Conclusions"},
+    {"q": "Larger, better-reported trials with longer follow-up are needed to clarify durability, clinical importance, and optimal delivery.", "loc": "Abstract, Conclusions"}
+  ],
+  "caveats": [
+    {"q": "Although back-translation and minimal clinically important difference or minimally important difference thresholds can aid clinical interpretation, such interpretation was limited in this review", "loc": "Discussion"},
+    {"q": "Although the pooled effects were generally favorable, their clinical interpretation depends on the measurement instruments used and the availability of clinically meaningful thresholds.", "loc": "Discussion"},
+    {"q": "Moreover, most trials did not report the proportion of participants achieving clinically meaningful improvement.", "loc": "Discussion"},
+    {"q": "However, current evidence is insufficient to identify the most effective exercise modality, dose, supervision strategy, or delivery format.", "loc": "Discussion"},
+    {"q": "Depression outcomes were measured using different instruments, and minimally important change thresholds were not consistently reported in the primary trials.", "loc": "Results, Effects on depressive symptoms"},
+    {"q": "Statistical heterogeneity was moderate (I² = 42%).", "loc": "Results, Effects on depressive symptoms"},
+    {"q": "However, small-study effects and publication bias could not be excluded because only 11 trials contributed to this outcome, limiting the reliability of visual assessment and the power of formal asymmetry testing.", "loc": "Results, Small-study effects, adverse events, and certainty of evidence"},
+    {"q": "Funnel plots for anxiety and HRQoL were presented descriptively only, as fewer than 10 studies contributed to these outcomes.", "loc": "Results, Small-study effects, adverse events, and certainty of evidence"},
+    {"q": "Formal tests for funnel plot asymmetry were not performed because the number of studies remained small", "loc": "Methods, Statistical analysis"},
+    {"q": "Several trials were small, with six trials enrolling fewer than 60 participants in total, which should be considered when interpreting the precision and robustness of the pooled estimates.", "loc": "Results, Study and participant characteristics"},
+    {"q": "Adverse-event information was available for 11 trials, although the level of reporting detail varied.", "loc": "Results, Small-study effects, adverse events, and certainty of evidence"},
+    {"q": "The main reasons for downgrading were risk of bias related to deviations from intended interventions and self-reported outcome measurement, imprecision due to small sample sizes and few contributing trials, and limited ability to assess publication bias.", "loc": "Results, Small-study effects, adverse events, and certainty of evidence"},
+    {"q": "Only seven studies provided global or summary HRQoL data suitable for quantitative pooling, and these studies used heterogeneous measures", "loc": "Discussion"},
+    {"q": "Interpretation of the HRQoL findings is influenced by the limited number of contributing studies and heterogeneity in measurement instruments.", "loc": "Discussion"},
+    {"q": "Thus, the HRQoL findings are best understood as supportive evidence that structured exercise may improve perceived health status, rather than definitive evidence that all quality-of-life domains improve consistently.", "loc": "Discussion"},
+    {"q": "Accordingly, the pooled estimates should be understood as average effects of structured exercise programs rather than evidence for a single optimal prescription.", "loc": "Discussion"},
+    {"q": "The absence of statistically significant subgroup differences between conventional and mind-body exercise should not be interpreted as evidence of equivalence.", "loc": "Discussion"},
+    {"q": "Both categories included diverse interventions, and subgroup analyses were limited by small study numbers and within-category heterogeneity.", "loc": "Discussion"},
+    {"q": "These findings support flexibility in exercise selection but do not establish that all exercise formats are interchangeable.", "loc": "Discussion"},
+    {"q": "Planned subgroup analyses compared intervention modality, categorized as conventional exercise or mind-body exercise, and were performed only when at least two studies were available in each subgroup.", "loc": "Methods, Statistical analysis"},
+    {"q": "Meta-regression was not conducted because the number of studies per outcome was insufficient and relevant covariates were inconsistently reported.", "loc": "Methods, Statistical analysis"},
+    {"q": "Because exercise interventions are behavioral in nature, blinding of participants and intervention personnel was generally infeasible.", "loc": "Results, Risk of bias"},
+    {"q": "In several studies, reporting detail was insufficient to fully judge allocation procedures or prespecification of outcomes.", "loc": "Results, Risk of bias"},
+    {"q": "Incomplete reporting of participant flow, adverse events, arm-level outcome data, and predefined or protocol-specified outcomes in the primary trials also limited verification and quantitative synthesis for some outcomes.", "loc": "Discussion, Limitations"},
+    {"q": "However, mechanistic variables were rarely measured directly in the included trials.", "loc": "Discussion"},
+    {"q": "These explanations should therefore be regarded as hypotheses rather than confirmed causal pathways.", "loc": "Discussion"},
+    {"q": "The review protocol was retrospectively registered with INPLASY (INPLASY202610082) after completion of the database search", "loc": "Methods, Protocol and reporting"},
+    {"q": "Two deviations from the registered protocol should be noted.", "loc": "Methods, Protocol and reporting"},
+    {"q": "Grey literature sources were not systematically searched.", "loc": "Methods, Search strategy"},
+    {"q": "Exercise should not be viewed as a substitute for pharmacologic disease control or formal mental-health care when these are indicated.", "loc": "Conclusions"},
+    {"q": "Current evidence does not establish the superiority of any specific exercise modality or delivery format.", "loc": "Conclusions"}
+  ]
+}
