@@ -12,8 +12,9 @@ verify_out/<id>.json is the verification helper's reply for one paper
   keep    nothing changes
   cut     the sentence is removed from its cell (an overclaim: removed)
   narrow  with --narrow trim only the unsupported words the verifier named ("support") are
-          removed from the sentence (a sentence that is then under 3 words, or whose words are not
-          found in it, is removed whole); with --narrow drop the whole sentence is removed;
+          removed from the sentence (several places may be separated by ";" or "|"; an ellipsis ("...") means one phrase with words skipped, so the sentence goes whole; the seams
+          are mended: no doubled commas, no ", and." or "used and X"; a sentence that is then under
+          3 words, ends or begins as a fragment, or whose words are not found in it, is removed whole); with --narrow drop the whole sentence is removed;
           with --narrow report (default) nothing changes and the sentence is listed,
           with the unsupported words, for the session to rewrite closer to the quotes
 A sentence or overclaim with no verdict was not verified: it is listed, not changed.
@@ -35,6 +36,30 @@ from apply_overclaims import last_object_with, reply_file
 from common import scrub, split_sentences
 
 COLS = ["introduction", "methodology", "theory", "results", "discussion", "limitations"]
+
+# Words a sentence cannot end on, or start with: what is left after a removal is a fragment.
+_DANGLING_END = {"was", "were", "is", "are", "will", "be", "been", "that", "of", "to", "the", "a", "an", "and",
+                 "or", "with", "by", "in", "on", "for", "as", "include", "includes", "including", "used",
+                 "than", "from", "at", "which", "who", "but"}
+_LEAD_CONJ = ("and ", "or ", "but ")
+
+
+def tidy(t):
+    """Mend the seams a removal leaves (doubled commas, ', and.', 'used and X') without adding a word.
+    Returns the sentence, or "" when what is left is a fragment, which the caller drops whole."""
+    t = re.sub(r"\s{2,}", " ", t)
+    t = re.sub(r"\s+([,.;:])", r"\1", t)
+    t = re.sub(r"\bthat,\s*(?:and|or) that\b", "that", t)
+    t = re.sub(r"[,;]\s*(?=[,;])", "", t)                      # ",," -> ","
+    t = re.sub(r"[,;]?\s*\b(?:and|or|but)(?:\s+that)?\s*(?=[.!?]?$)", "", t)   # trailing ", and." / " and that."
+    t = re.sub(r",\s*(?=[.!?]$)", "", t)                       # ",." -> "."
+    t = re.sub(r"\b(that|include|includes|including|used|by|of|with|to|in|on|for|as|were|was|is|are)\s+(?:and|or)\s+",
+               r"\1 ", t)                                      # "used and X" -> "used X"
+    t = t.strip(" ,;")
+    words = re.sub(r"[.!?]+$", "", t).split()
+    if not words or words[-1].lower() in _DANGLING_END or t.lower().startswith(_LEAD_CONJ):
+        return ""
+    return t
 
 
 def main(argv=None):
@@ -76,12 +101,23 @@ def main(argv=None):
                     tot["keep"] += 1
                 elif how == "narrow" and a.narrow == "trim":
                     sup = (v.get("support") or "").strip()
-                    t = s.replace(sup, "", 1) if sup and sup in s else ""
-                    t = re.sub(r"\s+([,.;:])", r"\1", re.sub(r"\s{2,}", " ", t)).strip(" ,;")
+                    if sup and sup in s:
+                        parts = [sup]
+                    elif re.search(r"\.\.\.|\u2026", sup):
+                        parts = []     # an ellipsis is one phrase with words skipped: no clean cut, drop the sentence
+                    else:              # the verifier may name several separate places: "x; y" or "x | y"
+                        parts = [x.strip(" ,") for x in re.split(r"\s*[;|]\s*", sup)]
+                        parts = [x for x in parts if x and x in s]
+                    t = s
+                    for x in parts:
+                        t = t.replace(x, "", 1)
+                    t = tidy(t) if parts else ""
                     tot["narrow"] += 1
                     if len(t.split()) >= 3:
                         keep.append(t if t[-1] in ".!?" else t + ".")
                         todo.append(f'{name} {c}.{k} TRIMMED (reread it): removed "{sup}"')
+                    else:
+                        todo.append(f'{name} {c}.{k} DROPPED whole (nothing usable left after removing "{sup}")')
                     continue
                 elif how == "cut" or (how == "narrow" and a.narrow == "drop"):
                     tot["cut" if how == "cut" else "narrow"] += 1

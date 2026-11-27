@@ -435,6 +435,30 @@ open(f"{vo}/h5.json", "w").write(json.dumps({"verdicts": [{"id": "methodology.1"
 rc, out = run("apply_verdicts.py", hl5, "--from", vo, "--narrow", "trim")
 ok("verdicts: a trim that keeps the sentence count is still written to the cell",
    json.load(open(hl5))["papers"][0]["methodology"] == "They were tested twice.", json.load(open(hl5))["papers"][0]["methodology"])
+# trim seams: what is left after a removal must be a sentence, never a fragment
+def _trim_case(sentence, support, name):
+    pl = wj(f"{name}.json", {"title": "T", "papers": [paper(["Adams, A. B."], 2020, "First", id=name, doi=f"10.1/{name}", methodology=sentence)]})
+    open(f"{vo}/{name}.json", "w").write(json.dumps({"verdicts": [{"id": "methodology.1", "verdict": "narrow", "support": support}]}))
+    run("apply_verdicts.py", pl, "--from", vo, "--narrow", "trim")
+    return json.load(open(pl))["papers"][0]["methodology"]
+ok("verdicts trim: a removed list item leaves no ', and.' or doubled comma",
+   _trim_case("Measures were the PARS-3 (a = 0.6), the PMH scale (a = 0.9) and the PHQ-9 (a = 0.9).", "the PMH scale (a = 0.9) and the PHQ-9 (a = 0.9)", "tc1") == "Measures were the PARS-3 (a = 0.6).",
+   _trim_case("Measures were the PARS-3 (a = 0.6), the PMH scale (a = 0.9) and the PHQ-9 (a = 0.9).", "the PMH scale (a = 0.9) and the PHQ-9 (a = 0.9)", "tc1"))
+ok("verdicts trim: 'used and X' is mended to 'used X'",
+   _trim_case("Analysis used Spearman correlations and PROCESS Model 4.", "Spearman correlations", "tc2") == "Analysis used PROCESS Model 4.",
+   _trim_case("Analysis used Spearman correlations and PROCESS Model 4.", "Spearman correlations", "tc2"))
+ok("verdicts trim: 'that X, and that Y' keeps one 'that'",
+   _trim_case("They suggest that exercise helps, and that more people need it.", "exercise helps", "tc3") == "They suggest that more people need it.",
+   _trim_case("They suggest that exercise helps, and that more people need it.", "exercise helps", "tc3"))
+ok("verdicts trim: a sentence left as a fragment ('Activity was.') is dropped whole",
+   _trim_case("Activity was negatively correlated with scores. Other things held.", "negatively correlated with scores", "tc4") == "Other things held.",
+   _trim_case("Activity was negatively correlated with scores. Other things held.", "negatively correlated with scores", "tc4"))
+ok("verdicts trim: two separate places named with ';' are both removed from one sentence",
+   _trim_case("Limits were the small sample, the hospital setting, and the lack of a control group.", "the hospital setting; the lack of a control group", "tc5") == "Limits were the small sample.",
+   _trim_case("Limits were the small sample, the hospital setting, and the lack of a control group.", "the hospital setting; the lack of a control group", "tc5"))
+ok("verdicts trim: a support with an ellipsis drops the sentence rather than gluing the two halves",
+   _trim_case("The review organizes its moderators around the FITT principles of exercise. Second sentence stays.", "organizes its moderators around ... of exercise", "tc6") == "Second sentence stays.",
+   _trim_case("The review organizes its moderators around the FITT principles of exercise. Second sentence stays.", "organizes its moderators around ... of exercise", "tc6"))
 ok("verdicts: --narrow drop removes the narrowed sentence too, and adds no words",
    json.load(open(hl3))["papers"][0]["methodology"] == "Pupils at one school were taught.", out)
 
