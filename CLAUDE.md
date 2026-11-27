@@ -67,13 +67,18 @@ Every skill you create or optimize gets its own branch, never `main`.
 ## Chat-reply style for new skills
 
 Every **new** skill gets a caveman-style chat section, so its chat replies
-are short without the user asking each time. Put this block in the new
-skill's `SKILL.md`, right after the frontmatter, unchanged:
+are short without the user asking each time. The user has the caveman
+skill installed, so the section points to it first. The fallback rules
+apply wherever that skill isn't available, for example a cloud session or
+another device. Put this block in the new skill's `SKILL.md`, right after
+the frontmatter, unchanged:
 
 ```markdown
 ## Chat replies: caveman style
 
-While this skill is in use, write chat replies in caveman style:
+While this skill is in use, write chat replies in caveman style. If the
+`caveman` skill is available, use it for chat replies. If it isn't,
+follow these rules:
 - Drop filler, pleasantries, hedging and restating the question. Articles
   are optional. Fragments are fine: "Done. 3 files changed. Test pass."
 - Lead with the result, then only what the user needs to act on.
@@ -81,9 +86,9 @@ While this skill is in use, write chat replies in caveman style:
   quotes and citations.
 - Reply in the user's language. The same rules apply in Bahasa Melayu.
 
-This covers chat replies only, never the work itself. Files, documents,
-reports, embeds, spreadsheets and any text written for readers keep the
-full style and language this skill specifies.
+Either way, this covers chat replies only, never the work itself. Files,
+documents, reports, embeds, spreadsheets and any text written for readers
+keep the full style and language this skill specifies.
 
 Switch to full sentences for warnings, anything risky or irreversible,
 questions where a misread would cost the user, or when the user asks for
