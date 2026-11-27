@@ -1,0 +1,94 @@
+{
+  "id": "chen2026",
+  "source_basis": "full text",
+  "type": "Quantitative",
+  "introduction": "The study aimed to explore whether positive mental health mediates the relationship between physical activity and depressive symptoms. The authors note that the psychological mechanisms of physical activity remain a key issue, as traditional explanations have mostly focused on direct relief of negative emotions and stress.",
+  "methodology": "A cross-sectional study using a convenience sample of Chinese college students, collected through the Wenjuanxing online survey platform between May and June 2025. The final sample comprised 3,140 participants from 22 provinces in China. Measures were the PARS-3, the Positive Mental Health Scale and the PHQ-9. Analyses used Spearman’s rank correlation and mediation analysis with PROCESS macro (version 4.1), using a bias-corrected bootstrap with 5,000 resamples, in SPSS 29 and AMOS 29.",
+  "theory": "The study is anchored in Self-Determination Theory, which identifies autonomy, competence and relatedness as three innate psychological needs.",
+  "results": "Physical activity showed a small but significant positive link to positive mental health (ρ = 0.143) and a weaker negative connection to depressive symptoms (ρ = −0.089). The direct effect was non-significant (c’ = −0.008, p = 0.080), and the indirect effect through positive mental health was significant (ab = −0.007, 95% CI [−0.010, −0.004]). The model explained little variance (R2 = 0.014 for positive mental health).",
+  "discussion": "The authors describe a small indirect association consistent with a mediation pattern, in which positive mental health may function as a mediator. They propose positive mental health as a useful conceptual focus for future research. They propose a multi-tiered strategy for colleges, including spaces, facilities and sports programs, mental health education courses, and physical activity prescriptions within personalized care plans for students needing support.",
+  "limitations": "The authors state that the cross-sectional design prevents confirmation of causal sequences, and that the convenience sampling frame limits the generalizability of the results. They note that the internal consistency of the PARS-3 scale was modest (α = 0.634). They propose longitudinal studies using experience sampling methods, replication in more diverse, probabilistically sampled populations, and cross-cultural validation.",
+  "evidence": {
+    "introduction": [
+      {"q": "This study aimed to explore whether positive mental health mediates the relationship between physical activity and depressive symptoms.", "loc": "Introduction"},
+      {"q": "exactly through what psychological mechanisms physical activity exerts its positive effects remains a key issue that current research is striving to reveal", "loc": "Introduction"},
+      {"q": "Traditional explanations have mostly focused on the direct relief of negative emotions and stress through physical activity", "loc": "Introduction"},
+      {"q": "Hypothesis 1: Physical activity is negatively correlated with depressive symptoms among college students.", "loc": "Theoretical background and hypotheses"},
+      {"q": "Hypothesis 2: Positive mental health mediates the relationship between physical activity and depressive symptoms.", "loc": "Theoretical background and hypotheses"}
+    ],
+    "methodology": [
+      {"q": "This cross-sectional study employed a convenience sampling method to collect data from Chinese college students via the Wenjuanxing online survey platform", "loc": "Methods, Participants and procedures"},
+      {"q": "between May and June 2025", "loc": "Methods, Participants and procedures"},
+      {"q": "distributed the questionnaire link to college students through their administrative class groups or course-related WeChat groups, QQ groups, or DingTalk groups", "loc": "Methods, Participants and procedures"},
+      {"q": "The final analytic sample comprised 3,140 participants from 22 provinces in China", "loc": "Methods, Participants and procedures"},
+      {"q": "full-time students aged 18 and above enrolled in Chinese mainland colleges", "loc": "Methods, Participants and procedures"},
+      {"q": "This current study measured physical activity used the Physical Activity Rank Scale-3 (PARS-3)", "loc": "Methods, Measures"},
+      {"q": "The current investigation assessed participants’ positive mental health using the validated Positive Mental Health Scale (Lukat et al., 2016)", "loc": "Methods, Measures"},
+      {"q": "The Patient Health Questionnaire-9 (PHQ-9), developed by Kroenke’s research team (Kroenke et al., 2001)", "loc": "Methods, Measures"},
+      {"q": "Spearman’s rank correlation (instead of Pearson correlation) was used to quantify bivariate associations", "loc": "Methods, Statistical analysis"},
+      {"q": "All statistical analyses were conducted using IBM SPSS Statistics 29 and AMOS 29.", "loc": "Methods, Statistical analysis"},
+      {"q": "Mediation analysis was performed using the PROCESS macro (version 4.1) for SPSS", "loc": "Methods, Statistical analysis"},
+      {"q": "The significance of indirect effects was tested using a bias-corrected bootstrap approach with 5,000 resamples.", "loc": "Methods, Statistical analysis"}
+    ],
+    "theory": [
+      {"q": "The relationship between physical activity, positive mental health, and depressive symptoms among college students is anchored in Self-Determination Theory (SDT)", "loc": "Theoretical background, Theoretical framework"},
+      {"q": "identifies autonomy, competence, and relatedness as three innate psychological needs", "loc": "Theoretical background, Theoretical framework"}
+    ],
+    "results": [
+      {"q": "Physical activity showed divergent associations—a small but significant positive link to positive mental health (ρ = 0.143, p < 0.001) contrasted with a weaker negative connection to depressive symptoms (ρ = −0.089, p < 0.001)", "loc": "Results, Preliminary analyses"},
+      {"q": "The direct effect of physical activity on depressive symptoms (the c’ path) became non-significant, c’ = −0.008, p = 0.080, 95% CI [−0.017, 0.001]", "loc": "Results, Positive mental health as a mediator"},
+      {"q": "The indirect effect (a × b) through positive mental health was significant, ab = −0.007, 95% CI [−0.010, −0.004]", "loc": "Results, Positive mental health as a mediator"},
+      {"q": "explains a limited portion of variance in the mediator (R2 = 0.014 for positive mental health)", "loc": "Results, Positive mental health as a mediator"},
+      {"q": "Although the unstandardized effect size appears numerically small, it represents a meaningful relationship when considered in context", "loc": "Results, Positive mental health as a mediator"}
+    ],
+    "discussion": [
+      {"q": "The results suggest a small indirect association consistent with a mediation pattern, where positive mental health may function as a mediator between physical activity and depressive symptoms.", "loc": "Discussion"},
+      {"q": "Consequently, our primary theoretical contribution lies in proposing positive mental health as a useful conceptual focus for future research.", "loc": "Discussion"},
+      {"q": "Although the effect is statistically significant, the indirect effect size (ab = −0.007, βindirect = −0.028) is small and likely of limited clinical relevance at the individual level", "loc": "Discussion"},
+      {"q": "we propose a multi-tiered strategy for colleges to integrate physical activity into mental health promotion: Firstly, universal, environmental-level strategies: Colleges should develop conducive spaces, facilities, and engaging sports programs to boost overall participation.", "loc": "Discussion"},
+      {"q": "Secondly, selective, knowledge-based strategies: Given that limited mental health literacy is a risk factor for depression (Huang et al., 2021; Lam, 2014), colleges should provide effective mental health education courses", "loc": "Discussion"},
+      {"q": "Thirdly, indicated, individualized strategies: For students needing support, mental health professionals should consider integrating physical activity prescriptions into personalized care plans.", "loc": "Discussion"}
+    ],
+    "limitations": [
+      {"q": "the cross-sectional design introduces temporal ambiguity in the mediation pathways, as it prevents confirmation of causal sequences", "loc": "Limitations and future research"},
+      {"q": "future longitudinal studies using experience sampling methods could track weekly fluctuations in activity, mental health states, and mood to establish the temporal precedence of mediation", "loc": "Limitations and future research"},
+      {"q": "self-reported positive mental health measures may not fully capture culturally distinct manifestations of well-being in Chinese students", "loc": "Limitations and future research"},
+      {"q": "Mixed-methods research combining physiological markers (e.g., cortisol levels) with in-depth interviews could help identify contextually relevant well-being indicators.", "loc": "Limitations and future research"},
+      {"q": "the internal consistency of the PARS-3 scale was modest (α = 0.634), potentially affecting measurement precision. Future studies should seek to validate or adapt the PARS-3 scale to improve its reliability in the target population.", "loc": "Limitations and future research"},
+      {"q": "the use of a convenience sampling frame limits the generalizability of the results; to address this, future work should seek to replicate these findings in more diverse, probabilistically sampled populations", "loc": "Limitations and future research"},
+      {"q": "Future research should incorporate a broader nomological net of predictors to build more comprehensive models of positive mental health.", "loc": "Limitations and future research"},
+      {"q": "as the sample consisted exclusively of Chinese university students, the cultural specificity of the findings must be considered", "loc": "Limitations and future research"},
+      {"q": "Future research should therefore prioritize cross-cultural validation.", "loc": "Limitations and future research"}
+    ]
+  },
+  "abstract_claims": [
+    {"q": "Results showed 69.39% of participants had low physical activity, and 19.24% reported clinically significant depressive symptoms.", "loc": "Abstract, Results"},
+    {"q": "positive mental health strongly associated with reduced depressive symptoms", "loc": "Abstract, Results"},
+    {"q": "Bootstrap mediation analysis (5,000 iterations) confirmed a mediating role of positive mental health.", "loc": "Abstract, Results"},
+    {"q": "This study advances theoretical understanding by identifying positive mental health as one possible pathway linking physical activity to better mental health outcomes.", "loc": "Abstract, Discussion"},
+    {"q": "The findings provide conceptual support for integrating positive mental health promotion into physical activity-based interventions targeting college students’ depressive symptoms", "loc": "Abstract, Discussion"}
+  ],
+  "caveats": [
+    {"q": "Notably, the marginal internal consistency can be partly attributed to the scale’s three-item, multiplicative scoring structure.", "loc": "Methods, Measures"},
+    {"q": "This level of internal consistency could potentially attenuate observed correlations and mediation effects, possibly leading to an underestimation of the true relationships under investigation.", "loc": "Methods, Measures"},
+    {"q": "Physical activity showed divergent associations—a small but significant positive link to positive mental health (ρ = 0.143, p < 0.001) contrasted with a weaker negative connection to depressive symptoms (ρ = −0.089, p < 0.001).", "loc": "Results, Preliminary analyses"},
+    {"q": "The direct effect of physical activity on depressive symptoms (the c’ path) became non-significant, c’ = −0.008, p = 0.080, 95% CI [−0.017, 0.001].", "loc": "Results, Positive mental health as a mediator"},
+    {"q": "It is noteworthy that this significant a path was identified within a model that explains a limited portion of variance in the mediator (R2 = 0.014 for positive mental health), underscoring that physical activity is one of many potential contributors to positive mental health.", "loc": "Results, Positive mental health as a mediator"},
+    {"q": "Although the unstandardized effect size appears numerically small, it represents a meaningful relationship when considered in context", "loc": "Results, Positive mental health as a mediator"},
+    {"q": "this indirect effect is small in magnitude", "loc": "Results, Sensitivity analysis"},
+    {"q": "The results of the mediation analysis indicated that physical activity was not directly associated with depressive symptoms.", "loc": "Discussion"},
+    {"q": "The results suggest a small indirect association consistent with a mediation pattern", "loc": "Discussion"},
+    {"q": "Although the data were collected from Chinese college students, the findings hold broader practical implications", "loc": "Discussion"},
+    {"q": "While the unstandardized indirect effect (ab = −0.007) may appear modest at the individual level, its public health implications warrant consideration.", "loc": "Discussion"},
+    {"q": "Although the effect is statistically significant, the indirect effect size (ab = −0.007, βindirect = −0.028) is small and likely of limited clinical relevance at the individual level; any population-level claims are speculative and require dedicated intervention and longitudinal studies in the future.", "loc": "Discussion"},
+    {"q": "the cross-sectional design introduces temporal ambiguity in the mediation pathways, as it prevents confirmation of causal sequences", "loc": "Limitations and future research"},
+    {"q": "self-reported positive mental health measures may not fully capture culturally distinct manifestations of well-being in Chinese students", "loc": "Limitations and future research"},
+    {"q": "the internal consistency of the PARS-3 scale was modest (α = 0.634), potentially affecting measurement precision", "loc": "Limitations and future research"},
+    {"q": "the use of a convenience sampling frame limits the generalizability of the results", "loc": "Limitations and future research"},
+    {"q": "the variance in positive mental health explained by physical activity and the covariates in our model was low", "loc": "Limitations and future research"},
+    {"q": "numerous other unmeasured factors (e.g., personality traits, social relationships) likely contribute substantially to an individual’s level of positive mental health", "loc": "Limitations and future research"},
+    {"q": "The applicability of the proposed mediation model to other populations requires verification.", "loc": "Limitations and future research"},
+    {"q": "Future experimental and longitudinal research is needed to establish causality and explore additional underlying mechanisms.", "loc": "Conclusion"},
+    {"q": "Due to the limitations of this study, the research results should be interpreted with caution.", "loc": "Conclusion"}
+  ]
+}

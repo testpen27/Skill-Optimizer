@@ -596,3 +596,29 @@ of another helper round. Not built; the choice is between completeness and cost.
 - Haiku ignores the word limits (7 warnings) and starts every Discussion and Limitations cell with "the authors".
 - The audit and the verifier are the same model family; a shared blind spot would not show here.
 - One run, 8 papers, one field. 117 audited sentences give a 3-error estimate, not a rate.
+
+### Reader rule test: quote every detail (2026-11-27)
+**Why.** 18 of the verifier's 21 flags in the new-field run were true details the reader had not quoted, which cost 8 to
+9% of the cell words. The free fix is at the source: tell the Haiku reader to quote every detail it puts in a cell.
+Same 8 papers, same Haiku readers, same Opus verifier; only the reading instruction changed.
+
+| Reader instruction | Cell words | Cells over their word limit | Sentences flagged by Opus | Words removed by trimming |
+|---|---|---|---|---|
+| v1, before | 1,982 | 13 of 48 | 21 of 108 (19%) | 9.1% |
+| v2, "quote every detail the cell will hold" | 2,559 (+29%) | 33 of 48 | 8 of 125 (6%) | 1.3% |
+| v3, v2 plus "choose the details a reader needs; stay in the word limit" | 1,863 | 2 of 48 | not measured (see below) | not measured |
+
+- **v2 fixed the loss but bloated the cells.** The reader treated the list of details as a checklist and added survey
+  platforms, software versions and recruitment channels; 33 of 48 cells broke their word limit. After verification
+  the retained text was 40% longer than v1 (2,525 vs 1,802 words), partly useful (city, dates, device) and partly clutter.
+- **v3 keeps v2's gain without the bloat.** It asks the reader to choose the details first (design, setting, who and how
+  many, dates, sampling, measures, type of data collection, analysis), to leave out software, platforms, recruitment
+  channels and funding, and to treat the word limits as fixed. The quote check gave 0 errors; word counts are back near v1
+  (1,863) with 2 of 48 cells over a limit (v1: 13). Quotes: 203 against 206 in v1, so the reader did not quote more, it
+  quoted what it kept.
+- **Not yet verified for v3.** The Opus verification of v3 was stopped by the weekly usage limit (resets 2026-11-30
+  19:00 UTC). A model-free proxy, the share of a sentence's content words that appear in its own quotes, gives v1 a mean
+  of 0.72 for kept sentences with 45% of sentences under 0.70, v2 20% under 0.70, v3 22% under 0.70. The proxy is only
+  a rough guide (it catches 17 of 21 of v1's flagged sentences but also marks 32 unflagged ones), so v3 is expected to
+  flag about as few as v2, not proven. Rerun the verifier on `v3_cells_before_verification.json` after the reset.
+- The rule is in `reading-and-writing.md` (v3 wording). A rescue helper for the remaining trims is not built.

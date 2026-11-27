@@ -1,0 +1,79 @@
+{"id": "mack2024",
+ "source_basis": "full text",
+ "type": "Theoretical/Review",
+ "introduction": "The review aims to investigate the effects of chronic exercise on overall depression severity and on different symptoms of depression in older adults, in randomized controlled trials, including the moderating effects of intervention and individual characteristics. The authors state that, to their knowledge, no published review or meta-analysis has examined the broadest possible range of symptoms.",
+ "methodology": "Protocol for a systematic and meta-analytical review of randomized controlled trials of chronic exercise in older adults, following PRISMA-P. Eligible studies are RCTs with parallel-group or cluster designs and a mean age of 60 years or above. Several databases will be searched from inception. Two independent reviewers will conduct study selection, data extraction and quality assessment. A random-effects model will be used, with Hedges' g as the effect size, and GRADE and RoB2 will assess quality.",
+ "theory": "",
+ "results": "The paper is a protocol and reports no results.",
+ "discussion": "The authors expect a moderate effect of exercise on depression compared with active and passive control groups, and expect the results to be moderated by intervention and individual characteristics. They state that the conclusions may serve as a basis for evidence-based recommendations for individualized exercise programs. They also suggest that the review results may reveal research gaps for further RCTs.",
+ "limitations": "The authors note that, because RCTs with pharmacological or psychotherapy effects are excluded, no conclusions can be drawn for exercise as add-on treatment, and that they may miss some clinically relevant insights. They anticipate heterogeneous data and wide variance in how exercise and individual characteristics are reported. They suggest the review may show whether comorbidities or physical fitness level still require further research.",
+ "evidence": {
+  "introduction": [
+   {"q": "the objective of the proposed review is to investigate the effects of chronic exercise on overall depression severity and on different symptoms of depression in randomized controlled trials (RCTs) including older adults with a mean age of at least 60 years", "loc": "Abstract, Introduction"},
+   {"q": "and by considering the moderating effects of intervention characteristics and individual characteristics", "loc": "Abstract, Introduction"},
+   {"q": "to our knowledge, there is no published review or meta-analysis that attempts to uncover the effects of chronic exercise on the broadest possible range of symptoms as described in the DSM", "loc": "State of research"}
+  ],
+  "methodology": [
+   {"q": "In this article, we have outlined a protocol for a systematic and meta-analytical review", "loc": "Discussion and conclusion"},
+   {"q": "follows the Preferred Reporting Items for Systematic Reviews and Meta-Analyses Protocol (PRISMA-P) statement", "loc": "Method"},
+   {"q": "Eligible studies only include RCTs with either a parallel-group design", "loc": "Method, Study design"},
+   {"q": "the mean age of each arm of the RCT is 60 years or above", "loc": "Method, Population"},
+   {"q": "Our review further aims to encompass all populations of older adults independent of disease", "loc": "Method, Population"},
+   {"q": "The intervention must last at least one week and include more than one exercise session.", "loc": "Method, Intervention"},
+   {"q": "The following electronic databases will be searched from inception to shortly before publishing the meta-analysis: Web of Science (all bases); Academic Search Complete, MEDLINE with full text, CINAHL with full text, APA Psycinfo, SPORTDiscuss with full text through EBSCO host; Cochrane.", "loc": "Method, Information sources and search strategy"},
+   {"q": "Two independent reviewers will conduct the study selection, data extraction, and quality assessment.", "loc": "Abstract, Methods"},
+   {"q": "a random-effects model will be used for the meta-analysis", "loc": "Method, Data synthesis"},
+   {"q": "Summary effects will be calculated as Hedges’ g using random-effects weights.", "loc": "Method, Data synthesis"},
+   {"q": "The two reviewers will independently rate the quality of the included studies with ROB2.", "loc": "Method, Assessment of evidence and study quality"},
+   {"q": "The GRADE framework will be used to assess the evidence accumulated for each outcome", "loc": "Method, Assessment of evidence and study quality"},
+   {"q": "All analyses will be performed using the software Comprehensive Meta-Analysis 4.0", "loc": "Method, Data synthesis"}
+  ],
+  "theory": [],
+  "results": [
+   {"q": "In this article, we have outlined a protocol for a systematic and meta-analytical review on the effects of chronic exercise on depression in older adults", "loc": "Discussion and conclusion"},
+   {"q": "This protocol has been published in the Prospero repository", "loc": "Method"}
+  ],
+  "discussion": [
+   {"q": "we expect to find a moderate effect of exercise on depression compared to active and passive control groups with no exercise components", "loc": "Discussion and conclusion"},
+   {"q": "We further expect the results to be moderated by intervention characteristics and individual characteristics", "loc": "Discussion and conclusion"},
+   {"q": "the conclusions drawn from this review may serve as a basis for developing evidence-based recommendations for individualized exercise programs that can help alleviate depression in older adults", "loc": "Discussion and conclusion"},
+   {"q": "the review results may reveal research gaps that can stimulate the formulation of research questions for further RCTs", "loc": "Discussion and conclusion"}
+  ],
+  "limitations": [
+   {"q": "We plan to exclude RCTs with tested effects of pharmacological treatment and / or psychotherapy.", "loc": "Discussion and conclusion"},
+   {"q": "Therefore, no conclusions can be drawn for exercise interventions as add-on treatment.", "loc": "Discussion and conclusion"},
+   {"q": "We are aware that by that we might miss some clinically relevant insights.", "loc": "Discussion and conclusion"},
+   {"q": "We further anticipate limitations in form of heterogenous data and a wide variance in the reporting of the exercise characteristics (e.g., detailedness) and the individual characteristics.", "loc": "Discussion and conclusion"},
+   {"q": "For instance, it can reveal whether certain moderator variables, such as comorbidities or physical fitness level still require further research to understand their influence.", "loc": "Discussion and conclusion"}
+  ]
+ },
+ "abstract_claims": [
+  {"q": "There is high evidence that chronic exercise benefits overall depression severity in older adults.", "loc": "Abstract, Introduction"},
+  {"q": "The results of the proposed review are anticipated to have a substantial impact on research and clinical practice.", "loc": "Abstract, Conclusion"},
+  {"q": "On the one hand, the review’s conclusions could form the foundation for developing evidence-based recommendations for individualized exercise programs that alleviate depression in older adults.", "loc": "Abstract, Conclusion"},
+  {"q": "by revealing research gaps, the review results could encourage the formulation of research questions for further RCTs.", "loc": "Abstract, Conclusion"}
+ ],
+ "caveats": [
+  {"q": "However, the heterogeneity of the effects is high, which might be caused by variations between exercise interventions.", "loc": "Introduction, Intervention characteristics"},
+  {"q": "This might lead to methodological issues in the choice of the control group that might influence the results", "loc": "Introduction, Intervention characteristics"},
+  {"q": "For example, an RCT including an active control group with social interactions to examine the effect of an individual-based exercise intervention (without social interaction) is not appropriate.", "loc": "Introduction, Intervention characteristics"},
+  {"q": "Although in exercise interventions, these techniques are applied to the context of exercise behavior, it is plausible that they can also be translated to other areas of life, such as dealing with depression.", "loc": "Introduction, Intervention characteristics"},
+  {"q": "Meaningful responses may be only visible when the exercises are conducted with a certain frequency and duration", "loc": "Introduction, Intervention characteristics"},
+  {"q": "Nevertheless, one single score provides only limited information on the severity of the specific symptoms", "loc": "Introduction, Individual characteristics"},
+  {"q": "These precautions might imply that the impact of exercise is insufficient for reducing depression.", "loc": "Introduction, Individual characteristics"},
+  {"q": "Although these connections have not been investigated yet, they hold significance in the context of geriatric depression.", "loc": "Introduction, Individual characteristics"},
+  {"q": "Although there are quite many RCTs examining the effects of chronic exercise on specific symptoms of depression", "loc": "Introduction, State of research"},
+  {"q": "The results show, on the one hand, a high degree of heterogeneity for the exercise characteristics and, on the other hand, partly different results for the individual characteristics.", "loc": "Introduction, State of research"},
+  {"q": "In a recent umbrella review on the effects of chronic exercise on depression in older adults, only one of the twelve included reviews was considered to be of high methodological quality", "loc": "Introduction, State of research"},
+  {"q": "Since publication bias is seldom calculated, further evidence is needed to strengthen the evidence.", "loc": "Introduction, State of research"},
+  {"q": "Furthermore, we will only include studies in which frequency of exercise sessions, duration of exercise sessions, duration of the intervention and type of exercise are reported.", "loc": "Method, Intervention"},
+  {"q": "Intervention arms comprising a chronic exercise component additionally to other intervention components, such as nutrition, cognitive behavioral therapy, or pharmacotherapy, are not eligible.", "loc": "Method, Intervention"},
+  {"q": "Eligible studies only include RCTs with either a parallel-group design", "loc": "Method, Study design"},
+  {"q": "Abstracts from congresses and study protocols are not considered.", "loc": "Method, Article type"},
+  {"q": "We plan to exclude RCTs with tested effects of pharmacological treatment and / or psychotherapy.", "loc": "Discussion and conclusion"},
+  {"q": "Therefore, no conclusions can be drawn for exercise interventions as add-on treatment.", "loc": "Discussion and conclusion"},
+  {"q": "We are aware that by that we might miss some clinically relevant insights.", "loc": "Discussion and conclusion"},
+  {"q": "We further anticipate limitations in form of heterogenous data and a wide variance in the reporting of the exercise characteristics (e.g., detailedness) and the individual characteristics.", "loc": "Discussion and conclusion"},
+  {"q": "We aim to deal with those limitations by being cautious in interpreting the results.", "loc": "Discussion and conclusion"}
+ ]
+}

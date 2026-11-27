@@ -1,0 +1,92 @@
+{
+  "id": "welcomechamberlain2025",
+  "source_basis": "full text",
+  "type": "Quantitative",
+  "introduction": "The authors examined depression and physical activity in real-world employees with access to a multi-modal digital mental health platform. They note a paucity of data on its impact on different areas of health and well-being.",
+  "methodology": "Prospective, observational study with online surveys at baseline and follow-up. Adults aged 18 or older in the United States who had registered for an employer-sponsored, multi-modal digital mental health benefits platform. Conducted September 2021 to May 2022; 755 adults at baseline. Measures: IPAQ-Short Form and PHQ-9. Paired t-tests and correlations.",
+  "theory": "",
+  "results": "Of 755 adults at baseline, 47.3% were deemed underactive. Physical activity was negatively correlated with baseline PHQ-9 scores (r = −.19, p < .001). Participants screening positive at baseline reported a decrease of 4.88 points on the PHQ-9, a statistically significant 35% reduction. Underactive participants increased MVPA by 60.33 min/week, a 117% increase. Active participants reported no significant change; 78.4% stayed active.",
+  "discussion": "The authors state that digital, remotely delivered interventions may be particularly beneficial for underactive adults seeking mental health support or aiming to increase physical activity. They also state that employer-sponsored platforms offering integrated mental and physical health resources may create a more supportive environment for sustaining health behaviors.",
+  "limitations": "They were unable to determine the temporal sequence of changes, and an experimental design is needed to test causality. The single-item impact measure has yet to be validated. They did not examine industry sector. Completers had more White-identifying participants, and employer-gated access limits generalizability. Future investigations should use a longer-term follow-up, perhaps 6 or 12 months.",
+  "evidence": {
+    "introduction": [
+      {"q": "we examined levels of depression and physical activity in a real-world sample of employees with access to this digital mental health platform", "loc": "Introduction"},
+      {"q": "There is a paucity of data on the impact of a multi-modal digital mental health platform like this on different areas of health and well-being.", "loc": "Introduction"}
+    ],
+    "methodology": [
+      {"q": "This investigation was a prospective, observational study", "loc": "Method: Design and participants"},
+      {"q": "All data were collected through a secure, online survey platform", "loc": "Method: Procedures"},
+      {"q": "a follow-up survey three months later", "loc": "Method: Procedures"},
+      {"q": "Eligible participants were 18 years or older, lived in the United States", "loc": "Method: Design and participants"},
+      {"q": "had registered and onboarded for the mental health benefit", "loc": "Method: Design and participants"},
+      {"q": "an employer-sponsored, multi-modal digital mental health benefits platform", "loc": "Method: Design and participants"},
+      {"q": "The study was conducted between September 2021 and May 2022.", "loc": "Method: Design and participants"},
+      {"q": "leaving a final sample of 755 adults (79.5%) at baseline", "loc": "Results: Study participants"},
+      {"q": "The International Physical Activity Questionnaire—Short Form (IPAQ) (35) measured volume of physical activity", "loc": "Method: Measures"},
+      {"q": "The Patient Health Questionnaire (PHQ-9) (38) assessed the presence and severity of depression symptoms over the past two weeks.", "loc": "Method: Measures"},
+      {"q": "we used a Spearman rank correlation to measure associations between MVPA and depression symptoms", "loc": "Method: Data analysis"},
+      {"q": "we first used paired t-tests to evaluate changes in MVPA, depression symptoms, and the self-reported impact of mental health on physical activity", "loc": "Method: Data analysis"}
+    ],
+    "theory": [],
+    "results": [
+      {"q": "Of the 755 with valid baseline data, 47.3% ... of participants were deemed “underactive” according to U.S. guidelines", "loc": "Results: Aim 1"},
+      {"q": "leaving a final sample of 755 adults (79.5%) at baseline", "loc": "Results: Study participants"},
+      {"q": "Physical activity was negatively correlated with baseline PHQ-9 scores ( _r_ = −.19, _p_ < .001).", "loc": "Results: Aim 2"},
+      {"q": "Participants with a positive depression screening at baseline ( _n_ = 178) reported an average decrease of 4.88 points on the PHQ-9, representing a statistically significant 35% reduction in depressive symptoms", "loc": "Results: Aim 3"},
+      {"q": "Participants who were classified as underactive at baseline ( _n_ = 211) reported an average increase of 60.33 min/week in activity, representing a statistically significant 117% increase in MVPA", "loc": "Results: Aim 3"},
+      {"q": "reported no statistically significant change in their activity at follow-up", "loc": "Results: Aim 3"},
+      {"q": "78.4% maintained their classification as active", "loc": "Results: Aim 3"}
+    ],
+    "discussion": [
+      {"q": "digital, remotely delivered interventions are scalable and may be particularly beneficial for underactive adults seeking mental health support or aiming to increase physical activity", "loc": "Discussion"},
+      {"q": "Employer-sponsored platforms offering integrated mental and physical health resources may create a more supportive environment for sustaining health behaviors.", "loc": "Discussion"}
+    ],
+    "limitations": [
+      {"q": "we were unable to determine the temporal sequence of the changes", "loc": "Discussion: Limitations"},
+      {"q": "A prospective, experimental design and random assignment to treatment conditions is needed to test the directionality and causality of these improvements.", "loc": "Discussion: Limitations"},
+      {"q": "this item has yet to be validated", "loc": "Discussion: Limitations"},
+      {"q": "we did not examine whether outcomes varied by industry sector", "loc": "Discussion: Limitations"},
+      {"q": "we observed a higher proportion of White-identifying participants among completers of the follow-up survey, compared to non-completers", "loc": "Discussion: Limitations"},
+      {"q": "This, paired with the fact that platform access was gated by employer-sponsorship, limits the generalizability of our findings.", "loc": "Discussion: Limitations"},
+      {"q": "future investigations should utilize a longer-term follow-up period (perhaps 6 or 12 months)", "loc": "Conclusions"}
+    ]
+  },
+  "abstract_claims": [
+    {"q": "Approximately 47% of participants were physically underactive at baseline", "loc": "Abstract: Results"},
+    {"q": "Men participated in more physical activity than women ( _p_ = 0.005)", "loc": "Abstract: Results"},
+    {"q": "Older adults reported fewer depression symptoms than younger adults ( _r_ = −0.16, _p_ < 0.001)", "loc": "Abstract: Results"},
+    {"q": "Baseline MVPA baseline was negatively correlated with depression symptoms ( _r_ = −0.19, _p_ < 0.001)", "loc": "Abstract: Results"},
+    {"q": "Depression scores significantly improved, with 66.9% of adults at risk of depression improving or recovering ( _p_ < 0.001)", "loc": "Abstract: Results"},
+    {"q": "94% of adults with low depression symptoms maintaining this status over time ( _p_ = 0.004)", "loc": "Abstract: Results"},
+    {"q": "Physical activity participation improved by 117% among individuals deemed underactive at baseline ( _p_ < 0.001)", "loc": "Abstract: Results"},
+    {"q": "while individuals who were active at baseline maintained high levels of physical activity ( _p_ = 0.06)", "loc": "Abstract: Results"},
+    {"q": "Adults with access to a multi-modal digital mental health platform reported significant beneficial changes in depression symptoms and physical activity participation.", "loc": "Abstract: Conclusions"},
+    {"q": "Digital mental health tools may have the potential to elicit positive change in physical health domains, as well as mental health.", "loc": "Abstract: Conclusions"}
+  ],
+  "caveats": [
+    {"q": "Information about mental health diagnoses was not available.", "loc": "Method: Procedures"},
+    {"q": "Data were not available for engagement in the group psychoeducational sessions as registration for those was anonymous.", "loc": "Method: Measures"},
+    {"q": "Baseline PHQ-9 scores were significantly lower among completers, and we observed a higher proportion of White-identifying participants among completers compared to non-completers.", "loc": "Results: Study participants"},
+    {"q": "There were no significant differences in MVPA, age, or gender between completers and non-completers.", "loc": "Results: Study participants"},
+    {"q": "the standard deviation within each group indicated substantial heterogeneity", "loc": "Results: Aim 1"},
+    {"q": "a statistically—but not clinically—significant difference", "loc": "Results: Aim 1"},
+    {"q": "There were no significant differences in PHQ-9 score across races and ethnicities", "loc": "Results: Aim 1"},
+    {"q": "There were no significant differences in MVPA based on other gender identities or races and ethnicities", "loc": "Results: Aim 1"},
+    {"q": "and no significant correlation between MVPA and age", "loc": "Results: Aim 1"},
+    {"q": "though the standard deviations indicate substantial heterogeneity in the sample", "loc": "Results: Aim 2"},
+    {"q": "These levels of improvement in depression were statistically significant but potentially not clinically significant given the average change was less than the 5 points deemed clinically meaningful change on the PHQ-9.", "loc": "Results: Aim 3"},
+    {"q": "There were no significant differences in baseline physical activity participation across ages or races/ethnicities.", "loc": "Discussion"},
+    {"q": "Although we observed a slight, non-significant decrease of 28 min per week", "loc": "Discussion"},
+    {"q": "Although these improvements are promising, the group's average activity at follow-up remained below the recommended 150 min of MVPA per week", "loc": "Discussion"},
+    {"q": "likely because the platform was not explicitly designed to promote physical activity", "loc": "Discussion"},
+    {"q": "Notably, underactive participants, but not active ones, reported a significant reduction", "loc": "Discussion"},
+    {"q": "This study was observational in nature, meaning that while we were able to observe that depression symptoms and MVPA improved over time, we were unable to determine the temporal sequence of the changes.", "loc": "Discussion: Limitations"},
+    {"q": "this item has yet to be validated and may be inaccurately measuring the barrier that mental health may pose to participation in physical activity", "loc": "Discussion: Limitations"},
+    {"q": "future research could examine whether results differ when alternative cut-off thresholds or severity categories are applied", "loc": "Discussion: Limitations"},
+    {"q": "we did not examine whether outcomes varied by industry sector", "loc": "Discussion: Limitations"},
+    {"q": "We also did not assess implementation-related factors", "loc": "Discussion: Limitations"},
+    {"q": "This, paired with the fact that platform access was gated by employer-sponsorship, limits the generalizability of our findings.", "loc": "Discussion: Limitations"},
+    {"q": "Given the observational nature of the present study, future investigations should incorporate an experimental design to determine the causality of improvement in physical activity engagement and depressive symptoms.", "loc": "Conclusions"},
+    {"q": "given the relatively short duration of the present study", "loc": "Conclusions"}
+  ]
+}

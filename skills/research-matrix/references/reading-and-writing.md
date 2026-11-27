@@ -47,6 +47,28 @@ one passage. Where to look:
 Rules while reading:
 - **Absence is a finding.** If the paper does not report a sample size, a
   setting or a theory, record that it is not reported. Do not infer it.
+- **Quote every detail the cell will hold, one quote per detail, and stay inside
+  the word limit.** A second reader removes any word of a cell that no quote
+  supports, so a true detail you write but did not quote is lost later. Choose
+  the details first, then quote each one. Choose what a reader needs to judge
+  or repeat the study, and leave out what they do not: software names and
+  versions, survey platforms, recruitment channels, funding, and statistics
+  that are not about the main findings. The limits are fixed (introduction 40
+  words, methodology 50, theory 25, results 60, discussion 60, limitations 60):
+  when the details do not fit, drop the least needed detail, never a quote
+  requirement. The details to look for:
+  - Methodology: the design as the paper words it; the setting and country; how
+    many participants and who they were; the dates; the sampling method; each
+    measure by name; the type of data collection ("semi-structured",
+    "telephone", "online"); the analysis methods;
+  - Introduction: the aim, and the gap or problem sentence;
+  - Results: each main statistic with the name of what it measures (not "R2 =
+    0.014" but "R2 = 0.014 for positive mental health");
+  - Discussion: each implication or recommendation the authors state;
+  - Limitations and future research: one quote for each limitation and one for
+    each direction for future work.
+  A sentence that joins two details needs a quote for each part. A detail you
+  cannot quote stays out of the cell.
 - **A protocol has no results, and the Results cell says so.** For a
   protocol, registered report or study plan, write "The paper is a protocol and
   reports no results." in the Results cell and quote the sentence in which the

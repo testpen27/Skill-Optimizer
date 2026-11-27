@@ -1,0 +1,84 @@
+{"id": "bystad2026",
+ "source_basis": "full text",
+ "type": "Qualitative",
+ "introduction": "The aim was to explore how psychiatric inpatients experience exercise, particularly regarding their mental well-being. The authors note that research on inpatients remains limited, as most existing studies focus on outpatients.",
+ "methodology": "A qualitative study of a purposive sample of eight inpatients with serious mental health disorders who had participated in individualized exercise sessions: five men and three women, mean age 53.9. Open-ended, semi-structured telephone interviews, transcribed verbatim, were analysed with reflexive thematic analysis, at one hospital in Norway.",
+ "theory": "",
+ "results": "Four themes were identified: follow-up support, symptom reduction, sense of mastery and activation during hospitalization. Participants reported immediate improvements in mood and perceived mental well-being following exercise. The exercise physiologist was described as a crucial source of motivation and support. Some participants were uncertain about effects on sleep or energy.",
+ "discussion": "The authors state that exercise had a positive role in participants’ perceived mental state, and that support and follow-up are key to implementing exercise interventions for inpatients. They state that the results may suggest more inpatients should be given the opportunity to exercise regularly, while stressing that the findings reflect subjective experiences rather than treatment efficacy or causal effects.",
+ "limitations": "The authors note a small sample of eight, limited transferability, possible selection and social desirability bias from recruitment by the exercise physiologist, and no comparator, which makes perceived exercise effects difficult to distinguish from other treatment. Telephone interviews limited access to non-verbal cues. Future studies should include a broader, more diverse sample, and further research is needed to examine efficacy.",
+ "evidence": {
+  "introduction": [
+   {"q": "The aim of this study was to explore how psychiatric inpatients experience exercise, in particular with respect to their mental well-being.", "loc": "Abstract, Background"},
+   {"q": "There is a lack of research on how inpatients in psychiatric care experience physical exercise, as most existing studies focus on outpatients.", "loc": "Abstract, Background"},
+   {"q": "Research focusing specifically on physical exercise among psychiatric inpatients remains limited", "loc": "1. Introduction"}
+  ],
+  "methodology": [
+   {"q": "This was a qualitative study, based on a purposive sample of eight inpatients", "loc": "2.1. Study design"},
+   {"q": "eight inpatients (five male, three female, mean age of 53.9) with serious mental health disorders who had participated in individualized exercise sessions led by an exercise physiologist", "loc": "Abstract, Methods"},
+   {"q": "The study took place in the Division of Substance Use and Mental Health at the University Hospital of North Norway.", "loc": "2. Materials and methods"},
+   {"q": "Five were male and three were female.", "loc": "2.2. Participants"},
+   {"q": "The interview guide was semi-structured, with open-ended questions.", "loc": "2.3. Interviews"},
+   {"q": "Each participant took part in a telephone interview lasting approximately 30 minutes", "loc": "2.3. Interviews"},
+   {"q": "All interviews were audio-recorded and transcribed verbatim.", "loc": "2.3. Interviews"},
+   {"q": "we used reflexive thematic analysis", "loc": "Abstract, Methods"}
+  ],
+  "theory": [],
+  "results": [
+   {"q": "We identified four key themes: follow-up support, symptom reduction, sense of mastery, and activation during hospitalization.", "loc": "Abstract, Results"},
+   {"q": "A particularly notable finding was that participants reported immediate improvements in mood and perceived mental well-being following exercise.", "loc": "Abstract, Results"},
+   {"q": "The presence of an exercise physiologist was described as a crucial source of motivation and support.", "loc": "Abstract, Results"},
+   {"q": "Some participants were uncertain whether exercise affected specific symptoms such as sleep or energy", "loc": "3.2. Symptom reduction"}
+  ],
+  "discussion": [
+   {"q": "Overall, participants described exercise as having a positive role in their perceived mental state.", "loc": "4.1. General discussion"},
+   {"q": "These findings reflect participants’ subjective experiences and should not be interpreted as evidence of treatment efficacy or causal effects of exercise.", "loc": "4.1. General discussion"},
+   {"q": "Our results suggest that adequate support and follow-up are key to successfully implementing physical exercise interventions for inpatients in psychiatric care.", "loc": "4.1. General discussion"},
+   {"q": "The results may suggest that more inpatients should be given the opportunity to participate in regular physical exercise.", "loc": "4.2. Clinical implications"}
+  ],
+  "limitations": [
+   {"q": "the sample size of eight participants is relatively small", "loc": "4.3. Strengths and limitations"},
+   {"q": "Caution is required when considering the transferability of our findings to other settings or populations.", "loc": "4.3. Strengths and limitations"},
+   {"q": "A second limitation is a possible selection bias, as those who chose to participate may have been more positively inclined toward exercise.", "loc": "4.3. Strengths and limitations"},
+   {"q": "This may have introduced selection and social desirability bias", "loc": "4.3. Strengths and limitations"},
+   {"q": "As exercise was provided within ongoing inpatient treatment and the study had no comparator, it is difficult to distinguish the perceived effects of exercise from those of other aspects of inpatient treatment.", "loc": "4.3. Strengths and limitations"},
+   {"q": "telephone-based interviews limited access to non-verbal cues", "loc": "4.3. Strengths and limitations"},
+   {"q": "Future studies should aim to include a broader and more diverse sample to capture a wider range of experiences.", "loc": "4.2. Clinical implications"},
+   {"q": "Further research is needed to examine efficacy", "loc": "5. Conclusions"}
+  ]
+ },
+ "abstract_claims": [
+  {"q": "We identified four key themes: follow-up support, symptom reduction, sense of mastery, and activation during hospitalization.", "loc": "Abstract, Results"},
+  {"q": "A particularly notable finding was that participants reported immediate improvements in mood and perceived mental well-being following exercise.", "loc": "Abstract, Results"},
+  {"q": "The presence of an exercise physiologist was described as a crucial source of motivation and support.", "loc": "Abstract, Results"},
+  {"q": "Overall, the study suggests that structured opportunities for exercise with individualized professional support may be a valuable component of psychiatric inpatient care.", "loc": "Abstract, Conclusion"}
+ ],
+ "caveats": [
+  {"q": "However, the perceived effects were not uniformly strong.", "loc": "3.2. Symptom reduction"},
+  {"q": "Some participants were uncertain whether exercise affected specific symptoms such as sleep or energy, and one participant reported little noticeable change in some areas.", "loc": "3.2. Symptom reduction"},
+  {"q": "Another emphasized that exercise did not remove depressive thoughts, but rather helped make difficult days more manageable:", "loc": "3.2. Symptom reduction"},
+  {"q": "Given the small and heterogeneous sample, subgroup analyses were not performed.", "loc": "2.2. Participants"},
+  {"q": "exact participant-level session counts were not available for the present analysis", "loc": "2.2. Participants"},
+  {"q": "Furthermore, participants reported perceived acute reductions in symptoms, including improvements in mood following exercise sessions.", "loc": "4.1. General discussion"},
+  {"q": "These findings reflect participants’ subjective experiences and should not be interpreted as evidence of treatment efficacy or causal effects of exercise.", "loc": "4.1. General discussion"},
+  {"q": "However, the present qualitative design does not allow us to determine whether these perceived changes were caused by exercise itself.", "loc": "4.1. General discussion"},
+  {"q": "Rather, the findings demonstrate that participants experienced and attributed positive changes in their emotional state to the exercise sessions.", "loc": "4.1. General discussion"},
+  {"q": "It is still unclear which types of exercise and levels of intensity are most effective for improving mental health.", "loc": "4.1. General discussion"},
+  {"q": "However, as behavioral mechanisms were not directly examined, this interpretation remains theoretical.", "loc": "4.1. General discussion"},
+  {"q": "Importantly, the perceived improvements cannot necessarily be explained by exercise alone.", "loc": "4.1. General discussion"},
+  {"q": "As the study did not include a comparison condition, their relative contributions cannot be determined.", "loc": "4.1. General discussion"},
+  {"q": "Thus, the findings should be understood as reflecting participants’ experiences of professionally supported exercise rather than effects specific to exercise itself.", "loc": "4.1. General discussion"},
+  {"q": "None of our participants reported such experiences.", "loc": "4.1. General discussion"},
+  {"q": "Exercise can serve as a treatment in addition to medication and psychotherapy during hospitalization, but it is typically not intended to replace standard treatment.", "loc": "4.1. General discussion"},
+  {"q": "However, the present qualitative study was not designed to examine treatment efficacy or optimal exercise dose, or to make comparisons with other interventions.", "loc": "4.2. Clinical implications"},
+  {"q": "However, the present study has some limitations.", "loc": "4.3. Strengths and limitations"},
+  {"q": "While qualitative interview-based studies such as the present typically have few participants, the sample size of eight participants is relatively small.", "loc": "4.3. Strengths and limitations"},
+  {"q": "Consequently, this has affected our ability to recruit a sufficiently large and diverse sample, thereby limiting the breadth of experiences represented in the study.", "loc": "4.3. Strengths and limitations"},
+  {"q": "Caution is required when considering the transferability of our findings to other settings or populations.", "loc": "4.3. Strengths and limitations"},
+  {"q": "The results may not fully represent the experiences of all psychiatric inpatients.", "loc": "4.3. Strengths and limitations"},
+  {"q": "As exercise was provided within ongoing inpatient treatment and the study had no comparator, it is difficult to distinguish the perceived effects of exercise from those of other aspects of inpatient treatment.", "loc": "4.3. Strengths and limitations"},
+  {"q": "Finally, telephone-based interviews limited access to non-verbal cues, and the single-center Norwegian setting may limit the transferability of the findings to other inpatient settings.", "loc": "4.3. Strengths and limitations"},
+  {"q": "A second limitation is a possible selection bias, as those who chose to participate may have been more positively inclined toward exercise.", "loc": "4.3. Strengths and limitations"},
+  {"q": "This may have introduced selection and social desirability bias, as patients with more positive experiences could have been more willing to participate or to offer a positive evaluation.", "loc": "4.3. Strengths and limitations"}
+ ]
+}

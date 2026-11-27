@@ -1,0 +1,103 @@
+{
+  "id": "coletta2024",
+  "source_basis": "full text",
+  "type": "Mixed-methods",
+  "introduction": "The aim was to determine the preliminary effectiveness of a live online exercise program on older adults' physical activity levels, compared with a waitlist control group. Older adults have described numerous barriers to participating in physical activity and exercise.",
+  "methodology": "A pilot convergent parallel mixed-methods RCT of community-dwelling older adults aged 65 to 80 in Hamilton, Ontario. Measures included an accelerometer and the Geriatric Depression Scale Short Form. Interviews were semi-structured and thematically analyzed. Analysis used a two-way repeated measures ANOVA.",
+  "theory": "The study was guided by the CONSORT 2010 statement for pilot and feasibility trials.",
+  "results": "The ACTIVE group decreased on the Geriatric Depression Scale (interaction p = 0.012) and increased on life-space mobility (interaction p = 0.014). No between-group differences for daily steps and daily active energy expenditure, anxiety, loneliness, or nutrition risk. Attendance was 97%. Participants were satisfied or very satisfied 98% of the time. Five themes were identified.",
+  "discussion": "The authors report that the program did not affect habitual physical activity but reduced depressive symptoms, improved life-space mobility, and had excellent adherence and acceptability. They describe online exercise programs as viable service-delivery options, particularly when in-person programming is unavailable. They suggest the program has the potential to support synchronous exercise programs at home.",
+  "limitations": "The authors cite the small sample size, an underpowered pilot, and no blinding of assessors or participants. Only English-speaking people with home internet access were included. Future work should include marginalized populations, multi-component interventions, and synchronous group programs on functional assessments.",
+  "evidence": {
+    "introduction": [
+      {"q": "The primary objective of this pilot randomized controlled trial (RCT) was to determine the preliminary effectiveness of a live online exercise program from qualified instructors on older adults’ levels of PA compared to a waitlist control group.", "loc": "Introduction, final paragraph"},
+      {"q": "However, older adults have described numerous barriers to participating in PA and exercise", "loc": "Introduction, first paragraph"}
+    ],
+    "methodology": [
+      {"q": "This pilot convergent parallel mixed-methods RCT was guided by the CONSORT 2010 statement: extension for pilot and feasibility trials", "loc": "Materials and methods, Study design"},
+      {"q": "Older community-dwelling women and men between the ages of 65 and 80 were recruited from Hamilton, Ontario, and the surrounding area.", "loc": "Materials and methods, Participants"},
+      {"q": "Habitual PA levels were the primary outcomes and were assessed using the armband BodyMedia Sensewear Pro II accelerometer", "loc": "Materials and methods, Quantitative data collection, Physical activity"},
+      {"q": "The Geriatric Depression Scale Short Form (GDS-SF) assesses depressive symptoms using 15 questions regarding how participants felt over the past week (yes/no)", "loc": "Materials and methods, Quantitative data collection, Mental health"},
+      {"q": "Semi-structured, open-ended 1:1 interviews were conducted and audio recorded via Zoom", "loc": "Materials and methods, Qualitative data collection"},
+      {"q": "Semi-structured interviews were thematically analyzed", "loc": "Materials and methods, Analysis, Qualitative"},
+      {"q": "Pre-to-post-intervention changes in quantitative outcome measures were analyzed using a two-way repeated measures ANOVA", "loc": "Materials and methods, Analysis, Quantitative"}
+    ],
+    "theory": [
+      {"q": "This pilot convergent parallel mixed-methods RCT was guided by the CONSORT 2010 statement: extension for pilot and feasibility trials", "loc": "Materials and methods, Study design"}
+    ],
+    "results": [
+      {"q": "We observed an interaction (p = 0.012) for the Geriatric Depression Scale where the ACTIVE group decreased from pre-to-post intervention", "loc": "Results, Mental health"},
+      {"q": "We observed an interaction (p = 0.014) for life-space mobility where the ACTIVE group increased from pre-to-post intervention", "loc": "Results, Life-space mobility"},
+      {"q": "There were no differences between groups for daily steps and daily active energy expenditure measured by the accelerometer following the intervention compared to the CON", "loc": "Results, Habitual physical activity levels"},
+      {"q": "There were no significant between or within-group differences for symptoms of anxiety and loneliness", "loc": "Results, Mental health"},
+      {"q": "There were no between-group differences in nutrition risk", "loc": "Results, Nutrition risk"},
+      {"q": "Attendance rates were 97% in the ACTIVE group", "loc": "Results, Feasibility"},
+      {"q": "participants reported being either satisfied or very satisfied with the intervention 98% of the time", "loc": "Results, Feasibility"},
+      {"q": "Five overarching themes and eight sub-themes were identified", "loc": "Results, Qualitative"}
+    ],
+    "discussion": [
+      {"q": "The program did not affect participants’ habitual PA levels but reduced depressive symptoms, improved life-space mobility, and had excellent adherence and acceptability.", "loc": "Discussion, first paragraph"},
+      {"q": "Online exercise programs are viable service-delivery options, particularly when in-person programming is unavailable due to physical distance, space limitations, and/or public health measures encouraging reduced mobility to slow viral spread.", "loc": "Discussion, third paragraph"},
+      {"q": "our online exercise program has the potential to support synchronous exercise programs at home", "loc": "Conclusions"}
+    ],
+    "limitations": [
+      {"q": "primarily, we acknowledge the small sample size", "loc": "Discussion, fourth paragraph"},
+      {"q": "The study was a pilot and, therefore, underpowered to determine if there was an interaction for our primary outcome.", "loc": "Discussion, fourth paragraph"},
+      {"q": "Another limitation of the study includes a lack of blinding for our assessors and participants to group allocation.", "loc": "Discussion, fourth paragraph"},
+      {"q": "Our study only included English-speaking individuals with internet access at home with a tablet, computer, or phone.", "loc": "Discussion, fourth paragraph"},
+      {"q": "Future studies should attempt to include marginalized populations to improve generalizability with different language options, including subtitles.", "loc": "Discussion, fourth paragraph"},
+      {"q": "Future research should focus on multi-component interventions.", "loc": "Discussion, third paragraph"},
+      {"q": "Future work will focus on the effectiveness of group-based synchronous exercise programs on functional assessments.", "loc": "Conclusions"}
+    ]
+  },
+  "abstract_claims": [
+    {"q": "Following the intervention, participants in the ACTIVE group reported reduced symptoms of depression (ACTIVE: pre = 4.2 ± 2.5; post = 2.2 ± 1.9; CON: pre = 3.5 ± 2.1, post = 3.5 ± 2.1; p <0.001) and improved life-space mobility (ACTIVE: pre = 62.4 ± 14.7; post = 71.8 ± 16.0; CON: pre = 65.1 ± 19.0, post = 63.6 ± 22.0; p = 0.003) compared to waitlist control participants.", "loc": "Abstract, Results"},
+    {"q": "The ACTIVE group had good adherence (97%) and acceptability (98%).", "loc": "Abstract, Results"},
+    {"q": "Five themes were identified, including (1) Feasibility of the online exercise program; (2) Perceived health benefits and improvements; (3) Registered Kinesiologists and Physiotherapists contributed to perceived safety; (4) Social connectivity associated with synchronous/live delivery; and (5) Growing old gracefully and preventing disability.", "loc": "Abstract, Results"},
+    {"q": "Our online exercise program was acceptable to older adults, had good adherence, reduced depression, and increased life space.", "loc": "Abstract, Conclusions"},
+    {"q": "Participants reported improved functional and mental health benefits.", "loc": "Abstract, Conclusions"},
+    {"q": "Further research is warranted to expand on these findings.", "loc": "Abstract, Conclusions"}
+  ],
+  "caveats": [
+    {"q": "Questions were not provided or piloted with participants prior to the interview.", "loc": "Materials and methods, Qualitative data collection"},
+    {"q": "Transcripts were not returned to participants.", "loc": "Materials and methods, Qualitative data collection"},
+    {"q": "Participants did not provide feedback on the findings.", "loc": "Materials and methods, Qualitative analysis"},
+    {"q": "A convenience sample size of 32 participants is aligned with previous online exercise pilot studies", "loc": "Materials and methods, Sample size"},
+    {"q": "Given the nature of the study, it was impossible to blind the participants or investigators to the intervention.", "loc": "Materials and methods, Randomization, allocation concealment, and blinding"},
+    {"q": "which had periods during which Public Health advised limiting close in-person interactions (stay home/lockdown) potentially affecting older persons mobility.", "loc": "Materials and methods, Study design"},
+    {"q": "One participant in the ACTIVE group withdrew from the intervention due to an injury not attributed to the intervention.", "loc": "Results, Participants’ characteristics"},
+    {"q": "One participant in the CON group exceeded the 150 moderate-to-vigorous PA per week at baseline and, therefore, did not meet the eligibility criteria and was removed from the analysis.", "loc": "Results, Participants’ characteristics"},
+    {"q": "There were no differences between groups for daily steps and daily active energy expenditure measured by the accelerometer following the intervention compared to the CON", "loc": "Results, Habitual physical activity levels"},
+    {"q": "However, a main effect of time was observed from pre-to-post intervention for daily steps and active energy expenditure (p < 0.05).", "loc": "Results, Habitual physical activity levels"},
+    {"q": "All ACTIVE and CON group participants complied with the full 7-day protocol pre-intervention, and 28 participants complied post-intervention.", "loc": "Results, Habitual physical activity levels"},
+    {"q": "14 participants complied with the full 7-day protocol in the ACTIVE group and wore the accelerometer for 85.8 ± 0.2% of the time.", "loc": "Results, Habitual physical activity levels"},
+    {"q": "At the two-month follow-up, the ACTIVE group showed no significant differences from post-intervention (p > 0.05", "loc": "Results, Habitual physical activity levels"},
+    {"q": "There were no significant between or within-group differences for symptoms of anxiety and loneliness", "loc": "Results, Mental health"},
+    {"q": "At the two-month follow-up, the ACTIVE group showed no significant differences from post-intervention in depressive symptoms, anxiety symptoms, and loneliness (p > 0.05", "loc": "Results, Mental health"},
+    {"q": "There were no between-group differences in nutrition risk", "loc": "Results, Nutrition risk"},
+    {"q": "However, a main effect of time was observed from pre-to-post intervention (p = 0.014).", "loc": "Results, Nutrition risk"},
+    {"q": "At the two-month follow-up, the ACTIVE group showed no significant differences in the SCREENII (p > 0.05", "loc": "Results, Nutrition risk"},
+    {"q": "Four participants reported being ‘somewhat satisfied’ between 1–4 times.", "loc": "Results, Feasibility"},
+    {"q": "Both adherence and acceptability were feasible based on the a priori definitions.", "loc": "Results, Feasibility"},
+    {"q": "The qualitative data contradicted our quantitative findings", "loc": "Results, Perceived health benefits and improvements"},
+    {"q": "Most participants found that group-based exercise fostered connection, whereas a few described socializing as “not an important aspect of exercise.”", "loc": "Results, Social connectivity associated with synchronous/live delivery"},
+    {"q": "Habitual PA did not change pre- to post-intervention or at the 2-month follow-up for the ACTIVE group.", "loc": "Discussion, second paragraph"},
+    {"q": "Daily steps and daily active energy expenditure may not have changed due to the decreased level of PA in older adults during the quarantine period of COVID-19", "loc": "Discussion, second paragraph"},
+    {"q": "However, participants perceived improved function (e.g., walking, strength, gardening), chronic disease management (e.g., reduced blood pressure, vertigo), and improved energy and overall health.", "loc": "Discussion, second paragraph"},
+    {"q": "Evidence also suggests the benefits of exercise in improving anxiety and loneliness", "loc": "Discussion, third paragraph"},
+    {"q": "however, there were no between-group differences in these outcomes.", "loc": "Discussion, third paragraph"},
+    {"q": "Most participants scored below five on the GAI-SF at pre-intervention, indicating the absence of clinically significant anxiety, which may have resulted in a floor effect.", "loc": "Discussion, third paragraph"},
+    {"q": "Similarly, most participants scored low on the R-UCLA loneliness scale pre-intervention.", "loc": "Discussion, third paragraph"},
+    {"q": "In contrast, a few participants preferred to refrain from engaging in socialization, as they did not view this as an important aspect of exercise and felt their social needs were already met.", "loc": "Discussion, third paragraph"},
+    {"q": "The online exercise program may have emboldened participants to navigate spaces outside their homes, neighbourhoods, or towns.", "loc": "Discussion, fourth paragraph"},
+    {"q": "However, participants’ SCREENII scores were categorized as high nutrition risk.", "loc": "Discussion, fourth paragraph"},
+    {"q": "There are several limitations with our study; however, primarily, we acknowledge the small sample size.", "loc": "Discussion, fourth paragraph"},
+    {"q": "The study was a pilot and, therefore, underpowered to determine if there was an interaction for our primary outcome.", "loc": "Discussion, fourth paragraph"},
+    {"q": "However, we noted that participants reported perceived health benefits and improved physical function post-intervention.", "loc": "Discussion, fourth paragraph"},
+    {"q": "Another limitation of the study includes a lack of blinding for our assessors and participants to group allocation.", "loc": "Discussion, fourth paragraph"},
+    {"q": "Our study only included English-speaking individuals with internet access at home with a tablet, computer, or phone.", "loc": "Discussion, fourth paragraph"},
+    {"q": "Future studies should attempt to include marginalized populations to improve generalizability with different language options, including subtitles.", "loc": "Discussion, fourth paragraph"},
+    {"q": "We did not see an effect of the intervention in the ACTIVE group on accelerometry-derived outcomes.", "loc": "Conclusions"},
+    {"q": "Nonetheless, following participation in the online exercise program, participants perceived physical and mental health benefits.", "loc": "Conclusions"}
+  ]
+}
